@@ -5,7 +5,6 @@ import os
 import sys
 import tempfile
 from pathlib import Path
-from typing import Any, Dict, List, Union
 
 import hou
 
@@ -16,13 +15,13 @@ logger = logging.getLogger(__name__)
 
 
 class HoudiniJSONEncoder(json.JSONEncoder):
-    def default(self, obj: Any) -> Any:
+    def default(self, obj):
         if isinstance(obj, tuple):
             return list(obj)
         return super().default(obj)
 
 
-def get_default_value(pt: hou.ParmTemplate) -> Any:
+def get_default_value(pt: hou.ParmTemplate):
     if not hasattr(pt, "defaultValue"):
         return None
     try:
@@ -34,7 +33,7 @@ def get_default_value(pt: hou.ParmTemplate) -> Any:
         return None
 
 
-def extract_parms(entries: Union[tuple, list]) -> List[Dict[str, Any]]:
+def extract_parms(entries: tuple | list) -> list[dict[str, object]]:
     parms = []
     for pt in entries:
         if isinstance(pt, hou.FolderParmTemplate):
@@ -57,15 +56,15 @@ def extract_parms(entries: Union[tuple, list]) -> List[Dict[str, Any]]:
     return parms
 
 
-def get_node_data() -> Dict[str, Dict[str, Any]]:
-    data: Dict[str, Dict[str, Any]] = {}
+def get_node_data() -> dict[str, dict[str, object]]:
+    data: dict[str, dict[str, object]] = {}
 
     for cat_name, cat in sorted(hou.nodeTypeCategories().items()):
         logger.info(f"Processing category: {cat_name}")
-        cat_data: Dict[str, Any] = {}
+        cat_data: dict[str, object] = {}
 
         for node_name, node_type in sorted(cat.nodeTypes().items()):
-            parms: List[Dict[str, Any]] = []
+            parms: list[dict[str, object]] = []
             try:
                 group = node_type.parmTemplateGroup()
                 parms = extract_parms(group.entries())
@@ -74,7 +73,7 @@ def get_node_data() -> Dict[str, Dict[str, Any]]:
                     f"Could not extract parameters for node '{node_name}' in '{cat_name}': {e}"
                 )
 
-            node_entry: Dict[str, Any] = {"parms": parms}
+            node_entry: dict[str, object] = {"parms": parms}
             try:
                 node_entry["min_inputs"] = node_type.minNumInputs()
                 node_entry["max_inputs"] = node_type.maxNumInputs()

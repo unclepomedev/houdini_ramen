@@ -6,7 +6,6 @@ import sys
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -86,7 +85,7 @@ class ParsedParam:
 @dataclass(frozen=True)
 class ParsedNode:
     struct_name: str
-    params: List[ParsedParam] = field(default_factory=list)
+    params: list[ParsedParam] = field(default_factory=list)
 
 
 def clean_identifier(s: str) -> str:
@@ -103,7 +102,7 @@ def snake_case(s: str) -> str:
     name = clean_identifier(s).lower()
     if not name:
         return "unknown"
-    if name and name[0].isdigit():
+    if name[0].isdigit():
         name = f"n_{name}"
     return name
 
@@ -117,7 +116,7 @@ def pascal_case(s: str) -> str:
     return name
 
 
-def get_rust_type_info(h_type: str, default_val: Any) -> Tuple[str, str, str]:
+def get_rust_type_info(h_type: str, default_val) -> tuple[str, str, str]:
     if h_type == "Toggle":
         return "bool", "Toggle", "val"
     if h_type == "String":
@@ -136,53 +135,116 @@ def get_rust_type_info(h_type: str, default_val: Any) -> Tuple[str, str, str]:
     return "&str", "String", "val.to_string()"
 
 
-def parse_node_data(struct_name: str, node_info: Dict[str, Any]) -> ParsedNode:
+def get_multiparm_args(count: int) -> tuple[str, str]:
+    if count == 0:
+        return "", ""
+    fn_args = ", ".join(f"index{i + 1}: usize" for i in range(count))
+    format_args = ", ".join(f"index{i + 1}" for i in range(count))
+    return fn_args, format_args
+
+
+def resolve_unique_suffix(base_suffix: str, seen_suffixes: set) -> str:
+    method_suffix = base_suffix
+    suffix_counter = 1
+    while method_suffix in seen_suffixes:
+        method_suffix = f"{base_suffix}_{suffix_counter}"
+        suffix_counter += 1
+    seen_suffixes.add(method_suffix)
+    return method_suffix
+
+
+def parse_single_param(p: dict[str, object], seen_suffixes: set) -> ParsedParam | None:
+    p_name = p.get("name")
+    if not p_name:
+        return None
+
+    multiparm_count = p_name.count("#")
+    is_multiparm = multiparm_count > 0
+    fn_args, format_args = get_multiparm_args(multiparm_count)
+
+    r_type, enum_variant, val_converter = get_rust_type_info(
+        p.get("type", ""), p.get("default")
+    )
+
+    base_suffix = snake_case(p_name.replace("#", ""))
+    method_suffix = resolve_unique_suffix(
+        f"{base_suffix}_inst" if is_multiparm else base_suffix, seen_suffixes
+    )
+
+    return ParsedParam(
+        p_name,
+        method_suffix,
+        r_type,
+        enum_variant,
+        val_converter,
+        is_multiparm,
+        fn_args,
+        format_args,
+    )
+
+
+def parse_node_data(struct_name: str, node_info: dict[str, object]) -> ParsedNode:
     params = []
     seen_suffixes = set()
 
     for p in node_info.get("parms", []):
-        p_name = p.get("name")
-        if not p_name:
-            continue
-
-        multiparm_count = p_name.count("#")
-        is_multiparm = multiparm_count > 0
-
-        fn_args = ""
-        format_args = ""
-        if is_multiparm:
-            fn_args = ", ".join(f"index{i + 1}: usize" for i in range(multiparm_count))
-            format_args = ", ".join(f"index{i + 1}" for i in range(multiparm_count))
-
-        r_type, enum_variant, val_converter = get_rust_type_info(
-            p.get("type", ""), p.get("default")
-        )
-
-        base_suffix = snake_case(p_name.replace("#", ""))
-        method_suffix = f"{base_suffix}_inst" if is_multiparm else base_suffix
-
-        counter = 1
-        original_suffix = method_suffix
-        while method_suffix in seen_suffixes:
-            method_suffix = f"{original_suffix}_{counter}"
-            counter += 1
-
-        seen_suffixes.add(method_suffix)
-
-        params.append(
-            ParsedParam(
-                p_name,
-                method_suffix,
-                r_type,
-                enum_variant,
-                val_converter,
-                is_multiparm,
-                fn_args,
-                format_args,
-            )
-        )
+        parsed = parse_single_param(p, seen_suffixes)
+        if parsed:
+            params.append(parsed)
 
     return ParsedNode(struct_name, params)
+
+
+def group_nodes_by_prefix(
+    nodes: dict[str, object],
+) -> dict[str, list[tuple[str, object]]]:
+    groups = defaultdict(list)
+    for node_name, node_info in nodes.items():
+        key = node_name[0].lower() if node_name and node_name[0].isalpha() else "_"
+        groups[key].append((node_name, node_info))
+    return groups
+
+
+def write_category_files(
+    cat_name: str,
+    nodes: dict[str, object],
+    rs_root: Path,
+    stub_root: Path,
+    template_rs,
+    template_stub,
+) -> str | None:
+    cat_snake = snake_case(cat_name)
+    if not cat_snake:
+        logger.warning(f"Skipping category with invalid name: {cat_name!r}")
+        return None
+    cat_pascal = pascal_case(cat_name)
+
+    cat_rs_dir = rs_root / cat_snake
+    cat_stub_dir = stub_root / cat_snake
+    cat_rs_dir.mkdir(parents=True, exist_ok=True)
+    cat_stub_dir.mkdir(parents=True, exist_ok=True)
+
+    groups = group_nodes_by_prefix(nodes)
+
+    cat_mod_lines = []
+    for key, group_nodes in groups.items():
+        cat_mod_lines.append(f"pub mod {to_safe_ident(key)};")
+
+        rs_blocks = []
+        stub_blocks = []
+
+        for node_name, node_info in group_nodes:
+            parsed = parse_node_data(f"{cat_pascal}{pascal_case(node_name)}", node_info)
+            rs_blocks.append(template_rs.render(node=parsed))
+            stub_blocks.append(template_stub.render(node=parsed))
+
+        (cat_rs_dir / f"{key}.rs").write_text("\n\n".join(rs_blocks), encoding="utf-8")
+        (cat_stub_dir / f"{key}.stub").write_text(
+            "\n\n".join(stub_blocks), encoding="utf-8"
+        )
+
+    (cat_rs_dir / "mod.rs").write_text("\n".join(cat_mod_lines), encoding="utf-8")
+    return f"pub mod {to_safe_ident(cat_snake)};"
 
 
 def generate_files(input_json: Path, rs_root: Path, stub_root: Path) -> None:
@@ -200,45 +262,11 @@ def generate_files(input_json: Path, rs_root: Path, stub_root: Path) -> None:
 
     main_rs_mods = []
     for cat_name, nodes in data.items():
-        cat_snake = snake_case(cat_name)
-        if not cat_snake:
-            logger.warning(f"Skipping category with invalid name: {cat_name!r}")
-            continue
-        cat_pascal = pascal_case(cat_name)
-        main_rs_mods.append(f"pub mod {to_safe_ident(cat_snake)};")
-
-        cat_rs_dir = rs_root / cat_snake
-        cat_stub_dir = stub_root / cat_snake
-        cat_rs_dir.mkdir(parents=True, exist_ok=True)
-        cat_stub_dir.mkdir(parents=True, exist_ok=True)
-
-        groups = defaultdict(list)
-        for node_name, node_info in nodes.items():
-            key = node_name[0].lower() if node_name and node_name[0].isalpha() else "_"
-            groups[key].append((node_name, node_info))
-
-        cat_mod_lines = []
-        for key, group_nodes in groups.items():
-            cat_mod_lines.append(f"pub mod {to_safe_ident(key)};")
-
-            rs_blocks = []
-            stub_blocks = []
-
-            for node_name, node_info in group_nodes:
-                parsed = parse_node_data(
-                    f"{cat_pascal}{pascal_case(node_name)}", node_info
-                )
-                rs_blocks.append(template_rs.render(node=parsed))
-                stub_blocks.append(template_stub.render(node=parsed))
-
-            (cat_rs_dir / f"{key}.rs").write_text(
-                "\n\n".join(rs_blocks), encoding="utf-8"
-            )
-            (cat_stub_dir / f"{key}.stub").write_text(
-                "\n\n".join(stub_blocks), encoding="utf-8"
-            )
-
-        (cat_rs_dir / "mod.rs").write_text("\n".join(cat_mod_lines), encoding="utf-8")
+        mod_decl = write_category_files(
+            cat_name, nodes, rs_root, stub_root, template_rs, template_stub
+        )
+        if mod_decl:
+            main_rs_mods.append(mod_decl)
     (rs_root / "mod.rs").write_text("\n".join(main_rs_mods), encoding="utf-8")
 
 
