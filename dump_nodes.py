@@ -101,10 +101,14 @@ def main():
         logger.info(f"Writing data to {output_path}")
         output_path.parent.mkdir(parents=True, exist_ok=True)
         tmp_path = output_path.parent / f".{output_path.name}.tmp"
-        with tmp_path.open("w", encoding="utf-8") as f:
-            json.dump(node_data, f, indent=2, cls=HoudiniJSONEncoder)
-            f.write("\n")
-        tmp_path.replace(output_path)
+        try:
+            with tmp_path.open("w", encoding="utf-8") as f:
+                json.dump(node_data, f, indent=2, cls=HoudiniJSONEncoder)
+                f.write("\n")
+            tmp_path.replace(output_path)
+        except:
+            tmp_path.unlink(missing_ok=True)
+            raise
 
         logger.info("Extraction completed successfully.")
 
