@@ -60,11 +60,11 @@ def extract_parms(entries: Union[tuple, list]) -> List[Dict[str, Any]]:
 def get_node_data() -> Dict[str, Dict[str, Any]]:
     data: Dict[str, Dict[str, Any]] = {}
 
-    for cat_name, cat in hou.nodeTypeCategories().items():
+    for cat_name, cat in sorted(hou.nodeTypeCategories().items()):
         logger.info(f"Processing category: {cat_name}")
         cat_data: Dict[str, Any] = {}
 
-        for node_name, node_type in cat.nodeTypes().items():
+        for node_name, node_type in sorted(cat.nodeTypes().items()):
             parms: List[Dict[str, Any]] = []
             try:
                 group = node_type.parmTemplateGroup()
@@ -116,7 +116,12 @@ def main():
                 os.fsync(f.fileno())
             os.replace(tmp_path, output_path)
         except Exception:
-            tmp_path.unlink(missing_ok=True)
+            try:
+                tmp_path.unlink(missing_ok=True)
+            except OSError:
+                logger.warning(
+                    f"Failed to clean up temp file: {tmp_path}", exc_info=True
+                )
             raise
 
         logger.info("Extraction completed successfully.")
