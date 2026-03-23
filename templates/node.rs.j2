@@ -1,20 +1,20 @@
 pub struct {{ node.struct_name }} {
     pub name: String,
-    pub inputs: Vec<crate::core::types::NodeInput>,
-    pub params: std::collections::HashMap<&'static str, crate::core::types::ParamValue>,
+    pub inputs: std::collections::BTreeMap<usize, String>,
+    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
 }
 
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            inputs: Vec::new(),
+            inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
         }
     }
 
     pub fn set_input(mut self, index: usize, node_id: &str) -> Self {
-        self.inputs.push(crate::core::types::NodeInput { index, node_id: node_id.to_string() });
+        self.inputs.insert(index, node_id.to_string());
         self
     }
     {% set ns = namespace(last_variant='') %}
@@ -24,16 +24,30 @@ impl {{ node.struct_name }} {
     // --- {{ p.enum_variant }} parameters ---
     {% set ns.last_variant = p.enum_variant %}
     {% endif %}
+    {% if p.is_multiparm %}
+    {% if p.r_type == "()" %}
+    pub fn trigger_{{ p.method_suffix }}(mut self, {{ p.fn_args }}) -> Self {
+        self.params.insert(format!("{{ p.name | replace('#', '{}') }}", {{ p.format_args }}), crate::core::types::ParamValue::{{ p.enum_variant }});
+        self
+    }
+    {% else %}
+    pub fn with_{{ p.method_suffix }}(mut self, {{ p.fn_args }}, val: {{ p.r_type }}) -> Self {
+        self.params.insert(format!("{{ p.name | replace('#', '{}') }}", {{ p.format_args }}), crate::core::types::ParamValue::{{ p.enum_variant }}({{ p.val_converter }}));
+        self
+    }
+    {% endif %}
+    {% else %}
     {% if p.r_type == "()" %}
     pub fn trigger_{{ p.method_suffix }}(mut self) -> Self {
-        self.params.insert("{{ p.name }}", crate::core::types::ParamValue::{{ p.enum_variant }});
+        self.params.insert("{{ p.name }}".to_string(), crate::core::types::ParamValue::{{ p.enum_variant }});
         self
     }
     {% else %}
     pub fn with_{{ p.method_suffix }}(mut self, val: {{ p.r_type }}) -> Self {
-        self.params.insert("{{ p.name }}", crate::core::types::ParamValue::{{ p.enum_variant }}({{ p.val_converter }}));
+        self.params.insert("{{ p.name }}".to_string(), crate::core::types::ParamValue::{{ p.enum_variant }}({{ p.val_converter }}));
         self
     }
+    {% endif %}
     {% endif %}
     {% endfor %}
 }

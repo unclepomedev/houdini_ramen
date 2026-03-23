@@ -10,10 +10,18 @@ impl {{ node.struct_name }} {
     // --- {{ p.enum_variant }} parameters ---
     {% set ns.last_variant = p.enum_variant %}
     {% endif %}
+    {% if p.is_multiparm %}
+    {% if p.r_type == "()" %}
+    pub fn trigger_{{ p.method_suffix }}(self, {{ p.fn_args }}) -> Self;
+    {% else %}
+    pub fn with_{{ p.method_suffix }}(self, {{ p.fn_args }}, val: {{ p.r_type }}) -> Self;
+    {% endif %}
+    {% else %}
     {% if p.r_type == "()" %}
     pub fn trigger_{{ p.method_suffix }}(self) -> Self;
     {% else %}
     pub fn with_{{ p.method_suffix }}(self, val: {{ p.r_type }}) -> Self;
+    {% endif %}
     {% endif %}
     {% endfor %}
 }

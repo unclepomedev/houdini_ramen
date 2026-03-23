@@ -7,6 +7,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
+
 from jinja2 import Environment, FileSystemLoader
 
 logging.basicConfig(
@@ -77,6 +78,9 @@ class ParsedParam:
     r_type: str
     enum_variant: str
     val_converter: str
+    is_multiparm: bool
+    fn_args: str
+    format_args: str
 
 
 @dataclass(frozen=True)
@@ -127,16 +131,50 @@ def get_rust_type_info(h_type: str, default_val: Any) -> Tuple[str, str, str]:
 
 def parse_node_data(struct_name: str, node_info: Dict[str, Any]) -> ParsedNode:
     params = []
+    seen_suffixes = set()
+
     for p in node_info.get("parms", []):
         p_name = p.get("name")
         if not p_name:
             continue
+
+        multiparm_count = p_name.count("#")
+        is_multiparm = multiparm_count > 0
+
+        fn_args = ""
+        format_args = ""
+        if is_multiparm:
+            fn_args = ", ".join(f"index{i + 1}: usize" for i in range(multiparm_count))
+            format_args = ", ".join(f"index{i + 1}" for i in range(multiparm_count))
+
         r_type, enum_variant, val_converter = get_rust_type_info(
             p.get("type", ""), p.get("default")
         )
+
+        base_suffix = snake_case(p_name.replace("#", ""))
+        method_suffix = f"{base_suffix}_inst" if is_multiparm else base_suffix
+
+        counter = 1
+        original_suffix = method_suffix
+        while method_suffix in seen_suffixes:
+            method_suffix = f"{original_suffix}_{counter}"
+            counter += 1
+
+        seen_suffixes.add(method_suffix)
+
         params.append(
-            ParsedParam(p_name, snake_case(p_name), r_type, enum_variant, val_converter)
+            ParsedParam(
+                p_name,
+                method_suffix,
+                r_type,
+                enum_variant,
+                val_converter,
+                is_multiparm,
+                fn_args,
+                format_args,
+            )
         )
+
     return ParsedNode(struct_name, params)
 
 
