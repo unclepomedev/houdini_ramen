@@ -14,6 +14,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+class HoudiniJSONEncoder(json.JSONEncoder):
+    def default(self, obj: Any) -> Any:
+        if isinstance(obj, tuple):
+            return list(obj)
+        return super().default(obj)
+
+
 def get_default_value(pt: hou.ParmTemplate) -> Any:
     if not hasattr(pt, 'defaultValue'):
         return None
@@ -81,6 +88,7 @@ def main():
         "output",
         nargs="?",
         default="node_api_dump.json",
+        help="Output JSON filename (default: node_api_dump.json)",
     )
     args = parser.parse_args()
 
@@ -92,7 +100,7 @@ def main():
 
         logger.info(f"Writing data to {output_path}")
         with output_path.open("w", encoding="utf-8") as f:
-            json.dump(node_data, f, indent=2)
+            json.dump(node_data, f, indent=2, cls=HoudiniJSONEncoder)
 
         logger.info("Extraction completed successfully.")
 
