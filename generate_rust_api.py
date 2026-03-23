@@ -101,6 +101,8 @@ def to_safe_ident(name: str) -> str:
 
 def snake_case(s: str) -> str:
     name = clean_identifier(s).lower()
+    if not name:
+        return "unknown"
     if name and name[0].isdigit():
         name = f"n_{name}"
     return name
@@ -192,13 +194,16 @@ def generate_files(input_json: Path, rs_root: Path, stub_root: Path) -> None:
 
     try:
         data = json.loads(input_json.read_text(encoding="utf-8"))
-    except Exception as e:
+    except (json.JSONDecodeError, OSError) as e:
         logger.error(f"Failed to load JSON: {e}")
         sys.exit(1)
 
     main_rs_mods = []
     for cat_name, nodes in data.items():
         cat_snake = snake_case(cat_name)
+        if not cat_snake:
+            logger.warning(f"Skipping category with invalid name: {cat_name!r}")
+            continue
         cat_pascal = pascal_case(cat_name)
         main_rs_mods.append(f"pub mod {to_safe_ident(cat_snake)};")
 
