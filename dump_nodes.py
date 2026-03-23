@@ -99,8 +99,12 @@ def main():
         node_data = get_node_data()
 
         logger.info(f"Writing data to {output_path}")
-        with output_path.open("w", encoding="utf-8") as f:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        tmp_path = output_path.parent / f".{output_path.name}.tmp"
+        with tmp_path.open("w", encoding="utf-8") as f:
             json.dump(node_data, f, indent=2, cls=HoudiniJSONEncoder)
+            f.write("\n")
+        tmp_path.replace(output_path)
 
         logger.info("Extraction completed successfully.")
 
