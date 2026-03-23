@@ -4,7 +4,7 @@ HOUDINI_RESOURCES := env_var_or_default("HOUDINI_RESOURCES", "/Applications/Houd
 
 # python ==========================================================
 fmt-py:
-    uv run ruff format dump_nodes.py
+    uv run ruff format dump_nodes.py generate_rust_api.py
 # rust ==========================================================
 fix-rs:
     cargo clippy --fix --allow-dirty --allow-staged --all-targets -- -D warnings
@@ -25,3 +25,20 @@ dump-nodes:
     source houdini_setup
     cd {{ PROJECT_ROOT }}
     hython dump_nodes.py
+
+generate-api:
+    #!/usr/bin/env bash
+    set -e
+
+    rm -rf "{{ PROJECT_ROOT }}/src/generated"
+    rm -rf "{{ PROJECT_ROOT }}/resources/stubs"
+
+    mkdir -p "{{ PROJECT_ROOT }}/src/generated"
+    mkdir -p "{{ PROJECT_ROOT }}/resources/stubs"
+
+    uv run python generate_rust_api.py \
+        "{{ PROJECT_ROOT }}/node_api_dump.json" \
+        "{{ PROJECT_ROOT }}/src/generated" \
+        "{{ PROJECT_ROOT }}/resources/stubs"
+
+    cargo fmt

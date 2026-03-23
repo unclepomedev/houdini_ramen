@@ -10,8 +10,7 @@ from typing import Any, Dict, List, Union
 import hou
 
 logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
@@ -24,12 +23,14 @@ class HoudiniJSONEncoder(json.JSONEncoder):
 
 
 def get_default_value(pt: hou.ParmTemplate) -> Any:
-    if not hasattr(pt, 'defaultValue'):
+    if not hasattr(pt, "defaultValue"):
         return None
     try:
         return pt.defaultValue()
     except Exception as e:
-        logger.debug(f"Could not retrieve default value for parameter '{pt.name()}': {e}")
+        logger.debug(
+            f"Could not retrieve default value for parameter '{pt.name()}': {e}"
+        )
         return None
 
 
@@ -40,13 +41,12 @@ def extract_parms(entries: Union[tuple, list]) -> List[Dict[str, Any]]:
             try:
                 parms.extend(extract_parms(pt.parmTemplates()))
             except Exception as e:
-                logger.warning(f"Failed to extract parameters from folder '{pt.name()}': {e}")
+                logger.warning(
+                    f"Failed to extract parameters from folder '{pt.name()}': {e}"
+                )
         else:
             try:
-                p_info = {
-                    "name": pt.name(),
-                    "type": pt.type().name()
-                }
+                p_info = {"name": pt.name(), "type": pt.type().name()}
                 default_val = get_default_value(pt)
                 if default_val is not None:
                     p_info["default"] = default_val
@@ -70,14 +70,18 @@ def get_node_data() -> Dict[str, Dict[str, Any]]:
                 group = node_type.parmTemplateGroup()
                 parms = extract_parms(group.entries())
             except Exception as e:
-                logger.debug(f"Could not extract parameters for node '{node_name}' in '{cat_name}': {e}")
+                logger.debug(
+                    f"Could not extract parameters for node '{node_name}' in '{cat_name}': {e}"
+                )
 
             node_entry: Dict[str, Any] = {"parms": parms}
             try:
                 node_entry["min_inputs"] = node_type.minNumInputs()
                 node_entry["max_inputs"] = node_type.maxNumInputs()
             except Exception as e:
-                logger.warning(f"Failed to get input limits for node '{node_name}': {e}")
+                logger.warning(
+                    f"Failed to get input limits for node '{node_name}': {e}"
+                )
             cat_data[node_name] = node_entry
         data[cat_name] = cat_data
 
