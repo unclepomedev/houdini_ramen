@@ -107,7 +107,12 @@ def snake_case(s: str) -> str:
 
 
 def pascal_case(s: str) -> str:
-    return "".join(word.capitalize() for word in clean_identifier(s).split("_"))
+    name = "".join(word.capitalize() for word in clean_identifier(s).split("_"))
+    if not name:
+        return "Unknown"
+    if name[0].isdigit():
+        return f"N{name}"
+    return name
 
 
 def get_rust_type_info(h_type: str, default_val: Any) -> Tuple[str, str, str]:

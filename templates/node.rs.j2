@@ -51,3 +51,17 @@ impl {{ node.struct_name }} {
     {% endif %}
     {% endfor %}
 }
+
+impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
+    fn get_name(&self) -> &str {
+        &self.name
+    }
+
+    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, String> {
+        &self.inputs
+    }
+
+    fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
+        &self.params
+    }
+}
