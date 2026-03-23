@@ -63,15 +63,13 @@ def get_node_data() -> Dict[str, Dict[str, Any]]:
             except Exception as e:
                 logger.debug(f"Could not extract parameters for node '{node_name}' in '{cat_name}': {e}")
 
+            node_entry: Dict[str, Any] = {"parms": parms}
             try:
-                cat_data[node_name] = {
-                    "min_inputs": node_type.minNumInputs(),
-                    "max_inputs": node_type.maxNumInputs(),
-                    "parms": parms
-                }
+                node_entry["min_inputs"] = node_type.minNumInputs()
+                node_entry["max_inputs"] = node_type.maxNumInputs()
             except Exception as e:
                 logger.warning(f"Failed to get input limits for node '{node_name}': {e}")
-
+            cat_data[node_name] = node_entry
         data[cat_name] = cat_data
 
     return data

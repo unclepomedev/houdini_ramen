@@ -23,5 +23,5 @@ dump-nodes:
 
     cd {{ HOUDINI_RESOURCES }}
     source houdini_setup
-    cd -
+    cd {{ PROJECT_ROOT }}
     hython dump_nodes.py
