@@ -1,7 +1,9 @@
 import argparse
 import json
 import logging
+import os
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any, Dict, List, Union
 
@@ -100,13 +102,20 @@ def main():
 
         logger.info(f"Writing data to {output_path}")
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        tmp_path = output_path.parent / f".{output_path.name}.tmp"
+        fd, tmp_name = tempfile.mkstemp(
+            prefix=f".{output_path.name}.",
+            suffix=".tmp",
+            dir=output_path.parent,
+        )
+        tmp_path = Path(tmp_name)
         try:
-            with tmp_path.open("w", encoding="utf-8") as f:
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
                 json.dump(node_data, f, indent=2, cls=HoudiniJSONEncoder)
                 f.write("\n")
-            tmp_path.replace(output_path)
-        except:
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(tmp_path, output_path)
+        except Exception:
             tmp_path.unlink(missing_ok=True)
             raise
 
