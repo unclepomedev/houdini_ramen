@@ -81,34 +81,25 @@ class HoudiniNodeExtractor:
     """traverses Houdini node information and converts it into a data model"""
 
     @staticmethod
-    def _get_default_value(pt: hou.ParmTemplate) -> Any:
+    def _get_default_value(pt: hou.ParmTemplate):
         if not hasattr(pt, "defaultValue"):
             return None
         try:
             return pt.defaultValue()
-        except Exception as e:
+        except hou.OperationFailed as e:
             logger.debug(f"Could not retrieve default value for '{pt.name()}': {e}")
             return None
 
     def _extract_single_parm(self, pt: hou.ParmTemplate) -> ParmInfo | None:
-        try:
-            return ParmInfo(
-                name=pt.name(),
-                type=pt.type().name(),
-                default=self._get_default_value(pt),
-            )
-        except Exception as e:
-            logger.warning(f"Failed to extract parameter info for '{pt.name()}': {e}")
-            return None
+        return ParmInfo(
+            name=pt.name(), type=pt.type().name(), default=self._get_default_value(pt)
+        )
 
     def _extract_parms_recursive(self, entries: tuple | list) -> list[ParmInfo]:
         parms = []
         for pt in entries:
             if isinstance(pt, hou.FolderParmTemplate):
-                try:
-                    parms.extend(self._extract_parms_recursive(pt.parmTemplates()))
-                except Exception as e:
-                    logger.warning(f"Failed to extract folder '{pt.name()}': {e}")
+                parms.extend(self._extract_parms_recursive(pt.parmTemplates()))
             else:
                 parm_info = self._extract_single_parm(pt)
                 if parm_info:
@@ -121,19 +112,13 @@ class HoudiniNodeExtractor:
             parms = self._extract_parms_recursive(
                 node_type.parmTemplateGroup().entries()
             )
-        except Exception as e:
+        except hou.PermissionError as e:
             logger.debug(
-                f"Could not extract parameters for node '{node_type.name()}': {e}"
+                f"Permission denied for parameters of '{node_type.name()}': {e}"
             )
 
-        min_inputs, max_inputs = 0, 0
-        try:
-            min_inputs = node_type.minNumInputs()
-            max_inputs = node_type.maxNumInputs()
-        except Exception as e:
-            logger.warning(
-                f"Failed to get input limits for node '{node_type.name()}': {e}"
-            )
+        min_inputs = node_type.minNumInputs()
+        max_inputs = node_type.maxNumInputs()
 
         return NodeInfo(min_inputs=min_inputs, max_inputs=max_inputs, parms=parms)
 

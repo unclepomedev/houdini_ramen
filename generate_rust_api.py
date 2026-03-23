@@ -139,33 +139,48 @@ def pascal_case(s: str) -> str:
     return f"N{name}" if name[0].isdigit() else name
 
 
-def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo:
+def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
+    # UI-specific parameters to ignore
+    if h_type in ("Separator", "Label"):
+        return None
+
     if h_type == "Toggle":
         return RustTypeInfo("bool", "Toggle", "val")
-    if h_type == "String":
-        return RustTypeInfo("&str", "String", "val.to_string()")
+    if h_type in ("String", "Data"):
+        return RustTypeInfo("&str", h_type, "val.to_string()")
     if h_type == "Menu":
         return RustTypeInfo("i32", "Menu", "val")
     if h_type == "Button":
         return RustTypeInfo("()", "Button", "")
+    if h_type == "Ramp":
+        return RustTypeInfo("Vec<crate::core::types::RampPoint>", "Ramp", "val")
 
-    is_array = isinstance(default_val, list) and len(default_val) > 1
+    is_list = isinstance(default_val, list)
+    length = len(default_val) if is_list else 1
 
     if h_type == "Int":
-        return (
-            RustTypeInfo("Vec<i32>", "IntArray", "val")
-            if is_array
-            else RustTypeInfo("i32", "Int", "val")
-        )
+        if not is_list or length <= 1:
+            return RustTypeInfo("i32", "Int", "val")
+        if length == 2:
+            return RustTypeInfo("[i32; 2]", "Int2", "val")
+        if length == 3:
+            return RustTypeInfo("[i32; 3]", "Int3", "val")
+        if length == 4:
+            return RustTypeInfo("[i32; 4]", "Int4", "val")
+        return RustTypeInfo("Vec<i32>", "IntArray", "val")
 
-    if h_type in ("Float", "Angle"):
-        return (
-            RustTypeInfo("Vec<f32>", "FloatArray", "val")
-            if is_array
-            else RustTypeInfo("f32", "Float", "val")
-        )
+    if h_type == "Float":
+        if not is_list or length <= 1:
+            return RustTypeInfo("f32", "Float", "val")
+        if length == 2:
+            return RustTypeInfo("[f32; 2]", "Float2", "val")
+        if length == 3:
+            return RustTypeInfo("[f32; 3]", "Float3", "val")
+        if length == 4:
+            return RustTypeInfo("[f32; 4]", "Float4", "val")
+        return RustTypeInfo("Vec<f32>", "FloatArray", "val")
 
-    return RustTypeInfo("&str", "String", "val.to_string()")
+    raise ValueError(f"Unsupported Houdini parameter type: {h_type!r}")
 
 
 def resolve_multiparm(name: str) -> MultiparmInfo:
@@ -180,8 +195,12 @@ def resolve_multiparm(name: str) -> MultiparmInfo:
 
 def parse_param(
     p_name: str, p_data: dict[str, Any], resolver: SuffixResolver
-) -> ParsedParam:
+) -> ParsedParam | None:
     type_info = resolve_rust_type(p_data.get("type", ""), p_data.get("default"))
+
+    if type_info is None:
+        return None
+
     multi_info = resolve_multiparm(p_name)
 
     base_suffix = snake_case(p_name.replace("#", ""))
@@ -202,7 +221,17 @@ def parse_param(
 
 def parse_node(struct_name: str, parms_data: list[dict[str, Any]]) -> ParsedNode:
     resolver = SuffixResolver()
-    params = [parse_param(p["name"], p, resolver) for p in parms_data if p.get("name")]
+    params = []
+
+    for p in parms_data:
+        p_name = p.get("name")
+        if not p_name:
+            continue
+
+        parsed = parse_param(p_name, p, resolver)
+        if parsed is not None:
+            params.append(parsed)
+
     return ParsedNode(struct_name, params)
 
 
@@ -252,7 +281,9 @@ class CodeGenerator:
 
         groups = defaultdict(list)
         for node_name, node_info in nodes.items():
-            key = node_name[0].lower() if node_name and node_name[0].isalpha() else "_"
+            key = (
+                node_name[0].lower() if node_name and node_name[0].isalpha() else "misc"
+            )
             groups[key].append((node_name, node_info))
 
         mod_lines = []

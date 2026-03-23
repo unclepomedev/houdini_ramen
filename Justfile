@@ -4,7 +4,7 @@ HOUDINI_RESOURCES := env_var_or_default("HOUDINI_RESOURCES", "/Applications/Houd
 
 # python ==========================================================
 fmt-py:
-    uv run ruff format dump_nodes.py generate_rust_api.py
+    uv run ruff format dump_nodes.py generate_rust_api.py list_types.py
 # rust ==========================================================
 fix-rs:
     cargo clippy --fix --allow-dirty --allow-staged --all-targets -- -D warnings
@@ -42,3 +42,7 @@ generate-api:
         "{{ PROJECT_ROOT }}/resources/stubs"
 
     cargo fmt
+
+# debug =======================================================
+list-types:
+    uv run list_types.py
