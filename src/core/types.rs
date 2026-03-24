@@ -1,3 +1,4 @@
+use crate::core::py_escape::python_string_literal;
 use std::collections::{BTreeMap, HashMap};
 
 #[derive(Debug, Clone, PartialEq)]
@@ -50,9 +51,7 @@ impl ParamValue {
             }
             ParamValue::Int(v) | ParamValue::Menu(v) => v.to_string(),
             ParamValue::Float(v) => format!("{:.4}", v),
-            ParamValue::String(v) | ParamValue::Data(v) => {
-                format!("\"{}\"", v.replace("\\", "\\\\").replace("\"", "\\\""))
-            }
+            ParamValue::String(v) | ParamValue::Data(v) => python_string_literal(v),
             ParamValue::Int2(v) => format!("({}, {})", v[0], v[1]),
             ParamValue::Int3(v) => format!("({}, {}, {})", v[0], v[1], v[2]),
             ParamValue::Int4(v) => format!("({}, {}, {}, {})", v[0], v[1], v[2], v[3]),

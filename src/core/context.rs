@@ -1,21 +1,10 @@
+use crate::core::py_escape::{escape_py_key, sanitize_py_ident};
 use crate::core::types::HoudiniNode;
 use std::fmt::Write;
 
 pub struct Transpiler {
     parent_path: String,
     nodes: Vec<Box<dyn HoudiniNode>>,
-}
-
-fn sanitize_py_ident(name: &str) -> String {
-    name.chars()
-        .map(|c| {
-            if c.is_alphanumeric() || c == '_' {
-                c
-            } else {
-                '_'
-            }
-        })
-        .collect()
 }
 
 impl Transpiler {
@@ -76,12 +65,17 @@ impl Transpiler {
 
             for (key, val) in params {
                 let py_val = val.to_python_expr();
+                let safe_key = escape_py_key(key);
                 if val.is_trigger() {
-                    let _ = writeln!(code, "{}.parm('{}').pressButton()", var_name, key);
+                    let _ = writeln!(code, "{}.parm('{}').pressButton()", var_name, safe_key);
                 } else if val.is_tuple() {
-                    let _ = writeln!(code, "{}.parmTuple('{}').set({})", var_name, key, py_val);
+                    let _ = writeln!(
+                        code,
+                        "{}.parmTuple('{}').set({})",
+                        var_name, safe_key, py_val
+                    );
                 } else {
-                    let _ = writeln!(code, "{}.parm('{}').set({})", var_name, key, py_val);
+                    let _ = writeln!(code, "{}.parm('{}').set({})", var_name, safe_key, py_val);
                 }
             }
         }
