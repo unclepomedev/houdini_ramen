@@ -7,6 +7,7 @@ import hou
 
 MAX_SCRIPT_SIZE = 10 * 1024 * 1024  # 10 MB
 LIVE_LINK_PORT = 18080
+AUTH_TOKEN = "houdini_ramen_secret_2026"
 
 
 class HoudiniLiveLinkServer:
@@ -65,9 +66,16 @@ class HoudiniLiveLinkServer:
             client.sendall(b"ERROR\nReceived empty script.")
             return
 
-        script = b"".join(chunks).decode("utf-8")
-        print("✅ Received script from Rust, executing...")
+        payload = b"".join(chunks).decode("utf-8")
 
+        auth_prefix = f"AUTH:{AUTH_TOKEN}\n"
+        if not payload.startswith(auth_prefix):
+            print("❌ Unauthorized connection attempt rejected.")
+            client.sendall(b"ERROR\nUnauthorized payload. Access denied.")
+            return
+        script = payload[len(auth_prefix):]
+
+        print("✅ Received valid script from Rust, executing...")
         response = self._execute_in_houdini(script)
         client.sendall(response)
 
@@ -75,7 +83,6 @@ class HoudiniLiveLinkServer:
     def _execute_in_houdini(script):
         def task():
             try:
-                # Note: Arbitrary code execution from localhost is by design.
                 exec(script, {"hou": hou, "__builtins__": __builtins__})
                 return b"OK"
             except Exception:
