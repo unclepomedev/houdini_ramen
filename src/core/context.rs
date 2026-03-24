@@ -120,7 +120,7 @@ impl Transpiler {
                     );
                     let _ = writeln!(
                         code,
-                        "    # WARNING: Target node ID {} not found. Connection to input {} skipped.",
+                        "# WARNING: Target node ID {} not found. Connection to input {} skipped.",
                         target_id, idx
                     );
                 }
