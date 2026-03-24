@@ -36,7 +36,12 @@ impl Transpiler {
     fn register_node(&mut self, node: &dyn HoudiniNode) {
         let safe_name = sanitize_py_ident(node.get_name());
         let var_name = format!("n_{}_{}", safe_name, node.get_id());
-        self.id_to_var.insert(node.get_id(), var_name);
+        assert!(
+            self.id_to_var.insert(node.get_id(), var_name).is_none(),
+            "duplicate node id {} while registering '{}'",
+            node.get_id(),
+            node.get_name()
+        );
     }
 
     pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
@@ -224,5 +229,6 @@ mod tests {
 
         let script = transpiler.generate_script();
         assert!(script.contains("# WARNING: Target node ID 999 not found."));
+        assert!(!script.contains("n_target_missing_201.setInput(0,"));
     }
 }
