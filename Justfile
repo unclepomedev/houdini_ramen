@@ -46,6 +46,17 @@ generate-api:
 
     cargo fmt
 
+setup-e2e: dump-nodes test-py generate-api test-rs
+
 # debug =======================================================
 list-types:
     uv run python tools/list_types.py
+
+explore-api:
+    #!/usr/bin/env bash
+    set -e
+
+    cd {{ HOUDINI_RESOURCES }}
+    source houdini_setup
+    cd {{ PROJECT_ROOT }}
+    hython tools/explore_api.py
