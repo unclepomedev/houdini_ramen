@@ -6,6 +6,18 @@ pub struct Transpiler {
     nodes: Vec<Box<dyn HoudiniNode>>,
 }
 
+fn sanitize_py_ident(name: &str) -> String {
+    name.chars()
+        .map(|c| {
+            if c.is_alphanumeric() || c == '_' {
+                c
+            } else {
+                '_'
+            }
+        })
+        .collect()
+}
+
 impl Transpiler {
     pub fn new(parent_path: &str) -> Self {
         Self {
@@ -34,7 +46,7 @@ impl Transpiler {
         let _ = writeln!(code, "if not parent:");
         let _ = writeln!(
             code,
-            "    raise RuntimeError(f\"Parent node '{}' not found\")\n",
+            "    raise RuntimeError(\"Parent node '{}' not found\")\n",
             self.parent_path
         );
     }
@@ -43,11 +55,12 @@ impl Transpiler {
         let _ = writeln!(code, "# --- 1. Node Creation Pass ---");
         for node in &self.nodes {
             let name = node.get_name();
+            let safe_name = sanitize_py_ident(name);
             let n_type = node.get_node_type();
             let _ = writeln!(
                 code,
                 "n_{} = parent.createNode('{}', '{}')",
-                name, n_type, name
+                safe_name, n_type, name
             );
         }
     }
@@ -55,9 +68,13 @@ impl Transpiler {
     fn write_parameter_pass(&self, code: &mut String) {
         let _ = writeln!(code, "\n# --- 2. Parameter Pass ---");
         for node in &self.nodes {
-            let var_name = format!("n_{}", node.get_name());
+            let safe_name = sanitize_py_ident(node.get_name());
+            let var_name = format!("n_{}", safe_name);
 
-            for (key, val) in node.get_params() {
+            let mut params: Vec<_> = node.get_params().iter().collect();
+            params.sort_by_key(|(k, _)| *k);
+
+            for (key, val) in params {
                 let py_val = val.to_python_expr();
                 if val.is_trigger() {
                     let _ = writeln!(code, "{}.parm('{}').pressButton()", var_name, key);
@@ -73,10 +90,12 @@ impl Transpiler {
     fn write_link_pass(&self, code: &mut String) {
         let _ = writeln!(code, "\n# --- 3. Link Pass ---");
         for node in &self.nodes {
-            let var_name = format!("n_{}", node.get_name());
+            let safe_name = sanitize_py_ident(node.get_name());
+            let var_name = format!("n_{}", safe_name);
 
             for (idx, target_name) in node.get_inputs() {
-                let _ = writeln!(code, "{}.setInput({}, n_{}, 0)", var_name, idx, target_name);
+                let target_safe = sanitize_py_ident(target_name);
+                let _ = writeln!(code, "{}.setInput({}, n_{}, 0)", var_name, idx, target_safe);
             }
         }
     }
@@ -118,7 +137,7 @@ mod tests {
     #[test]
     fn test_transpiler_script_generation() {
         let mut node1 = DummyNode {
-            name: "my_box".to_string(),
+            name: "my-box.1".to_string(),
             node_type: "box",
             inputs: BTreeMap::new(),
             params: HashMap::new(),
@@ -131,7 +150,7 @@ mod tests {
             .insert("execute".to_string(), ParamValue::Button);
 
         let mut node2 = DummyNode {
-            name: "my_color".to_string(),
+            name: "my color".to_string(),
             node_type: "color",
             inputs: BTreeMap::new(),
             params: HashMap::new(),
@@ -139,7 +158,7 @@ mod tests {
         node2
             .params
             .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
-        node2.inputs.insert(0, "my_box".to_string());
+        node2.inputs.insert(0, "my-box.1".to_string());
 
         let mut transpiler = Transpiler::new("/obj/geo1");
         transpiler.add(node1);
@@ -149,14 +168,14 @@ mod tests {
 
         assert!(script.contains("parent = hou.node('/obj/geo1')"));
 
-        assert!(script.contains("n_my_box = parent.createNode('box', 'my_box')"));
-        assert!(script.contains("n_my_color = parent.createNode('color', 'my_color')"));
+        assert!(script.contains("n_my_box_1 = parent.createNode('box', 'my-box.1')"));
+        assert!(script.contains("n_my_color = parent.createNode('color', 'my color')"));
 
-        assert!(script.contains("n_my_box.parm('sizex').set(2.5000)"));
-        assert!(script.contains("n_my_box.parm('execute').pressButton()"));
+        assert!(script.contains("n_my_box_1.parm('sizex').set(2.5000)"));
+        assert!(script.contains("n_my_box_1.parm('execute').pressButton()"));
         assert!(script.contains("n_my_color.parmTuple('color').set((1.0000, 0.5000, 0.0000))"));
 
-        assert!(script.contains("n_my_color.setInput(0, n_my_box, 0)"));
+        assert!(script.contains("n_my_color.setInput(0, n_my_box_1, 0)"));
         assert!(script.contains("parent.layoutChildren()"));
     }
 }

@@ -51,7 +51,7 @@ impl ParamValue {
             ParamValue::Int(v) | ParamValue::Menu(v) => v.to_string(),
             ParamValue::Float(v) => format!("{:.4}", v),
             ParamValue::String(v) | ParamValue::Data(v) => {
-                format!("\"{}\"", v.replace("\"", "\\\""))
+                format!("\"{}\"", v.replace("\\", "\\\\").replace("\"", "\\\""))
             }
             ParamValue::Int2(v) => format!("({}, {})", v[0], v[1]),
             ParamValue::Int3(v) => format!("({}, {}, {})", v[0], v[1], v[2]),
@@ -124,6 +124,11 @@ mod tests {
         assert_eq!(
             ParamValue::String("hello \"world\"".to_string()).to_python_expr(),
             "\"hello \\\"world\\\"\""
+        );
+
+        assert_eq!(
+            ParamValue::String("C:\\path\\to\\file".to_string()).to_python_expr(),
+            "\"C:\\\\path\\\\to\\\\file\""
         );
 
         assert_eq!(ParamValue::Button.to_python_expr(), "");

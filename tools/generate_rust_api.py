@@ -141,6 +141,7 @@ def pascal_case(s: str) -> str:
 
 
 def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
+    # UI-specific parameters to ignore
     if h_type in ("Separator", "Label"):
         return None
 
