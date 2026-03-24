@@ -35,7 +35,7 @@ pub enum ParamValue {
 pub trait HoudiniNode {
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &BTreeMap<usize, String>;
+    fn get_inputs(&self) -> &BTreeMap<usize, (String, usize)>;
     fn get_params(&self) -> &HashMap<String, ParamValue>;
 }
 
@@ -231,6 +231,12 @@ mod tests {
         assert_eq!(
             mixed_ramp.to_python_expr(),
             "hou.Ramp((hou.rampBasis.Linear, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.5000, 0.2000, 0.8000),))"
+        );
+
+        let empty_ramp = ParamValue::Ramp(vec![]);
+        assert_eq!(
+            empty_ramp.to_python_expr(),
+            "hou.Ramp((hou.rampBasis.Linear,), (0.0,), (0.0,))"
         );
     }
 }

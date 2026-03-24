@@ -29,6 +29,10 @@ impl Transpiler {
         code
     }
 
+    pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
+        self.nodes.push(node);
+    }
+
     fn write_header(&self, code: &mut String) {
         let safe_path = escape_py_key(&self.parent_path);
         let _ = writeln!(code, "import hou");
@@ -89,9 +93,13 @@ impl Transpiler {
             let safe_name = sanitize_py_ident(node.get_name());
             let var_name = format!("n_{}", safe_name);
 
-            for (idx, target_name) in node.get_inputs() {
+            for (idx, (target_name, target_out_idx)) in node.get_inputs() {
                 let target_safe = sanitize_py_ident(target_name);
-                let _ = writeln!(code, "{}.setInput({}, n_{}, 0)", var_name, idx, target_safe);
+                let _ = writeln!(
+                    code,
+                    "{}.setInput({}, n_{}, {})",
+                    var_name, idx, target_safe, target_out_idx
+                );
             }
         }
     }
@@ -111,7 +119,7 @@ mod tests {
     struct DummyNode {
         name: String,
         node_type: &'static str,
-        inputs: BTreeMap<usize, String>,
+        inputs: BTreeMap<usize, (String, usize)>,
         params: HashMap<String, ParamValue>,
     }
 
@@ -122,7 +130,7 @@ mod tests {
         fn get_node_type(&self) -> &'static str {
             self.node_type
         }
-        fn get_inputs(&self) -> &BTreeMap<usize, String> {
+        fn get_inputs(&self) -> &BTreeMap<usize, (String, usize)> {
             &self.inputs
         }
         fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -154,7 +162,7 @@ mod tests {
         node2
             .params
             .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
-        node2.inputs.insert(0, "my'box.1".to_string());
+        node2.inputs.insert(0, ("my'box.1".to_string(), 0));
 
         let mut transpiler = Transpiler::new("/obj/node's_geo");
         transpiler.add(node1);

@@ -6,14 +6,19 @@ impl {{ node.struct_name }} {
     {% if node.max_inputs > 0 %}
     // --- Inputs ---
     pub fn set_input_at<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N, output_index: usize) -> Self;
 
     {% if node.max_inputs >= 9999 %}
     pub fn add_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    pub fn add_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
     {% else %}
     pub fn set_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    pub fn set_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
     {% for inp in node.inputs %}
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
     pub fn set_input_{{ inp.safe_name }}<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}" and specifies the output index of the target node.
+    pub fn set_input_{{ inp.safe_name }}_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
     {% endfor %}
     {% endif %}
     {% endif %}
@@ -44,6 +49,6 @@ impl {{ node.struct_name }} {
 impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, String>;
+    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (String, usize)>;
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
 }
