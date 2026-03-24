@@ -322,8 +322,12 @@ def main():
         sys.exit(1)
 
     logger.info(f"Generating Rust API into {args.rs_out_dir}...")
-    generator = CodeGenerator(args.rs_out_dir, args.stub_out_dir)
-    generator.generate_all(data)
+    try:
+        generator = CodeGenerator(args.rs_out_dir, args.stub_out_dir)
+        generator.generate_all(data)
+    except Exception as e:
+        logger.error(f"Generation failed: {e}", exc_info=True)
+        sys.exit(1)
     logger.info("Generation complete.")
 
 

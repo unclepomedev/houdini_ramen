@@ -90,7 +90,7 @@ class HoudiniNodeExtractor:
             logger.debug(f"Could not retrieve default value for '{pt.name()}': {e}")
             return None
 
-    def _extract_single_parm(self, pt: hou.ParmTemplate) -> ParmInfo | None:
+    def _extract_single_parm(self, pt: hou.ParmTemplate) -> ParmInfo:
         return ParmInfo(
             name=pt.name(), type=pt.type().name(), default=self._get_default_value(pt)
         )
@@ -102,8 +102,7 @@ class HoudiniNodeExtractor:
                 parms.extend(self._extract_parms_recursive(pt.parmTemplates()))
             else:
                 parm_info = self._extract_single_parm(pt)
-                if parm_info:
-                    parms.append(parm_info)
+                parms.append(parm_info)
         return parms
 
     def _extract_node_info(self, node_type: hou.NodeType) -> NodeInfo:

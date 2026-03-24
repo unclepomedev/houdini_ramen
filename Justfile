@@ -48,4 +48,4 @@ generate-api:
 
 # debug =======================================================
 list-types:
-    uv run tools/list_types.py
+    uv run python tools/list_types.py
