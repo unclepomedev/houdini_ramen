@@ -21,14 +21,14 @@ class HoudiniLiveLinkServer:
         except OSError:
             self.server_socket.close()
             raise
-        self.running = True
+        self._stop_event = threading.Event()
 
     def start(self):
         self.server_socket.listen(1)
         print(f"🍜 Houdini Ramen: Listening on {self.host}:{self.port}...")
         self.server_socket.settimeout(1.0)
 
-        while self.running:
+        while not self._stop_event.is_set():
             try:
                 client, _addr = self.server_socket.accept()
                 client.settimeout(5.0)
@@ -39,7 +39,7 @@ class HoudiniLiveLinkServer:
             except socket.timeout:
                 continue
             except (OSError, UnicodeDecodeError) as e:
-                if self.running:
+                if not self._stop_event.is_set():
                     print(f"❌ Server error: {e}")
 
     def _handle_client(self, client):
@@ -94,7 +94,7 @@ class HoudiniLiveLinkServer:
             return f"ERROR\nFailed to schedule execution: {e}".encode("utf-8")
 
     def stop(self):
-        self.running = False
+        self._stop_event.set()
         self.server_socket.close()
 
 
