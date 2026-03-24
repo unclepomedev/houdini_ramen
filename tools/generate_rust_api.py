@@ -100,6 +100,7 @@ class ParsedParam:
 @dataclass(frozen=True)
 class ParsedNode:
     struct_name: str
+    node_type: str
     params: list[ParsedParam] = field(default_factory=list)
 
 
@@ -140,7 +141,6 @@ def pascal_case(s: str) -> str:
 
 
 def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
-    # UI-specific parameters to ignore
     if h_type in ("Separator", "Label"):
         return None
 
@@ -219,7 +219,9 @@ def parse_param(
     )
 
 
-def parse_node(struct_name: str, parms_data: list[dict[str, Any]]) -> ParsedNode:
+def parse_node(
+    struct_name: str, node_type: str, parms_data: list[dict[str, Any]]
+) -> ParsedNode:
     resolver = SuffixResolver()
     params = []
 
@@ -232,7 +234,7 @@ def parse_node(struct_name: str, parms_data: list[dict[str, Any]]) -> ParsedNode
         if parsed is not None:
             params.append(parsed)
 
-    return ParsedNode(struct_name, params)
+    return ParsedNode(struct_name, node_type, params)
 
 
 class CodeGenerator:
@@ -260,7 +262,7 @@ class CodeGenerator:
 
         for node_name, node_info in nodes:
             struct_name = f"{cat_pascal}{pascal_case(node_name)}"
-            parsed = parse_node(struct_name, node_info.get("parms", []))
+            parsed = parse_node(struct_name, node_name, node_info.get("parms", []))
             rs_blocks.append(self.template_rs.render(node=parsed))
             stub_blocks.append(self.template_stub.render(node=parsed))
 

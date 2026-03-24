@@ -146,7 +146,9 @@ def main():
     )
     args = parser.parse_args()
 
-    output_path = Path.cwd() / args.output
+    output_path = Path(args.output)
+    if not output_path.is_absolute():
+        output_path = Path.cwd() / output_path
 
     try:
         logger.info("Starting node data extraction...")
