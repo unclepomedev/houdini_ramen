@@ -98,9 +98,19 @@ class ParsedParam:
 
 
 @dataclass(frozen=True)
+class ParsedInput:
+    index: int
+    doc_label: str
+    safe_name: str
+
+
+@dataclass(frozen=True)
 class ParsedNode:
     struct_name: str
     node_type: str
+    min_inputs: int
+    max_inputs: int
+    inputs: list[ParsedInput] = field(default_factory=list)
     params: list[ParsedParam] = field(default_factory=list)
 
 
@@ -138,6 +148,12 @@ def pascal_case(s: str) -> str:
     if not name:
         return "Unknown"
     return f"N{name}" if name[0].isdigit() else name
+
+
+def safe_rust_string(s: str) -> str:
+    if not s:
+        return ""
+    return str(s).replace("\\", "\\\\").replace('"', '\\"')
 
 
 def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
@@ -198,18 +214,16 @@ def parse_param(
     p_name: str, p_data: dict[str, Any], resolver: SuffixResolver
 ) -> ParsedParam | None:
     type_info = resolve_rust_type(p_data.get("type", ""), p_data.get("default"))
-
     if type_info is None:
         return None
 
     multi_info = resolve_multiparm(p_name)
-
     base_suffix = snake_case(p_name.replace("#", ""))
     target_suffix = f"{base_suffix}_inst" if multi_info.is_multiparm else base_suffix
     method_suffix = resolver.resolve(target_suffix)
 
     return ParsedParam(
-        name=p_name,
+        name=safe_rust_string(p_name),
         method_suffix=method_suffix,
         r_type=type_info.r_type,
         enum_variant=type_info.enum_variant,
@@ -221,21 +235,51 @@ def parse_param(
 
 
 def parse_node(
-    struct_name: str, node_type: str, parms_data: list[dict[str, Any]]
+    struct_name: str, node_type: str, node_info: dict[str, Any]
 ) -> ParsedNode:
-    resolver = SuffixResolver()
-    params = []
+    min_inputs = node_info.get("min_inputs", 0)
+    max_inputs = node_info.get("max_inputs", 0)
+    raw_labels = node_info.get("input_labels", [])
 
-    for p in parms_data:
+    input_resolver = SuffixResolver()
+    parsed_inputs = []
+
+    for idx, label in enumerate(raw_labels):
+        # remove line breaks and consecutive spaces to create one clean string
+        clean_doc = re.sub(
+            r"\s+", " ", label.replace("\n", " ").replace("\r", "")
+        ).strip()
+
+        # if it is too long, truncate it
+        safe_base = snake_case(clean_doc) if clean_doc else f"input_{idx}"
+        if len(safe_base) > 40:
+            safe_base = safe_base[:40].rstrip("_")
+
+        safe_name = to_safe_ident(input_resolver.resolve(safe_base))
+
+        parsed_inputs.append(
+            ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name)
+        )
+
+    param_resolver = SuffixResolver()
+    params = []
+    for p in node_info.get("parms", []):
         p_name = p.get("name")
         if not p_name:
             continue
 
-        parsed = parse_param(p_name, p, resolver)
-        if parsed is not None:
-            params.append(parsed)
+        parsed_param = parse_param(p_name, p, param_resolver)
+        if parsed_param is not None:
+            params.append(parsed_param)
 
-    return ParsedNode(struct_name, node_type, params)
+    return ParsedNode(
+        struct_name=struct_name,
+        node_type=node_type,
+        min_inputs=min_inputs,
+        max_inputs=max_inputs,
+        inputs=parsed_inputs,
+        params=params,
+    )
 
 
 class CodeGenerator:
@@ -263,7 +307,7 @@ class CodeGenerator:
 
         for node_name, node_info in nodes:
             struct_name = f"{cat_pascal}{pascal_case(node_name)}"
-            parsed = parse_node(struct_name, node_name, node_info.get("parms", []))
+            parsed = parse_node(struct_name, node_name, node_info)
             rs_blocks.append(self.template_rs.render(node=parsed))
             stub_blocks.append(self.template_stub.render(node=parsed))
 
