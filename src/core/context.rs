@@ -231,4 +231,52 @@ mod tests {
         assert!(script.contains("# WARNING: Target node ID 999 not found."));
         assert!(!script.contains("n_target_missing_201.setInput(0,"));
     }
+
+    #[test]
+    fn test_same_name_nodes_get_distinct_python_vars() {
+        let node1 = DummyNode {
+            id: 1,
+            name: "dup".to_string(),
+            node_type: "box",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+        };
+        let mut node2 = DummyNode {
+            id: 2,
+            name: "dup".to_string(),
+            node_type: "color",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+        };
+        node2.inputs.insert(0, (1, 0));
+
+        let mut transpiler = Transpiler::new("/obj/geo1");
+        transpiler.add(node1);
+        transpiler.add(node2);
+
+        let script = transpiler.generate_script();
+        assert!(script.contains("n_dup_1 = parent.createNode('box', 'dup')"));
+        assert!(script.contains("n_dup_2 = parent.createNode('color', 'dup')"));
+        assert!(script.contains("n_dup_2.setInput(0, n_dup_1, 0)"));
+    }
+
+    #[test]
+    #[should_panic(expected = "duplicate node id")]
+    fn test_duplicate_node_id_is_rejected() {
+        let mut transpiler = Transpiler::new("/obj/geo1");
+        transpiler.add(DummyNode {
+            id: 42,
+            name: "a".to_string(),
+            node_type: "box",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+        });
+        transpiler.add(DummyNode {
+            id: 42,
+            name: "b".to_string(),
+            node_type: "color",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+        });
+    }
 }
