@@ -2,7 +2,7 @@ pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self;
-    pub fn set_input(self, index: usize, node_id: &str) -> Self;
+    pub fn set_input<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
     {% set ns = namespace(last_variant='') %}
     {% for p in node.params | sort(attribute='enum_variant') %}
     {% if p.enum_variant != ns.last_variant %}
@@ -24,4 +24,11 @@ impl {{ node.struct_name }} {
     {% endif %}
     {% endif %}
     {% endfor %}
+}
+
+impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
+    fn get_name(&self) -> &str;
+    fn get_node_type(&self) -> &'static str;
+    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, String>;
+    fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
 }
