@@ -30,13 +30,14 @@ impl Transpiler {
     }
 
     fn write_header(&self, code: &mut String) {
+        let safe_path = escape_py_key(&self.parent_path);
         let _ = writeln!(code, "import hou");
-        let _ = writeln!(code, "parent = hou.node('{}')", self.parent_path);
+        let _ = writeln!(code, "parent = hou.node('{}')", safe_path);
         let _ = writeln!(code, "if not parent:");
         let _ = writeln!(
             code,
             "    raise RuntimeError(\"Parent node '{}' not found\")\n",
-            self.parent_path
+            safe_path
         );
     }
 
@@ -45,11 +46,12 @@ impl Transpiler {
         for node in &self.nodes {
             let name = node.get_name();
             let safe_name = sanitize_py_ident(name);
+            let escaped_name = escape_py_key(name);
             let n_type = node.get_node_type();
             let _ = writeln!(
                 code,
                 "n_{} = parent.createNode('{}', '{}')",
-                safe_name, n_type, name
+                safe_name, n_type, escaped_name
             );
         }
     }
@@ -131,7 +133,7 @@ mod tests {
     #[test]
     fn test_transpiler_script_generation() {
         let mut node1 = DummyNode {
-            name: "my-box.1".to_string(),
+            name: "my'box.1".to_string(),
             node_type: "box",
             inputs: BTreeMap::new(),
             params: HashMap::new(),
@@ -152,17 +154,17 @@ mod tests {
         node2
             .params
             .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
-        node2.inputs.insert(0, "my-box.1".to_string());
+        node2.inputs.insert(0, "my'box.1".to_string());
 
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/node's_geo");
         transpiler.add(node1);
         transpiler.add(node2);
 
         let script = transpiler.generate_script();
 
-        assert!(script.contains("parent = hou.node('/obj/geo1')"));
+        assert!(script.contains("parent = hou.node('/obj/node\\'s_geo')"));
 
-        assert!(script.contains("n_my_box_1 = parent.createNode('box', 'my-box.1')"));
+        assert!(script.contains("n_my_box_1 = parent.createNode('box', 'my\\'box.1')"));
         assert!(script.contains("n_my_color = parent.createNode('color', 'my color')"));
 
         assert!(script.contains("n_my_box_1.parm('sizex').set(2.5000)"));

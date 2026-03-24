@@ -20,6 +20,10 @@ pub fn escape_py_key(s: &str) -> String {
     s.replace('\\', r"\\").replace('\'', r"\'")
 }
 
+/// Sanitizes a string to be part of a valid Python identifier.
+/// Note: This replaces invalid characters with underscores.
+/// It does NOT prepend an underscore if the string starts with a digit.
+/// Callers are expected to add a valid prefix (e.g., "n_") to the result.
 pub fn sanitize_py_ident(name: &str) -> String {
     name.chars()
         .map(|c| {
@@ -64,5 +68,6 @@ mod tests {
         assert_eq!(sanitize_py_ident("my-box.1"), "my_box_1");
         assert_eq!(sanitize_py_ident("my color"), "my_color");
         assert_eq!(sanitize_py_ident("!@#invalid_ident"), "___invalid_ident");
+        assert_eq!(sanitize_py_ident("123node"), "123node");
     }
 }
