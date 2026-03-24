@@ -47,8 +47,9 @@ impl {{ node.struct_name }} {
 }
 
 impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
+    fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (String, usize)>;
+    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)>;
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
 }

@@ -1,10 +1,12 @@
 use crate::core::py_escape::{escape_py_key, sanitize_py_ident};
 use crate::core::types::HoudiniNode;
+use std::collections::HashMap;
 use std::fmt::Write;
 
 pub struct Transpiler {
     parent_path: String,
     nodes: Vec<Box<dyn HoudiniNode>>,
+    id_to_var: HashMap<usize, String>,
 }
 
 impl Transpiler {
@@ -12,6 +14,7 @@ impl Transpiler {
         Self {
             parent_path: parent_path.to_string(),
             nodes: Vec::new(),
+            id_to_var: HashMap::new(),
         }
     }
 
@@ -30,6 +33,9 @@ impl Transpiler {
     }
 
     pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
+        let safe_name = sanitize_py_ident(node.get_name());
+        let var_name = format!("n_{}_{}", safe_name, node.get_id());
+        self.id_to_var.insert(node.get_id(), var_name);
         self.nodes.push(node);
     }
 
@@ -48,14 +54,13 @@ impl Transpiler {
     fn write_creation_pass(&self, code: &mut String) {
         let _ = writeln!(code, "# --- 1. Node Creation Pass ---");
         for node in &self.nodes {
-            let name = node.get_name();
-            let safe_name = sanitize_py_ident(name);
-            let escaped_name = escape_py_key(name);
+            let var_name = self.id_to_var.get(&node.get_id()).unwrap();
+            let escaped_name = escape_py_key(node.get_name());
             let n_type = node.get_node_type();
             let _ = writeln!(
                 code,
-                "n_{} = parent.createNode('{}', '{}')",
-                safe_name, n_type, escaped_name
+                "{} = parent.createNode('{}', '{}')",
+                var_name, n_type, escaped_name
             );
         }
     }
@@ -63,8 +68,7 @@ impl Transpiler {
     fn write_parameter_pass(&self, code: &mut String) {
         let _ = writeln!(code, "\n# --- 2. Parameter Pass ---");
         for node in &self.nodes {
-            let safe_name = sanitize_py_ident(node.get_name());
-            let var_name = format!("n_{}", safe_name);
+            let var_name = self.id_to_var.get(&node.get_id()).unwrap();
 
             let mut params: Vec<_> = node.get_params().iter().collect();
             params.sort_by_key(|(k, _)| *k);
@@ -90,16 +94,16 @@ impl Transpiler {
     fn write_link_pass(&self, code: &mut String) {
         let _ = writeln!(code, "\n# --- 3. Link Pass ---");
         for node in &self.nodes {
-            let safe_name = sanitize_py_ident(node.get_name());
-            let var_name = format!("n_{}", safe_name);
+            let var_name = self.id_to_var.get(&node.get_id()).unwrap();
 
-            for (idx, (target_name, target_out_idx)) in node.get_inputs() {
-                let target_safe = sanitize_py_ident(target_name);
-                let _ = writeln!(
-                    code,
-                    "{}.setInput({}, n_{}, {})",
-                    var_name, idx, target_safe, target_out_idx
-                );
+            for (idx, (target_id, target_out_idx)) in node.get_inputs() {
+                if let Some(target_var) = self.id_to_var.get(target_id) {
+                    let _ = writeln!(
+                        code,
+                        "{}.setInput({}, {}, {})",
+                        var_name, idx, target_var, target_out_idx
+                    );
+                }
             }
         }
     }
@@ -117,20 +121,24 @@ mod tests {
     use std::collections::{BTreeMap, HashMap};
 
     struct DummyNode {
+        id: usize,
         name: String,
         node_type: &'static str,
-        inputs: BTreeMap<usize, (String, usize)>,
+        inputs: BTreeMap<usize, (usize, usize)>,
         params: HashMap<String, ParamValue>,
     }
 
     impl HoudiniNode for DummyNode {
+        fn get_id(&self) -> usize {
+            self.id
+        }
         fn get_name(&self) -> &str {
             &self.name
         }
         fn get_node_type(&self) -> &'static str {
             self.node_type
         }
-        fn get_inputs(&self) -> &BTreeMap<usize, (String, usize)> {
+        fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
             &self.inputs
         }
         fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -141,6 +149,7 @@ mod tests {
     #[test]
     fn test_transpiler_script_generation() {
         let mut node1 = DummyNode {
+            id: 101,
             name: "my'box.1".to_string(),
             node_type: "box",
             inputs: BTreeMap::new(),
@@ -154,6 +163,7 @@ mod tests {
             .insert("execute".to_string(), ParamValue::Button);
 
         let mut node2 = DummyNode {
+            id: 102,
             name: "my color".to_string(),
             node_type: "color",
             inputs: BTreeMap::new(),
@@ -162,24 +172,24 @@ mod tests {
         node2
             .params
             .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
-        node2.inputs.insert(0, ("my'box.1".to_string(), 0));
+        node2.inputs.insert(0, (101, 0));
 
         let mut transpiler = Transpiler::new("/obj/node's_geo");
-        transpiler.add(node1);
-        transpiler.add(node2);
+        transpiler.add_boxed(Box::new(node1));
+        transpiler.add_boxed(Box::new(node2));
 
         let script = transpiler.generate_script();
 
         assert!(script.contains("parent = hou.node('/obj/node\\'s_geo')"));
 
-        assert!(script.contains("n_my_box_1 = parent.createNode('box', 'my\\'box.1')"));
-        assert!(script.contains("n_my_color = parent.createNode('color', 'my color')"));
+        assert!(script.contains("n_my_box_1_101 = parent.createNode('box', 'my\\'box.1')"));
+        assert!(script.contains("n_my_color_102 = parent.createNode('color', 'my color')"));
 
-        assert!(script.contains("n_my_box_1.parm('sizex').set(2.5000)"));
-        assert!(script.contains("n_my_box_1.parm('execute').pressButton()"));
-        assert!(script.contains("n_my_color.parmTuple('color').set((1.0000, 0.5000, 0.0000))"));
+        assert!(script.contains("n_my_box_1_101.parm('sizex').set(2.5000)"));
+        assert!(script.contains("n_my_box_1_101.parm('execute').pressButton()"));
+        assert!(script.contains("n_my_color_102.parmTuple('color').set((1.0000, 0.5000, 0.0000))"));
 
-        assert!(script.contains("n_my_color.setInput(0, n_my_box_1, 0)"));
+        assert!(script.contains("n_my_color_102.setInput(0, n_my_box_1_101, 0)"));
         assert!(script.contains("parent.layoutChildren()"));
     }
 }
