@@ -56,7 +56,7 @@ impl ParamValue {
                 format!("({:.4}, {:.4}, {:.4}, {:.4})", v[0], v[1], v[2], v[3])
             }
             ParamValue::FloatArray(v) => Self::format_float_array(v),
-            ParamValue::Button => "".to_string(),
+            ParamValue::Button => "".to_string(), // button uses `pressButton()` instead of `set()`, so it's an empty string
             ParamValue::Ramp(points) => Self::format_ramp(points),
         }
     }
@@ -94,7 +94,8 @@ impl ParamValue {
             return "hou.Ramp((hou.rampBasis.Linear,), (0.0,), (0.0,))".to_string();
         }
 
-        let is_color = points[0].value.len() >= 3;
+        // Infer from the full ramp to avoid dropping RGB channels when points are mixed.
+        let is_color = points.iter().any(|p| p.value.len() >= 3);
 
         let basis: Vec<String> = points
             .iter()
@@ -213,6 +214,23 @@ mod tests {
         assert_eq!(
             color_ramp.to_python_expr(),
             "hou.Ramp((hou.rampBasis.Constant, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.0000, 0.0000, 1.0000),))"
+        );
+
+        let mixed_ramp = ParamValue::Ramp(vec![
+            RampPoint {
+                position: 0.0,
+                value: vec![1.0],
+                interpolation: 1,
+            },
+            RampPoint {
+                position: 1.0,
+                value: vec![0.5, 0.2, 0.8],
+                interpolation: 1,
+            },
+        ]);
+        assert_eq!(
+            mixed_ramp.to_python_expr(),
+            "hou.Ramp((hou.rampBasis.Linear, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.5000, 0.2000, 0.8000),))"
         );
     }
 }
