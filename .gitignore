@@ -5,3 +5,4 @@
 node_api_dump.json
 src/generated/
 resources/stubs/
+__pycache__
