@@ -2,7 +2,9 @@
 .idea
 .DS_Store
 .venv
+__pycache__
+
 node_api_dump.json
+houdini_warnings.log
 src/generated/
 resources/stubs/
-__pycache__

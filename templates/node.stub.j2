@@ -2,7 +2,22 @@ pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self;
-    pub fn set_input<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
+
+    {% if node.max_inputs > 0 %}
+    // --- Inputs ---
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
+
+    {% if node.max_inputs >= 9999 %}
+    pub fn add_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    {% else %}
+    pub fn set_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    {% for inp in node.inputs %}
+    /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
+    pub fn set_input_{{ inp.safe_name }}<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+
     {% set ns = namespace(last_variant='') %}
     {% for p in node.params | sort(attribute='enum_variant') %}
     {% if p.enum_variant != ns.last_variant %}
