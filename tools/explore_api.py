@@ -21,18 +21,19 @@ def main():
     print(" Inspecting hou.Node (Instance)")
     print("==================================================")
     temp_geo = hou.node("/obj").createNode("geo", "temp_api_explorer")
-    node_instance = temp_geo.createNode("copytopoints")
+    try:
+        node_instance = temp_geo.createNode("copytopoints")
 
-    n_methods = [attr for attr in dir(node_instance) if "input" in attr.lower()]
-    print("Methods containing 'input':")
-    for m in n_methods:
-        print(f"  - {m}")
+        n_methods = [attr for attr in dir(node_instance) if "input" in attr.lower()]
+        print("Methods containing 'input':")
+        for m in n_methods:
+            print(f"  - {m}")
 
-    if hasattr(node_instance, "inputLabels"):
-        print("\nActual input labels from instance:")
-        print(f"  {node_instance.inputLabels()}")
-
-    temp_geo.destroy()
+        if hasattr(node_instance, "inputLabels"):
+            print("\nActual input labels from instance:")
+            print(f"  {node_instance.inputLabels()}")
+    finally:
+        temp_geo.destroy()
 
 
 if __name__ == "__main__":
