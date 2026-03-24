@@ -83,34 +83,72 @@ class AtomicJSONWriter:
 
 class HoudiniLogContext:
     """
-    Houdini native warnings/errors are redirected to a log file instead of stdout/stderr.
-    In debug mode, it leaves the standard output streams untouched.
+    Houdini native warnings/errors are redirected to a log file.
     """
 
     def __init__(self, debug: bool, log_file: str = LOG_FILE):
         self.debug = debug
         self.log_file = log_file
+        self.log_fd = None
+        self.save_stdout = None
+        self.save_stderr = None
 
     def __enter__(self):
         if not self.debug:
             sys.stdout.flush()
             sys.stderr.flush()
-            self.log_fd = os.open(self.log_file, os.O_WRONLY | os.O_CREAT | os.O_TRUNC)
-            self.save_stdout = os.dup(1)
-            self.save_stderr = os.dup(2)
-            os.dup2(self.log_fd, 1)
-            os.dup2(self.log_fd, 2)
+            try:
+                self.log_fd = os.open(
+                    self.log_file, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644
+                )
+                self.save_stdout = os.dup(1)
+                self.save_stderr = os.dup(2)
+                os.dup2(self.log_fd, 1)
+                os.dup2(self.log_fd, 2)
+            except OSError:
+                self._restore_fds()
+                raise
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if not self.debug:
             sys.stdout.flush()
             sys.stderr.flush()
-            os.dup2(self.save_stdout, 1)
-            os.dup2(self.save_stderr, 2)
-            os.close(self.save_stdout)
-            os.close(self.save_stderr)
-            os.close(self.log_fd)
+            self._restore_fds()
+
+    def _restore_fds(self):
+        if self.save_stdout is not None:
+            try:
+                os.dup2(self.save_stdout, 1)
+                os.close(self.save_stdout)
+            except OSError as e:
+                try:
+                    logger.error(f"Failed to restore stdout FD: {e}")
+                except Exception:
+                    # Logger crashes if stderr is broken. Ignore to prevent exception masking.
+                    pass
+            self.save_stdout = None
+
+        if self.save_stderr is not None:
+            try:
+                os.dup2(self.save_stderr, 2)
+                os.close(self.save_stderr)
+            except OSError as e:
+                try:
+                    logger.error(f"Failed to restore stderr FD: {e}")
+                except Exception:
+                    pass
+            self.save_stderr = None
+
+        if self.log_fd is not None:
+            try:
+                os.close(self.log_fd)
+            except OSError as e:
+                try:
+                    logger.error(f"Failed to close log file FD: {e}")
+                except Exception:
+                    pass
+            self.log_fd = None
 
 
 class TempNodeManager:
@@ -196,22 +234,27 @@ class HoudiniNodeExtractor:
     def _extract_input_labels(
         self, node_type: hou.NodeType, cat_name: str
     ) -> list[str]:
-        """Temporarily instantiates a node to extract its input labels."""
-        if node_type.maxNumInputs() <= 0:
+        """Temporarily instantiates a node to extract its input labels, with fallback for failures."""
+        max_inputs = node_type.maxNumInputs()
+        if max_inputs <= 0:
             return []
 
         parent = self.temp_manager.get_parent(cat_name)
         if not parent:
-            return []
+            return [""] * max_inputs if max_inputs < 128 else []
 
         temp_node = None
         try:
             temp_node = parent.createNode(node_type.name(), run_init_scripts=False)
             if hasattr(temp_node, "inputLabels"):
                 return list(temp_node.inputLabels())
-            return []
+            return [""] * max_inputs if max_inputs < 128 else []
         except Exception as e:
-            logger.debug(f"Failed to extract labels for '{node_type.name()}': {e}")
+            logger.debug(
+                f"Input-label extraction failed for '{cat_name}/{node_type.name()}': {e}"
+            )
+            if 0 < max_inputs < 128:
+                return [""] * max_inputs
             return []
         finally:
             if temp_node is not None:
