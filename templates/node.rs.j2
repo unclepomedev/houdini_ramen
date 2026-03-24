@@ -1,6 +1,7 @@
 pub struct {{ node.struct_name }} {
+    pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (String, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     {% if node.max_inputs >= 9999 %}
     next_input_index: usize,
@@ -10,6 +11,7 @@ pub struct {{ node.struct_name }} {
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self {
         Self {
+            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,53 +25,53 @@ impl {{ node.struct_name }} {
     // --- Inputs ---
     /// Manually connects to a specific input index.
     pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
-        self.inputs.insert(index, (target.get_name().to_string(), 0));
+        self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
     pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
-        self.inputs.insert(index, (target.get_name().to_string(), output_index));
+        self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
 
     {% if node.max_inputs >= 9999 %}
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(self.next_input_index, (target.get_name().to_string(), 0));
+        self.inputs.insert(self.next_input_index, (target.get_id(), 0));
         self.next_input_index += 1;
         self
     }
 
     /// Adds an input automatically to the next available index and specifies the output index of the target node.
     pub fn add_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
-        self.inputs.insert(self.next_input_index, (target.get_name().to_string(), output_index));
+        self.inputs.insert(self.next_input_index, (target.get_id(), output_index));
         self.next_input_index += 1;
         self
     }
     {% else %}
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_name().to_string(), 0));
+        self.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
     pub fn set_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
-        self.inputs.insert(0, (target.get_name().to_string(), output_index));
+        self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
     {% for inp in node.inputs %}
 
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
     pub fn set_input_{{ inp.safe_name }}<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert({{ inp.index }}, (target.get_name().to_string(), 0));
+        self.inputs.insert({{ inp.index }}, (target.get_id(), 0));
         self
     }
 
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}" and specifies the output index of the target node.
     pub fn set_input_{{ inp.safe_name }}_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
-        self.inputs.insert({{ inp.index }}, (target.get_name().to_string(), output_index));
+        self.inputs.insert({{ inp.index }}, (target.get_id(), output_index));
         self
     }
     {% endfor %}
@@ -112,6 +114,10 @@ impl {{ node.struct_name }} {
 }
 
 impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
+    fn get_id(&self) -> usize {
+        self.id
+    }
+
     fn get_name(&self) -> &str {
         &self.name
     }
@@ -120,7 +126,7 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
         "{{ node.node_type }}"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (String, usize)> {
+    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
         &self.inputs
     }
 
