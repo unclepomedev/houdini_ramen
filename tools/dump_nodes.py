@@ -204,20 +204,23 @@ class HoudiniNodeExtractor:
         if not parent:
             return []
 
+        temp_node = None
         try:
             temp_node = parent.createNode(node_type.name(), run_init_scripts=False)
-            labels = (
-                list(temp_node.inputLabels())
-                if hasattr(temp_node, "inputLabels")
-                else []
-            )
-            temp_node.destroy()
-            return labels
-        except Exception as e:
-            logger.debug(
-                f"Failed to instantiate node '{node_type.name()}' for label extraction: {e}"
-            )
+            if hasattr(temp_node, "inputLabels"):
+                return list(temp_node.inputLabels())
             return []
+        except Exception as e:
+            logger.debug(f"Failed to extract labels for '{node_type.name()}': {e}")
+            return []
+        finally:
+            if temp_node is not None:
+                try:
+                    temp_node.destroy()
+                except Exception as destroy_error:
+                    logger.debug(
+                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
+                    )
 
     def _extract_node_info(self, node_type: hou.NodeType, cat_name: str) -> NodeInfo:
         parms = []
