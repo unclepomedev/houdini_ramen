@@ -239,8 +239,11 @@ class CodeGenerator:
     def __init__(self, rs_root: Path, stub_root: Path):
         self.rs_root = rs_root
         self.stub_root = stub_root
+        template_dir = Path(__file__).parent.parent / "templates"
         env = Environment(
-            loader=FileSystemLoader("templates"), trim_blocks=True, lstrip_blocks=True
+            loader=FileSystemLoader(str(template_dir)),
+            trim_blocks=True,
+            lstrip_blocks=True,
         )
         self.template_rs = env.get_template("node.rs.j2")
         self.template_stub = env.get_template("node.stub.j2")

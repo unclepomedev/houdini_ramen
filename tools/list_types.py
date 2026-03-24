@@ -1,9 +1,10 @@
 import json
 from pathlib import Path
 
-json_path = Path("node_api_dump.json")
+DUMP_FILE_NAME = "node_api_dump.json"
+json_path = Path(DUMP_FILE_NAME)
 if not json_path.exists():
-    print("Error: node_api_dump.json not found. Run 'just dump-nodes' first.")
+    print(f"Error: {DUMP_FILE_NAME} not found. Dump first.")
     exit(1)
 
 with open(json_path, "r", encoding="utf-8") as f:

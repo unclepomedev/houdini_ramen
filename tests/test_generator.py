@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 
 from generate_rust_api import resolve_rust_type
+
 DUMP_FILE_NAME = "node_api_dump.json"
 
 
