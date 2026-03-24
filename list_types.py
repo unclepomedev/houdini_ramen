@@ -1,6 +1,12 @@
 import json
+from pathlib import Path
 
-with open("node_api_dump.json", "r", encoding="utf-8") as f:
+json_path = Path("node_api_dump.json")
+if not json_path.exists():
+    print("Error: node_api_dump.json not found. Run 'just dump-nodes' first.")
+    exit(1)
+
+with open(json_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 unique_types = set()
