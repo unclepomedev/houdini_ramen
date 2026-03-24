@@ -2,6 +2,7 @@ pub mod core;
 pub mod generated;
 
 use crate::core::graph::NodeGraph;
+use crate::core::live_link::send_to_houdini;
 use crate::generated::sop::b::SopBox;
 use crate::generated::sop::c::SopColor;
 use crate::generated::sop::c::SopCopytopoints;
@@ -39,4 +40,6 @@ fn main() {
         .build();
 
     println!("{}", python_script);
+
+    send_to_houdini(&python_script);
 }
