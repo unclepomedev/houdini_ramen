@@ -42,40 +42,22 @@ pub trait HoudiniNode {
 impl ParamValue {
     pub fn to_python_expr(&self) -> String {
         match self {
-            ParamValue::Toggle(v) => {
-                if *v {
-                    "1".to_string()
-                } else {
-                    "0".to_string()
-                }
-            }
+            ParamValue::Toggle(v) => (if *v { "1" } else { "0" }).to_string(),
             ParamValue::Int(v) | ParamValue::Menu(v) => v.to_string(),
             ParamValue::Float(v) => format!("{:.4}", v),
             ParamValue::String(v) | ParamValue::Data(v) => python_string_literal(v),
             ParamValue::Int2(v) => format!("({}, {})", v[0], v[1]),
             ParamValue::Int3(v) => format!("({}, {}, {})", v[0], v[1], v[2]),
             ParamValue::Int4(v) => format!("({}, {}, {}, {})", v[0], v[1], v[2], v[3]),
-            ParamValue::IntArray(v) => format!(
-                "({})",
-                v.iter()
-                    .map(|x| x.to_string())
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            ),
+            ParamValue::IntArray(v) => Self::format_int_array(v),
             ParamValue::Float2(v) => format!("({:.4}, {:.4})", v[0], v[1]),
             ParamValue::Float3(v) => format!("({:.4}, {:.4}, {:.4})", v[0], v[1], v[2]),
             ParamValue::Float4(v) => {
                 format!("({:.4}, {:.4}, {:.4}, {:.4})", v[0], v[1], v[2], v[3])
             }
-            ParamValue::FloatArray(v) => format!(
-                "({})",
-                v.iter()
-                    .map(|x| format!("{:.4}", x))
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            ),
-            ParamValue::Button => "".to_string(), // button uses `pressButton()` instead of `set()`, so it's an empty string
-            ParamValue::Ramp(_) => "None".to_string(), // TODO: Building Ramp structures using the Houdini API is complex and will be implemented later.
+            ParamValue::FloatArray(v) => Self::format_float_array(v),
+            ParamValue::Button => "".to_string(),
+            ParamValue::Ramp(points) => Self::format_ramp(points),
         }
     }
 
@@ -95,6 +77,69 @@ impl ParamValue {
 
     pub fn is_trigger(&self) -> bool {
         matches!(self, ParamValue::Button)
+    }
+
+    fn format_int_array(v: &[i32]) -> String {
+        let items: Vec<String> = v.iter().map(|x| x.to_string()).collect();
+        format!("({})", items.join(", "))
+    }
+
+    fn format_float_array(v: &[f32]) -> String {
+        let items: Vec<String> = v.iter().map(|x| format!("{:.4}", x)).collect();
+        format!("({})", items.join(", "))
+    }
+
+    fn format_ramp(points: &[RampPoint]) -> String {
+        if points.is_empty() {
+            return "hou.Ramp((hou.rampBasis.Linear,), (0.0,), (0.0,))".to_string();
+        }
+
+        let is_color = points[0].value.len() >= 3;
+
+        let basis: Vec<String> = points
+            .iter()
+            .map(|p| Self::get_ramp_basis(p.interpolation).to_string())
+            .collect();
+
+        let keys: Vec<String> = points
+            .iter()
+            .map(|p| format!("{:.4}", p.position))
+            .collect();
+
+        let values: Vec<String> = points
+            .iter()
+            .map(|p| {
+                if is_color {
+                    let r = p.value.first().unwrap_or(&0.0);
+                    let g = p.value.get(1).unwrap_or(&0.0);
+                    let b = p.value.get(2).unwrap_or(&0.0);
+                    format!("({:.4}, {:.4}, {:.4})", r, g, b)
+                } else {
+                    let v = p.value.first().unwrap_or(&0.0);
+                    format!("{:.4}", v)
+                }
+            })
+            .collect();
+
+        format!(
+            "hou.Ramp(({},), ({},), ({},))",
+            basis.join(", "),
+            keys.join(", "),
+            values.join(", ")
+        )
+    }
+
+    fn get_ramp_basis(interpolation: i32) -> &'static str {
+        match interpolation {
+            0 => "hou.rampBasis.Constant",
+            1 => "hou.rampBasis.Linear",
+            2 => "hou.rampBasis.CatmullRom",
+            3 => "hou.rampBasis.MonotoneCubic",
+            4 => "hou.rampBasis.Bezier",
+            5 => "hou.rampBasis.BSpline",
+            6 => "hou.rampBasis.Hermite",
+            _ => "hou.rampBasis.Linear",
+        }
     }
 }
 
@@ -132,5 +177,42 @@ mod tests {
 
         assert_eq!(ParamValue::Button.to_python_expr(), "");
         assert!(ParamValue::Button.is_trigger());
+    }
+
+    #[test]
+    fn test_ramp_serialization() {
+        let float_ramp = ParamValue::Ramp(vec![
+            RampPoint {
+                position: 0.0,
+                value: vec![0.0],
+                interpolation: 1,
+            },
+            RampPoint {
+                position: 1.0,
+                value: vec![1.0],
+                interpolation: 2,
+            },
+        ]);
+        assert_eq!(
+            float_ramp.to_python_expr(),
+            "hou.Ramp((hou.rampBasis.Linear, hou.rampBasis.CatmullRom,), (0.0000, 1.0000,), (0.0000, 1.0000,))"
+        );
+
+        let color_ramp = ParamValue::Ramp(vec![
+            RampPoint {
+                position: 0.0,
+                value: vec![1.0, 0.0, 0.0],
+                interpolation: 0,
+            },
+            RampPoint {
+                position: 1.0,
+                value: vec![0.0, 0.0, 1.0],
+                interpolation: 1,
+            },
+        ]);
+        assert_eq!(
+            color_ramp.to_python_expr(),
+            "hou.Ramp((hou.rampBasis.Constant, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.0000, 0.0000, 1.0000),))"
+        );
     }
 }
