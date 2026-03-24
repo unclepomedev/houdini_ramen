@@ -19,6 +19,7 @@ impl Transpiler {
     }
 
     pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) {
+        self.register_node(&node);
         self.nodes.push(Box::new(node));
     }
 
@@ -32,10 +33,14 @@ impl Transpiler {
         code
     }
 
-    pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
+    fn register_node(&mut self, node: &dyn HoudiniNode) {
         let safe_name = sanitize_py_ident(node.get_name());
         let var_name = format!("n_{}_{}", safe_name, node.get_id());
         self.id_to_var.insert(node.get_id(), var_name);
+    }
+
+    pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
+        self.register_node(node.as_ref());
         self.nodes.push(node);
     }
 
@@ -102,6 +107,16 @@ impl Transpiler {
                         code,
                         "{}.setInput({}, {}, {})",
                         var_name, idx, target_var, target_out_idx
+                    );
+                } else {
+                    eprintln!(
+                        "WARNING: Target node with ID {} not found in the graph. Skipping connection for input {} of {}.",
+                        target_id, idx, var_name
+                    );
+                    let _ = writeln!(
+                        code,
+                        "    # WARNING: Target node ID {} not found. Connection to input {} skipped.",
+                        target_id, idx
                     );
                 }
             }
@@ -191,5 +206,23 @@ mod tests {
 
         assert!(script.contains("n_my_color_102.setInput(0, n_my_box_1_101, 0)"));
         assert!(script.contains("parent.layoutChildren()"));
+    }
+
+    #[test]
+    fn test_missing_node_connection_warning() {
+        let mut node = DummyNode {
+            id: 201,
+            name: "target_missing".to_string(),
+            node_type: "null",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+        };
+        node.inputs.insert(0, (999, 0));
+
+        let mut transpiler = Transpiler::new("/obj/geo1");
+        transpiler.add_boxed(Box::new(node));
+
+        let script = transpiler.generate_script();
+        assert!(script.contains("# WARNING: Target node ID 999 not found."));
     }
 }
