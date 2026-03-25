@@ -38,7 +38,7 @@ class HoudiniLiveLinkServer:
                     client.close()
             except socket.timeout:
                 continue
-            except (OSError, UnicodeDecodeError) as e:
+            except OSError as e:
                 if not self._stop_event.is_set():
                     print(f"❌ Server error: {e}")
 
@@ -66,14 +66,18 @@ class HoudiniLiveLinkServer:
             client.sendall(b"ERROR\nReceived empty script.")
             return
 
-        payload = b"".join(chunks).decode("utf-8")
+        try:
+            payload = b"".join(chunks).decode("utf-8")
+        except UnicodeDecodeError:
+            client.sendall(b"ERROR\nInvalid UTF-8 encoding in payload.")
+            return
 
         auth_prefix = f"AUTH:{AUTH_TOKEN}\n"
         if not payload.startswith(auth_prefix):
             print("❌ Unauthorized connection attempt rejected.")
             client.sendall(b"ERROR\nUnauthorized payload. Access denied.")
             return
-        script = payload[len(auth_prefix):]
+        script = payload[len(auth_prefix) :]
 
         print("✅ Received valid script from Rust, executing...")
         response = self._execute_in_houdini(script)
