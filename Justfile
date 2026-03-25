@@ -1,4 +1,5 @@
 PROJECT_ROOT := justfile_directory()
+HOUDINI_VEX_PATH := PROJECT_ROOT + "/vex/include"
 # Override via HOUDINI_RESOURCES env var for your platform/version
 HOUDINI_RESOURCES := env_var_or_default("HOUDINI_RESOURCES", "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/Current/Resources")
 # This env var should be set for untrusted localhost.
@@ -73,7 +74,7 @@ explore-api:
 # run ============================================================
 # configure according to env
 houdini-link:
-    HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} {{ HOUDINI_RESOURCES }}/bin/houdini tools/link_server.py
+    HOUDINI_VEX_PATH="{{ HOUDINI_VEX_PATH }};&" HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} {{ HOUDINI_RESOURCES }}/bin/houdini tools/link_server.py
 
 run-live:
     HOUDINI_RAMEN_LIVE_LINK=1 HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run

@@ -30,8 +30,16 @@ class HoudiniLiveLinkServer:
             self.server_socket.close()
             raise
         self._stop_event = threading.Event()
+        self._server_thread = None
 
-    def start(self):
+    def start(self, daemon=True):
+        def run():
+            self._run_server()
+
+        self._server_thread = threading.Thread(target=run, daemon=daemon)
+        self._server_thread.start()
+
+    def _run_server(self):
         self.server_socket.listen(1)
         print(f"🍜 Houdini Ramen: Listening on {self.host}:{self.port}...")
         self.server_socket.settimeout(1.0)
@@ -109,9 +117,18 @@ class HoudiniLiveLinkServer:
         except Exception as e:
             return f"ERROR\nFailed to schedule execution: {e}".encode("utf-8")
 
-    def stop(self):
+    def stop(self, timeout=1.0):
         self._stop_event.set()
+        try:
+            self.server_socket.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
         self.server_socket.close()
+
+        if self._server_thread and self._server_thread.is_alive():
+            self._server_thread.join(timeout=timeout)
+            if self._server_thread.is_alive():
+                print("⚠️ Houdini Ramen: Server thread did not exit in time.")
 
 
 if hasattr(hou.session, "ramen_server"):
@@ -120,10 +137,7 @@ if hasattr(hou.session, "ramen_server"):
 try:
     server = HoudiniLiveLinkServer()
     hou.session.ramen_server = server
-
-    thread = threading.Thread(target=server.start)
-    thread.daemon = True
-    thread.start()
+    server.start(daemon=True)
 except OSError as err:
     print(
         f"❌ Houdini Ramen: Failed to start live-link server on port {LIVE_LINK_PORT}: {err}"

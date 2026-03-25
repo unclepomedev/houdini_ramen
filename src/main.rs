@@ -3,6 +3,7 @@ pub mod generated;
 
 use crate::core::graph::NodeGraph;
 use crate::core::live_link::send_to_houdini;
+use crate::generated::sop::a::SopAttribwrangle;
 use crate::generated::sop::b::SopBox;
 use crate::generated::sop::c::SopColor;
 use crate::generated::sop::c::SopCopytopoints;
@@ -31,12 +32,17 @@ fn main() {
         .add_input(&box_node)
         .add_input(&copy_node);
 
+    let wrangle_node = SopAttribwrangle::new("apply_vex")
+        .with_class(1)
+        .with_snippet(include_str!("../vex/snippets/hello.vfl"));
+
     let python_script = NodeGraph::new("/obj/geo1")
         .add_node(box_node)
         .add_node(color_node)
         .add_node(sphere_node)
         .add_node(copy_node)
         .add_node(merge_node)
+        .add_node(wrangle_node)
         .build();
 
     println!("{}", python_script);
