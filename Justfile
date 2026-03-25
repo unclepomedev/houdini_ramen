@@ -1,6 +1,8 @@
 PROJECT_ROOT := justfile_directory()
 # Override via HOUDINI_RESOURCES env var for your platform/version
 HOUDINI_RESOURCES := env_var_or_default("HOUDINI_RESOURCES", "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/Current/Resources")
+HOUDINI_RAMEN_TOKEN := env_var_or_default("HOUDINI_RAMEN_TOKEN", "houdini_ramen_secret_2026")
+HOUDINI_RAMEN_PORT := env_var_or_default("HOUDINI_RAMEN_PORT", "18080")
 
 # python ==========================================================
 fmt-py:
@@ -60,3 +62,11 @@ explore-api:
     source houdini_setup
     cd {{ PROJECT_ROOT }}
     hython tools/explore_api.py
+
+# run ============================================================
+# configure according to env
+houdini-link:
+    HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} {{ HOUDINI_RESOURCES }}/bin/houdini tools/link_server.py
+
+run-live:
+    HOUDINI_RAMEN_LIVE_LINK=1 HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run

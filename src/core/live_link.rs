@@ -2,17 +2,21 @@ use std::io::{Read, Write};
 use std::net::{Shutdown, TcpStream};
 use std::time::Duration;
 
-const LIVE_LINK_ADDR: &str = "127.0.0.1:18080";
-const AUTH_TOKEN: &str = "houdini_ramen_secret_2026";
-
 /// Sends the generated Python script to the Houdini Live-Link server.
 pub fn send_to_houdini(script: &str) {
     println!("🍜 Houdini Ramen: Sending script via Live-Link...");
 
-    let target = LIVE_LINK_ADDR.parse().unwrap();
+    let token = std::env::var("HOUDINI_RAMEN_TOKEN").unwrap_or_else(|_| {
+        eprintln!("⚠️ Warning: HOUDINI_RAMEN_TOKEN not set, using default.");
+        "houdini_ramen_secret_2026".to_string()
+    });
+    let port = std::env::var("HOUDINI_RAMEN_PORT").unwrap_or_else(|_| "18080".to_string());
+    let target_addr = format!("127.0.0.1:{}", port);
+
+    let target = target_addr.parse().unwrap();
     match TcpStream::connect_timeout(&target, Duration::from_secs(2)) {
         Ok(mut stream) => {
-            let payload = format!("AUTH:{}\n{}", AUTH_TOKEN, script);
+            let payload = format!("AUTH:{}\n{}", token, script);
 
             if let Err(e) = stream.write_all(payload.as_bytes()) {
                 eprintln!("❌ Failed to transfer the script: {}", e);

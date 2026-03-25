@@ -1,3 +1,4 @@
+import os
 import socket
 import threading
 import traceback
@@ -6,8 +7,13 @@ import hdefereval
 import hou
 
 MAX_SCRIPT_SIZE = 10 * 1024 * 1024  # 10 MB
-LIVE_LINK_PORT = 18080
-AUTH_TOKEN = "houdini_ramen_secret_2026"
+HOUDINI_RAMEN_TOKEN = os.getenv("HOUDINI_RAMEN_TOKEN")
+if not HOUDINI_RAMEN_TOKEN:
+    raise RuntimeError("HOUDINI_RAMEN_TOKEN is not set")
+try:
+    LIVE_LINK_PORT = int(os.getenv("HOUDINI_RAMEN_PORT", "18080"))
+except ValueError:
+    raise RuntimeError("HOUDINI_RAMEN_PORT must be a valid integer")
 
 
 class HoudiniLiveLinkServer:
@@ -47,15 +53,19 @@ class HoudiniLiveLinkServer:
         total = 0
         is_oversize = False
 
-        while True:
-            packet = client.recv(4096)
-            if not packet:
-                break
-            chunks.append(packet)
-            total += len(packet)
-            if total > MAX_SCRIPT_SIZE:
-                is_oversize = True
-                break
+        try:
+            while True:
+                packet = client.recv(4096)
+                if not packet:
+                    break
+                chunks.append(packet)
+                total += len(packet)
+                if total > MAX_SCRIPT_SIZE:
+                    is_oversize = True
+                    break
+        except socket.timeout:
+            client.sendall(b"ERROR\nServer read timeout.")
+            return
 
         if is_oversize:
             print("❌ Received data exceeds maximum allowed size, dropping.")
@@ -72,7 +82,7 @@ class HoudiniLiveLinkServer:
             client.sendall(b"ERROR\nInvalid UTF-8 encoding in payload.")
             return
 
-        auth_prefix = f"AUTH:{AUTH_TOKEN}\n"
+        auth_prefix = f"AUTH:{HOUDINI_RAMEN_TOKEN}\n"
         if not payload.startswith(auth_prefix):
             print("❌ Unauthorized connection attempt rejected.")
             client.sendall(b"ERROR\nUnauthorized payload. Access denied.")
