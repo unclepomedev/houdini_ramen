@@ -13,7 +13,13 @@ pub fn send_to_houdini(script: &str) {
     let port = std::env::var("HOUDINI_RAMEN_PORT").unwrap_or_else(|_| "18080".to_string());
     let target_addr = format!("127.0.0.1:{}", port);
 
-    let target = target_addr.parse().unwrap();
+    let target = match target_addr.parse() {
+        Ok(target) => target,
+        Err(e) => {
+            eprintln!("❌ Invalid HOUDINI_RAMEN_PORT '{}': {}", port, e);
+            return;
+        }
+    };
     match TcpStream::connect_timeout(&target, Duration::from_secs(2)) {
         Ok(mut stream) => {
             let payload = format!("AUTH:{}\n{}", token, script);

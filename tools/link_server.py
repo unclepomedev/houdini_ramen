@@ -12,8 +12,10 @@ if not HOUDINI_RAMEN_TOKEN:
     raise RuntimeError("HOUDINI_RAMEN_TOKEN is not set")
 try:
     LIVE_LINK_PORT = int(os.getenv("HOUDINI_RAMEN_PORT", "18080"))
-except ValueError:
-    raise RuntimeError("HOUDINI_RAMEN_PORT must be a valid integer")
+except ValueError as err:
+    raise RuntimeError("HOUDINI_RAMEN_PORT must be a valid integer") from err
+if not 0 <= LIVE_LINK_PORT <= 65535:
+    raise RuntimeError("HOUDINI_RAMEN_PORT must be between 0 and 65535")
 
 
 class HoudiniLiveLinkServer:

@@ -1,6 +1,7 @@
 PROJECT_ROOT := justfile_directory()
 # Override via HOUDINI_RESOURCES env var for your platform/version
 HOUDINI_RESOURCES := env_var_or_default("HOUDINI_RESOURCES", "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/Current/Resources")
+# This env var should be set for untrusted localhost.
 HOUDINI_RAMEN_TOKEN := env_var_or_default("HOUDINI_RAMEN_TOKEN", "houdini_ramen_secret_2026")
 HOUDINI_RAMEN_PORT := env_var_or_default("HOUDINI_RAMEN_PORT", "18080")
 
@@ -20,6 +21,12 @@ fmt-rs:
 
 test-rs:
     cargo test
+
+# common ========================================================
+no-jpn:
+    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md
+
+fmt-all: fmt-py fmt-rs
 
 # setup =========================================================
 dump-nodes:
