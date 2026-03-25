@@ -30,6 +30,7 @@ class HoudiniLiveLinkServer:
             self.server_socket.close()
             raise
         self._stop_event = threading.Event()
+        self._server_thread = None
 
     def start(self):
         self.server_socket.listen(1)
@@ -109,9 +110,18 @@ class HoudiniLiveLinkServer:
         except Exception as e:
             return f"ERROR\nFailed to schedule execution: {e}".encode("utf-8")
 
-    def stop(self):
+    def stop(self, timeout=1.0):
         self._stop_event.set()
+        try:
+            self.server_socket.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
         self.server_socket.close()
+
+        if self._server_thread and self._server_thread.is_alive():
+            self._server_thread.join(timeout=timeout)
+            if self._server_thread.is_alive():
+                print("⚠️ Houdini Ramen: Server thread did not exit in time.")
 
 
 if hasattr(hou.session, "ramen_server"):
@@ -122,6 +132,7 @@ try:
     hou.session.ramen_server = server
 
     thread = threading.Thread(target=server.start)
+    server._server_thread = thread
     thread.daemon = True
     thread.start()
 except OSError as err:
