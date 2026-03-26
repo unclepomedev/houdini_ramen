@@ -22,7 +22,7 @@ just get-context <target_id>
 ```
 
 **Execution Rule:**
-Read the standard output of the command. It will provide the exact Rust `pub struct` definitions and associated Markdown rules (e.g., VEX injection rules). Build your code *strictly* based on this output. Do not assume standard Houdini parameters exist unless they are present in the compiled stub.
+Read the standard output of the command. **If the output contains `[ERROR]` markers, STOP and report via the Observation Loop.** Otherwise, it will provide the exact Rust `pub struct` definitions and associated Markdown rules (e.g., VEX injection rules). Build your code *strictly* based on this output. Do not assume standard Houdini parameters exist unless they are present in the compiled stub.
 
 ## 3. Verification Step (LiveLink)
 Once you have implemented the Rust script based on the compiled context, you MUST verify your implementation by executing it. Assume the Admin has already started the Houdini LiveLink server.

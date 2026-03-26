@@ -1,6 +1,10 @@
 import json
+import logging
 import re
 from pathlib import Path
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -30,6 +34,10 @@ def main():
     output_path = project_root / "resources" / "auto_graph.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(graph, f, indent=2)
+    if not graph:
+        logger.warning("No structs found in stubs directory. auto_graph.json is empty.")
+    else:
+        logger.info(f"Generated auto_graph.json with {len(graph)} nodes.")
 
 
 if __name__ == "__main__":
