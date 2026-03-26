@@ -30,14 +30,54 @@ def merge_graphs(auto_graph: dict, domain_graph: dict) -> dict:
     return merged
 
 
-def extract_stub(content: str, struct_name: str) -> str:
+def extract_stub(content: str, struct_name: str) -> str | None:
     pattern = (
         rf"(pub\s+struct\s+{re.escape(struct_name)}\b.*?(?=\n\s*pub\s+struct\b|\Z))"
     )
     matches = re.findall(pattern, content, re.DOTALL)
     if matches:
         return matches[0].strip()
-    return content
+    return None
+
+
+def process_node_file(
+    target_id: str, node: dict, project_root: Path, errors: list
+) -> str:
+    node_path = node.get("path")
+    if not node_path:
+        return ""
+
+    root = project_root.resolve()
+    file_path = (project_root / node_path).resolve()
+
+    try:
+        file_path.relative_to(root)
+    except ValueError:
+        error_msg = f"Path escapes project root for '{target_id}': {node_path}"
+        errors.append(error_msg)
+        return f"\n[ERROR] {error_msg}\n"
+
+    if not file_path.is_file():
+        error_msg = f"File missing for '{target_id}': {file_path}"
+        errors.append(error_msg)
+        return f"\n[ERROR] {error_msg}\n"
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    output_content = content
+
+    if node.get("type") == "stub" and "struct_name" in node:
+        stub = extract_stub(content, node["struct_name"])
+        if stub is None:
+            error_msg = f"Struct '{node['struct_name']}' not found in '{file_path}'"
+            errors.append(error_msg)
+            return f"\n[ERROR] {error_msg}\n"
+        output_content = stub
+
+    return (
+        f"\n--- BEGIN: {target_id} ---\n{output_content}\n\n--- END: {target_id} ---\n"
+    )
 
 
 def compile_context(
@@ -58,23 +98,7 @@ def compile_context(
     for dep_id in node.get("depends_on", []):
         output += compile_context(dep_id, graph, visited, project_root, errors)
 
-    node_path = node.get("path")
-    if node_path:
-        file_path = project_root / node_path
-        if file_path.exists():
-            output += f"\n--- BEGIN: {target_id} ---\n"
-            with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
-
-            if node.get("type") == "stub" and "struct_name" in node:
-                output += extract_stub(content, node["struct_name"])
-            else:
-                output += content
-
-            output += f"\n\n--- END: {target_id} ---\n"
-        else:
-            errors.append(f"File missing for '{target_id}': {file_path}")
-            output += f"\n[ERROR] File missing for '{target_id}': {file_path}\n"
+    output += process_node_file(target_id, node, project_root, errors)
 
     return output
 
