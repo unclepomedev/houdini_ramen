@@ -9,3 +9,4 @@ houdini_warnings.log
 src/generated/
 resources/stubs/
 memo
+resources/auto_graph.json

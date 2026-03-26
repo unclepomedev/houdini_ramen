@@ -295,30 +295,6 @@ class CodeGenerator:
         self.template_rs = env.get_template("node.rs.j2")
         self.template_stub = env.get_template("node.stub.j2")
 
-    def write_module(
-        self,
-        cat_snake: str,
-        key: str,
-        nodes: list[tuple[str, dict[str, Any]]],
-        cat_pascal: str,
-    ):
-        rs_blocks = []
-        stub_blocks = []
-
-        for node_name, node_info in nodes:
-            struct_name = f"{cat_pascal}{pascal_case(node_name)}"
-            parsed = parse_node(struct_name, node_name, node_info)
-            rs_blocks.append(self.template_rs.render(node=parsed))
-            stub_blocks.append(self.template_stub.render(node=parsed))
-
-        cat_rs_dir = self.rs_root / cat_snake
-        cat_stub_dir = self.stub_root / cat_snake
-
-        (cat_rs_dir / f"{key}.rs").write_text("\n\n".join(rs_blocks), encoding="utf-8")
-        (cat_stub_dir / f"{key}.stub").write_text(
-            "\n\n".join(stub_blocks), encoding="utf-8"
-        )
-
     def process_category(self, cat_name: str, nodes: dict[str, Any]) -> str | None:
         cat_snake = snake_case(cat_name)
         if not cat_snake:
@@ -326,8 +302,9 @@ class CodeGenerator:
             return None
 
         cat_pascal = pascal_case(cat_name)
-        (self.rs_root / cat_snake).mkdir(parents=True, exist_ok=True)
-        (self.stub_root / cat_snake).mkdir(parents=True, exist_ok=True)
+        cat_rs_dir = self.rs_root / cat_snake
+        cat_rs_dir.mkdir(parents=True, exist_ok=True)
+        self.stub_root.mkdir(parents=True, exist_ok=True)
 
         groups = defaultdict(list)
         for node_name, node_info in nodes.items():
@@ -337,13 +314,26 @@ class CodeGenerator:
             groups[key].append((node_name, node_info))
 
         mod_lines = []
+        stub_blocks = []
+
         for key, group_nodes in groups.items():
             mod_lines.append(f"pub mod {to_safe_ident(key)};")
-            self.write_module(cat_snake, key, group_nodes, cat_pascal)
+            rs_blocks = []
+            for node_name, node_info in group_nodes:
+                struct_name = f"{cat_pascal}{pascal_case(node_name)}"
+                parsed = parse_node(struct_name, node_name, node_info)
+                rs_blocks.append(self.template_rs.render(node=parsed))
+                stub_blocks.append(self.template_stub.render(node=parsed))
 
-        (self.rs_root / cat_snake / "mod.rs").write_text(
-            "\n".join(mod_lines), encoding="utf-8"
+            (cat_rs_dir / f"{key}.rs").write_text(
+                "\n\n".join(rs_blocks), encoding="utf-8"
+            )
+
+        (cat_rs_dir / "mod.rs").write_text("\n".join(mod_lines), encoding="utf-8")
+        (self.stub_root / f"{cat_snake}.stub").write_text(
+            "\n\n".join(stub_blocks), encoding="utf-8"
         )
+
         return f"pub mod {to_safe_ident(cat_snake)};"
 
     def generate_all(self, data: dict[str, Any]):
