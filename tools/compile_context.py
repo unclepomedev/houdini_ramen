@@ -12,8 +12,12 @@ def load_json(path: Path) -> dict:
     if not path.exists():
         logger.warning(f"Graph file not found: {path}")
         return {}
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in {path}: {e}")
+        return {}
 
 
 def merge_graphs(auto_graph: dict, domain_graph: dict) -> dict:
