@@ -21,9 +21,10 @@ def merge_graphs(auto_graph: dict, domain_graph: dict) -> dict:
 
     for key, domain_data in domain_graph.items():
         if key in merged:
-            merged[key].setdefault("depends_on", []).extend(
-                domain_data.get("depends_on", [])
-            )
+            existing_deps = merged[key].setdefault("depends_on", [])
+            for dep in domain_data.get("depends_on", []):
+                if dep not in existing_deps:
+                    existing_deps.append(dep)
         else:
             merged[key] = domain_data.copy()
 
