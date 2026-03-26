@@ -1,0 +1,12 @@
+{
+  "doc/vex_injection": {
+    "type": "doc",
+    "path": "resources/docs/vex_injection.md",
+    "depends_on": []
+  },
+  "sop/sopattribwrangle": {
+    "depends_on": [
+      "doc/vex_injection"
+    ]
+  }
+}

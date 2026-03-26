@@ -54,9 +54,15 @@ generate-api:
         "{{ PROJECT_ROOT }}/src/generated" \
         "{{ PROJECT_ROOT }}/resources/stubs"
 
+    uv run python tools/generate_auto_graph.py
+
     cargo fmt
 
 setup-e2e: dump-nodes test-py generate-api test-rs
+
+# context =======================================================
+get-context TARGET:
+    uv run python tools/compile_context.py {{ TARGET }}
 
 # debug =======================================================
 list-types:
