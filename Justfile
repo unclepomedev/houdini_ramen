@@ -85,7 +85,7 @@ houdini-link:
 run-live TARGET:
     #!/usr/bin/env bash
     set -euo pipefail
-    MATCH=$(find examples -maxdepth 1 -name "*{{TARGET}}*.rs" | sort | head -n 1)
+    MATCH=$(find examples -maxdepth 1 -type f -name "*{{TARGET}}*.rs" | sort | head -n 1)
     if [ -z "$MATCH" ]; then
         echo "❌ Error: No example matching '{{TARGET}}' found."
         exit 1
