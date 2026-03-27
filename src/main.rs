@@ -15,16 +15,17 @@ fn main() {
 
     let base_graph = NodeGraph::new("/obj/geo1").add_node(box_node.clone());
 
-    let (graph, loop_end) = add_foreach_loop(base_graph, "process_points", |g, begin| {
-        let wrangle = SopAttribwrangle::new("inner_process")
-            .set_input(begin)
-            .with_class(1)
-            .with_snippet("@P.y += 1.0;");
+    let (graph, loop_end) =
+        add_foreach_loop(base_graph, "process_points", &box_node, |g, begin| {
+            let wrangle = SopAttribwrangle::new("inner_process")
+                .set_input(begin)
+                .with_class(1)
+                .with_snippet("@P.y += 1.0;");
 
-        let g = g.add_node(wrangle.clone());
+            let g = g.add_node(wrangle.clone());
 
-        (g, wrangle)
-    });
+            (g, wrangle)
+        });
 
     let final_wrangle = SopAttribwrangle::new("post_process")
         .set_input(&loop_end)
