@@ -8,5 +8,19 @@
     "depends_on": [
       "doc/vex_injection"
     ]
+  },
+  "doc/foreach_loop": {
+    "type": "doc",
+    "path": "resources/docs/foreach_loop.md",
+    "depends_on": []
+  },
+  "task/foreach_loop": {
+    "type": "task",
+    "path": null,
+    "depends_on": [
+      "doc/foreach_loop",
+      "sop/sopblockbegin",
+      "sop/sopblockend"
+    ]
   }
 }

@@ -10,7 +10,7 @@ Before writing or modifying any Rust code related to Houdini nodes, you MUST fet
 - **For Houdini Nodes:** The ID format is strictly `{category}/{struct_name}` in lowercase.
 - **Target Examples:**
   - Specific Node: `sop/sopattribwrangle`, `sop/sopbox`, `dop/dopnetwork`
-  - Task/Recipe: `task/your_custom_recipe_name` (if defined in domain_graph.json)
+  - Task/Recipe: `task/foreach_loop`, `task/your_custom_recipe_name`
 - **If unsure:** Do not guess. Search the auto-generated registry directly using standard terminal tools:
   ```bash
   grep -i "target_node_name" resources/auto_graph.json
