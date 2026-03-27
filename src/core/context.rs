@@ -7,14 +7,18 @@ pub struct Transpiler {
     parent_path: String,
     nodes: Vec<Box<dyn HoudiniNode>>,
     id_to_var: HashMap<usize, String>,
+    auto_create: bool,
+    auto_clear: bool,
 }
 
 impl Transpiler {
-    pub fn new(parent_path: &str) -> Self {
+    pub fn new(parent_path: &str, auto_create: bool, auto_clear: bool) -> Self {
         Self {
             parent_path: parent_path.to_string(),
             nodes: Vec::new(),
             id_to_var: HashMap::new(),
+            auto_create,
+            auto_clear,
         }
     }
 
@@ -52,13 +56,27 @@ impl Transpiler {
     fn write_header(&self, code: &mut String) {
         let safe_path = escape_py_key(&self.parent_path);
         let _ = writeln!(code, "import hou");
-        let _ = writeln!(code, "parent = hou.node('{}')", safe_path);
+        let _ = writeln!(code, "parent_path = '{}'", safe_path);
+        let _ = writeln!(code, "parent = hou.node(parent_path)");
+
+        if self.auto_create {
+            let _ = writeln!(code, "if not parent:");
+            let _ = writeln!(code, "    obj = hou.node('/obj')");
+            let _ = writeln!(code, "    node_name = parent_path.split('/')[-1]");
+            let _ = writeln!(code, "    parent = obj.createNode('geo', node_name)");
+        }
+
         let _ = writeln!(code, "if not parent:");
         let _ = writeln!(
             code,
-            "    raise RuntimeError(\"Parent node '{}' not found\")\n",
-            safe_path
+            "    raise RuntimeError(f\"Parent node '{{parent_path}}' not found\")\n"
         );
+
+        if self.auto_clear {
+            let _ = writeln!(code, "for child in parent.children():");
+            let _ = writeln!(code, "    child.destroy()");
+        }
+        let _ = writeln!(code, "");
     }
 
     fn write_creation_pass(&self, code: &mut String) {
@@ -194,13 +212,14 @@ mod tests {
             .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
         node2.inputs.insert(0, (101, 0));
 
-        let mut transpiler = Transpiler::new("/obj/node's_geo");
+        let mut transpiler = Transpiler::new("/obj/node's_geo", false, false);
         transpiler.add_boxed(Box::new(node1));
         transpiler.add_boxed(Box::new(node2));
 
         let script = transpiler.generate_script();
 
-        assert!(script.contains("parent = hou.node('/obj/node\\'s_geo')"));
+        assert!(script.contains("parent_path = '/obj/node\\'s_geo'"));
+        assert!(script.contains("parent = hou.node(parent_path)"));
 
         assert!(script.contains("n_my_box_1_101 = parent.createNode('box', 'my\\'box.1')"));
         assert!(script.contains("n_my_color_102 = parent.createNode('color', 'my color')"));
@@ -224,7 +243,7 @@ mod tests {
         };
         node.inputs.insert(0, (999, 0));
 
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/geo1", false, false);
         transpiler.add_boxed(Box::new(node));
 
         let script = transpiler.generate_script();
@@ -250,7 +269,7 @@ mod tests {
         };
         node2.inputs.insert(0, (1, 0));
 
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/geo1", false, false);
         transpiler.add(node1);
         transpiler.add(node2);
 
@@ -263,7 +282,7 @@ mod tests {
     #[test]
     #[should_panic(expected = "duplicate node id")]
     fn test_duplicate_node_id_is_rejected() {
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/geo1", false, false);
         transpiler.add(DummyNode {
             id: 42,
             name: "a".to_string(),
@@ -278,5 +297,41 @@ mod tests {
             inputs: BTreeMap::new(),
             params: HashMap::new(),
         });
+    }
+
+    #[test]
+    fn test_transpiler_auto_create() {
+        let transpiler = Transpiler::new("/obj/my_auto_geo", true, false);
+        let script = transpiler.generate_script();
+
+        assert!(script.contains("if not parent:"));
+        assert!(script.contains("obj = hou.node('/obj')"));
+        assert!(script.contains("node_name = parent_path.split('/')[-1]"));
+        assert!(script.contains("parent = obj.createNode('geo', node_name)"));
+    }
+
+    #[test]
+    fn test_transpiler_auto_clear() {
+        let transpiler = Transpiler::new("/obj/geo1", false, true);
+        let script = transpiler.generate_script();
+
+        assert!(script.contains("for child in parent.children():"));
+        assert!(script.contains("child.destroy()"));
+    }
+
+    #[test]
+    fn test_transpiler_auto_create_and_clear() {
+        let transpiler = Transpiler::new("/obj/geo_test", true, true);
+        let script = transpiler.generate_script();
+
+        let create_idx = script
+            .find("parent = obj.createNode('geo', node_name)")
+            .unwrap();
+        let clear_idx = script.find("for child in parent.children():").unwrap();
+
+        assert!(
+            create_idx < clear_idx,
+            "Auto-create should happen before auto-clear"
+        );
     }
 }
