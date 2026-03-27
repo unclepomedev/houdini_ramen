@@ -17,7 +17,7 @@ where
     let end_name = format!("{}_end", loop_name);
 
     let begin = SopBlockBegin::new(&begin_name).set_input(input_node);
-    let graph = graph.add_node(begin.clone());
+    let graph = graph.add_node(&begin);
 
     let (graph, last_inner_node) = inner_builder(graph, &begin);
 
@@ -25,7 +25,7 @@ where
         .set_input(&last_inner_node)
         .with_blockpath(&begin_name);
 
-    let graph = graph.add_node(end.clone());
+    let graph = graph.add_node(&end);
 
     (graph, end)
 }
@@ -39,12 +39,12 @@ mod tests {
     fn test_foreach_loop_generation() {
         let base_graph = NodeGraph::new("/obj/geo1");
         let base_box = SopBox::new("base_box");
-        let base_graph = base_graph.add_node(base_box.clone());
+        let base_graph = base_graph.add_node(&base_box);
 
         let (graph, _loop_end) =
             add_foreach_loop(base_graph, "test_loop", &base_box, |g, begin| {
                 let inner_node = SopBox::new("inner_box").set_input(begin);
-                let g = g.add_node(inner_node.clone());
+                let g = g.add_node(&inner_node);
                 (g, inner_node)
             });
 

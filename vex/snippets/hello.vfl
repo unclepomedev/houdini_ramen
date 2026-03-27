@@ -1,3 +1,0 @@
-#include <hello.h>
-
-@P.y = custom_multiplier(@P.y);
