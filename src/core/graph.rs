@@ -14,8 +14,8 @@ impl NodeGraph {
         }
     }
 
-    pub fn add_node<T: HoudiniNode + 'static>(mut self, node: T) -> Self {
-        self.nodes.push(Box::new(node));
+    pub fn add_node<T: HoudiniNode + Clone + 'static>(mut self, node: &T) -> Self {
+        self.nodes.push(Box::new(node.clone()));
         self
     }
 

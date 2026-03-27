@@ -31,7 +31,7 @@ Once you have implemented the Rust script inside the `examples/` directory based
 ```bash
 just run-live <target_prefix_or_name>
 ```
-*Example: If you created `examples/02_scatter.rs`, run `just run-live 02`.*
+*Example: If you created `examples/002_scatter.rs`, run `just run-live 002`.*
 
 **Evaluation Rule:**
 - **Success:** If the execution completes without Rust compilation errors or Houdini Python runtime errors, your task is successful.
@@ -58,3 +58,5 @@ Wait for the Admin to update the graph and stubs before proceeding.
 - **Code Comments:** NEVER include Japanese (or any non-English) comments or obvious, self-explanatory comments inside code blocks.
 - **Code Explanations:** Explanations of the code must be written in the normal chat text outside the code blocks, never inside.
 - **VEX Injection:** Never inline raw VEX strings in Rust. Always follow the `include_str!` rules fetched via the context compiler.
+- Whenever passing a node to functions like set_input or add_node, ALWAYS pass it by reference using & (e.g., &my_node). Never use .clone().
+
