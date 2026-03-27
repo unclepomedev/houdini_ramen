@@ -1,49 +1,37 @@
 pub mod core;
 pub mod generated;
+pub mod helpers;
 
 use crate::core::graph::NodeGraph;
 use crate::core::live_link::send_to_houdini;
 use crate::generated::sop::a::SopAttribwrangle;
 use crate::generated::sop::b::SopBox;
-use crate::generated::sop::c::SopColor;
-use crate::generated::sop::c::SopCopytopoints;
-use crate::generated::sop::m::SopMerge;
-use crate::generated::sop::s::SopSphere;
+use crate::helpers::loops::add_foreach_loop;
 
 fn main() {
-    println!("--- Houdini Ramen: Script Generation Test ---\n");
+    println!("--- Houdini Ramen: Loop Generation Test ---\n");
 
     let box_node = SopBox::new("base_box").with_size([2.0, 2.0, 2.0]);
 
-    let color_node = SopColor::new("red_color")
-        .with_color([1.0, 0.0, 0.0])
-        .set_input(&box_node);
+    let base_graph = NodeGraph::new("/obj/geo1").add_node(box_node.clone());
 
-    let sphere_node = SopSphere::new("scatter_sphere")
-        .with_rad([0.2, 0.2, 0.2])
-        .with_type(1)
-        .set_input_bounding_source(&box_node);
+    let (graph, loop_end) = add_foreach_loop(base_graph, "process_points", |g, begin| {
+        let wrangle = SopAttribwrangle::new("inner_process")
+            .set_input(begin)
+            .with_class(1)
+            .with_snippet("@P.y += 1.0;");
 
-    let copy_node = SopCopytopoints::new("copy_spheres")
-        .set_input_geometry_to_copy(&sphere_node)
-        .set_input_target_points_to_copy_to(&color_node);
+        let g = g.add_node(wrangle.clone());
 
-    let merge_node = SopMerge::new("final_merge")
-        .add_input(&box_node)
-        .add_input(&copy_node);
+        (g, wrangle)
+    });
 
-    let wrangle_node = SopAttribwrangle::new("apply_vex")
+    let final_wrangle = SopAttribwrangle::new("post_process")
+        .set_input(&loop_end)
         .with_class(1)
-        .with_snippet(include_str!("../vex/snippets/hello.vfl"));
+        .with_snippet("@Cd = set(1, 0, 0);");
 
-    let python_script = NodeGraph::new("/obj/geo1")
-        .add_node(box_node)
-        .add_node(color_node)
-        .add_node(sphere_node)
-        .add_node(copy_node)
-        .add_node(merge_node)
-        .add_node(wrangle_node)
-        .build();
+    let python_script = graph.add_node(final_wrangle).build();
 
     println!("{}", python_script);
 
