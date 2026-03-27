@@ -25,12 +25,13 @@ just get-context <target_id>
 Read the standard output of the command. **If the output contains `[ERROR]` markers, STOP and report via the Observation Loop.** Otherwise, it will provide the exact Rust `pub struct` definitions and associated Markdown rules (e.g., VEX injection rules). Build your code *strictly* based on this output. Do not assume standard Houdini parameters exist unless they are present in the compiled stub.
 
 ## 3. Verification Step (LiveLink)
-Once you have implemented the Rust script based on the compiled context, you MUST verify your implementation by executing it. Assume the Admin has already started the Houdini LiveLink server.
+Once you have implemented the Rust script inside the `examples/` directory based on the compiled context, you MUST verify your implementation by executing it. Assume the Admin has already started the Houdini LiveLink server.
 
 **Command:**
 ```bash
-just run-live
+just run-live <target_prefix_or_name>
 ```
+*Example: If you created `examples/02_scatter.rs`, run `just run-live 02`.*
 
 **Evaluation Rule:**
 - **Success:** If the execution completes without Rust compilation errors or Houdini Python runtime errors, your task is successful.

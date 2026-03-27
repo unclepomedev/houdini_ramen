@@ -1,12 +1,8 @@
-pub mod core;
-pub mod generated;
-pub mod helpers;
-
-use crate::core::graph::NodeGraph;
-use crate::core::live_link::send_to_houdini;
-use crate::generated::sop::a::SopAttribwrangle;
-use crate::generated::sop::b::SopBox;
-use crate::helpers::loops::add_foreach_loop;
+use houdini_ramen::core::graph::NodeGraph;
+use houdini_ramen::core::live_link::send_to_houdini;
+use houdini_ramen::generated::sop::a::SopAttribwrangle;
+use houdini_ramen::generated::sop::b::SopBox;
+use houdini_ramen::helpers::loops::add_foreach_loop;
 
 fn main() {
     println!("--- Houdini Ramen: Loop Generation Test ---\n");

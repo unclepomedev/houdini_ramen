@@ -82,5 +82,14 @@ explore-api:
 houdini-link:
     HOUDINI_VEX_PATH="{{ HOUDINI_VEX_PATH }};&" HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} {{ HOUDINI_RESOURCES }}/bin/houdini tools/link_server.py
 
-run-live:
-    HOUDINI_RAMEN_LIVE_LINK=1 HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run
+run-live TARGET:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    MATCH=$(find examples -maxdepth 1 -name "*{{TARGET}}*.rs" | sort | head -n 1)
+    if [ -z "$MATCH" ]; then
+        echo "❌ Error: No example matching '{{TARGET}}' found."
+        exit 1
+    fi
+    BASENAME=$(basename "$MATCH" .rs)
+    echo "🚀 Running: cargo run --example $BASENAME"
+    HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run --example "$BASENAME"
