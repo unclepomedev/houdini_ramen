@@ -8,6 +8,13 @@ impl {{ node.struct_name }} {
     pub fn add_spare_int(self, name: &str, label: &str, default_value: i32, min: i32, max: i32) -> Self;
     pub fn add_spare_string(self, name: &str, label: &str, default_value: &str) -> Self;
     pub fn add_spare_toggle(self, name: &str, label: &str, default_value: bool) -> Self;
+    pub fn add_spare_color(self, name: &str, label: &str, default_value: [f32; 3]) -> Self;
+    pub fn add_spare_button(self, name: &str, label: &str) -> Self;
+    pub fn add_spare_menu(self, name: &str, label: &str, default_value: i32, menu_items: &[(&str, &str)]) -> Self;
+    pub fn add_spare_file(self, name: &str, label: &str, default_value: &str) -> Self;
+    pub fn add_spare_node_path(self, name: &str, label: &str, default_value: &str) -> Self;
+    pub fn add_spare_ramp_float(self, name: &str, label: &str) -> Self;
+    pub fn add_spare_ramp_color(self, name: &str, label: &str) -> Self;
 
     {% if node.max_inputs > 0 %}
     // --- Inputs ---

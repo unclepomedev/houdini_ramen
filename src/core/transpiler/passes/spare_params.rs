@@ -90,6 +90,77 @@ fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {
                 py_bool
             ));
         }
+        SpareParam::Color {
+            name,
+            label,
+            default,
+        } => {
+            builder.line(&format!(
+                "pt = hou.FloatParmTemplate({}, {}, 3, default_value=({:.4}, {:.4}, {:.4}), look=hou.parmLook.ColorSquare)",
+                python_string_literal(name), python_string_literal(label), default[0], default[1], default[2]
+            ));
+        }
+        SpareParam::Button { name, label } => {
+            builder.line(&format!(
+                "pt = hou.ButtonParmTemplate({}, {})",
+                python_string_literal(name),
+                python_string_literal(label)
+            ));
+        }
+        SpareParam::Menu {
+            name,
+            label,
+            default,
+            menu_items,
+        } => {
+            let keys: Vec<String> = menu_items
+                .iter()
+                .map(|(k, _)| python_string_literal(k))
+                .collect();
+            let labels: Vec<String> = menu_items
+                .iter()
+                .map(|(_, v)| python_string_literal(v))
+                .collect();
+            builder.line(&format!(
+                "pt = hou.MenuParmTemplate({}, {}, menu_items=({},), menu_labels=({},), default_value={})",
+                python_string_literal(name), python_string_literal(label),
+                keys.join(", "), labels.join(", "), default
+            ));
+        }
+        SpareParam::File {
+            name,
+            label,
+            default,
+        } => {
+            builder.line(&format!(
+                "pt = hou.StringParmTemplate({}, {}, 1, default_value=({},), string_type=hou.stringParmType.FileReference)",
+                python_string_literal(name), python_string_literal(label), python_string_literal(default)
+            ));
+        }
+        SpareParam::NodePath {
+            name,
+            label,
+            default,
+        } => {
+            builder.line(&format!(
+                "pt = hou.StringParmTemplate({}, {}, 1, default_value=({},), string_type=hou.stringParmType.NodeReference)",
+                python_string_literal(name), python_string_literal(label), python_string_literal(default)
+            ));
+        }
+        SpareParam::RampFloat { name, label } => {
+            builder.line(&format!(
+                "pt = hou.RampParmTemplate({}, {}, hou.rampParmType.Float)",
+                python_string_literal(name),
+                python_string_literal(label)
+            ));
+        }
+        SpareParam::RampColor { name, label } => {
+            builder.line(&format!(
+                "pt = hou.RampParmTemplate({}, {}, hou.rampParmType.Color)",
+                python_string_literal(name),
+                python_string_literal(label)
+            ));
+        }
     }
     builder.line("ptg.append(pt)");
 }

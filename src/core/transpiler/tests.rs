@@ -133,6 +133,84 @@ fn test_same_name_nodes_get_distinct_python_vars() {
 }
 
 #[test]
+fn test_transpiler_extended_spare_parameters() {
+    let node = DummyNode {
+        id: 302,
+        name: "extended_ctrl".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![
+            SpareParam::Color {
+                name: "bg_color".to_string(),
+                label: "Background Color".to_string(),
+                default: [0.1, 0.5, 0.9],
+            },
+            SpareParam::Button {
+                name: "execute_script".to_string(),
+                label: "Execute".to_string(),
+            },
+            SpareParam::Menu {
+                name: "shape".to_string(),
+                label: "Shape Type".to_string(),
+                default: 1,
+                menu_items: vec![
+                    ("box".to_string(), "Box".to_string()),
+                    ("sphere".to_string(), "Sphere".to_string()),
+                ],
+            },
+            SpareParam::File {
+                name: "texture_path".to_string(),
+                label: "Texture".to_string(),
+                default: "$HIP/tex.rat".to_string(),
+            },
+            SpareParam::NodePath {
+                name: "target_geo".to_string(),
+                label: "Target".to_string(),
+                default: "../geo1".to_string(),
+            },
+            SpareParam::RampFloat {
+                name: "falloff".to_string(),
+                label: "Falloff Curve".to_string(),
+            },
+            SpareParam::RampColor {
+                name: "color_remap".to_string(),
+                label: "Color Remap".to_string(),
+            },
+        ],
+    };
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(node)).unwrap();
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("ptg = n_extended_ctrl_302.parmTemplateGroup()"));
+
+    assert!(script.contains(
+        r#"pt = hou.FloatParmTemplate("bg_color", "Background Color", 3, default_value=(0.1000, 0.5000, 0.9000), look=hou.parmLook.ColorSquare)"#
+    ));
+    assert!(script.contains(r#"pt = hou.ButtonParmTemplate("execute_script", "Execute")"#));
+    assert!(script.contains(
+        r#"pt = hou.MenuParmTemplate("shape", "Shape Type", menu_items=("box", "sphere",), menu_labels=("Box", "Sphere",), default_value=1)"#
+    ));
+    assert!(script.contains(
+        r#"pt = hou.StringParmTemplate("texture_path", "Texture", 1, default_value=("$HIP/tex.rat",), string_type=hou.stringParmType.FileReference)"#
+    ));
+    assert!(script.contains(
+        r#"pt = hou.StringParmTemplate("target_geo", "Target", 1, default_value=("../geo1",), string_type=hou.stringParmType.NodeReference)"#
+    ));
+    assert!(script.contains(
+        r#"pt = hou.RampParmTemplate("falloff", "Falloff Curve", hou.rampParmType.Float)"#
+    ));
+    assert!(script.contains(
+        r#"pt = hou.RampParmTemplate("color_remap", "Color Remap", hou.rampParmType.Color)"#
+    ));
+
+    assert!(script.contains("ptg.append(pt)"));
+    assert!(script.contains("n_extended_ctrl_302.setParmTemplateGroup(ptg)"));
+}
+
+#[test]
 fn test_duplicate_node_id_is_rejected() {
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler

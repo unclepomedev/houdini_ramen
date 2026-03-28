@@ -61,6 +61,39 @@ pub enum SpareParam {
         label: String,
         default: bool,
     },
+    Color {
+        name: String,
+        label: String,
+        default: [f32; 3],
+    },
+    Button {
+        name: String,
+        label: String,
+    },
+    Menu {
+        name: String,
+        label: String,
+        default: i32,
+        menu_items: Vec<(String, String)>,
+    },
+    File {
+        name: String,
+        label: String,
+        default: String,
+    },
+    NodePath {
+        name: String,
+        label: String,
+        default: String,
+    },
+    RampFloat {
+        name: String,
+        label: String,
+    },
+    RampColor {
+        name: String,
+        label: String,
+    },
 }
 
 pub trait HoudiniNode {
