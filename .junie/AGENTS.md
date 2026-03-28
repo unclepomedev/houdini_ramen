@@ -11,10 +11,14 @@ Before writing or modifying any Rust code related to Houdini nodes, you MUST fet
 - **Target Examples:**
   - Specific Node: `sop/sopattribwrangle`, `sop/sopbox`, `dop/dopnetwork`
   - Task/Recipe: `task/foreach_loop`, `task/your_custom_recipe_name`
-- **If unsure:** Do not guess. Search the registries directly using standard terminal tools:
+- **If unsure:** Do not guess. Search the registry keys directly using standard terminal tools to find the correct `target_id`. Replace the search term with the node name or category you are looking for:
   ```bash
-  grep -i "keyword" resources/auto_graph.json
-  grep -i "task/" domain_graph.json
+  # Example 1: Searching for a specific node (e.g., "wrangle" or "box")
+  grep -i "wrangle" resources/auto_graph.json
+  grep -i "box" resources/auto_graph.json
+  
+  # Example 2: Listing all registered custom tasks or documentation rules
+  grep -E "^  \"(task|doc)/" domain_graph.json
   ```
 
 **Command:**

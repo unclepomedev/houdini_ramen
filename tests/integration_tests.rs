@@ -5,7 +5,10 @@ use houdini_ramen::generated::sop::b::SopBox;
 use houdini_ramen::helpers::loops::add_foreach_loop;
 
 use houdini_ramen::core::types::NODE_ID_COUNTER;
+use std::sync::Mutex;
 use std::sync::atomic::Ordering;
+
+static TEST_GLOBAL_LOCK: Mutex<()> = Mutex::new(());
 
 fn reset_node_id() {
     NODE_ID_COUNTER.store(1, Ordering::SeqCst);
@@ -13,6 +16,7 @@ fn reset_node_id() {
 
 #[test]
 fn test_loop_generation_snapshot() {
+    let _lock = TEST_GLOBAL_LOCK.lock().unwrap();
     reset_node_id();
 
     let box_node = SopBox::new("base_box").with_size([2.0, 2.0, 2.0]);
