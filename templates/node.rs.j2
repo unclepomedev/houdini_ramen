@@ -77,6 +77,74 @@ impl {{ node.struct_name }} {
         self
     }
 
+    pub fn add_spare_color(mut self, name: &str, label: &str, default_value: [f32; 3]) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::Color {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value,
+        });
+        self
+    }
+
+    pub fn add_spare_button(mut self, name: &str, label: &str) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::Button {
+            name: name.to_string(),
+            label: label.to_string(),
+        });
+        self
+    }
+
+    pub fn add_spare_menu(mut self, name: &str, label: &str, default_value: i32, menu_items: &[(&str, &str)]) -> Self {
+        assert!(!menu_items.is_empty(), "Spare parameter '{}' menu_items cannot be empty", name);
+        assert!(
+            default_value >= 0 && (default_value as usize) < menu_items.len(),
+            "Spare parameter '{}' default_value {} is out of range [0, {})",
+            name, default_value, menu_items.len()
+        );
+        let items = menu_items.iter().map(|(k, v)| (k.to_string(), v.to_string())).collect();
+        self.spare_params.push(crate::core::types::SpareParam::Menu {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value,
+            menu_items: items,
+        });
+        self
+    }
+
+    pub fn add_spare_file(mut self, name: &str, label: &str, default_value: &str) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::File {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value.to_string(),
+        });
+        self
+    }
+
+    pub fn add_spare_node_path(mut self, name: &str, label: &str, default_value: &str) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::NodePath {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value.to_string(),
+        });
+        self
+    }
+
+    pub fn add_spare_ramp_float(mut self, name: &str, label: &str) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::RampFloat {
+            name: name.to_string(),
+            label: label.to_string(),
+        });
+        self
+    }
+
+    pub fn add_spare_ramp_color(mut self, name: &str, label: &str) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::RampColor {
+            name: name.to_string(),
+            label: label.to_string(),
+        });
+        self
+    }
+
     {% if node.max_inputs > 0 %}
     // --- Inputs ---
     /// Manually connects to a specific input index.
