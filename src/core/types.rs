@@ -35,12 +35,43 @@ pub enum ParamValue {
     Ramp(Vec<RampPoint>),
 }
 
+#[derive(Debug, Clone, PartialEq)]
+pub enum SpareParam {
+    Float {
+        name: String,
+        label: String,
+        default: f32,
+        min: f32,
+        max: f32,
+    },
+    Int {
+        name: String,
+        label: String,
+        default: i32,
+        min: i32,
+        max: i32,
+    },
+    String {
+        name: String,
+        label: String,
+        default: String,
+    },
+    Toggle {
+        name: String,
+        label: String,
+        default: bool,
+    },
+}
+
 pub trait HoudiniNode {
     fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
     fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)>;
     fn get_params(&self) -> &HashMap<String, ParamValue>;
+    fn get_spare_params(&self) -> &[SpareParam] {
+        &[]
+    }
 }
 
 impl ParamValue {

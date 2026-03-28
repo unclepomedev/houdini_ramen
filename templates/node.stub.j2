@@ -3,6 +3,12 @@ pub struct {{ node.struct_name }};
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self;
 
+    // --- Spare Parameters ---
+    pub fn add_spare_float(self, name: &str, label: &str, default_value: f32, min: f32, max: f32) -> Self;
+    pub fn add_spare_int(self, name: &str, label: &str, default_value: i32, min: i32, max: i32) -> Self;
+    pub fn add_spare_string(self, name: &str, label: &str, default_value: &str) -> Self;
+    pub fn add_spare_toggle(self, name: &str, label: &str, default_value: bool) -> Self;
+
     {% if node.max_inputs > 0 %}
     // --- Inputs ---
     pub fn set_input_at<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
@@ -52,4 +58,5 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
     fn get_node_type(&self) -> &'static str;
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)>;
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
+    fn get_spare_params(&self) -> &[crate::core::types::SpareParam];
 }
