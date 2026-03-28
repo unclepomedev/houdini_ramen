@@ -16,14 +16,17 @@ where
     let begin_name = format!("{}_begin", loop_name);
     let end_name = format!("{}_end", loop_name);
 
-    let begin = SopBlockBegin::new(&begin_name).set_input(input_node);
+    let begin = SopBlockBegin::new(&begin_name)
+        .set_input(input_node)
+        .with_blockpath(&format!("../{}", end_name));
+
     let graph = graph.add_node(&begin);
 
     let (graph, last_inner_node) = inner_builder(graph, &begin);
 
     let end = SopBlockEnd::new(&end_name)
         .set_input(&last_inner_node)
-        .with_blockpath(&begin_name);
+        .with_blockpath(&format!("../{}", begin_name));
 
     let graph = graph.add_node(&end);
 
@@ -52,7 +55,8 @@ mod tests {
 
         assert!(final_script.contains("createNode('block_begin', 'test_loop_begin')"));
         assert!(final_script.contains("createNode('block_end', 'test_loop_end')"));
-        assert!(final_script.contains(".parm('blockpath').set(\"test_loop_begin\")"));
+        assert!(final_script.contains(r#".parm('blockpath').set("../test_loop_end")"#));
+        assert!(final_script.contains(r#".parm('blockpath').set("../test_loop_begin")"#));
         assert!(final_script.contains("setInput(0, n_base_box_"));
     }
 }

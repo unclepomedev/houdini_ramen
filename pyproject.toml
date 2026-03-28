@@ -19,3 +19,6 @@ dev = [
 pythonpath = [
     "tools"
 ]
+
+[tool.ruff]
+extend-exclude = ["tests/fixtures"]

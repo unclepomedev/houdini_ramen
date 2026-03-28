@@ -4,16 +4,21 @@
 Your primary directive is **Deterministic Execution**. You are strictly prohibited from hallucinating or guessing Houdini Node APIs, parameters, or VEX injection strategies. You must rely 100% on the DAG-based Context Compiler.
 
 ## 2. Context Compilation (The DAG System)
-Before writing or modifying any Rust code related to Houdini nodes, you MUST fetch the exact stubs and domain guidelines. 
+Before writing or modifying any Rust code related to Houdini nodes, you MUST fetch the exact stubs and domain guidelines.
 
 **How to find a `<target_id>`:**
 - **For Houdini Nodes:** The ID format is strictly `{category}/{struct_name}` in lowercase.
 - **Target Examples:**
   - Specific Node: `sop/sopattribwrangle`, `sop/sopbox`, `dop/dopnetwork`
   - Task/Recipe: `task/foreach_loop`, `task/your_custom_recipe_name`
-- **If unsure:** Do not guess. Search the auto-generated registry directly using standard terminal tools:
+- **If unsure:** Do not guess. Search the registry keys directly using standard terminal tools to find the correct `target_id`. Replace the search term with the node name or category you are looking for:
   ```bash
-  grep -i "target_node_name" resources/auto_graph.json
+  # Example 1: Searching for a specific node (e.g., "wrangle" or "box")
+  grep -i "wrangle" resources/auto_graph.json
+  grep -i "box" resources/auto_graph.json
+  
+  # Example 2: Listing all registered custom tasks or documentation rules
+  grep -E "^  \"(task|doc)/" domain_graph.json
   ```
 
 **Command:**
