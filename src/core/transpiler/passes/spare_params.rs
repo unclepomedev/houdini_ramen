@@ -7,7 +7,7 @@ pub fn write_spare_parameter_pass(
     builder: &mut PythonBuilder,
     nodes: &[Box<dyn HoudiniNode>],
     id_to_var: &HashMap<usize, String>,
-) {
+) -> Result<(), String> {
     builder.empty_line();
     builder.line("# --- Spare Parameter Pass ---");
     for node in nodes {
@@ -16,7 +16,10 @@ pub fn write_spare_parameter_pass(
             continue;
         }
 
-        let var_name = id_to_var.get(&node.get_id()).unwrap();
+        let var_name = id_to_var
+            .get(&node.get_id())
+            .ok_or_else(|| format!("missing variable mapping for node id {}", node.get_id()))?;
+
         builder.line(&format!("ptg = {}.parmTemplateGroup()", var_name));
 
         for spare in spares {
@@ -25,6 +28,7 @@ pub fn write_spare_parameter_pass(
 
         builder.line(&format!("{}.setParmTemplateGroup(ptg)", var_name));
     }
+    Ok(())
 }
 
 fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {

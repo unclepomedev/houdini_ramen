@@ -37,20 +37,36 @@ impl Transpiler {
         self.nodes.push(Box::new(node));
     }
 
-    pub fn generate_script(&self) -> String {
+    pub fn generate_script(&self) -> Result<String, String> {
         let mut builder = PythonBuilder::new();
-        passes::write_header(
+        passes::header::write_header(
             &mut builder,
             &self.parent_path,
             self.auto_create_type,
             self.auto_clear,
         );
-        passes::write_creation_pass(&mut builder, &self.nodes, &self.id_to_var);
-        passes::write_spare_parameter_pass(&mut builder, &self.nodes, &self.id_to_var);
-        passes::write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var);
-        passes::write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
-        passes::write_footer(&mut builder);
-        builder.build()
+        passes::creation::write_creation_pass(
+            &mut builder,
+            &self.nodes,
+            &self.id_to_var,
+        )?;
+        passes::spare_params::write_spare_parameter_pass(
+            &mut builder,
+            &self.nodes,
+            &self.id_to_var,
+        )?;
+        passes::parameters::write_parameter_pass(
+            &mut builder,
+            &self.nodes,
+            &self.id_to_var,
+        )?;
+        passes::links::write_link_pass(
+            &mut builder,
+            &self.nodes,
+            &self.id_to_var,
+        );
+        passes::footer::write_footer(&mut builder);
+        Ok(builder.build())
     }
 
     fn register_node(&mut self, node: &dyn HoudiniNode) {

@@ -66,7 +66,7 @@ fn test_transpiler_script_generation() {
     transpiler.add_boxed(Box::new(node1));
     transpiler.add_boxed(Box::new(node2));
 
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
 
     assert!(script.contains("parent_path = '/obj/node\\'s_geo'"));
     assert!(script.contains("parent = hou.node(parent_path)"));
@@ -97,7 +97,7 @@ fn test_missing_node_connection_warning() {
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler.add_boxed(Box::new(node));
 
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
     assert!(script.contains("# WARNING: Target node ID 999 not found."));
     assert!(!script.contains("n_target_missing_201.setInput(0,"));
 }
@@ -126,7 +126,7 @@ fn test_same_name_nodes_get_distinct_python_vars() {
     transpiler.add(node1);
     transpiler.add(node2);
 
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
     assert!(script.contains("n_dup_1 = parent.createNode('box', 'dup')"));
     assert!(script.contains("n_dup_2 = parent.createNode('color', 'dup')"));
     assert!(script.contains("n_dup_2.setInput(0, n_dup_1, 0)"));
@@ -157,7 +157,7 @@ fn test_duplicate_node_id_is_rejected() {
 #[test]
 fn test_transpiler_auto_create() {
     let transpiler = Transpiler::new("/obj/my_auto_geo", Some(ContainerType::Geo), false);
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
 
     assert!(script.contains("if not parent:"));
     assert!(script.contains("parts = [p for p in parent_path.split('/') if p]"));
@@ -168,7 +168,7 @@ fn test_transpiler_auto_create() {
 #[test]
 fn test_transpiler_auto_clear() {
     let transpiler = Transpiler::new("/obj/geo1", None, true);
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
 
     assert!(script.contains("for child in parent.children():"));
     assert!(script.contains("child.destroy()"));
@@ -177,7 +177,7 @@ fn test_transpiler_auto_clear() {
 #[test]
 fn test_transpiler_auto_create_and_clear() {
     let transpiler = Transpiler::new("/obj/geo_test", Some(ContainerType::Geo), true);
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
 
     let create_idx = script.find("curr = curr.createNode(n_type, part)").unwrap();
     let clear_idx = script.find("for child in parent.children():").unwrap();
@@ -226,7 +226,7 @@ fn test_transpiler_spare_parameters() {
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler.add_boxed(Box::new(node));
-    let script = transpiler.generate_script();
+    let script = transpiler.generate_script().unwrap();
 
     assert!(script.contains("ptg = n_ctrl_301.parmTemplateGroup()"));
     assert!(script.contains(
