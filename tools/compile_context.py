@@ -45,12 +45,21 @@ def extract_stub(content: str, struct_name: str) -> str | None:
     return None
 
 
+def normalize_category_module_name(raw: str) -> str:
+    name = re.sub(r"_+", "_", re.sub(r"[^a-zA-Z0-9]", "_", raw)).strip("_").lower()
+    if not name:
+        return ""
+    return f"n_{name}" if name[0].isdigit() else name
+
+
 def get_import_path(target_id: str, struct_name: str) -> str:
     parts = target_id.split("/")
     if len(parts) < 2:
         return ""
 
-    category = parts[0].lower()
+    category = normalize_category_module_name(parts[0])
+    if not category:
+        return ""
 
     return f"use houdini_ramen::generated::{category}::{struct_name};"
 
