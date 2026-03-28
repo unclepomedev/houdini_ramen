@@ -1,5 +1,5 @@
 use crate::core::py_escape::{escape_py_key, sanitize_py_ident};
-use crate::core::types::HoudiniNode;
+use crate::core::types::{ContainerType, HoudiniNode};
 use std::collections::HashMap;
 use std::fmt::Write;
 
@@ -7,14 +7,22 @@ pub struct Transpiler {
     parent_path: String,
     nodes: Vec<Box<dyn HoudiniNode>>,
     id_to_var: HashMap<usize, String>,
+    auto_create_type: Option<ContainerType>,
+    auto_clear: bool,
 }
 
 impl Transpiler {
-    pub fn new(parent_path: &str) -> Self {
+    pub fn new(
+        parent_path: &str,
+        auto_create_type: Option<ContainerType>,
+        auto_clear: bool,
+    ) -> Self {
         Self {
             parent_path: parent_path.to_string(),
             nodes: Vec::new(),
             id_to_var: HashMap::new(),
+            auto_create_type,
+            auto_clear,
         }
     }
 
@@ -52,13 +60,41 @@ impl Transpiler {
     fn write_header(&self, code: &mut String) {
         let safe_path = escape_py_key(&self.parent_path);
         let _ = writeln!(code, "import hou");
-        let _ = writeln!(code, "parent = hou.node('{}')", safe_path);
+        let _ = writeln!(code, "parent_path = '{}'", safe_path);
+        let _ = writeln!(code, "parent = hou.node(parent_path)");
+
+        if let Some(ctype) = self.auto_create_type {
+            let safe_ctype = escape_py_key(ctype.as_str());
+            let _ = writeln!(code, "if not parent:");
+            let _ = writeln!(code, "    parts = [p for p in parent_path.split('/') if p]");
+            let _ = writeln!(code, "    curr = hou.node('/')");
+            let _ = writeln!(code, "    curr_path = ''");
+            let _ = writeln!(code, "    for i, part in enumerate(parts):");
+            let _ = writeln!(code, "        curr_path += '/' + part");
+            let _ = writeln!(code, "        child = hou.node(curr_path)");
+            let _ = writeln!(code, "        if not child:");
+            let _ = writeln!(
+                code,
+                "            n_type = '{}' if i == len(parts) - 1 else 'subnet'",
+                safe_ctype
+            );
+            let _ = writeln!(code, "            curr = curr.createNode(n_type, part)");
+            let _ = writeln!(code, "        else:");
+            let _ = writeln!(code, "            curr = child");
+            let _ = writeln!(code, "    parent = curr");
+        }
+
         let _ = writeln!(code, "if not parent:");
         let _ = writeln!(
             code,
-            "    raise RuntimeError(\"Parent node '{}' not found\")\n",
-            safe_path
+            "    raise RuntimeError(f\"Parent node '{{parent_path}}' not found\")"
         );
+
+        if self.auto_clear {
+            let _ = writeln!(code, "for child in parent.children():");
+            let _ = writeln!(code, "    child.destroy()");
+        }
+        let _ = writeln!(code, "");
     }
 
     fn write_creation_pass(&self, code: &mut String) {
@@ -194,13 +230,14 @@ mod tests {
             .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
         node2.inputs.insert(0, (101, 0));
 
-        let mut transpiler = Transpiler::new("/obj/node's_geo");
+        let mut transpiler = Transpiler::new("/obj/node's_geo", None, false);
         transpiler.add_boxed(Box::new(node1));
         transpiler.add_boxed(Box::new(node2));
 
         let script = transpiler.generate_script();
 
-        assert!(script.contains("parent = hou.node('/obj/node\\'s_geo')"));
+        assert!(script.contains("parent_path = '/obj/node\\'s_geo'"));
+        assert!(script.contains("parent = hou.node(parent_path)"));
 
         assert!(script.contains("n_my_box_1_101 = parent.createNode('box', 'my\\'box.1')"));
         assert!(script.contains("n_my_color_102 = parent.createNode('color', 'my color')"));
@@ -224,7 +261,7 @@ mod tests {
         };
         node.inputs.insert(0, (999, 0));
 
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/geo1", None, false);
         transpiler.add_boxed(Box::new(node));
 
         let script = transpiler.generate_script();
@@ -250,7 +287,7 @@ mod tests {
         };
         node2.inputs.insert(0, (1, 0));
 
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/geo1", None, false);
         transpiler.add(node1);
         transpiler.add(node2);
 
@@ -263,7 +300,7 @@ mod tests {
     #[test]
     #[should_panic(expected = "duplicate node id")]
     fn test_duplicate_node_id_is_rejected() {
-        let mut transpiler = Transpiler::new("/obj/geo1");
+        let mut transpiler = Transpiler::new("/obj/geo1", None, false);
         transpiler.add(DummyNode {
             id: 42,
             name: "a".to_string(),
@@ -278,5 +315,39 @@ mod tests {
             inputs: BTreeMap::new(),
             params: HashMap::new(),
         });
+    }
+
+    #[test]
+    fn test_transpiler_auto_create() {
+        let transpiler = Transpiler::new("/obj/my_auto_geo", Some(ContainerType::Geo), false);
+        let script = transpiler.generate_script();
+
+        assert!(script.contains("if not parent:"));
+        assert!(script.contains("parts = [p for p in parent_path.split('/') if p]"));
+        assert!(script.contains("n_type = 'geo' if i == len(parts) - 1 else 'subnet'"));
+        assert!(script.contains("curr = curr.createNode(n_type, part)"));
+    }
+
+    #[test]
+    fn test_transpiler_auto_clear() {
+        let transpiler = Transpiler::new("/obj/geo1", None, true);
+        let script = transpiler.generate_script();
+
+        assert!(script.contains("for child in parent.children():"));
+        assert!(script.contains("child.destroy()"));
+    }
+
+    #[test]
+    fn test_transpiler_auto_create_and_clear() {
+        let transpiler = Transpiler::new("/obj/geo_test", Some(ContainerType::Geo), true);
+        let script = transpiler.generate_script();
+
+        let create_idx = script.find("curr = curr.createNode(n_type, part)").unwrap();
+        let clear_idx = script.find("for child in parent.children():").unwrap();
+
+        assert!(
+            create_idx < clear_idx,
+            "Auto-create should happen before auto-clear"
+        );
     }
 }
