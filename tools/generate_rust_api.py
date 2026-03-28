@@ -295,6 +295,8 @@ class CodeGenerator:
         self.template_rs = env.get_template("node.rs.j2")
         self.template_stub = env.get_template("node.stub.j2")
 
+    # To speed up the editor's resolve process, split the code into modules a, b, c, ...,
+    # but to avoid confusion when calling them with `use`, re-export them so they can be called as modules one level higher.
     def process_category(self, cat_name: str, nodes: dict[str, Any]) -> str | None:
         cat_snake = snake_case(cat_name)
         if not cat_snake:
@@ -314,10 +316,14 @@ class CodeGenerator:
             groups[key].append((node_name, node_info))
 
         mod_lines = []
+        export_lines = []
         stub_blocks = []
 
         for key, group_nodes in groups.items():
-            mod_lines.append(f"pub mod {to_safe_ident(key)};")
+            safe_key = to_safe_ident(key)
+            mod_lines.append(f"pub mod {safe_key};")
+            export_lines.append(f"pub use {safe_key}::*;")
+
             rs_blocks = []
             for node_name, node_info in group_nodes:
                 struct_name = f"{cat_pascal}{pascal_case(node_name)}"
@@ -329,7 +335,9 @@ class CodeGenerator:
                 "\n\n".join(rs_blocks), encoding="utf-8"
             )
 
-        (cat_rs_dir / "mod.rs").write_text("\n".join(mod_lines), encoding="utf-8")
+        mod_content = "\n".join(mod_lines) + "\n\n" + "\n".join(export_lines) + "\n"
+        (cat_rs_dir / "mod.rs").write_text(mod_content, encoding="utf-8")
+
         (self.stub_root / f"{cat_snake}.stub").write_text(
             "\n\n".join(stub_blocks), encoding="utf-8"
         )

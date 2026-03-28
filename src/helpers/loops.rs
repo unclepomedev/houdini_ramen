@@ -1,6 +1,6 @@
 use crate::core::graph::NodeGraph;
 use crate::core::types::HoudiniNode;
-use crate::generated::sop::b::{SopBlockBegin, SopBlockEnd};
+use crate::generated::sop::{SopBlockBegin, SopBlockEnd};
 
 pub fn add_foreach_loop<F, N, I>(
     graph: NodeGraph,
