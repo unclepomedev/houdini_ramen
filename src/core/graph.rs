@@ -1,3 +1,4 @@
+use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
 use crate::core::types::{ContainerType, HoudiniNode};
 
@@ -48,9 +49,13 @@ impl NodeGraph {
         // TODO: Error handling is done here to avoid hassle, but for users who want to control the process themselves, the Result should be exposed.
         result.unwrap_or_else(|e| {
             eprintln!("Houdini Ramen Build Error: {}", e);
+
+            let full_msg = format!("Houdini Ramen Error: {}", e);
+            let safe_msg = python_string_literal(&full_msg);
+
             format!(
-                "import hou\nhou.ui.displayMessage('Houdini Ramen Error: {}', severity=hou.severityType.Error)\nraise RuntimeError('{}')",
-                e, e
+                "import hou\nhou.ui.displayMessage({}, severity=hou.severityType.Error)\nraise RuntimeError({})",
+                safe_msg, safe_msg
             )
         })
     }
