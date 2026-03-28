@@ -9,6 +9,11 @@
     "path": "resources/docs/operator_paths.md",
     "type": "doc"
   },
+  "doc/spare_parameters": {
+    "depends_on": [],
+    "path": "resources/docs/spare_parameters.md",
+    "type": "doc"
+  },
   "doc/vex_injection": {
     "depends_on": [],
     "path": "resources/docs/vex_injection.md",
@@ -17,6 +22,11 @@
   "sop/sopattribcopy": {
     "depends_on": [
       "doc/operator_paths"
+    ]
+  },
+  "sop/sopnull": {
+    "depends_on": [
+      "doc/spare_parameters"
     ]
   },
   "sop/sopobjectmerge": {
