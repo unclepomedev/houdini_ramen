@@ -1,26 +1,36 @@
 {
-  "doc/vex_injection": {
-    "type": "doc",
-    "path": "resources/docs/vex_injection.md",
-    "depends_on": []
+  "doc/foreach_loop": {
+    "depends_on": [],
+    "path": "resources/docs/foreach_loop.md",
+    "type": "doc"
   },
-  "sop/sopattribwrangle": {
+  "doc/operator_paths": {
+    "depends_on": [],
+    "path": "resources/docs/operator_paths.md",
+    "type": "doc"
+  },
+  "doc/vex_injection": {
+    "depends_on": [],
+    "path": "resources/docs/vex_injection.md",
+    "type": "doc"
+  },
+  "sop/sopattribcopy": {
     "depends_on": [
-      "doc/vex_injection"
+      "doc/operator_paths"
     ]
   },
-  "doc/foreach_loop": {
-    "type": "doc",
-    "path": "resources/docs/foreach_loop.md",
-    "depends_on": []
+  "sop/sopobjectmerge": {
+    "depends_on": [
+      "doc/operator_paths"
+    ]
   },
   "task/foreach_loop": {
-    "type": "task",
-    "path": null,
     "depends_on": [
       "doc/foreach_loop",
       "sop/sopblockbegin",
       "sop/sopblockend"
-    ]
+    ],
+    "path": null,
+    "type": "task"
   }
 }

@@ -9,6 +9,7 @@ HOUDINI_RAMEN_PORT := env_var_or_default("HOUDINI_RAMEN_PORT", "18080")
 # python ==========================================================
 fmt-py:
     uv run ruff format tools tests
+    uv run python tools/format_domain_graph.py
 
 test-py:
     uv run pytest
