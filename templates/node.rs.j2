@@ -95,6 +95,12 @@ impl {{ node.struct_name }} {
     }
 
     pub fn add_spare_menu(mut self, name: &str, label: &str, default_value: i32, menu_items: &[(&str, &str)]) -> Self {
+        assert!(!menu_items.is_empty(), "Spare parameter '{}' menu_items cannot be empty", name);
+        assert!(
+            default_value >= 0 && (default_value as usize) < menu_items.len(),
+            "Spare parameter '{}' default_value {} is out of range [0, {})",
+            name, default_value, menu_items.len()
+        );
         let items = menu_items.iter().map(|(k, v)| (k.to_string(), v.to_string())).collect();
         self.spare_params.push(crate::core::types::SpareParam::Menu {
             name: name.to_string(),

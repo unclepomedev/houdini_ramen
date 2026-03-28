@@ -113,19 +113,27 @@ fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {
             default,
             menu_items,
         } => {
-            let keys: Vec<String> = menu_items
-                .iter()
-                .map(|(k, _)| python_string_literal(k))
-                .collect();
-            let labels: Vec<String> = menu_items
-                .iter()
-                .map(|(_, v)| python_string_literal(v))
-                .collect();
-            builder.line(&format!(
-                "pt = hou.MenuParmTemplate({}, {}, menu_items=({},), menu_labels=({},), default_value={})",
-                python_string_literal(name), python_string_literal(label),
-                keys.join(", "), labels.join(", "), default
-            ));
+            if menu_items.is_empty() {
+                // Houdini menus require at least one item, but fallback safely for valid Python syntax
+                builder.line(&format!(
+                    "pt = hou.MenuParmTemplate({}, {}, menu_items=(), menu_labels=(), default_value=0)",
+                    python_string_literal(name), python_string_literal(label)
+                ));
+            } else {
+                let keys: Vec<String> = menu_items
+                    .iter()
+                    .map(|(k, _)| python_string_literal(k))
+                    .collect();
+                let labels: Vec<String> = menu_items
+                    .iter()
+                    .map(|(_, v)| python_string_literal(v))
+                    .collect();
+                builder.line(&format!(
+                    "pt = hou.MenuParmTemplate({}, {}, menu_items=({},), menu_labels=({},), default_value={})",
+                    python_string_literal(name), python_string_literal(label),
+                    keys.join(", "), labels.join(", "), default
+                ));
+            }
         }
         SpareParam::File {
             name,
