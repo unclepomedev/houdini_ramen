@@ -32,9 +32,10 @@ impl Transpiler {
         }
     }
 
-    pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) {
-        self.register_node(&node);
+    pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) -> Result<(), String> {
+        self.register_node(&node)?;
         self.nodes.push(Box::new(node));
+        Ok(())
     }
 
     pub fn generate_script(&self) -> Result<String, String> {
@@ -45,43 +46,34 @@ impl Transpiler {
             self.auto_create_type,
             self.auto_clear,
         );
-        passes::creation::write_creation_pass(
-            &mut builder,
-            &self.nodes,
-            &self.id_to_var,
-        )?;
+        passes::creation::write_creation_pass(&mut builder, &self.nodes, &self.id_to_var)?;
         passes::spare_params::write_spare_parameter_pass(
             &mut builder,
             &self.nodes,
             &self.id_to_var,
         )?;
-        passes::parameters::write_parameter_pass(
-            &mut builder,
-            &self.nodes,
-            &self.id_to_var,
-        )?;
-        passes::links::write_link_pass(
-            &mut builder,
-            &self.nodes,
-            &self.id_to_var,
-        );
+        passes::parameters::write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var)?;
+        passes::links::write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
         passes::footer::write_footer(&mut builder);
         Ok(builder.build())
     }
 
-    fn register_node(&mut self, node: &dyn HoudiniNode) {
+    fn register_node(&mut self, node: &dyn HoudiniNode) -> Result<(), String> {
         let safe_name = sanitize_py_ident(node.get_name());
         let var_name = format!("n_{}_{}", safe_name, node.get_id());
-        assert!(
-            self.id_to_var.insert(node.get_id(), var_name).is_none(),
-            "duplicate node id {} while registering '{}'",
-            node.get_id(),
-            node.get_name()
-        );
+        if self.id_to_var.insert(node.get_id(), var_name).is_some() {
+            return Err(format!(
+                "duplicate node id {} while registering '{}'",
+                node.get_id(),
+                node.get_name()
+            ));
+        }
+        Ok(())
     }
 
-    pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
-        self.register_node(node.as_ref());
+    pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) -> Result<(), String> {
+        self.register_node(node.as_ref())?;
         self.nodes.push(node);
+        Ok(())
     }
 }

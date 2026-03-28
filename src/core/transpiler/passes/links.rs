@@ -21,14 +21,17 @@ fn write_node_links(
     id_to_var: &HashMap<usize, String>,
 ) {
     let Some(var_name) = id_to_var.get(&node.get_id()) else {
-        eprintln!(
-            "WARNING: Source node with ID {} missing variable mapping. Skipping link emission.",
-            node.get_id()
+        emit_warning(
+            builder,
+            format!(
+                "WARNING: Source node with ID {} missing variable mapping. Skipping link emission.",
+                node.get_id()
+            ),
+            format!(
+                "Source node ID {} missing variable mapping. Links skipped.",
+                node.get_id()
+            ),
         );
-        builder.line(&format!(
-            "# WARNING: Source node ID {} missing variable mapping. Links skipped.",
-            node.get_id()
-        ));
         return;
     };
 
@@ -58,13 +61,21 @@ fn write_single_link(
             var_name, input_idx, target_var, target_out_idx
         ));
     } else {
-        eprintln!(
-            "WARNING: Target node with ID {} not found in the graph. Skipping connection for input {} of {}.",
-            target_id, input_idx, var_name
+        emit_warning(
+            builder,
+            format!(
+                "WARNING: Target node with ID {} not found in the graph. Skipping connection for input {} of {}.",
+                target_id, input_idx, var_name
+            ),
+            format!(
+                "Target node ID {} not found. Connection to input {} skipped.",
+                target_id, input_idx
+            ),
         );
-        builder.line(&format!(
-            "# WARNING: Target node ID {} not found. Connection to input {} skipped.",
-            target_id, input_idx
-        ));
     }
+}
+
+fn emit_warning(builder: &mut PythonBuilder, stderr_msg: String, py_comment: String) {
+    eprintln!("{stderr_msg}");
+    builder.line(&format!("# WARNING: {py_comment}"));
 }

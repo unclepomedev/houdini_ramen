@@ -37,12 +37,16 @@ impl NodeGraph {
     pub fn build(self) -> String {
         let mut transpiler =
             Transpiler::new(&self.parent_path, self.auto_create_type, self.auto_clear);
-        for node in self.nodes {
-            transpiler.add_boxed(node);
-        }
+
+        let result = (|| -> Result<String, String> {
+            for node in self.nodes {
+                transpiler.add_boxed(node)?;
+            }
+            transpiler.generate_script()
+        })();
 
         // TODO: Error handling is done here to avoid hassle, but for users who want to control the process themselves, the Result should be exposed.
-        transpiler.generate_script().unwrap_or_else(|e| {
+        result.unwrap_or_else(|e| {
             eprintln!("Houdini Ramen Build Error: {}", e);
             format!(
                 "import hou\nhou.ui.displayMessage('Houdini Ramen Error: {}', severity=hou.severityType.Error)\nraise RuntimeError('{}')",

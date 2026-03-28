@@ -63,8 +63,8 @@ fn test_transpiler_script_generation() {
     node2.inputs.insert(0, (101, 0));
 
     let mut transpiler = Transpiler::new("/obj/node's_geo", None, false);
-    transpiler.add_boxed(Box::new(node1));
-    transpiler.add_boxed(Box::new(node2));
+    transpiler.add_boxed(Box::new(node1)).unwrap();
+    transpiler.add_boxed(Box::new(node2)).unwrap();
 
     let script = transpiler.generate_script().unwrap();
 
@@ -95,7 +95,7 @@ fn test_missing_node_connection_warning() {
     node.inputs.insert(0, (999, 0));
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
-    transpiler.add_boxed(Box::new(node));
+    transpiler.add_boxed(Box::new(node)).unwrap();
 
     let script = transpiler.generate_script().unwrap();
     assert!(script.contains("# WARNING: Target node ID 999 not found."));
@@ -123,8 +123,8 @@ fn test_same_name_nodes_get_distinct_python_vars() {
     node2.inputs.insert(0, (1, 0));
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
-    transpiler.add(node1);
-    transpiler.add(node2);
+    transpiler.add(node1).unwrap();
+    transpiler.add(node2).unwrap();
 
     let script = transpiler.generate_script().unwrap();
     assert!(script.contains("n_dup_1 = parent.createNode('box', 'dup')"));
@@ -133,25 +133,28 @@ fn test_same_name_nodes_get_distinct_python_vars() {
 }
 
 #[test]
-#[should_panic(expected = "duplicate node id")]
 fn test_duplicate_node_id_is_rejected() {
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
-    transpiler.add(DummyNode {
-        id: 42,
-        name: "a".to_string(),
-        node_type: "box",
-        inputs: BTreeMap::new(),
-        params: HashMap::new(),
-        spare_params: vec![],
-    });
-    transpiler.add(DummyNode {
-        id: 42,
-        name: "b".to_string(),
-        node_type: "color",
-        inputs: BTreeMap::new(),
-        params: HashMap::new(),
-        spare_params: vec![],
-    });
+    transpiler
+        .add(DummyNode {
+            id: 42,
+            name: "a".to_string(),
+            node_type: "box",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        })
+        .unwrap();
+    transpiler
+        .add(DummyNode {
+            id: 42,
+            name: "b".to_string(),
+            node_type: "color",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        })
+        .unwrap_err();
 }
 
 #[test]
@@ -225,7 +228,7 @@ fn test_transpiler_spare_parameters() {
     };
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
-    transpiler.add_boxed(Box::new(node));
+    transpiler.add_boxed(Box::new(node)).unwrap();
     let script = transpiler.generate_script().unwrap();
 
     assert!(script.contains("ptg = n_ctrl_301.parmTemplateGroup()"));
