@@ -1,0 +1,71 @@
+pub mod builder;
+pub mod passes;
+
+#[cfg(test)]
+pub mod tests;
+
+use crate::core::py_escape::sanitize_py_ident;
+use crate::core::transpiler::builder::PythonBuilder;
+use crate::core::types::{ContainerType, HoudiniNode};
+use std::collections::HashMap;
+
+pub struct Transpiler {
+    parent_path: String,
+    nodes: Vec<Box<dyn HoudiniNode>>,
+    id_to_var: HashMap<usize, String>,
+    auto_create_type: Option<ContainerType>,
+    auto_clear: bool,
+}
+
+impl Transpiler {
+    pub fn new(
+        parent_path: &str,
+        auto_create_type: Option<ContainerType>,
+        auto_clear: bool,
+    ) -> Self {
+        Self {
+            parent_path: parent_path.to_string(),
+            nodes: Vec::new(),
+            id_to_var: HashMap::new(),
+            auto_create_type,
+            auto_clear,
+        }
+    }
+
+    pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) {
+        self.register_node(&node);
+        self.nodes.push(Box::new(node));
+    }
+
+    pub fn generate_script(&self) -> String {
+        let mut builder = PythonBuilder::new();
+        passes::write_header(
+            &mut builder,
+            &self.parent_path,
+            self.auto_create_type,
+            self.auto_clear,
+        );
+        passes::write_creation_pass(&mut builder, &self.nodes, &self.id_to_var);
+        passes::write_spare_parameter_pass(&mut builder, &self.nodes, &self.id_to_var);
+        passes::write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var);
+        passes::write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
+        passes::write_footer(&mut builder);
+        builder.build()
+    }
+
+    fn register_node(&mut self, node: &dyn HoudiniNode) {
+        let safe_name = sanitize_py_ident(node.get_name());
+        let var_name = format!("n_{}_{}", safe_name, node.get_id());
+        assert!(
+            self.id_to_var.insert(node.get_id(), var_name).is_none(),
+            "duplicate node id {} while registering '{}'",
+            node.get_id(),
+            node.get_name()
+        );
+    }
+
+    pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) {
+        self.register_node(node.as_ref());
+        self.nodes.push(node);
+    }
+}

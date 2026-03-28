@@ -4,6 +4,7 @@ pub struct {{ node.struct_name }} {
     pub name: String,
     pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
+    pub spare_params: Vec<crate::core::types::SpareParam>,
     {% if node.max_inputs >= 9999 %}
     next_input_index: usize,
     {% endif %}
@@ -16,10 +17,62 @@ impl {{ node.struct_name }} {
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
+            spare_params: Vec::new(),
             {% if node.max_inputs >= 9999 %}
             next_input_index: 0,
             {% endif %}
         }
+    }
+
+    // --- Spare Parameters ---
+    pub fn add_spare_float(mut self, name: &str, label: &str, default_value: f32, min: f32, max: f32) -> Self {
+        assert!(
+            default_value >= min && default_value <= max,
+            "Spare parameter '{}' default value {} is out of range [{}, {}]",
+            name, default_value, min, max
+        );
+        self.spare_params.push(crate::core::types::SpareParam::Float {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value,
+            min,
+            max,
+        });
+        self
+    }
+
+    pub fn add_spare_int(mut self, name: &str, label: &str, default_value: i32, min: i32, max: i32) -> Self {
+        assert!(
+            default_value >= min && default_value <= max,
+            "Spare parameter '{}' default value {} is out of range [{}, {}]",
+            name, default_value, min, max
+        );
+        self.spare_params.push(crate::core::types::SpareParam::Int {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value,
+            min,
+            max,
+        });
+        self
+    }
+
+    pub fn add_spare_string(mut self, name: &str, label: &str, default_value: &str) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::String {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value.to_string(),
+        });
+        self
+    }
+
+    pub fn add_spare_toggle(mut self, name: &str, label: &str, default_value: bool) -> Self {
+        self.spare_params.push(crate::core::types::SpareParam::Toggle {
+            name: name.to_string(),
+            label: label.to_string(),
+            default: default_value,
+        });
+        self
     }
 
     {% if node.max_inputs > 0 %}
@@ -133,5 +186,9 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
         &self.params
+    }
+
+    fn get_spare_params(&self) -> &Vec<crate::core::types::SpareParam> {
+        &self.spare_params
     }
 }

@@ -1,4 +1,4 @@
-use crate::core::context::Transpiler;
+use crate::core::transpiler::Transpiler;
 use crate::core::types::{ContainerType, HoudiniNode};
 
 pub struct NodeGraph {
@@ -35,11 +35,8 @@ impl NodeGraph {
 
     /// finish building the graph and internally call Transpiler to generate the script
     pub fn build(self) -> String {
-        let mut transpiler = Transpiler::new(
-            &self.parent_path,
-            self.auto_create_type,
-            self.auto_clear,
-        );
+        let mut transpiler =
+            Transpiler::new(&self.parent_path, self.auto_create_type, self.auto_clear);
         for node in self.nodes {
             transpiler.add_boxed(node);
         }
