@@ -1,5 +1,6 @@
 use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
+use houdini_ramen::core::types::ContainerType::Geo;
 use houdini_ramen::generated::sop::a::SopAttribwrangle;
 use houdini_ramen::generated::sop::b::SopBox;
 use houdini_ramen::helpers::loops::add_foreach_loop;
@@ -11,7 +12,7 @@ fn main() {
 
     let base_graph = NodeGraph::new("/obj/geo1")
         .with_auto_clear()
-        .with_auto_create()
+        .with_auto_create(Geo)
         .add_node(&box_node);
 
     let (graph, loop_end) =

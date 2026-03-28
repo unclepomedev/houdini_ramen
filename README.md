@@ -1,3 +1,3 @@
 # houdini_ramen
 
-want to achieve efficient and highly accurate agentic modeling without using MCP or RAG using static typing and knowledge-based DAG...
+Aiming to achieve efficient, highly accurate agentic modeling without relying on MCP or RAG—powered strictly by static typing and a knowledge-based DAG.

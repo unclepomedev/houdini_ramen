@@ -148,6 +148,33 @@ impl ParamValue {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ContainerType {
+    Geo,
+    DopNet,
+    MatNet,
+    Subnet,
+    Cop2Net,
+    ChopNet,
+    LopNet,
+    RopNet,
+}
+
+impl ContainerType {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Geo => "geo",
+            Self::DopNet => "dopnet",
+            Self::MatNet => "matnet",
+            Self::Subnet => "subnet",
+            Self::Cop2Net => "cop2net",
+            Self::ChopNet => "chopnet",
+            Self::LopNet => "lopnet",
+            Self::RopNet => "ropnet",
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
