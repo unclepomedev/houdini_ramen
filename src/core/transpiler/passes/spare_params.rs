@@ -1,4 +1,4 @@
-use crate::core::py_escape::{escape_py_key, python_string_literal};
+use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::{HoudiniNode, SpareParam};
 use std::collections::HashMap;
@@ -37,8 +37,12 @@ fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {
             max,
         } => {
             builder.line(&format!(
-                "pt = hou.FloatParmTemplate('{}', '{}', 1, default_value=({:?},), min={:?}, max={:?})",
-                escape_py_key(name), escape_py_key(label), default, min, max
+                "pt = hou.FloatParmTemplate({}, {}, 1, default_value=({:?},), min={:?}, max={:?})",
+                python_string_literal(name),
+                python_string_literal(label),
+                default,
+                min,
+                max
             ));
         }
         SpareParam::Int {
@@ -49,9 +53,9 @@ fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {
             max,
         } => {
             builder.line(&format!(
-                "pt = hou.IntParmTemplate('{}', '{}', 1, default_value=({},), min={}, max={})",
-                escape_py_key(name),
-                escape_py_key(label),
+                "pt = hou.IntParmTemplate({}, {}, 1, default_value=({},), min={}, max={})",
+                python_string_literal(name),
+                python_string_literal(label),
                 default,
                 min,
                 max
@@ -63,9 +67,9 @@ fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {
             default,
         } => {
             builder.line(&format!(
-                "pt = hou.StringParmTemplate('{}', '{}', 1, default_value=({},))",
-                escape_py_key(name),
-                escape_py_key(label),
+                "pt = hou.StringParmTemplate({}, {}, 1, default_value=({},))",
+                python_string_literal(name),
+                python_string_literal(label),
                 python_string_literal(default)
             ));
         }
@@ -76,9 +80,9 @@ fn write_single_spare(builder: &mut PythonBuilder, spare: &SpareParam) {
         } => {
             let py_bool = if *default { "True" } else { "False" };
             builder.line(&format!(
-                "pt = hou.ToggleParmTemplate('{}', '{}', default_value={})",
-                escape_py_key(name),
-                escape_py_key(label),
+                "pt = hou.ToggleParmTemplate({}, {}, default_value={})",
+                python_string_literal(name),
+                python_string_literal(label),
                 py_bool
             ));
         }

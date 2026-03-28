@@ -20,7 +20,9 @@ fn write_node_links(
     node: &dyn HoudiniNode,
     id_to_var: &HashMap<usize, String>,
 ) {
-    let var_name = id_to_var.get(&node.get_id()).unwrap();
+    let var_name = id_to_var
+        .get(&node.get_id())
+        .unwrap_or_else(|| panic!("missing variable mapping for node id {}", node.get_id()));
 
     for (idx, (target_id, target_out_idx)) in node.get_inputs() {
         write_single_link(

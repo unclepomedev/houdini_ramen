@@ -26,6 +26,7 @@ impl {{ node.struct_name }} {
 
     // --- Spare Parameters ---
     pub fn add_spare_float(mut self, name: &str, label: &str, default_value: f32, min: f32, max: f32) -> Self {
+        assert!(min <= max, "Spare parameter '{}' has invalid range: min {} > max {}", name, min, max);
         assert!(
             default_value >= min && default_value <= max,
             "Spare parameter '{}' default value {} is out of range [{}, {}]",
@@ -42,6 +43,7 @@ impl {{ node.struct_name }} {
     }
 
     pub fn add_spare_int(mut self, name: &str, label: &str, default_value: i32, min: i32, max: i32) -> Self {
+        assert!(min <= max, "Spare parameter '{}' has invalid range: min {} > max {}", name, min, max);
         assert!(
             default_value >= min && default_value <= max,
             "Spare parameter '{}' default value {} is out of range [{}, {}]",
@@ -188,7 +190,7 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
         &self.params
     }
 
-    fn get_spare_params(&self) -> &Vec<crate::core::types::SpareParam> {
+    fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
         &self.spare_params
     }
 }

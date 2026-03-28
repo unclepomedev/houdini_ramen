@@ -69,7 +69,9 @@ pub trait HoudiniNode {
     fn get_node_type(&self) -> &'static str;
     fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)>;
     fn get_params(&self) -> &HashMap<String, ParamValue>;
-    fn get_spare_params(&self) -> &Vec<SpareParam>;
+    fn get_spare_params(&self) -> &[SpareParam] {
+        &[]
+    }
 }
 
 impl ParamValue {

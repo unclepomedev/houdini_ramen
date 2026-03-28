@@ -58,5 +58,5 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
     fn get_node_type(&self) -> &'static str;
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)>;
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
-    fn get_spare_params(&self) -> &Vec<crate::core::types::SpareParam>;
+    fn get_spare_params(&self) -> &[crate::core::types::SpareParam];
 }

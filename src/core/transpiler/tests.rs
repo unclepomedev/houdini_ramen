@@ -27,7 +27,7 @@ impl HoudiniNode for DummyNode {
     fn get_params(&self) -> &HashMap<String, ParamValue> {
         &self.params
     }
-    fn get_spare_params(&self) -> &Vec<SpareParam> {
+    fn get_spare_params(&self) -> &[SpareParam] {
         &self.spare_params
     }
 }
@@ -196,13 +196,32 @@ fn test_transpiler_spare_parameters() {
         node_type: "null",
         inputs: BTreeMap::new(),
         params: HashMap::new(),
-        spare_params: vec![SpareParam::Float {
-            name: "radius".to_string(),
-            label: "Radius".to_string(),
-            default: 2.5,
-            min: 0.1,
-            max: 10.0,
-        }],
+        spare_params: vec![
+            SpareParam::Float {
+                name: "radius".to_string(),
+                label: "Radius".to_string(),
+                default: 2.5,
+                min: 0.1,
+                max: 10.0,
+            },
+            SpareParam::Int {
+                name: "count".to_string(),
+                label: "Count".to_string(),
+                default: 500,
+                min: 10,
+                max: 1000,
+            },
+            SpareParam::String {
+                name: "my_str".to_string(),
+                label: "My String".to_string(),
+                default: "hello\nworld".to_string(),
+            },
+            SpareParam::Toggle {
+                name: "enable".to_string(),
+                label: "Enable".to_string(),
+                default: true,
+            },
+        ],
     };
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
@@ -211,8 +230,18 @@ fn test_transpiler_spare_parameters() {
 
     assert!(script.contains("ptg = n_ctrl_301.parmTemplateGroup()"));
     assert!(script.contains(
-        "pt = hou.FloatParmTemplate('radius', 'Radius', 1, default_value=(2.5,), min=0.1, max=10.0)"
+        r#"pt = hou.FloatParmTemplate("radius", "Radius", 1, default_value=(2.5,), min=0.1, max=10.0)"#
     ));
+    assert!(script.contains(
+        r#"pt = hou.IntParmTemplate("count", "Count", 1, default_value=(500,), min=10, max=1000)"#
+    ));
+    assert!(script.contains(
+        r#"pt = hou.StringParmTemplate("my_str", "My String", 1, default_value=("hello\nworld",))"#
+    ));
+    assert!(
+        script.contains(r#"pt = hou.ToggleParmTemplate("enable", "Enable", default_value=True)"#)
+    );
+
     assert!(script.contains("ptg.append(pt)"));
     assert!(script.contains("n_ctrl_301.setParmTemplateGroup(ptg)"));
 }

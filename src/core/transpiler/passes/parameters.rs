@@ -21,7 +21,10 @@ fn write_node_parameters(
     node: &dyn HoudiniNode,
     id_to_var: &HashMap<usize, String>,
 ) {
-    let var_name = id_to_var.get(&node.get_id()).unwrap();
+    let var_name = id_to_var
+        .get(&node.get_id())
+        .unwrap_or_else(|| panic!("missing variable mapping for node id {}", node.get_id()));
+
     let mut params: Vec<_> = node.get_params().iter().collect();
     params.sort_by_key(|(k, _)| *k);
 
