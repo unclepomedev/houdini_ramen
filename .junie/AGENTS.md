@@ -42,12 +42,13 @@ The Context Compiler's knowledge base is continually evolving. If you encounter 
 - A Rust compilation error due to a missing method in a stub.
 - A runtime error from Houdini via LiveLink.
 - A semantic gap where you don't know the best practice for a specific Houdini task.
+- A contradiction where the provided documentation/recipes (e.g., in `resources/docs`) contain outdated syntax or patterns that cause compile errors.
 
 **DO NOT brute-force, guess, or repeatedly retry.** Instead, halt your implementation and report the deficiency to the Admin (Human) using the following exact format in your chat response:
 
 ```text
 [OBSERVATION]
-- Event Type: [compile_miss | livelink_error | missing_guideline]
+- Event Type: [compile_miss | livelink_error | missing_guideline | stale_doc]
 - Target Node/Task: [e.g., sop/sopboolean]
 - Detail: [e.g., The stub is missing the method to set the output group name.]
 - Proposal: [e.g., Please update the API dumper or add a specific rule to domain_graph.json.]
