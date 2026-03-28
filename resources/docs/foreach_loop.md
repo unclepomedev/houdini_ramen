@@ -12,18 +12,18 @@ use crate::helpers::loops::add_foreach_loop;
 
 ```rust
 let box_node = SopBox::new("base_geo");
-let base_graph = NodeGraph::new("/obj/geo1").add_node(box_node.clone());
+let base_graph = NodeGraph::new("/obj/geo1").add_node(&box_node);
 
 let (graph, loop_end) = add_foreach_loop(base_graph, "my_custom_loop", &box_node,
     |g, begin| {
         let wrangle = SopAttribwrangle::new("inner_process")
             .set_input(begin)
             .with_snippet("@P.y += 1.0;");
-        let g = g.add_node(wrangle.clone());
+        let g = g.add_node(&wrangle);
         (g, wrangle)
     },
 );
 
 let merge = SopMerge::new("final").add_input(&loop_end);
-let graph = graph.add_node(merge);
+let graph = graph.add_node(&merge);
 ```
