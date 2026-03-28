@@ -1,8 +1,8 @@
 use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
-use houdini_ramen::generated::sop::a::SopAttribwrangle;
-use houdini_ramen::generated::sop::b::SopBox;
+use houdini_ramen::generated::sop::SopAttribwrangle;
+use houdini_ramen::generated::sop::SopBox;
 use houdini_ramen::helpers::loops::add_foreach_loop;
 
 fn main() {

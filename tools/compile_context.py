@@ -45,6 +45,25 @@ def extract_stub(content: str, struct_name: str) -> str | None:
     return None
 
 
+def normalize_category_module_name(raw: str) -> str:
+    name = re.sub(r"_+", "_", re.sub(r"[^a-zA-Z0-9]", "_", raw)).strip("_").lower()
+    if not name:
+        return ""
+    return f"n_{name}" if name[0].isdigit() else name
+
+
+def get_import_path(target_id: str, struct_name: str) -> str:
+    parts = target_id.split("/")
+    if len(parts) < 2:
+        return ""
+
+    category = normalize_category_module_name(parts[0])
+    if not category:
+        return ""
+
+    return f"use houdini_ramen::generated::{category}::{struct_name};"
+
+
 def process_node_file(
     target_id: str, node: dict, project_root: Path, errors: list
 ) -> str:
@@ -73,12 +92,18 @@ def process_node_file(
     output_content = content
 
     if node.get("type") == "stub" and "struct_name" in node:
-        stub = extract_stub(content, node["struct_name"])
+        struct_name = node["struct_name"]
+        stub = extract_stub(content, struct_name)
         if stub is None:
-            error_msg = f"Struct '{node['struct_name']}' not found in '{file_path}'"
+            error_msg = f"Struct '{struct_name}' not found in '{file_path}'"
             errors.append(error_msg)
             return f"\n[ERROR] {error_msg}\n"
-        output_content = stub
+
+        import_stmt = get_import_path(target_id, struct_name)
+        if import_stmt:
+            output_content = f"// --- REQUIRED IMPORT ---\n// {import_stmt}\n\n{stub}"
+        else:
+            output_content = stub
 
     return (
         f"\n--- BEGIN: {target_id} ---\n{output_content}\n\n--- END: {target_id} ---\n"

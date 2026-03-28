@@ -295,6 +295,45 @@ class CodeGenerator:
         self.template_rs = env.get_template("node.rs.j2")
         self.template_stub = env.get_template("node.stub.j2")
 
+    @staticmethod
+    def _group_nodes_by_key(nodes: dict[str, Any]) -> dict[str, list[tuple[str, Any]]]:
+        groups = defaultdict(list)
+        for node_name, node_info in nodes.items():
+            key = (
+                node_name[0].lower() if node_name and node_name[0].isalpha() else "misc"
+            )
+            groups[key].append((node_name, node_info))
+        return groups
+
+    def _process_node_group(
+        self,
+        cat_name: str,
+        cat_pascal: str,
+        group_nodes: list[tuple[str, Any]],
+        exported_structs: dict[str, str],
+    ) -> tuple[list[str], list[str]]:
+        rs_blocks = []
+        stub_blocks = []
+
+        for node_name, node_info in group_nodes:
+            struct_name = f"{cat_pascal}{pascal_case(node_name)}"
+
+            prev_node = exported_structs.get(struct_name)
+            if prev_node is not None:
+                raise ValueError(
+                    f"Duplicate exported struct '{struct_name}' in category '{cat_name}' "
+                    f"(from nodes '{prev_node}' and '{node_name}')"
+                )
+            exported_structs[struct_name] = node_name
+
+            parsed = parse_node(struct_name, node_name, node_info)
+            rs_blocks.append(self.template_rs.render(node=parsed))
+            stub_blocks.append(self.template_stub.render(node=parsed))
+
+        return rs_blocks, stub_blocks
+
+    # To speed up the editor's resolve process, split the code into modules a, b, c, ...,
+    # but to avoid confusion when calling them with `use`, re-export them so they can be called as modules one level higher.
     def process_category(self, cat_name: str, nodes: dict[str, Any]) -> str | None:
         cat_snake = snake_case(cat_name)
         if not cat_snake:
@@ -306,32 +345,32 @@ class CodeGenerator:
         cat_rs_dir.mkdir(parents=True, exist_ok=True)
         self.stub_root.mkdir(parents=True, exist_ok=True)
 
-        groups = defaultdict(list)
-        for node_name, node_info in nodes.items():
-            key = (
-                node_name[0].lower() if node_name and node_name[0].isalpha() else "misc"
-            )
-            groups[key].append((node_name, node_info))
+        groups = self._group_nodes_by_key(nodes)
 
         mod_lines = []
-        stub_blocks = []
+        export_lines = []
+        exported_structs: dict[str, str] = {}
+        all_stub_blocks = []
 
         for key, group_nodes in groups.items():
-            mod_lines.append(f"pub mod {to_safe_ident(key)};")
-            rs_blocks = []
-            for node_name, node_info in group_nodes:
-                struct_name = f"{cat_pascal}{pascal_case(node_name)}"
-                parsed = parse_node(struct_name, node_name, node_info)
-                rs_blocks.append(self.template_rs.render(node=parsed))
-                stub_blocks.append(self.template_stub.render(node=parsed))
+            safe_key = to_safe_ident(key)
+            mod_lines.append(f"pub mod {safe_key};")
+            export_lines.append(f"pub use {safe_key}::*;")
+
+            rs_blocks, stub_blocks = self._process_node_group(
+                cat_name, cat_pascal, group_nodes, exported_structs
+            )
 
             (cat_rs_dir / f"{key}.rs").write_text(
                 "\n\n".join(rs_blocks), encoding="utf-8"
             )
+            all_stub_blocks.extend(stub_blocks)
 
-        (cat_rs_dir / "mod.rs").write_text("\n".join(mod_lines), encoding="utf-8")
+        mod_content = "\n".join(mod_lines) + "\n\n" + "\n".join(export_lines) + "\n"
+        (cat_rs_dir / "mod.rs").write_text(mod_content, encoding="utf-8")
+
         (self.stub_root / f"{cat_snake}.stub").write_text(
-            "\n\n".join(stub_blocks), encoding="utf-8"
+            "\n\n".join(all_stub_blocks), encoding="utf-8"
         )
 
         return f"pub mod {to_safe_ident(cat_snake)};"
