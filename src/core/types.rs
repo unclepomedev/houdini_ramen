@@ -4,12 +4,36 @@ use std::sync::atomic::AtomicUsize;
 
 pub static NODE_ID_COUNTER: AtomicUsize = AtomicUsize::new(1);
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum RampInterpolation {
+    Constant = 0,
+    Linear = 1,
+    CatmullRom = 2,
+    MonotoneCubic = 3,
+    Bezier = 4,
+    BSpline = 5,
+    Hermite = 6,
+}
+impl RampInterpolation {
+    pub fn as_hou_str(&self) -> &'static str {
+        match self {
+            Self::Constant => "hou.rampBasis.Constant",
+            Self::Linear => "hou.rampBasis.Linear",
+            Self::CatmullRom => "hou.rampBasis.CatmullRom",
+            Self::MonotoneCubic => "hou.rampBasis.MonotoneCubic",
+            Self::Bezier => "hou.rampBasis.Bezier",
+            Self::BSpline => "hou.rampBasis.BSpline",
+            Self::Hermite => "hou.rampBasis.Hermite",
+        }
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
 /// dedicated structure for representing Ramp (gradients and curves)
 pub struct RampPoint {
     pub position: f32,
     pub value: Vec<f32>, // RampFloat has 1 element, RampColor has 3 elements.
-    pub interpolation: i32,
+    pub interpolation: RampInterpolation,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -525,7 +549,7 @@ impl ParamValue {
 
         let basis: Vec<String> = points
             .iter()
-            .map(|p| Self::get_ramp_basis(p.interpolation).to_string())
+            .map(|p| p.interpolation.as_hou_str().to_string())
             .collect();
 
         let keys: Vec<String> = points
@@ -537,13 +561,17 @@ impl ParamValue {
             .iter()
             .map(|p| {
                 if is_color {
-                    let r = p.value.first().unwrap_or(&0.0);
-                    let g = p.value.get(1).unwrap_or(&0.0);
-                    let b = p.value.get(2).unwrap_or(&0.0);
-                    format!("({:.4}, {:.4}, {:.4})", r, g, b)
+                    assert!(
+                        p.value.len() >= 3,
+                        "Color Ramp point must have at least 3 elements."
+                    );
+                    format!("({:.4}, {:.4}, {:.4})", p.value[0], p.value[1], p.value[2])
                 } else {
-                    let v = p.value.first().unwrap_or(&0.0);
-                    format!("{:.4}", v)
+                    assert!(
+                        !p.value.is_empty(),
+                        "Float Ramp point must have at least 1 element."
+                    );
+                    format!("{:.4}", p.value[0])
                 }
             })
             .collect();
@@ -554,19 +582,6 @@ impl ParamValue {
             keys.join(", "),
             values.join(", ")
         )
-    }
-
-    fn get_ramp_basis(interpolation: i32) -> &'static str {
-        match interpolation {
-            0 => "hou.rampBasis.Constant",
-            1 => "hou.rampBasis.Linear",
-            2 => "hou.rampBasis.CatmullRom",
-            3 => "hou.rampBasis.MonotoneCubic",
-            4 => "hou.rampBasis.Bezier",
-            5 => "hou.rampBasis.BSpline",
-            6 => "hou.rampBasis.Hermite",
-            _ => "hou.rampBasis.Linear",
-        }
     }
 }
 
@@ -634,17 +649,17 @@ mod tests {
     }
 
     #[test]
-    fn test_ramp_serialization() {
+    fn test_ramp_serialization_valid() {
         let float_ramp = ParamValue::Ramp(vec![
             RampPoint {
                 position: 0.0,
                 value: vec![0.0],
-                interpolation: 1,
+                interpolation: RampInterpolation::Linear,
             },
             RampPoint {
                 position: 1.0,
                 value: vec![1.0],
-                interpolation: 2,
+                interpolation: RampInterpolation::CatmullRom,
             },
         ]);
         assert_eq!(
@@ -656,12 +671,12 @@ mod tests {
             RampPoint {
                 position: 0.0,
                 value: vec![1.0, 0.0, 0.0],
-                interpolation: 0,
+                interpolation: RampInterpolation::Constant,
             },
             RampPoint {
                 position: 1.0,
                 value: vec![0.0, 0.0, 1.0],
-                interpolation: 1,
+                interpolation: RampInterpolation::Linear,
             },
         ]);
         assert_eq!(
@@ -669,27 +684,40 @@ mod tests {
             "hou.Ramp((hou.rampBasis.Constant, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.0000, 0.0000, 1.0000),))"
         );
 
-        let mixed_ramp = ParamValue::Ramp(vec![
-            RampPoint {
-                position: 0.0,
-                value: vec![1.0],
-                interpolation: 1,
-            },
-            RampPoint {
-                position: 1.0,
-                value: vec![0.5, 0.2, 0.8],
-                interpolation: 1,
-            },
-        ]);
-        assert_eq!(
-            mixed_ramp.to_python_expr(),
-            "hou.Ramp((hou.rampBasis.Linear, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.5000, 0.2000, 0.8000),))"
-        );
-
         let empty_ramp = ParamValue::Ramp(vec![]);
         assert_eq!(
             empty_ramp.to_python_expr(),
             "hou.Ramp((hou.rampBasis.Linear,), (0.0,), (0.0,))"
         );
+    }
+
+    #[test]
+    #[should_panic(expected = "Color Ramp point must have at least 3 elements.")]
+    fn test_ramp_serialization_invalid_color_panics() {
+        let invalid_mixed_ramp = ParamValue::Ramp(vec![
+            RampPoint {
+                position: 0.0,
+                value: vec![1.0],
+                interpolation: RampInterpolation::Linear,
+            },
+            RampPoint {
+                position: 1.0,
+                value: vec![0.5, 0.2, 0.8],
+                interpolation: RampInterpolation::Linear,
+            },
+        ]);
+        let _ = invalid_mixed_ramp.to_python_expr();
+    }
+
+    #[test]
+    #[should_panic(expected = "Float Ramp point must have at least 1 element.")]
+    fn test_ramp_serialization_empty_value_panics() {
+        let invalid_empty_val_ramp = ParamValue::Ramp(vec![RampPoint {
+            position: 0.0,
+            value: vec![],
+            interpolation: RampInterpolation::Linear,
+        }]);
+
+        let _ = invalid_empty_val_ramp.to_python_expr();
     }
 }

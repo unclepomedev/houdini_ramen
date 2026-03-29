@@ -78,7 +78,6 @@ explore-api:
     cd {{ PROJECT_ROOT }}
     hython tools/explore_api.py
 
-
 explore-label:
     #!/usr/bin/env bash
     set -e
@@ -87,6 +86,15 @@ explore-label:
     source houdini_setup
     cd {{ PROJECT_ROOT }}
     hython tools/explore_label.py
+
+ramp-value:
+    #!/usr/bin/env bash
+    set -e
+
+    cd {{ HOUDINI_RESOURCES }}
+    source houdini_setup
+    cd {{ PROJECT_ROOT }}
+    hython tools/ramp_interpolation_value.py
 
 # run ============================================================
 # configure according to env

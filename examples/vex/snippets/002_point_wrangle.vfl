@@ -1,0 +1,2 @@
+float dot = dot(@N, set(0, 1.0, 0));
+f@col = dot;

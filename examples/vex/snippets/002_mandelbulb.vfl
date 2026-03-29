@@ -1,0 +1,25 @@
+float scale = chf("scale");
+float shift = chf("shift");
+int iteration = chi("iteration");
+float n = chf("n");
+
+f@density = 1;
+
+vector shiftv = set(shift, shift, shift);
+vector c = (@P) * scale + shiftv;
+vector v = c;
+
+for(int i = 0; i < iteration; i++) {
+    float r = length(v);
+    float phi = atan2(v.y, v.x);
+    float theta = atan2(sqrt(v.x * v.x + v.y * v.y), v.z);
+    float vr = pow(r, n);
+    float vx = sin(n * theta) * cos(n * phi);
+    float vy = sin(n * theta) * sin(n * phi);
+    float vz = cos(n * theta);
+    v = set(vx, vy, vz) * vr + c;
+    if (length(v) > 100) {
+        f@density = 0;
+        break;
+    }
+}
