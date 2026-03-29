@@ -15,6 +15,7 @@ pub struct Transpiler {
     id_to_var: HashMap<usize, String>,
     auto_create_type: Option<ContainerType>,
     auto_clear: bool,
+    display_node_id: Option<usize>,
 }
 
 impl Transpiler {
@@ -29,7 +30,12 @@ impl Transpiler {
             id_to_var: HashMap::new(),
             auto_create_type,
             auto_clear,
+            display_node_id: None,
         }
+    }
+
+    pub fn set_display_node(&mut self, id: usize) {
+        self.display_node_id = Some(id);
     }
 
     pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) -> Result<(), String> {
@@ -54,7 +60,14 @@ impl Transpiler {
         )?;
         passes::parameters::write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var)?;
         passes::links::write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
-        passes::footer::write_footer(&mut builder);
+
+        let display_var = self
+            .display_node_id
+            .and_then(|id| self.id_to_var.get(&id))
+            .map(|s| s.as_str());
+
+        passes::footer::write_footer(&mut builder, display_var);
+
         Ok(builder.build())
     }
 

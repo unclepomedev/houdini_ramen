@@ -326,3 +326,37 @@ fn test_transpiler_spare_parameters() {
     assert!(script.contains("ptg.append(pt)"));
     assert!(script.contains("n_ctrl_301.setParmTemplateGroup(ptg)"));
 }
+
+#[test]
+fn test_transpiler_display_flag() {
+    let node1 = DummyNode {
+        id: 401,
+        name: "process".to_string(),
+        node_type: "box",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    let node2 = DummyNode {
+        id: 402,
+        name: "out_geo".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(node1)).unwrap();
+    transpiler.add_boxed(Box::new(node2)).unwrap();
+
+    transpiler.set_display_node(402);
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("n_out_geo_402.setDisplayFlag(True)"));
+    assert!(script.contains("n_out_geo_402.setRenderFlag(True)"));
+
+    assert!(!script.contains("n_process_401.setDisplayFlag(True)"));
+}
