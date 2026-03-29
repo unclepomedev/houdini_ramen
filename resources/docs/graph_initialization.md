@@ -4,6 +4,7 @@ When instantiating a `NodeGraph`, you should typically chain `.with_auto_clear()
 
 ## Required Imports
 ```rust
+use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::types::ContainerType::Geo; // Or other ContainerTypes
 ```
 

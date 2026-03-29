@@ -561,13 +561,17 @@ impl ParamValue {
             .iter()
             .map(|p| {
                 if is_color {
-                    let r = p.value.first().unwrap_or(&0.0);
-                    let g = p.value.get(1).unwrap_or(&0.0);
-                    let b = p.value.get(2).unwrap_or(&0.0);
-                    format!("({:.4}, {:.4}, {:.4})", r, g, b)
+                    assert!(
+                        p.value.len() >= 3,
+                        "Color Ramp point must have at least 3 elements."
+                    );
+                    format!("({:.4}, {:.4}, {:.4})", p.value[0], p.value[1], p.value[2])
                 } else {
-                    let v = p.value.first().unwrap_or(&0.0);
-                    format!("{:.4}", v)
+                    assert!(
+                        !p.value.is_empty(),
+                        "Float Ramp point must have at least 1 element."
+                    );
+                    format!("{:.4}", p.value[0])
                 }
             })
             .collect();
@@ -645,7 +649,7 @@ mod tests {
     }
 
     #[test]
-    fn test_ramp_serialization() {
+    fn test_ramp_serialization_valid() {
         let float_ramp = ParamValue::Ramp(vec![
             RampPoint {
                 position: 0.0,
@@ -680,7 +684,17 @@ mod tests {
             "hou.Ramp((hou.rampBasis.Constant, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.0000, 0.0000, 1.0000),))"
         );
 
-        let mixed_ramp = ParamValue::Ramp(vec![
+        let empty_ramp = ParamValue::Ramp(vec![]);
+        assert_eq!(
+            empty_ramp.to_python_expr(),
+            "hou.Ramp((hou.rampBasis.Linear,), (0.0,), (0.0,))"
+        );
+    }
+
+    #[test]
+    #[should_panic(expected = "Color Ramp point must have at least 3 elements.")]
+    fn test_ramp_serialization_invalid_color_panics() {
+        let invalid_mixed_ramp = ParamValue::Ramp(vec![
             RampPoint {
                 position: 0.0,
                 value: vec![1.0],
@@ -692,15 +706,18 @@ mod tests {
                 interpolation: RampInterpolation::Linear,
             },
         ]);
-        assert_eq!(
-            mixed_ramp.to_python_expr(),
-            "hou.Ramp((hou.rampBasis.Linear, hou.rampBasis.Linear,), (0.0000, 1.0000,), ((1.0000, 0.0000, 0.0000), (0.5000, 0.2000, 0.8000),))"
-        );
+        let _ = invalid_mixed_ramp.to_python_expr();
+    }
 
-        let empty_ramp = ParamValue::Ramp(vec![]);
-        assert_eq!(
-            empty_ramp.to_python_expr(),
-            "hou.Ramp((hou.rampBasis.Linear,), (0.0,), (0.0,))"
-        );
+    #[test]
+    #[should_panic(expected = "Float Ramp point must have at least 1 element.")]
+    fn test_ramp_serialization_empty_value_panics() {
+        let invalid_empty_val_ramp = ParamValue::Ramp(vec![RampPoint {
+            position: 0.0,
+            value: vec![],
+            interpolation: RampInterpolation::Linear,
+        }]);
+
+        let _ = invalid_empty_val_ramp.to_python_expr();
     }
 }

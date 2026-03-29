@@ -20,5 +20,6 @@ for(int i = 0; i < iteration; i++) {
     v = set(vx, vy, vz) * vr + c;
     if (length(v) > 100) {
         f@density = 0;
+        break;
     }
 }
