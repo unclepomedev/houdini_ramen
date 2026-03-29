@@ -23,6 +23,8 @@ class ParmInfo:
     name: str
     type: str
     default: Any = None
+    menu_items: list[str] = field(default_factory=list)
+    menu_labels: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -218,9 +220,16 @@ class HoudiniNodeExtractor:
             return None
 
     def _extract_single_parm(self, pt: hou.ParmTemplate) -> ParmInfo:
-        return ParmInfo(
+        info = ParmInfo(
             name=pt.name(), type=pt.type().name(), default=self._get_default_value(pt)
         )
+        if hasattr(pt, "menuItems") and hasattr(pt, "menuLabels"):
+            items = pt.menuItems()
+            labels = pt.menuLabels()
+            if items and labels and len(items) > 0 and len(items) == len(labels):
+                info.menu_items = list(items)
+                info.menu_labels = list(labels)
+        return info
 
     def _extract_parms_recursive(self, entries: tuple | list) -> list[ParmInfo]:
         parms = []

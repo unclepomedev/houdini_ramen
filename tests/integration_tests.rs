@@ -5,6 +5,7 @@ use houdini_ramen::generated::sop::b::SopBox;
 use houdini_ramen::helpers::loops::add_foreach_loop;
 
 use houdini_ramen::core::types::NODE_ID_COUNTER;
+use houdini_ramen::generated::sop::SopAttribwrangleClass;
 use std::sync::Mutex;
 use std::sync::atomic::Ordering;
 
@@ -30,7 +31,7 @@ fn test_loop_generation_snapshot() {
         add_foreach_loop(base_graph, "process_points", &box_node, |g, begin| {
             let wrangle = SopAttribwrangle::new("inner_process")
                 .set_input(begin)
-                .with_class(1)
+                .with_class(SopAttribwrangleClass::Primitives)
                 .with_snippet(include_str!("fixtures/vex/001_1_yp1.vfl"));
 
             let g = g.add_node(&wrangle);
@@ -40,7 +41,7 @@ fn test_loop_generation_snapshot() {
 
     let final_wrangle = SopAttribwrangle::new("post_process")
         .set_input(&loop_end)
-        .with_class(1)
+        .with_class(SopAttribwrangleClass::Primitives)
         .with_snippet(include_str!("fixtures/vex/001_2_set.vfl"));
 
     let python_script = graph.add_node(&final_wrangle).build();

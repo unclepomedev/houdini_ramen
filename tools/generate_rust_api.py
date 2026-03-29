@@ -105,6 +105,19 @@ class ParsedInput:
 
 
 @dataclass(frozen=True)
+class ParsedMenuVariant:
+    name: str
+    value: int
+    doc_label: str
+
+
+@dataclass(frozen=True)
+class ParsedMenuEnum:
+    enum_name: str
+    variants: list[ParsedMenuVariant]
+
+
+@dataclass(frozen=True)
 class ParsedNode:
     struct_name: str
     node_type: str
@@ -112,17 +125,19 @@ class ParsedNode:
     max_inputs: int
     inputs: list[ParsedInput] = field(default_factory=list)
     params: list[ParsedParam] = field(default_factory=list)
+    enums: list[ParsedMenuEnum] = field(default_factory=list)
 
 
 class SuffixResolver:
-    def __init__(self):
+    def __init__(self, separator: str = "_"):
         self._seen = set()
+        self.separator = separator
 
     def resolve(self, base_suffix: str) -> str:
         suffix = base_suffix
         counter = 1
         while suffix in self._seen:
-            suffix = f"{base_suffix}_{counter}"
+            suffix = f"{base_suffix}{self.separator}{counter}"
             counter += 1
         self._seen.add(suffix)
         return suffix
@@ -133,6 +148,8 @@ def clean_identifier(s: str) -> str:
 
 
 def to_safe_ident(name: str) -> str:
+    if name in ("Self", "self", "super", "crate"):
+        return f"{name}_"
     return f"r#{name}" if name in RUST_KEYWORDS else name
 
 
@@ -210,28 +227,80 @@ def resolve_multiparm(name: str) -> MultiparmInfo:
     return MultiparmInfo(True, fn_args, format_args)
 
 
+def _build_menu_enum(
+    p_name: str,
+    p_data: dict[str, Any],
+    struct_name: str,
+    enum_resolver: SuffixResolver,
+) -> ParsedMenuEnum | None:
+    if (
+        p_data.get("type") != "Menu"
+        or not p_data.get("menu_items")
+        or not p_data.get("menu_labels")
+    ):
+        return None
+
+    base_enum_name = pascal_case(p_name)
+    unique_enum_name = enum_resolver.resolve(base_enum_name)
+    enum_name = f"{struct_name}{unique_enum_name}"
+
+    variants = []
+    variant_resolver = SuffixResolver(separator="")
+
+    for i, (tok, lab) in enumerate(zip(p_data["menu_items"], p_data["menu_labels"], strict=True)):
+        raw_lab = str(lab)
+        safe_doc_label = re.sub(r"\s+", " ", raw_lab).strip()
+        clean_lab = re.sub(r"!\[[^]]*]", "", raw_lab)
+        if not clean_lab.strip():
+            clean_lab = tok
+
+        clean_lab = clean_lab.replace("+", " Plus ").replace("-", " Minus ")
+        clean_lab = re.sub(r"[^a-zA-Z0-9_\s]", " ", clean_lab)
+
+        base_v_name = pascal_case(clean_lab)
+        if base_v_name == "Unknown":
+            base_v_name = pascal_case(tok)
+
+        safe_v_name = to_safe_ident(base_v_name)
+        v_name = variant_resolver.resolve(safe_v_name)
+
+        variants.append(ParsedMenuVariant(name=v_name, value=i, doc_label=safe_doc_label))
+
+    return ParsedMenuEnum(enum_name=enum_name, variants=variants)
+
+
 def parse_param(
-    p_name: str, p_data: dict[str, Any], resolver: SuffixResolver
-) -> ParsedParam | None:
+    p_name: str,
+    p_data: dict[str, Any],
+    struct_name: str,
+    resolver: SuffixResolver,
+    enum_resolver: SuffixResolver,
+) -> tuple[ParsedParam | None, ParsedMenuEnum | None]:
     type_info = resolve_rust_type(p_data.get("type", ""), p_data.get("default"))
     if type_info is None:
-        return None
+        return None, None
 
     multi_info = resolve_multiparm(p_name)
     base_suffix = snake_case(p_name.replace("#", ""))
     target_suffix = f"{base_suffix}_inst" if multi_info.is_multiparm else base_suffix
     method_suffix = resolver.resolve(target_suffix)
 
-    return ParsedParam(
+    menu_enum = _build_menu_enum(p_name, p_data, struct_name, enum_resolver)
+
+    r_type = menu_enum.enum_name if menu_enum else type_info.r_type
+    val_converter = "val as i32" if menu_enum else type_info.val_converter
+
+    parsed_param = ParsedParam(
         name=safe_rust_string(p_name),
         method_suffix=method_suffix,
-        r_type=type_info.r_type,
+        r_type=r_type,
         enum_variant=type_info.enum_variant,
-        val_converter=type_info.val_converter,
+        val_converter=val_converter,
         is_multiparm=multi_info.is_multiparm,
         fn_args=multi_info.fn_args,
         format_args=multi_info.format_args,
     )
+    return parsed_param, menu_enum
 
 
 def parse_node(
@@ -262,15 +331,21 @@ def parse_node(
         )
 
     param_resolver = SuffixResolver()
+    enum_resolver = SuffixResolver(separator="")
     params = []
+    enums = []
     for p in node_info.get("parms", []):
         p_name = p.get("name")
         if not p_name:
             continue
 
-        parsed_param = parse_param(p_name, p, param_resolver)
+        parsed_param, menu_enum = parse_param(
+            p_name, p, struct_name, param_resolver, enum_resolver
+        )
         if parsed_param is not None:
             params.append(parsed_param)
+        if menu_enum is not None:
+            enums.append(menu_enum)
 
     return ParsedNode(
         struct_name=struct_name,
@@ -279,6 +354,7 @@ def parse_node(
         max_inputs=max_inputs,
         inputs=parsed_inputs,
         params=params,
+        enums=enums,
     )
 
 
