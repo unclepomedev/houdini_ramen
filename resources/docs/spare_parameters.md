@@ -4,7 +4,7 @@ You can add custom spare parameters to any Houdini node using the `.add_spare()`
 
 ## Required Imports
 ```rust
-use crate::core::types::{
+use houdini_ramen::core::types::{
     SpareFloat, SpareInt, SpareString, SpareToggle, SpareColor, 
     SpareButton, SpareMenu, SpareFile, SpareNodePath, SpareRampFloat, SpareRampColor
 };
