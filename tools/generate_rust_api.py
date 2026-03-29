@@ -247,7 +247,9 @@ def _build_menu_enum(
     variants = []
     variant_resolver = SuffixResolver(separator="")
 
-    for i, (tok, lab) in enumerate(zip(p_data["menu_items"], p_data["menu_labels"], strict=True)):
+    for i, (tok, lab) in enumerate(
+        zip(p_data["menu_items"], p_data["menu_labels"], strict=True)
+    ):
         raw_lab = str(lab)
         safe_doc_label = re.sub(r"\s+", " ", raw_lab).strip()
         clean_lab = re.sub(r"!\[[^]]*]", "", raw_lab)
@@ -264,7 +266,9 @@ def _build_menu_enum(
         safe_v_name = to_safe_ident(base_v_name)
         v_name = variant_resolver.resolve(safe_v_name)
 
-        variants.append(ParsedMenuVariant(name=v_name, value=i, doc_label=safe_doc_label))
+        variants.append(
+            ParsedMenuVariant(name=v_name, value=i, doc_label=safe_doc_label)
+        )
 
     return ParsedMenuEnum(enum_name=enum_name, variants=variants)
 

@@ -8,33 +8,29 @@ use houdini_ramen::helpers::loops::add_foreach_loop;
 fn main() {
     println!("--- Houdini Ramen: Loop Generation Test ---\n");
 
-    let box_node = SopBox::new("base_box").with_size([2.0, 2.0, 2.0]);
-
-    let base_graph = NodeGraph::new("/obj/geo1")
+    let mut graph = NodeGraph::new("/obj/geo1")
         .with_auto_clear()
-        .with_auto_create(Geo)
-        .add_node(&box_node);
+        .with_auto_create(Geo);
 
-    let (graph, loop_end) =
-        add_foreach_loop(base_graph, "process_points", &box_node, |g, begin| {
-            let wrangle = SopAttribwrangle::new("inner_process")
+    let box_node = graph.add(SopBox::new("base_box").with_size([2.0, 2.0, 2.0]));
+
+    let loop_end = add_foreach_loop(&mut graph, "process_points", &box_node, |g, begin| {
+        g.add(
+            SopAttribwrangle::new("inner_process")
                 .set_input(begin)
                 .with_class(SopAttribwrangleClass::Primitives)
-                .with_snippet(include_str!("vex/snippets/001_1_yp1.vfl"));
+                .with_snippet(include_str!("vex/snippets/001_1_yp1.vfl")),
+        )
+    });
 
-            let g = g.add_node(&wrangle);
+    let _final_wrangle = graph.add(
+        SopAttribwrangle::new("post_process")
+            .set_input(&loop_end)
+            .with_class(SopAttribwrangleClass::Primitives)
+            .with_snippet(include_str!("vex/snippets/001_2_set.vfl")),
+    );
 
-            (g, wrangle)
-        });
-
-    let final_wrangle = SopAttribwrangle::new("post_process")
-        .set_input(&loop_end)
-        .with_class(SopAttribwrangleClass::Primitives)
-        .with_snippet(include_str!("vex/snippets/001_2_set.vfl"));
-
-    let python_script = graph.add_node(&final_wrangle).build();
-
+    let python_script = graph.build();
     println!("{}", python_script);
-
     send_to_houdini(&python_script);
 }
