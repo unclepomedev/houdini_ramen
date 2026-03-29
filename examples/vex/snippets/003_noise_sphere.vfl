@@ -1,0 +1,3 @@
+float noise_val = snoise(@P * chf("freq"));
+@P += @N * noise_val * chf("amp");
+f@disp = noise_val;

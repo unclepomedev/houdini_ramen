@@ -24,6 +24,11 @@
     "path": "resources/docs/ramp_parameters.md",
     "type": "doc"
   },
+  "doc/sop_sphere": {
+    "depends_on": [],
+    "path": "resources/docs/sop_sphere.md",
+    "type": "doc"
+  },
   "doc/spare_parameters": {
     "depends_on": [],
     "path": "resources/docs/spare_parameters.md",
@@ -52,6 +57,11 @@
   "sop/sopobjectmerge": {
     "depends_on": [
       "doc/operator_paths"
+    ]
+  },
+  "sop/sopsphere": {
+    "depends_on": [
+      "doc/sop_sphere"
     ]
   },
   "task/basic_workflow": {
