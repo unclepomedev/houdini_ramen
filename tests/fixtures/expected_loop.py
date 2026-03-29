@@ -43,5 +43,5 @@ n_inner_process_3.setInput(0, n_process_points_begin_2, 0)
 n_process_points_end_4.setInput(0, n_inner_process_3, 0)
 n_post_process_5.setInput(0, n_process_points_end_4, 0)
 
-# --- Layout Pass ---
+# --- Layout & Display Pass ---
 parent.layoutChildren()

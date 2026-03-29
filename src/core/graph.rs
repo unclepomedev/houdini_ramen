@@ -7,6 +7,7 @@ pub struct NodeGraph {
     nodes: Vec<Box<dyn HoudiniNode>>,
     auto_create_type: Option<ContainerType>,
     auto_clear: bool,
+    display_node_id: Option<usize>,
 }
 
 impl NodeGraph {
@@ -16,6 +17,7 @@ impl NodeGraph {
             nodes: Vec::new(),
             auto_create_type: None,
             auto_clear: false,
+            display_node_id: None,
         }
     }
 
@@ -29,6 +31,11 @@ impl NodeGraph {
         self
     }
 
+    /// Specify the node that will be the final output (display).
+    pub fn set_display<T: HoudiniNode>(&mut self, node: &T) {
+        self.display_node_id = Some(node.get_id());
+    }
+
     /// Registers the node in the graph and returns it to the caller as is.
     pub fn add<T: HoudiniNode + Clone + 'static>(&mut self, node: T) -> T {
         self.nodes.push(Box::new(node.clone()));
@@ -39,6 +46,10 @@ impl NodeGraph {
     pub fn build(self) -> String {
         let mut transpiler =
             Transpiler::new(&self.parent_path, self.auto_create_type, self.auto_clear);
+
+        if let Some(id) = self.display_node_id {
+            transpiler.set_display_node(id);
+        }
 
         let result = (|| -> Result<String, String> {
             for node in self.nodes {
