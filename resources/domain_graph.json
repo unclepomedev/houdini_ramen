@@ -9,9 +9,19 @@
     "path": "resources/docs/foreach_loop.md",
     "type": "doc"
   },
+  "doc/graph_initialization": {
+    "depends_on": [],
+    "path": "resources/docs/graph_initialization.md",
+    "type": "doc"
+  },
   "doc/operator_paths": {
     "depends_on": [],
     "path": "resources/docs/operator_paths.md",
+    "type": "doc"
+  },
+  "doc/ramp_parameters": {
+    "depends_on": [],
+    "path": "resources/docs/ramp_parameters.md",
     "type": "doc"
   },
   "doc/spare_parameters": {
@@ -29,6 +39,11 @@
       "doc/operator_paths"
     ]
   },
+  "sop/sopcolor": {
+    "depends_on": [
+      "doc/ramp_parameters"
+    ]
+  },
   "sop/sopnull": {
     "depends_on": [
       "doc/spare_parameters"
@@ -41,7 +56,8 @@
   },
   "task/basic_workflow": {
     "depends_on": [
-      "doc/final_result_display"
+      "doc/final_result_display",
+      "doc/graph_initialization"
     ],
     "path": null,
     "type": "task"

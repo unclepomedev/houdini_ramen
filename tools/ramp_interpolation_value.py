@@ -1,6 +1,6 @@
 import hou
 
-node = hou.node('/obj').createNode('null', 'ramp_test')
+node = hou.node("/obj").createNode("null", "ramp_test")
 
 ptg = node.parmTemplateGroup()
 ptg.append(hou.RampParmTemplate("test_ramp", "Test Ramp", hou.rampParmType.Float))
@@ -13,7 +13,7 @@ bases = (
     hou.rampBasis.MonotoneCubic,
     hou.rampBasis.Bezier,
     hou.rampBasis.BSpline,
-    hou.rampBasis.Hermite
+    hou.rampBasis.Hermite,
 )
 
 print("--- Houdini Internal Ramp Interpolation Values ---")
