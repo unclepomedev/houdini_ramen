@@ -1,4 +1,5 @@
 {% for e in node.enums %}
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum {{ e.enum_name }} {
     {% for v in e.variants %}
     /// {{ v.doc_label }}

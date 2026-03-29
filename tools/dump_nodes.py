@@ -226,7 +226,7 @@ class HoudiniNodeExtractor:
         if hasattr(pt, "menuItems") and hasattr(pt, "menuLabels"):
             items = pt.menuItems()
             labels = pt.menuLabels()
-            if items and labels and len(items) > 0:
+            if items and labels and len(items) > 0 and len(items) == len(labels):
                 info.menu_items = list(items)
                 info.menu_labels = list(labels)
         return info
