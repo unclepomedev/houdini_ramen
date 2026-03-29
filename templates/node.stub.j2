@@ -1,3 +1,12 @@
+{% for e in node.enums %}
+pub enum {{ e.enum_name }} {
+    {% for v in e.variants %}
+    /// {{ v.doc_label }}
+    {{ v.name }} = {{ v.value }},
+    {% endfor %}
+}
+
+{% endfor %}
 pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
