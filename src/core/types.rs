@@ -4,12 +4,36 @@ use std::sync::atomic::AtomicUsize;
 
 pub static NODE_ID_COUNTER: AtomicUsize = AtomicUsize::new(1);
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum RampInterpolation {
+    Constant = 0,
+    Linear = 1,
+    CatmullRom = 2,
+    MonotoneCubic = 3,
+    Bezier = 4,
+    BSpline = 5,
+    Hermite = 6,
+}
+impl RampInterpolation {
+    pub fn as_hou_str(&self) -> &'static str {
+        match self {
+            Self::Constant => "hou.rampBasis.Constant",
+            Self::Linear => "hou.rampBasis.Linear",
+            Self::CatmullRom => "hou.rampBasis.CatmullRom",
+            Self::MonotoneCubic => "hou.rampBasis.MonotoneCubic",
+            Self::Bezier => "hou.rampBasis.Bezier",
+            Self::BSpline => "hou.rampBasis.BSpline",
+            Self::Hermite => "hou.rampBasis.Hermite",
+        }
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
 /// dedicated structure for representing Ramp (gradients and curves)
 pub struct RampPoint {
     pub position: f32,
     pub value: Vec<f32>, // RampFloat has 1 element, RampColor has 3 elements.
-    pub interpolation: i32,
+    pub interpolation: RampInterpolation,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -525,7 +549,7 @@ impl ParamValue {
 
         let basis: Vec<String> = points
             .iter()
-            .map(|p| Self::get_ramp_basis(p.interpolation).to_string())
+            .map(|p| p.interpolation.as_hou_str().to_string())
             .collect();
 
         let keys: Vec<String> = points
@@ -554,19 +578,6 @@ impl ParamValue {
             keys.join(", "),
             values.join(", ")
         )
-    }
-
-    fn get_ramp_basis(interpolation: i32) -> &'static str {
-        match interpolation {
-            0 => "hou.rampBasis.Constant",
-            1 => "hou.rampBasis.Linear",
-            2 => "hou.rampBasis.CatmullRom",
-            3 => "hou.rampBasis.MonotoneCubic",
-            4 => "hou.rampBasis.Bezier",
-            5 => "hou.rampBasis.BSpline",
-            6 => "hou.rampBasis.Hermite",
-            _ => "hou.rampBasis.Linear",
-        }
     }
 }
 
@@ -639,12 +650,12 @@ mod tests {
             RampPoint {
                 position: 0.0,
                 value: vec![0.0],
-                interpolation: 1,
+                interpolation: RampInterpolation::Linear,
             },
             RampPoint {
                 position: 1.0,
                 value: vec![1.0],
-                interpolation: 2,
+                interpolation: RampInterpolation::CatmullRom,
             },
         ]);
         assert_eq!(
@@ -656,12 +667,12 @@ mod tests {
             RampPoint {
                 position: 0.0,
                 value: vec![1.0, 0.0, 0.0],
-                interpolation: 0,
+                interpolation: RampInterpolation::Constant,
             },
             RampPoint {
                 position: 1.0,
                 value: vec![0.0, 0.0, 1.0],
-                interpolation: 1,
+                interpolation: RampInterpolation::Linear,
             },
         ]);
         assert_eq!(
@@ -673,12 +684,12 @@ mod tests {
             RampPoint {
                 position: 0.0,
                 value: vec![1.0],
-                interpolation: 1,
+                interpolation: RampInterpolation::Linear,
             },
             RampPoint {
                 position: 1.0,
                 value: vec![0.5, 0.2, 0.8],
-                interpolation: 1,
+                interpolation: RampInterpolation::Linear,
             },
         ]);
         assert_eq!(

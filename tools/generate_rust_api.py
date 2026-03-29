@@ -233,11 +233,10 @@ def _build_menu_enum(
     struct_name: str,
     enum_resolver: SuffixResolver,
 ) -> ParsedMenuEnum | None:
-    if (
-        p_data.get("type") != "Menu"
-        or not p_data.get("menu_items")
-        or not p_data.get("menu_labels")
-    ):
+    if p_data.get("type") not in ("Menu", "Int"):
+        return None
+
+    if not p_data.get("menu_items") or not p_data.get("menu_labels"):
         return None
 
     base_enum_name = pascal_case(p_name)
