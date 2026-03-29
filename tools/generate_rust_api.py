@@ -248,8 +248,9 @@ def _build_menu_enum(
     variant_resolver = SuffixResolver(separator="")
 
     for i, (tok, lab) in enumerate(zip(p_data["menu_items"], p_data["menu_labels"], strict=True)):
-        safe_doc_label = lab.replace("\t", "    ")
-        clean_lab = re.sub(r"!\[[^]]*]", "", lab)
+        raw_lab = str(lab)
+        safe_doc_label = re.sub(r"\s+", " ", raw_lab).strip()
+        clean_lab = re.sub(r"!\[[^]]*]", "", raw_lab)
         if not clean_lab.strip():
             clean_lab = tok
 
