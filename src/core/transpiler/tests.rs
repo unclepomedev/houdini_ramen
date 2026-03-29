@@ -359,4 +359,5 @@ fn test_transpiler_display_flag() {
     assert!(script.contains("n_out_geo_402.setRenderFlag(True)"));
 
     assert!(!script.contains("n_process_401.setDisplayFlag(True)"));
+    assert!(!script.contains("n_process_401.setRenderFlag(True)"));
 }

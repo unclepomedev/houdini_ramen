@@ -1,4 +1,9 @@
 {
+  "doc/final_result_display": {
+    "depends_on": [],
+    "path": "resources/docs/final_result_display.md",
+    "type": "doc"
+  },
   "doc/foreach_loop": {
     "depends_on": [],
     "path": "resources/docs/foreach_loop.md",
@@ -33,6 +38,13 @@
     "depends_on": [
       "doc/operator_paths"
     ]
+  },
+  "task/basic_workflow": {
+    "depends_on": [
+      "doc/final_result_display"
+    ],
+    "path": null,
+    "type": "task"
   },
   "task/foreach_loop": {
     "depends_on": [

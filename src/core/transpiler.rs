@@ -61,10 +61,16 @@ impl Transpiler {
         passes::parameters::write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var)?;
         passes::links::write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
 
-        let display_var = self
-            .display_node_id
-            .and_then(|id| self.id_to_var.get(&id))
-            .map(|s| s.as_str());
+        let display_var = if let Some(id) = self.display_node_id {
+            Some(
+                self.id_to_var
+                    .get(&id)
+                    .ok_or_else(|| format!("display node id {} not found", id))?
+                    .as_str(),
+            )
+        } else {
+            None
+        };
 
         passes::footer::write_footer(&mut builder, display_var);
 
