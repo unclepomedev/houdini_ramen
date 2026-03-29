@@ -3,53 +3,48 @@ use crate::core::types::HoudiniNode;
 use crate::generated::sop::{SopBlockBegin, SopBlockEnd};
 
 pub fn add_foreach_loop<F, N, I>(
-    graph: NodeGraph,
+    graph: &mut NodeGraph,
     loop_name: &str,
     input_node: &I,
     inner_builder: F,
-) -> (NodeGraph, SopBlockEnd)
+) -> SopBlockEnd
 where
     N: HoudiniNode,
     I: HoudiniNode,
-    F: FnOnce(NodeGraph, &SopBlockBegin) -> (NodeGraph, N),
+    F: FnOnce(&mut NodeGraph, &SopBlockBegin) -> N,
 {
     let begin_name = format!("{}_begin", loop_name);
     let end_name = format!("{}_end", loop_name);
 
-    let begin = SopBlockBegin::new(&begin_name)
-        .set_input(input_node)
-        .with_blockpath(&format!("../{}", end_name));
+    let begin = graph.add(
+        SopBlockBegin::new(&begin_name)
+            .set_input(input_node)
+            .with_blockpath(&format!("../{}", end_name)),
+    );
 
-    let graph = graph.add_node(&begin);
+    let last_inner_node = inner_builder(graph, &begin);
 
-    let (graph, last_inner_node) = inner_builder(graph, &begin);
-
-    let end = SopBlockEnd::new(&end_name)
-        .set_input(&last_inner_node)
-        .with_blockpath(&format!("../{}", begin_name));
-
-    let graph = graph.add_node(&end);
-
-    (graph, end)
+    graph.add(
+        SopBlockEnd::new(&end_name)
+            .set_input(&last_inner_node)
+            .with_blockpath(&format!("../{}", begin_name)),
+    )
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::generated::sop::b::SopBox;
+    use crate::generated::sop::SopBox;
 
     #[test]
     fn test_foreach_loop_generation() {
-        let base_graph = NodeGraph::new("/obj/geo1");
-        let base_box = SopBox::new("base_box");
-        let base_graph = base_graph.add_node(&base_box);
+        let mut graph = NodeGraph::new("/obj/geo1");
 
-        let (graph, _loop_end) =
-            add_foreach_loop(base_graph, "test_loop", &base_box, |g, begin| {
-                let inner_node = SopBox::new("inner_box").set_input(begin);
-                let g = g.add_node(&inner_node);
-                (g, inner_node)
-            });
+        let base_box = graph.add(SopBox::new("base_box"));
+
+        let _loop_end = add_foreach_loop(&mut graph, "test_loop", &base_box, |g, begin| {
+            g.add(SopBox::new("inner_box").set_input(begin))
+        });
 
         let final_script = graph.build();
 

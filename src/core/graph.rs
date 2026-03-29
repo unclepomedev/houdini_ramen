@@ -29,9 +29,10 @@ impl NodeGraph {
         self
     }
 
-    pub fn add_node<T: HoudiniNode + Clone + 'static>(mut self, node: &T) -> Self {
+    /// Registers the node in the graph and returns it to the caller as is.
+    pub fn add<T: HoudiniNode + Clone + 'static>(&mut self, node: T) -> T {
         self.nodes.push(Box::new(node.clone()));
-        self
+        node
     }
 
     /// finish building the graph and internally call Transpiler to generate the script
