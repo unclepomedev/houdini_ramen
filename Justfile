@@ -30,6 +30,8 @@ no-jpn:
 
 fmt-all: fmt-py fmt-rs
 
+test-all: test-py test-rs
+
 # setup =========================================================
 dump-nodes:
     #!/usr/bin/env bash

@@ -34,10 +34,7 @@ fn main() {
             ),
     );
 
-    let normal = graph.add(
-        SopNormal::new("normal")
-            .set_input(&wrangle),
-    );
+    let normal = graph.add(SopNormal::new("normal").set_input(&wrangle));
 
     let color = graph.add(
         SopColor::new("color")

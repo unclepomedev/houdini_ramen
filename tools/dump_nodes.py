@@ -292,15 +292,79 @@ class HoudiniNodeExtractor:
             parms=parms,
         )
 
+    @staticmethod
+    def _get_base_names(cat: hou.NodeTypeCategory) -> set[str]:
+        names = set()
+        for nt in cat.nodeTypes().values():
+            comps = nt.nameComponents()
+            ns, base = comps[1], comps[2]
+            key = f"{ns}::{base}" if ns else base
+            names.add(key)
+        return names
+
+    @staticmethod
+    def _resolve_default_node_type(cat: hou.NodeTypeCategory, base_key: str, parent):
+        if "::" in base_key:
+            ns, base = base_key.split("::", 1)
+        else:
+            ns, base = "", base_key
+
+        create_name = f"{ns}::{base}" if ns else base
+
+        if parent:
+            try:
+                temp_node = parent.createNode(create_name, run_init_scripts=False)
+                node_type = temp_node.type()
+                temp_node.destroy()
+                return node_type
+            except Exception as e:
+                logger.debug(
+                    f"Failed to instantiate '{create_name}' for default version resolution: {e}"
+                )
+
+        node_types = cat.nodeTypes()
+        if create_name in node_types:
+            return node_types[create_name]
+
+        candidates = [
+            nt
+            for _, nt in node_types.items()
+            if nt.nameComponents()[1] == ns and nt.nameComponents()[2] == base
+        ]
+
+        if not candidates:
+            logger.debug(
+                f"Fallback failed: base key '{base_key}' not found in category"
+            )
+            return None
+
+        def _version_key(nt):
+            ver = nt.nameComponents()[3]
+            if not ver:
+                return []
+            try:
+                return [int(x) for x in ver.split(".")]
+            except ValueError:
+                return [0]
+
+        non_deprecated = [nt for nt in candidates if not nt.deprecated()]
+        pool = non_deprecated if non_deprecated else candidates
+        return max(pool, key=_version_key)
+
     def extract_all_categories(self) -> dict[str, dict[str, NodeInfo]]:
         data: dict[str, dict[str, NodeInfo]] = {}
         try:
             for cat_name, cat in sorted(hou.nodeTypeCategories().items()):
                 logger.info(f"Processing category: {cat_name}")
                 cat_data: dict[str, NodeInfo] = {}
+                parent = self.temp_manager.get_parent(cat_name)
 
-                for node_name, node_type in sorted(cat.nodeTypes().items()):
-                    cat_data[node_name] = self._extract_node_info(node_type, cat_name)
+                for base_name in sorted(self._get_base_names(cat)):
+                    node_type = self._resolve_default_node_type(cat, base_name, parent)
+                    if not node_type:
+                        continue
+
+                    cat_data[base_name] = self._extract_node_info(node_type, cat_name)
 
                 data[cat_name] = cat_data
         finally:
