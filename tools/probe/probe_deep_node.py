@@ -15,6 +15,9 @@ def probe_various_containers():
     print("=== Houdini Container Architecture Probe ===")
 
     obj = hou.node("/obj")
+    if obj is None:
+        print("  [Error] Parent '/obj' not found.")
+        return
     geo = obj.node("geo_container")
     created_geo = False
     if not geo:
