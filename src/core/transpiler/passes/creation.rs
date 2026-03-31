@@ -12,10 +12,12 @@ pub fn write_creation_pass(
     existing_node_names: &HashMap<usize, String>,
 ) -> Result<(), String> {
     builder.line("# --- Node Creation Pass ---");
-    for node in nodes {
+
+    let sorted = topological_sort(nodes, node_parent)?;
+    for idx in sorted {
         write_node_creation(
             builder,
-            node.as_ref(),
+            nodes[idx].as_ref(),
             id_to_var,
             node_parent,
             existing_nodes,
@@ -24,6 +26,53 @@ pub fn write_creation_pass(
     }
 
     Ok(())
+}
+
+fn parent_depth(node_id: usize, node_parent: &HashMap<usize, usize>) -> Result<usize, String> {
+    let mut depth = 0;
+    let mut current = node_id;
+    let mut visited = HashSet::new();
+    while let Some(&pid) = node_parent.get(&current) {
+        if !visited.insert(pid) {
+            return Err(format!(
+                "cycle detected in parent chain for node id {}",
+                node_id
+            ));
+        }
+        depth += 1;
+        current = pid;
+    }
+    Ok(depth)
+}
+
+fn topological_sort(
+    nodes: &[Box<dyn HoudiniNode>],
+    node_parent: &HashMap<usize, usize>,
+) -> Result<Vec<usize>, String> {
+    let node_ids: HashSet<usize> = nodes.iter().map(|n| n.get_id()).collect();
+    for (&child_id, &pid) in node_parent.iter() {
+        if node_ids.contains(&child_id) && !node_ids.contains(&pid) {
+            return Err(format!(
+                "node id {} references missing parent id {}",
+                child_id, pid
+            ));
+        }
+    }
+
+    let mut indices: Vec<usize> = (0..nodes.len()).collect();
+    let depths: Vec<Result<usize, String>> = nodes
+        .iter()
+        .map(|n| parent_depth(n.get_id(), node_parent))
+        .collect();
+
+    for d in &depths {
+        if let Err(e) = d {
+            return Err(e.clone());
+        }
+    }
+
+    indices.sort_by_key(|&i| depths[i].as_ref().unwrap().clone());
+    Ok(indices)
 }
 
 fn write_node_creation(
@@ -83,12 +132,18 @@ fn write_existing_node(
         .map(|s| s.as_str())
         .unwrap_or(node.get_name());
 
+    let escaped = escape_py_key(original_name);
     builder.line(&format!(
         "{} = hou.node({}.path() + '/{}')",
-        var_name,
-        parent_var,
-        escape_py_key(original_name)
+        var_name, parent_var, escaped
     ));
+    builder.line(&format!("if not {}:", var_name));
+    builder.indent();
+    builder.line(&format!(
+        "raise RuntimeError(f\"Existing node not found: {{{}.path()}}\" + '/{}')",
+        parent_var, escaped
+    ));
+    builder.dedent();
 
     Ok(())
 }

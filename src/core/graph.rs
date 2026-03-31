@@ -76,12 +76,14 @@ impl HoudiniNode for ExistingNodeRef {
         ""
     }
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        static EMPTY: std::collections::BTreeMap<usize, (usize, usize)> = std::collections::BTreeMap::new();
+        static EMPTY: std::collections::BTreeMap<usize, (usize, usize)> =
+            std::collections::BTreeMap::new();
         &EMPTY
     }
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        static EMPTY: std::sync::LazyLock<std::collections::HashMap<String, crate::core::types::ParamValue>> =
-            std::sync::LazyLock::new(std::collections::HashMap::new);
+        static EMPTY: std::sync::LazyLock<
+            std::collections::HashMap<String, crate::core::types::ParamValue>,
+        > = std::sync::LazyLock::new(std::collections::HashMap::new);
         &EMPTY
     }
 }
@@ -140,6 +142,10 @@ impl NodeGraph {
 
         if let Some(id) = self.display_node_id {
             transpiler.set_display_node(id);
+        }
+
+        if !self.nested_display_nodes.is_empty() {
+            transpiler.add_nested_display_nodes(self.nested_display_nodes);
         }
 
         let result = (|| -> Result<String, String> {

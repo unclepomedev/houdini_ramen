@@ -16,6 +16,8 @@ pub struct Transpiler {
     auto_create_type: Option<ContainerType>,
     auto_clear: bool,
     display_node_id: Option<usize>,
+    /// Display flags for nodes inside subnets: (display_node_id, container_node_id)
+    nested_display_nodes: Vec<(usize, usize)>,
     /// Maps a node id to its parent node id (for nested/subnet nodes)
     node_parent: HashMap<usize, usize>,
     /// Set of node ids that are pre-existing (fetched via hou.item, not created)
@@ -37,6 +39,7 @@ impl Transpiler {
             auto_create_type,
             auto_clear,
             display_node_id: None,
+            nested_display_nodes: Vec::new(),
             node_parent: HashMap::new(),
             existing_nodes: HashSet::new(),
             existing_node_names: HashMap::new(),
@@ -45,6 +48,10 @@ impl Transpiler {
 
     pub fn set_display_node(&mut self, id: usize) {
         self.display_node_id = Some(id);
+    }
+
+    pub fn add_nested_display_nodes(&mut self, nodes: Vec<(usize, usize)>) {
+        self.nested_display_nodes.extend(nodes);
     }
 
     pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) -> Result<(), String> {
@@ -88,7 +95,12 @@ impl Transpiler {
             None
         };
 
-        passes::footer::write_footer(&mut builder, display_var);
+        let nested_display_vars: Vec<&str> = self
+            .nested_display_nodes
+            .iter()
+            .filter_map(|(nid, _cid)| self.id_to_var.get(nid).map(|v| v.as_str()))
+            .collect();
+        passes::footer::write_footer(&mut builder, display_var, &nested_display_vars);
 
         Ok(builder.build())
     }
