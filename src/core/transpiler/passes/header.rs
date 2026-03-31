@@ -52,5 +52,25 @@ pub fn write_header(
         builder.line("child.destroy()");
         builder.dedent();
     }
+
+    builder.empty_line();
+    builder.line("# --- Helper: Dive Target Resolution ---");
+    builder.line("def _get_insert_target(container):");
+    builder.indent();
+    builder.line("hda_def = container.type().definition()");
+    builder.line("if hda_def and 'DiveTarget' in hda_def.sections():");
+    builder.indent();
+    builder.line("dive_path = hda_def.sections()['DiveTarget'].contents().strip()");
+    builder.line("if dive_path:");
+    builder.indent();
+    builder.line("target = container.node(dive_path)");
+    builder.line("if target:");
+    builder.indent();
+    builder.line("return target");
+    builder.dedent();
+    builder.dedent();
+    builder.dedent();
+    builder.line("return container");
+    builder.dedent();
     builder.empty_line();
 }

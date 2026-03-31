@@ -155,7 +155,7 @@ fn write_nested_node(
     parent_var: &str,
 ) -> Result<(), String> {
     builder.line(&format!(
-        "{} = {}.createNode('{}', '{}')",
+        "{} = _get_insert_target({}).createNode('{}', '{}')",
         var_name,
         parent_var,
         node.get_node_type(),

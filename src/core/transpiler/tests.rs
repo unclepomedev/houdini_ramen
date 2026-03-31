@@ -414,7 +414,7 @@ fn test_transpiler_nested_subnet_creation() {
     assert!(script.contains("n_Prev_Frame_502 = hou.node(n_solver_501.path() + '/Prev_Frame')"));
 
     // inner_ray created under solver, not parent
-    assert!(script.contains("n_inner_ray_503 = n_solver_501.createNode('ray', 'inner_ray')"));
+    assert!(script.contains("n_inner_ray_503 = _get_insert_target(n_solver_501).createNode('ray', 'inner_ray')"));
     assert!(!script.contains("parent.createNode('ray', 'inner_ray')"));
 
     // link from inner_ray to Prev_Frame

@@ -19,6 +19,17 @@ if not parent:
 for child in parent.children():
     child.destroy()
 
+# --- Helper: Dive Target Resolution ---
+def _get_insert_target(container):
+    hda_def = container.type().definition()
+    if hda_def and 'DiveTarget' in hda_def.sections():
+        dive_path = hda_def.sections()['DiveTarget'].contents().strip()
+        if dive_path:
+            target = container.node(dive_path)
+            if target:
+                return target
+    return container
+
 # --- Node Creation Pass ---
 n_base_box_1 = parent.createNode('box', 'base_box')
 n_process_points_begin_2 = parent.createNode('block_begin', 'process_points_begin')
