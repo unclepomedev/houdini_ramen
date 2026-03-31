@@ -14,8 +14,10 @@ def probe_metadata():
 
     obj = hou.node("/obj")
     geo = obj.node("geo_container")
+    created_geo = False
     if not geo:
         geo = obj.createNode("geo", "geo_container")
+        created_geo = True
 
     for parent_path, node_type, node_name in test_cases:
         print(f"\n--- Node Type: {node_type} ---")
@@ -23,6 +25,7 @@ def probe_metadata():
         if not parent:
             continue
 
+        node = None
         try:
             node = parent.createNode(node_type, node_name)
             hda_def = node.type().definition()
@@ -51,12 +54,13 @@ def probe_metadata():
                 else:
                     print("  [Indirect Inputs]: None")
 
-            node.destroy()
-
         except Exception as e:
             print(f"  [Error] Failed to probe '{node_type}': {e}")
+        finally:
+            if node:
+                node.destroy()
 
-    if geo:
+    if created_geo:
         geo.destroy()
 
 

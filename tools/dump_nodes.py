@@ -242,7 +242,7 @@ class HoudiniNodeExtractor:
         return parms
 
     def _extract_input_labels(
-            self, node_type: hou.NodeType, cat_name: str
+        self, node_type: hou.NodeType, cat_name: str
     ) -> list[str]:
         """Temporarily instantiates a node to extract its input labels, with fallback for failures."""
         max_inputs = node_type.maxNumInputs()
@@ -297,7 +297,7 @@ class HoudiniNodeExtractor:
         )
 
     def _extract_builtin_inner_nodes(
-            self, node_type: hou.NodeType, cat_name: str
+        self, node_type: hou.NodeType, cat_name: str
     ) -> dict[str, str]:
         builtin_inner_nodes: dict[str, str] = {}
         parent = self.temp_manager.get_parent(cat_name)
@@ -323,15 +323,15 @@ class HoudiniNodeExtractor:
                 rel_path = child.path().replace(temp_node.path() + "/", "")
                 builtin_inner_nodes[child.name()] = rel_path
         except Exception as e:
-            logger.debug(
-                f"Failed to extract inner nodes for {node_type.name()}: {e}"
-            )
+            logger.debug(f"Failed to extract inner nodes for {node_type.name()}: {e}")
         finally:
             if temp_node is not None:
                 try:
                     temp_node.destroy()
-                except Exception:
-                    pass
+                except Exception as destroy_error:
+                    logger.debug(
+                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
+                    )
 
         return builtin_inner_nodes
 

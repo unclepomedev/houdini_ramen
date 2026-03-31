@@ -16,8 +16,10 @@ def probe_various_containers():
 
     obj = hou.node("/obj")
     geo = obj.node("geo_container")
+    created_geo = False
     if not geo:
         geo = obj.createNode("geo", "geo_container")
+        created_geo = True
 
     for parent_path, node_type, node_name in test_cases:
         print(f"\n--- Node Type: {node_type} ---")
@@ -26,9 +28,9 @@ def probe_various_containers():
             print(f"  [Skip] Parent '{parent_path}' not found.")
             continue
 
+        node = None
         try:
             node = parent.createNode(node_type, node_name)
-
             direct_children = [c.name() for c in node.children()]
             print(f"  [Direct Children] ({len(direct_children)}): {direct_children}")
 
@@ -45,12 +47,13 @@ def probe_various_containers():
             else:
                 print("  [Representative] None")
 
-            node.destroy()
-
         except Exception as e:
             print(f"  [Error] Failed to create or probe '{node_type}': {e}")
+        finally:
+            if node:
+                node.destroy()
 
-    if geo:
+    if created_geo:
         geo.destroy()
 
 

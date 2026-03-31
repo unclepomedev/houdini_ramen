@@ -359,9 +359,15 @@ def parse_node(
 
     inner_methods = []
     inner_method_resolver = SuffixResolver()
-    for child_name, rel_path in node_info.get("builtin_inner_nodes", {}).items():
-        method_name = to_safe_ident(inner_method_resolver.resolve(snake_case(child_name)))
-        inner_methods.append(ParsedInnerMethod(method_name=method_name, rel_path=rel_path))
+    for child_name, rel_path in sorted(node_info.get("builtin_inner_nodes", {}).items()):
+        method_name = to_safe_ident(
+            inner_method_resolver.resolve(snake_case(child_name))
+        )
+        inner_methods.append(
+            ParsedInnerMethod(
+                method_name=method_name, rel_path=safe_rust_string(rel_path)
+            )
+        )
 
     return ParsedNode(
         struct_name=struct_name,
