@@ -326,13 +326,30 @@ class HoudiniNodeExtractor:
         if create_name in node_types:
             return node_types[create_name]
 
-        for type_name, nt in node_types.items():
-            comps = nt.nameComponents()
-            if comps[1] == ns and comps[2] == base:
-                return nt
+        candidates = [
+            nt
+            for _, nt in node_types.items()
+            if nt.nameComponents()[1] == ns and nt.nameComponents()[2] == base
+        ]
 
-        logger.debug(f"Fallback failed: base key '{base_key}' not found in category")
-        return None
+        if not candidates:
+            logger.debug(
+                f"Fallback failed: base key '{base_key}' not found in category"
+            )
+            return None
+
+        def _version_key(nt):
+            ver = nt.nameComponents()[3]
+            if not ver:
+                return []
+            try:
+                return [int(x) for x in ver.split(".")]
+            except ValueError:
+                return [0]
+
+        non_deprecated = [nt for nt in candidates if not nt.deprecated()]
+        pool = non_deprecated if non_deprecated else candidates
+        return max(pool, key=_version_key)
 
     def extract_all_categories(self) -> dict[str, dict[str, NodeInfo]]:
         data: dict[str, dict[str, NodeInfo]] = {}
