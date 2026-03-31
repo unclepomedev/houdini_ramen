@@ -51,10 +51,18 @@ def probe_various_containers():
             print(f"  [Error] Failed to create or probe '{node_type}': {e}")
         finally:
             if node:
-                node.destroy()
+                try:
+                    node.destroy()
+                except Exception as destroy_error:
+                    print(
+                        f"  [Warn] Failed to destroy '{node.path()}': {destroy_error}"
+                    )
 
-    if created_geo:
-        geo.destroy()
+    if created_geo and geo:
+        try:
+            geo.destroy()
+        except Exception as destroy_error:
+            print(f"  [Warn] Failed to destroy '/obj/geo_container': {destroy_error}")
 
 
 if __name__ == "__main__":

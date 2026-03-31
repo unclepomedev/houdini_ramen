@@ -359,7 +359,9 @@ def parse_node(
 
     inner_methods = []
     inner_method_resolver = SuffixResolver()
-    for child_name, rel_path in sorted(node_info.get("builtin_inner_nodes", {}).items()):
+    for child_name, rel_path in sorted(
+        node_info.get("builtin_inner_nodes", {}).items()
+    ):
         method_name = to_safe_ident(
             inner_method_resolver.resolve(snake_case(child_name))
         )
