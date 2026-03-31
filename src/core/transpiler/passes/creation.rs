@@ -71,7 +71,7 @@ fn topological_sort(
         }
     }
 
-    indices.sort_by_key(|&i| depths[i].as_ref().unwrap().clone());
+    indices.sort_by_key(|&i| *depths[i].as_ref().unwrap());
     Ok(indices)
 }
 
