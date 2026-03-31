@@ -1,7 +1,9 @@
 use super::Transpiler;
+use crate::core::graph::{ExistingNodeRef, NodeGraph};
 use crate::core::types::{ContainerType, HoudiniNode, ParamValue, SpareParam};
 use std::collections::{BTreeMap, HashMap};
 
+#[derive(Clone)]
 struct DummyNode {
     id: usize,
     name: String,
@@ -360,4 +362,209 @@ fn test_transpiler_display_flag() {
 
     assert!(!script.contains("n_process_401.setDisplayFlag(True)"));
     assert!(!script.contains("n_process_401.setRenderFlag(True)"));
+}
+
+#[test]
+fn test_transpiler_nested_subnet_creation() {
+    // Simulate: solver node at top level, with inner nodes created inside it
+    let solver = DummyNode {
+        id: 501,
+        name: "solver".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(solver)).unwrap();
+
+    // Add an existing node (pre-created by Houdini inside the solver)
+    let existing = ExistingNodeRef {
+        id: 502,
+        name: "Prev_Frame".to_string(),
+    };
+    transpiler
+        .add_existing_node(Box::new(existing), 501, "Prev_Frame")
+        .unwrap();
+
+    // Add a nested node created inside the solver
+    let inner_ray = DummyNode {
+        id: 503,
+        name: "inner_ray".to_string(),
+        node_type: "ray",
+        inputs: {
+            let mut m = BTreeMap::new();
+            m.insert(0, (502, 0));
+            m
+        },
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    transpiler
+        .add_boxed_with_parent(Box::new(inner_ray), 501)
+        .unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    // solver created under parent
+    assert!(script.contains("n_solver_501 = parent.createNode('solver', 'solver')"));
+
+    // Prev_Frame fetched via hou.node
+    assert!(script.contains("n_Prev_Frame_502 = hou.node(n_solver_501.path() + '/Prev_Frame')"));
+
+    // inner_ray created under solver, not parent
+    assert!(script.contains("n_inner_ray_503 = n_solver_501.createNode('ray', 'inner_ray')"));
+    assert!(!script.contains("parent.createNode('ray', 'inner_ray')"));
+
+    // link from inner_ray to Prev_Frame
+    assert!(script.contains("n_inner_ray_503.setInput(0, n_Prev_Frame_502, 0)"));
+}
+
+#[test]
+fn test_node_graph_dive_into_api() {
+    let mut graph = NodeGraph::new("/obj/geo1");
+
+    let solver = graph.add(DummyNode {
+        id: 601,
+        name: "solver".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    });
+
+    graph.dive_into(&solver, |inner| {
+        let prev_frame = inner.get_existing_node("Prev_Frame");
+        let _inner_node = inner.add(DummyNode {
+            id: 603,
+            name: "inner_ray".to_string(),
+            node_type: "ray",
+            inputs: {
+                let mut m = BTreeMap::new();
+                m.insert(0, (prev_frame.get_id(), 0));
+                m
+            },
+            params: HashMap::new(),
+            spare_params: vec![],
+        });
+    });
+
+    let script = graph.build();
+
+    assert!(script.contains("n_solver_601 = parent.createNode('solver', 'solver')"));
+    assert!(script.contains("hou.node(n_solver_601.path() + '/Prev_Frame')"));
+    assert!(script.contains(".createNode('ray', 'inner_ray')"));
+    // inner_ray must NOT be created under parent
+    assert!(!script.contains("parent.createNode('ray', 'inner_ray')"));
+}
+
+#[test]
+fn test_nested_display_flag() {
+    let mut graph = NodeGraph::new("/obj/geo1");
+
+    let solver = graph.add(DummyNode {
+        id: 701,
+        name: "solver".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    });
+
+    graph.dive_into(&solver, |inner| {
+        let ray = inner.add(DummyNode {
+            id: 702,
+            name: "inner_ray".to_string(),
+            node_type: "ray",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        });
+        inner.set_display(&ray);
+    });
+
+    let script = graph.build();
+
+    assert!(script.contains("n_inner_ray_702.setDisplayFlag(True)"));
+    assert!(script.contains("n_inner_ray_702.setRenderFlag(True)"));
+}
+
+#[test]
+fn test_existing_node_runtime_guard() {
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+
+    let solver = DummyNode {
+        id: 801,
+        name: "solver".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    transpiler.add_boxed(Box::new(solver)).unwrap();
+
+    let existing = ExistingNodeRef {
+        id: 802,
+        name: "Prev_Frame".to_string(),
+    };
+    transpiler
+        .add_existing_node(Box::new(existing), 801, "Prev_Frame")
+        .unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("if not n_Prev_Frame_802:"));
+    assert!(script.contains("raise RuntimeError("));
+    assert!(script.contains("Existing node not found:"));
+}
+
+#[test]
+fn test_topological_sort_parent_before_child() {
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+
+    let outer = DummyNode {
+        id: 901,
+        name: "outer_subnet".to_string(),
+        node_type: "subnet",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    transpiler.add_boxed(Box::new(outer)).unwrap();
+
+    let inner = DummyNode {
+        id: 902,
+        name: "inner_subnet".to_string(),
+        node_type: "subnet",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    transpiler
+        .add_boxed_with_parent(Box::new(inner), 901)
+        .unwrap();
+
+    let existing = ExistingNodeRef {
+        id: 903,
+        name: "Input_1".to_string(),
+    };
+    transpiler
+        .add_existing_node(Box::new(existing), 902, "Input_1")
+        .unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    let outer_pos = script.find("n_outer_subnet_901").unwrap();
+    let inner_pos = script.find("n_inner_subnet_902").unwrap();
+    let existing_pos = script.find("n_Input_1_903").unwrap();
+
+    assert!(
+        outer_pos < inner_pos,
+        "outer subnet must be created before inner subnet"
+    );
+    assert!(
+        inner_pos < existing_pos,
+        "inner subnet must be created before existing child"
+    );
 }

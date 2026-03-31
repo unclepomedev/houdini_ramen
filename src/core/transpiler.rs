@@ -7,7 +7,7 @@ pub mod tests;
 use crate::core::py_escape::sanitize_py_ident;
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::{ContainerType, HoudiniNode};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 pub struct Transpiler {
     parent_path: String,
@@ -16,6 +16,14 @@ pub struct Transpiler {
     auto_create_type: Option<ContainerType>,
     auto_clear: bool,
     display_node_id: Option<usize>,
+    /// Display flags for nodes inside subnets: (display_node_id, container_node_id)
+    nested_display_nodes: Vec<(usize, usize)>,
+    /// Maps a node id to its parent node id (for nested/subnet nodes)
+    node_parent: HashMap<usize, usize>,
+    /// Set of node ids that are pre-existing (fetched via hou.item, not created)
+    existing_nodes: HashSet<usize>,
+    /// Maps a node id to the original name used for hou.item lookup
+    existing_node_names: HashMap<usize, String>,
 }
 
 impl Transpiler {
@@ -31,11 +39,19 @@ impl Transpiler {
             auto_create_type,
             auto_clear,
             display_node_id: None,
+            nested_display_nodes: Vec::new(),
+            node_parent: HashMap::new(),
+            existing_nodes: HashSet::new(),
+            existing_node_names: HashMap::new(),
         }
     }
 
     pub fn set_display_node(&mut self, id: usize) {
         self.display_node_id = Some(id);
+    }
+
+    pub fn add_nested_display_nodes(&mut self, nodes: Vec<(usize, usize)>) {
+        self.nested_display_nodes.extend(nodes);
     }
 
     pub fn add<T: HoudiniNode + 'static>(&mut self, node: T) -> Result<(), String> {
@@ -52,7 +68,14 @@ impl Transpiler {
             self.auto_create_type,
             self.auto_clear,
         );
-        passes::creation::write_creation_pass(&mut builder, &self.nodes, &self.id_to_var)?;
+        passes::creation::write_creation_pass(
+            &mut builder,
+            &self.nodes,
+            &self.id_to_var,
+            &self.node_parent,
+            &self.existing_nodes,
+            &self.existing_node_names,
+        )?;
         passes::spare_params::write_spare_parameter_pass(
             &mut builder,
             &self.nodes,
@@ -72,7 +95,12 @@ impl Transpiler {
             None
         };
 
-        passes::footer::write_footer(&mut builder, display_var);
+        let nested_display_vars: Vec<&str> = self
+            .nested_display_nodes
+            .iter()
+            .filter_map(|(nid, _cid)| self.id_to_var.get(nid).map(|v| v.as_str()))
+            .collect();
+        passes::footer::write_footer(&mut builder, display_var, &nested_display_vars);
 
         Ok(builder.build())
     }
@@ -92,6 +120,33 @@ impl Transpiler {
 
     pub(crate) fn add_boxed(&mut self, node: Box<dyn HoudiniNode>) -> Result<(), String> {
         self.register_node(node.as_ref())?;
+        self.nodes.push(node);
+        Ok(())
+    }
+
+    pub(crate) fn add_boxed_with_parent(
+        &mut self,
+        node: Box<dyn HoudiniNode>,
+        parent_node_id: usize,
+    ) -> Result<(), String> {
+        self.register_node(node.as_ref())?;
+        self.node_parent.insert(node.get_id(), parent_node_id);
+        self.nodes.push(node);
+        Ok(())
+    }
+
+    pub(crate) fn add_existing_node(
+        &mut self,
+        node: Box<dyn HoudiniNode>,
+        parent_node_id: usize,
+        original_name: &str,
+    ) -> Result<(), String> {
+        self.register_node(node.as_ref())?;
+        let id = node.get_id();
+        self.node_parent.insert(id, parent_node_id);
+        self.existing_nodes.insert(id);
+        self.existing_node_names
+            .insert(id, original_name.to_string());
         self.nodes.push(node);
         Ok(())
     }
