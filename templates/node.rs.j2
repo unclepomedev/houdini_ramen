@@ -156,6 +156,12 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
         &self.spare_params
     }
+    {% if node.dive_target %}
+
+    fn get_dive_target(&self) -> Option<&'static str> {
+        Some("{{ node.dive_target }}")
+    }
+    {% endif %}
 }
 {% if node.inner_methods %}
 #[allow(clippy::wrong_self_convention)]

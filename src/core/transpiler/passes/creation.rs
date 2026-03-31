@@ -13,6 +13,9 @@ pub fn write_creation_pass(
 ) -> Result<(), String> {
     builder.line("# --- Node Creation Pass ---");
 
+    let id_to_node: HashMap<usize, &dyn HoudiniNode> =
+        nodes.iter().map(|n| (n.get_id(), n.as_ref())).collect();
+
     let sorted = topological_sort(nodes, node_parent)?;
     for idx in sorted {
         write_node_creation(
@@ -22,6 +25,7 @@ pub fn write_creation_pass(
             node_parent,
             existing_nodes,
             existing_node_names,
+            &id_to_node,
         )?;
     }
 
@@ -82,6 +86,7 @@ fn write_node_creation(
     node_parent: &HashMap<usize, usize>,
     existing_nodes: &HashSet<usize>,
     existing_node_names: &HashMap<usize, String>,
+    id_to_node: &HashMap<usize, &dyn HoudiniNode>,
 ) -> Result<(), String> {
     let node_id = node.get_id();
     let var_name = id_to_var
@@ -89,6 +94,10 @@ fn write_node_creation(
         .ok_or_else(|| format!("missing variable mapping for node id {}", node_id))?;
 
     let parent_var = get_parent_var(node_id, id_to_var, node_parent)?;
+    let parent_node = node_parent
+        .get(&node_id)
+        .and_then(|pid| id_to_node.get(pid).copied());
+
     let is_existing = existing_nodes.contains(&node_id);
 
     match (is_existing, parent_var) {
@@ -99,7 +108,7 @@ fn write_node_creation(
             "existing node id {} has no parent mapping",
             node_id
         )),
-        (false, Some(p_var)) => write_nested_node(builder, node, var_name, p_var),
+        (false, Some(p_var)) => write_nested_node(builder, node, var_name, p_var, parent_node),
         (false, None) => write_root_node(builder, node, var_name),
     }
 }
@@ -153,11 +162,22 @@ fn write_nested_node(
     node: &dyn HoudiniNode,
     var_name: &str,
     parent_var: &str,
+    parent_node: Option<&dyn HoudiniNode>,
 ) -> Result<(), String> {
+    let actual_parent_expr = if let Some(p) = parent_node {
+        if let Some(target) = p.get_dive_target() {
+            format!("hou.node({}.path() + '/{}')", parent_var, target)
+        } else {
+            parent_var.to_string()
+        }
+    } else {
+        parent_var.to_string()
+    };
+
     builder.line(&format!(
         "{} = {}.createNode('{}', '{}')",
         var_name,
-        parent_var,
+        actual_parent_expr,
         node.get_node_type(),
         escape_py_key(node.get_name())
     ));

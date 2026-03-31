@@ -487,6 +487,9 @@ pub trait HoudiniNode {
     fn get_spare_params(&self) -> &[SpareParam] {
         &[]
     }
+    fn get_dive_target(&self) -> Option<&'static str> {
+        None
+    }
 }
 
 impl ParamValue {
