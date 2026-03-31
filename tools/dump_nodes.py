@@ -292,15 +292,45 @@ class HoudiniNodeExtractor:
             parms=parms,
         )
 
+    @staticmethod
+    def _get_base_names(cat: hou.NodeTypeCategory) -> set[str]:
+        return {nt.nameComponents()[2] for nt in cat.nodeTypes().values()}
+
+    @staticmethod
+    def _resolve_default_node_type(cat: hou.NodeTypeCategory, base_name: str, parent):
+        if parent:
+            try:
+                temp_node = parent.createNode(base_name, run_init_scripts=False)
+                node_type = temp_node.type()
+                temp_node.destroy()
+                return node_type
+            except Exception as e:
+                logger.debug(
+                    f"Failed to instantiate '{base_name}' for default version resolution: {e}"
+                )
+
+        try:
+            return cat.nodeTypes()[base_name]
+        except KeyError as e:
+            logger.debug(
+                f"Fallback failed: base name '{base_name}' not found in category: {e}"
+            )
+            return None
+
     def extract_all_categories(self) -> dict[str, dict[str, NodeInfo]]:
         data: dict[str, dict[str, NodeInfo]] = {}
         try:
             for cat_name, cat in sorted(hou.nodeTypeCategories().items()):
                 logger.info(f"Processing category: {cat_name}")
                 cat_data: dict[str, NodeInfo] = {}
+                parent = self.temp_manager.get_parent(cat_name)
 
-                for node_name, node_type in sorted(cat.nodeTypes().items()):
-                    cat_data[node_name] = self._extract_node_info(node_type, cat_name)
+                for base_name in sorted(self._get_base_names(cat)):
+                    node_type = self._resolve_default_node_type(cat, base_name, parent)
+                    if not node_type:
+                        continue
+
+                    cat_data[base_name] = self._extract_node_info(node_type, cat_name)
 
                 data[cat_name] = cat_data
         finally:
