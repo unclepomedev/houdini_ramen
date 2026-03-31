@@ -294,28 +294,45 @@ class HoudiniNodeExtractor:
 
     @staticmethod
     def _get_base_names(cat: hou.NodeTypeCategory) -> set[str]:
-        return {nt.nameComponents()[2] for nt in cat.nodeTypes().values()}
+        names = set()
+        for nt in cat.nodeTypes().values():
+            comps = nt.nameComponents()
+            ns, base = comps[1], comps[2]
+            key = f"{ns}::{base}" if ns else base
+            names.add(key)
+        return names
 
     @staticmethod
-    def _resolve_default_node_type(cat: hou.NodeTypeCategory, base_name: str, parent):
+    def _resolve_default_node_type(cat: hou.NodeTypeCategory, base_key: str, parent):
+        if "::" in base_key:
+            ns, base = base_key.split("::", 1)
+        else:
+            ns, base = "", base_key
+
+        create_name = f"{ns}::{base}" if ns else base
+
         if parent:
             try:
-                temp_node = parent.createNode(base_name, run_init_scripts=False)
+                temp_node = parent.createNode(create_name, run_init_scripts=False)
                 node_type = temp_node.type()
                 temp_node.destroy()
                 return node_type
             except Exception as e:
                 logger.debug(
-                    f"Failed to instantiate '{base_name}' for default version resolution: {e}"
+                    f"Failed to instantiate '{create_name}' for default version resolution: {e}"
                 )
 
-        try:
-            return cat.nodeTypes()[base_name]
-        except KeyError as e:
-            logger.debug(
-                f"Fallback failed: base name '{base_name}' not found in category: {e}"
-            )
-            return None
+        node_types = cat.nodeTypes()
+        if create_name in node_types:
+            return node_types[create_name]
+
+        for type_name, nt in node_types.items():
+            comps = nt.nameComponents()
+            if comps[1] == ns and comps[2] == base:
+                return nt
+
+        logger.debug(f"Fallback failed: base key '{base_key}' not found in category")
+        return None
 
     def extract_all_categories(self) -> dict[str, dict[str, NodeInfo]]:
         data: dict[str, dict[str, NodeInfo]] = {}

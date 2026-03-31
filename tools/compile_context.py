@@ -65,7 +65,7 @@ def get_import_path(target_id: str, struct_name: str) -> str:
 
 
 def process_node_file(
-    target_id: str, node: dict, project_root: Path, errors: list
+    target_id: str, node: dict[str, str], project_root: Path, errors: list
 ) -> str:
     node_path = node.get("path")
     if not node_path:
