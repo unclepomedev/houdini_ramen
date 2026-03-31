@@ -118,6 +118,12 @@ class ParsedMenuEnum:
 
 
 @dataclass(frozen=True)
+class ParsedInnerMethod:
+    method_name: str
+    rel_path: str
+
+
+@dataclass(frozen=True)
 class ParsedNode:
     struct_name: str
     node_type: str
@@ -126,6 +132,7 @@ class ParsedNode:
     inputs: list[ParsedInput] = field(default_factory=list)
     params: list[ParsedParam] = field(default_factory=list)
     enums: list[ParsedMenuEnum] = field(default_factory=list)
+    inner_methods: list[ParsedInnerMethod] = field(default_factory=list)
 
 
 class SuffixResolver:
@@ -350,6 +357,12 @@ def parse_node(
         if menu_enum is not None:
             enums.append(menu_enum)
 
+    inner_methods = []
+    inner_method_resolver = SuffixResolver()
+    for child_name, rel_path in node_info.get("builtin_inner_nodes", {}).items():
+        method_name = to_safe_ident(inner_method_resolver.resolve(snake_case(child_name)))
+        inner_methods.append(ParsedInnerMethod(method_name=method_name, rel_path=rel_path))
+
     return ParsedNode(
         struct_name=struct_name,
         node_type=node_type,
@@ -358,6 +371,7 @@ def parse_node(
         inputs=parsed_inputs,
         params=params,
         enums=enums,
+        inner_methods=inner_methods,
     )
 
 

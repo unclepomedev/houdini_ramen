@@ -114,3 +114,61 @@ run-live TARGET:
     BASENAME=$(basename "$MATCH" .rs)
     echo "🚀 Running: cargo run --example $BASENAME"
     HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run --example "$BASENAME"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# probe ===================================================
+probe-inner-node:
+    #!/usr/bin/env bash
+    set -e
+
+    cd {{ HOUDINI_RESOURCES }}
+    source houdini_setup
+    cd {{ PROJECT_ROOT }}
+    hython tools/probe/probe_inner_node.py
+
+probe-deep-node:
+    #!/usr/bin/env bash
+    set -e
+
+    cd {{ HOUDINI_RESOURCES }}
+    source houdini_setup
+    cd {{ PROJECT_ROOT }}
+    hython tools/probe/probe_deep_node.py
+
+probe-metadata:
+    #!/usr/bin/env bash
+    set -e
+
+    cd {{ HOUDINI_RESOURCES }}
+    source houdini_setup
+    cd {{ PROJECT_ROOT }}
+    hython tools/probe/metadata.py

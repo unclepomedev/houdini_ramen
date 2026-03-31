@@ -33,6 +33,7 @@ class NodeInfo:
     max_inputs: int
     input_labels: list[str] = field(default_factory=list)
     parms: list[ParmInfo] = field(default_factory=list)
+    builtin_inner_nodes: dict[str, str] = field(default_factory=dict)
 
 
 def _exclude_none_factory(data: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -241,7 +242,7 @@ class HoudiniNodeExtractor:
         return parms
 
     def _extract_input_labels(
-        self, node_type: hou.NodeType, cat_name: str
+            self, node_type: hou.NodeType, cat_name: str
     ) -> list[str]:
         """Temporarily instantiates a node to extract its input labels, with fallback for failures."""
         max_inputs = node_type.maxNumInputs()
@@ -285,12 +286,54 @@ class HoudiniNodeExtractor:
                 f"Permission denied for parameters of '{node_type.name()}': {e}"
             )
 
+        builtin_inner_nodes = self._extract_builtin_inner_nodes(node_type, cat_name)
+
         return NodeInfo(
             min_inputs=node_type.minNumInputs(),
             max_inputs=node_type.maxNumInputs(),
             input_labels=self._extract_input_labels(node_type, cat_name),
             parms=parms,
+            builtin_inner_nodes=builtin_inner_nodes,
         )
+
+    def _extract_builtin_inner_nodes(
+            self, node_type: hou.NodeType, cat_name: str
+    ) -> dict[str, str]:
+        builtin_inner_nodes: dict[str, str] = {}
+        parent = self.temp_manager.get_parent(cat_name)
+        if not parent:
+            return builtin_inner_nodes
+
+        temp_node = None
+        try:
+            temp_node = parent.createNode(node_type.name())
+            target_node = temp_node
+
+            hda_def = temp_node.type().definition()
+            if hda_def:
+                sections = hda_def.sections()
+                if "DiveTarget" in sections:
+                    dive_path = sections["DiveTarget"].contents().strip()
+                    if dive_path:
+                        dive_node = temp_node.node(dive_path)
+                        if dive_node:
+                            target_node = dive_node
+
+            for child in target_node.children():
+                rel_path = child.path().replace(temp_node.path() + "/", "")
+                builtin_inner_nodes[child.name()] = rel_path
+        except Exception as e:
+            logger.debug(
+                f"Failed to extract inner nodes for {node_type.name()}: {e}"
+            )
+        finally:
+            if temp_node is not None:
+                try:
+                    temp_node.destroy()
+                except Exception:
+                    pass
+
+        return builtin_inner_nodes
 
     @staticmethod
     def _get_base_names(cat: hou.NodeTypeCategory) -> set[str]:
