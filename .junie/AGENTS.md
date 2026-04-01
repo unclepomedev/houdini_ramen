@@ -12,7 +12,7 @@ ALWAYS fetch stubs/guidelines before coding.
 - **Find IDs:** NEVER guess. Use terminal:
   ```bash
   grep -i "node_name" resources/auto_graph.json
-  grep -E "^  \"(task|doc)/" domain_graph.json
+  grep -E "^  \"(task|doc)/" resources/domain_graph.json
   ```
 
 - **Command:** `just get-context <target_id>`
