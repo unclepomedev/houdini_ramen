@@ -1,7 +1,7 @@
 use crate::core::py_escape::escape_py_key;
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::HoudiniNode;
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeSet, HashMap, HashSet};
 
 pub fn write_creation_pass(
     builder: &mut PythonBuilder,
@@ -10,26 +10,29 @@ pub fn write_creation_pass(
     node_parent: &HashMap<usize, usize>,
     existing_nodes: &HashSet<usize>,
     existing_node_names: &HashMap<usize, String>,
-) -> Result<(), String> {
+) -> Result<BTreeSet<String>, String> {
     builder.line("# --- Node Creation Pass ---");
 
     let id_to_node: HashMap<usize, &dyn HoudiniNode> =
         nodes.iter().map(|n| (n.get_id(), n.as_ref())).collect();
 
+    let mut container_exprs = BTreeSet::new();
+
+    let mut ctx = CreationContext {
+        id_to_var,
+        node_parent,
+        existing_nodes,
+        existing_node_names,
+        id_to_node: &id_to_node,
+        container_exprs: &mut container_exprs,
+    };
+
     let sorted = topological_sort(nodes, node_parent)?;
     for idx in sorted {
-        write_node_creation(
-            builder,
-            nodes[idx].as_ref(),
-            id_to_var,
-            node_parent,
-            existing_nodes,
-            existing_node_names,
-            &id_to_node,
-        )?;
+        write_node_creation(builder, nodes[idx].as_ref(), &mut ctx)?;
     }
 
-    Ok(())
+    Ok(container_exprs)
 }
 
 fn parent_depth(node_id: usize, node_parent: &HashMap<usize, usize>) -> Result<usize, String> {
@@ -79,36 +82,50 @@ fn topological_sort(
     Ok(indices)
 }
 
+struct CreationContext<'a> {
+    id_to_var: &'a HashMap<usize, String>,
+    node_parent: &'a HashMap<usize, usize>,
+    existing_nodes: &'a HashSet<usize>,
+    existing_node_names: &'a HashMap<usize, String>,
+    id_to_node: &'a HashMap<usize, &'a dyn HoudiniNode>,
+    container_exprs: &'a mut BTreeSet<String>,
+}
+
 fn write_node_creation(
     builder: &mut PythonBuilder,
     node: &dyn HoudiniNode,
-    id_to_var: &HashMap<usize, String>,
-    node_parent: &HashMap<usize, usize>,
-    existing_nodes: &HashSet<usize>,
-    existing_node_names: &HashMap<usize, String>,
-    id_to_node: &HashMap<usize, &dyn HoudiniNode>,
+    ctx: &mut CreationContext,
 ) -> Result<(), String> {
     let node_id = node.get_id();
-    let var_name = id_to_var
+    let var_name = ctx
+        .id_to_var
         .get(&node_id)
         .ok_or_else(|| format!("missing variable mapping for node id {}", node_id))?;
 
-    let parent_var = get_parent_var(node_id, id_to_var, node_parent)?;
-    let parent_node = node_parent
+    let parent_var = get_parent_var(node_id, ctx.id_to_var, ctx.node_parent)?;
+    let parent_node = ctx
+        .node_parent
         .get(&node_id)
-        .and_then(|pid| id_to_node.get(pid).copied());
+        .and_then(|pid| ctx.id_to_node.get(pid).copied());
 
-    let is_existing = existing_nodes.contains(&node_id);
+    let is_existing = ctx.existing_nodes.contains(&node_id);
 
     match (is_existing, parent_var) {
         (true, Some(p_var)) => {
-            write_existing_node(builder, node, var_name, p_var, existing_node_names)
+            write_existing_node(builder, node, var_name, p_var, ctx.existing_node_names)
         }
         (true, None) => Err(format!(
             "existing node id {} has no parent mapping",
             node_id
         )),
-        (false, Some(p_var)) => write_nested_node(builder, node, var_name, p_var, parent_node),
+        (false, Some(p_var)) => write_nested_node(
+            builder,
+            node,
+            var_name,
+            p_var,
+            parent_node,
+            ctx.container_exprs,
+        ),
         (false, None) => write_root_node(builder, node, var_name),
     }
 }
@@ -163,6 +180,7 @@ fn write_nested_node(
     var_name: &str,
     parent_var: &str,
     parent_node: Option<&dyn HoudiniNode>,
+    container_exprs: &mut BTreeSet<String>,
 ) -> Result<(), String> {
     let actual_parent_expr = if let Some(p) = parent_node {
         if let Some(target) = p.get_dive_target() {
@@ -173,6 +191,8 @@ fn write_nested_node(
     } else {
         parent_var.to_string()
     };
+
+    container_exprs.insert(actual_parent_expr.clone());
 
     builder.line(&format!(
         "{} = {}.createNode('{}', '{}')",

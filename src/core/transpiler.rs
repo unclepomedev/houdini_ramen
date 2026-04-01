@@ -68,7 +68,7 @@ impl Transpiler {
             self.auto_create_type,
             self.auto_clear,
         );
-        passes::creation::write_creation_pass(
+        let container_exprs = passes::creation::write_creation_pass(
             &mut builder,
             &self.nodes,
             &self.id_to_var,
@@ -100,7 +100,12 @@ impl Transpiler {
             .iter()
             .filter_map(|(nid, _cid)| self.id_to_var.get(nid).map(|v| v.as_str()))
             .collect();
-        passes::footer::write_footer(&mut builder, display_var, &nested_display_vars);
+        passes::footer::write_footer(
+            &mut builder,
+            display_var,
+            &nested_display_vars,
+            &container_exprs,
+        );
 
         Ok(builder.build())
     }
