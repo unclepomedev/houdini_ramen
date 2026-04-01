@@ -166,7 +166,7 @@ fn write_nested_node(
 ) -> Result<(), String> {
     let actual_parent_expr = if let Some(p) = parent_node {
         if let Some(target) = p.get_dive_target() {
-            format!("hou.node({}.path() + '/{}')", parent_var, target)
+            format!("{}.node('{}')", parent_var, escape_py_key(target))
         } else {
             parent_var.to_string()
         }

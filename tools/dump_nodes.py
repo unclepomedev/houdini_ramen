@@ -311,10 +311,14 @@ class HoudiniNodeExtractor:
 
             dive_target_path = self._get_dive_target_path(temp_node)
             if dive_target_path:
-                result.dive_target = dive_target_path
                 dive_node = temp_node.node(dive_target_path)
                 if dive_node:
+                    result.dive_target = dive_target_path
                     target_node = dive_node
+                else:
+                    logger.debug(
+                        f"Ignoring unresolved DiveTarget for '{node_type.name()}': {dive_target_path}"
+                    )
 
             for child in target_node.children():
                 rel_path = child.path().replace(temp_node.path() + "/", "")
