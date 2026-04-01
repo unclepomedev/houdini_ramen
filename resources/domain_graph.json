@@ -1,4 +1,9 @@
 {
+  "doc/custom_attribute": {
+    "depends_on": [],
+    "path": "resources/docs/custom_attribute.md",
+    "type": "doc"
+  },
   "doc/final_result_display": {
     "depends_on": [],
     "path": "resources/docs/final_result_display.md",
@@ -77,7 +82,8 @@
   "task/basic_workflow": {
     "depends_on": [
       "doc/final_result_display",
-      "doc/graph_initialization"
+      "doc/graph_initialization",
+      "doc/custom_attribute"
     ],
     "path": null,
     "type": "task"

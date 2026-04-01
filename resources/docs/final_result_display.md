@@ -1,4 +1,4 @@
-# Houdini Ramen: Display & Render Flags
+# Display & Render Flags
 
 To automatically show the final result in the Houdini viewport, you MUST specify the output node using the `graph.set_display()` method before building the graph. Do not attempt to set display flags via node parameters or custom Python/VEX snippets.
 

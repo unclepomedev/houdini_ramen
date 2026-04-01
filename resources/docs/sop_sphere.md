@@ -1,4 +1,4 @@
-# Houdini Ramen: SopSphere Parameter Dependencies
+# SopSphere Parameter Dependencies
 
 The `SopSphere` node has implicit parameter dependencies based on its `type` (Primitive Type). If you want to increase the resolution of the sphere, you MUST set the parameters according to the selected type:
 

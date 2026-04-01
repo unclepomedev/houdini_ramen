@@ -1,4 +1,4 @@
-# Houdini Ramen: Multiparm (Instanced) Parameters
+# Multiparm (Instanced) Parameters
 
 When a Houdini node has multiparm blocks (e.g., `Attribute Create` or `Merge`), the parameters are generated with an `_inst` suffix and require a 1-based index as the first argument.
 

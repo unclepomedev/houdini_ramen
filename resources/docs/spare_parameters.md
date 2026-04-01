@@ -1,18 +1,14 @@
-# Houdini Ramen: Spare Parameters Guidelines
+# Spare Parameters
 
 You can add custom spare parameters to any Houdini node using the `.add_spare()` method combined with parameter builder structs from `crate::core::types`. This is highly readable and scalable.
 
-## Required Imports
+## Implementation Example
 ```rust
 use houdini_ramen::core::types::{
     SpareFloat, SpareInt, SpareString, SpareToggle, SpareColor, 
     SpareButton, SpareMenu, SpareFile, SpareNodePath, SpareRampFloat, SpareRampColor
 };
-```
 
-## Implementation Example
-
-```rust
 let ctrl_node = SopNull::new("CONTROLLER")
     .add_spare(SpareFloat::new("radius", "Radius").with_default(2.5).with_range(0.1, 10.0))
     .add_spare(SpareInt::new("count", "Count").with_default(500).with_range(10, 1000))
