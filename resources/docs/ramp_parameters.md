@@ -1,11 +1,6 @@
-# Houdini Ramen: Ramp Parameters Guidelines
+# Ramp Parameters
 
 Unlike standard auto-generated node parameters, Ramp parameters (gradients or float curves) rely on hardcoded structs in `core::types`. When a node stub requires a `Vec<crate::core::types::RampPoint>`, you MUST construct it using `RampPoint` and `RampInterpolation`.
-
-## Required Imports
-```rust
-use houdini_ramen::core::types::{RampPoint, RampInterpolation};
-```
 
 ## Allowed Interpolations
 
@@ -17,6 +12,8 @@ You MUST use one of the following exact variants for `RampInterpolation`:
 For a Color Ramp (RGB), `value` must contain exactly 3 elements:
 
 ```rust
+use houdini_ramen::core::types::{RampPoint, RampInterpolation};
+
 let color = graph.add(
     SopColor::new("color")
         .with_ramp(vec![

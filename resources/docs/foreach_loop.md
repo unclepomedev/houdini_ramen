@@ -1,16 +1,11 @@
-# Houdini Ramen: For-Each Loop Guidelines
+# For-Each Loop
 
-When implementing a For-Each loop in Houdini Ramen, you MUST NOT instantiate `SopBlockBegin` or `SopBlockEnd` manually.
-Instead, you must use the `add_foreach_loop` helper function from the `helpers` module. This ensures safe scoping, correct input geometry wiring, and automatic boilerplate configuration (e.g., `blockpath`).
-
-## Import Requirement
-```rust
-use crate::helpers::loops::add_foreach_loop;
-```
+NEVER manually instantiate `SopBlockBegin`/`SopBlockEnd`. ALWAYS use `helpers::add_foreach_loop` to auto-handle scoping, input wiring, and `blockpath` boilerplate.
 
 ## Implementation Example
-
 ```rust
+use crate::helpers::loops::add_foreach_loop;
+
 let mut graph = NodeGraph::new("/obj/geo1");
 let box_node = graph.add(SopBox::new("base_geo"));
 

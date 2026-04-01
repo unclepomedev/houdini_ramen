@@ -1,68 +1,48 @@
 # Houdini Ramen Agent Guidelines
 
-## 1. Core Philosophy & Identity
-Your primary directive is **Deterministic Execution**. You are strictly prohibited from hallucinating or guessing Houdini Node APIs, parameters, or VEX injection strategies. You must rely 100% on the DAG-based Context Compiler.
+## 1. Core Philosophy
 
-## 2. Context Compilation (The DAG System)
-Before writing or modifying any Rust code related to Houdini nodes, you MUST fetch the exact stubs and domain guidelines.
+**Deterministic Execution ONLY**. NEVER hallucinate or guess Houdini APIs, parameters, or VEX. Rely 100% on the DAG Context Compiler.
 
-**How to find a `<target_id>`:**
-- **For Houdini Nodes:** The ID format is strictly `{category}/{struct_name}` in lowercase.
-- **Target Examples:**
-  - Specific Node: `sop/sopattribwrangle`, `sop/sopbox`, `dop/dopnetwork`
-  - Task/Recipe: `task/foreach_loop`, `task/your_custom_recipe_name`
-- **If unsure:** Do not guess. Search the registry keys directly using standard terminal tools to find the correct `target_id`. Replace the search term with the node name or category you are looking for:
+## 2. Context Compilation
+
+ALWAYS fetch stubs/guidelines before coding.
+
+- **Target ID Format:** Lowercase `{category}/{struct_name}` (e.g., `sop/sopbox`, `task/foreach_loop`).
+- **Find IDs:** NEVER guess. Use terminal:
   ```bash
-  # Example 1: Searching for a specific node (e.g., "wrangle" or "box")
-  grep -i "wrangle" resources/auto_graph.json
-  grep -i "box" resources/auto_graph.json
-  
-  # Example 2: Listing all registered custom tasks or documentation rules
+  grep -i "node_name" resources/auto_graph.json
   grep -E "^  \"(task|doc)/" domain_graph.json
   ```
 
-**Command:**
-```bash
-just get-context <target_id>
-```
+- **Command:** `just get-context <target_id>`
+- **Rule:** Build strictly from stdout. Do NOT assume unlisted parameters exist. If stdout contains `[ERROR]`, STOP and
+  use Observation Loop.
 
-**Execution Rule:**
-Read the standard output of the command. **If the output contains `[ERROR]` markers, STOP and report via the Observation Loop.** Otherwise, it will provide the exact Rust `pub struct` definitions and associated Markdown rules (e.g., VEX injection rules). Build your code *strictly* based on this output. Do not assume standard Houdini parameters exist unless they are present in the compiled stub.
+## 3. Verification (LiveLink)
 
-## 3. Verification Step (LiveLink)
-Once you have implemented the Rust script inside the `examples/` directory based on the compiled context, you MUST verify your implementation by executing it. Assume the Admin has already started the Houdini LiveLink server.
+Verify `examples/` scripts (assuming LiveLink server is running).
 
-**Command:**
-```bash
-just run-live <target_prefix_or_name>
-```
-*Example: If you created `examples/002_scatter.rs`, run `just run-live 002`.*
+- **Command:** `just run-live <prefix_or_name>` (e.g., `just run-live 002`).
+- **Rule:** Success = No Rust/Houdini errors. Failure = STOP and use Observation Loop immediately.
 
-**Evaluation Rule:**
-- **Success:** If the execution completes without Rust compilation errors or Houdini Python runtime errors, your task is successful.
-- **Failure:** If you encounter a Rust compiler error or a runtime error returned from Houdini, proceed immediately to the Observation Loop.
+## 4. Observation Loop
 
-## 4. The Observation Loop (Feedback & Knowledge Growth)
-The Context Compiler's knowledge base is continually evolving. If you encounter any of the following situations during verification:
-- A Rust compilation error due to a missing method in a stub.
-- A runtime error from Houdini via LiveLink.
-- A semantic gap where you don't know the best practice for a specific Houdini task.
-- A contradiction where the provided documentation/recipes (e.g., in `resources/docs`) contain outdated syntax or patterns that cause compile errors.
-
-**DO NOT brute-force, guess, or repeatedly retry.** Instead, halt your implementation and report the deficiency to the Admin (Human) using the following exact format in your chat response:
+If you encounter missing stub methods, LiveLink errors, semantic gaps, or stale docs: **NEVER brute-force, guess, or retry**. Halt and report to the Admin EXACTLY like this:
 
 ```text
 [OBSERVATION]
 - Event Type: [compile_miss | livelink_error | missing_guideline | stale_doc]
 - Target Node/Task: [e.g., sop/sopboolean]
-- Detail: [e.g., The stub is missing the method to set the output group name.]
-- Proposal: [e.g., Please update the API dumper or add a specific rule to domain_graph.json.]
+- Detail: [Specific error or missing method]
+- Proposal: [Suggested fix for Admin]
 ```
-Wait for the Admin to update the graph and stubs before proceeding.
 
-## 5. Strict Coding Standards
-- **Code Comments:** NEVER include Japanese (or any non-English) comments or obvious, self-explanatory comments inside code blocks.
-- **Code Explanations:** Explanations of the code must be written in the normal chat text outside the code blocks, never inside.
-- **VEX Injection:** Never inline raw VEX strings in Rust. Always follow the `include_str!` rules fetched via the context compiler.
-- Whenever passing a node to functions like set_input or add_node, ALWAYS pass it by reference using & (e.g., &my_node). Never use .clone().
+Wait for Admin updates before proceeding.
 
+## 5. Coding Standards
+
+- **Comments:** NO Japanese/non-English. NO obvious/self-explanatory comments inside code.
+- **Explanations:** Explain outside code blocks ONLY.
+- **VEX:** NO inline raw strings. ALWAYS use `include_str!` rules from context.
+- **Node Passing:** ALWAYS pass by reference to `set_input`/`add_node` (e.g., `&my_node`). NEVER use `.clone()`.
