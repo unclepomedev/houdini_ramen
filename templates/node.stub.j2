@@ -48,12 +48,14 @@ impl {{ node.struct_name }} {
     pub fn trigger_{{ p.method_suffix }}(self, {{ p.fn_args }}) -> Self;
     {% else %}
     pub fn with_{{ p.method_suffix }}(self, {{ p.fn_args }}, val: {{ p.r_type }}) -> Self;
+    pub fn with_{{ p.method_suffix }}_expr(self, {{ p.fn_args }}, expr: &str) -> Self;
     {% endif %}
     {% else %}
     {% if p.r_type == "()" %}
     pub fn trigger_{{ p.method_suffix }}(self) -> Self;
     {% else %}
     pub fn with_{{ p.method_suffix }}(self, val: {{ p.r_type }}) -> Self;
+    pub fn with_{{ p.method_suffix }}_expr(self, expr: &str) -> Self;
     {% endif %}
     {% endif %}
     {% endfor %}

@@ -656,3 +656,39 @@ fn test_dive_target_parent_resolution() {
         "dive target container must get layoutChildren"
     );
 }
+
+#[test]
+fn test_expression_parameter_emits_set_expression() {
+    let mut node = DummyNode {
+        id: 1101,
+        name: "xform".to_string(),
+        node_type: "xform",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    node.params.insert(
+        "tx".to_string(),
+        ParamValue::Expression("$F*23".to_string()),
+    );
+    node.params.insert(
+        "ty".to_string(),
+        ParamValue::Expression("ch(\"../other/ty\")".to_string()),
+    );
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(node)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(
+        script.contains(r#"n_xform_1101.parm('tx').setExpression("$F*23")"#),
+        "Expression param should emit setExpression: {}",
+        script
+    );
+    assert!(
+        script.contains(r#"n_xform_1101.parm('ty').setExpression("ch(\"../other/ty\")""#),
+        "Expression with quotes should be properly escaped: {}",
+        script
+    );
+}

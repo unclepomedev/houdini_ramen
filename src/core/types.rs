@@ -57,6 +57,7 @@ pub enum ParamValue {
     Menu(i32),
     Button,
     Ramp(Vec<RampPoint>),
+    Expression(String),
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -511,6 +512,7 @@ impl ParamValue {
             ParamValue::FloatArray(v) => Self::format_float_array(v),
             ParamValue::Button => "".to_string(), // button uses `pressButton()` instead of `set()`, so it's an empty string
             ParamValue::Ramp(points) => Self::format_ramp(points),
+            ParamValue::Expression(v) => python_string_literal(v),
         }
     }
 
@@ -530,6 +532,10 @@ impl ParamValue {
 
     pub fn is_trigger(&self) -> bool {
         matches!(self, ParamValue::Button)
+    }
+
+    pub fn is_expression(&self) -> bool {
+        matches!(self, ParamValue::Expression(_))
     }
 
     fn format_int_array(v: &[i32]) -> String {
