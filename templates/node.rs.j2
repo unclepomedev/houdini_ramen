@@ -115,6 +115,10 @@ impl {{ node.struct_name }} {
         self.params.insert(format!("{{ p.name | replace('#', '{}') }}", {{ p.format_args }}), crate::core::types::ParamValue::{{ p.enum_variant }}({{ p.val_converter }}));
         self
     }
+    pub fn with_{{ p.method_suffix }}_expr(mut self, {{ p.fn_args }}, expr: &str) -> Self {
+        self.params.insert(format!("{{ p.name | replace('#', '{}') }}", {{ p.format_args }}), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self
+    }
     {% endif %}
     {% else %}
     {% if p.r_type == "()" %}
@@ -125,6 +129,10 @@ impl {{ node.struct_name }} {
     {% else %}
     pub fn with_{{ p.method_suffix }}(mut self, val: {{ p.r_type }}) -> Self {
         self.params.insert("{{ p.name }}".to_string(), crate::core::types::ParamValue::{{ p.enum_variant }}({{ p.val_converter }}));
+        self
+    }
+    pub fn with_{{ p.method_suffix }}_expr(mut self, expr: &str) -> Self {
+        self.params.insert("{{ p.name }}".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
         self
     }
     {% endif %}

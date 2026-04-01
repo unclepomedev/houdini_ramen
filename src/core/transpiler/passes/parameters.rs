@@ -45,6 +45,12 @@ fn write_single_parameter(
 
     if val.is_trigger() {
         builder.line(&format!("{}.parm('{}').pressButton()", var_name, safe_key));
+    } else if val.is_expression() {
+        let py_val = val.to_python_expr();
+        builder.line(&format!(
+            "{}.parm('{}').setExpression({})",
+            var_name, safe_key, py_val
+        ));
     } else if val.is_tuple() {
         let py_val = val.to_python_expr();
         builder.line(&format!(
