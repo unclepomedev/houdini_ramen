@@ -28,12 +28,19 @@ class ParmInfo:
 
 
 @dataclass
+class InnerNodeData:
+    nodes: dict[str, str] = field(default_factory=dict)
+    dive_target: str | None = None
+
+
+@dataclass
 class NodeInfo:
     min_inputs: int
     max_inputs: int
     input_labels: list[str] = field(default_factory=list)
     parms: list[ParmInfo] = field(default_factory=list)
     builtin_inner_nodes: dict[str, str] = field(default_factory=dict)
+    dive_target: str | None = None
 
 
 def _exclude_none_factory(data: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -194,13 +201,14 @@ class TempNodeManager:
 
     def cleanup(self):
         for cat_name, node in self.parents.items():
-            if node and cat_name in self._strategies:
-                try:
-                    node.destroy()
-                except Exception as e:
-                    logger.debug(
-                        f"Failed to destroy temp parent for category '{cat_name}': {e}"
-                    )
+            if not node or cat_name not in self._strategies:
+                continue
+            try:
+                node.destroy()
+            except Exception as e:
+                logger.debug(
+                    f"Failed to destroy temp parent for category '{cat_name}': {e}"
+                )
         self.parents.clear()
 
 
@@ -224,12 +232,14 @@ class HoudiniNodeExtractor:
         info = ParmInfo(
             name=pt.name(), type=pt.type().name(), default=self._get_default_value(pt)
         )
-        if hasattr(pt, "menuItems") and hasattr(pt, "menuLabels"):
-            items = pt.menuItems()
-            labels = pt.menuLabels()
-            if items and labels and len(items) > 0 and len(items) == len(labels):
-                info.menu_items = list(items)
-                info.menu_labels = list(labels)
+        if not (hasattr(pt, "menuItems") and hasattr(pt, "menuLabels")):
+            return info
+
+        items = pt.menuItems()
+        labels = pt.menuLabels()
+        if items and labels and len(items) == len(labels):
+            info.menu_items = list(items)
+            info.menu_labels = list(labels)
         return info
 
     def _extract_parms_recursive(self, entries: tuple | list) -> list[ParmInfo]:
@@ -263,9 +273,7 @@ class HoudiniNodeExtractor:
             logger.debug(
                 f"Input-label extraction failed for '{cat_name}/{node_type.name()}': {e}"
             )
-            if 0 < max_inputs < 128:
-                return [""] * max_inputs
-            return []
+            return [""] * max_inputs if 0 < max_inputs < 128 else []
         finally:
             if temp_node is not None:
                 try:
@@ -274,6 +282,60 @@ class HoudiniNodeExtractor:
                     logger.debug(
                         f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
                     )
+
+    @staticmethod
+    def _get_dive_target_path(node: hou.Node) -> str | None:
+        hda_def = node.type().definition()
+        if not hda_def:
+            return None
+
+        sections = hda_def.sections()
+        if "DiveTarget" not in sections:
+            return None
+
+        dive_path = sections["DiveTarget"].contents().strip()
+        return dive_path if dive_path else None
+
+    def _extract_builtin_inner_nodes(
+        self, node_type: hou.NodeType, cat_name: str
+    ) -> InnerNodeData:
+        result = InnerNodeData()
+        parent = self.temp_manager.get_parent(cat_name)
+        if not parent:
+            return result
+
+        temp_node = None
+        try:
+            temp_node = parent.createNode(node_type.name())
+            target_node = temp_node
+
+            dive_target_path = self._get_dive_target_path(temp_node)
+            if dive_target_path:
+                dive_node = temp_node.node(dive_target_path)
+                if dive_node:
+                    result.dive_target = dive_target_path
+                    target_node = dive_node
+                else:
+                    logger.debug(
+                        f"Ignoring unresolved DiveTarget for '{node_type.name()}': {dive_target_path}"
+                    )
+
+            for child in target_node.children():
+                rel_path = child.path().replace(temp_node.path() + "/", "")
+                result.nodes[child.name()] = rel_path
+
+        except Exception as e:
+            logger.debug(f"Failed to extract inner nodes for {node_type.name()}: {e}")
+        finally:
+            if temp_node is not None:
+                try:
+                    temp_node.destroy()
+                except Exception as destroy_error:
+                    logger.debug(
+                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
+                    )
+
+        return result
 
     def _extract_node_info(self, node_type: hou.NodeType, cat_name: str) -> NodeInfo:
         parms = []
@@ -286,54 +348,16 @@ class HoudiniNodeExtractor:
                 f"Permission denied for parameters of '{node_type.name()}': {e}"
             )
 
-        builtin_inner_nodes = self._extract_builtin_inner_nodes(node_type, cat_name)
+        inner_data = self._extract_builtin_inner_nodes(node_type, cat_name)
 
         return NodeInfo(
             min_inputs=node_type.minNumInputs(),
             max_inputs=node_type.maxNumInputs(),
             input_labels=self._extract_input_labels(node_type, cat_name),
             parms=parms,
-            builtin_inner_nodes=builtin_inner_nodes,
+            builtin_inner_nodes=inner_data.nodes,
+            dive_target=inner_data.dive_target,
         )
-
-    def _extract_builtin_inner_nodes(
-        self, node_type: hou.NodeType, cat_name: str
-    ) -> dict[str, str]:
-        builtin_inner_nodes: dict[str, str] = {}
-        parent = self.temp_manager.get_parent(cat_name)
-        if not parent:
-            return builtin_inner_nodes
-
-        temp_node = None
-        try:
-            temp_node = parent.createNode(node_type.name())
-            target_node = temp_node
-
-            hda_def = temp_node.type().definition()
-            if hda_def:
-                sections = hda_def.sections()
-                if "DiveTarget" in sections:
-                    dive_path = sections["DiveTarget"].contents().strip()
-                    if dive_path:
-                        dive_node = temp_node.node(dive_path)
-                        if dive_node:
-                            target_node = dive_node
-
-            for child in target_node.children():
-                rel_path = child.path().replace(temp_node.path() + "/", "")
-                builtin_inner_nodes[child.name()] = rel_path
-        except Exception as e:
-            logger.debug(f"Failed to extract inner nodes for {node_type.name()}: {e}")
-        finally:
-            if temp_node is not None:
-                try:
-                    temp_node.destroy()
-                except Exception as destroy_error:
-                    logger.debug(
-                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
-                    )
-
-        return builtin_inner_nodes
 
     @staticmethod
     def _get_base_names(cat: hou.NodeTypeCategory) -> set[str]:
@@ -388,7 +412,7 @@ class HoudiniNodeExtractor:
             try:
                 return [int(x) for x in ver.split(".")]
             except ValueError:
-                return [0]
+                return []
 
         non_deprecated = [nt for nt in candidates if not nt.deprecated()]
         pool = non_deprecated if non_deprecated else candidates

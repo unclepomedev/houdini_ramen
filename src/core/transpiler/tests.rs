@@ -34,6 +34,41 @@ impl HoudiniNode for DummyNode {
     }
 }
 
+#[derive(Clone)]
+struct DummyContainerNode {
+    id: usize,
+    name: String,
+    node_type: &'static str,
+    dive_target: &'static str,
+    inputs: BTreeMap<usize, (usize, usize)>,
+    params: HashMap<String, ParamValue>,
+    spare_params: Vec<SpareParam>,
+}
+
+impl HoudiniNode for DummyContainerNode {
+    fn get_id(&self) -> usize {
+        self.id
+    }
+    fn get_name(&self) -> &str {
+        &self.name
+    }
+    fn get_node_type(&self) -> &'static str {
+        self.node_type
+    }
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+        &self.inputs
+    }
+    fn get_params(&self) -> &HashMap<String, ParamValue> {
+        &self.params
+    }
+    fn get_spare_params(&self) -> &[SpareParam] {
+        &self.spare_params
+    }
+    fn get_dive_target(&self) -> Option<&'static str> {
+        Some(self.dive_target)
+    }
+}
+
 #[test]
 fn test_transpiler_script_generation() {
     let mut node1 = DummyNode {
@@ -566,5 +601,51 @@ fn test_topological_sort_parent_before_child() {
     assert!(
         inner_pos < existing_pos,
         "inner subnet must be created before existing child"
+    );
+}
+
+#[test]
+fn test_dive_target_parent_resolution() {
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+
+    let container = DummyContainerNode {
+        id: 1001,
+        name: "vellum_solver".to_string(),
+        node_type: "vellumsolver",
+        dive_target: "inner_net",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    transpiler.add_boxed(Box::new(container)).unwrap();
+
+    let child = DummyNode {
+        id: 1002,
+        name: "child_ray".to_string(),
+        node_type: "ray",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+    transpiler
+        .add_boxed_with_parent(Box::new(child), 1001)
+        .unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(
+        script
+            .contains("n_vellum_solver_1001 = parent.createNode('vellumsolver', 'vellum_solver')"),
+        "container should be created under parent"
+    );
+    assert!(
+        script.contains(
+            "n_child_ray_1002 = n_vellum_solver_1001.node('inner_net').createNode('ray', 'child_ray')"
+        ),
+        "child should be created under the dive target, not directly under the container"
+    );
+    assert!(
+        !script.contains("parent.createNode('ray', 'child_ray')"),
+        "child must not be created under root parent"
     );
 }

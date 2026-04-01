@@ -133,6 +133,7 @@ class ParsedNode:
     params: list[ParsedParam] = field(default_factory=list)
     enums: list[ParsedMenuEnum] = field(default_factory=list)
     inner_methods: list[ParsedInnerMethod] = field(default_factory=list)
+    dive_target: str | None = None
 
 
 class SuffixResolver:
@@ -371,6 +372,8 @@ def parse_node(
             )
         )
 
+    dive_target = node_info.get("dive_target")
+
     return ParsedNode(
         struct_name=struct_name,
         node_type=node_type,
@@ -380,6 +383,7 @@ def parse_node(
         params=params,
         enums=enums,
         inner_methods=inner_methods,
+        dive_target=dive_target,
     )
 
 
