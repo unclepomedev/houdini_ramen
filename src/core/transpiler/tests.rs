@@ -492,6 +492,8 @@ fn test_node_graph_dive_into_api() {
     assert!(script.contains(".createNode('ray', 'inner_ray')"));
     // inner_ray must NOT be created under parent
     assert!(!script.contains("parent.createNode('ray', 'inner_ray')"));
+    // nested container must get layoutChildren
+    assert!(script.contains("n_solver_601.layoutChildren()"));
 }
 
 #[test]
@@ -647,5 +649,10 @@ fn test_dive_target_parent_resolution() {
     assert!(
         !script.contains("parent.createNode('ray', 'child_ray')"),
         "child must not be created under root parent"
+    );
+    // dive target container must get layoutChildren
+    assert!(
+        script.contains("n_vellum_solver_1001.node('inner_net').layoutChildren()"),
+        "dive target container must get layoutChildren"
     );
 }
