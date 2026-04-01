@@ -408,11 +408,11 @@ class HoudiniNodeExtractor:
         def _version_key(nt):
             ver = nt.nameComponents()[3]
             if not ver:
-                return [0]
+                return []
             try:
                 return [int(x) for x in ver.split(".")]
             except ValueError:
-                return [0]
+                return []
 
         non_deprecated = [nt for nt in candidates if not nt.deprecated()]
         pool = non_deprecated if non_deprecated else candidates
