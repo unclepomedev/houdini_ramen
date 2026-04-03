@@ -2,7 +2,11 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum {{ e.enum_name }} {
     {% for v in e.variants %}
+    {% set cleaned_label = v.doc_label | lower | replace(' ', '') | replace('_', '') %}
+    {% set cleaned_name = v.name | lower %}
+    {% if cleaned_name != cleaned_label %}
     /// {{ v.doc_label }}
+    {% endif %}
     {{ v.name }} = {{ v.value }},
     {% endfor %}
 }
