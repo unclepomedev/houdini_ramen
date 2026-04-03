@@ -3,7 +3,7 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum {{ e.enum_name }} {
     {% for v in e.variants %}
-{{ normalize_label_name(v) }}    {{ v.name }} = {{ v.value }},
+{% if v.doc_label %}{{ normalize_label_name(v) }}{% endif %}    {{ v.name }} = {{ v.value }},
     {% endfor %}
 }
 
