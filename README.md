@@ -1,3 +1,3 @@
 # houdini_ramen
 
-Aiming to achieve efficient, highly accurate agentic modeling without relying on MCP or RAG—powered strictly by static typing and a knowledge-based DAG.
+Nodes as Code for Houdini. Ultimately, aiming to implement a general-purpose AI agent in a more token-efficient manner inspired by MCP and RAG.
