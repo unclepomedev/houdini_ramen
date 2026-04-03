@@ -6,4 +6,11 @@ description = "Nodes as Code for Houdini (Under Development)"
 license = "MIT"
 repository = "https://github.com/unclepomedev/houdini_ramen"
 
+include = [
+    "src/**/*",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE"
+]
+
 [dependencies]
