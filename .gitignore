@@ -6,7 +6,6 @@ __pycache__
 
 node_api_dump.json
 houdini_warnings.log
-src/generated/
 resources/stubs/
 memo
 resources/auto_graph.json
