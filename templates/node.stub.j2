@@ -1,9 +1,9 @@
+{% from 'macros.j2' import normalize_label_name %}
 {% for e in node.enums %}
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum {{ e.enum_name }} {
     {% for v in e.variants %}
-    /// {{ v.doc_label }}
-    {{ v.name }} = {{ v.value }},
+{% if v.doc_label %}{{ normalize_label_name(v) }}{% endif %}    {{ v.name }} = {{ v.value }},
     {% endfor %}
 }
 
