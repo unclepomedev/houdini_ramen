@@ -1,10 +1,10 @@
 PROJECT_ROOT := justfile_directory()
 HOUDINI_VEX_PATH := PROJECT_ROOT + "/vex/include"
 # Override via HOUDINI_RESOURCES env var for your platform/version
-HOUDINI_RESOURCES := env_var_or_default("HOUDINI_RESOURCES", "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/Current/Resources")
+HOUDINI_RESOURCES := env("HOUDINI_RESOURCES", "/Applications/Houdini/Houdini21.0.631/Frameworks/Houdini.framework/Versions/Current/Resources")
 # This env var should be set for untrusted localhost.
-HOUDINI_RAMEN_TOKEN := env_var_or_default("HOUDINI_RAMEN_TOKEN", "houdini_ramen_secret_2026")
-HOUDINI_RAMEN_PORT := env_var_or_default("HOUDINI_RAMEN_PORT", "18080")
+HOUDINI_RAMEN_TOKEN := env("HOUDINI_RAMEN_TOKEN", "houdini_ramen_secret_2026")
+HOUDINI_RAMEN_PORT := env("HOUDINI_RAMEN_PORT", "18080")
 
 # python ==========================================================
 fmt-py:
