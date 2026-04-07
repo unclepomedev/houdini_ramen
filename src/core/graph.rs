@@ -71,13 +71,20 @@ impl<'a> InnerGraph<'a> {
         input_idx: usize,
         src: &N,
     ) {
-        if let Some((node, _, _)) = self
+        let found = self
             .graph
             .existing_nodes
             .iter_mut()
-            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id)
-        {
+            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
+
+        if let Some((node, _, _)) = found {
             node.inputs.insert(input_idx, (src.get_id(), 0));
+        } else {
+            // TODO: To avoid troublesome, but errors should be handled at a higher layer.
+            panic!(
+                "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
+                dst.name
+            );
         }
     }
 
@@ -89,13 +96,20 @@ impl<'a> InnerGraph<'a> {
         src: &N,
         output_idx: usize,
     ) {
-        if let Some((node, _, _)) = self
+        let found = self
             .graph
             .existing_nodes
             .iter_mut()
-            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id)
-        {
+            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
+
+        if let Some((node, _, _)) = found {
             node.inputs.insert(input_idx, (src.get_id(), output_idx));
+        } else {
+            // TODO: To avoid troublesome, but errors should be handled at a higher layer.
+            panic!(
+                "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
+                dst.name
+            );
         }
     }
 }

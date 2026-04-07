@@ -1,6 +1,6 @@
 [package]
 name = "houdini_ramen"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 description = "Nodes as Code for Houdini (Under Development)"
 license = "MIT"

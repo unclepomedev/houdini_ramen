@@ -4,6 +4,11 @@
     "path": "resources/docs/custom_attribute.md",
     "type": "doc"
   },
+  "doc/dive_into": {
+    "depends_on": [],
+    "path": "resources/docs/dive_into.md",
+    "type": "doc"
+  },
   "doc/final_result_display": {
     "depends_on": [],
     "path": "resources/docs/final_result_display.md",
@@ -74,6 +79,11 @@
       "doc/operator_paths"
     ]
   },
+  "sop/sopsolver": {
+    "depends_on": [
+      "doc/dive_into"
+    ]
+  },
   "sop/sopsphere": {
     "depends_on": [
       "doc/sop_sphere"
@@ -93,6 +103,14 @@
       "doc/foreach_loop",
       "sop/sopblockbegin",
       "sop/sopblockend"
+    ],
+    "path": null,
+    "type": "task"
+  },
+  "task/simulation_setup": {
+    "depends_on": [
+      "doc/dive_into",
+      "sop/sopsolver"
     ],
     "path": null,
     "type": "task"
