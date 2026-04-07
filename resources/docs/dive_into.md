@@ -5,7 +5,7 @@ Use `graph.dive_into` to construct graphs inside container nodes like `solver` o
 ## Rules
 
 1. **Import Trait:** ALWAYS import the specific container's extension trait (e.g., `SopSolverInnerExt`) to access auto-generated methods for pre-existing internal nodes.
-2. **Fetch Existing Nodes:** NEVER instantiate builtin nodes (e.g., `Prev_Frame`, `OUT`) manually. Fetch them using `inner_graph.<node_name>()`.
+2. **Fetch Existing Nodes:** NEVER instantiate built-in nodes (e.g., `Prev_Frame`, `OUT`) manually. Fetch them using `inner_graph.<node_name>()`.
 3. **Wiring Existing -> New:** Pass the existing node reference to `.set_input()`.
 4. **Wiring New -> Existing:** Use `inner_graph.connect_existing(&dst, input_idx, &src)`. NEVER use raw string paths for wiring.
 
