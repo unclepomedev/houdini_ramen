@@ -1,11 +1,11 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
+use crate::core::types::ParamValue;
 use crate::core::types::{ContainerType, HoudiniNode};
 use std::collections::BTreeMap;
+use std::collections::HashMap;
 use std::marker::PhantomData;
 use std::sync::LazyLock;
-use crate::core::types::ParamValue;
-use std::collections::HashMap;
 
 pub struct NodeGraph {
     parent_path: String,
@@ -153,9 +153,7 @@ impl HoudiniNode for ExistingNodeRef {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
-        static EMPTY: LazyLock<
-            HashMap<String, ParamValue>,
-        > = LazyLock::new(HashMap::new);
+        static EMPTY: LazyLock<HashMap<String, ParamValue>> = LazyLock::new(HashMap::new);
         &EMPTY
     }
 }
