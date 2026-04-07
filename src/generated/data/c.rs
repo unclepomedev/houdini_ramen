@@ -10,7 +10,8 @@ pub struct DataColorbystartframe {
 impl DataColorbystartframe {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataColorbystartframe {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataColorbystartframe {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataColorbystartframe {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipeFlowBlock {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataCopRecipeFlowBlock {
 impl DataCopRecipeFlowBlock {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataCopRecipeFlowBlock {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipeFlowBlock {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipeFlowBlock {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipePyroBlock {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataCopRecipePyroBlock {
 impl DataCopRecipePyroBlock {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataCopRecipePyroBlock {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipePyroBlock {
@@ -165,7 +160,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipePyroBlock {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipePyroConfigureBillowysmoke {
     pub id: usize,
@@ -178,7 +172,8 @@ pub struct DataCopRecipePyroConfigureBillowysmoke {
 impl DataCopRecipePyroConfigureBillowysmoke {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -191,8 +186,6 @@ impl DataCopRecipePyroConfigureBillowysmoke {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureBillowysmoke {
@@ -221,7 +214,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureBillowysmoke 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipePyroConfigureColorsmoke {
     pub id: usize,
@@ -234,7 +226,8 @@ pub struct DataCopRecipePyroConfigureColorsmoke {
 impl DataCopRecipePyroConfigureColorsmoke {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -247,8 +240,6 @@ impl DataCopRecipePyroConfigureColorsmoke {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureColorsmoke {
@@ -277,7 +268,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureColorsmoke {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipePyroConfigureDryice {
     pub id: usize,
@@ -290,7 +280,8 @@ pub struct DataCopRecipePyroConfigureDryice {
 impl DataCopRecipePyroConfigureDryice {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -303,8 +294,6 @@ impl DataCopRecipePyroConfigureDryice {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureDryice {
@@ -333,7 +322,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureDryice {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipePyroConfigureFire {
     pub id: usize,
@@ -346,7 +334,8 @@ pub struct DataCopRecipePyroConfigureFire {
 impl DataCopRecipePyroConfigureFire {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -359,8 +348,6 @@ impl DataCopRecipePyroConfigureFire {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureFire {
@@ -389,7 +376,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureFire {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopRecipePyroConfigureFireball {
     pub id: usize,
@@ -402,7 +388,8 @@ pub struct DataCopRecipePyroConfigureFireball {
 impl DataCopRecipePyroConfigureFireball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -415,8 +402,6 @@ impl DataCopRecipePyroConfigureFireball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureFireball {
@@ -445,7 +430,6 @@ impl crate::core::types::HoudiniNode for DataCopRecipePyroConfigureFireball {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopSidefxBakesetup {
     pub id: usize,
@@ -458,7 +442,8 @@ pub struct DataCopSidefxBakesetup {
 impl DataCopSidefxBakesetup {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -471,8 +456,6 @@ impl DataCopSidefxBakesetup {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopSidefxBakesetup {
@@ -501,7 +484,6 @@ impl crate::core::types::HoudiniNode for DataCopSidefxBakesetup {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopSidefxBlock {
     pub id: usize,
@@ -514,7 +496,8 @@ pub struct DataCopSidefxBlock {
 impl DataCopSidefxBlock {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -527,8 +510,6 @@ impl DataCopSidefxBlock {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopSidefxBlock {
@@ -557,7 +538,6 @@ impl crate::core::types::HoudiniNode for DataCopSidefxBlock {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCopSidefxSlapcompblock {
     pub id: usize,
@@ -570,7 +550,8 @@ pub struct DataCopSidefxSlapcompblock {
 impl DataCopSidefxSlapcompblock {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -583,8 +564,6 @@ impl DataCopSidefxSlapcompblock {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCopSidefxSlapcompblock {
@@ -613,7 +592,6 @@ impl crate::core::types::HoudiniNode for DataCopSidefxSlapcompblock {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCornellbox {
     pub id: usize,
@@ -626,7 +604,8 @@ pub struct DataCornellbox {
 impl DataCornellbox {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -639,8 +618,6 @@ impl DataCornellbox {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCornellbox {
@@ -669,7 +646,6 @@ impl crate::core::types::HoudiniNode for DataCornellbox {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCrack {
     pub id: usize,
@@ -682,7 +658,8 @@ pub struct DataCrack {
 impl DataCrack {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -695,8 +672,6 @@ impl DataCrack {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCrack {
@@ -725,7 +700,6 @@ impl crate::core::types::HoudiniNode for DataCrack {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCreatekarmapyromaterial {
     pub id: usize,
@@ -738,7 +712,8 @@ pub struct DataCreatekarmapyromaterial {
 impl DataCreatekarmapyromaterial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -751,8 +726,6 @@ impl DataCreatekarmapyromaterial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCreatekarmapyromaterial {
@@ -781,7 +754,6 @@ impl crate::core::types::HoudiniNode for DataCreatekarmapyromaterial {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCreatelinebetweenpoints {
     pub id: usize,
@@ -794,7 +766,8 @@ pub struct DataCreatelinebetweenpoints {
 impl DataCreatelinebetweenpoints {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -807,8 +780,6 @@ impl DataCreatelinebetweenpoints {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCreatelinebetweenpoints {
@@ -837,7 +808,6 @@ impl crate::core::types::HoudiniNode for DataCreatelinebetweenpoints {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCreatepyrotrailsource {
     pub id: usize,
@@ -850,7 +820,8 @@ pub struct DataCreatepyrotrailsource {
 impl DataCreatepyrotrailsource {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -863,8 +834,6 @@ impl DataCreatepyrotrailsource {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCreatepyrotrailsource {
@@ -893,7 +862,6 @@ impl crate::core::types::HoudiniNode for DataCreatepyrotrailsource {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCreaterenderstage {
     pub id: usize,
@@ -906,7 +874,8 @@ pub struct DataCreaterenderstage {
 impl DataCreaterenderstage {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -919,8 +888,6 @@ impl DataCreaterenderstage {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCreaterenderstage {
@@ -949,7 +916,6 @@ impl crate::core::types::HoudiniNode for DataCreaterenderstage {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCullvelocity {
     pub id: usize,
@@ -962,7 +928,8 @@ pub struct DataCullvelocity {
 impl DataCullvelocity {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -975,8 +942,6 @@ impl DataCullvelocity {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCullvelocity {
@@ -1005,7 +970,6 @@ impl crate::core::types::HoudiniNode for DataCullvelocity {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataCustommaterialcatalog {
     pub id: usize,
@@ -1018,7 +982,8 @@ pub struct DataCustommaterialcatalog {
 impl DataCustommaterialcatalog {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1031,8 +996,6 @@ impl DataCustommaterialcatalog {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataCustommaterialcatalog {

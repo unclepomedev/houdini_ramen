@@ -10,7 +10,8 @@ pub struct DataBlackbodyflame {
 impl DataBlackbodyflame {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataBlackbodyflame {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataBlackbodyflame {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataBlackbodyflame {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataBlastwavewithrings {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataBlastwavewithrings {
 impl DataBlastwavewithrings {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataBlastwavewithrings {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataBlastwavewithrings {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataBlastwavewithrings {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataBranch {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataBranch {
 impl DataBranch {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataBranch {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataBranch {
@@ -165,7 +160,6 @@ impl crate::core::types::HoudiniNode for DataBranch {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataBreakmaterialreferences {
     pub id: usize,
@@ -178,7 +172,8 @@ pub struct DataBreakmaterialreferences {
 impl DataBreakmaterialreferences {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -191,8 +186,6 @@ impl DataBreakmaterialreferences {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataBreakmaterialreferences {

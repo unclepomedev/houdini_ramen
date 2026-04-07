@@ -10,7 +10,8 @@ pub struct VopnetFog {
 impl VopnetFog {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -24,25 +25,35 @@ impl VopnetFog {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }

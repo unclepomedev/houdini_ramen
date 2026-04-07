@@ -10,7 +10,8 @@ pub struct DataRbdsolver {
 impl DataRbdsolver {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataRbdsolver {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataRbdsolver {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataRbdsolver {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataRefbound {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataRefbound {
 impl DataRefbound {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataRefbound {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataRefbound {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataRefbound {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataRemovepointonlines {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataRemovepointonlines {
 impl DataRemovepointonlines {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataRemovepointonlines {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataRemovepointonlines {
@@ -165,7 +160,6 @@ impl crate::core::types::HoudiniNode for DataRemovepointonlines {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataResample {
     pub id: usize,
@@ -178,7 +172,8 @@ pub struct DataResample {
 impl DataResample {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -191,8 +186,6 @@ impl DataResample {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataResample {
@@ -221,7 +214,6 @@ impl crate::core::types::HoudiniNode for DataResample {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataReusablenodegraphs {
     pub id: usize,
@@ -234,7 +226,8 @@ pub struct DataReusablenodegraphs {
 impl DataReusablenodegraphs {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -247,8 +240,6 @@ impl DataReusablenodegraphs {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataReusablenodegraphs {

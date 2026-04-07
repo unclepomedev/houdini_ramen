@@ -10,7 +10,8 @@ pub struct DataOctagondot {
 impl DataOctagondot {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataOctagondot {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataOctagondot {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataOctagondot {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataOptimizationaovs {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataOptimizationaovs {
 impl DataOptimizationaovs {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataOptimizationaovs {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataOptimizationaovs {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataOptimizationaovs {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataOptimizeexports {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataOptimizeexports {
 impl DataOptimizeexports {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataOptimizeexports {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataOptimizeexports {

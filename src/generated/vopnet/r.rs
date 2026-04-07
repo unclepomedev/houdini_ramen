@@ -10,7 +10,8 @@ pub struct VopnetRslDisplace {
 impl VopnetRslDisplace {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -24,25 +25,35 @@ impl VopnetRslDisplace {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -73,7 +84,6 @@ impl crate::core::types::HoudiniNode for VopnetRslDisplace {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetRslImager {
     pub id: usize,
@@ -86,7 +96,8 @@ pub struct VopnetRslImager {
 impl VopnetRslImager {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -100,25 +111,35 @@ impl VopnetRslImager {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -149,7 +170,6 @@ impl crate::core::types::HoudiniNode for VopnetRslImager {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetRslLight {
     pub id: usize,
@@ -162,7 +182,8 @@ pub struct VopnetRslLight {
 impl VopnetRslLight {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -176,25 +197,35 @@ impl VopnetRslLight {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -225,7 +256,6 @@ impl crate::core::types::HoudiniNode for VopnetRslLight {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetRslSurface {
     pub id: usize,
@@ -238,7 +268,8 @@ pub struct VopnetRslSurface {
 impl VopnetRslSurface {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -252,25 +283,35 @@ impl VopnetRslSurface {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -301,7 +342,6 @@ impl crate::core::types::HoudiniNode for VopnetRslSurface {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetRslVolume {
     pub id: usize,
@@ -314,7 +354,8 @@ pub struct VopnetRslVolume {
 impl VopnetRslVolume {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -328,25 +369,35 @@ impl VopnetRslVolume {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }

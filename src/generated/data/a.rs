@@ -10,7 +10,8 @@ pub struct DataAddalpha {
 impl DataAddalpha {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataAddalpha {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataAddalpha {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataAddalpha {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataAddcolorsource {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataAddcolorsource {
 impl DataAddcolorsource {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataAddcolorsource {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataAddcolorsource {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataAddcolorsource {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataAdddepthfromeye {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataAdddepthfromeye {
 impl DataAdddepthfromeye {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataAdddepthfromeye {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataAdddepthfromeye {
@@ -165,7 +160,6 @@ impl crate::core::types::HoudiniNode for DataAdddepthfromeye {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataAddnormal {
     pub id: usize,
@@ -178,7 +172,8 @@ pub struct DataAddnormal {
 impl DataAddnormal {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -191,8 +186,6 @@ impl DataAddnormal {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataAddnormal {
@@ -221,7 +214,6 @@ impl crate::core::types::HoudiniNode for DataAddnormal {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataAddposition {
     pub id: usize,
@@ -234,7 +226,8 @@ pub struct DataAddposition {
 impl DataAddposition {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -247,8 +240,6 @@ impl DataAddposition {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataAddposition {
@@ -277,7 +268,6 @@ impl crate::core::types::HoudiniNode for DataAddposition {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataAdduv {
     pub id: usize,
@@ -290,7 +280,8 @@ pub struct DataAdduv {
 impl DataAdduv {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -303,8 +294,6 @@ impl DataAdduv {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataAdduv {

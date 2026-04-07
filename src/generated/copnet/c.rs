@@ -26,7 +26,8 @@ pub struct CopnetCopnet {
 impl CopnetCopnet {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -40,119 +41,191 @@ impl CopnetCopnet {
         self
     }
 
-
-
     // --- Float parameters ---
     pub fn with_pixelscale(mut self, val: f32) -> Self {
-        self.params.insert("pixelscale".to_string(), crate::core::types::ParamValue::Float(val));
+        self.params.insert(
+            "pixelscale".to_string(),
+            crate::core::types::ParamValue::Float(val),
+        );
         self
     }
     pub fn with_pixelscale_expr(mut self, expr: &str) -> Self {
-        self.params.insert("pixelscale".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "pixelscale".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Int parameters ---
     pub fn with_udim(mut self, val: i32) -> Self {
-        self.params.insert("udim".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params
+            .insert("udim".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_udim_expr(mut self, expr: &str) -> Self {
-        self.params.insert("udim".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "udim".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_vistile(mut self, val: i32) -> Self {
-        self.params.insert("vistile".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "vistile".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_vistile_expr(mut self, expr: &str) -> Self {
-        self.params.insert("vistile".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "vistile".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Int2 parameters ---
     pub fn with_res(mut self, val: [i32; 2]) -> Self {
-        self.params.insert("res".to_string(), crate::core::types::ParamValue::Int2(val));
+        self.params
+            .insert("res".to_string(), crate::core::types::ParamValue::Int2(val));
         self
     }
     pub fn with_res_expr(mut self, expr: &str) -> Self {
-        self.params.insert("res".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "res".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Menu parameters ---
     pub fn with_resmenu(mut self, val: i32) -> Self {
-        self.params.insert("resmenu".to_string(), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            "resmenu".to_string(),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_resmenu_expr(mut self, expr: &str) -> Self {
-        self.params.insert("resmenu".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "resmenu".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_border(mut self, val: CopnetCopnetBorder) -> Self {
-        self.params.insert("border".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "border".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_border_expr(mut self, expr: &str) -> Self {
-        self.params.insert("border".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "border".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_precision(mut self, val: CopnetCopnetPrecision) -> Self {
-        self.params.insert("precision".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "precision".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_precision_expr(mut self, expr: &str) -> Self {
-        self.params.insert("precision".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "precision".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_setres(mut self, val: bool) -> Self {
-        self.params.insert("setres".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setres".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setres_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setres".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setres".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setpixelscale(mut self, val: bool) -> Self {
-        self.params.insert("setpixelscale".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setpixelscale".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setpixelscale_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setpixelscale".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setpixelscale".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setborder(mut self, val: bool) -> Self {
-        self.params.insert("setborder".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setborder".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setborder_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setborder".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setborder".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setprecision(mut self, val: bool) -> Self {
-        self.params.insert("setprecision".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setprecision".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setprecision_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setprecision".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setprecision".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setudim(mut self, val: bool) -> Self {
-        self.params.insert("setudim".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setudim".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setudim_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setudim".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setudim".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setvistile(mut self, val: bool) -> Self {
-        self.params.insert("setvistile".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setvistile".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setvistile_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setvistile".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setvistile".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -183,7 +256,6 @@ impl crate::core::types::HoudiniNode for CopnetCopnet {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct CopnetCopnetFilterlist {
     pub id: usize,
@@ -196,7 +268,8 @@ pub struct CopnetCopnetFilterlist {
 impl CopnetCopnetFilterlist {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -210,31 +283,47 @@ impl CopnetCopnetFilterlist {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_primaryscope(mut self, val: &str) -> Self {
-        self.params.insert("primaryscope".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "primaryscope".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_primaryscope_expr(mut self, expr: &str) -> Self {
-        self.params.insert("primaryscope".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "primaryscope".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_depthscope(mut self, val: &str) -> Self {
-        self.params.insert("depthscope".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "depthscope".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_depthscope_expr(mut self, expr: &str) -> Self {
-        self.params.insert("depthscope".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "depthscope".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_tabmenufilter(mut self, val: &str) -> Self {
-        self.params.insert("tabmenufilter".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "tabmenufilter".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_tabmenufilter_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenufilter".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenufilter".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
