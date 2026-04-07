@@ -12,34 +12,33 @@ pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self;
-
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(self, spare: S) -> Self;
-
     {% if node.max_inputs > 0 %}
     // --- Inputs ---
     pub fn set_input_at<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
     pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N, output_index: usize) -> Self;
-
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N, port_name: &str) -> Self;
     {% if node.max_inputs >= 9999 %}
     pub fn add_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
     pub fn add_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(self, target: &N, port_name: &str) -> Self;
     {% else %}
     pub fn set_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
     pub fn set_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(self, target: &N, port_name: &str) -> Self;
     {% for inp in node.inputs %}
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
     pub fn set_input_{{ inp.safe_name }}<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}" and specifies the output index of the target node.
     pub fn set_input_{{ inp.safe_name }}_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input_{{ inp.safe_name }}_by_name<N: crate::core::types::HoudiniNode>(self, target: &N, port_name: &str) -> Self;
     {% endfor %}
     {% endif %}
     {% endif %}
-
     {% set ns = namespace(last_variant='') %}
     {% for p in node.params | sort(attribute='enum_variant') %}
     {% if p.enum_variant != ns.last_variant %}
-
     // --- {{ p.enum_variant }} parameters ---
     {% set ns.last_variant = p.enum_variant %}
     {% endif %}
@@ -60,12 +59,11 @@ impl {{ node.struct_name }} {
     {% endif %}
     {% endfor %}
 }
-
 impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
     fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)>;
+    fn get_inputs(&self) -> &std::collections::BTreeMap<crate::core::types::InputPort, (usize, crate::core::types::OutputPort)>;
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam];
     {% if node.dive_target %}

@@ -1,4 +1,5 @@
 import argparse
+import hou
 import json
 import logging
 import os
@@ -7,8 +8,6 @@ import tempfile
 from dataclasses import asdict, dataclass, field, is_dataclass
 from pathlib import Path
 from typing import Any
-
-import hou
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -38,6 +37,7 @@ class NodeInfo:
     min_inputs: int
     max_inputs: int
     input_labels: list[str] = field(default_factory=list)
+    output_names: list[str] = field(default_factory=list)
     parms: list[ParmInfo] = field(default_factory=list)
     builtin_inner_nodes: dict[str, str] = field(default_factory=dict)
     dive_target: str | None = None
@@ -251,37 +251,28 @@ class HoudiniNodeExtractor:
                 parms.append(self._extract_single_parm(pt))
         return parms
 
-    def _extract_input_labels(
-        self, node_type: hou.NodeType, cat_name: str
-    ) -> list[str]:
+    @staticmethod
+    def _extract_input_labels(temp_node, max_inputs: int, node_name: str) -> list[str]:
         """Temporarily instantiates a node to extract its input labels, with fallback for failures."""
-        max_inputs = node_type.maxNumInputs()
-        if max_inputs <= 0:
-            return []
-
-        parent = self.temp_manager.get_parent(cat_name)
-        if not parent:
+        if not temp_node or max_inputs <= 0:
             return [""] * max_inputs if max_inputs < 128 else []
-
-        temp_node = None
         try:
-            temp_node = parent.createNode(node_type.name(), run_init_scripts=False)
             if hasattr(temp_node, "inputLabels"):
                 return list(temp_node.inputLabels())
-            return [""] * max_inputs if max_inputs < 128 else []
         except Exception as e:
-            logger.debug(
-                f"Input-label extraction failed for '{cat_name}/{node_type.name()}': {e}"
-            )
-            return [""] * max_inputs if 0 < max_inputs < 128 else []
-        finally:
-            if temp_node is not None:
-                try:
-                    temp_node.destroy()
-                except Exception as destroy_error:
-                    logger.debug(
-                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
-                    )
+            logger.debug(f"Input-label extraction failed for '{node_name}': {e}")
+        return [""] * max_inputs if max_inputs < 128 else []
+
+    @staticmethod
+    def _extract_output_names(temp_node, node_name: str) -> list[str]:
+        if not temp_node:
+            return []
+        try:
+            if hasattr(temp_node, "outputNames"):
+                return list(temp_node.outputNames())
+        except Exception as e:
+            logger.debug(f"Output-name extraction failed for '{node_name}': {e}")
+        return []
 
     @staticmethod
     def _get_dive_target_path(node: hou.Node) -> str | None:
@@ -296,19 +287,12 @@ class HoudiniNodeExtractor:
         dive_path = sections["DiveTarget"].contents().strip()
         return dive_path if dive_path else None
 
-    def _extract_builtin_inner_nodes(
-        self, node_type: hou.NodeType, cat_name: str
-    ) -> InnerNodeData:
+    def _extract_builtin_inner_nodes(self, temp_node, node_name: str) -> InnerNodeData:
         result = InnerNodeData()
-        parent = self.temp_manager.get_parent(cat_name)
-        if not parent:
+        if not temp_node:
             return result
-
-        temp_node = None
         try:
-            temp_node = parent.createNode(node_type.name())
             target_node = temp_node
-
             dive_target_path = self._get_dive_target_path(temp_node)
             if dive_target_path:
                 dive_node = temp_node.node(dive_target_path)
@@ -317,24 +301,14 @@ class HoudiniNodeExtractor:
                     target_node = dive_node
                 else:
                     logger.debug(
-                        f"Ignoring unresolved DiveTarget for '{node_type.name()}': {dive_target_path}"
+                        f"Ignoring unresolved DiveTarget for '{node_name}': {dive_target_path}"
                     )
 
             for child in target_node.children():
                 rel_path = child.path().replace(temp_node.path() + "/", "")
                 result.nodes[child.name()] = rel_path
-
         except Exception as e:
-            logger.debug(f"Failed to extract inner nodes for {node_type.name()}: {e}")
-        finally:
-            if temp_node is not None:
-                try:
-                    temp_node.destroy()
-                except Exception as destroy_error:
-                    logger.debug(
-                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
-                    )
-
+            logger.debug(f"Failed to extract inner nodes for {node_name}: {e}")
         return result
 
     def _extract_node_info(self, node_type: hou.NodeType, cat_name: str) -> NodeInfo:
@@ -348,12 +322,34 @@ class HoudiniNodeExtractor:
                 f"Permission denied for parameters of '{node_type.name()}': {e}"
             )
 
-        inner_data = self._extract_builtin_inner_nodes(node_type, cat_name)
+        parent = self.temp_manager.get_parent(cat_name)
+        temp_node = None
+
+        if parent:
+            try:
+                temp_node = parent.createNode(node_type.name())
+            except Exception as e:
+                logger.debug(f"Instantiate failed for '{node_type.name()}': {e}")
+
+        input_labels = self._extract_input_labels(
+            temp_node, node_type.maxNumInputs(), node_type.name()
+        )
+        output_names = self._extract_output_names(temp_node, node_type.name())
+        inner_data = self._extract_builtin_inner_nodes(temp_node, node_type.name())
+
+        if temp_node is not None:
+            try:
+                temp_node.destroy()
+            except Exception as destroy_error:
+                logger.debug(
+                    f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
+                )
 
         return NodeInfo(
             min_inputs=node_type.minNumInputs(),
             max_inputs=node_type.maxNumInputs(),
-            input_labels=self._extract_input_labels(node_type, cat_name),
+            input_labels=input_labels,
+            output_names=output_names,
             parms=parms,
             builtin_inner_nodes=inner_data.nodes,
             dive_target=inner_data.dive_target,
@@ -473,6 +469,15 @@ def main():
         with HoudiniLogContext(debug=args.debug):
             extractor = HoudiniNodeExtractor()
             node_data = extractor.extract_all_categories()
+
+        total_nodes = sum(len(c) for c in node_data.values())
+        if total_nodes < 1000:
+            raise RuntimeError(
+                f"Sanity check failed: Only extracted {total_nodes} nodes. "
+                "Houdini likely stopped instance creation midway."
+            )
+
+        logger.info(f"Successfully extracted data for {total_nodes} nodes.")
 
         logger.info(f"Writing data to {output_path}")
         writer = AtomicJSONWriter(output_path)

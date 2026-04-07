@@ -1,6 +1,10 @@
+//! Transpiler module integration tests
+
 use super::Transpiler;
 use crate::core::graph::{ExistingNodeRef, NodeGraph};
-use crate::core::types::{ContainerType, HoudiniNode, ParamValue, SpareParam};
+use crate::core::types::{
+    ContainerType, HoudiniNode, InputPort, OutputPort, ParamValue, SpareParam,
+};
 use std::collections::{BTreeMap, HashMap};
 
 #[derive(Clone)]
@@ -8,7 +12,7 @@ struct DummyNode {
     id: usize,
     name: String,
     node_type: &'static str,
-    inputs: BTreeMap<usize, (usize, usize)>,
+    inputs: BTreeMap<InputPort, (usize, OutputPort)>,
     params: HashMap<String, ParamValue>,
     spare_params: Vec<SpareParam>,
 }
@@ -23,7 +27,7 @@ impl HoudiniNode for DummyNode {
     fn get_node_type(&self) -> &'static str {
         self.node_type
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPort, (usize, OutputPort)> {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -40,7 +44,7 @@ struct DummyContainerNode {
     name: String,
     node_type: &'static str,
     dive_target: &'static str,
-    inputs: BTreeMap<usize, (usize, usize)>,
+    inputs: BTreeMap<InputPort, (usize, OutputPort)>,
     params: HashMap<String, ParamValue>,
     spare_params: Vec<SpareParam>,
 }
@@ -55,7 +59,7 @@ impl HoudiniNode for DummyContainerNode {
     fn get_node_type(&self) -> &'static str {
         self.node_type
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPort, (usize, OutputPort)> {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -97,7 +101,9 @@ fn test_transpiler_script_generation() {
     node2
         .params
         .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
-    node2.inputs.insert(0, (101, 0));
+    node2
+        .inputs
+        .insert(InputPort::Index(0), (101, OutputPort::Index(0)));
 
     let mut transpiler = Transpiler::new("/obj/node's_geo", None, false);
     transpiler.add_boxed(Box::new(node1)).unwrap();
@@ -129,7 +135,8 @@ fn test_missing_node_connection_warning() {
         params: HashMap::new(),
         spare_params: vec![],
     };
-    node.inputs.insert(0, (999, 0));
+    node.inputs
+        .insert(InputPort::Index(0), (999, OutputPort::Index(0)));
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler.add_boxed(Box::new(node)).unwrap();
@@ -157,7 +164,9 @@ fn test_same_name_nodes_get_distinct_python_vars() {
         params: HashMap::new(),
         spare_params: vec![],
     };
-    node2.inputs.insert(0, (1, 0));
+    node2
+        .inputs
+        .insert(InputPort::Index(0), (1, OutputPort::Index(0)));
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler.add(node1).unwrap();
@@ -431,7 +440,7 @@ fn test_transpiler_nested_subnet_creation() {
         node_type: "ray",
         inputs: {
             let mut m = BTreeMap::new();
-            m.insert(0, (502, 0));
+            m.insert(InputPort::Index(0), (502, OutputPort::Index(0)));
             m
         },
         params: HashMap::new(),
@@ -480,7 +489,7 @@ fn test_node_graph_dive_into_api() {
             node_type: "ray",
             inputs: {
                 let mut m = BTreeMap::new();
-                m.insert(0, (prev_frame_id, 0));
+                m.insert(InputPort::Index(0), (prev_frame_id, OutputPort::Index(0)));
                 m
             },
             params: HashMap::new(),
@@ -831,4 +840,42 @@ fn test_cross_container_wiring_error() {
 
         inner_b.connect_existing(&out_a, 0, &ray_b);
     });
+}
+
+#[test]
+fn test_transpiler_output_port_by_name() {
+    let global = DummyNode {
+        id: 4001,
+        name: "global".to_string(),
+        node_type: "geometryvopglobal",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    let mut add = DummyNode {
+        id: 4002,
+        name: "add".to_string(),
+        node_type: "add",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    add.inputs.insert(
+        InputPort::Index(0),
+        (4001, OutputPort::Name("P".to_string())),
+    );
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(global)).unwrap();
+    transpiler.add_boxed(Box::new(add)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(
+        script.contains(
+            "n_add_4002.setInput(0, n_global_4001, n_global_4001.outputNames().index('P'))"
+        )
+    );
 }

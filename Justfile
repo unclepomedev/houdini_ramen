@@ -172,3 +172,12 @@ probe-metadata:
     source houdini_setup
     cd {{ PROJECT_ROOT }}
     hython tools/probe/metadata.py
+
+probe-label:
+    #!/usr/bin/env bash
+    set -e
+
+    cd {{ HOUDINI_RESOURCES }}
+    source houdini_setup
+    cd {{ PROJECT_ROOT }}
+    hython tools/probe/probe_label.py

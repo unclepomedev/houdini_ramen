@@ -124,6 +124,13 @@ class ParsedInnerMethod:
 
 
 @dataclass(frozen=True)
+class ParsedOutput:
+    index: int
+    raw_name: str
+    safe_name: str
+
+
+@dataclass(frozen=True)
 class ParsedNode:
     struct_name: str
     node_type: str
@@ -236,14 +243,10 @@ def resolve_multiparm(name: str) -> MultiparmInfo:
 
 
 def _build_menu_enum(
-    p_name: str,
-    p_data: dict[str, Any],
-    struct_name: str,
-    enum_resolver: SuffixResolver,
+    p_name: str, p_data: dict[str, Any], struct_name: str, enum_resolver: SuffixResolver
 ) -> ParsedMenuEnum | None:
     if p_data.get("type") not in ("Menu", "Int"):
         return None
-
     if not p_data.get("menu_items") or not p_data.get("menu_labels"):
         return None
 
@@ -272,7 +275,6 @@ def _build_menu_enum(
 
         safe_v_name = to_safe_ident(base_v_name)
         v_name = variant_resolver.resolve(safe_v_name)
-
         variants.append(
             ParsedMenuVariant(name=v_name, value=i, doc_label=safe_doc_label)
         )
@@ -297,7 +299,6 @@ def parse_param(
     method_suffix = resolver.resolve(target_suffix)
 
     menu_enum = _build_menu_enum(p_name, p_data, struct_name, enum_resolver)
-
     r_type = menu_enum.enum_name if menu_enum else type_info.r_type
     val_converter = "val as i32" if menu_enum else type_info.val_converter
 
@@ -314,55 +315,69 @@ def parse_param(
     return parsed_param, menu_enum
 
 
-def parse_node(
-    struct_name: str, node_type: str, node_info: dict[str, Any]
-) -> ParsedNode:
-    min_inputs = node_info.get("min_inputs", 0)
-    max_inputs = node_info.get("max_inputs", 0)
-    raw_labels = node_info.get("input_labels", [])
-
+def _parse_inputs(raw_labels: list[str]) -> list[ParsedInput]:
     input_resolver = SuffixResolver()
-    parsed_inputs = []
-
+    parsed = []
     for idx, label in enumerate(raw_labels):
         # remove line breaks and consecutive spaces to create one clean string
         clean_doc = re.sub(
             r"\s+", " ", label.replace("\n", " ").replace("\r", "")
         ).strip()
-
         # if it is too long, truncate it
         safe_base = snake_case(clean_doc) if clean_doc else f"input_{idx}"
         if len(safe_base) > 40:
             safe_base = safe_base[:40].rstrip("_")
+        if safe_base in RUST_KEYWORDS:
+            safe_name = f"{safe_base}_"
+        else:
+            safe_name = safe_base
 
-        safe_name = to_safe_ident(input_resolver.resolve(safe_base))
+        safe_name = input_resolver.resolve(safe_name)
+        parsed.append(ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name))
+    return parsed
 
-        parsed_inputs.append(
-            ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name)
+
+def _parse_outputs(raw_outputs: list[str]) -> list[ParsedOutput]:
+    output_resolver = SuffixResolver()
+    parsed = []
+    for idx, raw_name in enumerate(raw_outputs):
+        if not raw_name:
+            continue
+        safe_base = snake_case(raw_name)
+        safe_name = output_resolver.resolve(safe_base).upper()
+        parsed.append(
+            ParsedOutput(
+                index=idx, raw_name=safe_rust_string(raw_name), safe_name=safe_name
+            )
         )
+    return parsed
 
+
+def _parse_params(
+    raw_params: list[dict[str, Any]], struct_name: str
+) -> tuple[list[ParsedParam], list[ParsedMenuEnum]]:
     param_resolver = SuffixResolver()
     enum_resolver = SuffixResolver(separator="")
     params = []
     enums = []
-    for p in node_info.get("parms", []):
+    for p in raw_params:
         p_name = p.get("name")
         if not p_name:
             continue
-
         parsed_param, menu_enum = parse_param(
-            p_name, p, struct_name, param_resolver, enum_resolver
+            str(p_name), p, struct_name, param_resolver, enum_resolver
         )
         if parsed_param is not None:
             params.append(parsed_param)
         if menu_enum is not None:
             enums.append(menu_enum)
+    return params, enums
 
+
+def _parse_inner_methods(raw_inner_nodes: dict[str, str]) -> list[ParsedInnerMethod]:
     inner_methods = []
     inner_method_resolver = SuffixResolver()
-    for child_name, rel_path in sorted(
-        node_info.get("builtin_inner_nodes", {}).items()
-    ):
+    for child_name, rel_path in sorted(raw_inner_nodes.items()):
         method_name = to_safe_ident(
             inner_method_resolver.resolve(snake_case(child_name))
         )
@@ -371,19 +386,24 @@ def parse_node(
                 method_name=method_name, rel_path=safe_rust_string(rel_path)
             )
         )
+    return inner_methods
 
-    dive_target = node_info.get("dive_target")
+
+def parse_node(
+    struct_name: str, node_type: str, node_info: dict[str, Any]
+) -> ParsedNode:
+    params, enums = _parse_params(node_info.get("parms", []), struct_name)
 
     return ParsedNode(
         struct_name=struct_name,
         node_type=node_type,
-        min_inputs=min_inputs,
-        max_inputs=max_inputs,
-        inputs=parsed_inputs,
+        min_inputs=node_info.get("min_inputs", 0),
+        max_inputs=node_info.get("max_inputs", 0),
+        inputs=_parse_inputs(node_info.get("input_labels", [])),
         params=params,
         enums=enums,
-        inner_methods=inner_methods,
-        dive_target=dive_target,
+        inner_methods=_parse_inner_methods(node_info.get("builtin_inner_nodes", {})),
+        dive_target=node_info.get("dive_target"),
     )
 
 
@@ -473,7 +493,6 @@ class CodeGenerator:
 
         mod_content = "\n".join(mod_lines) + "\n\n" + "\n".join(export_lines) + "\n"
         (cat_rs_dir / "mod.rs").write_text(mod_content, encoding="utf-8")
-
         (self.stub_root / f"{cat_snake}.stub").write_text(
             "\n\n".join(all_stub_blocks), encoding="utf-8"
         )

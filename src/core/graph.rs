@@ -1,8 +1,12 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
-use crate::core::types::{ContainerType, HoudiniNode};
+use crate::core::types::InputPort;
+use crate::core::types::ParamValue;
+use crate::core::types::{ContainerType, HoudiniNode, OutputPort};
 use std::collections::BTreeMap;
+use std::collections::HashMap;
 use std::marker::PhantomData;
+use std::sync::LazyLock;
 
 pub struct NodeGraph {
     parent_path: String,
@@ -67,12 +71,13 @@ impl<'a, C> InnerGraph<'a, C> {
     }
 
     /// Receives a reference to a node and connects it as a target.
-    pub fn connect_existing<N: HoudiniNode>(
+    pub fn connect_existing<N: HoudiniNode, I: Into<InputPort>>(
         &mut self,
         dst: &ExistingNodeRef,
-        input_idx: usize,
+        input_idx: I,
         src: &N,
     ) {
+        let input_port = input_idx.into();
         let found = self
             .graph
             .existing_nodes
@@ -80,7 +85,8 @@ impl<'a, C> InnerGraph<'a, C> {
             .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
 
         if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (src.get_id(), 0));
+            node.inputs
+                .insert(input_port, (src.get_id(), OutputPort::Index(0)));
         } else {
             // TODO: To avoid troublesome, but errors should be handled at a higher layer.
             panic!(
@@ -91,13 +97,14 @@ impl<'a, C> InnerGraph<'a, C> {
     }
 
     /// Specify the output port and connect the wires.
-    pub fn connect_existing_from<N: HoudiniNode>(
+    pub fn connect_existing_from<N: HoudiniNode, I: Into<InputPort>>(
         &mut self,
         dst: &ExistingNodeRef,
-        input_idx: usize,
+        input_idx: I,
         src: &N,
         output_idx: usize,
     ) {
+        let input_port = input_idx.into();
         let found = self
             .graph
             .existing_nodes
@@ -105,7 +112,8 @@ impl<'a, C> InnerGraph<'a, C> {
             .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
 
         if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (src.get_id(), output_idx));
+            node.inputs
+                .insert(input_port, (src.get_id(), OutputPort::Index(output_idx)));
         } else {
             // TODO: To avoid troublesome, but errors should be handled at a higher layer.
             panic!(
@@ -133,7 +141,7 @@ impl<'a, C> InnerGraph<'a, C> {
 pub struct ExistingNodeRef {
     pub id: usize,
     pub name: String,
-    pub inputs: BTreeMap<usize, (usize, usize)>,
+    pub inputs: BTreeMap<InputPort, (usize, OutputPort)>,
 }
 
 impl HoudiniNode for ExistingNodeRef {
@@ -146,13 +154,11 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_node_type(&self) -> &'static str {
         ""
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPort, (usize, OutputPort)> {
         &self.inputs
     }
-    fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        static EMPTY: std::sync::LazyLock<
-            std::collections::HashMap<String, crate::core::types::ParamValue>,
-        > = std::sync::LazyLock::new(std::collections::HashMap::new);
+    fn get_params(&self) -> &HashMap<String, ParamValue> {
+        static EMPTY: LazyLock<HashMap<String, ParamValue>> = LazyLock::new(HashMap::new);
         &EMPTY
     }
 }

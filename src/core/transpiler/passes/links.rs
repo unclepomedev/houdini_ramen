@@ -1,5 +1,6 @@
 use crate::core::transpiler::builder::PythonBuilder;
-use crate::core::types::HoudiniNode;
+use crate::core::types::InputPort;
+use crate::core::types::{HoudiniNode, OutputPort};
 use std::collections::HashMap;
 
 pub fn write_link_pass(
@@ -35,13 +36,13 @@ fn write_node_links(
         return;
     };
 
-    for (idx, (target_id, target_out_idx)) in node.get_inputs() {
+    for (in_port, (target_id, target_out_port)) in node.get_inputs() {
         write_single_link(
             builder,
             var_name,
-            *idx,
+            in_port,
             *target_id,
-            *target_out_idx,
+            target_out_port,
             id_to_var,
         );
     }
@@ -50,26 +51,41 @@ fn write_node_links(
 fn write_single_link(
     builder: &mut PythonBuilder,
     var_name: &str,
-    input_idx: usize,
+    input_port: &InputPort,
     target_id: usize,
-    target_out_idx: usize,
+    target_out_port: &OutputPort,
     id_to_var: &HashMap<usize, String>,
 ) {
+    let in_arg_log = match input_port {
+        InputPort::Index(i) => i.to_string(),
+        InputPort::Name(name) => name.clone(),
+    };
+
     if let Some(target_var) = id_to_var.get(&target_id) {
+        let in_arg = match input_port {
+            InputPort::Index(i) => i.to_string(),
+            InputPort::Name(name) => format!("'{}'", name),
+        };
+
+        let out_arg = match target_out_port {
+            OutputPort::Index(i) => i.to_string(),
+            OutputPort::Name(name) => format!("{}.outputNames().index('{}')", target_var, name),
+        };
+
         builder.line(&format!(
             "{}.setInput({}, {}, {})",
-            var_name, input_idx, target_var, target_out_idx
+            var_name, in_arg, target_var, out_arg
         ));
     } else {
         emit_warning(
             builder,
             format!(
                 "WARNING: Target node with ID {} not found in the graph. Skipping connection for input {} of {}.",
-                target_id, input_idx, var_name
+                target_id, in_arg_log, var_name
             ),
             format!(
                 "Target node ID {} not found. Connection to input {} skipped.",
-                target_id, input_idx
+                target_id, in_arg_log
             ),
         );
     }
