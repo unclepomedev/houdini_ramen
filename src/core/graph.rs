@@ -3,6 +3,9 @@ use crate::core::transpiler::Transpiler;
 use crate::core::types::{ContainerType, HoudiniNode};
 use std::collections::BTreeMap;
 use std::marker::PhantomData;
+use std::sync::LazyLock;
+use crate::core::types::ParamValue;
+use std::collections::HashMap;
 
 pub struct NodeGraph {
     parent_path: String,
@@ -149,10 +152,10 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
         &self.inputs
     }
-    fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        static EMPTY: std::sync::LazyLock<
-            std::collections::HashMap<String, crate::core::types::ParamValue>,
-        > = std::sync::LazyLock::new(std::collections::HashMap::new);
+    fn get_params(&self) -> &HashMap<String, ParamValue> {
+        static EMPTY: LazyLock<
+            HashMap<String, ParamValue>,
+        > = LazyLock::new(HashMap::new);
         &EMPTY
     }
 }

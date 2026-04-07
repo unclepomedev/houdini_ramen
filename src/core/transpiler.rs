@@ -7,6 +7,12 @@ pub mod tests;
 use crate::core::py_escape::sanitize_py_ident;
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::{ContainerType, HoudiniNode};
+use passes::creation::write_creation_pass;
+use passes::footer::write_footer;
+use passes::header::write_header;
+use passes::links::write_link_pass;
+use passes::parameters::write_parameter_pass;
+use passes::spare_params::write_spare_parameter_pass;
 use std::collections::{HashMap, HashSet};
 
 pub struct Transpiler {
@@ -62,13 +68,13 @@ impl Transpiler {
 
     pub fn generate_script(&self) -> Result<String, String> {
         let mut builder = PythonBuilder::new();
-        passes::header::write_header(
+        write_header(
             &mut builder,
             &self.parent_path,
             self.auto_create_type,
             self.auto_clear,
         );
-        let container_exprs = passes::creation::write_creation_pass(
+        let container_exprs = write_creation_pass(
             &mut builder,
             &self.nodes,
             &self.id_to_var,
@@ -76,13 +82,9 @@ impl Transpiler {
             &self.existing_nodes,
             &self.existing_node_names,
         )?;
-        passes::spare_params::write_spare_parameter_pass(
-            &mut builder,
-            &self.nodes,
-            &self.id_to_var,
-        )?;
-        passes::parameters::write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var)?;
-        passes::links::write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
+        write_spare_parameter_pass(&mut builder, &self.nodes, &self.id_to_var)?;
+        write_parameter_pass(&mut builder, &self.nodes, &self.id_to_var)?;
+        write_link_pass(&mut builder, &self.nodes, &self.id_to_var);
 
         let display_var = if let Some(id) = self.display_node_id {
             Some(
@@ -100,7 +102,7 @@ impl Transpiler {
             .iter()
             .filter_map(|(nid, _cid)| self.id_to_var.get(nid).map(|v| v.as_str()))
             .collect();
-        passes::footer::write_footer(
+        write_footer(
             &mut builder,
             display_var,
             &nested_display_vars,
