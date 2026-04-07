@@ -41,6 +41,8 @@ pub struct TopTextoutput {
 }
 
 impl TopTextoutput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -463,6 +465,8 @@ pub struct TopTexttocsv {
 }
 
 impl TopTexttocsv {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -748,6 +752,8 @@ pub struct TopTopfetch {
 }
 
 impl TopTopfetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1247,6 +1253,8 @@ pub struct TopTopfetchinput {
 }
 
 impl TopTopfetchinput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

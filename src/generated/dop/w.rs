@@ -23,6 +23,8 @@ pub struct DopWhitewateremitter {
 }
 
 impl DopWhitewateremitter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -565,6 +567,8 @@ pub struct DopWhitewaterobject {
 }
 
 impl DopWhitewaterobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1457,6 +1461,8 @@ pub struct DopWhitewatersolver {
 }
 
 impl DopWhitewatersolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3225,6 +3231,8 @@ pub struct DopWindforce {
 }
 
 impl DopWindforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3696,6 +3704,8 @@ pub struct DopWireangularconstraint {
 }
 
 impl DopWireangularconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4074,6 +4084,8 @@ pub struct DopWireangularspringconstraint {
 }
 
 impl DopWireangularspringconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4536,6 +4548,8 @@ pub struct DopWireconfigureobject {
 }
 
 impl DopWireconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5829,6 +5843,8 @@ pub struct DopWireelasticity {
 }
 
 impl DopWireelasticity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6294,6 +6310,8 @@ pub struct DopWireglueconstraint {
 }
 
 impl DopWireglueconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6700,6 +6718,8 @@ pub struct DopWireobject {
 }
 
 impl DopWireobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7938,6 +7958,8 @@ pub struct DopWirephysparms {
 }
 
 impl DopWirephysparms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8489,6 +8511,8 @@ pub struct DopWireplasticity {
 }
 
 impl DopWireplasticity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9080,6 +9104,8 @@ pub struct DopWiresolver {
 }
 
 impl DopWiresolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9561,6 +9587,8 @@ pub struct DopWirevisualization {
 }
 
 impl DopWirevisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10287,6 +10315,8 @@ pub struct DopWirevolumecollider {
 }
 
 impl DopWirevolumecollider {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10647,6 +10677,8 @@ pub struct DopWirewirecollider {
 }
 
 impl DopWirewirecollider {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -8,6 +8,8 @@ pub struct LopCache {
 }
 
 impl LopCache {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -355,6 +357,8 @@ pub struct LopCamera {
 }
 
 impl LopCamera {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1678,6 +1682,8 @@ pub struct LopCapsule {
 }
 
 impl LopCapsule {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2539,6 +2545,8 @@ pub struct LopCollection {
 }
 
 impl LopCollection {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2942,6 +2950,8 @@ pub struct LopComponentgeometry {
 }
 
 impl LopComponentgeometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3769,6 +3779,8 @@ pub struct LopComponentgeometryvariants {
 }
 
 impl LopComponentgeometryvariants {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8024,6 +8036,8 @@ pub struct LopComponentmaterial {
 }
 
 impl LopComponentmaterial {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8563,6 +8577,8 @@ pub struct LopComponentoutput {
 }
 
 impl LopComponentoutput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10131,6 +10147,8 @@ pub struct LopCone {
 }
 
 impl LopCone {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10908,6 +10926,8 @@ pub struct LopConfigurelayer {
 }
 
 impl LopConfigurelayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11659,6 +11679,8 @@ pub struct LopConfigureprimitive {
 }
 
 impl LopConfigureprimitive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13002,6 +13024,8 @@ pub struct LopConfigureproperty {
 }
 
 impl LopConfigureproperty {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13501,6 +13525,8 @@ pub struct LopConfigurestage {
 }
 
 impl LopConfigurestage {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14086,6 +14112,8 @@ pub struct LopCoordsys {
 }
 
 impl LopCoordsys {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14941,6 +14969,8 @@ pub struct LopCopyproperty {
 }
 
 impl LopCopyproperty {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15226,6 +15256,8 @@ pub struct LopCreatelod {
 }
 
 impl LopCreatelod {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15697,6 +15729,8 @@ pub struct LopCreatexform {
 }
 
 impl LopCreatexform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16320,6 +16354,8 @@ pub struct LopCube {
 }
 
 impl LopCube {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17069,6 +17105,8 @@ pub struct LopCylinder {
 }
 
 impl LopCylinder {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -51,6 +51,8 @@ pub struct ChopNetwork {
 }
 
 impl ChopNetwork {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -639,6 +641,8 @@ pub struct ChopNoise {
 }
 
 impl ChopNoise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1357,6 +1361,8 @@ pub struct ChopNull {
 }
 
 impl ChopNull {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

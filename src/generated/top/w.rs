@@ -64,6 +64,8 @@ pub struct TopWaitforall {
 }
 
 impl TopWaitforall {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -550,6 +552,8 @@ pub struct TopWedge {
 }
 
 impl TopWedge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1565,6 +1569,8 @@ pub struct TopWorkitemexpand {
 }
 
 impl TopWorkitemexpand {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1964,6 +1970,8 @@ pub struct TopWorkitemimport {
 }
 
 impl TopWorkitemimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

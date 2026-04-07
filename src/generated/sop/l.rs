@@ -527,6 +527,8 @@ pub struct SopLabsZibravdbDecompress {
 }
 
 impl SopLabsZibravdbDecompress {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -637,6 +639,8 @@ pub struct SopLaplacian {
 }
 
 impl SopLaplacian {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -947,6 +951,8 @@ pub struct SopLattice {
 }
 
 impl SopLattice {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1383,6 +1389,8 @@ pub struct SopLatticefromvolume {
 }
 
 impl SopLatticefromvolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1733,6 +1741,8 @@ pub struct SopLayer {
 }
 
 impl SopLayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2071,6 +2081,8 @@ pub struct SopLayoutbrushcomb {
 }
 
 impl SopLayoutbrushcomb {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2532,6 +2544,9 @@ pub struct SopLayoutbrushdelete {
 }
 
 impl SopLayoutbrushdelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3099,6 +3114,9 @@ pub struct SopLayoutbrushfill {
 }
 
 impl SopLayoutbrushfill {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5143,6 +5161,9 @@ pub struct SopLayoutbrushline {
 }
 
 impl SopLayoutbrushline {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5962,6 +5983,9 @@ pub struct SopLayoutbrushmove {
 }
 
 impl SopLayoutbrushmove {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6436,6 +6460,9 @@ pub struct SopLayoutbrushorient {
 }
 
 impl SopLayoutbrushorient {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6953,6 +6980,9 @@ pub struct SopLayoutbrushpaint {
 }
 
 impl SopLayoutbrushpaint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7670,6 +7700,9 @@ pub struct SopLayoutbrushplace {
 }
 
 impl SopLayoutbrushplace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8351,6 +8384,9 @@ pub struct SopLayoutbrushreplace {
 }
 
 impl SopLayoutbrushreplace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8781,6 +8817,9 @@ pub struct SopLayoutbrushscale {
 }
 
 impl SopLayoutbrushscale {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9263,6 +9302,9 @@ pub struct SopLayoutbrushstack {
 }
 
 impl SopLayoutbrushstack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9773,6 +9815,8 @@ pub struct SopLidarimport {
 }
 
 impl SopLidarimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10480,6 +10524,8 @@ pub struct SopLine {
 }
 
 impl SopLine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10761,6 +10807,8 @@ pub struct SopLinearsolver {
 }
 
 impl SopLinearsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11538,6 +11586,8 @@ pub struct SopLoadslices {
 }
 
 impl SopLoadslices {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11700,6 +11750,8 @@ pub struct SopLopimport {
 }
 
 impl SopLopimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12214,6 +12266,8 @@ pub struct SopLsystem {
 }
 
 impl SopLsystem {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

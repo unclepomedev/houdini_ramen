@@ -53,6 +53,8 @@ pub struct ObjectPath {
 }
 
 impl ObjectPath {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -845,6 +847,8 @@ pub struct ObjectPathcv {
 }
 
 impl ObjectPathcv {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1708,6 +1712,8 @@ pub struct ObjectPxraovlight {
 }
 
 impl ObjectPxraovlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2464,6 +2470,8 @@ pub struct ObjectPxrbarnlightfilter {
 }
 
 impl ObjectPxrbarnlightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3658,6 +3666,8 @@ pub struct ObjectPxrblockerlightfilter {
 }
 
 impl ObjectPxrblockerlightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4615,6 +4625,8 @@ pub struct ObjectPxrcookielightfilter {
 }
 
 impl ObjectPxrcookielightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5991,6 +6003,8 @@ pub struct ObjectPxrdisklight {
 }
 
 impl ObjectPxrdisklight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7219,6 +7233,8 @@ pub struct ObjectPxrdistantlight {
 }
 
 impl ObjectPxrdistantlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8383,6 +8399,8 @@ pub struct ObjectPxrdomelight {
 }
 
 impl ObjectPxrdomelight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9608,6 +9626,8 @@ pub struct ObjectPxrenvdaylight {
 }
 
 impl ObjectPxrenvdaylight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10907,6 +10927,8 @@ pub struct ObjectPxrgobolightfilter {
 }
 
 impl ObjectPxrgobolightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11863,6 +11885,8 @@ pub struct ObjectPxrintmultlightfilter {
 }
 
 impl ObjectPxrintmultlightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12679,6 +12703,8 @@ pub struct ObjectPxrmeshlight {
 }
 
 impl ObjectPxrmeshlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13913,6 +13939,8 @@ pub struct ObjectPxrportallight {
 }
 
 impl ObjectPxrportallight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15135,6 +15163,8 @@ pub struct ObjectPxrramplightfilter {
 }
 
 impl ObjectPxrramplightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16037,6 +16067,8 @@ pub struct ObjectPxrrectlight {
 }
 
 impl ObjectPxrrectlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17307,6 +17339,8 @@ pub struct ObjectPxrrodlightfilter {
 }
 
 impl ObjectPxrrodlightfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18461,6 +18495,8 @@ pub struct ObjectPxrspherelight {
 }
 
 impl ObjectPxrspherelight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19691,6 +19727,8 @@ pub struct ObjectPxrstdarealight {
 }
 
 impl ObjectPxrstdarealight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20998,6 +21036,8 @@ pub struct ObjectPxrstdenvdaylight {
 }
 
 impl ObjectPxrstdenvdaylight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22065,6 +22105,8 @@ pub struct ObjectPxrstdenvmaplight {
 }
 
 impl ObjectPxrstdenvmaplight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23036,6 +23078,8 @@ pub struct ObjectPythonscript {
 }
 
 impl ObjectPythonscript {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

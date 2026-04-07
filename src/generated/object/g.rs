@@ -53,6 +53,8 @@ pub struct ObjectGeo {
 }
 
 impl ObjectGeo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -768,6 +770,8 @@ pub struct ObjectGltfHierarchy {
 }
 
 impl ObjectGltfHierarchy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1594,6 +1598,8 @@ pub struct ObjectGroommerge {
 }
 
 impl ObjectGroommerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3264,6 +3270,8 @@ pub struct ObjectGuidedeform {
 }
 
 impl ObjectGuidedeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5522,6 +5530,8 @@ pub struct ObjectGuidegroom {
 }
 
 impl ObjectGuidegroom {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7820,6 +7830,8 @@ pub struct ObjectGuidesim {
 }
 
 impl ObjectGuidesim {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -108,6 +108,8 @@ pub struct Cop2Add {
 }
 
 impl Cop2Add {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -900,6 +902,8 @@ pub struct Cop2Aidenoise {
 }
 
 impl Cop2Aidenoise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1460,6 +1464,8 @@ pub struct Cop2Anaglyph {
 }
 
 impl Cop2Anaglyph {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1832,6 +1838,8 @@ pub struct Cop2Atop {
 }
 
 impl Cop2Atop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2687,6 +2695,8 @@ pub struct Cop2Average {
 }
 
 impl Cop2Average {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -31,6 +31,8 @@ pub struct SopSblend {
 }
 
 impl SopSblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -375,6 +377,8 @@ pub struct SopScatter {
 }
 
 impl SopScatter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1251,6 +1255,8 @@ pub struct SopScatteralign {
 }
 
 impl SopScatteralign {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2532,6 +2538,8 @@ pub struct SopScatterintexturemask {
 }
 
 impl SopScatterintexturemask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2908,6 +2916,8 @@ pub struct SopScript {
 }
 
 impl SopScript {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3199,6 +3209,8 @@ pub struct SopSculpt {
 }
 
 impl SopSculpt {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4427,6 +4439,8 @@ pub struct SopSculptcore {
 }
 
 impl SopSculptcore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5452,6 +5466,9 @@ pub struct SopSeparatepieces {
 }
 
 impl SopSeparatepieces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5765,6 +5782,8 @@ pub struct SopShallowwatersolver {
 }
 
 impl SopShallowwatersolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6621,6 +6640,8 @@ pub struct SopShapediff {
 }
 
 impl SopShapediff {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7046,6 +7067,8 @@ pub struct SopShatter {
 }
 
 impl SopShatter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7560,6 +7583,8 @@ pub struct SopShop {
 }
 
 impl SopShop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8565,6 +8590,8 @@ pub struct SopShotsculpt {
 }
 
 impl SopShotsculpt {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11570,6 +11597,8 @@ pub struct SopShrinkwrap {
 }
 
 impl SopShrinkwrap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11908,6 +11937,8 @@ pub struct SopSimplexrefine {
 }
 
 impl SopSimplexrefine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12153,6 +12184,8 @@ pub struct SopSinglecurveoperation {
 }
 
 impl SopSinglecurveoperation {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12785,6 +12818,8 @@ pub struct SopSinglepointweld {
 }
 
 impl SopSinglepointweld {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13042,6 +13077,8 @@ pub struct SopSkin {
 }
 
 impl SopSkin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13431,6 +13468,8 @@ pub struct SopSkindeform {
 }
 
 impl SopSkindeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14195,6 +14234,8 @@ pub struct SopSkinproperties {
 }
 
 impl SopSkinproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15862,6 +15903,8 @@ pub struct SopSkinsolidify {
 }
 
 impl SopSkinsolidify {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16374,6 +16417,8 @@ pub struct SopSkinsolvervellum {
 }
 
 impl SopSkinsolvervellum {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17433,6 +17478,8 @@ pub struct SopSky {
 }
 
 impl SopSky {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18291,6 +18338,8 @@ pub struct SopSkybox {
 }
 
 impl SopSkybox {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20667,6 +20716,8 @@ pub struct SopSkyfield {
 }
 
 impl SopSkyfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21222,6 +21273,8 @@ pub struct SopSkyfieldfrommap {
 }
 
 impl SopSkyfieldfrommap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21891,6 +21944,8 @@ pub struct SopSkyfieldnoise {
 }
 
 impl SopSkyfieldnoise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23117,6 +23172,8 @@ pub struct SopSkyfieldpattern {
 }
 
 impl SopSkyfieldpattern {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25135,6 +25192,8 @@ pub struct SopSlidemodifierpaint {
 }
 
 impl SopSlidemodifierpaint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26016,6 +26075,8 @@ pub struct SopSmooth {
 }
 
 impl SopSmooth {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26384,6 +26445,8 @@ pub struct SopSoftpeak {
 }
 
 impl SopSoftpeak {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26864,6 +26927,8 @@ pub struct SopSoftxform {
 }
 
 impl SopSoftxform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27376,6 +27441,8 @@ pub struct SopSolidembed {
 }
 
 impl SopSolidembed {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27578,6 +27645,8 @@ pub struct SopSolidfracture {
 }
 
 impl SopSolidfracture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27812,6 +27881,8 @@ pub struct SopSolidify {
 }
 
 impl SopSolidify {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28090,6 +28161,8 @@ pub struct SopSolver {
 }
 
 impl SopSolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29168,6 +29241,8 @@ pub struct SopSort {
 }
 
 impl SopSort {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29826,6 +29901,8 @@ pub struct SopSphere {
 }
 
 impl SopSphere {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30272,6 +30349,8 @@ pub struct SopSpiral {
 }
 
 impl SopSpiral {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30893,6 +30972,9 @@ pub struct SopSplit {
 }
 
 impl SopSplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31141,6 +31223,8 @@ pub struct SopSplitbypointattrib {
 }
 
 impl SopSplitbypointattrib {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31465,6 +31549,8 @@ pub struct SopSplitpoints {
 }
 
 impl SopSplitpoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31756,6 +31842,8 @@ pub struct SopSpraypaint {
 }
 
 impl SopSpraypaint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33004,6 +33092,8 @@ pub struct SopSpring {
 }
 
 impl SopSpring {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33672,6 +33762,8 @@ pub struct SopSprite {
 }
 
 impl SopSprite {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34174,6 +34266,8 @@ pub struct SopSssscatter {
 }
 
 impl SopSssscatter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34658,6 +34752,8 @@ pub struct SopStarburst {
 }
 
 impl SopStarburst {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34890,6 +34986,8 @@ pub struct SopStash {
 }
 
 impl SopStash {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35144,6 +35242,8 @@ pub struct SopStitch {
 }
 
 impl SopStitch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35602,6 +35702,8 @@ pub struct SopStroke {
 }
 
 impl SopStroke {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -36064,6 +36166,8 @@ pub struct SopStrokecache {
 }
 
 impl SopStrokecache {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -36459,6 +36563,8 @@ pub struct SopSubdivide {
 }
 
 impl SopSubdivide {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37003,6 +37109,8 @@ pub struct SopSubnet {
 }
 
 impl SopSubnet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37400,6 +37508,8 @@ pub struct SopSuperquad {
 }
 
 impl SopSuperquad {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37665,6 +37775,8 @@ pub struct SopSurfacedeform {
 }
 
 impl SopSurfacedeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38185,6 +38297,8 @@ pub struct SopSurfacerelax {
 }
 
 impl SopSurfacerelax {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38443,6 +38557,8 @@ pub struct SopSurfacesplat {
 }
 
 impl SopSurfacesplat {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38805,6 +38921,8 @@ pub struct SopSurfsect {
 }
 
 impl SopSurfsect {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39384,6 +39502,8 @@ pub struct SopSweep {
 }
 
 impl SopSweep {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40734,6 +40854,8 @@ pub struct SopSwitch {
 }
 
 impl SopSwitch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40988,6 +41110,8 @@ pub struct SopSwitchif {
 }
 
 impl SopSwitchif {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

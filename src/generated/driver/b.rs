@@ -24,6 +24,8 @@ pub struct DriverBakeAnimation {
 }
 
 impl DriverBakeAnimation {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -526,6 +528,8 @@ pub struct DriverBaketexture {
 }
 
 impl DriverBaketexture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1639,6 +1643,8 @@ pub struct DriverBatch {
 }
 
 impl DriverBatch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1871,6 +1877,8 @@ pub struct DriverBrickmap {
 }
 
 impl DriverBrickmap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

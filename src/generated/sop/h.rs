@@ -33,6 +33,8 @@ pub struct SopHaircardgen {
 }
 
 impl SopHaircardgen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -991,6 +993,10 @@ pub struct SopHairclump {
 }
 
 impl SopHairclump {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3577,6 +3583,8 @@ pub struct SopHairclumpcore {
 }
 
 impl SopHairclumpcore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6104,6 +6112,9 @@ pub struct SopHairgen {
 }
 
 impl SopHairgen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7920,6 +7931,8 @@ pub struct SopHairgencore {
 }
 
 impl SopHairgencore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9546,6 +9559,8 @@ pub struct SopHairgrowthfield {
 }
 
 impl SopHairgrowthfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10319,6 +10334,8 @@ pub struct SopHeatgeodesic {
 }
 
 impl SopHeatgeodesic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10602,6 +10619,8 @@ pub struct SopHeightfield {
 }
 
 impl SopHeightfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10823,6 +10842,8 @@ pub struct SopHeightfieldBlur {
 }
 
 impl SopHeightfieldBlur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11191,6 +11212,8 @@ pub struct SopHeightfieldClip {
 }
 
 impl SopHeightfieldClip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11613,6 +11636,8 @@ pub struct SopHeightfieldCopylayer {
 }
 
 impl SopHeightfieldCopylayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11887,6 +11912,8 @@ pub struct SopHeightfieldCrop {
 }
 
 impl SopHeightfieldCrop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12259,6 +12286,8 @@ pub struct SopHeightfieldCutoutbyobject {
 }
 
 impl SopHeightfieldCutoutbyobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12564,6 +12593,8 @@ pub struct SopHeightfieldDeform {
 }
 
 impl SopHeightfieldDeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12874,6 +12905,8 @@ pub struct SopHeightfieldDistort {
 }
 
 impl SopHeightfieldDistort {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13257,6 +13290,8 @@ pub struct SopHeightfieldDistortbylayer {
 }
 
 impl SopHeightfieldDistortbylayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13746,6 +13781,8 @@ pub struct SopHeightfieldDrawmask {
 }
 
 impl SopHeightfieldDrawmask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14268,6 +14305,8 @@ pub struct SopHeightfieldErode {
 }
 
 impl SopHeightfieldErode {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15344,6 +15383,8 @@ pub struct SopHeightfieldErodeHydro {
 }
 
 impl SopHeightfieldErodeHydro {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16135,6 +16176,8 @@ pub struct SopHeightfieldErodePrecipitation {
 }
 
 impl SopHeightfieldErodePrecipitation {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16526,6 +16569,8 @@ pub struct SopHeightfieldErodeThermal {
 }
 
 impl SopHeightfieldErodeThermal {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17260,6 +17305,8 @@ pub struct SopHeightfieldFile {
 }
 
 impl SopHeightfieldFile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17806,6 +17853,8 @@ pub struct SopHeightfieldFlatten {
 }
 
 impl SopHeightfieldFlatten {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18074,6 +18123,8 @@ pub struct SopHeightfieldFlowfield {
 }
 
 impl SopHeightfieldFlowfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18466,6 +18517,8 @@ pub struct SopHeightfieldIsolatelayer {
 }
 
 impl SopHeightfieldIsolatelayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18707,6 +18760,8 @@ pub struct SopHeightfieldLayer {
 }
 
 impl SopHeightfieldLayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19208,6 +19263,8 @@ pub struct SopHeightfieldLayerclear {
 }
 
 impl SopHeightfieldLayerclear {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19448,6 +19505,8 @@ pub struct SopHeightfieldLayerproperty {
 }
 
 impl SopHeightfieldLayerproperty {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19777,6 +19836,8 @@ pub struct SopHeightfieldMaskbyconcavity {
 }
 
 impl SopHeightfieldMaskbyconcavity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20125,6 +20186,8 @@ pub struct SopHeightfieldMaskbyfeature {
 }
 
 impl SopHeightfieldMaskbyfeature {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20773,6 +20836,8 @@ pub struct SopHeightfieldMaskbyobject {
 }
 
 impl SopHeightfieldMaskbyobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21248,6 +21313,8 @@ pub struct SopHeightfieldMaskbyocclusion {
 }
 
 impl SopHeightfieldMaskbyocclusion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21612,6 +21679,8 @@ pub struct SopHeightfieldMaskbyshadow {
 }
 
 impl SopHeightfieldMaskbyshadow {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21944,6 +22013,8 @@ pub struct SopHeightfieldNoise {
 }
 
 impl SopHeightfieldNoise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22678,6 +22749,8 @@ pub struct SopHeightfieldOutput {
 }
 
 impl SopHeightfieldOutput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23897,6 +23970,8 @@ pub struct SopHeightfieldPaint {
 }
 
 impl SopHeightfieldPaint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24671,6 +24746,8 @@ pub struct SopHeightfieldPatch {
 }
 
 impl SopHeightfieldPatch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25076,6 +25153,8 @@ pub struct SopHeightfieldPattern {
 }
 
 impl SopHeightfieldPattern {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25911,6 +25990,8 @@ pub struct SopHeightfieldProject {
 }
 
 impl SopHeightfieldProject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26480,6 +26561,8 @@ pub struct SopHeightfieldQuickshade {
 }
 
 impl SopHeightfieldQuickshade {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28961,6 +29044,8 @@ pub struct SopHeightfieldRemap {
 }
 
 impl SopHeightfieldRemap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29339,6 +29424,8 @@ pub struct SopHeightfieldResample {
 }
 
 impl SopHeightfieldResample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29671,6 +29758,8 @@ pub struct SopHeightfieldScatter {
 }
 
 impl SopHeightfieldScatter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30602,6 +30691,8 @@ pub struct SopHeightfieldSlump {
 }
 
 impl SopHeightfieldSlump {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31477,6 +31568,8 @@ pub struct SopHeightfieldTerrace {
 }
 
 impl SopHeightfieldTerrace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32065,6 +32158,8 @@ pub struct SopHeightfieldTilesplit {
 }
 
 impl SopHeightfieldTilesplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32396,6 +32491,8 @@ pub struct SopHeightfieldVisualize {
 }
 
 impl SopHeightfieldVisualize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33050,6 +33147,8 @@ pub struct SopHeightfieldXform {
 }
 
 impl SopHeightfieldXform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33346,6 +33445,8 @@ pub struct SopHole {
 }
 
 impl SopHole {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

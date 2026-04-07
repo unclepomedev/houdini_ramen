@@ -36,6 +36,8 @@ pub struct LopDistantlight {
 }
 
 impl LopDistantlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1863,6 +1865,8 @@ pub struct LopDomelight {
 }
 
 impl LopDomelight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3860,6 +3864,8 @@ pub struct LopDrawmode {
 }
 
 impl LopDrawmode {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4780,6 +4786,8 @@ pub struct LopDrop {
 }
 
 impl LopDrop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5271,6 +5279,8 @@ pub struct LopDuplicate {
 }
 
 impl LopDuplicate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -78,6 +78,8 @@ pub struct Cop2Vector {
 }
 
 impl Cop2Vector {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -727,6 +729,8 @@ pub struct Cop2Velblur {
 }
 
 impl Cop2Velblur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1409,6 +1413,8 @@ pub struct Cop2Vexfilter {
 }
 
 impl Cop2Vexfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2115,6 +2121,8 @@ pub struct Cop2Vexgenerate {
 }
 
 impl Cop2Vexgenerate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2817,6 +2825,8 @@ pub struct Cop2Vopcop2filter {
 }
 
 impl Cop2Vopcop2filter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3661,6 +3671,8 @@ pub struct Cop2Vopcop2gen {
 }
 
 impl Cop2Vopcop2gen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

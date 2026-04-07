@@ -138,6 +138,8 @@ pub struct Cop2Noise {
 }
 
 impl Cop2Noise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -950,6 +952,8 @@ pub struct Cop2Null {
 }
 
 impl Cop2Null {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -38,6 +38,8 @@ pub struct Cop2Mask {
 }
 
 impl Cop2Mask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -642,6 +644,8 @@ pub struct Cop2Max {
 }
 
 impl Cop2Max {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1442,6 +1446,8 @@ pub struct Cop2Median {
 }
 
 impl Cop2Median {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1968,6 +1974,8 @@ pub struct Cop2Merge {
 }
 
 impl Cop2Merge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2269,6 +2277,8 @@ pub struct Cop2Metadata {
 }
 
 impl Cop2Metadata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2817,6 +2827,8 @@ pub struct Cop2Min {
 }
 
 impl Cop2Min {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3631,6 +3643,8 @@ pub struct Cop2Mono {
 }
 
 impl Cop2Mono {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4161,6 +4175,8 @@ pub struct Cop2Mosaic {
 }
 
 impl Cop2Mosaic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4567,6 +4583,8 @@ pub struct Cop2Multiply {
 }
 
 impl Cop2Multiply {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

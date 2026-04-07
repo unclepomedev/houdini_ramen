@@ -38,6 +38,8 @@ pub struct Cop2LabsSbsArchive {
 }
 
 impl Cop2LabsSbsArchive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -594,6 +596,8 @@ pub struct Cop2Layer {
 }
 
 impl Cop2Layer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1172,6 +1176,8 @@ pub struct Cop2Levels {
 }
 
 impl Cop2Levels {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2010,6 +2016,8 @@ pub struct Cop2Light {
 }
 
 impl Cop2Light {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2968,6 +2976,8 @@ pub struct Cop2Limit {
 }
 
 impl Cop2Limit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3590,6 +3600,8 @@ pub struct Cop2Lookup {
 }
 
 impl Cop2Lookup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4221,6 +4233,8 @@ pub struct Cop2Loop {
 }
 
 impl Cop2Loop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4579,6 +4593,8 @@ pub struct Cop2Loopdata {
 }
 
 impl Cop2Loopdata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5058,6 +5074,8 @@ pub struct Cop2Lumakey {
 }
 
 impl Cop2Lumakey {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5674,6 +5692,8 @@ pub struct Cop2Lumamatte {
 }
 
 impl Cop2Lumamatte {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

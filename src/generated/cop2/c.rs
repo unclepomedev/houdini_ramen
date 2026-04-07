@@ -53,6 +53,8 @@ pub struct Cop2Channelcopy {
 }
 
 impl Cop2Channelcopy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -608,6 +610,8 @@ pub struct Cop2Chromakey {
 }
 
 impl Cop2Chromakey {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1332,6 +1336,8 @@ pub struct Cop2Color {
 }
 
 impl Cop2Color {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2057,6 +2063,8 @@ pub struct Cop2Colorcorrect {
 }
 
 impl Cop2Colorcorrect {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2845,6 +2853,8 @@ pub struct Cop2Colorcurve {
 }
 
 impl Cop2Colorcurve {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3471,6 +3481,8 @@ pub struct Cop2Colormap {
 }
 
 impl Cop2Colormap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4168,6 +4180,8 @@ pub struct Cop2Colorreplace {
 }
 
 impl Cop2Colorreplace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4905,6 +4919,8 @@ pub struct Cop2Colorwheel {
 }
 
 impl Cop2Colorwheel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5588,6 +5604,8 @@ pub struct Cop2Composite {
 }
 
 impl Cop2Composite {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6414,6 +6432,8 @@ pub struct Cop2Contrast {
 }
 
 impl Cop2Contrast {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7115,6 +7135,8 @@ pub struct Cop2Convert {
 }
 
 impl Cop2Convert {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7427,6 +7449,8 @@ pub struct Cop2Convolve {
 }
 
 impl Cop2Convolve {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8286,6 +8310,8 @@ pub struct Cop2Cornerramp {
 }
 
 impl Cop2Cornerramp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9003,6 +9029,8 @@ pub struct Cop2Crop {
 }
 
 impl Cop2Crop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9286,6 +9314,8 @@ pub struct Cop2Cryptomatte {
 }
 
 impl Cop2Cryptomatte {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -30,6 +30,8 @@ pub struct LopBackgroundplate {
 }
 
 impl LopBackgroundplate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -942,6 +944,8 @@ pub struct LopBakeskinning {
 }
 
 impl LopBakeskinning {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1153,6 +1157,8 @@ pub struct LopBasiscurves {
 }
 
 impl LopBasiscurves {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1916,6 +1922,8 @@ pub struct LopBegincontextoptionsblock {
 }
 
 impl LopBegincontextoptionsblock {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2115,6 +2123,8 @@ pub struct LopBlend {
 }
 
 impl LopBlend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2400,6 +2410,8 @@ pub struct LopBlendconstraint {
 }
 
 impl LopBlendconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

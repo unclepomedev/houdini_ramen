@@ -99,6 +99,8 @@ pub struct ChopMath {
 }
 
 impl ChopMath {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -637,6 +639,8 @@ pub struct ChopMerge {
 }
 
 impl ChopMerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1058,6 +1062,8 @@ pub struct ChopMidiin {
 }
 
 impl ChopMidiin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2181,6 +2187,8 @@ pub struct ChopMidiout {
 }
 
 impl ChopMidiout {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2942,6 +2950,8 @@ pub struct ChopMouse {
 }
 
 impl ChopMouse {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3346,6 +3356,8 @@ pub struct ChopMouse3d {
 }
 
 impl ChopMouse3d {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3712,6 +3724,8 @@ pub struct ChopMultiply {
 }
 
 impl ChopMultiply {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

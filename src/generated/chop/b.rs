@@ -52,6 +52,8 @@ pub struct ChopBand {
 }
 
 impl ChopBand {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -732,6 +734,8 @@ pub struct ChopBeat {
 }
 
 impl ChopBeat {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1223,6 +1227,8 @@ pub struct ChopBlend {
 }
 
 impl ChopBlend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1609,6 +1615,8 @@ pub struct ChopBlendpose {
 }
 
 impl ChopBlendpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

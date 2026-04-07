@@ -65,6 +65,8 @@ pub struct TopCommandserverend {
 }
 
 impl TopCommandserverend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -596,6 +598,8 @@ pub struct TopCsvconcat {
 }
 
 impl TopCsvconcat {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -869,6 +873,8 @@ pub struct TopCsvinput {
 }
 
 impl TopCsvinput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1374,6 +1380,8 @@ pub struct TopCsvmodify {
 }
 
 impl TopCsvmodify {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1810,6 +1818,8 @@ pub struct TopCsvoutput {
 }
 
 impl TopCsvoutput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

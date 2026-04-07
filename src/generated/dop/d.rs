@@ -8,6 +8,8 @@ pub struct DopDelete {
 }
 
 impl DopDelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1265,6 +1267,8 @@ pub struct DopDrag {
 }
 
 impl DopDrag {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1752,6 +1756,8 @@ pub struct DopDragproperties {
 }
 
 impl DopDragproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

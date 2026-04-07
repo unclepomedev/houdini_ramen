@@ -20,6 +20,8 @@ pub struct DriverWedge {
 }
 
 impl DriverWedge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -450,6 +452,8 @@ pub struct DriverWren {
 }
 
 impl DriverWren {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

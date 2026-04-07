@@ -8,6 +8,8 @@ pub struct LopInlineusd {
 }
 
 impl LopInlineusd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -223,6 +225,8 @@ pub struct LopInsertionpoint {
 }
 
 impl LopInsertionpoint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -422,6 +426,8 @@ pub struct LopInstancer {
 }
 
 impl LopInstancer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1160,6 +1166,8 @@ pub struct LopIsolatescene {
 }
 
 impl LopIsolatescene {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

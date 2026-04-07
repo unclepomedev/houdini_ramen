@@ -197,6 +197,8 @@ pub struct ObjectThreePointLight {
 }
 
 impl ObjectThreePointLight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3333,6 +3335,8 @@ pub struct ObjectThreepointmuscle {
 }
 
 impl ObjectThreepointmuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5054,6 +5058,8 @@ pub struct ObjectToonCharacter {
 }
 
 impl ObjectToonCharacter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10492,6 +10498,8 @@ pub struct ObjectToonCharacterDeformRig {
 }
 
 impl ObjectToonCharacterDeformRig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21200,6 +21208,8 @@ pub struct ObjectTwopointmuscle {
 }
 
 impl ObjectTwopointmuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

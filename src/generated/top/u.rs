@@ -101,6 +101,8 @@ pub struct TopUrlrequest {
 }
 
 impl TopUrlrequest {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1134,6 +1136,8 @@ pub struct TopUsdaddassetstogallery {
 }
 
 impl TopUsdaddassetstogallery {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1383,6 +1387,8 @@ pub struct TopUsdanalyze {
 }
 
 impl TopUsdanalyze {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1809,6 +1815,8 @@ pub struct TopUsdimport {
 }
 
 impl TopUsdimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2543,6 +2551,8 @@ pub struct TopUsdimportfiles {
 }
 
 impl TopUsdimportfiles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2887,6 +2897,8 @@ pub struct TopUsdimportprims {
 }
 
 impl TopUsdimportprims {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3180,6 +3192,8 @@ pub struct TopUsdmodifypaths {
 }
 
 impl TopUsdmodifypaths {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3662,6 +3676,8 @@ pub struct TopUsdrender {
 }
 
 impl TopUsdrender {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4800,6 +4816,8 @@ pub struct TopUsdrenderscene {
 }
 
 impl TopUsdrenderscene {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

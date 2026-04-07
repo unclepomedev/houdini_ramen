@@ -8,6 +8,8 @@ pub struct LopGeoclipsequence {
 }
 
 impl LopGeoclipsequence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -668,6 +670,8 @@ pub struct LopGeometrycolor {
 }
 
 impl LopGeometrycolor {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1165,6 +1169,8 @@ pub struct LopGeometrylight {
 }
 
 impl LopGeometrylight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2523,6 +2529,8 @@ pub struct LopGeometrysequence {
 }
 
 impl LopGeometrysequence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3787,6 +3795,8 @@ pub struct LopGeometrysubsetvop {
 }
 
 impl LopGeometrysubsetvop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4322,6 +4332,8 @@ pub struct LopGraftbranches {
 }
 
 impl LopGraftbranches {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4737,6 +4749,8 @@ pub struct LopGraftstages {
 }
 
 impl LopGraftstages {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

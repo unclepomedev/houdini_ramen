@@ -15,6 +15,8 @@ pub struct SopWaveform {
 }
 
 impl SopWaveform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -392,6 +394,8 @@ pub struct SopWavevelocity {
 }
 
 impl SopWavevelocity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -762,6 +766,8 @@ pub struct SopWeightarraybiharmonic {
 }
 
 impl SopWeightarraybiharmonic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1056,6 +1062,8 @@ pub struct SopWeightarrayinterpolate {
 }
 
 impl SopWeightarrayinterpolate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1357,6 +1365,8 @@ pub struct SopWhitewaterpostprocess {
 }
 
 impl SopWhitewaterpostprocess {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2330,6 +2340,10 @@ pub struct SopWhitewatersolver {
 }
 
 impl SopWhitewatersolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4381,6 +4395,11 @@ pub struct SopWhitewatersource {
 }
 
 impl SopWhitewatersource {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+    pub const OUT_OUTPUT4: &'static str = "output4";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5784,6 +5803,8 @@ pub struct SopWindingnumber {
 }
 
 impl SopWindingnumber {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6139,6 +6160,8 @@ pub struct SopWire {
 }
 
 impl SopWire {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6429,6 +6452,8 @@ pub struct SopWireblend {
 }
 
 impl SopWireblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6639,6 +6664,8 @@ pub struct SopWirecapture {
 }
 
 impl SopWirecapture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7147,6 +7174,8 @@ pub struct SopWiredeform {
 }
 
 impl SopWiredeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7680,6 +7709,8 @@ pub struct SopWiretransfershape {
 }
 
 impl SopWiretransfershape {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8074,6 +8105,8 @@ pub struct SopWrinkledeformer {
 }
 
 impl SopWrinkledeformer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

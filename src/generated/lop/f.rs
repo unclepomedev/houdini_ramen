@@ -8,6 +8,8 @@ pub struct LopFetch {
 }
 
 impl LopFetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -122,6 +124,8 @@ pub struct LopFilecache {
 }
 
 impl LopFilecache {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1409,6 +1413,8 @@ pub struct LopFollowpathconstraint {
 }
 
 impl LopFollowpathconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3278,6 +3284,8 @@ pub struct LopForeach {
 }
 
 impl LopForeach {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -334,6 +334,8 @@ pub struct DopGasadaptiveviscosity {
 }
 
 impl DopGasadaptiveviscosity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1448,6 +1450,8 @@ pub struct DopGasadjustelasticity {
 }
 
 impl DopGasadjustelasticity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1914,6 +1918,8 @@ pub struct DopGasadjustparticlecoordinates {
 }
 
 impl DopGasadjustparticlecoordinates {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2402,6 +2408,8 @@ pub struct DopGasadvect {
 }
 
 impl DopGasadvect {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3153,6 +3161,8 @@ pub struct DopGasadvectcl {
 }
 
 impl DopGasadvectcl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3597,6 +3607,8 @@ pub struct DopGasadvectfield {
 }
 
 impl DopGasadvectfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4157,6 +4169,8 @@ pub struct DopGasanalysis {
 }
 
 impl DopGasanalysis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4563,6 +4577,8 @@ pub struct DopGasattribswap {
 }
 
 impl DopGasattribswap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4912,6 +4928,8 @@ pub struct DopGasaxisforce {
 }
 
 impl DopGasaxisforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5501,6 +5519,8 @@ pub struct DopGasblenddensity {
 }
 
 impl DopGasblenddensity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5820,6 +5840,8 @@ pub struct DopGasblur {
 }
 
 impl DopGasblur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6555,6 +6577,8 @@ pub struct DopGasbuildcollisionmask {
 }
 
 impl DopGasbuildcollisionmask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7257,6 +7281,8 @@ pub struct DopGasbuildcollisionmaskfrompieces {
 }
 
 impl DopGasbuildcollisionmaskfrompieces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7865,6 +7891,8 @@ pub struct DopGasbuildoccupancymask {
 }
 
 impl DopGasbuildoccupancymask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8778,6 +8806,8 @@ pub struct DopGasbuildrelationshipmask {
 }
 
 impl DopGasbuildrelationshipmask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9620,6 +9650,8 @@ pub struct DopGasbuoyancy {
 }
 
 impl DopGasbuoyancy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10141,6 +10173,8 @@ pub struct DopGasburn {
 }
 
 impl DopGasburn {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10986,6 +11020,8 @@ pub struct DopGasburngeometry {
 }
 
 impl DopGasburngeometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11434,6 +11470,8 @@ pub struct DopGasburngeometryobject {
 }
 
 impl DopGasburngeometryobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12470,6 +12508,8 @@ pub struct DopGascalculate {
 }
 
 impl DopGascalculate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13913,6 +13953,8 @@ pub struct DopGascollisiondetect {
 }
 
 impl DopGascollisiondetect {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14758,6 +14800,8 @@ pub struct DopGascombustion {
 }
 
 impl DopGascombustion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15144,6 +15188,8 @@ pub struct DopGascomputeparticleattributes {
 }
 
 impl DopGascomputeparticleattributes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15582,6 +15628,8 @@ pub struct DopGasconvexclipsdf {
 }
 
 impl DopGasconvexclipsdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16119,6 +16167,8 @@ pub struct DopGascorrectbymarkers {
 }
 
 impl DopGascorrectbymarkers {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16510,6 +16560,8 @@ pub struct DopGascross {
 }
 
 impl DopGascross {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16887,6 +16939,8 @@ pub struct DopGascurveforce {
 }
 
 impl DopGascurveforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17261,6 +17315,8 @@ pub struct DopGasdamp {
 }
 
 impl DopGasdamp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17618,6 +17674,8 @@ pub struct DopGasdiffuse {
 }
 
 impl DopGasdiffuse {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18190,6 +18248,8 @@ pub struct DopGasdissipate {
 }
 
 impl DopGasdissipate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18760,6 +18820,8 @@ pub struct DopGasdisturb {
 }
 
 impl DopGasdisturb {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19272,6 +19334,8 @@ pub struct DopGasdisturbfieldcl {
 }
 
 impl DopGasdisturbfieldcl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19873,6 +19937,8 @@ pub struct DopGasdsd {
 }
 
 impl DopGasdsd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20550,6 +20616,8 @@ pub struct DopGasdsdconfigureobject {
 }
 
 impl DopGasdsdconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21435,6 +21503,8 @@ pub struct DopGasdsdsolver {
 }
 
 impl DopGasdsdsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21693,6 +21763,8 @@ pub struct DopGaseachdatasolver {
 }
 
 impl DopGaseachdatasolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22110,6 +22182,8 @@ pub struct DopGaselasticity {
 }
 
 impl DopGaselasticity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22499,6 +22573,8 @@ pub struct DopGasembedfluid {
 }
 
 impl DopGasembedfluid {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22812,6 +22888,8 @@ pub struct DopGasenforceboundary {
 }
 
 impl DopGasenforceboundary {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23497,6 +23575,8 @@ pub struct DopGasequalizedensity {
 }
 
 impl DopGasequalizedensity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23707,6 +23787,8 @@ pub struct DopGasequalizevolume {
 }
 
 impl DopGasequalizevolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24041,6 +24123,8 @@ pub struct DopGaserror {
 }
 
 impl DopGaserror {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24517,6 +24601,8 @@ pub struct DopGasexternalforces {
 }
 
 impl DopGasexternalforces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25378,6 +25464,8 @@ pub struct DopGasextrapolate {
 }
 
 impl DopGasextrapolate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26121,6 +26209,8 @@ pub struct DopGasfeatherfield {
 }
 
 impl DopGasfeatherfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26307,6 +26397,8 @@ pub struct DopGasfeedback {
 }
 
 impl DopGasfeedback {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26696,6 +26788,8 @@ pub struct DopGasfetchfieldstoembed {
 }
 
 impl DopGasfetchfieldstoembed {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27206,6 +27300,8 @@ pub struct DopGasfieldtoparticle {
 }
 
 impl DopGasfieldtoparticle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28047,6 +28143,8 @@ pub struct DopGasfieldvop {
 }
 
 impl DopGasfieldvop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28767,6 +28865,8 @@ pub struct DopGasfieldwrangle {
 }
 
 impl DopGasfieldwrangle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29442,6 +29542,8 @@ pub struct DopGasfilterhourglassmodes {
 }
 
 impl DopGasfilterhourglassmodes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29906,6 +30008,8 @@ pub struct DopGasgeometrydefragment {
 }
 
 impl DopGasgeometrydefragment {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30290,6 +30394,8 @@ pub struct DopGasgeometryoptiontransfer {
 }
 
 impl DopGasgeometryoptiontransfer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30875,6 +30981,8 @@ pub struct DopGasgeometrytosdf {
 }
 
 impl DopGasgeometrytosdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31432,6 +31540,8 @@ pub struct DopGasguidingvolume {
 }
 
 impl DopGasguidingvolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32015,6 +32125,8 @@ pub struct DopGasimpacttoattributes {
 }
 
 impl DopGasimpacttoattributes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32602,6 +32714,8 @@ pub struct DopGasintegrateshallowwaterequations {
 }
 
 impl DopGasintegrateshallowwaterequations {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33541,6 +33655,8 @@ pub struct DopGasintegrator {
 }
 
 impl DopGasintegrator {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34563,6 +34679,8 @@ pub struct DopGasinterleavesolver {
 }
 
 impl DopGasinterleavesolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35046,6 +35164,8 @@ pub struct DopGasintermittentsolve {
 }
 
 impl DopGasintermittentsolve {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35693,6 +35813,8 @@ pub struct DopGaslimit {
 }
 
 impl DopGaslimit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -36533,6 +36655,8 @@ pub struct DopGaslimitparticles {
 }
 
 impl DopGaslimitparticles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37453,6 +37577,8 @@ pub struct DopGaslinearcombination {
 }
 
 impl DopGaslinearcombination {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38106,6 +38232,8 @@ pub struct DopGaslocalsharpen {
 }
 
 impl DopGaslocalsharpen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38340,6 +38468,8 @@ pub struct DopGaslookup {
 }
 
 impl DopGaslookup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38771,6 +38901,8 @@ pub struct DopGasmatchfield {
 }
 
 impl DopGasmatchfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39204,6 +39336,8 @@ pub struct DopGasmistsolver {
 }
 
 impl DopGasmistsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39607,6 +39741,8 @@ pub struct DopGasnetfetchdata {
 }
 
 impl DopGasnetfetchdata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40170,6 +40306,8 @@ pub struct DopGasnetfieldborderexchange {
 }
 
 impl DopGasnetfieldborderexchange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40651,6 +40789,8 @@ pub struct DopGasnetfieldsliceexchange {
 }
 
 impl DopGasnetfieldsliceexchange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41236,6 +41376,8 @@ pub struct DopGasnetslicebalance {
 }
 
 impl DopGasnetslicebalance {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41962,6 +42104,8 @@ pub struct DopGasnetsliceexchange {
 }
 
 impl DopGasnetsliceexchange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -42827,6 +42971,8 @@ pub struct DopGasopencl {
 }
 
 impl DopGasopencl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43992,6 +44138,8 @@ pub struct DopGasopenclenforceboundary {
 }
 
 impl DopGasopenclenforceboundary {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -44385,6 +44533,8 @@ pub struct DopGasopenclmergevdb {
 }
 
 impl DopGasopenclmergevdb {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -44956,6 +45106,8 @@ pub struct DopGasparticlecount {
 }
 
 impl DopGasparticlecount {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -45321,6 +45473,8 @@ pub struct DopGasparticlefluiddensitycl {
 }
 
 impl DopGasparticlefluiddensitycl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -45808,6 +45962,8 @@ pub struct DopGasparticlefluidforcescl {
 }
 
 impl DopGasparticlefluidforcescl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -46648,6 +46804,8 @@ pub struct DopGasparticleforces {
 }
 
 impl DopGasparticleforces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -47617,6 +47775,8 @@ pub struct DopGasparticlemovetoiso {
 }
 
 impl DopGasparticlemovetoiso {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48230,6 +48390,8 @@ pub struct DopGasparticleneighbourupdate {
 }
 
 impl DopGasparticleneighbourupdate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48594,6 +48756,8 @@ pub struct DopGasparticlepressure {
 }
 
 impl DopGasparticlepressure {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49068,6 +49232,8 @@ pub struct DopGasparticleseparate {
 }
 
 impl DopGasparticleseparate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49916,6 +50082,8 @@ pub struct DopGasparticletofield {
 }
 
 impl DopGasparticletofield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51163,6 +51331,8 @@ pub struct DopGasparticletosdf {
 }
 
 impl DopGasparticletosdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51836,6 +52006,8 @@ pub struct DopGasprojectnondivergent {
 }
 
 impl DopGasprojectnondivergent {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -52778,6 +52950,8 @@ pub struct DopGasprojectnondivergentadaptive {
 }
 
 impl DopGasprojectnondivergentadaptive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54131,6 +54305,8 @@ pub struct DopGasprojectnondivergentmultigrid {
 }
 
 impl DopGasprojectnondivergentmultigrid {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -55163,6 +55339,8 @@ pub struct DopGasprojectnondivergentvariational {
 }
 
 impl DopGasprojectnondivergentvariational {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56629,6 +56807,8 @@ pub struct DopGasreduce {
 }
 
 impl DopGasreduce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -57342,6 +57522,8 @@ pub struct DopGasreducelocal {
 }
 
 impl DopGasreducelocal {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -57984,6 +58166,8 @@ pub struct DopGasreinitializesdf {
 }
 
 impl DopGasreinitializesdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -58568,6 +58752,8 @@ pub struct DopGasremap {
 }
 
 impl DopGasremap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -59006,6 +59192,8 @@ pub struct DopGasrepeatsolver {
 }
 
 impl DopGasrepeatsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -59510,6 +59698,8 @@ pub struct DopGasresetinactive {
 }
 
 impl DopGasresetinactive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -60017,6 +60207,8 @@ pub struct DopGasresizefield {
 }
 
 impl DopGasresizefield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -60712,6 +60904,8 @@ pub struct DopGasresizefluid {
 }
 
 impl DopGasresizefluid {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -60933,6 +61127,8 @@ pub struct DopGasresizefluiddynamic {
 }
 
 impl DopGasresizefluiddynamic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61465,6 +61661,8 @@ pub struct DopGasrest {
 }
 
 impl DopGasrest {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61862,6 +62060,8 @@ pub struct DopGassandforces {
 }
 
 impl DopGassandforces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -62400,6 +62600,8 @@ pub struct DopGassdftofog {
 }
 
 impl DopGassdftofog {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -63063,6 +63265,8 @@ pub struct DopGasseedfluidparticles {
 }
 
 impl DopGasseedfluidparticles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -64550,6 +64754,8 @@ pub struct DopGasseedmarkers {
 }
 
 impl DopGasseedmarkers {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -66188,6 +66394,8 @@ pub struct DopGasseedparticles {
 }
 
 impl DopGasseedparticles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -66804,6 +67012,8 @@ pub struct DopGasseedvolume {
 }
 
 impl DopGasseedvolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -67684,6 +67894,8 @@ pub struct DopGasshred {
 }
 
 impl DopGasshred {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -68306,6 +68518,8 @@ pub struct DopGasslicetoindexfield {
 }
 
 impl DopGasslicetoindexfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -68759,6 +68973,8 @@ pub struct DopGassphdensity {
 }
 
 impl DopGassphdensity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -69104,6 +69320,8 @@ pub struct DopGassphforces {
 }
 
 impl DopGassphforces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -69539,6 +69757,8 @@ pub struct DopGasstickoncollision {
 }
 
 impl DopGasstickoncollision {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -70190,6 +70410,8 @@ pub struct DopGasstrainforces {
 }
 
 impl DopGasstrainforces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -70692,6 +70914,8 @@ pub struct DopGasstrainintegrate {
 }
 
 impl DopGasstrainintegrate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -71303,6 +71527,8 @@ pub struct DopGassubstep {
 }
 
 impl DopGassubstep {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -71993,6 +72219,8 @@ pub struct DopGassurfacesnap {
 }
 
 impl DopGassurfacesnap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -72424,6 +72652,8 @@ pub struct DopGassurfacetension {
 }
 
 impl DopGassurfacetension {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -72866,6 +73096,8 @@ pub struct DopGassynchronizefields {
 }
 
 impl DopGassynchronizefields {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -73247,6 +73479,8 @@ pub struct DopGastargetforce {
 }
 
 impl DopGastargetforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -74319,6 +74553,8 @@ pub struct DopGastemperatureupdate {
 }
 
 impl DopGastemperatureupdate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -74872,6 +75108,8 @@ pub struct DopGasturbulence {
 }
 
 impl DopGasturbulence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -75507,6 +75745,8 @@ pub struct DopGasupres {
 }
 
 impl DopGasupres {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -78248,6 +78488,8 @@ pub struct DopGasupresobject {
 }
 
 impl DopGasupresobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -80634,6 +80876,8 @@ pub struct DopGasvelocityscale {
 }
 
 impl DopGasvelocityscale {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -81225,6 +81469,8 @@ pub struct DopGasvelocitystretch {
 }
 
 impl DopGasvelocitystretch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -82025,6 +82271,8 @@ pub struct DopGasviscosity {
 }
 
 impl DopGasviscosity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -82902,6 +83150,8 @@ pub struct DopGasvolumeramp {
 }
 
 impl DopGasvolumeramp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -83113,6 +83363,8 @@ pub struct DopGasvortexboost {
 }
 
 impl DopGasvortexboost {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -83471,6 +83723,8 @@ pub struct DopGasvortexconfinement {
 }
 
 impl DopGasvortexconfinement {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -83910,6 +84164,8 @@ pub struct DopGasvortexequalizer {
 }
 
 impl DopGasvortexequalizer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -84708,6 +84964,8 @@ pub struct DopGasvorticleforces {
 }
 
 impl DopGasvorticleforces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -85215,6 +85473,8 @@ pub struct DopGasvorticlegeometry {
 }
 
 impl DopGasvorticlegeometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -85473,6 +85733,8 @@ pub struct DopGasvorticlerecycle {
 }
 
 impl DopGasvorticlerecycle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -85690,6 +85952,8 @@ pub struct DopGaswavelets {
 }
 
 impl DopGaswavelets {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -86160,6 +86424,8 @@ pub struct DopGaswind {
 }
 
 impl DopGaswind {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -86629,6 +86895,8 @@ pub struct DopGeometrycopy {
 }
 
 impl DopGeometrycopy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -87185,6 +87453,8 @@ pub struct DopGeometryvop {
 }
 
 impl DopGeometryvop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -88092,6 +88362,8 @@ pub struct DopGeometrywrangle {
 }
 
 impl DopGeometrywrangle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -88893,6 +89165,8 @@ pub struct DopGlueconrel {
 }
 
 impl DopGlueconrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -89377,6 +89651,8 @@ pub struct DopGravity {
 }
 
 impl DopGravity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -89716,6 +89992,8 @@ pub struct DopGroundplane {
 }
 
 impl DopGroundplane {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -89946,6 +90224,8 @@ pub struct DopGroup {
 }
 
 impl DopGroup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -90232,6 +90512,8 @@ pub struct DopGrouprel {
 }
 
 impl DopGrouprel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

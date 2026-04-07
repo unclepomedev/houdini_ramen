@@ -46,6 +46,8 @@ pub struct ObjectCam {
 }
 
 impl ObjectCam {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -875,6 +877,8 @@ pub struct ObjectCop2plane {
 }
 
 impl ObjectCop2plane {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

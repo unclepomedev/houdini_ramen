@@ -16,6 +16,8 @@ pub struct DriverGeo2i3d {
 }
 
 impl DriverGeo2i3d {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -377,6 +379,8 @@ pub struct DriverGeometry {
 }
 
 impl DriverGeometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -990,6 +994,8 @@ pub struct DriverGeometryraw {
 }
 
 impl DriverGeometryraw {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1753,6 +1759,8 @@ pub struct DriverGltf {
 }
 
 impl DriverGltf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

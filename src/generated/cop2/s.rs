@@ -20,6 +20,8 @@ pub struct Cop2Scale {
 }
 
 impl Cop2Scale {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -459,6 +461,8 @@ pub struct Cop2Screen {
 }
 
 impl Cop2Screen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1255,6 +1259,8 @@ pub struct Cop2Sequence {
 }
 
 impl Cop2Sequence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1646,6 +1652,8 @@ pub struct Cop2Shape {
 }
 
 impl Cop2Shape {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2585,6 +2593,8 @@ pub struct Cop2Sharpen {
 }
 
 impl Cop2Sharpen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3182,6 +3192,8 @@ pub struct Cop2Shift {
 }
 
 impl Cop2Shift {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3527,6 +3539,8 @@ pub struct Cop2Shuffle {
 }
 
 impl Cop2Shuffle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3849,6 +3863,8 @@ pub struct Cop2Skycube {
 }
 
 impl Cop2Skycube {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4605,6 +4621,8 @@ pub struct Cop2Skycubedaylight {
 }
 
 impl Cop2Skycubedaylight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5309,6 +5327,8 @@ pub struct Cop2Skyenvmap {
 }
 
 impl Cop2Skyenvmap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5749,6 +5769,8 @@ pub struct Cop2Snip {
 }
 
 impl Cop2Snip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6147,6 +6169,8 @@ pub struct Cop2Sopimport {
 }
 
 impl Cop2Sopimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7309,6 +7333,8 @@ pub struct Cop2Streak {
 }
 
 impl Cop2Streak {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7841,6 +7867,8 @@ pub struct Cop2Subnet {
 }
 
 impl Cop2Subnet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8314,6 +8342,8 @@ pub struct Cop2Subtract {
 }
 
 impl Cop2Subtract {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9093,6 +9123,8 @@ pub struct Cop2Swap {
 }
 
 impl Cop2Swap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9452,6 +9484,8 @@ pub struct Cop2Switch {
 }
 
 impl Cop2Switch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9615,6 +9649,8 @@ pub struct Cop2Switchalpha {
 }
 
 impl Cop2Switchalpha {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

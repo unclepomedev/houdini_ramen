@@ -52,6 +52,8 @@ pub struct ChopGamepad {
 }
 
 impl ChopGamepad {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -704,6 +706,8 @@ pub struct ChopGeometry {
 }
 
 impl ChopGeometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1207,6 +1211,8 @@ pub struct ChopGesture {
 }
 
 impl ChopGesture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -57,6 +57,8 @@ pub struct TopAttributearray {
 }
 
 impl TopAttributearray {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -622,6 +624,8 @@ pub struct TopAttributeclassify {
 }
 
 impl TopAttributeclassify {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1021,6 +1025,8 @@ pub struct TopAttributecopy {
 }
 
 impl TopAttributecopy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1545,6 +1551,8 @@ pub struct TopAttributecreate {
 }
 
 impl TopAttributecreate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2619,6 +2627,8 @@ pub struct TopAttributedelete {
 }
 
 impl TopAttributedelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3053,6 +3063,8 @@ pub struct TopAttributedictionary {
 }
 
 impl TopAttributedictionary {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3693,6 +3705,8 @@ pub struct TopAttributefromfile {
 }
 
 impl TopAttributefromfile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4012,6 +4026,8 @@ pub struct TopAttributefromparameters {
 }
 
 impl TopAttributefromparameters {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4340,6 +4356,8 @@ pub struct TopAttributefromstring {
 }
 
 impl TopAttributefromstring {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4818,6 +4836,8 @@ pub struct TopAttributepromote {
 }
 
 impl TopAttributepromote {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5257,6 +5277,8 @@ pub struct TopAttributerandomize {
 }
 
 impl TopAttributerandomize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5913,6 +5935,8 @@ pub struct TopAttributereduce {
 }
 
 impl TopAttributereduce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6240,6 +6264,8 @@ pub struct TopAttributerename {
 }
 
 impl TopAttributerename {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6596,6 +6622,8 @@ pub struct TopAttributestringedit {
 }
 
 impl TopAttributestringedit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

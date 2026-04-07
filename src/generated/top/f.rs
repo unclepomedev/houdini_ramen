@@ -28,6 +28,8 @@ pub struct TopFeedbackbegin {
 }
 
 impl TopFeedbackbegin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -391,6 +393,8 @@ pub struct TopFeedbackend {
 }
 
 impl TopFeedbackend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -669,6 +673,8 @@ pub struct TopFfmpegencodevideo {
 }
 
 impl TopFfmpegencodevideo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1737,6 +1743,8 @@ pub struct TopFfmpegextractimages {
 }
 
 impl TopFfmpegextractimages {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2517,6 +2525,8 @@ pub struct TopFilecompress {
 }
 
 impl TopFilecompress {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3038,6 +3048,8 @@ pub struct TopFilecopy {
 }
 
 impl TopFilecopy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3566,6 +3578,8 @@ pub struct TopFiledecompress {
 }
 
 impl TopFiledecompress {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4128,6 +4142,8 @@ pub struct TopFilepattern {
 }
 
 impl TopFilepattern {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4662,6 +4678,8 @@ pub struct TopFilerange {
 }
 
 impl TopFilerange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4986,6 +5004,8 @@ pub struct TopFileremove {
 }
 
 impl TopFileremove {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5345,6 +5365,8 @@ pub struct TopFilerename {
 }
 
 impl TopFilerename {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5811,6 +5833,8 @@ pub struct TopFilterbyattribute {
 }
 
 impl TopFilterbyattribute {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6169,6 +6193,8 @@ pub struct TopFilterbyexpression {
 }
 
 impl TopFilterbyexpression {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6537,6 +6563,8 @@ pub struct TopFilterbyrange {
 }
 
 impl TopFilterbyrange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6905,6 +6933,8 @@ pub struct TopFilterbystate {
 }
 
 impl TopFilterbystate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

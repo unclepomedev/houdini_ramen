@@ -28,6 +28,8 @@ pub struct TopRangeextend {
 }
 
 impl TopRangeextend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -390,6 +392,8 @@ pub struct TopRangegenerate {
 }
 
 impl TopRangegenerate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -847,6 +851,8 @@ pub struct TopRemotepdgnode {
 }
 
 impl TopRemotepdgnode {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1036,6 +1042,8 @@ pub struct TopRenderifd {
 }
 
 impl TopRenderifd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1693,6 +1701,8 @@ pub struct TopRopalembic {
 }
 
 impl TopRopalembic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3659,6 +3669,8 @@ pub struct TopRopcomposite {
 }
 
 impl TopRopcomposite {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5605,6 +5617,8 @@ pub struct TopRopfbx {
 }
 
 impl TopRopfbx {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7119,6 +7133,8 @@ pub struct TopRopfetch {
 }
 
 impl TopRopfetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8593,6 +8609,8 @@ pub struct TopRopflipbook {
 }
 
 impl TopRopflipbook {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11753,6 +11771,8 @@ pub struct TopRopgeometry {
 }
 
 impl TopRopgeometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13262,6 +13282,8 @@ pub struct TopRopgltf {
 }
 
 impl TopRopgltf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14867,6 +14889,8 @@ pub struct TopRopimage {
 }
 
 impl TopRopimage {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16717,6 +16741,8 @@ pub struct TopRopkarma {
 }
 
 impl TopRopkarma {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21542,6 +21568,8 @@ pub struct TopRopmantra {
 }
 
 impl TopRopmantra {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25563,6 +25591,8 @@ pub struct TopRopopengl {
 }
 
 impl TopRopopengl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28367,6 +28397,8 @@ pub struct TopRopusd {
 }
 
 impl TopRopusd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

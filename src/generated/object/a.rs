@@ -46,6 +46,8 @@ pub struct ObjectAgentcam {
 }
 
 impl ObjectAgentcam {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -775,6 +777,8 @@ pub struct ObjectAlembicarchive {
 }
 
 impl ObjectAlembicarchive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1740,6 +1744,8 @@ pub struct ObjectAlembicxform {
 }
 
 impl ObjectAlembicxform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2584,6 +2590,8 @@ pub struct ObjectAmbient {
 }
 
 impl ObjectAmbient {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3414,6 +3422,8 @@ pub struct ObjectAnimationRigBipedArm {
 }
 
 impl ObjectAnimationRigBipedArm {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5532,6 +5542,8 @@ pub struct ObjectAnimationRigBipedHand4f2s {
 }
 
 impl ObjectAnimationRigBipedHand4f2s {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8012,6 +8024,8 @@ pub struct ObjectAnimationRigBipedHand4f3s {
 }
 
 impl ObjectAnimationRigBipedHand4f3s {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10772,6 +10786,8 @@ pub struct ObjectAnimationRigBipedHand5f3s {
 }
 
 impl ObjectAnimationRigBipedHand5f3s {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14024,6 +14040,8 @@ pub struct ObjectAnimationRigBipedHeadAndNeck {
 }
 
 impl ObjectAnimationRigBipedHeadAndNeck {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15736,6 +15754,8 @@ pub struct ObjectAnimationRigBipedLeg {
 }
 
 impl ObjectAnimationRigBipedLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18090,6 +18110,8 @@ pub struct ObjectAnimationRigBipedSpine3pc {
 }
 
 impl ObjectAnimationRigBipedSpine3pc {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19582,6 +19604,8 @@ pub struct ObjectAnimationRigBipedSpine5pc {
 }
 
 impl ObjectAnimationRigBipedSpine5pc {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21374,6 +21398,8 @@ pub struct ObjectAnimationRigCharacterPlacer {
 }
 
 impl ObjectAnimationRigCharacterPlacer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22152,6 +22178,8 @@ pub struct ObjectAnimationRigQuadrupedBackLeg {
 }
 
 impl ObjectAnimationRigQuadrupedBackLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23914,6 +23942,8 @@ pub struct ObjectAnimationRigQuadrupedFrontLeg {
 }
 
 impl ObjectAnimationRigQuadrupedFrontLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25902,6 +25932,8 @@ pub struct ObjectAnimationRigQuadrupedHeadAndNeck {
 }
 
 impl ObjectAnimationRigQuadrupedHeadAndNeck {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27910,6 +27942,8 @@ pub struct ObjectAnimationRigQuadrupedIkSpine {
 }
 
 impl ObjectAnimationRigQuadrupedIkSpine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30880,6 +30914,8 @@ pub struct ObjectAnimationRigQuadrupedTail {
 }
 
 impl ObjectAnimationRigQuadrupedTail {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33190,6 +33226,8 @@ pub struct ObjectAnimationRigQuadrupedToes4f {
 }
 
 impl ObjectAnimationRigQuadrupedToes4f {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35786,6 +35824,8 @@ pub struct ObjectAnimationRigQuadrupedToes5f {
 }
 
 impl ObjectAnimationRigQuadrupedToes5f {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38888,6 +38928,8 @@ pub struct ObjectAutoRigBipedArm {
 }
 
 impl ObjectAutoRigBipedArm {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40036,6 +40078,8 @@ pub struct ObjectAutoRigBipedHand4f2s {
 }
 
 impl ObjectAutoRigBipedHand4f2s {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41834,6 +41878,8 @@ pub struct ObjectAutoRigBipedHand4f3s {
 }
 
 impl ObjectAutoRigBipedHand4f3s {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43960,6 +44006,8 @@ pub struct ObjectAutoRigBipedHand5f3s {
 }
 
 impl ObjectAutoRigBipedHand5f3s {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -46400,6 +46448,8 @@ pub struct ObjectAutoRigBipedHeadAndNeck {
 }
 
 impl ObjectAutoRigBipedHeadAndNeck {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -47580,6 +47630,8 @@ pub struct ObjectAutoRigBipedLeg {
 }
 
 impl ObjectAutoRigBipedLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48792,6 +48844,8 @@ pub struct ObjectAutoRigBipedSpine3pc {
 }
 
 impl ObjectAutoRigBipedSpine3pc {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49910,6 +49964,8 @@ pub struct ObjectAutoRigBipedSpine5pc {
 }
 
 impl ObjectAutoRigBipedSpine5pc {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51162,6 +51218,8 @@ pub struct ObjectAutoRigCharacterPlacer {
 }
 
 impl ObjectAutoRigCharacterPlacer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51939,6 +51997,8 @@ pub struct ObjectAutoRigEye {
 }
 
 impl ObjectAutoRigEye {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -52811,6 +52871,8 @@ pub struct ObjectAutoRigQuadrupedBackLeg {
 }
 
 impl ObjectAutoRigQuadrupedBackLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54029,6 +54091,8 @@ pub struct ObjectAutoRigQuadrupedFrontLeg {
 }
 
 impl ObjectAutoRigQuadrupedFrontLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -55333,6 +55397,8 @@ pub struct ObjectAutoRigQuadrupedHeadAndNeck {
 }
 
 impl ObjectAutoRigQuadrupedHeadAndNeck {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56685,6 +56751,8 @@ pub struct ObjectAutoRigQuadrupedIkSpine {
 }
 
 impl ObjectAutoRigQuadrupedIkSpine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -58619,6 +58687,8 @@ pub struct ObjectAutoRigQuadrupedTail {
 }
 
 impl ObjectAutoRigQuadrupedTail {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -60201,6 +60271,8 @@ pub struct ObjectAutoRigQuadrupedToes4f {
 }
 
 impl ObjectAutoRigQuadrupedToes4f {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -62259,6 +62331,8 @@ pub struct ObjectAutoRigQuadrupedToes5f {
 }
 
 impl ObjectAutoRigQuadrupedToes5f {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -64611,6 +64685,8 @@ pub struct ObjectAutobonechaininterface {
 }
 
 impl ObjectAutobonechaininterface {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -65574,6 +65650,8 @@ pub struct ObjectAutorigs {
 }
 
 impl ObjectAutorigs {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -66645,6 +66723,8 @@ pub struct ObjectAutorigsModuleArm {
 }
 
 impl ObjectAutorigsModuleArm {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -68135,6 +68215,8 @@ pub struct ObjectAutorigsModuleFoot {
 }
 
 impl ObjectAutorigsModuleFoot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -69919,6 +70001,8 @@ pub struct ObjectAutorigsModuleHand {
 }
 
 impl ObjectAutorigsModuleHand {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -71669,6 +71753,8 @@ pub struct ObjectAutorigsModuleHead {
 }
 
 impl ObjectAutorigsModuleHead {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -73019,6 +73105,8 @@ pub struct ObjectAutorigsModuleLeg {
 }
 
 impl ObjectAutorigsModuleLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -74481,6 +74569,8 @@ pub struct ObjectAutorigsModuleMaster {
 }
 
 impl ObjectAutorigsModuleMaster {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -75862,6 +75952,8 @@ pub struct ObjectAutorigsModuleSpine {
 }
 
 impl ObjectAutorigsModuleSpine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

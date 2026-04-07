@@ -26,6 +26,8 @@ pub struct LopParentconstraint {
 }
 
 impl LopParentconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -676,6 +678,8 @@ pub struct LopPoints {
 }
 
 impl LopPoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1466,6 +1470,8 @@ pub struct LopPointsconstraint {
 }
 
 impl LopPointsconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2381,6 +2387,8 @@ pub struct LopPointxform {
 }
 
 impl LopPointxform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2650,6 +2658,8 @@ pub struct LopPortallight {
 }
 
 impl LopPortallight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3329,6 +3339,8 @@ pub struct LopPrimitive {
 }
 
 impl LopPrimitive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3584,6 +3596,8 @@ pub struct LopPrune {
 }
 
 impl LopPrune {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4223,6 +4237,8 @@ pub struct LopPythonscript {
 }
 
 impl LopPythonscript {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

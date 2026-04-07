@@ -34,6 +34,8 @@ pub struct DopActivevalue {
 }
 
 impl DopActivevalue {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -356,6 +358,8 @@ pub struct DopAffector {
 }
 
 impl DopAffector {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -610,6 +614,8 @@ pub struct DopAgentarcingcliplayer {
 }
 
 impl DopAgentarcingcliplayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -891,6 +897,8 @@ pub struct DopAgentcliplayer {
 }
 
 impl DopAgentcliplayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1714,6 +1722,8 @@ pub struct DopAgentlookat {
 }
 
 impl DopAgentlookat {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2478,6 +2488,8 @@ pub struct DopAgentlookatapply {
 }
 
 impl DopAgentlookatapply {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3065,6 +3077,8 @@ pub struct DopAgentterrainadaptation {
 }
 
 impl DopAgentterrainadaptation {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3618,6 +3632,8 @@ pub struct DopAgentterrainprojection {
 }
 
 impl DopAgentterrainprojection {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4167,6 +4183,8 @@ pub struct DopAnchoralignaxis {
 }
 
 impl DopAnchoralignaxis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4787,6 +4805,8 @@ pub struct DopAnchorobjpointgrouppos {
 }
 
 impl DopAnchorobjpointgrouppos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5544,6 +5564,8 @@ pub struct DopAnchorobjpointgrouprot {
 }
 
 impl DopAnchorobjpointgrouprot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6325,6 +6347,8 @@ pub struct DopAnchorobjpointidpos {
 }
 
 impl DopAnchorobjpointidpos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7048,6 +7072,8 @@ pub struct DopAnchorobjpointidrot {
 }
 
 impl DopAnchorobjpointidrot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7814,6 +7840,8 @@ pub struct DopAnchorobjpointnumpos {
 }
 
 impl DopAnchorobjpointnumpos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8494,6 +8522,8 @@ pub struct DopAnchorobjpointnumrot {
 }
 
 impl DopAnchorobjpointnumrot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9229,6 +9259,8 @@ pub struct DopAnchorobjprimpos {
 }
 
 impl DopAnchorobjprimpos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9901,6 +9933,8 @@ pub struct DopAnchorobjregion {
 }
 
 impl DopAnchorobjregion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10627,6 +10661,8 @@ pub struct DopAnchorobjspacepos {
 }
 
 impl DopAnchorobjspacepos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11215,6 +11251,8 @@ pub struct DopAnchorobjspacerot {
 }
 
 impl DopAnchorobjspacerot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12104,6 +12142,8 @@ pub struct DopAnchorobjsurfacepos {
 }
 
 impl DopAnchorobjsurfacepos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13578,6 +13618,8 @@ pub struct DopAnchorobjsurfaceslide {
 }
 
 impl DopAnchorobjsurfaceslide {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14679,6 +14721,8 @@ pub struct DopAnchortarget {
 }
 
 impl DopAnchortarget {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15029,6 +15073,8 @@ pub struct DopAnchorworldspacepos {
 }
 
 impl DopAnchorworldspacepos {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15517,6 +15563,8 @@ pub struct DopAnchorworldspacerot {
 }
 
 impl DopAnchorworldspacerot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15953,6 +16001,8 @@ pub struct DopApplydata {
 }
 
 impl DopApplydata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16171,6 +16221,8 @@ pub struct DopApplyrel {
 }
 
 impl DopApplyrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

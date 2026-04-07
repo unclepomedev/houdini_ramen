@@ -9,6 +9,8 @@ pub struct DriverFetch {
 }
 
 impl DriverFetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -214,6 +216,8 @@ pub struct DriverFilmboxfbx {
 }
 
 impl DriverFilmboxfbx {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1183,6 +1187,8 @@ pub struct DriverFlipbook {
 }
 
 impl DriverFlipbook {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3591,6 +3597,8 @@ pub struct DriverFramecontainer {
 }
 
 impl DriverFramecontainer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3746,6 +3754,8 @@ pub struct DriverFramedep {
 }
 
 impl DriverFramedep {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

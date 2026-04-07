@@ -97,6 +97,8 @@ pub struct ObjectBipedAutoRig {
 }
 
 impl ObjectBipedAutoRig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5721,6 +5723,8 @@ pub struct ObjectBlend {
 }
 
 impl ObjectBlend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6793,6 +6797,8 @@ pub struct ObjectBlendsticky {
 }
 
 impl ObjectBlendsticky {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7764,6 +7770,8 @@ pub struct ObjectBone {
 }
 
 impl ObjectBone {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

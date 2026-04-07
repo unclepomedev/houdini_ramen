@@ -85,6 +85,8 @@ pub struct TopPartitionbyattribute {
 }
 
 impl TopPartitionbyattribute {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -797,6 +799,8 @@ pub struct TopPartitionbybounds {
 }
 
 impl TopPartitionbybounds {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1597,6 +1601,8 @@ pub struct TopPartitionbycombination {
 }
 
 impl TopPartitionbycombination {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2194,6 +2200,8 @@ pub struct TopPartitionbycomparison {
 }
 
 impl TopPartitionbycomparison {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2859,6 +2867,8 @@ pub struct TopPartitionbyexpression {
 }
 
 impl TopPartitionbyexpression {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3443,6 +3453,8 @@ pub struct TopPartitionbyframe {
 }
 
 impl TopPartitionbyframe {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4171,6 +4183,8 @@ pub struct TopPartitionbyindex {
 }
 
 impl TopPartitionbyindex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4715,6 +4729,8 @@ pub struct TopPartitionbyiteration {
 }
 
 impl TopPartitionbyiteration {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5279,6 +5295,8 @@ pub struct TopPartitionbynode {
 }
 
 impl TopPartitionbynode {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5874,6 +5892,8 @@ pub struct TopPartitionbyrange {
 }
 
 impl TopPartitionbyrange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6530,6 +6550,8 @@ pub struct TopPartitionbytile {
 }
 
 impl TopPartitionbytile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7160,6 +7182,8 @@ pub struct TopPerforce {
 }
 
 impl TopPerforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7774,6 +7798,8 @@ pub struct TopPreflight {
 }
 
 impl TopPreflight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8169,6 +8195,8 @@ pub struct TopPythonmapper {
 }
 
 impl TopPythonmapper {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8419,6 +8447,8 @@ pub struct TopPythonpartitioner {
 }
 
 impl TopPythonpartitioner {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8929,6 +8959,8 @@ pub struct TopPythonprocessor {
 }
 
 impl TopPythonprocessor {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10062,6 +10094,8 @@ pub struct TopPythonscript {
 }
 
 impl TopPythonscript {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11009,6 +11043,8 @@ pub struct TopPythonserver {
 }
 
 impl TopPythonserver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11664,6 +11700,8 @@ pub struct TopPythonvenv {
 }
 
 impl TopPythonvenv {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

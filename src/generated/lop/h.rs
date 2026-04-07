@@ -15,6 +15,8 @@ pub struct LopHdadynamicpayload {
 }
 
 impl LopHdadynamicpayload {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -631,6 +633,8 @@ pub struct LopHermitecurves {
 }
 
 impl LopHermitecurves {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1316,6 +1320,8 @@ pub struct LopHoudinicrowdprocedural {
 }
 
 impl LopHoudinicrowdprocedural {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1708,6 +1714,8 @@ pub struct LopHoudinifeatherprocedural {
 }
 
 impl LopHoudinifeatherprocedural {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2070,6 +2078,8 @@ pub struct LopHoudinihairprocedural {
 }
 
 impl LopHoudinihairprocedural {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3011,6 +3021,8 @@ pub struct LopHoudinioceanprocedural {
 }
 
 impl LopHoudinioceanprocedural {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3821,6 +3833,8 @@ pub struct LopHoudinipreviewprocedurals {
 }
 
 impl LopHoudinipreviewprocedurals {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4042,6 +4056,8 @@ pub struct LopHoudinirbdprocedural {
 }
 
 impl LopHoudinirbdprocedural {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4415,6 +4431,8 @@ pub struct LopHuskimagemetadata {
 }
 
 impl LopHuskimagemetadata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

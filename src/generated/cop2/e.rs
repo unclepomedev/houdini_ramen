@@ -59,6 +59,8 @@ pub struct Cop2Edge {
 }
 
 impl Cop2Edge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -633,6 +635,8 @@ pub struct Cop2Edgeblur {
 }
 
 impl Cop2Edgeblur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -933,6 +937,8 @@ pub struct Cop2Emboss {
 }
 
 impl Cop2Emboss {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1654,6 +1660,8 @@ pub struct Cop2Env {
 }
 
 impl Cop2Env {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2341,6 +2349,8 @@ pub struct Cop2Equalize {
 }
 
 impl Cop2Equalize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3049,6 +3059,8 @@ pub struct Cop2Erftable {
 }
 
 impl Cop2Erftable {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3612,6 +3624,8 @@ pub struct Cop2Expand {
 }
 
 impl Cop2Expand {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4306,6 +4320,8 @@ pub struct Cop2Extend {
 }
 
 impl Cop2Extend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4657,6 +4673,8 @@ pub struct Cop2Extract {
 }
 
 impl Cop2Extract {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4985,6 +5003,8 @@ pub struct Cop2Extrapolateboundaries {
 }
 
 impl Cop2Extrapolateboundaries {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

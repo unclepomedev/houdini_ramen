@@ -51,6 +51,8 @@ pub struct Cop2Gamma {
 }
 
 impl Cop2Gamma {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -715,6 +717,8 @@ pub struct Cop2Geokey {
 }
 
 impl Cop2Geokey {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1521,6 +1525,8 @@ pub struct Cop2Geometry {
 }
 
 impl Cop2Geometry {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2403,6 +2409,8 @@ pub struct Cop2Gradient {
 }
 
 impl Cop2Gradient {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2999,6 +3007,8 @@ pub struct Cop2Grain {
 }
 
 impl Cop2Grain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -114,6 +114,8 @@ pub struct TopImagemagick {
 }
 
 impl TopImagemagick {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1488,6 +1490,8 @@ pub struct TopInvoke {
 }
 
 impl TopInvoke {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -9,6 +9,8 @@ pub struct DopNetfetchdata {
 }
 
 impl DopNetfetchdata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -349,6 +351,8 @@ pub struct DopNocollider {
 }
 
 impl DopNocollider {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -634,6 +638,8 @@ pub struct DopNoconrel {
 }
 
 impl DopNoconrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1084,6 +1090,8 @@ pub struct DopNoise {
 }
 
 impl DopNoise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1658,6 +1666,8 @@ pub struct DopNull {
 }
 
 impl DopNull {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

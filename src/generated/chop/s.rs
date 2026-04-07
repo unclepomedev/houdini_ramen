@@ -55,6 +55,8 @@ pub struct ChopSequence {
 }
 
 impl ChopSequence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -550,6 +552,8 @@ pub struct ChopShift {
 }
 
 impl ChopShift {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1053,6 +1057,8 @@ pub struct ChopShuffle {
 }
 
 impl ChopShuffle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1416,6 +1422,8 @@ pub struct ChopSlope {
 }
 
 impl ChopSlope {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2396,6 +2404,8 @@ pub struct ChopSpatial {
 }
 
 impl ChopSpatial {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3214,6 +3224,8 @@ pub struct ChopSpectrum {
 }
 
 impl ChopSpectrum {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3649,6 +3661,8 @@ pub struct ChopSpline {
 }
 
 impl ChopSpline {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4060,6 +4074,8 @@ pub struct ChopSpring {
 }
 
 impl ChopSpring {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4479,6 +4495,8 @@ pub struct ChopStash {
 }
 
 impl ChopStash {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5282,6 +5300,8 @@ pub struct ChopStretch {
 }
 
 impl ChopStretch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5744,6 +5764,8 @@ pub struct ChopSubnet {
 }
 
 impl ChopSubnet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6268,6 +6290,8 @@ pub struct ChopSwitch {
 }
 
 impl ChopSwitch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

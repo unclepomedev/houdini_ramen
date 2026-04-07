@@ -22,6 +22,8 @@ pub struct Cop2Tile {
 }
 
 impl Cop2Tile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -321,6 +323,8 @@ pub struct Cop2Tima {
 }
 
 impl Cop2Tima {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -987,6 +991,8 @@ pub struct Cop2Timefilter {
 }
 
 impl Cop2Timefilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1571,6 +1577,8 @@ pub struct Cop2Timescale {
 }
 
 impl Cop2Timescale {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2255,6 +2263,8 @@ pub struct Cop2Trim {
 }
 
 impl Cop2Trim {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

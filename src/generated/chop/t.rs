@@ -24,6 +24,8 @@ pub struct ChopTimerange {
 }
 
 impl ChopTimerange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -416,6 +418,8 @@ pub struct ChopTimeshift {
 }
 
 impl ChopTimeshift {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1224,6 +1228,8 @@ pub struct ChopTransform {
 }
 
 impl ChopTransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1823,6 +1829,8 @@ pub struct ChopTransformchain {
 }
 
 impl ChopTransformchain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2291,6 +2299,8 @@ pub struct ChopTransformvopcvex {
 }
 
 impl ChopTransformvopcvex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2948,6 +2958,8 @@ pub struct ChopTrigger {
 }
 
 impl ChopTrigger {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3564,6 +3576,8 @@ pub struct ChopTrim {
 }
 
 impl ChopTrim {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

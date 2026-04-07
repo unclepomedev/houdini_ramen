@@ -8,6 +8,8 @@ pub struct SopEach {
 }
 
 impl SopEach {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -300,6 +302,8 @@ pub struct SopEdgecollapse {
 }
 
 impl SopEdgecollapse {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -546,6 +550,8 @@ pub struct SopEdgecusp {
 }
 
 impl SopEdgecusp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -778,6 +784,8 @@ pub struct SopEdgedivide {
 }
 
 impl SopEdgedivide {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1086,6 +1094,8 @@ pub struct SopEdgeequalize {
 }
 
 impl SopEdgeequalize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1332,6 +1342,8 @@ pub struct SopEdgeflip {
 }
 
 impl SopEdgeflip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1566,6 +1578,8 @@ pub struct SopEdgefracture {
 }
 
 impl SopEdgefracture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2017,6 +2031,8 @@ pub struct SopEdgerelax {
 }
 
 impl SopEdgerelax {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2600,6 +2616,8 @@ pub struct SopEdgestraighten {
 }
 
 impl SopEdgestraighten {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2887,6 +2905,8 @@ pub struct SopEdgetransport {
 }
 
 impl SopEdgetransport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3481,6 +3501,8 @@ pub struct SopEdit {
 }
 
 impl SopEdit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4984,6 +5006,8 @@ pub struct SopElastictransform {
 }
 
 impl SopElastictransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5586,6 +5610,8 @@ pub struct SopEnds {
 }
 
 impl SopEnds {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5895,6 +5921,8 @@ pub struct SopEnumerate {
 }
 
 impl SopEnumerate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6203,6 +6231,8 @@ pub struct SopError {
 }
 
 impl SopError {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6446,6 +6476,8 @@ pub struct SopExplodedview {
 }
 
 impl SopExplodedview {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7040,6 +7072,8 @@ pub struct SopExtractcentroid {
 }
 
 impl SopExtractcentroid {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7345,6 +7379,8 @@ pub struct SopExtractcontours {
 }
 
 impl SopExtractcontours {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7630,6 +7666,8 @@ pub struct SopExtractpointfromcurve {
 }
 
 impl SopExtractpointfromcurve {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8031,6 +8069,8 @@ pub struct SopExtracttransform {
 }
 
 impl SopExtracttransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8397,6 +8437,8 @@ pub struct SopExtrude {
 }
 
 impl SopExtrude {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8953,6 +8995,9 @@ pub struct SopExtrudevolume {
 }
 
 impl SopExtrudevolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

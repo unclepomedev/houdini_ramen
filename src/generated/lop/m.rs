@@ -58,6 +58,8 @@ pub struct LopMaskfrombounds {
 }
 
 impl LopMaskfrombounds {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -975,6 +977,8 @@ pub struct LopMatchsize {
 }
 
 impl LopMatchsize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1773,6 +1777,8 @@ pub struct LopMateriallibrary {
 }
 
 impl LopMateriallibrary {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2157,6 +2163,8 @@ pub struct LopMateriallinker {
 }
 
 impl LopMateriallinker {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2575,6 +2583,8 @@ pub struct LopMaterialvariation {
 }
 
 impl LopMaterialvariation {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3544,6 +3554,8 @@ pub struct LopMerge {
 }
 
 impl LopMerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3735,6 +3747,8 @@ pub struct LopMergepointinstancers {
 }
 
 impl LopMergepointinstancers {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4008,6 +4022,8 @@ pub struct LopMesh {
 }
 
 impl LopMesh {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4827,6 +4843,8 @@ pub struct LopModifypaths {
 }
 
 impl LopModifypaths {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5164,6 +5182,8 @@ pub struct LopModifypointinstances {
 }
 
 impl LopModifypointinstances {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6297,6 +6317,8 @@ pub struct LopMotionblur {
 }
 
 impl LopMotionblur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

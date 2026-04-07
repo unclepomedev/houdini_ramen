@@ -80,6 +80,8 @@ pub struct ObjectNull {
 }
 
 impl ObjectNull {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -978,6 +980,8 @@ pub struct ObjectNullspike {
 }
 
 impl ObjectNullspike {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

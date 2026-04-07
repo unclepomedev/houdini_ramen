@@ -17,6 +17,8 @@ pub struct DriverDembonesSkinningconverter {
 }
 
 impl DriverDembonesSkinningconverter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -484,6 +486,8 @@ pub struct DriverDop {
 }
 
 impl DriverDop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1882,6 +1886,8 @@ pub struct DriverDsmmerge {
 }
 
 impl DriverDsmmerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

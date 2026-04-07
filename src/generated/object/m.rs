@@ -116,6 +116,8 @@ pub struct ObjectMcacclaim {
 }
 
 impl ObjectMcacclaim {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -955,6 +957,8 @@ pub struct ObjectMicrophone {
 }
 
 impl ObjectMicrophone {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1831,6 +1835,8 @@ pub struct ObjectMocapRigBipedArm {
 }
 
 impl ObjectMocapRigBipedArm {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2708,6 +2714,8 @@ pub struct ObjectMocapRigBipedHeadAndNeck {
 }
 
 impl ObjectMocapRigBipedHeadAndNeck {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3573,6 +3581,8 @@ pub struct ObjectMocapRigBipedLeg {
 }
 
 impl ObjectMocapRigBipedLeg {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4568,6 +4578,8 @@ pub struct ObjectMocapRigBipedSpine3pc {
 }
 
 impl ObjectMocapRigBipedSpine3pc {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5459,6 +5471,8 @@ pub struct ObjectMocapRigBipedSpine5pc {
 }
 
 impl ObjectMocapRigBipedSpine5pc {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6481,6 +6495,8 @@ pub struct ObjectMocapbiped1 {
 }
 
 impl ObjectMocapbiped1 {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7572,6 +7588,8 @@ pub struct ObjectMocapbiped2 {
 }
 
 impl ObjectMocapbiped2 {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9120,6 +9138,8 @@ pub struct ObjectMocapbiped3 {
 }
 
 impl ObjectMocapbiped3 {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10347,6 +10367,8 @@ pub struct ObjectMuscle {
 }
 
 impl ObjectMuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11350,6 +11372,8 @@ pub struct ObjectMusclepin {
 }
 
 impl ObjectMusclepin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12453,6 +12477,8 @@ pub struct ObjectMusclerig {
 }
 
 impl ObjectMusclerig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

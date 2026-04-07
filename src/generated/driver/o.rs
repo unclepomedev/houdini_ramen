@@ -841,6 +841,8 @@ pub struct DriverOpengl {
 }
 
 impl DriverOpengl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

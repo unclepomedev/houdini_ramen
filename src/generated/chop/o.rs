@@ -89,6 +89,8 @@ pub struct ChopObject {
 }
 
 impl ChopObject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -713,6 +715,8 @@ pub struct ChopObjectchain {
 }
 
 impl ChopObjectchain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1757,6 +1761,8 @@ pub struct ChopOscillator {
 }
 
 impl ChopOscillator {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2290,6 +2296,8 @@ pub struct ChopOutput {
 }
 
 impl ChopOutput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

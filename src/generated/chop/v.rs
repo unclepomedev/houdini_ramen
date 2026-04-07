@@ -100,6 +100,8 @@ pub struct ChopVector {
 }
 
 impl ChopVector {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -733,6 +735,8 @@ pub struct ChopVex {
 }
 
 impl ChopVex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1165,6 +1169,8 @@ pub struct ChopVoicesplit {
 }
 
 impl ChopVoicesplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1552,6 +1558,8 @@ pub struct ChopVoicesync {
 }
 
 impl ChopVoicesync {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2198,6 +2206,8 @@ pub struct ChopVopchop {
 }
 
 impl ChopVopchop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

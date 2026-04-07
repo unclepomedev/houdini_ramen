@@ -45,6 +45,8 @@ pub struct ChopEnvelope {
 }
 
 impl ChopEnvelope {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -512,6 +514,8 @@ pub struct ChopEulerrotationfilter {
 }
 
 impl ChopEulerrotationfilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1043,6 +1047,8 @@ pub struct ChopExport {
 }
 
 impl ChopExport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1467,6 +1473,8 @@ pub struct ChopExporttransforms {
 }
 
 impl ChopExporttransforms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1873,6 +1881,8 @@ pub struct ChopExpress {
 }
 
 impl ChopExpress {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2294,6 +2304,8 @@ pub struct ChopExtend {
 }
 
 impl ChopExtend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2685,6 +2697,8 @@ pub struct ChopExtractbonetransforms {
 }
 
 impl ChopExtractbonetransforms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3071,6 +3085,8 @@ pub struct ChopExtractlocomotion {
 }
 
 impl ChopExtractlocomotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3631,6 +3647,8 @@ pub struct ChopExtractposedrivers {
 }
 
 impl ChopExtractposedrivers {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

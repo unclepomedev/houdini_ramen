@@ -8,6 +8,8 @@ pub struct SopKelvinletsculpt {
 }
 
 impl SopKelvinletsculpt {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -301,6 +303,9 @@ pub struct SopKinefxAdapttoterrain {
 }
 
 impl SopKinefxAdapttoterrain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1792,6 +1797,8 @@ pub struct SopKinefxAgentanimationunpack {
 }
 
 impl SopKinefxAgentanimationunpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2371,6 +2378,10 @@ pub struct SopKinefxAgentcharacterunpack {
 }
 
 impl SopKinefxAgentcharacterunpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2973,6 +2984,8 @@ pub struct SopKinefxAgentfromrig {
 }
 
 impl SopKinefxAgentfromrig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3288,6 +3301,8 @@ pub struct SopKinefxAgentfromrigcore {
 }
 
 impl SopKinefxAgentfromrigcore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3552,6 +3567,8 @@ pub struct SopKinefxAgentposefromrig {
 }
 
 impl SopKinefxAgentposefromrig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3895,6 +3912,8 @@ pub struct SopKinefxAttachcontrolgeo {
 }
 
 impl SopKinefxAttachcontrolgeo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4198,6 +4217,8 @@ pub struct SopKinefxAttachjointgeo {
 }
 
 impl SopKinefxAttachjointgeo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4965,6 +4986,8 @@ pub struct SopKinefxAttribtransformcompute {
 }
 
 impl SopKinefxAttribtransformcompute {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5470,6 +5493,8 @@ pub struct SopKinefxAttribtransformextract {
 }
 
 impl SopKinefxAttribtransformextract {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6000,6 +6025,8 @@ pub struct SopKinefxCapturepackedgeo {
 }
 
 impl SopKinefxCapturepackedgeo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6442,6 +6469,8 @@ pub struct SopKinefxCharacterblendshapechannels {
 }
 
 impl SopKinefxCharacterblendshapechannels {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6752,6 +6781,10 @@ pub struct SopKinefxCharacterblendshapes {
 }
 
 impl SopKinefxCharacterblendshapes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7070,6 +7103,8 @@ pub struct SopKinefxCharacterblendshapesadd {
 }
 
 impl SopKinefxCharacterblendshapesadd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7429,6 +7464,8 @@ pub struct SopKinefxCharacterblendshapescore {
 }
 
 impl SopKinefxCharacterblendshapescore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7734,6 +7771,8 @@ pub struct SopKinefxCharacterblendshapesextract {
 }
 
 impl SopKinefxCharacterblendshapesextract {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8022,6 +8061,10 @@ pub struct SopKinefxCharacterio {
 }
 
 impl SopKinefxCharacterio {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9102,6 +9145,8 @@ pub struct SopKinefxCharacterpack {
 }
 
 impl SopKinefxCharacterpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9374,6 +9419,10 @@ pub struct SopKinefxCharacterunpack {
 }
 
 impl SopKinefxCharacterunpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9927,6 +9976,8 @@ pub struct SopKinefxClipimport {
 }
 
 impl SopKinefxClipimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10195,6 +10246,8 @@ pub struct SopKinefxComputemotionclipcreate {
 }
 
 impl SopKinefxComputemotionclipcreate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10321,6 +10374,8 @@ pub struct SopKinefxComputemotionclipretime {
 }
 
 impl SopKinefxComputemotionclipretime {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10928,6 +10983,8 @@ pub struct SopKinefxComputerigpose {
 }
 
 impl SopKinefxComputerigpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11506,6 +11563,8 @@ pub struct SopKinefxComputetransform {
 }
 
 impl SopKinefxComputetransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11771,6 +11830,8 @@ pub struct SopKinefxConfigureclipinfo {
 }
 
 impl SopKinefxConfigureclipinfo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12252,6 +12313,8 @@ pub struct SopKinefxConfigurejointlimits {
 }
 
 impl SopKinefxConfigurejointlimits {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12821,6 +12884,8 @@ pub struct SopKinefxConfigurejoints {
 }
 
 impl SopKinefxConfigurejoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13799,6 +13864,8 @@ pub struct SopKinefxConfigurerigvis {
 }
 
 impl SopKinefxConfigurerigvis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14130,6 +14197,9 @@ pub struct SopKinefxDeformskelskin {
 }
 
 impl SopKinefxDeformskelskin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14923,6 +14993,8 @@ pub struct SopKinefxDeletejoints {
 }
 
 impl SopKinefxDeletejoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15168,6 +15240,8 @@ pub struct SopKinefxDembonesSkinningconverter {
 }
 
 impl SopKinefxDembonesSkinningconverter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15647,6 +15721,8 @@ pub struct SopKinefxDynamicwarp {
 }
 
 impl SopKinefxDynamicwarp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16306,6 +16382,8 @@ pub struct SopKinefxExtractlocomotion {
 }
 
 impl SopKinefxExtractlocomotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17131,6 +17209,9 @@ pub struct SopKinefxFbikconfiguretargets {
 }
 
 impl SopKinefxFbikconfiguretargets {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17638,6 +17719,8 @@ pub struct SopKinefxFbxanimimport {
 }
 
 impl SopKinefxFbxanimimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18123,6 +18206,10 @@ pub struct SopKinefxFbxcharacterimport {
 }
 
 impl SopKinefxFbxcharacterimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18616,6 +18703,8 @@ pub struct SopKinefxFbxskinimport {
 }
 
 impl SopKinefxFbxskinimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18859,6 +18948,9 @@ pub struct SopKinefxFktransfer {
 }
 
 impl SopKinefxFktransfer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19290,6 +19382,9 @@ pub struct SopKinefxFullbodyik {
 }
 
 impl SopKinefxFullbodyik {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20183,6 +20278,8 @@ pub struct SopKinefxGltfanimimport {
 }
 
 impl SopKinefxGltfanimimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20530,6 +20627,10 @@ pub struct SopKinefxGltfcharacterimport {
 }
 
 impl SopKinefxGltfcharacterimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20902,6 +21003,8 @@ pub struct SopKinefxGltfskinimport {
 }
 
 impl SopKinefxGltfskinimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21042,6 +21145,8 @@ pub struct SopKinefxGroupjoints {
 }
 
 impl SopKinefxGroupjoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21315,6 +21420,8 @@ pub struct SopKinefxIkchains {
 }
 
 impl SopKinefxIkchains {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21705,6 +21812,10 @@ pub struct SopKinefxJointcapturebiharmonic {
 }
 
 impl SopKinefxJointcapturebiharmonic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22390,6 +22501,10 @@ pub struct SopKinefxJointcapturepaint {
 }
 
 impl SopKinefxJointcapturepaint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23786,6 +23901,10 @@ pub struct SopKinefxJointcaptureproximity {
 }
 
 impl SopKinefxJointcaptureproximity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24258,6 +24377,8 @@ pub struct SopKinefxJointdeform {
 }
 
 impl SopKinefxJointdeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24640,6 +24761,9 @@ pub struct SopKinefxMappoints {
 }
 
 impl SopKinefxMappoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25104,6 +25228,8 @@ pub struct SopKinefxMocapimport {
 }
 
 impl SopKinefxMocapimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25686,6 +25812,8 @@ pub struct SopKinefxMocapstream {
 }
 
 impl SopKinefxMocapstream {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26249,6 +26377,8 @@ pub struct SopKinefxMotionclip {
 }
 
 impl SopKinefxMotionclip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26833,6 +26963,8 @@ pub struct SopKinefxMotionclipblend {
 }
 
 impl SopKinefxMotionclipblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27845,6 +27977,9 @@ pub struct SopKinefxMotionclipcomputevelocity {
 }
 
 impl SopKinefxMotionclipcomputevelocity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28497,6 +28632,8 @@ pub struct SopKinefxMotionclipcreate {
 }
 
 impl SopKinefxMotionclipcreate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29048,6 +29185,8 @@ pub struct SopKinefxMotionclipcreateclipinfo {
 }
 
 impl SopKinefxMotionclipcreateclipinfo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29379,6 +29518,8 @@ pub struct SopKinefxMotionclipcycle {
 }
 
 impl SopKinefxMotionclipcycle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30271,6 +30412,8 @@ pub struct SopKinefxMotionclipevaluate {
 }
 
 impl SopKinefxMotionclipevaluate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30663,6 +30806,8 @@ pub struct SopKinefxMotionclipextract {
 }
 
 impl SopKinefxMotionclipextract {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31083,6 +31228,8 @@ pub struct SopKinefxMotionclipextractkeyposes {
 }
 
 impl SopKinefxMotionclipextractkeyposes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31598,6 +31745,8 @@ pub struct SopKinefxMotionclipextractlocomotion {
 }
 
 impl SopKinefxMotionclipextractlocomotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32315,6 +32464,8 @@ pub struct SopKinefxMotionclipmerge {
 }
 
 impl SopKinefxMotionclipmerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32633,6 +32784,8 @@ pub struct SopKinefxMotionclipposedelete {
 }
 
 impl SopKinefxMotionclipposedelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33228,6 +33381,8 @@ pub struct SopKinefxMotionclipposeinsert {
 }
 
 impl SopKinefxMotionclipposeinsert {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33505,6 +33660,8 @@ pub struct SopKinefxMotionclipretime {
 }
 
 impl SopKinefxMotionclipretime {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34190,6 +34347,8 @@ pub struct SopKinefxMotionclipsequence {
 }
 
 impl SopKinefxMotionclipsequence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35145,6 +35304,8 @@ pub struct SopKinefxMotionclipunpack {
 }
 
 impl SopKinefxMotionclipunpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35651,6 +35812,8 @@ pub struct SopKinefxMotionclipupdate {
 }
 
 impl SopKinefxMotionclipupdate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -36170,6 +36333,8 @@ pub struct SopKinefxMotionmixer {
 }
 
 impl SopKinefxMotionmixer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37680,6 +37845,8 @@ pub struct SopKinefxMotionmixerfetch {
 }
 
 impl SopKinefxMotionmixerfetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37808,6 +37975,8 @@ pub struct SopKinefxMotionmixerfx {
 }
 
 impl SopKinefxMotionmixerfx {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38063,6 +38232,8 @@ pub struct SopKinefxMotionmixerretime {
 }
 
 impl SopKinefxMotionmixerretime {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38354,6 +38525,8 @@ pub struct SopKinefxMotionmixersetup {
 }
 
 impl SopKinefxMotionmixersetup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38734,6 +38907,8 @@ pub struct SopKinefxMotionmixersmooth {
 }
 
 impl SopKinefxMotionmixersmooth {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39071,6 +39246,8 @@ pub struct SopKinefxMotionmixertransform {
 }
 
 impl SopKinefxMotionmixertransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39392,6 +39569,8 @@ pub struct SopKinefxOrientjoints {
 }
 
 impl SopKinefxOrientjoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39764,6 +39943,8 @@ pub struct SopKinefxParentjoints {
 }
 
 impl SopKinefxParentjoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40052,6 +40233,9 @@ pub struct SopKinefxPendulummotion {
 }
 
 impl SopKinefxPendulummotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40960,6 +41144,8 @@ pub struct SopKinefxPendulummotioncore {
 }
 
 impl SopKinefxPendulummotioncore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -42421,6 +42607,10 @@ pub struct SopKinefxPointcapturebiharmonic {
 }
 
 impl SopKinefxPointcapturebiharmonic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -42763,6 +42953,8 @@ pub struct SopKinefxPosedifference {
 }
 
 impl SopKinefxPosedifference {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43185,6 +43377,8 @@ pub struct SopKinefxPoseweightinterp {
 }
 
 impl SopKinefxPoseweightinterp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43826,6 +44020,9 @@ pub struct SopKinefxProjectilemotion {
 }
 
 impl SopKinefxProjectilemotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -44615,6 +44812,8 @@ pub struct SopKinefxProjectilemotioncore {
 }
 
 impl SopKinefxProjectilemotioncore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -46161,6 +46360,9 @@ pub struct SopKinefxRagdollcollisionshapes {
 }
 
 impl SopKinefxRagdollcollisionshapes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -46706,6 +46908,11 @@ pub struct SopKinefxRagdollconstraints {
 }
 
 impl SopKinefxRagdollconstraints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+    pub const OUT_OUTPUT4: &'static str = "output4";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -47613,6 +47820,8 @@ pub struct SopKinefxRagdollsolver {
 }
 
 impl SopKinefxRagdollsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48859,6 +49068,8 @@ pub struct SopKinefxResamplesplinetransforms {
 }
 
 impl SopKinefxResamplesplinetransforms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49317,6 +49528,9 @@ pub struct SopKinefxRetargetbiped {
 }
 
 impl SopKinefxRetargetbiped {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49859,6 +50073,10 @@ pub struct SopKinefxRetargetbipedfbx {
 }
 
 impl SopKinefxRetargetbipedfbx {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -50160,6 +50378,8 @@ pub struct SopKinefxRetargetbipedtemplate {
 }
 
 impl SopKinefxRetargetbipedtemplate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -50864,6 +51084,8 @@ pub struct SopKinefxRetargetfbxexport {
 }
 
 impl SopKinefxRetargetfbxexport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51646,6 +51868,8 @@ pub struct SopKinefxRetargetmaptemplate {
 }
 
 impl SopKinefxRetargetmaptemplate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51968,6 +52192,8 @@ pub struct SopKinefxReversefoot {
 }
 
 impl SopKinefxReversefoot {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -52717,6 +52943,8 @@ pub struct SopKinefxRigattribvop {
 }
 
 impl SopKinefxRigattribvop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -53523,6 +53751,8 @@ pub struct SopKinefxRigattribwrangle {
 }
 
 impl SopKinefxRigattribwrangle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54238,6 +54468,9 @@ pub struct SopKinefxRigcopytransforms {
 }
 
 impl SopKinefxRigcopytransforms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54559,6 +54792,8 @@ pub struct SopKinefxRigdoctor {
 }
 
 impl SopKinefxRigdoctor {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -55154,6 +55389,9 @@ pub struct SopKinefxRigmatchpose {
 }
 
 impl SopKinefxRigmatchpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56093,6 +56331,8 @@ pub struct SopKinefxRigmirrorpose {
 }
 
 impl SopKinefxRigmirrorpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56655,6 +56895,8 @@ pub struct SopKinefxRigpose {
 }
 
 impl SopKinefxRigpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -57415,6 +57657,8 @@ pub struct SopKinefxRigpython {
 }
 
 impl SopKinefxRigpython {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -57812,6 +58056,9 @@ pub struct SopKinefxRigstashpose {
 }
 
 impl SopKinefxRigstashpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61339,6 +61586,10 @@ pub struct SopKinefxScenecharacterimport {
 }
 
 impl SopKinefxScenecharacterimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61900,6 +62151,9 @@ pub struct SopKinefxSecondarymotion {
 }
 
 impl SopKinefxSecondarymotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -63118,6 +63372,8 @@ pub struct SopKinefxSkeleton {
 }
 
 impl SopKinefxSkeleton {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -63446,6 +63702,8 @@ pub struct SopKinefxSkeletonblend {
 }
 
 impl SopKinefxSkeletonblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -63886,6 +64144,8 @@ pub struct SopKinefxSkeletonmirror {
 }
 
 impl SopKinefxSkeletonmirror {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -64373,6 +64633,9 @@ pub struct SopKinefxSmoothmotion {
 }
 
 impl SopKinefxSmoothmotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -64946,6 +65209,8 @@ pub struct SopKinefxSmoothmotioncore {
 }
 
 impl SopKinefxSmoothmotioncore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -65364,6 +65629,9 @@ pub struct SopKinefxSplineik {
 }
 
 impl SopKinefxSplineik {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -66003,6 +66271,9 @@ pub struct SopKinefxStabilizejoint {
 }
 
 impl SopKinefxStabilizejoint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -66948,6 +67219,8 @@ pub struct SopKinefxUsdanimimport {
 }
 
 impl SopKinefxUsdanimimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -67355,6 +67628,10 @@ pub struct SopKinefxUsdcharacterimport {
 }
 
 impl SopKinefxUsdcharacterimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -67756,6 +68033,8 @@ pub struct SopKinefxUsdskinimport {
 }
 
 impl SopKinefxUsdskinimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -67919,6 +68198,9 @@ pub struct SopKinefxVisrig {
 }
 
 impl SopKinefxVisrig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -68266,6 +68548,8 @@ pub struct SopKnife {
 }
 
 impl SopKnife {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

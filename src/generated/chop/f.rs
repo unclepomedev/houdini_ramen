@@ -44,6 +44,8 @@ pub struct ChopFan {
 }
 
 impl ChopFan {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -450,6 +452,8 @@ pub struct ChopFbx {
 }
 
 impl ChopFbx {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -865,6 +869,8 @@ pub struct ChopFeedback {
 }
 
 impl ChopFeedback {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1337,6 +1343,8 @@ pub struct ChopFetch {
 }
 
 impl ChopFetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1671,6 +1679,8 @@ pub struct ChopFetchchop {
 }
 
 impl ChopFetchchop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1915,6 +1925,8 @@ pub struct ChopFile {
 }
 
 impl ChopFile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2240,6 +2252,8 @@ pub struct ChopFilter {
 }
 
 impl ChopFilter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2652,6 +2666,8 @@ pub struct ChopFootplant {
 }
 
 impl ChopFootplant {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3601,6 +3617,8 @@ pub struct ChopForeach {
 }
 
 impl ChopForeach {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4298,6 +4316,8 @@ pub struct ChopFunction {
 }
 
 impl ChopFunction {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

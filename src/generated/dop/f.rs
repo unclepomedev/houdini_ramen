@@ -127,6 +127,8 @@ pub struct DopFan {
 }
 
 impl DopFan {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -659,6 +661,8 @@ pub struct DopFemattachconstraint {
 }
 
 impl DopFemattachconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1337,6 +1341,8 @@ pub struct DopFemfuseconstraint {
 }
 
 impl DopFemfuseconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1789,6 +1795,8 @@ pub struct DopFemhybridconfigureobject {
 }
 
 impl DopFemhybridconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3108,6 +3116,8 @@ pub struct DopFemhybridobject {
 }
 
 impl DopFemhybridobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4220,6 +4230,8 @@ pub struct DopFemregionconstraint {
 }
 
 impl DopFemregionconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4745,6 +4757,8 @@ pub struct DopFemslideconstraint {
 }
 
 impl DopFemslideconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5482,6 +5496,8 @@ pub struct DopFemsolidconfigureobject {
 }
 
 impl DopFemsolidconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6537,6 +6553,8 @@ pub struct DopFemsolidobject {
 }
 
 impl DopFemsolidobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7523,6 +7541,8 @@ pub struct DopFemsolver {
 }
 
 impl DopFemsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8141,6 +8161,8 @@ pub struct DopFemsolvercore {
 }
 
 impl DopFemsolvercore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8922,6 +8944,8 @@ pub struct DopFemtargetconstraint {
 }
 
 impl DopFemtargetconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9334,6 +9358,8 @@ pub struct DopFeoutputattributes {
 }
 
 impl DopFeoutputattributes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9782,6 +9808,8 @@ pub struct DopFetchdata {
 }
 
 impl DopFetchdata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10154,6 +10182,8 @@ pub struct DopFieldforce {
 }
 
 impl DopFieldforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10736,6 +10766,8 @@ pub struct DopFilamentobject {
 }
 
 impl DopFilamentobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10938,6 +10970,8 @@ pub struct DopFilamentsolver {
 }
 
 impl DopFilamentsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11406,6 +11440,8 @@ pub struct DopFile {
 }
 
 impl DopFile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11748,6 +11784,8 @@ pub struct DopFiledata {
 }
 
 impl DopFiledata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12309,6 +12347,8 @@ pub struct DopFlipconfigureobject {
 }
 
 impl DopFlipconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15443,6 +15483,8 @@ pub struct DopFlipobject {
 }
 
 impl DopFlipobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18802,6 +18844,8 @@ pub struct DopFlipsolver {
 }
 
 impl DopFlipsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21387,6 +21431,8 @@ pub struct DopFluidconfigureobject {
 }
 
 impl DopFluidconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23592,6 +23638,8 @@ pub struct DopFluidforce {
 }
 
 impl DopFluidforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24200,6 +24248,8 @@ pub struct DopFluidobject {
 }
 
 impl DopFluidobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26469,6 +26519,8 @@ pub struct DopFluidsolver {
 }
 
 impl DopFluidsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

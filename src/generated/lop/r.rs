@@ -31,6 +31,8 @@ pub struct LopRbddestruction {
 }
 
 impl LopRbddestruction {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -634,6 +636,8 @@ pub struct LopReference {
 }
 
 impl LopReference {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1160,6 +1164,8 @@ pub struct LopRendergeometrysettings {
 }
 
 impl LopRendergeometrysettings {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1601,6 +1607,8 @@ pub struct LopRenderpass {
 }
 
 impl LopRenderpass {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2703,6 +2711,8 @@ pub struct LopRenderproduct {
 }
 
 impl LopRenderproduct {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3479,6 +3489,8 @@ pub struct LopRendersettings {
 }
 
 impl LopRendersettings {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4339,6 +4351,8 @@ pub struct LopRendervar {
 }
 
 impl LopRendervar {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4898,6 +4912,8 @@ pub struct LopResampletransforms {
 }
 
 impl LopResampletransforms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5140,6 +5156,8 @@ pub struct LopRestructurescenegraph {
 }
 
 impl LopRestructurescenegraph {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5643,6 +5661,8 @@ pub struct LopRetimeinstances {
 }
 
 impl LopRetimeinstances {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -57,6 +57,8 @@ pub struct LopKarma {
 }
 
 impl LopKarma {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3408,6 +3410,8 @@ pub struct LopKarmacryptomatte {
 }
 
 impl LopKarmacryptomatte {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4202,6 +4206,8 @@ pub struct LopKarmafogbox {
 }
 
 impl LopKarmafogbox {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4699,6 +4705,8 @@ pub struct LopKarmaocean {
 }
 
 impl LopKarmaocean {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5252,6 +5260,8 @@ pub struct LopKarmaphysicalsky {
 }
 
 impl LopKarmaphysicalsky {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7346,6 +7356,8 @@ pub struct LopKarmaprocedural {
 }
 
 impl LopKarmaprocedural {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7736,6 +7748,8 @@ pub struct LopKarmarenderproducts {
 }
 
 impl LopKarmarenderproducts {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8259,6 +8273,8 @@ pub struct LopKarmarenderproperties {
 }
 
 impl LopKarmarenderproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11896,6 +11912,8 @@ pub struct LopKarmarendersettings {
 }
 
 impl LopKarmarendersettings {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15930,6 +15948,8 @@ pub struct LopKarmaskyatmosphere {
 }
 
 impl LopKarmaskyatmosphere {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17331,6 +17351,8 @@ pub struct LopKarmaskydomelight {
 }
 
 impl LopKarmaskydomelight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18514,6 +18536,8 @@ pub struct LopKarmastandardrendervars {
 }
 
 impl LopKarmastandardrendervars {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21512,6 +21536,8 @@ pub struct LopKarmatexturebaker {
 }
 
 impl LopKarmatexturebaker {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24299,6 +24325,8 @@ pub struct LopKarmatoonshading {
 }
 
 impl LopKarmatoonshading {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24728,6 +24756,8 @@ pub struct LopKinefxSopcharacterimport {
 }
 
 impl LopKinefxSopcharacterimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

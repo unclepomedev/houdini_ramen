@@ -18,6 +18,8 @@ pub struct DriverUsd {
 }
 
 impl DriverUsd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -920,6 +922,8 @@ pub struct DriverUsdrender {
 }
 
 impl DriverUsdrender {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3262,6 +3266,8 @@ pub struct DriverUsdstitch {
 }
 
 impl DriverUsdstitch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3511,6 +3517,8 @@ pub struct DriverUsdstitchclips {
 }
 
 impl DriverUsdstitchclips {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3818,6 +3826,8 @@ pub struct DriverUsdzip {
 }
 
 impl DriverUsdzip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

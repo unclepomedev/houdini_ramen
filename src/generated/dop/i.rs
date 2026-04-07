@@ -8,6 +8,8 @@ pub struct DopImpactanalysis {
 }
 
 impl DopImpactanalysis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -399,6 +401,8 @@ pub struct DopImpulseforce {
 }
 
 impl DopImpulseforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -982,6 +986,8 @@ pub struct DopIndexfield {
 }
 
 impl DopIndexfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1711,6 +1717,8 @@ pub struct DopIndexfieldvisualization {
 }
 
 impl DopIndexfieldvisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2171,6 +2179,8 @@ pub struct DopInitialoverlaprel {
 }
 
 impl DopInitialoverlaprel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2466,6 +2476,8 @@ pub struct DopInstancedobject {
 }
 
 impl DopInstancedobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2610,6 +2622,8 @@ pub struct DopIntangiblevalue {
 }
 
 impl DopIntangiblevalue {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

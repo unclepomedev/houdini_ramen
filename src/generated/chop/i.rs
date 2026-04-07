@@ -54,6 +54,8 @@ pub struct ChopIdentity {
 }
 
 impl ChopIdentity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -398,6 +400,8 @@ pub struct ChopIksolver {
 }
 
 impl ChopIksolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1045,6 +1049,8 @@ pub struct ChopImage {
 }
 
 impl ChopImage {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1766,6 +1772,8 @@ pub struct ChopInterp {
 }
 
 impl ChopInterp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2145,6 +2153,8 @@ pub struct ChopInversekin {
 }
 
 impl ChopInversekin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2663,6 +2673,8 @@ pub struct ChopInvert {
 }
 
 impl ChopInvert {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

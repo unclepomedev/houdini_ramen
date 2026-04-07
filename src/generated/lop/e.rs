@@ -28,6 +28,8 @@ pub struct LopEdit {
 }
 
 impl LopEdit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -444,6 +446,8 @@ pub struct LopEditcontextoptions {
 }
 
 impl LopEditcontextoptions {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -933,6 +937,8 @@ pub struct LopEditlayerBegin {
 }
 
 impl LopEditlayerBegin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1206,6 +1212,8 @@ pub struct LopEditlayerEnd {
 }
 
 impl LopEditlayerEnd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1389,6 +1397,8 @@ pub struct LopEditmaterial {
 }
 
 impl LopEditmaterial {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1669,6 +1679,8 @@ pub struct LopEditmaterialproperties {
 }
 
 impl LopEditmaterialproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2159,6 +2171,8 @@ pub struct LopEditproperties {
 }
 
 impl LopEditproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2637,6 +2651,8 @@ pub struct LopEditpropertiesfromnode {
 }
 
 impl LopEditpropertiesfromnode {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3187,6 +3203,8 @@ pub struct LopEditprototypes {
 }
 
 impl LopEditprototypes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3573,6 +3591,8 @@ pub struct LopEdittargetlayer {
 }
 
 impl LopEdittargetlayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3880,6 +3900,8 @@ pub struct LopError {
 }
 
 impl LopError {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4142,6 +4164,8 @@ pub struct LopExplorevariants {
 }
 
 impl LopExplorevariants {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4712,6 +4736,8 @@ pub struct LopExtractinstances {
 }
 
 impl LopExtractinstances {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

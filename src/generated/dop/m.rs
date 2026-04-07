@@ -55,6 +55,8 @@ pub struct DopMagnetforce {
 }
 
 impl DopMagnetforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -479,6 +481,8 @@ pub struct DopMask {
 }
 
 impl DopMask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1251,6 +1255,8 @@ pub struct DopMatrixfield {
 }
 
 impl DopMatrixfield {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2037,6 +2043,8 @@ pub struct DopMatrixfieldvisualization {
 }
 
 impl DopMatrixfieldvisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2511,6 +2519,8 @@ pub struct DopMerge {
 }
 
 impl DopMerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2741,6 +2751,8 @@ pub struct DopModifydata {
 }
 
 impl DopModifydata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3121,6 +3133,8 @@ pub struct DopMotion {
 }
 
 impl DopMotion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3549,6 +3563,8 @@ pub struct DopMpmobject {
 }
 
 impl DopMpmobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3763,6 +3779,8 @@ pub struct DopMpmsolver {
 }
 
 impl DopMpmsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4638,6 +4656,8 @@ pub struct DopMultifieldvisualization {
 }
 
 impl DopMultifieldvisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5490,6 +5510,8 @@ pub struct DopMultisolver {
 }
 
 impl DopMultisolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5757,6 +5779,8 @@ pub struct DopMuscleupdatevellum {
 }
 
 impl DopMuscleupdatevellum {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

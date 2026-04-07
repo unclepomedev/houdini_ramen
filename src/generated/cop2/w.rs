@@ -22,6 +22,8 @@ pub struct Cop2Warp {
 }
 
 impl Cop2Warp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -283,6 +285,8 @@ pub struct Cop2Window {
 }
 
 impl Cop2Window {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -596,6 +600,8 @@ pub struct Cop2Wipe {
 }
 
 impl Cop2Wipe {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

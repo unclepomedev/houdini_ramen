@@ -46,6 +46,8 @@ pub struct ChopAcoustic {
 }
 
 impl ChopAcoustic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -445,6 +447,8 @@ pub struct ChopAgent {
 }
 
 impl ChopAgent {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -835,6 +839,8 @@ pub struct ChopArea {
 }
 
 impl ChopArea {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1355,6 +1361,8 @@ pub struct ChopAttribute {
 }
 
 impl ChopAttribute {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1742,6 +1750,8 @@ pub struct ChopAudioin {
 }
 
 impl ChopAudioin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

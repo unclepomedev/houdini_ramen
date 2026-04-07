@@ -24,6 +24,8 @@ pub struct DriverRib {
 }
 
 impl DriverRib {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -878,6 +880,8 @@ pub struct DriverRibarchive {
 }
 
 impl DriverRibarchive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1457,6 +1461,8 @@ pub struct DriverRis {
 }
 
 impl DriverRis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

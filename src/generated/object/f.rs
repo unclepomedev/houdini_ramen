@@ -53,6 +53,8 @@ pub struct ObjectFetch {
 }
 
 impl ObjectFetch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -853,6 +855,8 @@ pub struct ObjectFog {
 }
 
 impl ObjectFog {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1526,6 +1530,8 @@ pub struct ObjectFormationcrowdsexample {
 }
 
 impl ObjectFormationcrowdsexample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2189,6 +2195,8 @@ pub struct ObjectFourpointmuscle {
 }
 
 impl ObjectFourpointmuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4372,6 +4380,8 @@ pub struct ObjectFrankenmuscle {
 }
 
 impl ObjectFrankenmuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6264,6 +6274,8 @@ pub struct ObjectFur {
 }
 
 impl ObjectFur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9275,6 +9287,8 @@ pub struct ObjectFuzzyobstacleavoidance {
 }
 
 impl ObjectFuzzyobstacleavoidance {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9918,6 +9932,8 @@ pub struct ObjectFuzzystatetransition {
 }
 
 impl ObjectFuzzystatetransition {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

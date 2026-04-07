@@ -16,6 +16,8 @@ pub struct DopTargetrel {
 }
 
 impl DopTargetrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -347,6 +349,8 @@ pub struct DopTerrainobject {
 }
 
 impl DopTerrainobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1250,6 +1254,8 @@ pub struct DopThinplatecollider {
 }
 
 impl DopThinplatecollider {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2098,6 +2104,8 @@ pub struct DopTwostateconrel {
 }
 
 impl DopTwostateconrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

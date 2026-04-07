@@ -64,6 +64,8 @@ pub struct SopVdb {
 }
 
 impl SopVdb {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -683,6 +685,8 @@ pub struct SopVdbactivate {
 }
 
 impl SopVdbactivate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1204,6 +1208,8 @@ pub struct SopVdbactivatesdf {
 }
 
 impl SopVdbactivatesdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1594,6 +1600,8 @@ pub struct SopVdbadvectpoints {
 }
 
 impl SopVdbadvectpoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2028,6 +2036,8 @@ pub struct SopVdbadvectsdf {
 }
 
 impl SopVdbadvectsdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2453,6 +2463,8 @@ pub struct SopVdbanalysis {
 }
 
 impl SopVdbanalysis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2756,6 +2768,8 @@ pub struct SopVdbclip {
 }
 
 impl SopVdbclip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3174,6 +3188,8 @@ pub struct SopVdbcollider {
 }
 
 impl SopVdbcollider {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3740,6 +3756,8 @@ pub struct SopVdbcollidersprocess {
 }
 
 impl SopVdbcollidersprocess {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4046,6 +4064,8 @@ pub struct SopVdbcombine {
 }
 
 impl SopVdbcombine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4480,6 +4500,8 @@ pub struct SopVdbconvexclipsdf {
 }
 
 impl SopVdbconvexclipsdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4785,6 +4807,8 @@ pub struct SopVdbcreatecl {
 }
 
 impl SopVdbcreatecl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5060,6 +5084,8 @@ pub struct SopVdbdiagnostics {
 }
 
 impl SopVdbdiagnostics {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5757,6 +5783,8 @@ pub struct SopVdbextrapolate {
 }
 
 impl SopVdbextrapolate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6166,6 +6194,8 @@ pub struct SopVdbfracture {
 }
 
 impl SopVdbfracture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6590,6 +6620,8 @@ pub struct SopVdbfromparticlefluid {
 }
 
 impl SopVdbfromparticlefluid {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7030,6 +7062,8 @@ pub struct SopVdbfromparticles {
 }
 
 impl SopVdbfromparticles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7593,6 +7627,8 @@ pub struct SopVdbfrompolygons {
 }
 
 impl SopVdbfrompolygons {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8083,6 +8119,8 @@ pub struct SopVdblod {
 }
 
 impl SopVdblod {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8370,6 +8408,8 @@ pub struct SopVdbmerge {
 }
 
 impl SopVdbmerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8591,6 +8631,8 @@ pub struct SopVdbmorphsdf {
 }
 
 impl SopVdbmorphsdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9053,6 +9095,8 @@ pub struct SopVdbocclusionmask {
 }
 
 impl SopVdbocclusionmask {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9340,6 +9384,8 @@ pub struct SopVdbpointsdelete {
 }
 
 impl SopVdbpointsdelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9601,6 +9647,8 @@ pub struct SopVdbpointsgroup {
 }
 
 impl SopVdbpointsgroup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10213,6 +10261,8 @@ pub struct SopVdbpotentialflow {
 }
 
 impl SopVdbpotentialflow {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10668,6 +10718,8 @@ pub struct SopVdbprojectnondivergent {
 }
 
 impl SopVdbprojectnondivergent {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11067,6 +11119,8 @@ pub struct SopVdbrasterizefrustum {
 }
 
 impl SopVdbrasterizefrustum {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11805,6 +11859,8 @@ pub struct SopVdbrenormalizesdf {
 }
 
 impl SopVdbrenormalizesdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12230,6 +12286,8 @@ pub struct SopVdbresample {
 }
 
 impl SopVdbresample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12703,6 +12761,8 @@ pub struct SopVdbreshapesdf {
 }
 
 impl SopVdbreshapesdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13178,6 +13238,8 @@ pub struct SopVdbsegmentbyconnectivity {
 }
 
 impl SopVdbsegmentbyconnectivity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13410,6 +13472,8 @@ pub struct SopVdbsmooth {
 }
 
 impl SopVdbsmooth {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13801,6 +13865,8 @@ pub struct SopVdbsmoothsdf {
 }
 
 impl SopVdbsmoothsdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14276,6 +14342,8 @@ pub struct SopVdbtopologytosdf {
 }
 
 impl SopVdbtopologytosdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14593,6 +14661,8 @@ pub struct SopVdbtospheres {
 }
 
 impl SopVdbtospheres {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15023,6 +15093,8 @@ pub struct SopVdbvectormerge {
 }
 
 impl SopVdbvectormerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15329,6 +15401,8 @@ pub struct SopVdbvectorsplit {
 }
 
 impl SopVdbvectorsplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15591,6 +15665,8 @@ pub struct SopVdbvisualizetree {
 }
 
 impl SopVdbvisualizetree {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16013,6 +16089,8 @@ pub struct SopVectordeform {
 }
 
 impl SopVectordeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16665,6 +16743,10 @@ pub struct SopVellumattachconstraints {
 }
 
 impl SopVellumattachconstraints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18297,6 +18379,10 @@ pub struct SopVellumbrush {
 }
 
 impl SopVellumbrush {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20229,6 +20315,10 @@ pub struct SopVellumconfiguremuscles {
 }
 
 impl SopVellumconfiguremuscles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21220,6 +21310,10 @@ pub struct SopVellumconfiguretissue {
 }
 
 impl SopVellumconfiguretissue {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -21953,6 +22047,10 @@ pub struct SopVellumconstraintproperty {
 }
 
 impl SopVellumconstraintproperty {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23321,6 +23419,10 @@ pub struct SopVellumconstraints {
 }
 
 impl SopVellumconstraints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25941,6 +26043,10 @@ pub struct SopVellumconstraintsGrain {
 }
 
 impl SopVellumconstraintsGrain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26888,6 +26994,10 @@ pub struct SopVellumdrape {
 }
 
 impl SopVellumdrape {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27808,6 +27918,10 @@ pub struct SopVellumio {
 }
 
 impl SopVellumio {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29159,6 +29273,8 @@ pub struct SopVellumpack {
 }
 
 impl SopVellumpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -29443,6 +29559,8 @@ pub struct SopVellumpostprocess {
 }
 
 impl SopVellumpostprocess {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -30689,6 +30807,10 @@ pub struct SopVellumrefframe {
 }
 
 impl SopVellumrefframe {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31207,6 +31329,10 @@ pub struct SopVellumrestblend {
 }
 
 impl SopVellumrestblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31697,6 +31823,10 @@ pub struct SopVellumsolver {
 }
 
 impl SopVellumsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+    pub const OUT_OUTPUT3: &'static str = "output3";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33827,6 +33957,9 @@ pub struct SopVellumunpack {
 }
 
 impl SopVellumunpack {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34086,6 +34219,8 @@ pub struct SopVellumxformpieces {
 }
 
 impl SopVellumxformpieces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34450,6 +34585,8 @@ pub struct SopVerifyBsdf {
 }
 
 impl SopVerifyBsdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34641,6 +34778,8 @@ pub struct SopVertex {
 }
 
 impl SopVertex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35040,6 +35179,8 @@ pub struct SopVertexsplit {
 }
 
 impl SopVertexsplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35285,6 +35426,8 @@ pub struct SopVex {
 }
 
 impl SopVex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35677,6 +35820,8 @@ pub struct SopVisibility {
 }
 
 impl SopVisibility {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35989,6 +36134,8 @@ pub struct SopVisualize {
 }
 
 impl SopVisualize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -36433,6 +36580,8 @@ pub struct SopVolume {
 }
 
 impl SopVolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -37222,6 +37371,8 @@ pub struct SopVolumeadjustfog {
 }
 
 impl SopVolumeadjustfog {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38504,6 +38655,8 @@ pub struct SopVolumeambientocclusion {
 }
 
 impl SopVolumeambientocclusion {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38794,6 +38947,8 @@ pub struct SopVolumeanalysis {
 }
 
 impl SopVolumeanalysis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39023,6 +39178,8 @@ pub struct SopVolumearrivaltime {
 }
 
 impl SopVolumearrivaltime {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39350,6 +39507,8 @@ pub struct SopVolumebin {
 }
 
 impl SopVolumebin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39694,6 +39853,8 @@ pub struct SopVolumeblur {
 }
 
 impl SopVolumeblur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40065,6 +40226,8 @@ pub struct SopVolumebound {
 }
 
 impl SopVolumebound {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40329,6 +40492,8 @@ pub struct SopVolumebreak {
 }
 
 impl SopVolumebreak {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40740,6 +40905,8 @@ pub struct SopVolumecombine {
 }
 
 impl SopVolumecombine {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41261,6 +41428,8 @@ pub struct SopVolumecompress {
 }
 
 impl SopVolumecompress {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41689,6 +41858,8 @@ pub struct SopVolumeconvolve3 {
 }
 
 impl SopVolumeconvolve3 {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41964,6 +42135,8 @@ pub struct SopVolumedeform {
 }
 
 impl SopVolumedeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -42328,6 +42501,8 @@ pub struct SopVolumefeather {
 }
 
 impl SopVolumefeather {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -42680,6 +42855,8 @@ pub struct SopVolumefft {
 }
 
 impl SopVolumefft {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -42965,6 +43142,8 @@ pub struct SopVolumefromattrib {
 }
 
 impl SopVolumefromattrib {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43500,6 +43679,8 @@ pub struct SopVolumemerge {
 }
 
 impl SopVolumemerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43946,6 +44127,8 @@ pub struct SopVolumemix {
 }
 
 impl SopVolumemix {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -44498,6 +44681,8 @@ pub struct SopVolumenoisefog {
 }
 
 impl SopVolumenoisefog {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -45814,6 +45999,8 @@ pub struct SopVolumenoisesdf {
 }
 
 impl SopVolumenoisesdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -46952,6 +47139,8 @@ pub struct SopVolumenoisevector {
 }
 
 impl SopVolumenoisevector {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -47946,6 +48135,8 @@ pub struct SopVolumenormalize {
 }
 
 impl SopVolumenormalize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48266,6 +48457,8 @@ pub struct SopVolumeopticalflow {
 }
 
 impl SopVolumeopticalflow {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48626,6 +48819,8 @@ pub struct SopVolumepatch {
 }
 
 impl SopVolumepatch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -48982,6 +49177,8 @@ pub struct SopVolumeramp {
 }
 
 impl SopVolumeramp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49318,6 +49515,8 @@ pub struct SopVolumerasterize {
 }
 
 impl SopVolumerasterize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -49821,6 +50020,8 @@ pub struct SopVolumerasterizeattributes {
 }
 
 impl SopVolumerasterizeattributes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -50284,6 +50485,8 @@ pub struct SopVolumerasterizecurve {
 }
 
 impl SopVolumerasterizecurve {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -50714,6 +50917,8 @@ pub struct SopVolumerasterizehair {
 }
 
 impl SopVolumerasterizehair {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51174,6 +51379,8 @@ pub struct SopVolumerasterizelattice {
 }
 
 impl SopVolumerasterizelattice {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -51630,6 +51837,8 @@ pub struct SopVolumerasterizeparticles {
 }
 
 impl SopVolumerasterizeparticles {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -52070,6 +52279,8 @@ pub struct SopVolumerasterizepoints {
 }
 
 impl SopVolumerasterizepoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -52703,6 +52914,8 @@ pub struct SopVolumereduce {
 }
 
 impl SopVolumereduce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -53016,6 +53229,8 @@ pub struct SopVolumeresample {
 }
 
 impl SopVolumeresample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -53358,6 +53573,8 @@ pub struct SopVolumeresize {
 }
 
 impl SopVolumeresize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -53857,6 +54074,8 @@ pub struct SopVolumesdf {
 }
 
 impl SopVolumesdf {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54187,6 +54406,8 @@ pub struct SopVolumeslice {
 }
 
 impl SopVolumeslice {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54594,6 +54815,8 @@ pub struct SopVolumesplice {
 }
 
 impl SopVolumesplice {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -54816,6 +55039,8 @@ pub struct SopVolumestamp {
 }
 
 impl SopVolumestamp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -55235,6 +55460,8 @@ pub struct SopVolumesurface {
 }
 
 impl SopVolumesurface {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -55728,6 +55955,8 @@ pub struct SopVolumetrail {
 }
 
 impl SopVolumetrail {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56179,6 +56408,8 @@ pub struct SopVolumevectorjoin {
 }
 
 impl SopVolumevectorjoin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56469,6 +56700,8 @@ pub struct SopVolumevectorsplit {
 }
 
 impl SopVolumevectorsplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -56687,6 +56920,8 @@ pub struct SopVolumevelocity {
 }
 
 impl SopVolumevelocity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -57465,6 +57700,8 @@ pub struct SopVolumevelocityfromcurves {
 }
 
 impl SopVolumevelocityfromcurves {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -58080,6 +58317,8 @@ pub struct SopVolumevelocityfromsurface {
 }
 
 impl SopVolumevelocityfromsurface {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -58485,6 +58724,8 @@ pub struct SopVolumevisualization {
 }
 
 impl SopVolumevisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -59353,6 +59594,8 @@ pub struct SopVolumevop {
 }
 
 impl SopVolumevop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -59973,6 +60216,8 @@ pub struct SopVolumewrangle {
 }
 
 impl SopVolumewrangle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -60530,6 +60775,8 @@ pub struct SopVolumewranglecore {
 }
 
 impl SopVolumewranglecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61191,6 +61438,8 @@ pub struct SopVopsop {
 }
 
 impl SopVopsop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61711,6 +61960,8 @@ pub struct SopVoronoiadjacency {
 }
 
 impl SopVoronoiadjacency {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -61927,6 +62178,9 @@ pub struct SopVoronoifracture {
 }
 
 impl SopVoronoifracture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -62590,6 +62844,8 @@ pub struct SopVoronoifracturepoints {
 }
 
 impl SopVoronoifracturepoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -63140,6 +63396,8 @@ pub struct SopVoronoisplit {
 }
 
 impl SopVoronoisplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -63525,6 +63783,8 @@ pub struct SopVortexforceattribs {
 }
 
 impl SopVortexforceattribs {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

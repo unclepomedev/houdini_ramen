@@ -37,6 +37,8 @@ pub struct TopSendcommand {
 }
 
 impl TopSendcommand {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -478,6 +480,8 @@ pub struct TopSendemail {
 }
 
 impl TopSendemail {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -996,6 +1000,8 @@ pub struct TopServicecreate {
 }
 
 impl TopServicecreate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1668,6 +1674,8 @@ pub struct TopServicedelete {
 }
 
 impl TopServicedelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2083,6 +2091,8 @@ pub struct TopServicereset {
 }
 
 impl TopServicereset {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2534,6 +2544,8 @@ pub struct TopServicestart {
 }
 
 impl TopServicestart {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2943,6 +2955,8 @@ pub struct TopServicestop {
 }
 
 impl TopServicestop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3381,6 +3395,8 @@ pub struct TopShotguncreate {
 }
 
 impl TopShotguncreate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3638,6 +3654,8 @@ pub struct TopShotgundelete {
 }
 
 impl TopShotgundelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3875,6 +3893,8 @@ pub struct TopShotgundownload {
 }
 
 impl TopShotgundownload {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4202,6 +4222,8 @@ pub struct TopShotgunfind {
 }
 
 impl TopShotgunfind {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4644,6 +4666,8 @@ pub struct TopShotgunserver {
 }
 
 impl TopShotgunserver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5306,6 +5330,8 @@ pub struct TopShotgunupdate {
 }
 
 impl TopShotgunupdate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5631,6 +5657,8 @@ pub struct TopShotgunupload {
 }
 
 impl TopShotgunupload {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6611,6 +6639,8 @@ pub struct TopSort {
 }
 
 impl TopSort {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6895,6 +6925,9 @@ pub struct TopSplit {
 }
 
 impl TopSplit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7154,6 +7187,9 @@ pub struct TopSplitbycount {
 }
 
 impl TopSplitbycount {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7425,6 +7461,8 @@ pub struct TopSqlinput {
 }
 
 impl TopSqlinput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7903,6 +7941,8 @@ pub struct TopSqloutput {
 }
 
 impl TopSqloutput {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8246,6 +8286,8 @@ pub struct TopSubnet {
 }
 
 impl TopSubnet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8568,6 +8610,8 @@ pub struct TopSwitch {
 }
 
 impl TopSwitch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

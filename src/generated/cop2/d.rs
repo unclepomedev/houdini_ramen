@@ -51,6 +51,8 @@ pub struct Cop2Defocus {
 }
 
 impl Cop2Defocus {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -789,6 +791,8 @@ pub struct Cop2Deform {
 }
 
 impl Cop2Deform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1387,6 +1391,8 @@ pub struct Cop2Degrain {
 }
 
 impl Cop2Degrain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1906,6 +1912,8 @@ pub struct Cop2Deinterlace {
 }
 
 impl Cop2Deinterlace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2433,6 +2441,8 @@ pub struct Cop2Delete {
 }
 
 impl Cop2Delete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2731,6 +2741,8 @@ pub struct Cop2Denoise {
 }
 
 impl Cop2Denoise {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3251,6 +3263,8 @@ pub struct Cop2Depthdarken {
 }
 
 impl Cop2Depthdarken {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3644,6 +3658,8 @@ pub struct Cop2Diff {
 }
 
 impl Cop2Diff {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4442,6 +4458,8 @@ pub struct Cop2Dilateerode {
 }
 
 impl Cop2Dilateerode {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4995,6 +5013,8 @@ pub struct Cop2Dof {
 }
 
 impl Cop2Dof {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6442,6 +6462,8 @@ pub struct Cop2Dropshadow {
 }
 
 impl Cop2Dropshadow {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6869,6 +6891,8 @@ pub struct Cop2Dsmflatten {
 }
 
 impl Cop2Dsmflatten {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

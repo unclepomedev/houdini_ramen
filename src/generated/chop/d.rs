@@ -31,6 +31,8 @@ pub struct ChopDelay {
 }
 
 impl ChopDelay {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -515,6 +517,8 @@ pub struct ChopDelete {
 }
 
 impl ChopDelete {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1007,6 +1011,8 @@ pub struct ChopDevicetransform {
 }
 
 impl ChopDevicetransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2645,6 +2651,8 @@ pub struct ChopDynamics {
 }
 
 impl ChopDynamics {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3048,6 +3056,8 @@ pub struct ChopDynamicwarp {
 }
 
 impl ChopDynamicwarp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

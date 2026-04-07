@@ -31,6 +31,8 @@ pub struct ChopLag {
 }
 
 impl ChopLag {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -453,6 +455,8 @@ pub struct ChopLayer {
 }
 
 impl ChopLayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -842,6 +846,8 @@ pub struct ChopLimit {
 }
 
 impl ChopLimit {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1390,6 +1396,8 @@ pub struct ChopLogic {
 }
 
 impl ChopLogic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1864,6 +1872,8 @@ pub struct ChopLookup {
 }
 
 impl ChopLookup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

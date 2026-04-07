@@ -24,6 +24,8 @@ pub struct Cop2Illpixel {
 }
 
 impl Cop2Illpixel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -356,6 +358,8 @@ pub struct Cop2Inside {
 }
 
 impl Cop2Inside {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1111,6 +1115,8 @@ pub struct Cop2Interleave {
 }
 
 impl Cop2Interleave {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1552,6 +1558,8 @@ pub struct Cop2Invert {
 }
 
 impl Cop2Invert {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

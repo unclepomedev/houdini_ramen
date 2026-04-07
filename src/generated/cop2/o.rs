@@ -710,6 +710,8 @@ pub struct Cop2Outside {
 }
 
 impl Cop2Outside {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1565,6 +1567,8 @@ pub struct Cop2Over {
 }
 
 impl Cop2Over {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

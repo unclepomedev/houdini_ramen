@@ -69,6 +69,8 @@ pub struct ChopChannel {
 }
 
 impl ChopChannel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -589,6 +591,8 @@ pub struct ChopChannelwrangle {
 }
 
 impl ChopChannelwrangle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1419,6 +1423,8 @@ pub struct ChopComp {
 }
 
 impl ChopComp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2056,6 +2062,8 @@ pub struct ChopConstant {
 }
 
 impl ChopConstant {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3732,6 +3740,8 @@ pub struct ChopConstraintbegin {
 }
 
 impl ChopConstraintbegin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4199,6 +4209,8 @@ pub struct ChopConstraintblend {
 }
 
 impl ChopConstraintblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9024,6 +9036,8 @@ pub struct ChopConstraintexport {
 }
 
 impl ChopConstraintexport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9446,6 +9460,8 @@ pub struct ChopConstraintgetlocalspace {
 }
 
 impl ChopConstraintgetlocalspace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9896,6 +9912,8 @@ pub struct ChopConstraintgetparentspace {
 }
 
 impl ChopConstraintgetparentspace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10340,6 +10358,8 @@ pub struct ChopConstraintgetworldspace {
 }
 
 impl ChopConstraintgetworldspace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10809,6 +10829,8 @@ pub struct ChopConstraintlookat {
 }
 
 impl ChopConstraintlookat {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11570,6 +11592,8 @@ pub struct ChopConstraintobject {
 }
 
 impl ChopConstraintobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12048,6 +12072,8 @@ pub struct ChopConstraintobjectoffset {
 }
 
 impl ChopConstraintobjectoffset {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12663,6 +12689,8 @@ pub struct ChopConstraintobjectpretransform {
 }
 
 impl ChopConstraintobjectpretransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13131,6 +13159,8 @@ pub struct ChopConstraintoffset {
 }
 
 impl ChopConstraintoffset {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13774,6 +13804,8 @@ pub struct ChopConstraintoffsetblend {
 }
 
 impl ChopConstraintoffsetblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14437,6 +14469,8 @@ pub struct ChopConstraintparent {
 }
 
 impl ChopConstraintparent {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15035,6 +15069,9 @@ pub struct ChopConstraintparentx {
 }
 
 impl ChopConstraintparentx {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15709,6 +15746,8 @@ pub struct ChopConstraintpath {
 }
 
 impl ChopConstraintpath {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16613,6 +16652,8 @@ pub struct ChopConstraintpoints {
 }
 
 impl ChopConstraintpoints {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17473,6 +17514,8 @@ pub struct ChopConstraintsequence {
 }
 
 impl ChopConstraintsequence {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22292,6 +22335,8 @@ pub struct ChopConstraintsimpleblend {
 }
 
 impl ChopConstraintsimpleblend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22954,6 +22999,8 @@ pub struct ChopConstraintsurface {
 }
 
 impl ChopConstraintsurface {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23887,6 +23934,8 @@ pub struct ChopConstrainttransform {
 }
 
 impl ChopConstrainttransform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24899,6 +24948,8 @@ pub struct ChopCopy {
 }
 
 impl ChopCopy {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25683,6 +25734,8 @@ pub struct ChopCount {
 }
 
 impl ChopCount {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26285,6 +26338,8 @@ pub struct ChopCycle {
 }
 
 impl ChopCycle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

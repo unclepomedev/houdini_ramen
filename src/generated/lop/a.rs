@@ -8,6 +8,8 @@ pub struct LopAdditionalrendervars {
 }
 
 impl LopAdditionalrendervars {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -450,6 +452,8 @@ pub struct LopAddvariant {
 }
 
 impl LopAddvariant {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -796,6 +800,8 @@ pub struct LopAssetreference {
 }
 
 impl LopAssetreference {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1452,6 +1458,8 @@ pub struct LopAssignmaterial {
 }
 
 impl LopAssignmaterial {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2013,6 +2021,8 @@ pub struct LopAssignprototypes {
 }
 
 impl LopAssignprototypes {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2476,6 +2486,8 @@ pub struct LopAttribvop {
 }
 
 impl LopAttribvop {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3157,6 +3169,8 @@ pub struct LopAttribwrangle {
 }
 
 impl LopAttribwrangle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3780,6 +3794,8 @@ pub struct LopAutoselectlod {
 }
 
 impl LopAutoselectlod {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -61,6 +61,8 @@ pub struct Cop2Radialblur {
 }
 
 impl Cop2Radialblur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -841,6 +843,8 @@ pub struct Cop2Ramp {
 }
 
 impl Cop2Ramp {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1643,6 +1647,8 @@ pub struct Cop2Reference {
 }
 
 impl Cop2Reference {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1829,6 +1835,8 @@ pub struct Cop2Rename {
 }
 
 impl Cop2Rename {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2165,6 +2173,8 @@ pub struct Cop2Render {
 }
 
 impl Cop2Render {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2688,6 +2698,8 @@ pub struct Cop2Reverse {
 }
 
 impl Cop2Reverse {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4418,6 +4430,8 @@ pub struct Cop2Rotoshape {
 }
 
 impl Cop2Rotoshape {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

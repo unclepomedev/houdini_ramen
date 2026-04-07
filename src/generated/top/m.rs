@@ -15,6 +15,8 @@ pub struct TopMakedir {
 }
 
 impl TopMakedir {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -275,6 +277,8 @@ pub struct TopMapall {
 }
 
 impl TopMapall {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -423,6 +427,8 @@ pub struct TopMapbyexpression {
 }
 
 impl TopMapbyexpression {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -601,6 +607,8 @@ pub struct TopMapbyindex {
 }
 
 impl TopMapbyindex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -749,6 +757,8 @@ pub struct TopMapbyrange {
 }
 
 impl TopMapbyrange {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1051,6 +1061,8 @@ pub struct TopMayaserver {
 }
 
 impl TopMayaserver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1665,6 +1677,8 @@ pub struct TopMerge {
 }
 
 impl TopMerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1908,6 +1922,8 @@ pub struct TopMlPreprocessoidn {
 }
 
 impl TopMlPreprocessoidn {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2543,6 +2559,8 @@ pub struct TopMlRegressionkernel {
 }
 
 impl TopMlRegressionkernel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3163,6 +3181,8 @@ pub struct TopMlTrainoidn {
 }
 
 impl TopMlTrainoidn {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4103,6 +4123,8 @@ pub struct TopMlTrainregression {
 }
 
 impl TopMlTrainregression {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5344,6 +5366,8 @@ pub struct TopMlTrainstyletransfer {
 }
 
 impl TopMlTrainstyletransfer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

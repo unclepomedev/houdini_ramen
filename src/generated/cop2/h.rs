@@ -59,6 +59,8 @@ pub struct Cop2Hsv {
 }
 
 impl Cop2Hsv {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -705,6 +707,8 @@ pub struct Cop2Huecurve {
 }
 
 impl Cop2Huecurve {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

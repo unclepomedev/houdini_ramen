@@ -8,6 +8,8 @@ pub struct LopValueclip {
 }
 
 impl LopValueclip {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -497,6 +499,8 @@ pub struct LopVarymaterialassignment {
 }
 
 impl LopVarymaterialassignment {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1158,6 +1162,8 @@ pub struct LopVolume {
 }
 
 impl LopVolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

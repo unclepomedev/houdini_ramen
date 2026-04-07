@@ -15,6 +15,8 @@ pub struct SopName {
 }
 
 impl SopName {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -344,6 +346,8 @@ pub struct SopNeighborsearchcl {
 }
 
 impl SopNeighborsearchcl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -612,6 +616,8 @@ pub struct SopNeuralpointsurface {
 }
 
 impl SopNeuralpointsurface {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -972,6 +978,8 @@ pub struct SopNormal {
 }
 
 impl SopNormal {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1322,6 +1330,8 @@ pub struct SopNpspreprocessingcl {
 }
 
 impl SopNpspreprocessingcl {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1589,6 +1599,8 @@ pub struct SopNull {
 }
 
 impl SopNull {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

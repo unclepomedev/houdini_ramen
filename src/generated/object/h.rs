@@ -84,6 +84,8 @@ pub struct ObjectHaircardgen {
 }
 
 impl ObjectHaircardgen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1365,6 +1367,8 @@ pub struct ObjectHaircardtexexample {
 }
 
 impl ObjectHaircardtexexample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2150,6 +2154,8 @@ pub struct ObjectHairgen {
 }
 
 impl ObjectHairgen {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5260,6 +5266,8 @@ pub struct ObjectHandle {
 }
 
 impl ObjectHandle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6214,6 +6222,8 @@ pub struct ObjectHlight {
 }
 
 impl ObjectHlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

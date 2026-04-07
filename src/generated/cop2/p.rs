@@ -44,6 +44,8 @@ pub struct Cop2Pin {
 }
 
 impl Cop2Pin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -517,6 +519,8 @@ pub struct Cop2Pixel {
 }
 
 impl Cop2Pixel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1215,6 +1219,8 @@ pub struct Cop2Premultiply {
 }
 
 impl Cop2Premultiply {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1569,6 +1575,8 @@ pub struct Cop2Pulldown {
 }
 
 impl Cop2Pulldown {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1825,6 +1833,8 @@ pub struct Cop2Pushup {
 }
 
 impl Cop2Pushup {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

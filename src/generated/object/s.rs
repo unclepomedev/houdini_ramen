@@ -120,6 +120,8 @@ pub struct ObjectSimplebiped {
 }
 
 impl ObjectSimplebiped {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3184,6 +3186,8 @@ pub struct ObjectSimplefemale {
 }
 
 impl ObjectSimplefemale {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7287,6 +7291,8 @@ pub struct ObjectSimplemale {
 }
 
 impl ObjectSimplemale {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11195,6 +11201,8 @@ pub struct ObjectSound {
 }
 
 impl ObjectSound {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12053,6 +12061,8 @@ pub struct ObjectStadiumcrowdsexample {
 }
 
 impl ObjectStadiumcrowdsexample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12776,6 +12786,8 @@ pub struct ObjectStereocam {
 }
 
 impl ObjectStereocam {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13479,6 +13491,8 @@ pub struct ObjectStereocamrig {
 }
 
 impl ObjectStereocamrig {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14898,6 +14912,8 @@ pub struct ObjectSticky {
 }
 
 impl ObjectSticky {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15919,6 +15935,8 @@ pub struct ObjectStreetcrowdsexample {
 }
 
 impl ObjectStreetcrowdsexample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16630,6 +16648,8 @@ pub struct ObjectSubnet {
 }
 
 impl ObjectSubnet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17492,6 +17512,8 @@ pub struct ObjectSwitcher {
 }
 
 impl ObjectSwitcher {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

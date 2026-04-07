@@ -37,6 +37,8 @@ pub struct SopMagnet {
 }
 
 impl SopMagnet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -483,6 +485,8 @@ pub struct SopMaskbyfeature {
 }
 
 impl SopMaskbyfeature {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1503,6 +1507,8 @@ pub struct SopMatchaxis {
 }
 
 impl SopMatchaxis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1838,6 +1844,8 @@ pub struct SopMatchsize {
 }
 
 impl SopMatchsize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2515,6 +2523,8 @@ pub struct SopMatchtopology {
 }
 
 impl SopMatchtopology {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2796,6 +2806,8 @@ pub struct SopMaterial {
 }
 
 impl SopMaterial {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3288,6 +3300,8 @@ pub struct SopMdd {
 }
 
 impl SopMdd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3641,6 +3655,8 @@ pub struct SopMeasure {
 }
 
 impl SopMeasure {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4369,6 +4385,8 @@ pub struct SopMeasurethickness {
 }
 
 impl SopMeasurethickness {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4857,6 +4875,8 @@ pub struct SopMerge {
 }
 
 impl SopMerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5025,6 +5045,8 @@ pub struct SopMergepacked {
 }
 
 impl SopMergepacked {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5423,6 +5445,8 @@ pub struct SopMetaball {
 }
 
 impl SopMetaball {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5595,6 +5619,8 @@ pub struct SopMetagroups {
 }
 
 impl SopMetagroups {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5817,6 +5843,8 @@ pub struct SopMirror {
 }
 
 impl SopMirror {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6224,6 +6252,8 @@ pub struct SopMlAttribgenerate {
 }
 
 impl SopMlAttribgenerate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6497,6 +6527,8 @@ pub struct SopMlDeform {
 }
 
 impl SopMlDeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6895,6 +6927,8 @@ pub struct SopMlExample {
 }
 
 impl SopMlExample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7184,6 +7218,8 @@ pub struct SopMlExamplecreatecore {
 }
 
 impl SopMlExamplecreatecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7467,6 +7503,9 @@ pub struct SopMlExampledecompose {
 }
 
 impl SopMlExampledecompose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7686,6 +7725,8 @@ pub struct SopMlExampledecomposecore {
 }
 
 impl SopMlExampledecomposecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7913,6 +7954,8 @@ pub struct SopMlExampledeserializepacked {
 }
 
 impl SopMlExampledeserializepacked {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8294,6 +8337,8 @@ pub struct SopMlExampledeserializepoint {
 }
 
 impl SopMlExampledeserializepoint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8561,6 +8606,8 @@ pub struct SopMlExampleimport {
 }
 
 impl SopMlExampleimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9170,6 +9217,8 @@ pub struct SopMlExamplepartition {
 }
 
 impl SopMlExamplepartition {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9393,6 +9442,8 @@ pub struct SopMlExampleserializepacked {
 }
 
 impl SopMlExampleserializepacked {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9759,6 +9810,8 @@ pub struct SopMlExampleserializepoint {
 }
 
 impl SopMlExampleserializepoint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10014,6 +10067,8 @@ pub struct SopMlExtractexample {
 }
 
 impl SopMlExtractexample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10229,6 +10284,8 @@ pub struct SopMlExtractexamplecore {
 }
 
 impl SopMlExtractexamplecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10450,6 +10507,8 @@ pub struct SopMlPosedeserialize {
 }
 
 impl SopMlPosedeserialize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10803,6 +10862,8 @@ pub struct SopMlPosedeserializecore {
 }
 
 impl SopMlPosedeserializecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11144,6 +11205,8 @@ pub struct SopMlPosegenerate {
 }
 
 impl SopMlPosegenerate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11376,6 +11439,8 @@ pub struct SopMlPosegeneratecore {
 }
 
 impl SopMlPosegeneratecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11565,6 +11630,8 @@ pub struct SopMlPoseserialize {
 }
 
 impl SopMlPoseserialize {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11872,6 +11939,8 @@ pub struct SopMlPoseserializecore {
 }
 
 impl SopMlPoseserializecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12191,6 +12260,8 @@ pub struct SopMlRegressioninference {
 }
 
 impl SopMlRegressioninference {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12602,6 +12673,8 @@ pub struct SopMlRegressioninferencecore {
 }
 
 impl SopMlRegressioninferencecore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13017,6 +13090,8 @@ pub struct SopMlRegressionkernel {
 }
 
 impl SopMlRegressionkernel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13533,6 +13608,8 @@ pub struct SopMlRegressionkernelcore {
 }
 
 impl SopMlRegressionkernelcore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14044,6 +14121,8 @@ pub struct SopMlRegressionlinear {
 }
 
 impl SopMlRegressionlinear {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14463,6 +14542,8 @@ pub struct SopMlRegressionlinearcore {
 }
 
 impl SopMlRegressionlinearcore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14916,6 +14997,8 @@ pub struct SopMlRegressionproximity {
 }
 
 impl SopMlRegressionproximity {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15305,6 +15388,8 @@ pub struct SopMlRegressionproximitycore {
 }
 
 impl SopMlRegressionproximitycore {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15670,6 +15755,8 @@ pub struct SopMlVolumetilecomponent {
 }
 
 impl SopMlVolumetilecomponent {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16009,6 +16096,8 @@ pub struct SopMlVolumetileinference {
 }
 
 impl SopMlVolumetileinference {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16413,6 +16502,8 @@ pub struct SopMlVolumeupres {
 }
 
 impl SopMlVolumeupres {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17078,6 +17169,8 @@ pub struct SopMountain {
 }
 
 impl SopMountain {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17722,6 +17815,8 @@ pub struct SopMpmcollider {
 }
 
 impl SopMpmcollider {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18395,6 +18490,8 @@ pub struct SopMpmcontainer {
 }
 
 impl SopMpmcontainer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -18843,6 +18940,8 @@ pub struct SopMpmdebrissource {
 }
 
 impl SopMpmdebrissource {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19470,6 +19569,8 @@ pub struct SopMpmdeformpieces {
 }
 
 impl SopMpmdeformpieces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -19945,6 +20046,8 @@ pub struct SopMpmpostfracture {
 }
 
 impl SopMpmpostfracture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -20569,6 +20672,8 @@ pub struct SopMpmsolver {
 }
 
 impl SopMpmsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -22385,6 +22490,8 @@ pub struct SopMpmsource {
 }
 
 impl SopMpmsource {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -23735,6 +23842,8 @@ pub struct SopMpmsurface {
 }
 
 impl SopMpmsurface {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -24764,6 +24873,8 @@ pub struct SopMuscle {
 }
 
 impl SopMuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25272,6 +25383,8 @@ pub struct SopMuscleadjustvolume {
 }
 
 impl SopMuscleadjustvolume {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -25842,6 +25955,8 @@ pub struct SopMuscleautotensionlines {
 }
 
 impl SopMuscleautotensionlines {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26097,6 +26212,8 @@ pub struct SopMusclecapture {
 }
 
 impl SopMusclecapture {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -26532,6 +26649,8 @@ pub struct SopMuscleconstraintpropertiesfem {
 }
 
 impl SopMuscleconstraintpropertiesfem {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -27710,6 +27829,8 @@ pub struct SopMuscleconstraintpropertiesotis {
 }
 
 impl SopMuscleconstraintpropertiesotis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -28978,6 +29099,8 @@ pub struct SopMuscleconstraintpropertiesvellum {
 }
 
 impl SopMuscleconstraintpropertiesvellum {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31015,6 +31138,8 @@ pub struct SopMuscledeform {
 }
 
 impl SopMuscledeform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31465,6 +31590,8 @@ pub struct SopMuscledeintersect {
 }
 
 impl SopMuscledeintersect {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -31739,6 +31866,8 @@ pub struct SopMuscleflex {
 }
 
 impl SopMuscleflex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -32512,6 +32641,8 @@ pub struct SopMuscleid {
 }
 
 impl SopMuscleid {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33125,6 +33256,8 @@ pub struct SopMusclemerge {
 }
 
 impl SopMusclemerge {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33520,6 +33653,8 @@ pub struct SopMusclemirror {
 }
 
 impl SopMusclemirror {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -33931,6 +34066,8 @@ pub struct SopMusclepaint {
 }
 
 impl SopMusclepaint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -34990,6 +35127,8 @@ pub struct SopMusclepreroll {
 }
 
 impl SopMusclepreroll {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -35448,6 +35587,8 @@ pub struct SopMuscleproperties {
 }
 
 impl SopMuscleproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -36489,6 +36630,8 @@ pub struct SopMusclepropertiesotis {
 }
 
 impl SopMusclepropertiesotis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38044,6 +38187,8 @@ pub struct SopMuscleslideconstraint {
 }
 
 impl SopMuscleslideconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -38538,6 +38683,9 @@ pub struct SopMusclesolidify {
 }
 
 impl SopMusclesolidify {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+    pub const OUT_OUTPUT2: &'static str = "output2";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -39013,6 +39161,8 @@ pub struct SopMusclesolver {
 }
 
 impl SopMusclesolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -40259,6 +40409,8 @@ pub struct SopMusclesolverfem {
 }
 
 impl SopMusclesolverfem {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -41296,6 +41448,8 @@ pub struct SopMusclesolvervellum {
 }
 
 impl SopMusclesolvervellum {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43258,6 +43412,8 @@ pub struct SopMuscletensionlines {
 }
 
 impl SopMuscletensionlines {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -43835,6 +43991,8 @@ pub struct SopMuscletensionlinesactivate {
 }
 
 impl SopMuscletensionlinesactivate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -44521,6 +44679,8 @@ pub struct SopMuscletpose {
 }
 
 impl SopMuscletpose {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -44822,6 +44982,8 @@ pub struct SopMuscletransfer {
 }
 
 impl SopMuscletransfer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

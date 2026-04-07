@@ -8,6 +8,8 @@ pub struct LopLayerbreak {
 }
 
 impl LopLayerbreak {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -191,6 +193,8 @@ pub struct LopLayerreplace {
 }
 
 impl LopLayerreplace {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -469,6 +473,8 @@ pub struct LopLayout {
 }
 
 impl LopLayout {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1229,6 +1235,8 @@ pub struct LopLight {
 }
 
 impl LopLight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3266,6 +3274,8 @@ pub struct LopLightfilterlibrary {
 }
 
 impl LopLightfilterlibrary {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3616,6 +3626,8 @@ pub struct LopLightlinker {
 }
 
 impl LopLightlinker {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4005,6 +4017,8 @@ pub struct LopLightmixer {
 }
 
 impl LopLightmixer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4923,6 +4937,8 @@ pub struct LopLoadlayer {
 }
 
 impl LopLoadlayer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5187,6 +5203,8 @@ pub struct LopLoftpayloadinfo {
 }
 
 impl LopLoftpayloadinfo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5648,6 +5666,8 @@ pub struct LopLookatconstraint {
 }
 
 impl LopLookatconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6516,6 +6536,8 @@ pub struct LopLpetag {
 }
 
 impl LopLpetag {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

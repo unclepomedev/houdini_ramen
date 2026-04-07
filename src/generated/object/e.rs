@@ -137,6 +137,8 @@ pub struct ObjectEnvlight {
 }
 
 impl ObjectEnvlight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1642,6 +1644,8 @@ pub struct ObjectExtractgeo {
 }
 
 impl ObjectExtractgeo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

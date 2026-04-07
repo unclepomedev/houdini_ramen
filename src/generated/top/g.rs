@@ -53,6 +53,8 @@ pub struct TopGenericgenerator {
 }
 
 impl TopGenericgenerator {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1026,6 +1028,8 @@ pub struct TopGeometryimport {
 }
 
 impl TopGeometryimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

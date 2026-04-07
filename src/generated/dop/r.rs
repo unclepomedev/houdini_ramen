@@ -8,6 +8,8 @@ pub struct DopRbdangularconstraint {
 }
 
 impl DopRbdangularconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -428,6 +430,8 @@ pub struct DopRbdangularspringconstraint {
 }
 
 impl DopRbdangularspringconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -915,6 +919,8 @@ pub struct DopRbdautofreeze {
 }
 
 impl DopRbdautofreeze {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1210,6 +1216,8 @@ pub struct DopRbdcarfollowpath {
 }
 
 impl DopRbdcarfollowpath {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1601,6 +1609,8 @@ pub struct DopRbdconetwistconstraint {
 }
 
 impl DopRbdconetwistconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2515,6 +2525,8 @@ pub struct DopRbdconfigureobject {
 }
 
 impl DopRbdconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3397,6 +3409,8 @@ pub struct DopRbdfracturedobject {
 }
 
 impl DopRbdfracturedobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4502,6 +4516,8 @@ pub struct DopRbdglueobject {
 }
 
 impl DopRbdglueobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5612,6 +5628,8 @@ pub struct DopRbdguide {
 }
 
 impl DopRbdguide {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6202,6 +6220,8 @@ pub struct DopRbdhingeconstraint {
 }
 
 impl DopRbdhingeconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6577,6 +6597,8 @@ pub struct DopRbdkeyactive {
 }
 
 impl DopRbdkeyactive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6937,6 +6959,8 @@ pub struct DopRbdobject {
 }
 
 impl DopRbdobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8173,6 +8197,8 @@ pub struct DopRbdpackedobject {
 }
 
 impl DopRbdpackedobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8975,6 +9001,8 @@ pub struct DopRbdpinconstraint {
 }
 
 impl DopRbdpinconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9601,6 +9629,8 @@ pub struct DopRbdpointobject {
 }
 
 impl DopRbdpointobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11071,6 +11101,8 @@ pub struct DopRbdsliderconstraint {
 }
 
 impl DopRbdsliderconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -11888,6 +11920,8 @@ pub struct DopRbdsolver {
 }
 
 impl DopRbdsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12570,6 +12604,8 @@ pub struct DopRbdspringconstraint {
 }
 
 impl DopRbdspringconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13267,6 +13303,8 @@ pub struct DopRbdstate {
 }
 
 impl DopRbdstate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14055,6 +14093,8 @@ pub struct DopRbdvisualization {
 }
 
 impl DopRbdvisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14464,6 +14504,8 @@ pub struct DopReferenceframeforce {
 }
 
 impl DopReferenceframeforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14887,6 +14929,8 @@ pub struct DopRenderparms {
 }
 
 impl DopRenderparms {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15313,6 +15357,8 @@ pub struct DopRenderparmsvolatile {
 }
 
 impl DopRenderparmsvolatile {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15720,6 +15766,8 @@ pub struct DopRigidbodysolver {
 }
 
 impl DopRigidbodysolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -16764,6 +16812,8 @@ pub struct DopRippleconfigureobject {
 }
 
 impl DopRippleconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17048,6 +17098,8 @@ pub struct DopRippleobject {
 }
 
 impl DopRippleobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17276,6 +17328,8 @@ pub struct DopRipplesolver {
 }
 
 impl DopRipplesolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -17754,6 +17808,8 @@ pub struct DopRodmodeldata {
 }
 
 impl DopRodmodeldata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

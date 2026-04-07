@@ -46,6 +46,8 @@ pub struct ObjectRagdollrunexample {
 }
 
 impl ObjectRagdollrunexample {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -742,6 +744,8 @@ pub struct ObjectRefimage {
 }
 
 impl ObjectRefimage {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2068,6 +2072,8 @@ pub struct ObjectRiggedmuscle {
 }
 
 impl ObjectRiggedmuscle {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5204,6 +5210,8 @@ pub struct ObjectRivet {
 }
 
 impl ObjectRivet {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

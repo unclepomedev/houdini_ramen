@@ -108,6 +108,8 @@ pub struct Cop2Under {
 }
 
 impl Cop2Under {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -906,6 +908,8 @@ pub struct Cop2Unpin {
 }
 
 impl Cop2Unpin {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1588,6 +1592,8 @@ pub struct Cop2Uvmap {
 }
 
 impl Cop2Uvmap {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

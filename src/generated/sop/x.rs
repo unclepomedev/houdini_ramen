@@ -66,6 +66,8 @@ pub struct SopXform {
 }
 
 impl SopXform {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -638,6 +640,8 @@ pub struct SopXformaxis {
 }
 
 impl SopXformaxis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1039,6 +1043,8 @@ pub struct SopXformbyattrib {
 }
 
 impl SopXformbyattrib {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1356,6 +1362,8 @@ pub struct SopXformpieces {
 }
 
 impl SopXformpieces {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

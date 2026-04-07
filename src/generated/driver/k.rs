@@ -49,6 +49,8 @@ pub struct DriverKarma {
 }
 
 impl DriverKarma {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4171,6 +4173,8 @@ pub struct DriverKinefxFilmboxfbxanimation {
 }
 
 impl DriverKinefxFilmboxfbxanimation {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4855,6 +4859,8 @@ pub struct DriverKinefxFilmboxfbxcharacter {
 }
 
 impl DriverKinefxFilmboxfbxcharacter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5638,6 +5644,8 @@ pub struct DriverKinefxGltfcharacter {
 }
 
 impl DriverKinefxGltfcharacter {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -8,6 +8,8 @@ pub struct DriverHaircardtex {
 }
 
 impl DriverHaircardtex {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -464,6 +466,8 @@ pub struct DriverHqRender {
 }
 
 impl DriverHqRender {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1866,6 +1870,8 @@ pub struct DriverHqSim {
 }
 
 impl DriverHqSim {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

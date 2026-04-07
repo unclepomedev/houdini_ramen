@@ -76,6 +76,8 @@ pub struct DopClothconfigureobject {
 }
 
 impl DopClothconfigureobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -983,6 +985,8 @@ pub struct DopClothobject {
 }
 
 impl DopClothobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1725,6 +1729,8 @@ pub struct DopClothsolver {
 }
 
 impl DopClothsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2023,6 +2029,8 @@ pub struct DopClothstitchconstraint {
 }
 
 impl DopClothstitchconstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2396,6 +2404,8 @@ pub struct DopClothvisualization {
 }
 
 impl DopClothvisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2957,6 +2967,8 @@ pub struct DopColliderel {
 }
 
 impl DopColliderel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3321,6 +3333,8 @@ pub struct DopColliderlabel {
 }
 
 impl DopColliderlabel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4096,6 +4110,8 @@ pub struct DopConetwistconrel {
 }
 
 impl DopConetwistconrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5728,6 +5744,8 @@ pub struct DopConrelationship {
 }
 
 impl DopConrelationship {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -5954,6 +5972,8 @@ pub struct DopConstraint {
 }
 
 impl DopConstraint {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6272,6 +6292,8 @@ pub struct DopConstraintnetwork {
 }
 
 impl DopConstraintnetwork {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -6759,6 +6781,8 @@ pub struct DopConstraintnetworkrelationship {
 }
 
 impl DopConstraintnetworkrelationship {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7140,6 +7164,8 @@ pub struct DopConstraintnetworkvisualization {
 }
 
 impl DopConstraintnetworkvisualization {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -7454,6 +7480,8 @@ pub struct DopContainer {
 }
 
 impl DopContainer {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8023,6 +8051,8 @@ pub struct DopCopydata {
 }
 
 impl DopCopydata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8358,6 +8388,8 @@ pub struct DopCopyobject {
 }
 
 impl DopCopyobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -8685,6 +8717,8 @@ pub struct DopCopyobjectinfo {
 }
 
 impl DopCopyobjectinfo {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9003,6 +9037,8 @@ pub struct DopCopysolver {
 }
 
 impl DopCopysolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -9358,6 +9394,8 @@ pub struct DopCrowdfuzzylogic {
 }
 
 impl DopCrowdfuzzylogic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10052,6 +10090,8 @@ pub struct DopCrowdobject {
 }
 
 impl DopCrowdobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -10791,6 +10831,8 @@ pub struct DopCrowdsolver {
 }
 
 impl DopCrowdsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -12605,6 +12647,8 @@ pub struct DopCrowdstate {
 }
 
 impl DopCrowdstate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -13521,6 +13565,8 @@ pub struct DopCrowdtransition {
 }
 
 impl DopCrowdtransition {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -14183,6 +14229,8 @@ pub struct DopCrowdtrigger {
 }
 
 impl DopCrowdtrigger {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -15551,6 +15599,8 @@ pub struct DopCrowdtriggerlogic {
 }
 
 impl DopCrowdtriggerlogic {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -14,6 +14,8 @@ pub struct SopInflate {
 }
 
 impl SopInflate {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -524,6 +526,8 @@ pub struct SopInstance {
 }
 
 impl SopInstance {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -797,6 +801,8 @@ pub struct SopIntersectionanalysis {
 }
 
 impl SopIntersectionanalysis {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1236,6 +1242,8 @@ pub struct SopIntersectionstitch {
 }
 
 impl SopIntersectionstitch {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1648,6 +1656,8 @@ pub struct SopInvoke {
 }
 
 impl SopInvoke {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2047,6 +2057,8 @@ pub struct SopInvokegraph {
 }
 
 impl SopInvokegraph {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2296,6 +2308,8 @@ pub struct SopIso {
 }
 
 impl SopIso {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2714,6 +2728,8 @@ pub struct SopIsooffset {
 }
 
 impl SopIsooffset {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

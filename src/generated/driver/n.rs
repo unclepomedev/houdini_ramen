@@ -24,6 +24,8 @@ pub struct DriverNetbarrier {
 }
 
 impl DriverNetbarrier {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -511,6 +513,8 @@ pub struct DriverNull {
 }
 
 impl DriverNull {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

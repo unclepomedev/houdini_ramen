@@ -57,6 +57,8 @@ pub struct Cop2Blend {
 }
 
 impl Cop2Blend {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -545,6 +547,8 @@ pub struct Cop2Blur {
 }
 
 impl Cop2Blur {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1176,6 +1180,8 @@ pub struct Cop2Border {
 }
 
 impl Cop2Border {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1753,6 +1759,8 @@ pub struct Cop2Bright {
 }
 
 impl Cop2Bright {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2407,6 +2415,8 @@ pub struct Cop2Bump {
 }
 
 impl Cop2Bump {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

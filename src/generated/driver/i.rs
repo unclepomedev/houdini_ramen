@@ -17,6 +17,8 @@ pub struct DriverIfd {
 }
 
 impl DriverIfd {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -871,6 +873,8 @@ pub struct DriverIfdarchive {
 }
 
 impl DriverIfdarchive {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1496,6 +1500,8 @@ pub struct DriverImage {
 }
 
 impl DriverImage {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2584,6 +2590,8 @@ pub struct DriverImage3d {
 }
 
 impl DriverImage3d {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

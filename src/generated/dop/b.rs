@@ -46,6 +46,8 @@ pub struct DopBlendfactor {
 }
 
 impl DopBlendfactor {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -501,6 +503,8 @@ pub struct DopBlendsolver {
 }
 
 impl DopBlendsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1049,6 +1053,8 @@ pub struct DopBulletdata {
 }
 
 impl DopBulletdata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -2087,6 +2093,8 @@ pub struct DopBulletrbdsolver {
 }
 
 impl DopBulletrbdsolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -3142,6 +3150,8 @@ pub struct DopBulletsoftconrel {
 }
 
 impl DopBulletsoftconrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -4042,6 +4052,8 @@ pub struct DopBuoyancyforce {
 }
 
 impl DopBuoyancyforce {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

@@ -46,6 +46,8 @@ pub struct ObjectLight {
 }
 
 impl ObjectLight {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -811,6 +813,8 @@ pub struct ObjectLopimport {
 }
 
 impl ObjectLopimport {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1568,6 +1572,8 @@ pub struct ObjectLopimportcam {
 }
 
 impl ObjectLopimportcam {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER

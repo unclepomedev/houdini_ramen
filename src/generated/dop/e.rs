@@ -34,6 +34,8 @@ pub struct DopEmbeddingproperties {
 }
 
 impl DopEmbeddingproperties {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -364,6 +366,8 @@ pub struct DopEmptydata {
 }
 
 impl DopEmptydata {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -642,6 +646,8 @@ pub struct DopEmptyobject {
 }
 
 impl DopEmptyobject {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -798,6 +804,8 @@ pub struct DopEmptyrel {
 }
 
 impl DopEmptyrel {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
@@ -1133,6 +1141,8 @@ pub struct DopEnablesolver {
 }
 
 impl DopEnablesolver {
+    pub const OUT_OUTPUT1: &'static str = "output1";
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER
