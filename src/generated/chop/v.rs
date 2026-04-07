@@ -2249,7 +2249,7 @@ pub trait ChopVopchopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopVopchopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopVopchopInnerExt for crate::core::graph::InnerGraph<'a, ChopVopchop> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("global1")
     }
@@ -2380,7 +2380,7 @@ pub trait ChopVopchoptypeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopVopchoptypeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopVopchoptypeInnerExt for crate::core::graph::InnerGraph<'a, ChopVopchoptype> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("global1")
     }

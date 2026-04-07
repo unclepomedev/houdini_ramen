@@ -1668,7 +1668,7 @@ pub trait ObjectMicrophoneInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMicrophoneInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMicrophoneInnerExt for crate::core::graph::InnerGraph<'a, ObjectMicrophone> {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("add1")
     }
@@ -2532,7 +2532,9 @@ pub trait ObjectMocapRigBipedArmInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapRigBipedArmInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapRigBipedArmInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectMocapRigBipedArm>
+{
     fn chops(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("chops")
     }
@@ -3390,7 +3392,9 @@ pub trait ObjectMocapRigBipedHeadAndNeckInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapRigBipedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapRigBipedHeadAndNeckInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectMocapRigBipedHeadAndNeck>
+{
     fn chops(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("chops")
     }
@@ -4369,7 +4373,9 @@ pub trait ObjectMocapRigBipedLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapRigBipedLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapRigBipedLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectMocapRigBipedLeg>
+{
     fn ankle_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ankle_bone")
     }
@@ -5271,7 +5277,9 @@ pub trait ObjectMocapRigBipedSpine3pcInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapRigBipedSpine3pcInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapRigBipedSpine3pcInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectMocapRigBipedSpine3pc>
+{
     fn chest_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("chest_bone")
     }
@@ -6248,7 +6256,9 @@ pub trait ObjectMocapRigBipedSpine5pcInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapRigBipedSpine5pcInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapRigBipedSpine5pcInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectMocapRigBipedSpine5pc>
+{
     fn chest1_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("chest1_bone")
     }
@@ -7180,7 +7190,7 @@ pub trait ObjectMocapbiped1InnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapbiped1InnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapbiped1InnerExt for crate::core::graph::InnerGraph<'a, ObjectMocapbiped1> {
     fn chop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("CHOP")
     }
@@ -8305,7 +8315,7 @@ pub trait ObjectMocapbiped2InnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapbiped2InnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapbiped2InnerExt for crate::core::graph::InnerGraph<'a, ObjectMocapbiped2> {
     fn chop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("CHOP")
     }
@@ -9864,7 +9874,7 @@ pub trait ObjectMocapbiped3InnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMocapbiped3InnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMocapbiped3InnerExt for crate::core::graph::InnerGraph<'a, ObjectMocapbiped3> {
     fn chop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("CHOP")
     }
@@ -10915,7 +10925,7 @@ pub trait ObjectMuscleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMuscleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMuscleInnerExt for crate::core::graph::InnerGraph<'a, ObjectMuscle> {
     fn muscle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("muscle")
     }
@@ -11905,7 +11915,7 @@ pub trait ObjectMusclepinInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMusclepinInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMusclepinInnerExt for crate::core::graph::InnerGraph<'a, ObjectMusclepin> {
     fn capture_handle1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("capture_handle1")
     }
@@ -13950,7 +13960,7 @@ pub trait ObjectMusclerigInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectMusclerigInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectMusclerigInnerExt for crate::core::graph::InnerGraph<'a, ObjectMusclerig> {
     fn tightnessdriver(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("TightnessDriver")
     }

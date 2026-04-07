@@ -3788,7 +3788,7 @@ pub trait SopSculptInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopSculptInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopSculptInnerExt for crate::core::graph::InnerGraph<'a, SopSculpt> {
     fn attribcopy15(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("attribcopy15")
     }
@@ -9613,7 +9613,7 @@ pub trait SopShotsculptInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopShotsculptInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopShotsculptInnerExt for crate::core::graph::InnerGraph<'a, SopShotsculpt> {
     fn animated_pose(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ANIMATED_POSE")
     }
@@ -25402,7 +25402,7 @@ pub trait SopSolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopSolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopSolverInnerExt for crate::core::graph::InnerGraph<'a, SopSolver> {
     fn input_1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("d/s/Input_1")
     }
@@ -30730,7 +30730,7 @@ pub trait SopSssscatterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopSssscatterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopSssscatterInnerExt for crate::core::graph::InnerGraph<'a, SopSssscatter> {
     fn adjust_ptarea(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("Adjust_PTarea")
     }
@@ -32021,7 +32021,7 @@ pub trait SopStrokecacheInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopStrokecacheInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopStrokecacheInnerExt for crate::core::graph::InnerGraph<'a, SopStrokecache> {
     fn each_stroke(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("c/apply_each_stroke/EACH_STROKE")
     }

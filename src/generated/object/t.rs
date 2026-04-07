@@ -3166,7 +3166,9 @@ pub trait ObjectThreePointLightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectThreePointLightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectThreePointLightInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectThreePointLight>
+{
     fn bounce_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bounce_direction")
     }
@@ -4734,7 +4736,9 @@ pub trait ObjectThreepointmuscleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectThreepointmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectThreepointmuscleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectThreepointmuscle>
+{
     fn blend1_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("blend1__middle")
     }
@@ -10182,7 +10186,7 @@ pub trait ObjectToonCharacterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectToonCharacterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectToonCharacterInnerExt for crate::core::graph::InnerGraph<'a, ObjectToonCharacter> {
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("character_placer")
     }
@@ -20537,7 +20541,9 @@ pub trait ObjectToonCharacterDeformRigInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectToonCharacterDeformRigInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectToonCharacterDeformRigInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectToonCharacterDeformRig>
+{
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("head_and_neck")
     }
@@ -20936,7 +20942,7 @@ pub trait ObjectTopnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectTopnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectTopnetInnerExt for crate::core::graph::InnerGraph<'a, ObjectTopnet> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("localscheduler")
     }
@@ -22022,7 +22028,7 @@ pub trait ObjectTwopointmuscleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectTwopointmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectTwopointmuscleInnerExt for crate::core::graph::InnerGraph<'a, ObjectTwopointmuscle> {
     fn blend_jiggle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("blend__jiggle")
     }

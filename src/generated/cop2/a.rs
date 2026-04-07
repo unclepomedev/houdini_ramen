@@ -1383,7 +1383,7 @@ pub trait Cop2AnaglyphInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2AnaglyphInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2AnaglyphInnerExt for crate::core::graph::InnerGraph<'a, Cop2Anaglyph> {
     fn combine(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("combine")
     }

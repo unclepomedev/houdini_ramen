@@ -3137,7 +3137,7 @@ pub trait TopRopalembicInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopalembicInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopalembicInnerExt for crate::core::graph::InnerGraph<'a, TopRopalembic> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ropfetch1")
     }
@@ -5084,7 +5084,7 @@ pub trait TopRopcompositeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopcompositeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopcompositeInnerExt for crate::core::graph::InnerGraph<'a, TopRopcomposite> {
     fn pdg_result(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("c/pdg_result")
     }
@@ -6521,7 +6521,7 @@ pub trait TopRopfbxInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopfbxInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopfbxInnerExt for crate::core::graph::InnerGraph<'a, TopRopfbx> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ropfetch1")
     }
@@ -11003,7 +11003,7 @@ pub trait TopRopflipbookInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopflipbookInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopflipbookInnerExt for crate::core::graph::InnerGraph<'a, TopRopflipbook> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ropfetch1")
     }
@@ -12413,7 +12413,7 @@ pub trait TopRopgeometryInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopgeometryInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopgeometryInnerExt for crate::core::graph::InnerGraph<'a, TopRopgeometry> {
     fn incoming(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("s/s/incoming")
     }
@@ -13904,7 +13904,7 @@ pub trait TopRopgltfInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopgltfInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopgltfInnerExt for crate::core::graph::InnerGraph<'a, TopRopgltf> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ropfetch1")
     }
@@ -15730,7 +15730,7 @@ pub trait TopRopimageInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopimageInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopimageInnerExt for crate::core::graph::InnerGraph<'a, TopRopimage> {
     fn pdg_result(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("c/pdg_result")
     }
@@ -20461,7 +20461,7 @@ pub trait TopRopkarmaInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopkarmaInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopkarmaInnerExt for crate::core::graph::InnerGraph<'a, TopRopkarma> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ropfetch1")
     }
@@ -27182,7 +27182,7 @@ pub trait TopRopopenglInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopopenglInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopopenglInnerExt for crate::core::graph::InnerGraph<'a, TopRopopengl> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ropfetch1")
     }
@@ -28699,7 +28699,7 @@ pub trait TopRopusdInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopRopusdInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopRopusdInnerExt for crate::core::graph::InnerGraph<'a, TopRopusd> {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("l/OUTPUT")
     }

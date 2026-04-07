@@ -721,7 +721,7 @@ pub trait ObjectFetchInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFetchInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFetchInnerExt for crate::core::graph::InnerGraph<'a, ObjectFetch> {
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("point1")
     }
@@ -1945,7 +1945,9 @@ pub trait ObjectFormationcrowdsexampleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFormationcrowdsexampleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFormationcrowdsexampleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectFormationcrowdsexample>
+{
     fn agent1_setup(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("agent1_setup")
     }
@@ -3931,7 +3933,9 @@ pub trait ObjectFourpointmuscleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFourpointmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFourpointmuscleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectFourpointmuscle>
+{
     fn blend1_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("blend1__middle")
     }
@@ -5752,7 +5756,7 @@ pub trait ObjectFrankenmuscleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFrankenmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFrankenmuscleInnerExt for crate::core::graph::InnerGraph<'a, ObjectFrankenmuscle> {
     fn guide(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("guide")
     }
@@ -8723,7 +8727,7 @@ pub trait ObjectFurInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFurInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFurInnerExt for crate::core::graph::InnerGraph<'a, ObjectFur> {
     fn apply_display_offset(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("apply_display_offset")
     }
@@ -9386,7 +9390,9 @@ pub trait ObjectFuzzyobstacleavoidanceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFuzzyobstacleavoidanceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFuzzyobstacleavoidanceInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectFuzzyobstacleavoidance>
+{
     fn agent_path(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("agent_path")
     }
@@ -10023,7 +10029,9 @@ pub trait ObjectFuzzystatetransitionInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectFuzzystatetransitionInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectFuzzystatetransitionInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectFuzzystatetransition>
+{
     fn biped_rest_cycle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("biped_rest_cycle")
     }

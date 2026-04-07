@@ -688,7 +688,7 @@ pub trait Cop2EdgeblurInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2EdgeblurInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2EdgeblurInnerExt for crate::core::graph::InnerGraph<'a, Cop2Edgeblur> {
     fn bedge_blur(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bedge_blur")
     }
@@ -4110,7 +4110,7 @@ pub trait Cop2ExtractInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2ExtractInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2ExtractInnerExt for crate::core::graph::InnerGraph<'a, Cop2Extract> {
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("channelcopy1")
     }

@@ -1140,7 +1140,7 @@ pub trait ChopChannelwrangleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopChannelwrangleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopChannelwrangleInnerExt for crate::core::graph::InnerGraph<'a, ChopChannelwrangle> {
     fn vopchop1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("vopchop1")
     }
@@ -9509,7 +9509,9 @@ pub trait ChopConstraintobjectoffsetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopConstraintobjectoffsetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopConstraintobjectoffsetInnerExt
+    for crate::core::graph::InnerGraph<'a, ChopConstraintobjectoffset>
+{
     fn bindpose_after(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bindpose_after")
     }
@@ -10512,7 +10514,7 @@ pub trait ChopConstraintoffsetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopConstraintoffsetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopConstraintoffsetInnerExt for crate::core::graph::InnerGraph<'a, ChopConstraintoffset> {
     fn bindpose_after(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bindpose_after")
     }
@@ -12007,7 +12009,9 @@ pub trait ChopConstraintparentxInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopConstraintparentxInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopConstraintparentxInnerExt
+    for crate::core::graph::InnerGraph<'a, ChopConstraintparentx>
+{
     fn blendmask(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("blendmask")
     }

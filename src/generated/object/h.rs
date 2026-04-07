@@ -1212,7 +1212,7 @@ pub trait ObjectHaircardgenInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectHaircardgenInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectHaircardgenInnerExt for crate::core::graph::InnerGraph<'a, ObjectHaircardgen> {
     fn hair(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("modify/HAIR")
     }
@@ -1828,7 +1828,9 @@ pub trait ObjectHaircardtexexampleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectHaircardtexexampleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectHaircardtexexampleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectHaircardtexexample>
+{
     fn emitters(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("emitters")
     }
@@ -5004,7 +5006,7 @@ pub trait ObjectHairgenInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectHairgenInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectHairgenInnerExt for crate::core::graph::InnerGraph<'a, ObjectHairgen> {
     fn hairs(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("modify/HAIRS")
     }
@@ -5796,7 +5798,7 @@ pub trait ObjectHandleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectHandleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectHandleInnerExt for crate::core::graph::InnerGraph<'a, ObjectHandle> {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("add1")
     }
@@ -7693,7 +7695,7 @@ pub trait ObjectHlightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectHlightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectHlightInnerExt for crate::core::graph::InnerGraph<'a, ObjectHlight> {
     fn origin(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("Origin")
     }

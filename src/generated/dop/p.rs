@@ -29037,7 +29037,7 @@ pub trait DopPopsteercustomInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopPopsteercustomInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopPopsteercustomInnerExt for crate::core::graph::InnerGraph<'a, DopPopsteercustom> {
     fn addsteerforce(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("custom/addsteerforce")
     }
@@ -34343,7 +34343,7 @@ pub trait DopPopvopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopPopvopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopPopvopInnerExt for crate::core::graph::InnerGraph<'a, DopPopvop> {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("geometryvopglobal1")
     }

@@ -350,7 +350,7 @@ pub trait DriverWedgeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverWedgeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverWedgeInnerExt for crate::core::graph::InnerGraph<'a, DriverWedge> {
     fn shell1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("shell1")
     }

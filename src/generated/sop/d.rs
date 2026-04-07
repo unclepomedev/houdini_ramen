@@ -8934,7 +8934,7 @@ pub trait SopDopnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopDopnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopDopnetInnerExt for crate::core::graph::InnerGraph<'a, SopDopnet> {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("output")
     }

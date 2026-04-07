@@ -5533,7 +5533,7 @@ pub trait ObjectBipedAutoRigInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectBipedAutoRigInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectBipedAutoRigInnerExt for crate::core::graph::InnerGraph<'a, ObjectBipedAutoRig> {
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("character_placer")
     }
@@ -6642,7 +6642,7 @@ pub trait ObjectBlendInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectBlendInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectBlendInnerExt for crate::core::graph::InnerGraph<'a, ObjectBlend> {
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("point1")
     }
@@ -7605,7 +7605,7 @@ pub trait ObjectBlendstickyInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectBlendstickyInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectBlendstickyInnerExt for crate::core::graph::InnerGraph<'a, ObjectBlendsticky> {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("control1")
     }
@@ -8722,7 +8722,7 @@ pub trait ObjectBoneInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectBoneInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectBoneInnerExt for crate::core::graph::InnerGraph<'a, ObjectBone> {
     fn bonelink(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bonelink")
     }

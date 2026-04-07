@@ -804,7 +804,7 @@ pub trait ObjectNullInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectNullInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectNullInnerExt for crate::core::graph::InnerGraph<'a, ObjectNull> {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("control1")
     }
@@ -1685,7 +1685,7 @@ pub trait ObjectNullspikeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectNullspikeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectNullspikeInnerExt for crate::core::graph::InnerGraph<'a, ObjectNullspike> {
     fn spike(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("spike")
     }

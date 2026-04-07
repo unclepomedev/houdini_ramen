@@ -7246,7 +7246,7 @@ pub trait LopKarmaproceduralInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopKarmaproceduralInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopKarmaproceduralInnerExt for crate::core::graph::InnerGraph<'a, LopKarmaprocedural> {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/subnet/add1")
     }

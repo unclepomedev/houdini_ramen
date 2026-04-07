@@ -2339,7 +2339,7 @@ pub trait ObjectSimplebipedInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectSimplebipedInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectSimplebipedInnerExt for crate::core::graph::InnerGraph<'a, ObjectSimplebiped> {
     fn ik_chops(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("IK_CHOPS")
     }
@@ -6166,7 +6166,7 @@ pub trait ObjectSimplefemaleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectSimplefemaleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectSimplefemaleInnerExt for crate::core::graph::InnerGraph<'a, ObjectSimplefemale> {
     fn fkik_arm_right_blend(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("FKIK_arm_right_blend")
     }
@@ -10060,7 +10060,7 @@ pub trait ObjectSimplemaleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectSimplemaleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectSimplemaleInnerExt for crate::core::graph::InnerGraph<'a, ObjectSimplemale> {
     fn fkik_arm_right_blend(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("FKIK_arm_right_blend")
     }
@@ -11682,7 +11682,7 @@ pub trait ObjectSoundInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectSoundInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectSoundInnerExt for crate::core::graph::InnerGraph<'a, ObjectSound> {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("add1")
     }
@@ -12335,7 +12335,9 @@ pub trait ObjectStadiumcrowdsexampleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectStadiumcrowdsexampleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectStadiumcrowdsexampleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectStadiumcrowdsexample>
+{
     fn agent_setup(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("agent_setup")
     }
@@ -13027,7 +13029,7 @@ pub trait ObjectStereocamInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectStereocamInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectStereocamInnerExt for crate::core::graph::InnerGraph<'a, ObjectStereocam> {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("camOrigin")
     }
@@ -14273,7 +14275,7 @@ pub trait ObjectStereocamrigInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectStereocamrigInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectStereocamrigInnerExt for crate::core::graph::InnerGraph<'a, ObjectStereocamrig> {
     fn hit_calculations(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HIT_calculations")
     }
@@ -15331,7 +15333,7 @@ pub trait ObjectStickyInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectStickyInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectStickyInnerExt for crate::core::graph::InnerGraph<'a, ObjectSticky> {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("control1")
     }
@@ -15969,7 +15971,9 @@ pub trait ObjectStreetcrowdsexampleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectStreetcrowdsexampleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectStreetcrowdsexampleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectStreetcrowdsexample>
+{
     fn cam1_side(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("cam1_side")
     }

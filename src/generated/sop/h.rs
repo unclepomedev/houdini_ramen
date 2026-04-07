@@ -20241,7 +20241,7 @@ pub trait SopHeightfieldOutputInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopHeightfieldOutputInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopHeightfieldOutputInnerExt for crate::core::graph::InnerGraph<'a, SopHeightfieldOutput> {
     fn n_16b(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("cop2net1/16b")
     }

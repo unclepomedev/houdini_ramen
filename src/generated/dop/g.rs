@@ -26778,7 +26778,7 @@ pub trait DopGasfieldvopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopGasfieldvopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopGasfieldvopInnerExt for crate::core::graph::InnerGraph<'a, DopGasfieldvop> {
     fn volumevopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("volumevopglobal1")
     }
@@ -72233,7 +72233,7 @@ pub trait DopGasupresInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopGasupresInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopGasupresInnerExt for crate::core::graph::InnerGraph<'a, DopGasupres> {
     fn source_low_res_fields(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SOURCE__LOW_RES_FIELDS")
     }
@@ -82221,7 +82221,7 @@ pub trait DopGeometryvopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopGeometryvopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopGeometryvopInnerExt for crate::core::graph::InnerGraph<'a, DopGeometryvop> {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("geometryvopglobal1")
     }

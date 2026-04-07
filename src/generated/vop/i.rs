@@ -688,7 +688,7 @@ pub trait VopImage3dInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> VopImage3dInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> VopImage3dInnerExt for crate::core::graph::InnerGraph<'a, VopImage3d> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("global1")
     }

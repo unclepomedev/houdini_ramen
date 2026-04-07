@@ -2882,7 +2882,7 @@ pub trait LopEditprototypesInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopEditprototypesInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopEditprototypesInnerExt for crate::core::graph::InnerGraph<'a, LopEditprototypes> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("edits/OUT")
     }
@@ -3107,7 +3107,7 @@ pub trait LopEdittargetlayerInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopEdittargetlayerInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopEdittargetlayerInnerExt for crate::core::graph::InnerGraph<'a, LopEdittargetlayer> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("edits_in_context/output0")
     }
@@ -3706,7 +3706,7 @@ pub trait LopExplorevariantsInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopExplorevariantsInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopExplorevariantsInnerExt for crate::core::graph::InnerGraph<'a, LopExplorevariants> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

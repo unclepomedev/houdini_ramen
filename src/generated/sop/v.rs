@@ -28440,7 +28440,7 @@ pub trait SopVellumsolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopVellumsolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopVellumsolverInnerExt for crate::core::graph::InnerGraph<'a, SopVellumsolver> {
     fn force(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dopnet1/forces/FORCE")
     }
@@ -28979,7 +28979,7 @@ pub trait SopVerifyBsdfInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopVerifyBsdfInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopVerifyBsdfInnerExt for crate::core::graph::InnerGraph<'a, SopVerifyBsdf> {
     fn alb(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("alb")
     }
@@ -41526,7 +41526,7 @@ pub trait SopVolumerasterizeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopVolumerasterizeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopVolumerasterizeInnerExt for crate::core::graph::InnerGraph<'a, SopVolumerasterize> {
     fn bind1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bind1")
     }
@@ -49619,7 +49619,7 @@ pub trait SopVolumevopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopVolumevopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopVolumevopInnerExt for crate::core::graph::InnerGraph<'a, SopVolumevop> {
     fn volumevopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("volumevopglobal1")
     }
@@ -50775,7 +50775,7 @@ pub trait SopVopsopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopVopsopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopVopsopInnerExt for crate::core::graph::InnerGraph<'a, SopVopsop> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("global1")
     }
@@ -50906,7 +50906,7 @@ pub trait SopVopsoptypeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopVopsoptypeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopVopsoptypeInnerExt for crate::core::graph::InnerGraph<'a, SopVopsoptype> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("global1")
     }

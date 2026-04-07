@@ -5050,7 +5050,7 @@ pub trait Cop2SkyenvmapInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2SkyenvmapInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2SkyenvmapInnerExt for crate::core::graph::InnerGraph<'a, Cop2Skyenvmap> {
     fn dir_angles_calc(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dir_angles_calc")
     }
@@ -8548,7 +8548,7 @@ pub trait Cop2SwitchalphaInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2SwitchalphaInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2SwitchalphaInnerExt for crate::core::graph::InnerGraph<'a, Cop2Switchalpha> {
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("channelcopy1")
     }

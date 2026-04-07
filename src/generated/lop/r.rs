@@ -506,7 +506,7 @@ pub trait LopRbddestructionInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopRbddestructionInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopRbddestructionInnerExt for crate::core::graph::InnerGraph<'a, LopRbddestruction> {
     fn geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/fracture_and_sim/Geometry")
     }
@@ -5604,7 +5604,7 @@ pub trait LopRetimeinstancesInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopRetimeinstancesInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopRetimeinstancesInnerExt for crate::core::graph::InnerGraph<'a, LopRetimeinstances> {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/modify/from_lops")
     }

@@ -3046,7 +3046,7 @@ pub trait LopMaterialvariationInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopMaterialvariationInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopMaterialvariationInnerExt for crate::core::graph::InnerGraph<'a, LopMaterialvariation> {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/modify/from_lops")
     }
@@ -5495,7 +5495,9 @@ pub trait LopModifypointinstancesInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopModifypointinstancesInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopModifypointinstancesInnerExt
+    for crate::core::graph::InnerGraph<'a, LopModifypointinstances>
+{
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/modify/from_lops")
     }

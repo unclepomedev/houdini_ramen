@@ -610,7 +610,9 @@ pub trait ObjectRagdollrunexampleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectRagdollrunexampleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectRagdollrunexampleInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectRagdollrunexample>
+{
     fn cam1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("cam1")
     }
@@ -1885,7 +1887,7 @@ pub trait ObjectRefimageInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectRefimageInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectRefimageInnerExt for crate::core::graph::InnerGraph<'a, ObjectRefimage> {
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("copnet1/file1")
     }
@@ -4812,7 +4814,7 @@ pub trait ObjectRiggedmuscleInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectRiggedmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectRiggedmuscleInnerExt for crate::core::graph::InnerGraph<'a, ObjectRiggedmuscle> {
     fn tightnessdriver(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("TightnessDriver")
     }
@@ -5780,7 +5782,7 @@ pub trait ObjectRivetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectRivetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectRivetInnerExt for crate::core::graph::InnerGraph<'a, ObjectRivet> {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("control1")
     }

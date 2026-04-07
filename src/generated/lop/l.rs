@@ -921,7 +921,7 @@ pub trait LopLayoutInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopLayoutInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopLayoutInnerExt for crate::core::graph::InnerGraph<'a, LopLayout> {
     fn brushes(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ASSETS/BRUSHES")
     }
@@ -4281,7 +4281,7 @@ pub trait LopLiverenderInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopLiverenderInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopLiverenderInnerExt for crate::core::graph::InnerGraph<'a, LopLiverender> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("USER_AREA/output0")
     }

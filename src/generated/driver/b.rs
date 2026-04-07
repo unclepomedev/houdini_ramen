@@ -368,7 +368,7 @@ pub trait DriverBakeAnimationInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverBakeAnimationInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverBakeAnimationInnerExt for crate::core::graph::InnerGraph<'a, DriverBakeAnimation> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

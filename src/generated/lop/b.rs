@@ -542,7 +542,7 @@ pub trait LopBackgroundplateInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopBackgroundplateInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopBackgroundplateInnerExt for crate::core::graph::InnerGraph<'a, LopBackgroundplate> {
     fn material_outputs_and_aovs(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("materiallibrary/background/Material_Outputs_and_AOVs")
     }

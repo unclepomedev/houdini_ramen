@@ -4061,7 +4061,7 @@ pub trait DriverKarmaInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverKarmaInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverKarmaInnerExt for crate::core::graph::InnerGraph<'a, DriverKarma> {
     fn lopnet(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lopnet")
     }

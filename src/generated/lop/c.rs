@@ -3431,7 +3431,7 @@ pub trait LopComponentgeometryInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopComponentgeometryInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopComponentgeometryInnerExt for crate::core::graph::InnerGraph<'a, LopComponentgeometry> {
     fn default(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/geo/default")
     }
@@ -5696,7 +5696,7 @@ pub trait LopComponentmaterialInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopComponentmaterialInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopComponentmaterialInnerExt for crate::core::graph::InnerGraph<'a, LopComponentmaterial> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("edit/output0")
     }
@@ -7158,7 +7158,7 @@ pub trait LopComponentoutputInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopComponentoutputInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopComponentoutputInnerExt for crate::core::graph::InnerGraph<'a, LopComponentoutput> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("extras/output0")
     }

@@ -580,7 +580,7 @@ pub trait DriverNullInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverNullInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverNullInnerExt for crate::core::graph::InnerGraph<'a, DriverNull> {
     fn null(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("null")
     }

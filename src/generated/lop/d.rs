@@ -4888,7 +4888,7 @@ pub trait LopDropInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopDropInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopDropInnerExt for crate::core::graph::InnerGraph<'a, LopDrop> {
     fn drag1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("sopnet/dopnet/drag1")
     }

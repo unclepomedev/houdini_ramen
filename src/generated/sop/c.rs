@@ -3764,7 +3764,7 @@ pub trait SopCapturelayerpaintInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopCapturelayerpaintInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopCapturelayerpaintInnerExt for crate::core::graph::InnerGraph<'a, SopCapturelayerpaint> {
     fn animated_pose(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ANIMATED_POSE")
     }

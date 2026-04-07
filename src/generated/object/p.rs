@@ -667,7 +667,7 @@ pub trait ObjectPathInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPathInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPathInnerExt for crate::core::graph::InnerGraph<'a, ObjectPath> {
     fn connect_points(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("connect_points")
     }
@@ -1477,7 +1477,7 @@ pub trait ObjectPathcvInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPathcvInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPathcvInnerExt for crate::core::graph::InnerGraph<'a, ObjectPathcv> {
     fn accel1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("accel1")
     }
@@ -2242,7 +2242,7 @@ pub trait ObjectPxraovlightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxraovlightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxraovlightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxraovlight> {
     fn lightshop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lightSHOP")
     }
@@ -3372,7 +3372,9 @@ pub trait ObjectPxrbarnlightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrbarnlightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrbarnlightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrbarnlightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -4239,7 +4241,9 @@ pub trait ObjectPxrblockerlightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrblockerlightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrblockerlightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrblockerlightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -5551,7 +5555,9 @@ pub trait ObjectPxrcookielightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrcookielightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrcookielightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrcookielightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -6698,7 +6704,7 @@ pub trait ObjectPxrdisklightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrdisklightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrdisklightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrdisklight> {
     fn arrow(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("arrow")
     }
@@ -7782,7 +7788,9 @@ pub trait ObjectPxrdistantlightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrdistantlightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrdistantlightInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrdistantlight>
+{
     fn copy1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("copy1")
     }
@@ -8891,7 +8899,7 @@ pub trait ObjectPxrdomelightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrdomelightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrdomelightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrdomelight> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }
@@ -10101,7 +10109,7 @@ pub trait ObjectPxrenvdaylightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrenvdaylightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrenvdaylightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrenvdaylight> {
     fn e_text(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("E_text")
     }
@@ -11044,7 +11052,9 @@ pub trait ObjectPxrgobolightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrgobolightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrgobolightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrgobolightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -11783,7 +11793,9 @@ pub trait ObjectPxrintmultlightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrintmultlightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrintmultlightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrintmultlightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -12942,7 +12954,7 @@ pub trait ObjectPxrmeshlightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrmeshlightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrmeshlightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrmeshlight> {
     fn lightshop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lightSHOP")
     }
@@ -14075,7 +14087,7 @@ pub trait ObjectPxrportallightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrportallightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrportallightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrportallight> {
     fn curve1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("curve1")
     }
@@ -14914,7 +14926,9 @@ pub trait ObjectPxrramplightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrramplightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrramplightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrramplightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -16103,7 +16117,7 @@ pub trait ObjectPxrrectlightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrrectlightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrrectlightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrrectlight> {
     fn arrow(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("arrow")
     }
@@ -17186,7 +17200,9 @@ pub trait ObjectPxrrodlightfilterInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrrodlightfilterInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrrodlightfilterInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrrodlightfilter>
+{
     fn shop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SHOP")
     }
@@ -18331,7 +18347,7 @@ pub trait ObjectPxrspherelightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrspherelightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrspherelightInnerExt for crate::core::graph::InnerGraph<'a, ObjectPxrspherelight> {
     fn lightshop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lightSHOP")
     }
@@ -19647,7 +19663,9 @@ pub trait ObjectPxrstdarealightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrstdarealightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrstdarealightInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrstdarealight>
+{
     fn pxrstdarealight(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lightSHOP/light_risnet/pxrstdarealight")
     }
@@ -20710,7 +20728,9 @@ pub trait ObjectPxrstdenvdaylightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrstdenvdaylightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrstdenvdaylightInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrstdenvdaylight>
+{
     fn pxrstdenvdaylight(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lightSHOP/light_risnet/pxrstdenvdaylight")
     }
@@ -21677,7 +21697,9 @@ pub trait ObjectPxrstdenvmaplightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectPxrstdenvmaplightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectPxrstdenvmaplightInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectPxrstdenvmaplight>
+{
     fn pxrstdenvmaplight(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("lightSHOP/light_risnet/pxrstdenvmaplight")
     }

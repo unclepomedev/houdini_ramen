@@ -268,7 +268,7 @@ pub trait DriverGeo2i3dInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverGeo2i3dInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverGeo2i3dInnerExt for crate::core::graph::InnerGraph<'a, DriverGeo2i3d> {
     fn image3d1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("image3d1")
     }

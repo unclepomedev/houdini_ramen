@@ -3344,7 +3344,7 @@ pub trait DriverUsdstitchInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverUsdstitchInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverUsdstitchInnerExt for crate::core::graph::InnerGraph<'a, DriverUsdstitch> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }
@@ -3601,7 +3601,7 @@ pub trait DriverUsdstitchclipsInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverUsdstitchclipsInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverUsdstitchclipsInnerExt for crate::core::graph::InnerGraph<'a, DriverUsdstitchclips> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }
@@ -3786,7 +3786,7 @@ pub trait DriverUsdzipInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverUsdzipInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverUsdzipInnerExt for crate::core::graph::InnerGraph<'a, DriverUsdzip> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

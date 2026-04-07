@@ -34148,7 +34148,7 @@ pub trait DopSopsolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopSopsolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopSopsolverInnerExt for crate::core::graph::InnerGraph<'a, DopSopsolver> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

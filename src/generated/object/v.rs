@@ -2083,7 +2083,7 @@ pub trait ObjectVrcamInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectVrcamInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectVrcamInnerExt for crate::core::graph::InnerGraph<'a, ObjectVrcam> {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("camOrigin")
     }
