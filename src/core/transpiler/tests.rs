@@ -729,8 +729,11 @@ fn test_existing_node_input_wiring() {
             spare_params: vec![],
         });
 
-        inner.wire_to_existing("OUT", 0, &ray1);
-        inner.wire_to_existing_from("OUT_2", 0, &ray2, 1);
+        let out = inner.existing_node("OUT");
+        inner.connect_existing(&out, 0, &ray1);
+
+        let out_2 = inner.existing_node("OUT_2");
+        inner.connect_existing_from(&out_2, 0, &ray2, 1);
     });
 
     let script = graph.build();
