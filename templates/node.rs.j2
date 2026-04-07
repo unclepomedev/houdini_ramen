@@ -180,7 +180,7 @@ pub trait {{ node.struct_name }}InnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> {{ node.struct_name }}InnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> {{ node.struct_name }}InnerExt for crate::core::graph::InnerGraph<'a, {{ node.struct_name }}> {
     {% for m in node.inner_methods %}
     fn {{ m.method_name }}(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("{{ m.rel_path }}")

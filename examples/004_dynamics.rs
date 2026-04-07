@@ -2,8 +2,11 @@ use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
 use houdini_ramen::generated::sop::{
-    SopSolver, SopSolverInnerExt, SopTestgeometryRubbertoy, SopXform,
+    SopAttribnoise, SopAttribnoiseAttribtype, SopAttribnoiseBasis, SopAttribnoiseOperation,
+    SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter, SopSolver,
+    SopSolverInnerExt, SopTestgeometryRubbertoy,
 };
+use houdini_ramen::generated::vop::VopAdd;
 
 fn main() {
     let mut graph = NodeGraph::new("/obj/geo1")
@@ -14,13 +17,28 @@ fn main() {
     graph.dive_into(&solver, |inner_graph| {
         let prev_frame = inner_graph.prev_frame();
         let out = inner_graph.out();
-
-        let transform1 = inner_graph.add(
-            SopXform::new("transform1")
-                .set_input(&prev_frame)
-                .with_t([-1.0, -2.0, -3.0]),
+        let scatter = inner_graph.add(SopScatter::new("scatter1").set_input(&prev_frame));
+        let noise = inner_graph.add(
+            SopAttribnoise::new("noise1")
+                .set_input(&scatter)
+                .with_attribtype(SopAttribnoiseAttribtype::Vector)
+                .with_attribs("v")
+                .with_operation(SopAttribnoiseOperation::Set)
+                .with_basis(SopAttribnoiseBasis::PerlinFlow),
         );
-        inner_graph.connect_existing(&out, 0, &transform1);
+        let pointvop1 = inner_graph.add(
+            SopAttribvop::new("pointvop1")
+                .set_input(&noise)
+                .with_bindclass(SopAttribvopBindclass::Points),
+        );
+        inner_graph.dive_into(&pointvop1, |vop_graph| {
+            let in1 = vop_graph.geometryvopglobal1();
+            let out1 = vop_graph.geometryvopoutput1();
+            let add1 = vop_graph.add(VopAdd::new("add1").set_input(&in1));
+            vop_graph.connect_existing(&out1, 0, &add1);
+        });
+
+        inner_graph.connect_existing(&out, 0, &pointvop1);
     });
 
     graph.set_display(&solver);

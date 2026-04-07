@@ -2,6 +2,7 @@ use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
 use crate::core::types::{ContainerType, HoudiniNode};
 use std::collections::BTreeMap;
+use std::marker::PhantomData;
 
 pub struct NodeGraph {
     parent_path: String,
@@ -18,12 +19,13 @@ pub struct NodeGraph {
 }
 
 /// A scoped inner graph used inside `dive_into` to add nodes under a container node.
-pub struct InnerGraph<'a> {
+pub struct InnerGraph<'a, C> {
     graph: &'a mut NodeGraph,
     container_id: usize,
+    _phantom: PhantomData<C>,
 }
 
-impl<'a> InnerGraph<'a> {
+impl<'a, C> InnerGraph<'a, C> {
     /// Generate a reference to an existing node.
     pub fn existing_node(&mut self, name: &str) -> ExistingNodeRef {
         if let Some((node, _, _)) = self
@@ -112,6 +114,18 @@ impl<'a> InnerGraph<'a> {
             );
         }
     }
+
+    pub fn dive_into<T: HoudiniNode, F, R>(&mut self, container: &T, f: F) -> R
+    where
+        F: FnOnce(&mut InnerGraph<T>) -> R,
+    {
+        let mut nested_inner = InnerGraph {
+            graph: self.graph,
+            container_id: container.get_id(),
+            _phantom: PhantomData,
+        };
+        f(&mut nested_inner)
+    }
 }
 
 /// A lightweight reference to a pre-existing node inside a subnet.
@@ -179,15 +193,16 @@ impl NodeGraph {
     }
 
     /// Dive into a container node to add inner nodes.
-    pub fn dive_into<T: HoudiniNode, F>(&mut self, container: &T, f: F)
+    pub fn dive_into<T: HoudiniNode, F, R>(&mut self, container: &T, f: F) -> R
     where
-        F: FnOnce(&mut InnerGraph),
+        F: FnOnce(&mut InnerGraph<T>) -> R,
     {
         let mut inner = InnerGraph {
             graph: self,
             container_id: container.get_id(),
+            _phantom: PhantomData,
         };
-        f(&mut inner);
+        f(&mut inner)
     }
 
     /// finish building the graph and internally call Transpiler to generate the script
