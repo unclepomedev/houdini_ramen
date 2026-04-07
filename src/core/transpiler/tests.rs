@@ -1,3 +1,5 @@
+//! Transpiler module integration tests
+
 use super::Transpiler;
 use crate::core::graph::{ExistingNodeRef, NodeGraph};
 use crate::core::types::{ContainerType, HoudiniNode, OutputPort, ParamValue, SpareParam};
@@ -831,4 +833,40 @@ fn test_cross_container_wiring_error() {
 
         inner_b.connect_existing(&out_a, 0, &ray_b);
     });
+}
+
+#[test]
+fn test_transpiler_output_port_by_name() {
+    let global = DummyNode {
+        id: 4001,
+        name: "global".to_string(),
+        node_type: "geometryvopglobal",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    let mut add = DummyNode {
+        id: 4002,
+        name: "add".to_string(),
+        node_type: "add",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    add.inputs
+        .insert(0, (4001, OutputPort::Name("P".to_string())));
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(global)).unwrap();
+    transpiler.add_boxed(Box::new(add)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(
+        script.contains(
+            "n_add_4002.setInput(0, n_global_4001, n_global_4001.outputNames().index('P'))"
+        )
+    );
 }
