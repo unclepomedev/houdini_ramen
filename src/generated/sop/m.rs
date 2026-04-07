@@ -12374,7 +12374,7 @@ impl crate::core::types::HoudiniNode for SopMlVolumetilecomponent {
         Some("custom_processing")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopMlVolumetilecomponentInnerExt {
     fn crop_bbox(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn crop_points(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -12383,22 +12383,22 @@ pub trait SopMlVolumetilecomponentInnerExt {
     fn original_position(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopMlVolumetilecomponentInnerExt for crate::core::graph::InnerGraph<'a> {
     fn crop_bbox(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom_processing/Crop_BBOX")
+        self.existing_node("custom_processing/Crop_BBOX")
     }
     fn crop_points(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom_processing/Crop_Points")
+        self.existing_node("custom_processing/Crop_Points")
     }
     fn full_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom_processing/Full_Volume")
+        self.existing_node("custom_processing/Full_Volume")
     }
     fn tile(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom_processing/Tile")
+        self.existing_node("custom_processing/Tile")
     }
     fn original_position(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom_processing/original_position")
+        self.existing_node("custom_processing/original_position")
     }
 }
 
@@ -17781,15 +17781,15 @@ impl crate::core::types::HoudiniNode for SopMpmsolver {
         Some("dopnet1/dive_target")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopMpmsolverInnerExt {
     fn particles(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopMpmsolverInnerExt for crate::core::graph::InnerGraph<'a> {
     fn particles(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/dive_target/PARTICLES")
+        self.existing_node("dopnet1/dive_target/PARTICLES")
     }
 }
 

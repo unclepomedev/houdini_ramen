@@ -5517,7 +5517,7 @@ impl crate::core::types::HoudiniNode for ObjectBipedAutoRig {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBipedAutoRigInnerExt {
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -5532,40 +5532,40 @@ pub trait ObjectBipedAutoRigInnerExt {
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectBipedAutoRigInnerExt for crate::core::graph::InnerGraph<'a> {
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("character_placer")
+        self.existing_node("character_placer")
     }
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_and_neck")
+        self.existing_node("head_and_neck")
     }
     fn left_arm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_arm")
+        self.existing_node("left_arm")
     }
     fn left_hand(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_hand")
+        self.existing_node("left_hand")
     }
     fn left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_leg")
+        self.existing_node("left_leg")
     }
     fn right_arm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_arm")
+        self.existing_node("right_arm")
     }
     fn right_hand(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_hand")
+        self.existing_node("right_hand")
     }
     fn right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_leg")
+        self.existing_node("right_leg")
     }
     fn save_proxy_geo(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("save_proxy_geo")
+        self.existing_node("save_proxy_geo")
     }
     fn source_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("source_geometry")
+        self.existing_node("source_geometry")
     }
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine")
+        self.existing_node("spine")
     }
 }
 
@@ -6635,19 +6635,19 @@ impl crate::core::types::HoudiniNode for ObjectBlend {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBlendInnerExt {
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn sphere1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectBlendInnerExt for crate::core::graph::InnerGraph<'a> {
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("point1")
+        self.existing_node("point1")
     }
     fn sphere1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sphere1")
+        self.existing_node("sphere1")
     }
 }
 
@@ -7598,19 +7598,19 @@ impl crate::core::types::HoudiniNode for ObjectBlendsticky {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBlendstickyInnerExt {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectBlendstickyInnerExt for crate::core::graph::InnerGraph<'a> {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("control1")
+        self.existing_node("control1")
     }
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("point1")
+        self.existing_node("point1")
     }
 }
 
@@ -8715,18 +8715,18 @@ impl crate::core::types::HoudiniNode for ObjectBone {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBoneInnerExt {
     fn bonelink(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn cregion(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectBoneInnerExt for crate::core::graph::InnerGraph<'a> {
     fn bonelink(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bonelink")
+        self.existing_node("bonelink")
     }
     fn cregion(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cregion")
+        self.existing_node("cregion")
     }
 }

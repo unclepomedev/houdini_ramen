@@ -574,14 +574,14 @@ impl crate::core::types::HoudiniNode for DriverNull {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverNullInnerExt {
     fn null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverNullInnerExt for crate::core::graph::InnerGraph<'a> {
     fn null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null")
+        self.existing_node("null")
     }
 }

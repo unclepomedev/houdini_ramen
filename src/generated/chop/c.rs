@@ -1134,15 +1134,15 @@ impl crate::core::types::HoudiniNode for ChopChannelwrangle {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopChannelwrangleInnerExt {
     fn vopchop1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopChannelwrangleInnerExt for crate::core::graph::InnerGraph<'a> {
     fn vopchop1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vopchop1")
+        self.existing_node("vopchop1")
     }
 }
 
@@ -9499,7 +9499,7 @@ impl crate::core::types::HoudiniNode for ChopConstraintobjectoffset {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopConstraintobjectoffsetInnerExt {
     fn bindpose_after(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn bindpose_before(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -9508,22 +9508,22 @@ pub trait ChopConstraintobjectoffsetInnerExt {
     fn multiply(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopConstraintobjectoffsetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn bindpose_after(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bindpose_after")
+        self.existing_node("bindpose_after")
     }
     fn bindpose_before(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bindpose_before")
+        self.existing_node("bindpose_before")
     }
     fn input1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input1")
+        self.existing_node("input1")
     }
     fn invert(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("invert")
+        self.existing_node("invert")
     }
     fn multiply(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("multiply")
+        self.existing_node("multiply")
     }
 }
 
@@ -10500,7 +10500,7 @@ impl crate::core::types::HoudiniNode for ChopConstraintoffset {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopConstraintoffsetInnerExt {
     fn bindpose_after(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn bindpose_before(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -10511,28 +10511,28 @@ pub trait ChopConstraintoffsetInnerExt {
     fn multiply1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopConstraintoffsetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn bindpose_after(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bindpose_after")
+        self.existing_node("bindpose_after")
     }
     fn bindpose_before(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bindpose_before")
+        self.existing_node("bindpose_before")
     }
     fn constraintoffsetblend1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("constraintoffsetblend1")
+        self.existing_node("constraintoffsetblend1")
     }
     fn constraintsimpleblend1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("constraintsimpleblend1")
+        self.existing_node("constraintsimpleblend1")
     }
     fn invert(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("invert")
+        self.existing_node("invert")
     }
     fn multiply(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("multiply")
+        self.existing_node("multiply")
     }
     fn multiply1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("multiply1")
+        self.existing_node("multiply1")
     }
 }
 
@@ -11998,7 +11998,7 @@ impl crate::core::types::HoudiniNode for ChopConstraintparentx {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopConstraintparentxInnerExt {
     fn blendmask(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -12006,19 +12006,19 @@ pub trait ChopConstraintparentxInnerExt {
     fn parent(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopConstraintparentxInnerExt for crate::core::graph::InnerGraph<'a> {
     fn blendmask(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blendmask")
+        self.existing_node("blendmask")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output1")
+        self.existing_node("output1")
     }
     fn output2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output2")
+        self.existing_node("output2")
     }
     fn parent(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("parent")
+        self.existing_node("parent")
     }
 }
 

@@ -1144,14 +1144,14 @@ impl crate::core::types::HoudiniNode for LopIsolatescene {
         Some("edits")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopIsolatesceneInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopIsolatesceneInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("edits/output0")
+        self.existing_node("edits/output0")
     }
 }

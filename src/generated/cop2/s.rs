@@ -5040,7 +5040,7 @@ impl crate::core::types::HoudiniNode for Cop2Skyenvmap {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2SkyenvmapInnerExt {
     fn dir_angles_calc(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn dir_vector_calc(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -5049,22 +5049,22 @@ pub trait Cop2SkyenvmapInnerExt {
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2SkyenvmapInnerExt for crate::core::graph::InnerGraph<'a> {
     fn dir_angles_calc(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dir_angles_calc")
+        self.existing_node("dir_angles_calc")
     }
     fn dir_vector_calc(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dir_vector_calc")
+        self.existing_node("dir_vector_calc")
     }
     fn skycube(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("skycube")
+        self.existing_node("skycube")
     }
     fn skycubedaylight(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("skycubedaylight")
+        self.existing_node("skycubedaylight")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
 }
 
@@ -8538,7 +8538,7 @@ impl crate::core::types::HoudiniNode for Cop2Switchalpha {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2SwitchalphaInnerExt {
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn premultiply1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -8547,21 +8547,21 @@ pub trait Cop2SwitchalphaInnerExt {
     fn switch2(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2SwitchalphaInnerExt for crate::core::graph::InnerGraph<'a> {
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("channelcopy1")
+        self.existing_node("channelcopy1")
     }
     fn premultiply1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("premultiply1")
+        self.existing_node("premultiply1")
     }
     fn premultiply2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("premultiply2")
+        self.existing_node("premultiply2")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
     fn switch2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch2")
+        self.existing_node("switch2")
     }
 }

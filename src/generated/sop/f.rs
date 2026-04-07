@@ -23860,23 +23860,23 @@ impl crate::core::types::HoudiniNode for SopFlipsolver {
         Some("dopnet1/FORCES")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopFlipsolverInnerExt {
     fn force(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn source(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn volume(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopFlipsolverInnerExt for crate::core::graph::InnerGraph<'a> {
     fn force(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/FORCES/FORCE")
+        self.existing_node("dopnet1/FORCES/FORCE")
     }
     fn source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/FORCES/SOURCE")
+        self.existing_node("dopnet1/FORCES/SOURCE")
     }
     fn volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/FORCES/VOLUME")
+        self.existing_node("dopnet1/FORCES/VOLUME")
     }
 }
 
@@ -28021,15 +28021,15 @@ impl crate::core::types::HoudiniNode for SopForeach {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopForeachInnerExt {
     fn each1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopForeachInnerExt for crate::core::graph::InnerGraph<'a> {
     fn each1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("each1")
+        self.existing_node("each1")
     }
 }
 

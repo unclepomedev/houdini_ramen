@@ -365,7 +365,7 @@ impl crate::core::types::HoudiniNode for DriverHaircardtex {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverHaircardtexInnerExt {
     fn paths(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -380,40 +380,40 @@ pub trait DriverHaircardtexInnerExt {
     fn uv_bounds(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverHaircardtexInnerExt for crate::core::graph::InnerGraph<'a> {
     fn paths(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("PATHS")
+        self.existing_node("PATHS")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge1")
+        self.existing_node("merge1")
     }
     fn normalize_depth(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("normalize_depth")
+        self.existing_node("normalize_depth")
     }
     fn null1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null1")
+        self.existing_node("null1")
     }
     fn objects(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("objects")
+        self.existing_node("objects")
     }
     fn render_depth(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("render_depth")
+        self.existing_node("render_depth")
     }
     fn render_hairtex(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("render_hairtex")
+        self.existing_node("render_hairtex")
     }
     fn render_uvbounds(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("render_uvbounds")
+        self.existing_node("render_uvbounds")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
     fn switch3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch3")
+        self.existing_node("switch3")
     }
     fn uv_bounds(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("uv_bounds")
+        self.existing_node("uv_bounds")
     }
 }
 

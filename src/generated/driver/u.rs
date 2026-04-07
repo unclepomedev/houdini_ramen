@@ -3338,15 +3338,15 @@ impl crate::core::types::HoudiniNode for DriverUsdstitch {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverUsdstitchInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverUsdstitchInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
 }
 
@@ -3595,15 +3595,15 @@ impl crate::core::types::HoudiniNode for DriverUsdstitchclips {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverUsdstitchclipsInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverUsdstitchclipsInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
 }
 
@@ -3780,14 +3780,14 @@ impl crate::core::types::HoudiniNode for DriverUsdzip {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverUsdzipInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverUsdzipInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
 }

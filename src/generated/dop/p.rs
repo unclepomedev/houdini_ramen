@@ -29028,7 +29028,7 @@ impl crate::core::types::HoudiniNode for DopPopsteercustom {
         Some("custom")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopPopsteercustomInnerExt {
     fn addsteerforce(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -29036,19 +29036,19 @@ pub trait DopPopsteercustomInnerExt {
     fn parm1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopPopsteercustomInnerExt for crate::core::graph::InnerGraph<'a> {
     fn addsteerforce(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom/addsteerforce")
+        self.existing_node("custom/addsteerforce")
     }
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom/geometryvopglobal1")
+        self.existing_node("custom/geometryvopglobal1")
     }
     fn input(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom/input")
+        self.existing_node("custom/input")
     }
     fn parm1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("custom/parm1")
+        self.existing_node("custom/parm1")
     }
 }
 
@@ -34336,19 +34336,19 @@ impl crate::core::types::HoudiniNode for DopPopvop {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopPopvopInnerExt {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn geometryvopoutput1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopPopvopInnerExt for crate::core::graph::InnerGraph<'a> {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("geometryvopglobal1")
+        self.existing_node("geometryvopglobal1")
     }
     fn geometryvopoutput1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("geometryvopoutput1")
+        self.existing_node("geometryvopoutput1")
     }
 }
 

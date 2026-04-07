@@ -2793,7 +2793,7 @@ impl crate::core::types::HoudiniNode for Cop2Depthdarken {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2DepthdarkenInnerExt {
     fn blur_depth(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn unsharp(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -2807,37 +2807,37 @@ pub trait Cop2DepthdarkenInnerExt {
     fn uselog(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2DepthdarkenInnerExt for crate::core::graph::InnerGraph<'a> {
     fn blur_depth(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("Blur_Depth")
+        self.existing_node("Blur_Depth")
     }
     fn unsharp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("Unsharp")
+        self.existing_node("Unsharp")
     }
     fn write_to_cd(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("Write_to_Cd")
+        self.existing_node("Write_to_Cd")
     }
     fn clamp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("clamp")
+        self.existing_node("clamp")
     }
     fn invert1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("invert1")
+        self.existing_node("invert1")
     }
     fn log(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("log")
+        self.existing_node("log")
     }
     fn multiply1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("multiply1")
+        self.existing_node("multiply1")
     }
     fn null1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null1")
+        self.existing_node("null1")
     }
     fn scale_depth(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_depth")
+        self.existing_node("scale_depth")
     }
     fn uselog(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("uselog")
+        self.existing_node("uselog")
     }
 }
 
@@ -5616,7 +5616,7 @@ impl crate::core::types::HoudiniNode for Cop2Dropshadow {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2DropshadowInnerExt {
     fn blur1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn color1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -5626,25 +5626,25 @@ pub trait Cop2DropshadowInnerExt {
     fn under1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2DropshadowInnerExt for crate::core::graph::InnerGraph<'a> {
     fn blur1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blur1")
+        self.existing_node("blur1")
     }
     fn color1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("color1")
+        self.existing_node("color1")
     }
     fn expand1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("expand1")
+        self.existing_node("expand1")
     }
     fn null1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null1")
+        self.existing_node("null1")
     }
     fn premultiply1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("premultiply1")
+        self.existing_node("premultiply1")
     }
     fn under1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("under1")
+        self.existing_node("under1")
     }
 }
 

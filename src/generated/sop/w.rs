@@ -3772,23 +3772,23 @@ impl crate::core::types::HoudiniNode for SopWhitewatersolver {
         Some("dopnet1/FORCES")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopWhitewatersolverInnerExt {
     fn extra_sources(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn particle_forces(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn post_solve(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopWhitewatersolverInnerExt for crate::core::graph::InnerGraph<'a> {
     fn extra_sources(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/FORCES/EXTRA_SOURCES")
+        self.existing_node("dopnet1/FORCES/EXTRA_SOURCES")
     }
     fn particle_forces(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/FORCES/PARTICLE_FORCES")
+        self.existing_node("dopnet1/FORCES/PARTICLE_FORCES")
     }
     fn post_solve(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dopnet1/FORCES/POST_SOLVE")
+        self.existing_node("dopnet1/FORCES/POST_SOLVE")
     }
 }
 

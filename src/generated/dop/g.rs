@@ -26771,19 +26771,19 @@ impl crate::core::types::HoudiniNode for DopGasfieldvop {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopGasfieldvopInnerExt {
     fn volumevopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn volumevopoutput1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopGasfieldvopInnerExt for crate::core::graph::InnerGraph<'a> {
     fn volumevopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("volumevopglobal1")
+        self.existing_node("volumevopglobal1")
     }
     fn volumevopoutput1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("volumevopoutput1")
+        self.existing_node("volumevopoutput1")
     }
 }
 
@@ -72105,7 +72105,7 @@ impl crate::core::types::HoudiniNode for DopGasupres {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopGasupresInnerExt {
     fn source_low_res_fields(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn add_density_and_temperature_and_cool_down(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -72232,375 +72232,375 @@ pub trait DopGasupresInnerExt {
     fn zero_source1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopGasupresInnerExt for crate::core::graph::InnerGraph<'a> {
     fn source_low_res_fields(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("SOURCE__LOW_RES_FIELDS")
+        self.existing_node("SOURCE__LOW_RES_FIELDS")
     }
     fn add_density_and_temperature_and_cool_down(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_density_and_temperature_and_cool_down")
+        self.existing_node("add_density_and_temperature_and_cool_down")
     }
     fn add_divergent_noise_to_vel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_divergent_noise_to_vel")
+        self.existing_node("add_divergent_noise_to_vel")
     }
     fn add_lowresdensity(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_lowresdensity")
+        self.existing_node("add_lowresdensity")
     }
     fn add_lowresfuel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_lowresfuel")
+        self.existing_node("add_lowresfuel")
     }
     fn add_lowrestemperature(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_lowrestemperature")
+        self.existing_node("add_lowrestemperature")
     }
     fn add_lowresvel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_lowresvel")
+        self.existing_node("add_lowresvel")
     }
     fn add_source1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_source1")
+        self.existing_node("add_source1")
     }
     fn add_source_dens(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_source_dens")
+        self.existing_node("add_source_dens")
     }
     fn add_source_temp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_source_temp")
+        self.existing_node("add_source_temp")
     }
     fn add_to_vel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_to_vel")
+        self.existing_node("add_to_vel")
     }
     fn advect_combustion_fields(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("advect_combustion_fields")
+        self.existing_node("advect_combustion_fields")
     }
     fn advect_density1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("advect_density1")
+        self.existing_node("advect_density1")
     }
     fn advect_rest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("advect_rest")
+        self.existing_node("advect_rest")
     }
     fn advection(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("advection")
+        self.existing_node("advection")
     }
     fn age_heat_measured(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("age_heat_measured")
+        self.existing_node("age_heat_measured")
     }
     fn age_our_old_heat1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("age_our_old_heat1")
+        self.existing_node("age_our_old_heat1")
     }
     fn apply_sink(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("apply_sink")
+        self.existing_node("apply_sink")
     }
     fn blur_temp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blur_temp")
+        self.existing_node("blur_temp")
     }
     fn blur_turbscale(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blur_turbscale")
+        self.existing_node("blur_turbscale")
     }
     fn build_sink_density1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_sink_density1")
+        self.existing_node("build_sink_density1")
     }
     fn build_sink_sdf1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_sink_sdf1")
+        self.existing_node("build_sink_sdf1")
     }
     fn build_source_density(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_source_density")
+        self.existing_node("build_source_density")
     }
     fn build_source_sdf(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_source_sdf")
+        self.existing_node("build_source_sdf")
     }
     fn buildsink(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("buildsink")
+        self.existing_node("buildsink")
     }
     fn buildsource(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("buildsource")
+        self.existing_node("buildsource")
     }
     fn burn_to_heat1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("burn_to_heat1")
+        self.existing_node("burn_to_heat1")
     }
     fn clear_additional(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("clear_additional")
+        self.existing_node("clear_additional")
     }
     fn clear_fields(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("clear_fields")
+        self.existing_node("clear_fields")
     }
     fn clear_hidden(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("clear_hidden")
+        self.existing_node("clear_hidden")
     }
     fn clear_static(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("clear_static")
+        self.existing_node("clear_static")
     }
     fn clear_turbvel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("clear_turbvel")
+        self.existing_node("clear_turbvel")
     }
     fn compute_jacobian(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_jacobian")
+        self.existing_node("compute_jacobian")
     }
     fn compute_turb(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_turb")
+        self.existing_node("compute_turb")
     }
     fn compute_velocity_energy(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_velocity_energy")
+        self.existing_node("compute_velocity_energy")
     }
     fn compute_velocity_wavelets(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_velocity_wavelets")
+        self.existing_node("compute_velocity_wavelets")
     }
     fn cool_gas(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cool_gas")
+        self.existing_node("cool_gas")
     }
     fn create_jacobian(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("create_jacobian")
+        self.existing_node("create_jacobian")
     }
     fn create_rest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("create_rest")
+        self.existing_node("create_rest")
     }
     fn curl_compute(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("curl_compute")
+        self.existing_node("curl_compute")
     }
     fn curl_mag(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("curl_mag")
+        self.existing_node("curl_mag")
     }
     fn curl_scalarfields1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("curl_scalarfields1")
+        self.existing_node("curl_scalarfields1")
     }
     fn curl_vectorfields1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("curl_vectorfields1")
+        self.existing_node("curl_vectorfields1")
     }
     fn dissipate1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dissipate1")
+        self.existing_node("dissipate1")
     }
     fn do_rest_autoregen2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("do_rest_autoregen2")
+        self.existing_node("do_rest_autoregen2")
     }
     fn do_rest_autoregen3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("do_rest_autoregen3")
+        self.existing_node("do_rest_autoregen3")
     }
     fn emit_smoke(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("emit_smoke")
+        self.existing_node("emit_smoke")
     }
     fn emit_temp1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("emit_temp1")
+        self.existing_node("emit_temp1")
     }
     fn enable_clear_hidden(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_clear_hidden")
+        self.existing_node("enable_clear_hidden")
     }
     fn enable_clear_static(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_clear_static")
+        self.existing_node("enable_clear_static")
     }
     fn enable_heat_dissipation(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_heat_dissipation")
+        self.existing_node("enable_heat_dissipation")
     }
     fn enable_relationships(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_relationships")
+        self.existing_node("enable_relationships")
     }
     fn enable_sink(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_sink")
+        self.existing_node("enable_sink")
     }
     fn enable_solver(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_solver")
+        self.existing_node("enable_solver")
     }
     fn enable_sources(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_sources")
+        self.existing_node("enable_sources")
     }
     fn enable_temp_op(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enable_temp_op")
+        self.existing_node("enable_temp_op")
     }
     fn enablesolver1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enablesolver1")
+        self.existing_node("enablesolver1")
     }
     fn enablesolver2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enablesolver2")
+        self.existing_node("enablesolver2")
     }
     fn enablesolver3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enablesolver3")
+        self.existing_node("enablesolver3")
     }
     fn enablesolver4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("enablesolver4")
+        self.existing_node("enablesolver4")
     }
     fn energy_to_scale(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("energy_to_scale")
+        self.existing_node("energy_to_scale")
     }
     fn ensure_burn_exists(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ensure_burn_exists")
+        self.existing_node("ensure_burn_exists")
     }
     fn fluid_source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fluid_source")
+        self.existing_node("fluid_source")
     }
     fn gascombustion1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("gascombustion1")
+        self.existing_node("gascombustion1")
     }
     fn gasmatchfield2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("gasmatchfield2")
+        self.existing_node("gasmatchfield2")
     }
     fn gassubstep1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("gassubstep1")
+        self.existing_node("gassubstep1")
     }
     fn interpolate_fields(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("interpolate_fields")
+        self.existing_node("interpolate_fields")
     }
     fn load_our_data(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("load_our_data")
+        self.existing_node("load_our_data")
     }
     fn lowres_sources(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lowres_sources")
+        self.existing_node("lowres_sources")
     }
     fn lowresdensity(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lowresdensity")
+        self.existing_node("lowresdensity")
     }
     fn lowresfuel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lowresfuel")
+        self.existing_node("lowresfuel")
     }
     fn lowrestemperature(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lowrestemperature")
+        self.existing_node("lowrestemperature")
     }
     fn lowresvel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lowresvel")
+        self.existing_node("lowresvel")
     }
     fn match_source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("match_source")
+        self.existing_node("match_source")
     }
     fn match_source1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("match_source1")
+        self.existing_node("match_source1")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge1")
+        self.existing_node("merge1")
     }
     fn merge2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge2")
+        self.existing_node("merge2")
     }
     fn merge3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge3")
+        self.existing_node("merge3")
     }
     fn merge4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge4")
+        self.existing_node("merge4")
     }
     fn merge5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge5")
+        self.existing_node("merge5")
     }
     fn merge6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge6")
+        self.existing_node("merge6")
     }
     fn merge7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge7")
+        self.existing_node("merge7")
     }
     fn merge8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge8")
+        self.existing_node("merge8")
     }
     fn merge_source_and_burn_model(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge_source_and_burn_model")
+        self.existing_node("merge_source_and_burn_model")
     }
     fn multisolver2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("multisolver2")
+        self.existing_node("multisolver2")
     }
     fn no_smoke(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("no_smoke")
+        self.existing_node("no_smoke")
     }
     fn primary_noise(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("primary_noise")
+        self.existing_node("primary_noise")
     }
     fn promote_lowres_vel_into_vel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("promote_lowres_vel_into_vel")
+        self.existing_node("promote_lowres_vel_into_vel")
     }
     fn pyro_source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pyro_source")
+        self.existing_node("pyro_source")
     }
     fn ramp_turbscale(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ramp_turbscale")
+        self.existing_node("ramp_turbscale")
     }
     fn rebuild_rest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rebuild_rest")
+        self.existing_node("rebuild_rest")
     }
     fn record_sim_settings_to_initialization_data(
         &mut self,
     ) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("record_sim_settings_to_initialization_data")
+        self.existing_node("record_sim_settings_to_initialization_data")
     }
     fn remap_turbscale(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("remap_turbscale")
+        self.existing_node("remap_turbscale")
     }
     fn scale_from_curl1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_from_curl1")
+        self.existing_node("scale_from_curl1")
     }
     fn scale_from_wavelets1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_from_wavelets1")
+        self.existing_node("scale_from_wavelets1")
     }
     fn select_age_heat_method(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("select_age_heat_method")
+        self.existing_node("select_age_heat_method")
     }
     fn select_source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("select_source")
+        self.existing_node("select_source")
     }
     fn sink(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sink")
+        self.existing_node("sink")
     }
     fn soot(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("soot")
+        self.existing_node("soot")
     }
     fn switch_dissipate(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_dissipate")
+        self.existing_node("switch_dissipate")
     }
     fn switchsolver1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver1")
+        self.existing_node("switchsolver1")
     }
     fn switchsolver10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver10")
+        self.existing_node("switchsolver10")
     }
     fn switchsolver11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver11")
+        self.existing_node("switchsolver11")
     }
     fn switchsolver12(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver12")
+        self.existing_node("switchsolver12")
     }
     fn switchsolver14(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver14")
+        self.existing_node("switchsolver14")
     }
     fn switchsolver3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver3")
+        self.existing_node("switchsolver3")
     }
     fn switchsolver4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver4")
+        self.existing_node("switchsolver4")
     }
     fn switchsolver5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver5")
+        self.existing_node("switchsolver5")
     }
     fn switchsolver7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver7")
+        self.existing_node("switchsolver7")
     }
     fn switchsolver8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver8")
+        self.existing_node("switchsolver8")
     }
     fn switchsolver9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switchsolver9")
+        self.existing_node("switchsolver9")
     }
     fn temperature_operations(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("temperature_operations")
+        self.existing_node("temperature_operations")
     }
     fn timescale(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("timescale")
+        self.existing_node("timescale")
     }
     fn update_density_calc(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("update_density_calc")
+        self.existing_node("update_density_calc")
     }
     fn update_density_weighted(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("update_density_weighted")
+        self.existing_node("update_density_weighted")
     }
     fn uselowres2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("uselowres2")
+        self.existing_node("uselowres2")
     }
     fn uselowres3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("uselowres3")
+        self.existing_node("uselowres3")
     }
     fn vectorfieldvisualization1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vectorfieldvisualization1")
+        self.existing_node("vectorfieldvisualization1")
     }
     fn wavelet_vectorfields(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("wavelet_vectorfields")
+        self.existing_node("wavelet_vectorfields")
     }
     fn zero_jacobian(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("zero_jacobian")
+        self.existing_node("zero_jacobian")
     }
     fn zero_sink(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("zero_sink")
+        self.existing_node("zero_sink")
     }
     fn zero_source1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("zero_source1")
+        self.existing_node("zero_source1")
     }
 }
 
@@ -82214,19 +82214,19 @@ impl crate::core::types::HoudiniNode for DopGeometryvop {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopGeometryvopInnerExt {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn geometryvopoutput1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopGeometryvopInnerExt for crate::core::graph::InnerGraph<'a> {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("geometryvopglobal1")
+        self.existing_node("geometryvopglobal1")
     }
     fn geometryvopoutput1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("geometryvopoutput1")
+        self.existing_node("geometryvopoutput1")
     }
 }
 

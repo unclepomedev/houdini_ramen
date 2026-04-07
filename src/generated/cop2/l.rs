@@ -3841,15 +3841,15 @@ impl crate::core::types::HoudiniNode for Cop2Loop {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2LoopInnerExt {
     fn loopstart(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2LoopInnerExt for crate::core::graph::InnerGraph<'a> {
     fn loopstart(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("loopstart")
+        self.existing_node("loopstart")
     }
 }
 
@@ -4930,7 +4930,7 @@ impl crate::core::types::HoudiniNode for Cop2Lumamatte {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2LumamatteInnerExt {
     fn bright1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -4941,27 +4941,27 @@ pub trait Cop2LumamatteInnerExt {
     fn switch2(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2LumamatteInnerExt for crate::core::graph::InnerGraph<'a> {
     fn bright1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bright1")
+        self.existing_node("bright1")
     }
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("channelcopy1")
+        self.existing_node("channelcopy1")
     }
     fn color1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("color1")
+        self.existing_node("color1")
     }
     fn premultiply1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("premultiply1")
+        self.existing_node("premultiply1")
     }
     fn premultiply2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("premultiply2")
+        self.existing_node("premultiply2")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
     fn switch2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch2")
+        self.existing_node("switch2")
     }
 }

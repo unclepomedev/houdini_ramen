@@ -2074,7 +2074,7 @@ impl crate::core::types::HoudiniNode for ObjectVrcam {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectVrcamInnerExt {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -2082,18 +2082,18 @@ pub trait ObjectVrcamInnerExt {
     fn xform1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectVrcamInnerExt for crate::core::graph::InnerGraph<'a> {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("camOrigin")
+        self.existing_node("camOrigin")
     }
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("constraints")
+        self.existing_node("constraints")
     }
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("file1")
+        self.existing_node("file1")
     }
     fn xform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform1")
+        self.existing_node("xform1")
     }
 }

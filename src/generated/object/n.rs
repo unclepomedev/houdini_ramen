@@ -797,19 +797,19 @@ impl crate::core::types::HoudiniNode for ObjectNull {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectNullInnerExt {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectNullInnerExt for crate::core::graph::InnerGraph<'a> {
     fn control1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("control1")
+        self.existing_node("control1")
     }
     fn point1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("point1")
+        self.existing_node("point1")
     }
 }
 
@@ -1679,14 +1679,14 @@ impl crate::core::types::HoudiniNode for ObjectNullspike {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectNullspikeInnerExt {
     fn spike(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectNullspikeInnerExt for crate::core::graph::InnerGraph<'a> {
     fn spike(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spike")
+        self.existing_node("spike")
     }
 }

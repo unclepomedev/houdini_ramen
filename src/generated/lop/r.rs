@@ -494,7 +494,7 @@ impl crate::core::types::HoudiniNode for LopRbddestruction {
         Some("sopnet/fracture_and_sim")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopRbddestructionInnerExt {
     fn geometry(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn proxy_geometry(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -505,28 +505,28 @@ pub trait LopRbddestructionInnerExt {
     fn rbdmaterialfracture1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopRbddestructionInnerExt for crate::core::graph::InnerGraph<'a> {
     fn geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/Geometry")
+        self.existing_node("sopnet/fracture_and_sim/Geometry")
     }
     fn proxy_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/Proxy_Geometry")
+        self.existing_node("sopnet/fracture_and_sim/Proxy_Geometry")
     }
     fn simulation_points(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/Simulation_Points")
+        self.existing_node("sopnet/fracture_and_sim/Simulation_Points")
     }
     fn filecache1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/filecache1")
+        self.existing_node("sopnet/fracture_and_sim/filecache1")
     }
     fn rbdbulletsolver1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/rbdbulletsolver1")
+        self.existing_node("sopnet/fracture_and_sim/rbdbulletsolver1")
     }
     fn rbdconfigure1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/rbdconfigure1")
+        self.existing_node("sopnet/fracture_and_sim/rbdconfigure1")
     }
     fn rbdmaterialfracture1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/fracture_and_sim/rbdmaterialfracture1")
+        self.existing_node("sopnet/fracture_and_sim/rbdmaterialfracture1")
     }
 }
 
@@ -5598,15 +5598,15 @@ impl crate::core::types::HoudiniNode for LopRetimeinstances {
         Some("sopnet/modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopRetimeinstancesInnerExt {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopRetimeinstancesInnerExt for crate::core::graph::InnerGraph<'a> {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/modify/from_lops")
+        self.existing_node("sopnet/modify/from_lops")
     }
 }
 

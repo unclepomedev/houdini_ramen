@@ -615,15 +615,15 @@ impl crate::core::types::HoudiniNode for LopTopnet {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopTopnetInnerExt {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopTopnetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("localscheduler")
+        self.existing_node("localscheduler")
     }
 }
 
@@ -1079,7 +1079,7 @@ impl crate::core::types::HoudiniNode for LopTransformuv {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopTransformuvInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn to_sops(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -1087,18 +1087,18 @@ pub trait LopTransformuvInnerExt {
     fn sopmodify(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopTransformuvInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
     fn to_sops(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("TO_SOPS")
+        self.existing_node("TO_SOPS")
     }
     fn copy_uvs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy_UVs")
+        self.existing_node("copy_UVs")
     }
     fn sopmodify(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopmodify")
+        self.existing_node("sopmodify")
     }
 }

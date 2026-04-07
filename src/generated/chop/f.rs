@@ -743,15 +743,15 @@ impl crate::core::types::HoudiniNode for ChopFbx {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopFbxInnerExt {
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopFbxInnerExt for crate::core::graph::InnerGraph<'a> {
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("file1")
+        self.existing_node("file1")
     }
 }
 
@@ -2877,7 +2877,7 @@ impl crate::core::types::HoudiniNode for ChopFootplant {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopFootplantInnerExt {
     fn channels_for_sop(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -2905,79 +2905,79 @@ pub trait ChopFootplantInnerExt {
     fn trim_last_frame(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopFootplantInnerExt for crate::core::graph::InnerGraph<'a> {
     fn channels_for_sop(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("CHANNELS_FOR_SOP")
+        self.existing_node("CHANNELS_FOR_SOP")
     }
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
     fn add_loop(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_loop")
+        self.existing_node("add_loop")
     }
     fn agent_clip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("agent_clip")
+        self.existing_node("agent_clip")
     }
     fn apply_locomotion(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("apply_locomotion")
+        self.existing_node("apply_locomotion")
     }
     fn apply_transform(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("apply_transform")
+        self.existing_node("apply_transform")
     }
     fn apply_transform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("apply_transform1")
+        self.existing_node("apply_transform1")
     }
     fn blend(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend")
+        self.existing_node("blend")
     }
     fn compute_distance(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_distance")
+        self.existing_node("compute_distance")
     }
     fn fetch_signed_distance(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch_signed_distance")
+        self.existing_node("fetch_signed_distance")
     }
     fn fetch_world_transform(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch_world_transform")
+        self.existing_node("fetch_world_transform")
     }
     fn find_stationary_regions(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("find_stationary_regions")
+        self.existing_node("find_stationary_regions")
     }
     fn input_positions(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_positions")
+        self.existing_node("input_positions")
     }
     fn isolate_joint(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("isolate_joint")
+        self.existing_node("isolate_joint")
     }
     fn locomotion(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("locomotion")
+        self.existing_node("locomotion")
     }
     fn offset(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("offset")
+        self.existing_node("offset")
     }
     fn rename(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rename")
+        self.existing_node("rename")
     }
     fn reset_extend(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("reset_extend")
+        self.existing_node("reset_extend")
     }
     fn retrim(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("retrim")
+        self.existing_node("retrim")
     }
     fn switch_method(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_method")
+        self.existing_node("switch_method")
     }
     fn to_speed(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("to_speed")
+        self.existing_node("to_speed")
     }
     fn to_velocity(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("to_velocity")
+        self.existing_node("to_velocity")
     }
     fn trim1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("trim1")
+        self.existing_node("trim1")
     }
     fn trim_last_frame(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("trim_last_frame")
+        self.existing_node("trim_last_frame")
     }
 }
 
@@ -3678,19 +3678,19 @@ impl crate::core::types::HoudiniNode for ChopForeach {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopForeachInnerExt {
     fn foreach_iteration(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopForeachInnerExt for crate::core::graph::InnerGraph<'a> {
     fn foreach_iteration(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("Foreach_Iteration")
+        self.existing_node("Foreach_Iteration")
     }
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("Output")
+        self.existing_node("Output")
     }
 }
 

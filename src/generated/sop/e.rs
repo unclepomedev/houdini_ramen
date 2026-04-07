@@ -5583,7 +5583,7 @@ impl crate::core::types::HoudiniNode for SopExportobjtransforms {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopExportobjtransformsInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn target(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -5591,19 +5591,19 @@ pub trait SopExportobjtransformsInnerExt {
     fn chopnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopExportobjtransformsInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
     fn target(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("TARGET")
+        self.existing_node("TARGET")
     }
     fn transforms(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("TRANSFORMS")
+        self.existing_node("TRANSFORMS")
     }
     fn chopnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chopnet1")
+        self.existing_node("chopnet1")
     }
 }
 

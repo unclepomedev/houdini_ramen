@@ -8551,7 +8551,7 @@ impl crate::core::types::HoudiniNode for DopCrowdfuzzylogic {
         Some("popvop")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopCrowdfuzzylogicInnerExt {
     fn compare1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn const1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -8561,25 +8561,25 @@ pub trait DopCrowdfuzzylogicInnerExt {
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopCrowdfuzzylogicInnerExt for crate::core::graph::InnerGraph<'a> {
     fn compare1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("popvop/compare1")
+        self.existing_node("popvop/compare1")
     }
     fn const1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("popvop/const1")
+        self.existing_node("popvop/const1")
     }
     fn const2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("popvop/const2")
+        self.existing_node("popvop/const2")
     }
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("popvop/output")
+        self.existing_node("popvop/output")
     }
     fn parm_booleanthreshold(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("popvop/parm_booleanthreshold")
+        self.existing_node("popvop/parm_booleanthreshold")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("popvop/switch1")
+        self.existing_node("popvop/switch1")
     }
 }
 

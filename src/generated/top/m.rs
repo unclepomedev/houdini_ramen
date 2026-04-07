@@ -2006,7 +2006,7 @@ impl crate::core::types::HoudiniNode for TopMlPreprocessoidn {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopMlPreprocessoidnInnerExt {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -2015,22 +2015,22 @@ pub trait TopMlPreprocessoidnInnerExt {
     fn pythonvenv1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopMlPreprocessoidnInnerExt for crate::core::graph::InnerGraph<'a> {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("load_parameters")
+        self.existing_node("load_parameters")
     }
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
     fn partitionbyindex1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("partitionbyindex1")
+        self.existing_node("partitionbyindex1")
     }
     fn pythonscript1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pythonscript1")
+        self.existing_node("pythonscript1")
     }
     fn pythonvenv1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pythonvenv1")
+        self.existing_node("pythonvenv1")
     }
 }
 
@@ -3418,7 +3418,7 @@ impl crate::core::types::HoudiniNode for TopMlTrainoidn {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopMlTrainoidnInnerExt {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -3427,22 +3427,22 @@ pub trait TopMlTrainoidnInnerExt {
     fn pythonvenv1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopMlTrainoidnInnerExt for crate::core::graph::InnerGraph<'a> {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("load_parameters")
+        self.existing_node("load_parameters")
     }
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
     fn partitionbyindex1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("partitionbyindex1")
+        self.existing_node("partitionbyindex1")
     }
     fn pythonscript1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pythonscript1")
+        self.existing_node("pythonscript1")
     }
     fn pythonvenv1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pythonvenv1")
+        self.existing_node("pythonvenv1")
     }
 }
 
@@ -6056,7 +6056,7 @@ impl crate::core::types::HoudiniNode for TopMlTrainstyletransfer {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopMlTrainstyletransferInnerExt {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -6065,21 +6065,21 @@ pub trait TopMlTrainstyletransferInnerExt {
     fn pythonvenv1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopMlTrainstyletransferInnerExt for crate::core::graph::InnerGraph<'a> {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("load_parameters")
+        self.existing_node("load_parameters")
     }
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
     fn partitionbyindex1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("partitionbyindex1")
+        self.existing_node("partitionbyindex1")
     }
     fn pythonscript1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pythonscript1")
+        self.existing_node("pythonscript1")
     }
     fn pythonvenv1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pythonvenv1")
+        self.existing_node("pythonvenv1")
     }
 }

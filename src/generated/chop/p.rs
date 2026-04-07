@@ -3819,7 +3819,7 @@ impl crate::core::types::HoudiniNode for ChopPosedifference {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopPosedifferenceInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn channel_diff(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -3835,43 +3835,43 @@ pub trait ChopPosedifferenceInnerExt {
     fn xform_channels1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopPosedifferenceInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
     fn channel_diff(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("channel_diff")
+        self.existing_node("channel_diff")
     }
     fn compute_xform_difference(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_xform_difference")
+        self.existing_node("compute_xform_difference")
     }
     fn copy(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy")
+        self.existing_node("copy")
     }
     fn extend_reference_pose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("extend_reference_pose")
+        self.existing_node("extend_reference_pose")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge1")
+        self.existing_node("merge1")
     }
     fn other_channels(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("other_channels")
+        self.existing_node("other_channels")
     }
     fn other_channels1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("other_channels1")
+        self.existing_node("other_channels1")
     }
     fn reference_pose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("reference_pose")
+        self.existing_node("reference_pose")
     }
     fn switch_reference_clip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_reference_clip")
+        self.existing_node("switch_reference_clip")
     }
     fn xform_channels(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform_channels")
+        self.existing_node("xform_channels")
     }
     fn xform_channels1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform_channels1")
+        self.existing_node("xform_channels1")
     }
 }
 

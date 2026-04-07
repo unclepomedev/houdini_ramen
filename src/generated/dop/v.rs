@@ -11183,19 +11183,19 @@ impl crate::core::types::HoudiniNode for DopVopforce {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopVopforceInnerExt {
     fn vopforceglobal1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn vopforceoutput1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopVopforceInnerExt for crate::core::graph::InnerGraph<'a> {
     fn vopforceglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vopforceglobal1")
+        self.existing_node("vopforceglobal1")
     }
     fn vopforceoutput1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vopforceoutput1")
+        self.existing_node("vopforceoutput1")
     }
 }
 

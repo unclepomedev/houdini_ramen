@@ -1070,7 +1070,7 @@ impl crate::core::types::HoudiniNode for Cop2Interleave {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2InterleaveInnerExt {
     fn input_1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn input_2(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -1093,64 +1093,64 @@ pub trait Cop2InterleaveInnerExt {
     fn trim3(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2InterleaveInnerExt for crate::core::graph::InnerGraph<'a> {
     fn input_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_1")
+        self.existing_node("input_1")
     }
     fn input_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_2")
+        self.existing_node("input_2")
     }
     fn input_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_3")
+        self.existing_node("input_3")
     }
     fn input_4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_4")
+        self.existing_node("input_4")
     }
     fn interleave_x2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("interleave_x2")
+        self.existing_node("interleave_x2")
     }
     fn interleave_x3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("interleave_x3")
+        self.existing_node("interleave_x3")
     }
     fn interleave_x4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("interleave_x4")
+        self.existing_node("interleave_x4")
     }
     fn select_interleave_rate(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("select_interleave_rate")
+        self.existing_node("select_interleave_rate")
     }
     fn sequence1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sequence1")
+        self.existing_node("sequence1")
     }
     fn sequence2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sequence2")
+        self.existing_node("sequence2")
     }
     fn sequence3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sequence3")
+        self.existing_node("sequence3")
     }
     fn shift1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shift1")
+        self.existing_node("shift1")
     }
     fn shift2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shift2")
+        self.existing_node("shift2")
     }
     fn shift4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shift4")
+        self.existing_node("shift4")
     }
     fn shift6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shift6")
+        self.existing_node("shift6")
     }
     fn shift_back(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shift_back")
+        self.existing_node("shift_back")
     }
     fn trim1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("trim1")
+        self.existing_node("trim1")
     }
     fn trim2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("trim2")
+        self.existing_node("trim2")
     }
     fn trim3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("trim3")
+        self.existing_node("trim3")
     }
 }
 

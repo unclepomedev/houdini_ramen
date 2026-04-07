@@ -1999,7 +1999,7 @@ impl crate::core::types::HoudiniNode for SopOceanevaluate {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopOceanevaluateInnerExt {
     fn n_2d_grid_points(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn n_2d_grid_polysoup(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -2196,586 +2196,586 @@ pub trait SopOceanevaluateInnerExt {
     fn volumemix1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopOceanevaluateInnerExt for crate::core::graph::InnerGraph<'a> {
     fn n_2d_grid_points(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("2d_grid_points")
+        self.existing_node("2d_grid_points")
     }
     fn n_2d_grid_polysoup(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("2d_grid_polysoup")
+        self.existing_node("2d_grid_polysoup")
     }
     fn heightfield(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HEIGHTFIELD")
+        self.existing_node("HEIGHTFIELD")
     }
     fn input_geo(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("INPUT_GEO")
+        self.existing_node("INPUT_GEO")
     }
     fn keep_amplitude(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("KEEP_amplitude")
+        self.existing_node("KEEP_amplitude")
     }
     fn keep_first_amplitude(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("KEEP_first_amplitude")
+        self.existing_node("KEEP_first_amplitude")
     }
     fn masks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("MASKS")
+        self.existing_node("MASKS")
     }
     fn max_displace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("MAX_DISPLACE")
+        self.existing_node("MAX_DISPLACE")
     }
     fn restcusp_2d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("RESTCUSP_2D")
+        self.existing_node("RESTCUSP_2D")
     }
     fn restderivs_2d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("RESTDERIVS_2D")
+        self.existing_node("RESTDERIVS_2D")
     }
     fn restdisplace_2d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("RESTDISPLACE_2D")
+        self.existing_node("RESTDISPLACE_2D")
     }
     fn restvel_2d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("RESTVEL_2D")
+        self.existing_node("RESTVEL_2D")
     }
     fn volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("VOLUMES")
+        self.existing_node("VOLUMES")
     }
     fn vol_input(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("VOL_INPUT")
+        self.existing_node("VOL_INPUT")
     }
     fn add_pscale1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_pscale1")
+        self.existing_node("add_pscale1")
     }
     fn align_3d_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("align_3d_volume")
+        self.existing_node("align_3d_volume")
     }
     fn align_downsampled2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("align_downsampled2")
+        self.existing_node("align_downsampled2")
     }
     fn assign_layers(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("assign_layers")
+        self.existing_node("assign_layers")
     }
     fn bake_maps(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bake_maps")
+        self.existing_node("bake_maps")
     }
     fn blast1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blast1")
+        self.existing_node("blast1")
     }
     fn blast_above_mindepth(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blast_above_mindepth")
+        self.existing_node("blast_above_mindepth")
     }
     fn blast_above_mindepth1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blast_above_mindepth1")
+        self.existing_node("blast_above_mindepth1")
     }
     fn blast_layer_0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blast_layer_0")
+        self.existing_node("blast_layer_0")
     }
     fn blast_outside(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blast_outside")
+        self.existing_node("blast_outside")
     }
     fn bound_pointmask(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bound_pointmask")
+        self.existing_node("bound_pointmask")
     }
     fn build_displaced_height2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_displaced_height2")
+        self.existing_node("build_displaced_height2")
     }
     fn build_sdf(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_sdf")
+        self.existing_node("build_sdf")
     }
     fn build_vel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("build_vel")
+        self.existing_node("build_vel")
     }
     fn calc_u_v_w(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calc_U_V_W")
+        self.existing_node("calc_U_V_W")
     }
     fn calc_x_y_z(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calc_X_Y_Z")
+        self.existing_node("calc_X_Y_Z")
     }
     fn calc_x_y_z_displace_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calc_X_Y_Z_displace_3d")
+        self.existing_node("calc_X_Y_Z_displace_3d")
     }
     fn calc_x_y_z_vel_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calc_X_Y_Z_vel_3d")
+        self.existing_node("calc_X_Y_Z_vel_3d")
     }
     fn calc_cusp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calc_cusp")
+        self.existing_node("calc_cusp")
     }
     fn calc_derivatives_xz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calc_derivatives_XZ")
+        self.existing_node("calc_derivatives_XZ")
     }
     fn compute_pressure(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("compute_pressure")
+        self.existing_node("compute_pressure")
     }
     fn copy1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy1")
+        self.existing_node("copy1")
     }
     fn copy2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy2")
+        self.existing_node("copy2")
     }
     fn copy3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy3")
+        self.existing_node("copy3")
     }
     fn copy_attributes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy_attributes")
+        self.existing_node("copy_attributes")
     }
     fn copy_attributes2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy_attributes2")
+        self.existing_node("copy_attributes2")
     }
     fn create_3d_volume1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("create_3d_volume1")
+        self.existing_node("create_3d_volume1")
     }
     fn create_layer_attrib(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("create_layer_attrib")
+        self.existing_node("create_layer_attrib")
     }
     fn del_inside_group(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("del_inside_group")
+        self.existing_node("del_inside_group")
     }
     fn derivatives_xz_fft(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("derivatives_XZ_fft")
+        self.existing_node("derivatives_XZ_fft")
     }
     fn displace3d_fft(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displace3d_fft")
+        self.existing_node("displace3d_fft")
     }
     fn displace_fft(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displace_fft")
+        self.existing_node("displace_fft")
     }
     fn displace_grid(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displace_grid")
+        self.existing_node("displace_grid")
     }
     fn displace_lowres_grid(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displace_lowres_grid")
+        self.existing_node("displace_lowres_grid")
     }
     fn displace_points_2d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displace_points_2d")
+        self.existing_node("displace_points_2d")
     }
     fn displace_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displace_volume")
+        self.existing_node("displace_volume")
     }
     fn displaced_height_2d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("displaced_height_2d")
+        self.existing_node("displaced_height_2d")
     }
     fn downsamped_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("downsamped_volume")
+        self.existing_node("downsamped_volume")
     }
     fn downsample(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("downsample")
+        self.existing_node("downsample")
     }
     fn exp_falloff_disp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("exp_falloff_disp")
+        self.existing_node("exp_falloff_disp")
     }
     fn exp_falloff_vel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("exp_falloff_vel")
+        self.existing_node("exp_falloff_vel")
     }
     fn find_max_displace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("find_max_displace")
+        self.existing_node("find_max_displace")
     }
     fn foreach_begin1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin1")
+        self.existing_node("foreach_begin1")
     }
     fn foreach_begin10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin10")
+        self.existing_node("foreach_begin10")
     }
     fn foreach_begin12(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin12")
+        self.existing_node("foreach_begin12")
     }
     fn foreach_begin13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin13")
+        self.existing_node("foreach_begin13")
     }
     fn foreach_begin14(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin14")
+        self.existing_node("foreach_begin14")
     }
     fn foreach_begin16(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin16")
+        self.existing_node("foreach_begin16")
     }
     fn foreach_begin3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin3")
+        self.existing_node("foreach_begin3")
     }
     fn foreach_begin4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin4")
+        self.existing_node("foreach_begin4")
     }
     fn foreach_begin5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin5")
+        self.existing_node("foreach_begin5")
     }
     fn foreach_begin6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin6")
+        self.existing_node("foreach_begin6")
     }
     fn foreach_begin7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin7")
+        self.existing_node("foreach_begin7")
     }
     fn foreach_begin8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin8")
+        self.existing_node("foreach_begin8")
     }
     fn foreach_begin9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin9")
+        self.existing_node("foreach_begin9")
     }
     fn foreach_end1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end1")
+        self.existing_node("foreach_end1")
     }
     fn foreach_end10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end10")
+        self.existing_node("foreach_end10")
     }
     fn foreach_end12(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end12")
+        self.existing_node("foreach_end12")
     }
     fn foreach_end13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end13")
+        self.existing_node("foreach_end13")
     }
     fn foreach_end15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end15")
+        self.existing_node("foreach_end15")
     }
     fn foreach_end3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end3")
+        self.existing_node("foreach_end3")
     }
     fn foreach_end4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end4")
+        self.existing_node("foreach_end4")
     }
     fn foreach_end5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end5")
+        self.existing_node("foreach_end5")
     }
     fn foreach_end6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end6")
+        self.existing_node("foreach_end6")
     }
     fn foreach_end7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end7")
+        self.existing_node("foreach_end7")
     }
     fn foreach_end8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end8")
+        self.existing_node("foreach_end8")
     }
     fn foreach_end9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end9")
+        self.existing_node("foreach_end9")
     }
     fn foreach_input(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_input")
+        self.existing_node("foreach_input")
     }
     fn foreach_input1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_input1")
+        self.existing_node("foreach_input1")
     }
     fn foreach_input2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_input2")
+        self.existing_node("foreach_input2")
     }
     fn foreach_input3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_input3")
+        self.existing_node("foreach_input3")
     }
     fn foreach_input4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_input4")
+        self.existing_node("foreach_input4")
     }
     fn foreach_input5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_input5")
+        self.existing_node("foreach_input5")
     }
     fn generate_points(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("generate_points")
+        self.existing_node("generate_points")
     }
     fn generate_points1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("generate_points1")
+        self.existing_node("generate_points1")
     }
     fn group_inside(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("group_inside")
+        self.existing_node("group_inside")
     }
     fn group_inside1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("group_inside1")
+        self.existing_node("group_inside1")
     }
     fn heightfield1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("heightfield1")
+        self.existing_node("heightfield1")
     }
     fn hide_mask_primitives1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("hide_mask_primitives1")
+        self.existing_node("hide_mask_primitives1")
     }
     fn hide_mask_volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("hide_mask_volumes")
+        self.existing_node("hide_mask_volumes")
     }
     fn index_attributes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_attributes")
+        self.existing_node("index_attributes")
     }
     fn input_box(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_box")
+        self.existing_node("input_box")
     }
     fn input_box_vel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("input_box_vel")
+        self.existing_node("input_box_vel")
     }
     fn intersect_grid1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("intersect_grid1")
+        self.existing_node("intersect_grid1")
     }
     fn keep_amplitude_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_amplitude")
+        self.existing_node("keep_amplitude")
     }
     fn keep_masks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_masks")
+        self.existing_node("keep_masks")
     }
     fn keep_pointmasks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_pointmasks")
+        self.existing_node("keep_pointmasks")
     }
     fn keep_restcusp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_restcusp")
+        self.existing_node("keep_restcusp")
     }
     fn keep_restderivs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_restderivs")
+        self.existing_node("keep_restderivs")
     }
     fn keep_restdisplace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_restdisplace")
+        self.existing_node("keep_restdisplace")
     }
     fn keep_restdisplace_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_restdisplace_3d")
+        self.existing_node("keep_restdisplace_3d")
     }
     fn keep_restvel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_restvel")
+        self.existing_node("keep_restvel")
     }
     fn keep_restvel_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_restvel_3d")
+        self.existing_node("keep_restvel_3d")
     }
     fn keep_spectrum(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("keep_spectrum")
+        self.existing_node("keep_spectrum")
     }
     fn lowres_ptgrid(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lowres_ptgrid")
+        self.existing_node("lowres_ptgrid")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge1")
+        self.existing_node("merge1")
     }
     fn merge6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge6")
+        self.existing_node("merge6")
     }
     fn merge7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge7")
+        self.existing_node("merge7")
     }
     fn merge_masks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge_masks")
+        self.existing_node("merge_masks")
     }
     fn merged_displace_and_masks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merged_displace_and_masks")
+        self.existing_node("merged_displace_and_masks")
     }
     fn merged_displace_v_and_masks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merged_displace_v_and_masks")
+        self.existing_node("merged_displace_v_and_masks")
     }
     fn merged_v_and_masks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merged_v_and_masks")
+        self.existing_node("merged_v_and_masks")
     }
     fn merged_volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merged_volumes")
+        self.existing_node("merged_volumes")
     }
     fn name_calculation_volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_calculation_volumes_")
+        self.existing_node("name_calculation_volumes_")
     }
     fn name_downsampled_volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_downsampled_volumes")
+        self.existing_node("name_downsampled_volumes")
     }
     fn name_output_volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_output_volumes")
+        self.existing_node("name_output_volumes")
     }
     fn name_restcusp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_restcusp")
+        self.existing_node("name_restcusp")
     }
     fn name_restderivs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_restderivs")
+        self.existing_node("name_restderivs")
     }
     fn name_restdisplace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_restdisplace")
+        self.existing_node("name_restdisplace")
     }
     fn name_restdisplace_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_restdisplace_3d")
+        self.existing_node("name_restdisplace_3d")
     }
     fn name_restvel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_restvel")
+        self.existing_node("name_restvel")
     }
     fn name_restvel_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("name_restvel_3d")
+        self.existing_node("name_restvel_3d")
     }
     fn null1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null1")
+        self.existing_node("null1")
     }
     fn null10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null10")
+        self.existing_node("null10")
     }
     fn null13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null13")
+        self.existing_node("null13")
     }
     fn null14(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null14")
+        self.existing_node("null14")
     }
     fn null2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null2")
+        self.existing_node("null2")
     }
     fn null3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null3")
+        self.existing_node("null3")
     }
     fn null5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null5")
+        self.existing_node("null5")
     }
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
     fn pointjitter1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pointjitter1")
+        self.existing_node("pointjitter1")
     }
     fn pointjitter2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pointjitter2")
+        self.existing_node("pointjitter2")
     }
     fn pressure_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pressure_volume")
+        self.existing_node("pressure_volume")
     }
     fn preview_grid(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("preview_grid")
+        self.existing_node("preview_grid")
     }
     fn promote_maxdisplace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("promote_maxdisplace")
+        self.existing_node("promote_maxdisplace")
     }
     fn promote_maxpscale(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("promote_maxpscale")
+        self.existing_node("promote_maxpscale")
     }
     fn rename_inside_group(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rename_inside_group")
+        self.existing_node("rename_inside_group")
     }
     fn reset_layer_0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("reset_layer_0")
+        self.existing_node("reset_layer_0")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
     fn sample_attributes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sample_attributes")
+        self.existing_node("sample_attributes")
     }
     fn sample_restvelocity_and_displace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sample_restvelocity_and_displace")
+        self.existing_node("sample_restvelocity_and_displace")
     }
     fn sample_restvelocity_and_displace1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sample_restvelocity_and_displace1")
+        self.existing_node("sample_restvelocity_and_displace1")
     }
     fn surface_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("surface_volume")
+        self.existing_node("surface_volume")
     }
     fn switch_add_velocity2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_add_velocity2")
+        self.existing_node("switch_add_velocity2")
     }
     fn switch_add_velocity3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_add_velocity3")
+        self.existing_node("switch_add_velocity3")
     }
     fn switch_create_uvs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_create_uvs")
+        self.existing_node("switch_create_uvs")
     }
     fn switch_cusp2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_cusp2")
+        self.existing_node("switch_cusp2")
     }
     fn switch_cusp3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_cusp3")
+        self.existing_node("switch_cusp3")
     }
     fn switch_deform_geometry2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_deform_geometry2")
+        self.existing_node("switch_deform_geometry2")
     }
     fn switch_displace_2d_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_displace_2d_3d")
+        self.existing_node("switch_displace_2d_3d")
     }
     fn switch_do_preview(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_do_preview")
+        self.existing_node("switch_do_preview")
     }
     fn switch_doheighfield(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_doheighfield")
+        self.existing_node("switch_doheighfield")
     }
     fn switch_dopressure(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_dopressure")
+        self.existing_node("switch_dopressure")
     }
     fn switch_dosurface(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_dosurface")
+        self.existing_node("switch_dosurface")
     }
     fn switch_dovel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_dovel")
+        self.existing_node("switch_dovel")
     }
     fn switch_downsample(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_downsample")
+        self.existing_node("switch_downsample")
     }
     fn switch_estimate_at_frame(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_estimate_at_frame")
+        self.existing_node("switch_estimate_at_frame")
     }
     fn switch_exponential1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_exponential1")
+        self.existing_node("switch_exponential1")
     }
     fn switch_has_geo(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_has_geo")
+        self.existing_node("switch_has_geo")
     }
     fn switch_has_pointmasks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_has_pointmasks")
+        self.existing_node("switch_has_pointmasks")
     }
     fn switch_has_points(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_has_points")
+        self.existing_node("switch_has_points")
     }
     fn switch_height_method(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_height_method")
+        self.existing_node("switch_height_method")
     }
     fn switch_output_group(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_output_group")
+        self.existing_node("switch_output_group")
     }
     fn switch_output_mask(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_output_mask")
+        self.existing_node("switch_output_mask")
     }
     fn switch_output_restcusp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_output_restcusp")
+        self.existing_node("switch_output_restcusp")
     }
     fn switch_output_restderivs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_output_restderivs")
+        self.existing_node("switch_output_restderivs")
     }
     fn switch_output_restdisplace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_output_restdisplace")
+        self.existing_node("switch_output_restdisplace")
     }
     fn switch_output_restvel(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_output_restvel")
+        self.existing_node("switch_output_restvel")
     }
     fn switch_per_wavenumber(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_per_wavenumber")
+        self.existing_node("switch_per_wavenumber")
     }
     fn switch_per_wavenumber1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_per_wavenumber1")
+        self.existing_node("switch_per_wavenumber1")
     }
     fn switch_ptfromvol(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_ptfromvol")
+        self.existing_node("switch_ptfromvol")
     }
     fn switch_sample(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_sample")
+        self.existing_node("switch_sample")
     }
     fn switch_single_layer(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_single_layer")
+        self.existing_node("switch_single_layer")
     }
     fn switch_solo_layer(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_solo_layer")
+        self.existing_node("switch_solo_layer")
     }
     fn switch_vel_2d_3d(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_vel_2d_3d")
+        self.existing_node("switch_vel_2d_3d")
     }
     fn switch_vizcusp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_vizcusp")
+        self.existing_node("switch_vizcusp")
     }
     fn switch_vizcusp1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_vizcusp1")
+        self.existing_node("switch_vizcusp1")
     }
     fn timeshift_to_frame(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("timeshift_to_frame")
+        self.existing_node("timeshift_to_frame")
     }
     fn uvproject2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("uvproject2")
+        self.existing_node("uvproject2")
     }
     fn uvproject_single(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("uvproject_single")
+        self.existing_node("uvproject_single")
     }
     fn vel3d_fft(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vel3d_fft")
+        self.existing_node("vel3d_fft")
     }
     fn vel_fft(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vel_fft")
+        self.existing_node("vel_fft")
     }
     fn vel_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("vel_volume")
+        self.existing_node("vel_volume")
     }
     fn viz_cusp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("viz_cusp")
+        self.existing_node("viz_cusp")
     }
     fn viz_cusp1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("viz_cusp1")
+        self.existing_node("viz_cusp1")
     }
     fn volume_from_displace_attrib(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("volume_from_displace_attrib")
+        self.existing_node("volume_from_displace_attrib")
     }
     fn volume_maxdisplace(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("volume_maxdisplace")
+        self.existing_node("volume_maxdisplace")
     }
     fn volumefromattrib1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("volumefromattrib1")
+        self.existing_node("volumefromattrib1")
     }
     fn volumemix1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("volumemix1")
+        self.existing_node("volumemix1")
     }
 }
 

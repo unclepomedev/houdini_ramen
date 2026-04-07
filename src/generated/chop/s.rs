@@ -4376,19 +4376,19 @@ impl crate::core::types::HoudiniNode for ChopStashpose {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ChopStashposeInnerExt {
     fn drivers(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn transforms(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ChopStashposeInnerExt for crate::core::graph::InnerGraph<'a> {
     fn drivers(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("drivers")
+        self.existing_node("drivers")
     }
     fn transforms(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("transforms")
+        self.existing_node("transforms")
     }
 }
 

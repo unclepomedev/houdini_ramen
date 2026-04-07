@@ -7240,15 +7240,15 @@ impl crate::core::types::HoudiniNode for LopKarmaprocedural {
         Some("sopnet/subnet")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopKarmaproceduralInnerExt {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopKarmaproceduralInnerExt for crate::core::graph::InnerGraph<'a> {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/subnet/add1")
+        self.existing_node("sopnet/subnet/add1")
     }
 }
 

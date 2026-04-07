@@ -3209,15 +3209,15 @@ impl crate::core::types::HoudiniNode for LopShotlayeredit {
         Some("workspace")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopShotlayereditInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopShotlayereditInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("workspace/output0")
+        self.existing_node("workspace/output0")
     }
 }
 
@@ -6564,19 +6564,19 @@ impl crate::core::types::HoudiniNode for LopSimulationproxy {
         Some("modify/modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopSimulationproxyInnerExt {
     fn attribdelete1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopSimulationproxyInnerExt for crate::core::graph::InnerGraph<'a> {
     fn attribdelete1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("modify/modify/attribdelete1")
+        self.existing_node("modify/modify/attribdelete1")
     }
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("modify/modify/output0")
+        self.existing_node("modify/modify/output0")
     }
 }
 
@@ -11690,15 +11690,15 @@ impl crate::core::types::HoudiniNode for LopSopmodify {
         Some("modify/modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopSopmodifyInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopSopmodifyInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("modify/modify/OUT")
+        self.existing_node("modify/modify/OUT")
     }
 }
 
@@ -15704,15 +15704,15 @@ impl crate::core::types::HoudiniNode for LopSubnet {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopSubnetInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopSubnetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
 }
 
@@ -16630,7 +16630,7 @@ impl crate::core::types::HoudiniNode for LopSurfaceconstraint {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopSurfaceconstraintInnerExt {
     fn to_sop(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn to_sop_2(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -16650,55 +16650,55 @@ pub trait LopSurfaceconstraintInnerExt {
     fn warning(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopSurfaceconstraintInnerExt for crate::core::graph::InnerGraph<'a> {
     fn to_sop(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("TO_SOP")
+        self.existing_node("TO_SOP")
     }
     fn to_sop_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("TO_SOP_2")
+        self.existing_node("TO_SOP_2")
     }
     fn add_to_creatornodes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add_to_creatorNodes")
+        self.existing_node("add_to_creatorNodes")
     }
     fn apply_xform(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("apply_xform")
+        self.existing_node("apply_xform")
     }
     fn apply_xform_instances(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("apply_xform_instances")
+        self.existing_node("apply_xform_instances")
     }
     fn foreach_begin1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_begin1")
+        self.existing_node("foreach_begin1")
     }
     fn foreach_end1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("foreach_end1")
+        self.existing_node("foreach_end1")
     }
     fn objnet(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("objnet")
+        self.existing_node("objnet")
     }
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output")
+        self.existing_node("output")
     }
     fn prune(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("prune")
+        self.existing_node("prune")
     }
     fn sopnet(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet")
+        self.existing_node("sopnet")
     }
     fn storeglobals(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("storeglobals")
+        self.existing_node("storeglobals")
     }
     fn switch_hide_targets(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_hide_targets")
+        self.existing_node("switch_hide_targets")
     }
     fn switch_instances(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_instances")
+        self.existing_node("switch_instances")
     }
     fn switch_no_target(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch_no_target")
+        self.existing_node("switch_no_target")
     }
     fn warning(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("warning")
+        self.existing_node("warning")
     }
 }
 

@@ -360,23 +360,23 @@ impl crate::core::types::HoudiniNode for DriverBakeAnimation {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverBakeAnimationInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn exports(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn extract_constraints(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverBakeAnimationInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
     fn exports(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("exports")
+        self.existing_node("exports")
     }
     fn extract_constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("extract_constraints")
+        self.existing_node("extract_constraints")
     }
 }
 

@@ -1394,15 +1394,15 @@ impl crate::core::types::HoudiniNode for TopServicecreate {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopServicecreateInnerExt {
     fn servicecreate(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopServicecreateInnerExt for crate::core::graph::InnerGraph<'a> {
     fn servicecreate(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("servicecreate")
+        self.existing_node("servicecreate")
     }
 }
 
@@ -6962,15 +6962,15 @@ impl crate::core::types::HoudiniNode for TopSubnet {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopSubnetInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopSubnetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
 }
 

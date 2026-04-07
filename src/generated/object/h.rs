@@ -1206,15 +1206,15 @@ impl crate::core::types::HoudiniNode for ObjectHaircardgen {
         Some("modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectHaircardgenInnerExt {
     fn hair(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectHaircardgenInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hair(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("modify/HAIR")
+        self.existing_node("modify/HAIR")
     }
 }
 
@@ -1817,7 +1817,7 @@ impl crate::core::types::HoudiniNode for ObjectHaircardtexexample {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectHaircardtexexampleInnerExt {
     fn emitters(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn groom(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -1827,25 +1827,25 @@ pub trait ObjectHaircardtexexampleInnerExt {
     fn ropnet(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectHaircardtexexampleInnerExt for crate::core::graph::InnerGraph<'a> {
     fn emitters(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("emitters")
+        self.existing_node("emitters")
     }
     fn groom(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("groom")
+        self.existing_node("groom")
     }
     fn haircardcam(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("haircardcam")
+        self.existing_node("haircardcam")
     }
     fn hairgen(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("hairgen")
+        self.existing_node("hairgen")
     }
     fn materials(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materials")
+        self.existing_node("materials")
     }
     fn ropnet(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet")
+        self.existing_node("ropnet")
     }
 }
 
@@ -4998,15 +4998,15 @@ impl crate::core::types::HoudiniNode for ObjectHairgen {
         Some("modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectHairgenInnerExt {
     fn hairs(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectHairgenInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hairs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("modify/HAIRS")
+        self.existing_node("modify/HAIRS")
     }
 }
 
@@ -5777,7 +5777,7 @@ impl crate::core::types::HoudiniNode for ObjectHandle {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectHandleInnerExt {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn add2(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -5795,49 +5795,49 @@ pub trait ObjectHandleInnerExt {
     fn z(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectHandleInnerExt for crate::core::graph::InnerGraph<'a> {
     fn add1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add1")
+        self.existing_node("add1")
     }
     fn add2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("add2")
+        self.existing_node("add2")
     }
     fn box1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("box1")
+        self.existing_node("box1")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge1")
+        self.existing_node("merge1")
     }
     fn merge2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge2")
+        self.existing_node("merge2")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
     fn switch2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch2")
+        self.existing_node("switch2")
     }
     fn switch3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch3")
+        self.existing_node("switch3")
     }
     fn x(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("x")
+        self.existing_node("x")
     }
     fn xform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform1")
+        self.existing_node("xform1")
     }
     fn xform2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform2")
+        self.existing_node("xform2")
     }
     fn xform6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform6")
+        self.existing_node("xform6")
     }
     fn y(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("y")
+        self.existing_node("y")
     }
     fn z(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("z")
+        self.existing_node("z")
     }
 }
 
@@ -7655,7 +7655,7 @@ impl crate::core::types::HoudiniNode for ObjectHlight {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectHlightInnerExt {
     fn origin(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn areashape1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -7692,105 +7692,105 @@ pub trait ObjectHlightInnerExt {
     fn xform7(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectHlightInnerExt for crate::core::graph::InnerGraph<'a> {
     fn origin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("Origin")
+        self.existing_node("Origin")
     }
     fn areashape1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("areashape1")
+        self.existing_node("areashape1")
     }
     fn carve1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("carve1")
+        self.existing_node("carve1")
     }
     fn circle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("circle2")
+        self.existing_node("circle2")
     }
     fn circle4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("circle4")
+        self.existing_node("circle4")
     }
     fn cone_light1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cone_light1")
+        self.existing_node("cone_light1")
     }
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("constraints")
+        self.existing_node("constraints")
     }
     fn convert1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("convert1")
+        self.existing_node("convert1")
     }
     fn copy1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy1")
+        self.existing_node("copy1")
     }
     fn copy2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("copy2")
+        self.existing_node("copy2")
     }
     fn facet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("facet1")
+        self.existing_node("facet1")
     }
     fn grid2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("grid2")
+        self.existing_node("grid2")
     }
     fn grid4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("grid4")
+        self.existing_node("grid4")
     }
     fn grid5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("grid5")
+        self.existing_node("grid5")
     }
     fn line5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("line5")
+        self.existing_node("line5")
     }
     fn line6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("line6")
+        self.existing_node("line6")
     }
     fn line7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("line7")
+        self.existing_node("line7")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge1")
+        self.existing_node("merge1")
     }
     fn merge3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("merge3")
+        self.existing_node("merge3")
     }
     fn object_merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("object_merge1")
+        self.existing_node("object_merge1")
     }
     fn point_light1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("point_light1")
+        self.existing_node("point_light1")
     }
     fn sphere1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sphere1")
+        self.existing_node("sphere1")
     }
     fn sphere2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sphere2")
+        self.existing_node("sphere2")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
     fn switch3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch3")
+        self.existing_node("switch3")
     }
     fn tube1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tube1")
+        self.existing_node("tube1")
     }
     fn tube2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tube2")
+        self.existing_node("tube2")
     }
     fn xform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform1")
+        self.existing_node("xform1")
     }
     fn xform3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform3")
+        self.existing_node("xform3")
     }
     fn xform4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform4")
+        self.existing_node("xform4")
     }
     fn xform5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform5")
+        self.existing_node("xform5")
     }
     fn xform6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform6")
+        self.existing_node("xform6")
     }
     fn xform7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform7")
+        self.existing_node("xform7")
     }
 }

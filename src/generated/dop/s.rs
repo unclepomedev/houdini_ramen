@@ -34138,7 +34138,7 @@ impl crate::core::types::HoudiniNode for DopSopsolver {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DopSopsolverInnerExt {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn dop_geometry(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -34147,22 +34147,22 @@ pub trait DopSopsolverInnerExt {
     fn relationship_geometry(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DopSopsolverInnerExt for crate::core::graph::InnerGraph<'a> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("OUT")
+        self.existing_node("OUT")
     }
     fn dop_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("dop_geometry")
+        self.existing_node("dop_geometry")
     }
     fn feedbacks(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("feedbacks")
+        self.existing_node("feedbacks")
     }
     fn impacts(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("impacts")
+        self.existing_node("impacts")
     }
     fn relationship_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("relationship_geometry")
+        self.existing_node("relationship_geometry")
     }
 }
 

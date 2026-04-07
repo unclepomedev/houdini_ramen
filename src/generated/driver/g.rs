@@ -261,19 +261,19 @@ impl crate::core::types::HoudiniNode for DriverGeo2i3d {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverGeo2i3dInnerExt {
     fn image3d1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn shopnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverGeo2i3dInnerExt for crate::core::graph::InnerGraph<'a> {
     fn image3d1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("image3d1")
+        self.existing_node("image3d1")
     }
     fn shopnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shopnet1")
+        self.existing_node("shopnet1")
     }
 }
 

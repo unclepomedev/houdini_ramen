@@ -678,7 +678,7 @@ impl crate::core::types::HoudiniNode for Cop2Edgeblur {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2EdgeblurInnerExt {
     fn bedge_blur(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn convert_to_fp(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -687,22 +687,22 @@ pub trait Cop2EdgeblurInnerExt {
     fn soften_matte(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2EdgeblurInnerExt for crate::core::graph::InnerGraph<'a> {
     fn bedge_blur(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bedge_blur")
+        self.existing_node("bedge_blur")
     }
     fn convert_to_fp(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("convert_to_fp")
+        self.existing_node("convert_to_fp")
     }
     fn edge_detect_alpha(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("edge_detect_Alpha")
+        self.existing_node("edge_detect_Alpha")
     }
     fn mult_effect(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("mult_effect")
+        self.existing_node("mult_effect")
     }
     fn soften_matte(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("soften_matte")
+        self.existing_node("soften_matte")
     }
 }
 
@@ -4097,7 +4097,7 @@ impl crate::core::types::HoudiniNode for Cop2Extract {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2ExtractInnerExt {
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn chromakey1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -4109,31 +4109,31 @@ pub trait Cop2ExtractInnerExt {
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2ExtractInnerExt for crate::core::graph::InnerGraph<'a> {
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("channelcopy1")
+        self.existing_node("channelcopy1")
     }
     fn chromakey1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chromakey1")
+        self.existing_node("chromakey1")
     }
     fn convolve1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("convolve1")
+        self.existing_node("convolve1")
     }
     fn delete1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("delete1")
+        self.existing_node("delete1")
     }
     fn delete2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("delete2")
+        self.existing_node("delete2")
     }
     fn rename1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rename1")
+        self.existing_node("rename1")
     }
     fn rename2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rename2")
+        self.existing_node("rename2")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
 }
 

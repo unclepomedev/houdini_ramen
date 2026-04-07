@@ -8928,15 +8928,15 @@ impl crate::core::types::HoudiniNode for SopDopnet {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopDopnetInnerExt {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopDopnetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output")
+        self.existing_node("output")
     }
 }
 

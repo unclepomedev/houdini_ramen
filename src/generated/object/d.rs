@@ -1969,7 +1969,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedArm {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedArmInnerExt {
     fn hook_in_deform_out_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -1986,46 +1986,46 @@ pub trait ObjectDeformBoneRigBipedArmInnerExt {
     fn upperarm_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedArmInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_COLLARBONE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_COLLARBONE")
     }
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
     }
     fn hook_in_deform_out_forearm_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM_MIDDLE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM_MIDDLE")
     }
     fn hook_in_deform_out_shoulderblade(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE")
     }
     fn hook_in_deform_out_shoulderblade_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_END")
     }
     fn hook_in_deform_out_tip_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TIP_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TIP_FOREARM")
     }
     fn hook_in_deform_out_tip_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TIP_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TIP_UPPERARM")
     }
     fn hook_in_deform_out_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
     }
     fn collarbone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("collarbone")
+        self.existing_node("collarbone")
     }
     fn forearm_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("forearm_bone1")
+        self.existing_node("forearm_bone1")
     }
     fn forearm_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("forearm_bone2")
+        self.existing_node("forearm_bone2")
     }
     fn shoulderblade_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shoulderblade_bone")
+        self.existing_node("shoulderblade_bone")
     }
     fn upperarm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("upperarm_bone")
+        self.existing_node("upperarm_bone")
     }
 }
 
@@ -5862,7 +5862,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHand4f2s {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHand4f2sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -5898,103 +5898,103 @@ pub trait ObjectDeformBoneRigBipedHand4f2sInnerExt {
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedHand4f2sInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn index_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone1")
+        self.existing_node("index_bone1")
     }
     fn index_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone2")
+        self.existing_node("index_bone2")
     }
     fn index_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_palm_bone")
+        self.existing_node("index_palm_bone")
     }
     fn middle_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone1")
+        self.existing_node("middle_bone1")
     }
     fn middle_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone2")
+        self.existing_node("middle_bone2")
     }
     fn middle_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_palm_bone")
+        self.existing_node("middle_palm_bone")
     }
     fn pinky_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone1")
+        self.existing_node("pinky_bone1")
     }
     fn pinky_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone2")
+        self.existing_node("pinky_bone2")
     }
     fn pinky_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_palm_bone")
+        self.existing_node("pinky_palm_bone")
     }
     fn thumb_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone1")
+        self.existing_node("thumb_bone1")
     }
     fn thumb_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone2")
+        self.existing_node("thumb_bone2")
     }
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_palm_bone")
+        self.existing_node("thumb_palm_bone")
     }
 }
 
@@ -10895,7 +10895,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHand4f3s {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHand4f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -10943,139 +10943,139 @@ pub trait ObjectDeformBoneRigBipedHand4f3sInnerExt {
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedHand4f3sInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2_END")
     }
     fn hook_in_deform_out_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn index_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone1")
+        self.existing_node("index_bone1")
     }
     fn index_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone2")
+        self.existing_node("index_bone2")
     }
     fn index_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone3")
+        self.existing_node("index_bone3")
     }
     fn index_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_palm_bone")
+        self.existing_node("index_palm_bone")
     }
     fn middle_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone1")
+        self.existing_node("middle_bone1")
     }
     fn middle_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone2")
+        self.existing_node("middle_bone2")
     }
     fn middle_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone3")
+        self.existing_node("middle_bone3")
     }
     fn middle_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_palm_bone")
+        self.existing_node("middle_palm_bone")
     }
     fn pinky_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone1")
+        self.existing_node("pinky_bone1")
     }
     fn pinky_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone2")
+        self.existing_node("pinky_bone2")
     }
     fn pinky_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone3")
+        self.existing_node("pinky_bone3")
     }
     fn pinky_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_palm_bone")
+        self.existing_node("pinky_palm_bone")
     }
     fn thumb_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone1")
+        self.existing_node("thumb_bone1")
     }
     fn thumb_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone2")
+        self.existing_node("thumb_bone2")
     }
     fn thumb_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone3")
+        self.existing_node("thumb_bone3")
     }
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_palm_bone")
+        self.existing_node("thumb_palm_bone")
     }
 }
 
@@ -17040,7 +17040,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHand5f3s {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHand5f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -17089,142 +17089,142 @@ pub trait ObjectDeformBoneRigBipedHand5f3sInnerExt {
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedHand5f3sInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1")
     }
     fn hook_in_deform_out_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2")
     }
     fn hook_in_deform_out_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING3")
     }
     fn hook_in_deform_out_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
     }
     fn hook_in_deform_out_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn index_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone1")
+        self.existing_node("index_bone1")
     }
     fn index_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone2")
+        self.existing_node("index_bone2")
     }
     fn index_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone3")
+        self.existing_node("index_bone3")
     }
     fn index_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_palm_bone")
+        self.existing_node("index_palm_bone")
     }
     fn middle_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone1")
+        self.existing_node("middle_bone1")
     }
     fn middle_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone2")
+        self.existing_node("middle_bone2")
     }
     fn middle_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone3")
+        self.existing_node("middle_bone3")
     }
     fn middle_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_palm_bone")
+        self.existing_node("middle_palm_bone")
     }
     fn pinky_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone1")
+        self.existing_node("pinky_bone1")
     }
     fn pinky_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone2")
+        self.existing_node("pinky_bone2")
     }
     fn pinky_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone3")
+        self.existing_node("pinky_bone3")
     }
     fn pinky_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_palm_bone")
+        self.existing_node("pinky_palm_bone")
     }
     fn ring_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_bone1")
+        self.existing_node("ring_bone1")
     }
     fn ring_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_bone2")
+        self.existing_node("ring_bone2")
     }
     fn ring_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_bone3")
+        self.existing_node("ring_bone3")
     }
     fn ring_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_palm_bone")
+        self.existing_node("ring_palm_bone")
     }
     fn thumb_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone1")
+        self.existing_node("thumb_bone1")
     }
     fn thumb_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone2")
+        self.existing_node("thumb_bone2")
     }
     fn thumb_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone3")
+        self.existing_node("thumb_bone3")
     }
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_palm_bone")
+        self.existing_node("thumb_palm_bone")
     }
 }
 
@@ -19093,7 +19093,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHeadAndNeck {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -19109,43 +19109,43 @@ pub trait ObjectDeformBoneRigBipedHeadAndNeckInnerExt {
     fn right_eye(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HEAD")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HEAD")
     }
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_JAW")
+        self.existing_node("HOOK_IN_DEFORM_OUT_JAW")
     }
     fn hook_in_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK")
     }
     fn hook_in_root_deform(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_ROOT_DEFORM")
+        self.existing_node("HOOK_IN_ROOT_DEFORM")
     }
     fn fetch_left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__left_eye")
+        self.existing_node("fetch__left_eye")
     }
     fn fetch_right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__right_eye")
+        self.existing_node("fetch__right_eye")
     }
     fn head_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_bone")
+        self.existing_node("head_bone")
     }
     fn jaw_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("jaw_bone")
+        self.existing_node("jaw_bone")
     }
     fn left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_eye")
+        self.existing_node("left_eye")
     }
     fn neck_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_bone1")
+        self.existing_node("neck_bone1")
     }
     fn neck_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_bone2")
+        self.existing_node("neck_bone2")
     }
     fn right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_eye")
+        self.existing_node("right_eye")
     }
 }
 
@@ -21120,7 +21120,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedLeg {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_ankle_tip(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -21138,49 +21138,49 @@ pub trait ObjectDeformBoneRigBipedLegInnerExt {
     fn toe_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedLegInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
     }
     fn hook_in_deform_out_ankle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ANKLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ANKLE_TIP")
     }
     fn hook_in_deform_out_pelvis(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PELVIS")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PELVIS")
     }
     fn hook_in_deform_out_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN")
     }
     fn hook_in_deform_out_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
     }
     fn hook_in_deform_out_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THIGH")
     }
     fn hook_in_deform_out_tip_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TIP_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TIP_THIGH")
     }
     fn hook_in_deform_out_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE")
     }
     fn hook_in_deform_out_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
     }
     fn ankle_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ankle_bone")
+        self.existing_node("ankle_bone")
     }
     fn calf_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("calf_bone")
+        self.existing_node("calf_bone")
     }
     fn pelvis_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pelvis_bone")
+        self.existing_node("pelvis_bone")
     }
     fn thigh_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thigh_bone")
+        self.existing_node("thigh_bone")
     }
     fn toe_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("toe_bone")
+        self.existing_node("toe_bone")
     }
 }
 
@@ -22623,7 +22623,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedSpine3pc {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedSpine3pcInnerExt {
     fn hook_in_deform_out_chest(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -22634,28 +22634,28 @@ pub trait ObjectDeformBoneRigBipedSpine3pcInnerExt {
     fn spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedSpine3pcInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_chest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CHEST")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CHEST")
     }
     fn hook_in_deform_out_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
     }
     fn hook_in_deform_out_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
     }
     fn hook_in_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK")
     }
     fn spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone1")
+        self.existing_node("spine_bone1")
     }
     fn spine_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone2")
+        self.existing_node("spine_bone2")
     }
     fn spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone3")
+        self.existing_node("spine_bone3")
     }
 }
 
@@ -24630,7 +24630,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedSpine5pc {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedSpine5pcInnerExt {
     fn hook_in_deform_out_chest1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_chest2(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -24645,40 +24645,40 @@ pub trait ObjectDeformBoneRigBipedSpine5pcInnerExt {
     fn chest_bone5(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigBipedSpine5pcInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CHEST1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CHEST1")
     }
     fn hook_in_deform_out_chest2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CHEST2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CHEST2")
     }
     fn hook_in_deform_out_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
     }
     fn hook_in_deform_out_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
     }
     fn hook_in_deform_out_lower_back3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK3")
     }
     fn hook_in_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK")
     }
     fn chest_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chest_bone1")
+        self.existing_node("chest_bone1")
     }
     fn chest_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chest_bone2")
+        self.existing_node("chest_bone2")
     }
     fn chest_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chest_bone3")
+        self.existing_node("chest_bone3")
     }
     fn chest_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chest_bone4")
+        self.existing_node("chest_bone4")
     }
     fn chest_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chest_bone5")
+        self.existing_node("chest_bone5")
     }
 }
 
@@ -26653,7 +26653,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedBackLeg {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedBackLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -26670,46 +26670,46 @@ pub trait ObjectDeformBoneRigQuadrupedBackLegInnerExt {
     fn toe_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedBackLegInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
     }
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HIP")
     }
     fn hook_in_deform_out_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN")
     }
     fn hook_in_deform_out_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
     }
     fn hook_in_deform_out_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THIGH")
     }
     fn hook_in_deform_out_thigh_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THIGH_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THIGH_TIP")
     }
     fn hook_in_deform_out_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE")
     }
     fn hook_in_deform_out_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
     }
     fn ankle_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ankle_bone")
+        self.existing_node("ankle_bone")
     }
     fn hip_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("hip_bone")
+        self.existing_node("hip_bone")
     }
     fn shin_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shin_bone")
+        self.existing_node("shin_bone")
     }
     fn thigh_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thigh_bone")
+        self.existing_node("thigh_bone")
     }
     fn toe_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("toe_bone")
+        self.existing_node("toe_bone")
     }
 }
 
@@ -28950,7 +28950,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedFrontLeg {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedFrontLegInnerExt {
     fn hook_in_deform_out_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -28970,55 +28970,55 @@ pub trait ObjectDeformBoneRigQuadrupedFrontLegInnerExt {
     fn wrist_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedFrontLegInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FINGER_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FINGER_END")
     }
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
     }
     fn hook_in_deform_out_forearm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM_TIP")
     }
     fn hook_in_deform_out_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PALM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PALM")
     }
     fn hook_in_deform_out_shoulderblade_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_TIP")
     }
     fn hook_in_deform_out_shoulderblade_tip1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_TIP1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_TIP1")
     }
     fn hook_in_deform_out_shoulder_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDER_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDER_TIP")
     }
     fn hook_in_deform_out_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
     }
     fn hook_in_deform_out_upperarm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_UPPERARM_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_UPPERARM_TIP")
     }
     fn hook_in_deform_out_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_WRIST")
+        self.existing_node("HOOK_IN_DEFORM_OUT_WRIST")
     }
     fn forearm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("forearm_bone")
+        self.existing_node("forearm_bone")
     }
     fn palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("palm_bone")
+        self.existing_node("palm_bone")
     }
     fn shoulder_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shoulder_bone")
+        self.existing_node("shoulder_bone")
     }
     fn shoulderblade_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("shoulderblade_bone")
+        self.existing_node("shoulderblade_bone")
     }
     fn upperarm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("upperarm_bone")
+        self.existing_node("upperarm_bone")
     }
     fn wrist_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("wrist_bone")
+        self.existing_node("wrist_bone")
     }
 }
 
@@ -31377,7 +31377,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedHeadAndNeck
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -31397,55 +31397,55 @@ pub trait ObjectDeformBoneRigQuadrupedHeadAndNeckInnerExt {
     fn right_eye(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HEAD")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HEAD")
     }
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_JAW")
+        self.existing_node("HOOK_IN_DEFORM_OUT_JAW")
     }
     fn hook_in_deform_out_neck_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE1")
     }
     fn hook_in_deform_out_neck_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE2")
     }
     fn hook_in_deform_out_neck_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE3")
     }
     fn hook_in_deform_out_neck_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE4")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE4")
     }
     fn fetch_left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__left_eye")
+        self.existing_node("fetch__left_eye")
     }
     fn fetch_right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__right_eye")
+        self.existing_node("fetch__right_eye")
     }
     fn head_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_bone")
+        self.existing_node("head_bone")
     }
     fn jaw_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("jaw_bone")
+        self.existing_node("jaw_bone")
     }
     fn left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_eye")
+        self.existing_node("left_eye")
     }
     fn neck_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_bone1")
+        self.existing_node("neck_bone1")
     }
     fn neck_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_bone2")
+        self.existing_node("neck_bone2")
     }
     fn neck_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_bone3")
+        self.existing_node("neck_bone3")
     }
     fn neck_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_bone4")
+        self.existing_node("neck_bone4")
     }
     fn right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_eye")
+        self.existing_node("right_eye")
     }
 }
 
@@ -34750,7 +34750,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedIkSpine {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedIkSpineInnerExt {
     fn hook_in_deform_out_sacrum(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_sacrum_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -34776,73 +34776,73 @@ pub trait ObjectDeformBoneRigQuadrupedIkSpineInnerExt {
     fn spine_bone9(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedIkSpineInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_sacrum(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SACRUM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SACRUM")
     }
     fn hook_in_deform_out_sacrum_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SACRUM_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SACRUM_END")
     }
     fn hook_in_deform_out_spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE1")
     }
     fn hook_in_deform_out_spine_bone11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE11")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE11")
     }
     fn hook_in_deform_out_spine_bone13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE13")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE13")
     }
     fn hook_in_deform_out_spine_bone15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE15")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE15")
     }
     fn hook_in_deform_out_spine_bone17(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE17")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE17")
     }
     fn hook_in_deform_out_spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE3")
     }
     fn hook_in_deform_out_spine_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE5")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE5")
     }
     fn hook_in_deform_out_spine_bone7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE7")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE7")
     }
     fn hook_in_deform_out_spine_bone9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE9")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE9")
     }
     fn hook_in_deform_out_spine_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_END")
     }
     fn sacrum_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sacrum_bone")
+        self.existing_node("sacrum_bone")
     }
     fn spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone1")
+        self.existing_node("spine_bone1")
     }
     fn spine_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone2")
+        self.existing_node("spine_bone2")
     }
     fn spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone3")
+        self.existing_node("spine_bone3")
     }
     fn spine_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone4")
+        self.existing_node("spine_bone4")
     }
     fn spine_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone5")
+        self.existing_node("spine_bone5")
     }
     fn spine_bone6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone6")
+        self.existing_node("spine_bone6")
     }
     fn spine_bone7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone7")
+        self.existing_node("spine_bone7")
     }
     fn spine_bone8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone8")
+        self.existing_node("spine_bone8")
     }
     fn spine_bone9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine_bone9")
+        self.existing_node("spine_bone9")
     }
 }
 
@@ -38413,7 +38413,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedTail {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedTailInnerExt {
     fn hook_in_deform_out_tail1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_tail10(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -38440,76 +38440,76 @@ pub trait ObjectDeformBoneRigQuadrupedTailInnerExt {
     fn tail_bone9(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedTailInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_tail1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL1")
     }
     fn hook_in_deform_out_tail10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL10")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL10")
     }
     fn hook_in_deform_out_tail11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL11")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL11")
     }
     fn hook_in_deform_out_tail2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL2")
     }
     fn hook_in_deform_out_tail3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL3")
     }
     fn hook_in_deform_out_tail4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL4")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL4")
     }
     fn hook_in_deform_out_tail5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL5")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL5")
     }
     fn hook_in_deform_out_tail6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL6")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL6")
     }
     fn hook_in_deform_out_tail7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL7")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL7")
     }
     fn hook_in_deform_out_tail8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL8")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL8")
     }
     fn hook_in_deform_out_tail9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL9")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL9")
     }
     fn hook_in_deform_out_tail_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL_ROOT")
     }
     fn tail_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone1")
+        self.existing_node("tail_bone1")
     }
     fn tail_bone10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone10")
+        self.existing_node("tail_bone10")
     }
     fn tail_bone11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone11")
+        self.existing_node("tail_bone11")
     }
     fn tail_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone2")
+        self.existing_node("tail_bone2")
     }
     fn tail_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone3")
+        self.existing_node("tail_bone3")
     }
     fn tail_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone4")
+        self.existing_node("tail_bone4")
     }
     fn tail_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone5")
+        self.existing_node("tail_bone5")
     }
     fn tail_bone6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone6")
+        self.existing_node("tail_bone6")
     }
     fn tail_bone7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone7")
+        self.existing_node("tail_bone7")
     }
     fn tail_bone8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone8")
+        self.existing_node("tail_bone8")
     }
     fn tail_bone9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail_bone9")
+        self.existing_node("tail_bone9")
     }
 }
 
@@ -43144,7 +43144,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedToes4f {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedToes4fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -43189,130 +43189,130 @@ pub trait ObjectDeformBoneRigQuadrupedToes4fInnerExt {
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedToes4fInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn index_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone1")
+        self.existing_node("index_bone1")
     }
     fn index_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone2")
+        self.existing_node("index_bone2")
     }
     fn index_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone3")
+        self.existing_node("index_bone3")
     }
     fn index_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_palm_bone")
+        self.existing_node("index_palm_bone")
     }
     fn middle_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone1")
+        self.existing_node("middle_bone1")
     }
     fn middle_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone2")
+        self.existing_node("middle_bone2")
     }
     fn middle_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone3")
+        self.existing_node("middle_bone3")
     }
     fn middle_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_palm_bone")
+        self.existing_node("middle_palm_bone")
     }
     fn pinky_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone1")
+        self.existing_node("pinky_bone1")
     }
     fn pinky_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone2")
+        self.existing_node("pinky_bone2")
     }
     fn pinky_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone3")
+        self.existing_node("pinky_bone3")
     }
     fn pinky_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_palm_bone")
+        self.existing_node("pinky_palm_bone")
     }
     fn thumb_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone1")
+        self.existing_node("thumb_bone1")
     }
     fn thumb_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone2")
+        self.existing_node("thumb_bone2")
     }
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_palm_bone")
+        self.existing_node("thumb_palm_bone")
     }
 }
 
@@ -49011,7 +49011,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedToes5f {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedToes5fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -49067,163 +49067,163 @@ pub trait ObjectDeformBoneRigQuadrupedToes5fInnerExt {
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformBoneRigQuadrupedToes5fInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1")
     }
     fn hook_in_deform_out_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1_END")
     }
     fn hook_in_deform_out_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2")
     }
     fn hook_in_deform_out_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2_END")
     }
     fn hook_in_deform_out_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING3")
     }
     fn hook_in_deform_out_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
     }
     fn hook_in_deform_out_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn index_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone1")
+        self.existing_node("index_bone1")
     }
     fn index_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone2")
+        self.existing_node("index_bone2")
     }
     fn index_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_bone3")
+        self.existing_node("index_bone3")
     }
     fn index_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("index_palm_bone")
+        self.existing_node("index_palm_bone")
     }
     fn middle_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone1")
+        self.existing_node("middle_bone1")
     }
     fn middle_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone2")
+        self.existing_node("middle_bone2")
     }
     fn middle_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_bone3")
+        self.existing_node("middle_bone3")
     }
     fn middle_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("middle_palm_bone")
+        self.existing_node("middle_palm_bone")
     }
     fn pinky_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone1")
+        self.existing_node("pinky_bone1")
     }
     fn pinky_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone2")
+        self.existing_node("pinky_bone2")
     }
     fn pinky_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_bone3")
+        self.existing_node("pinky_bone3")
     }
     fn pinky_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("pinky_palm_bone")
+        self.existing_node("pinky_palm_bone")
     }
     fn ring_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_bone1")
+        self.existing_node("ring_bone1")
     }
     fn ring_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_bone2")
+        self.existing_node("ring_bone2")
     }
     fn ring_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_bone3")
+        self.existing_node("ring_bone3")
     }
     fn ring_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ring_palm_bone")
+        self.existing_node("ring_palm_bone")
     }
     fn thumb_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone1")
+        self.existing_node("thumb_bone1")
     }
     fn thumb_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_bone2")
+        self.existing_node("thumb_bone2")
     }
     fn thumb_palm_bone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("thumb_palm_bone")
+        self.existing_node("thumb_palm_bone")
     }
 }
 
@@ -50694,7 +50694,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedArm {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedArmInnerExt {
     fn hook_in_deform_out_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_curved_forearm(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -50739,130 +50739,130 @@ pub trait ObjectDeformRigBipedArmInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedArmInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_COLLARBONE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_COLLARBONE")
     }
     fn hook_in_deform_out_curved_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CURVED_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CURVED_FOREARM")
     }
     fn hook_in_deform_out_curved_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CURVED_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CURVED_UPPERARM")
     }
     fn hook_in_deform_out_elbow(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ELBOW")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ELBOW")
     }
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
     }
     fn hook_in_deform_out_forearm_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM_MIDDLE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM_MIDDLE")
     }
     fn hook_in_deform_out_shoulderblade(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE")
     }
     fn hook_in_deform_out_shoulderblade_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_END")
     }
     fn hook_in_deform_out_tip_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TIP_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TIP_FOREARM")
     }
     fn hook_in_deform_out_tip_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TIP_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TIP_UPPERARM")
     }
     fn hook_in_deform_out_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
     }
     fn blend_collarbone_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_collarbone_upperarm")
+        self.existing_node("blend_collarbone_upperarm")
     }
     fn guide_blended_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_upperarm")
+        self.existing_node("guide_blended_upperarm")
     }
     fn guide_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_collarbone")
+        self.existing_node("guide_collarbone")
     }
     fn guide_curved_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_curved_forearm")
+        self.existing_node("guide_curved_forearm")
     }
     fn guide_curved_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_curved_upperarm")
+        self.existing_node("guide_curved_upperarm")
     }
     fn guide_elbow(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_elbow")
+        self.existing_node("guide_elbow")
     }
     fn guide_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_forearm")
+        self.existing_node("guide_forearm")
     }
     fn guide_forearm_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_forearm_middle")
+        self.existing_node("guide_forearm_middle")
     }
     fn guide_shoulderblade(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shoulderblade")
+        self.existing_node("guide_shoulderblade")
     }
     fn guide_shoulderblade_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shoulderblade_end")
+        self.existing_node("guide_shoulderblade_end")
     }
     fn guide_tip_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tip_forearm")
+        self.existing_node("guide_tip_forearm")
     }
     fn guide_tip_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tip_upperarm")
+        self.existing_node("guide_tip_upperarm")
     }
     fn guide_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_upperarm")
+        self.existing_node("guide_upperarm")
     }
     fn joint_elbow(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_elbow")
+        self.existing_node("joint_elbow")
     }
     fn joint_shoulder(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_shoulder")
+        self.existing_node("joint_shoulder")
     }
     fn muscle_anchor_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_collarbone")
+        self.existing_node("muscle_anchor_collarbone")
     }
     fn muscle_anchor_curved_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_curved_forearm")
+        self.existing_node("muscle_anchor_curved_forearm")
     }
     fn muscle_anchor_elbow(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_elbow")
+        self.existing_node("muscle_anchor_elbow")
     }
     fn muscle_anchor_elbow_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_elbow_forearm")
+        self.existing_node("muscle_anchor_elbow_forearm")
     }
     fn muscle_anchor_elbow_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_elbow_upperarm")
+        self.existing_node("muscle_anchor_elbow_upperarm")
     }
     fn muscle_anchor_forearm_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_forearm_middle")
+        self.existing_node("muscle_anchor_forearm_middle")
     }
     fn muscle_anchor_shoulder(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shoulder")
+        self.existing_node("muscle_anchor_shoulder")
     }
     fn muscle_anchor_shoulderblade(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shoulderblade")
+        self.existing_node("muscle_anchor_shoulderblade")
     }
     fn muscle_anchor_shoulderblade_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shoulderblade_end")
+        self.existing_node("muscle_anchor_shoulderblade_end")
     }
     fn muscle_anchor_tip_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tip_forearm")
+        self.existing_node("muscle_anchor_tip_forearm")
     }
     fn muscle_anchor_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_upperarm")
+        self.existing_node("muscle_anchor_upperarm")
     }
     fn muscle_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_forearm")
+        self.existing_node("muscle_forearm")
     }
     fn muscle_shoulderblade(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_shoulderblade")
+        self.existing_node("muscle_shoulderblade")
     }
     fn muscle_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_upperarm")
+        self.existing_node("muscle_upperarm")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -54965,7 +54965,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHand4f2s {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHand4f2sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -55089,367 +55089,367 @@ pub trait ObjectDeformRigBipedHand4f2sInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedHand4f2sInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn hook_in_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_WRIST")
+        self.existing_node("HOOK_IN_WRIST")
     }
     fn blend_1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_1_2")
+        self.existing_node("blend_1_2")
     }
     fn blend_index1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index1_2")
+        self.existing_node("blend_index1_2")
     }
     fn blend_index_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index_root_1")
+        self.existing_node("blend_index_root_1")
     }
     fn blend_middle_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle_root_1")
+        self.existing_node("blend_middle_root_1")
     }
     fn blend_pinky1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky1_2")
+        self.existing_node("blend_pinky1_2")
     }
     fn blend_pinky_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky_root_1")
+        self.existing_node("blend_pinky_root_1")
     }
     fn blend_thumb1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb1_2")
+        self.existing_node("blend_thumb1_2")
     }
     fn blend_thumb_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb_root_1")
+        self.existing_node("blend_thumb_root_1")
     }
     fn guide_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index1")
+        self.existing_node("guide_blended_index1")
     }
     fn guide_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index2")
+        self.existing_node("guide_blended_index2")
     }
     fn guide_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle1")
+        self.existing_node("guide_blended_middle1")
     }
     fn guide_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle2")
+        self.existing_node("guide_blended_middle2")
     }
     fn guide_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky1")
+        self.existing_node("guide_blended_pinky1")
     }
     fn guide_blended_pinky_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_2")
+        self.existing_node("guide_blended_pinky_2")
     }
     fn guide_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb1")
+        self.existing_node("guide_blended_thumb1")
     }
     fn guide_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb2")
+        self.existing_node("guide_blended_thumb2")
     }
     fn guide_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1")
+        self.existing_node("guide_index1")
     }
     fn guide_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1_end")
+        self.existing_node("guide_index1_end")
     }
     fn guide_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index2")
+        self.existing_node("guide_index2")
     }
     fn guide_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root")
+        self.existing_node("guide_index_root")
     }
     fn guide_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root_end")
+        self.existing_node("guide_index_root_end")
     }
     fn guide_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_tip")
+        self.existing_node("guide_index_tip")
     }
     fn guide_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1")
+        self.existing_node("guide_middle1")
     }
     fn guide_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1_end")
+        self.existing_node("guide_middle1_end")
     }
     fn guide_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2")
+        self.existing_node("guide_middle2")
     }
     fn guide_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root")
+        self.existing_node("guide_middle_root")
     }
     fn guide_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root_end")
+        self.existing_node("guide_middle_root_end")
     }
     fn guide_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_tip")
+        self.existing_node("guide_middle_tip")
     }
     fn guide_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1")
+        self.existing_node("guide_pinky1")
     }
     fn guide_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1_end")
+        self.existing_node("guide_pinky1_end")
     }
     fn guide_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2")
+        self.existing_node("guide_pinky2")
     }
     fn guide_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root")
+        self.existing_node("guide_pinky_root")
     }
     fn guide_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root_end")
+        self.existing_node("guide_pinky_root_end")
     }
     fn guide_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_tip")
+        self.existing_node("guide_pinky_tip")
     }
     fn guide_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1")
+        self.existing_node("guide_thumb1")
     }
     fn guide_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1_end")
+        self.existing_node("guide_thumb1_end")
     }
     fn guide_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2")
+        self.existing_node("guide_thumb2")
     }
     fn guide_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root")
+        self.existing_node("guide_thumb_root")
     }
     fn guide_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root_end")
+        self.existing_node("guide_thumb_root_end")
     }
     fn guide_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_tip")
+        self.existing_node("guide_thumb_tip")
     }
     fn joint_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index1")
+        self.existing_node("joint_index1")
     }
     fn joint_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index2")
+        self.existing_node("joint_index2")
     }
     fn joint_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle1")
+        self.existing_node("joint_middle1")
     }
     fn joint_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle2")
+        self.existing_node("joint_middle2")
     }
     fn joint_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky1")
+        self.existing_node("joint_pinky1")
     }
     fn joint_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky2")
+        self.existing_node("joint_pinky2")
     }
     fn joint_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb1")
+        self.existing_node("joint_thumb1")
     }
     fn joint_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb2")
+        self.existing_node("joint_thumb2")
     }
     fn joint_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_wrist")
+        self.existing_node("joint_wrist")
     }
     fn muscle_anchor_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index1")
+        self.existing_node("muscle_anchor_blended_index1")
     }
     fn muscle_anchor_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index2")
+        self.existing_node("muscle_anchor_blended_index2")
     }
     fn muscle_anchor_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle1")
+        self.existing_node("muscle_anchor_blended_middle1")
     }
     fn muscle_anchor_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle2")
+        self.existing_node("muscle_anchor_blended_middle2")
     }
     fn muscle_anchor_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky1")
+        self.existing_node("muscle_anchor_blended_pinky1")
     }
     fn muscle_anchor_blended_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky2")
+        self.existing_node("muscle_anchor_blended_pinky2")
     }
     fn muscle_anchor_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb1")
+        self.existing_node("muscle_anchor_blended_thumb1")
     }
     fn muscle_anchor_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb2")
+        self.existing_node("muscle_anchor_blended_thumb2")
     }
     fn muscle_anchor_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1")
+        self.existing_node("muscle_anchor_index1")
     }
     fn muscle_anchor_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1_end")
+        self.existing_node("muscle_anchor_index1_end")
     }
     fn muscle_anchor_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2")
+        self.existing_node("muscle_anchor_index2")
     }
     fn muscle_anchor_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root")
+        self.existing_node("muscle_anchor_index_root")
     }
     fn muscle_anchor_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root_end")
+        self.existing_node("muscle_anchor_index_root_end")
     }
     fn muscle_anchor_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_tip")
+        self.existing_node("muscle_anchor_index_tip")
     }
     fn muscle_anchor_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1")
+        self.existing_node("muscle_anchor_middle1")
     }
     fn muscle_anchor_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1_end")
+        self.existing_node("muscle_anchor_middle1_end")
     }
     fn muscle_anchor_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2")
+        self.existing_node("muscle_anchor_middle2")
     }
     fn muscle_anchor_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root")
+        self.existing_node("muscle_anchor_middle_root")
     }
     fn muscle_anchor_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root_end")
+        self.existing_node("muscle_anchor_middle_root_end")
     }
     fn muscle_anchor_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_tip")
+        self.existing_node("muscle_anchor_middle_tip")
     }
     fn muscle_anchor_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1")
+        self.existing_node("muscle_anchor_pinky1")
     }
     fn muscle_anchor_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1_end")
+        self.existing_node("muscle_anchor_pinky1_end")
     }
     fn muscle_anchor_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2")
+        self.existing_node("muscle_anchor_pinky2")
     }
     fn muscle_anchor_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root")
+        self.existing_node("muscle_anchor_pinky_root")
     }
     fn muscle_anchor_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root_end")
+        self.existing_node("muscle_anchor_pinky_root_end")
     }
     fn muscle_anchor_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_tip")
+        self.existing_node("muscle_anchor_pinky_tip")
     }
     fn muscle_anchor_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1")
+        self.existing_node("muscle_anchor_thumb1")
     }
     fn muscle_anchor_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1_end")
+        self.existing_node("muscle_anchor_thumb1_end")
     }
     fn muscle_anchor_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2")
+        self.existing_node("muscle_anchor_thumb2")
     }
     fn muscle_anchor_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root")
+        self.existing_node("muscle_anchor_thumb_root")
     }
     fn muscle_anchor_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root_end")
+        self.existing_node("muscle_anchor_thumb_root_end")
     }
     fn muscle_anchor_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_tip")
+        self.existing_node("muscle_anchor_thumb_tip")
     }
     fn muscle_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index1")
+        self.existing_node("muscle_index1")
     }
     fn muscle_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index2")
+        self.existing_node("muscle_index2")
     }
     fn muscle_index_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index_palm")
+        self.existing_node("muscle_index_palm")
     }
     fn muscle_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle1")
+        self.existing_node("muscle_middle1")
     }
     fn muscle_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle2")
+        self.existing_node("muscle_middle2")
     }
     fn muscle_middle_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle_palm")
+        self.existing_node("muscle_middle_palm")
     }
     fn muscle_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky1")
+        self.existing_node("muscle_pinky1")
     }
     fn muscle_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky2")
+        self.existing_node("muscle_pinky2")
     }
     fn muscle_pinky_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky_palm")
+        self.existing_node("muscle_pinky_palm")
     }
     fn muscle_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb1")
+        self.existing_node("muscle_thumb1")
     }
     fn muscle_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb2")
+        self.existing_node("muscle_thumb2")
     }
     fn muscle_thumb_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb_palm")
+        self.existing_node("muscle_thumb_palm")
     }
     fn null_flip_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null__flip_direction")
+        self.existing_node("null__flip_direction")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -59860,7 +59860,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHand4f3s {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHand4f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -60028,499 +60028,499 @@ pub trait ObjectDeformRigBipedHand4f3sInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedHand4f3sInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2_END")
     }
     fn hook_in_deform_out_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn hook_in_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_WRIST")
+        self.existing_node("HOOK_IN_WRIST")
     }
     fn blend_1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_1_2")
+        self.existing_node("blend_1_2")
     }
     fn blend_2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_2_3")
+        self.existing_node("blend_2_3")
     }
     fn blend_index1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index1_2")
+        self.existing_node("blend_index1_2")
     }
     fn blend_index2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index2_3")
+        self.existing_node("blend_index2_3")
     }
     fn blend_index_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index_root_1")
+        self.existing_node("blend_index_root_1")
     }
     fn blend_middle_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle_root_1")
+        self.existing_node("blend_middle_root_1")
     }
     fn blend_pinky1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky1_2")
+        self.existing_node("blend_pinky1_2")
     }
     fn blend_pinky2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky2_3")
+        self.existing_node("blend_pinky2_3")
     }
     fn blend_pinky_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky_root_1")
+        self.existing_node("blend_pinky_root_1")
     }
     fn blend_thumb1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb1_2")
+        self.existing_node("blend_thumb1_2")
     }
     fn blend_thumb2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb2_3")
+        self.existing_node("blend_thumb2_3")
     }
     fn blend_thumb_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb_root_1")
+        self.existing_node("blend_thumb_root_1")
     }
     fn guide_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index1")
+        self.existing_node("guide_blended_index1")
     }
     fn guide_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index2")
+        self.existing_node("guide_blended_index2")
     }
     fn guide_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index3")
+        self.existing_node("guide_blended_index3")
     }
     fn guide_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle1")
+        self.existing_node("guide_blended_middle1")
     }
     fn guide_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle2")
+        self.existing_node("guide_blended_middle2")
     }
     fn guide_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle3")
+        self.existing_node("guide_blended_middle3")
     }
     fn guide_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky1")
+        self.existing_node("guide_blended_pinky1")
     }
     fn guide_blended_pinky_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_2")
+        self.existing_node("guide_blended_pinky_2")
     }
     fn guide_blended_pinky_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_3")
+        self.existing_node("guide_blended_pinky_3")
     }
     fn guide_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb1")
+        self.existing_node("guide_blended_thumb1")
     }
     fn guide_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb2")
+        self.existing_node("guide_blended_thumb2")
     }
     fn guide_blended_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb3")
+        self.existing_node("guide_blended_thumb3")
     }
     fn guide_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1")
+        self.existing_node("guide_index1")
     }
     fn guide_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1_end")
+        self.existing_node("guide_index1_end")
     }
     fn guide_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index2")
+        self.existing_node("guide_index2")
     }
     fn guide_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index3")
+        self.existing_node("guide_index3")
     }
     fn guide_index4_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index4_end")
+        self.existing_node("guide_index4_end")
     }
     fn guide_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root")
+        self.existing_node("guide_index_root")
     }
     fn guide_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root_end")
+        self.existing_node("guide_index_root_end")
     }
     fn guide_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_tip")
+        self.existing_node("guide_index_tip")
     }
     fn guide_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1")
+        self.existing_node("guide_middle1")
     }
     fn guide_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1_end")
+        self.existing_node("guide_middle1_end")
     }
     fn guide_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2")
+        self.existing_node("guide_middle2")
     }
     fn guide_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2_end")
+        self.existing_node("guide_middle2_end")
     }
     fn guide_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle3")
+        self.existing_node("guide_middle3")
     }
     fn guide_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root")
+        self.existing_node("guide_middle_root")
     }
     fn guide_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root_end")
+        self.existing_node("guide_middle_root_end")
     }
     fn guide_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_tip")
+        self.existing_node("guide_middle_tip")
     }
     fn guide_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1")
+        self.existing_node("guide_pinky1")
     }
     fn guide_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1_end")
+        self.existing_node("guide_pinky1_end")
     }
     fn guide_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2")
+        self.existing_node("guide_pinky2")
     }
     fn guide_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2_end")
+        self.existing_node("guide_pinky2_end")
     }
     fn guide_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky3")
+        self.existing_node("guide_pinky3")
     }
     fn guide_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root")
+        self.existing_node("guide_pinky_root")
     }
     fn guide_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root_end")
+        self.existing_node("guide_pinky_root_end")
     }
     fn guide_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_tip")
+        self.existing_node("guide_pinky_tip")
     }
     fn guide_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1")
+        self.existing_node("guide_thumb1")
     }
     fn guide_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1_end")
+        self.existing_node("guide_thumb1_end")
     }
     fn guide_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2")
+        self.existing_node("guide_thumb2")
     }
     fn guide_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2_end")
+        self.existing_node("guide_thumb2_end")
     }
     fn guide_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb3")
+        self.existing_node("guide_thumb3")
     }
     fn guide_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root")
+        self.existing_node("guide_thumb_root")
     }
     fn guide_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root_end")
+        self.existing_node("guide_thumb_root_end")
     }
     fn guide_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_tip")
+        self.existing_node("guide_thumb_tip")
     }
     fn joint_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index1")
+        self.existing_node("joint_index1")
     }
     fn joint_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index2")
+        self.existing_node("joint_index2")
     }
     fn joint_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index3")
+        self.existing_node("joint_index3")
     }
     fn joint_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle1")
+        self.existing_node("joint_middle1")
     }
     fn joint_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle2")
+        self.existing_node("joint_middle2")
     }
     fn joint_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle3")
+        self.existing_node("joint_middle3")
     }
     fn joint_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky1")
+        self.existing_node("joint_pinky1")
     }
     fn joint_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky2")
+        self.existing_node("joint_pinky2")
     }
     fn joint_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky3")
+        self.existing_node("joint_pinky3")
     }
     fn joint_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb1")
+        self.existing_node("joint_thumb1")
     }
     fn joint_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb2")
+        self.existing_node("joint_thumb2")
     }
     fn joint_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb3")
+        self.existing_node("joint_thumb3")
     }
     fn joint_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_wrist")
+        self.existing_node("joint_wrist")
     }
     fn mscle_anchor_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("mscle_anchor_index1_end")
+        self.existing_node("mscle_anchor_index1_end")
     }
     fn muscle_anchor_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index1")
+        self.existing_node("muscle_anchor_blended_index1")
     }
     fn muscle_anchor_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index2")
+        self.existing_node("muscle_anchor_blended_index2")
     }
     fn muscle_anchor_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index3")
+        self.existing_node("muscle_anchor_blended_index3")
     }
     fn muscle_anchor_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle1")
+        self.existing_node("muscle_anchor_blended_middle1")
     }
     fn muscle_anchor_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle2")
+        self.existing_node("muscle_anchor_blended_middle2")
     }
     fn muscle_anchor_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle3")
+        self.existing_node("muscle_anchor_blended_middle3")
     }
     fn muscle_anchor_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky1")
+        self.existing_node("muscle_anchor_blended_pinky1")
     }
     fn muscle_anchor_blended_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky2")
+        self.existing_node("muscle_anchor_blended_pinky2")
     }
     fn muscle_anchor_blended_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky3")
+        self.existing_node("muscle_anchor_blended_pinky3")
     }
     fn muscle_anchor_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb1")
+        self.existing_node("muscle_anchor_blended_thumb1")
     }
     fn muscle_anchor_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb2")
+        self.existing_node("muscle_anchor_blended_thumb2")
     }
     fn muscle_anchor_blended_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb3")
+        self.existing_node("muscle_anchor_blended_thumb3")
     }
     fn muscle_anchor_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1")
+        self.existing_node("muscle_anchor_index1")
     }
     fn muscle_anchor_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2")
+        self.existing_node("muscle_anchor_index2")
     }
     fn muscle_anchor_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2_end")
+        self.existing_node("muscle_anchor_index2_end")
     }
     fn muscle_anchor_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index3")
+        self.existing_node("muscle_anchor_index3")
     }
     fn muscle_anchor_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root")
+        self.existing_node("muscle_anchor_index_root")
     }
     fn muscle_anchor_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root_end")
+        self.existing_node("muscle_anchor_index_root_end")
     }
     fn muscle_anchor_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_tip")
+        self.existing_node("muscle_anchor_index_tip")
     }
     fn muscle_anchor_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1")
+        self.existing_node("muscle_anchor_middle1")
     }
     fn muscle_anchor_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1_end")
+        self.existing_node("muscle_anchor_middle1_end")
     }
     fn muscle_anchor_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2")
+        self.existing_node("muscle_anchor_middle2")
     }
     fn muscle_anchor_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2_end")
+        self.existing_node("muscle_anchor_middle2_end")
     }
     fn muscle_anchor_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle3")
+        self.existing_node("muscle_anchor_middle3")
     }
     fn muscle_anchor_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root")
+        self.existing_node("muscle_anchor_middle_root")
     }
     fn muscle_anchor_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root_end")
+        self.existing_node("muscle_anchor_middle_root_end")
     }
     fn muscle_anchor_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_tip")
+        self.existing_node("muscle_anchor_middle_tip")
     }
     fn muscle_anchor_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1")
+        self.existing_node("muscle_anchor_pinky1")
     }
     fn muscle_anchor_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1_end")
+        self.existing_node("muscle_anchor_pinky1_end")
     }
     fn muscle_anchor_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2")
+        self.existing_node("muscle_anchor_pinky2")
     }
     fn muscle_anchor_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2_end")
+        self.existing_node("muscle_anchor_pinky2_end")
     }
     fn muscle_anchor_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky3")
+        self.existing_node("muscle_anchor_pinky3")
     }
     fn muscle_anchor_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root")
+        self.existing_node("muscle_anchor_pinky_root")
     }
     fn muscle_anchor_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root_end")
+        self.existing_node("muscle_anchor_pinky_root_end")
     }
     fn muscle_anchor_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_tip")
+        self.existing_node("muscle_anchor_pinky_tip")
     }
     fn muscle_anchor_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1")
+        self.existing_node("muscle_anchor_thumb1")
     }
     fn muscle_anchor_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1_end")
+        self.existing_node("muscle_anchor_thumb1_end")
     }
     fn muscle_anchor_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2")
+        self.existing_node("muscle_anchor_thumb2")
     }
     fn muscle_anchor_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2_end")
+        self.existing_node("muscle_anchor_thumb2_end")
     }
     fn muscle_anchor_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb3")
+        self.existing_node("muscle_anchor_thumb3")
     }
     fn muscle_anchor_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root")
+        self.existing_node("muscle_anchor_thumb_root")
     }
     fn muscle_anchor_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root_end")
+        self.existing_node("muscle_anchor_thumb_root_end")
     }
     fn muscle_anchor_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_tip")
+        self.existing_node("muscle_anchor_thumb_tip")
     }
     fn muscle_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index1")
+        self.existing_node("muscle_index1")
     }
     fn muscle_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index2")
+        self.existing_node("muscle_index2")
     }
     fn muscle_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index3")
+        self.existing_node("muscle_index3")
     }
     fn muscle_index_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index_palm")
+        self.existing_node("muscle_index_palm")
     }
     fn muscle_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle1")
+        self.existing_node("muscle_middle1")
     }
     fn muscle_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle2")
+        self.existing_node("muscle_middle2")
     }
     fn muscle_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle3")
+        self.existing_node("muscle_middle3")
     }
     fn muscle_middle_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle_palm")
+        self.existing_node("muscle_middle_palm")
     }
     fn muscle_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky1")
+        self.existing_node("muscle_pinky1")
     }
     fn muscle_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky2")
+        self.existing_node("muscle_pinky2")
     }
     fn muscle_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky3")
+        self.existing_node("muscle_pinky3")
     }
     fn muscle_pinky_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky_palm")
+        self.existing_node("muscle_pinky_palm")
     }
     fn muscle_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb1")
+        self.existing_node("muscle_thumb1")
     }
     fn muscle_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb2")
+        self.existing_node("muscle_thumb2")
     }
     fn muscle_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb3")
+        self.existing_node("muscle_thumb3")
     }
     fn muscle_thumb_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb_palm")
+        self.existing_node("muscle_thumb_palm")
     }
     fn null_flip_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null__flip_direction")
+        self.existing_node("null__flip_direction")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -65841,7 +65841,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHand5f3s {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHand5f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -66049,619 +66049,619 @@ pub trait ObjectDeformRigBipedHand5f3sInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedHand5f3sInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1")
     }
     fn hook_in_deform_out_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1_END")
     }
     fn hook_in_deform_out_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2")
     }
     fn hook_in_deform_out_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2_END")
     }
     fn hook_in_deform_out_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING3")
     }
     fn hook_in_deform_out_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
     }
     fn hook_in_deform_out_ring_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT_END")
     }
     fn hook_in_deform_out_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2_END")
     }
     fn hook_in_deform_out_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB3")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn hook_in_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_WRIST")
+        self.existing_node("HOOK_IN_WRIST")
     }
     fn blend_1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_1_2")
+        self.existing_node("blend_1_2")
     }
     fn blend_1_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_1_3")
+        self.existing_node("blend_1_3")
     }
     fn blend_2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_2_3")
+        self.existing_node("blend_2_3")
     }
     fn blend_2_5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_2_5")
+        self.existing_node("blend_2_5")
     }
     fn blend_index1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index1_2")
+        self.existing_node("blend_index1_2")
     }
     fn blend_index2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index2_3")
+        self.existing_node("blend_index2_3")
     }
     fn blend_index_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index_root_1")
+        self.existing_node("blend_index_root_1")
     }
     fn blend_middle_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle_root_1")
+        self.existing_node("blend_middle_root_1")
     }
     fn blend_pinky1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky1_2")
+        self.existing_node("blend_pinky1_2")
     }
     fn blend_pinky2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky2_3")
+        self.existing_node("blend_pinky2_3")
     }
     fn blend_pinky_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky_root_1")
+        self.existing_node("blend_pinky_root_1")
     }
     fn blend_ring_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_ring_root_1")
+        self.existing_node("blend_ring_root_1")
     }
     fn blend_thumb1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb1_2")
+        self.existing_node("blend_thumb1_2")
     }
     fn blend_thumb2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb2_3")
+        self.existing_node("blend_thumb2_3")
     }
     fn blend_thumb_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb_root_1")
+        self.existing_node("blend_thumb_root_1")
     }
     fn guide_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index1")
+        self.existing_node("guide_blended_index1")
     }
     fn guide_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index2")
+        self.existing_node("guide_blended_index2")
     }
     fn guide_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index3")
+        self.existing_node("guide_blended_index3")
     }
     fn guide_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle1")
+        self.existing_node("guide_blended_middle1")
     }
     fn guide_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle2")
+        self.existing_node("guide_blended_middle2")
     }
     fn guide_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle3")
+        self.existing_node("guide_blended_middle3")
     }
     fn guide_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky1")
+        self.existing_node("guide_blended_pinky1")
     }
     fn guide_blended_pinky_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_2")
+        self.existing_node("guide_blended_pinky_2")
     }
     fn guide_blended_pinky_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_3")
+        self.existing_node("guide_blended_pinky_3")
     }
     fn guide_blended_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ring1")
+        self.existing_node("guide_blended_ring1")
     }
     fn guide_blended_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ring2")
+        self.existing_node("guide_blended_ring2")
     }
     fn guide_blended_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ring3")
+        self.existing_node("guide_blended_ring3")
     }
     fn guide_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb1")
+        self.existing_node("guide_blended_thumb1")
     }
     fn guide_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb2")
+        self.existing_node("guide_blended_thumb2")
     }
     fn guide_blended_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb3")
+        self.existing_node("guide_blended_thumb3")
     }
     fn guide_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1")
+        self.existing_node("guide_index1")
     }
     fn guide_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1_end")
+        self.existing_node("guide_index1_end")
     }
     fn guide_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index2")
+        self.existing_node("guide_index2")
     }
     fn guide_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index2_end")
+        self.existing_node("guide_index2_end")
     }
     fn guide_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index3")
+        self.existing_node("guide_index3")
     }
     fn guide_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root")
+        self.existing_node("guide_index_root")
     }
     fn guide_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root_end")
+        self.existing_node("guide_index_root_end")
     }
     fn guide_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_tip")
+        self.existing_node("guide_index_tip")
     }
     fn guide_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1")
+        self.existing_node("guide_middle1")
     }
     fn guide_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1_end")
+        self.existing_node("guide_middle1_end")
     }
     fn guide_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2")
+        self.existing_node("guide_middle2")
     }
     fn guide_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2_end")
+        self.existing_node("guide_middle2_end")
     }
     fn guide_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle3")
+        self.existing_node("guide_middle3")
     }
     fn guide_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root")
+        self.existing_node("guide_middle_root")
     }
     fn guide_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root_end")
+        self.existing_node("guide_middle_root_end")
     }
     fn guide_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_tip")
+        self.existing_node("guide_middle_tip")
     }
     fn guide_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1")
+        self.existing_node("guide_pinky1")
     }
     fn guide_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1_end")
+        self.existing_node("guide_pinky1_end")
     }
     fn guide_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2")
+        self.existing_node("guide_pinky2")
     }
     fn guide_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2_end")
+        self.existing_node("guide_pinky2_end")
     }
     fn guide_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky3")
+        self.existing_node("guide_pinky3")
     }
     fn guide_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root")
+        self.existing_node("guide_pinky_root")
     }
     fn guide_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root_end")
+        self.existing_node("guide_pinky_root_end")
     }
     fn guide_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_tip")
+        self.existing_node("guide_pinky_tip")
     }
     fn guide_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring1")
+        self.existing_node("guide_ring1")
     }
     fn guide_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring1_end")
+        self.existing_node("guide_ring1_end")
     }
     fn guide_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring2")
+        self.existing_node("guide_ring2")
     }
     fn guide_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring2_end")
+        self.existing_node("guide_ring2_end")
     }
     fn guide_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring3")
+        self.existing_node("guide_ring3")
     }
     fn guide_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring_root")
+        self.existing_node("guide_ring_root")
     }
     fn guide_ring_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring_root_end")
+        self.existing_node("guide_ring_root_end")
     }
     fn guide_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring_tip")
+        self.existing_node("guide_ring_tip")
     }
     fn guide_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1")
+        self.existing_node("guide_thumb1")
     }
     fn guide_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1_end")
+        self.existing_node("guide_thumb1_end")
     }
     fn guide_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2")
+        self.existing_node("guide_thumb2")
     }
     fn guide_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2_end")
+        self.existing_node("guide_thumb2_end")
     }
     fn guide_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb3")
+        self.existing_node("guide_thumb3")
     }
     fn guide_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root")
+        self.existing_node("guide_thumb_root")
     }
     fn guide_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root_end")
+        self.existing_node("guide_thumb_root_end")
     }
     fn guide_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_tip")
+        self.existing_node("guide_thumb_tip")
     }
     fn joint_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index1")
+        self.existing_node("joint_index1")
     }
     fn joint_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index2")
+        self.existing_node("joint_index2")
     }
     fn joint_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index3")
+        self.existing_node("joint_index3")
     }
     fn joint_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle1")
+        self.existing_node("joint_middle1")
     }
     fn joint_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle2")
+        self.existing_node("joint_middle2")
     }
     fn joint_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle3")
+        self.existing_node("joint_middle3")
     }
     fn joint_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky1")
+        self.existing_node("joint_pinky1")
     }
     fn joint_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky2")
+        self.existing_node("joint_pinky2")
     }
     fn joint_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky3")
+        self.existing_node("joint_pinky3")
     }
     fn joint_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ring1")
+        self.existing_node("joint_ring1")
     }
     fn joint_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ring2")
+        self.existing_node("joint_ring2")
     }
     fn joint_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ring3")
+        self.existing_node("joint_ring3")
     }
     fn joint_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb1")
+        self.existing_node("joint_thumb1")
     }
     fn joint_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb2")
+        self.existing_node("joint_thumb2")
     }
     fn joint_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb3")
+        self.existing_node("joint_thumb3")
     }
     fn joint_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_wrist")
+        self.existing_node("joint_wrist")
     }
     fn muscle_anchor_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index1")
+        self.existing_node("muscle_anchor_blended_index1")
     }
     fn muscle_anchor_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index2")
+        self.existing_node("muscle_anchor_blended_index2")
     }
     fn muscle_anchor_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index3")
+        self.existing_node("muscle_anchor_blended_index3")
     }
     fn muscle_anchor_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle1")
+        self.existing_node("muscle_anchor_blended_middle1")
     }
     fn muscle_anchor_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle2")
+        self.existing_node("muscle_anchor_blended_middle2")
     }
     fn muscle_anchor_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle3")
+        self.existing_node("muscle_anchor_blended_middle3")
     }
     fn muscle_anchor_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky1")
+        self.existing_node("muscle_anchor_blended_pinky1")
     }
     fn muscle_anchor_blended_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky2")
+        self.existing_node("muscle_anchor_blended_pinky2")
     }
     fn muscle_anchor_blended_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky3")
+        self.existing_node("muscle_anchor_blended_pinky3")
     }
     fn muscle_anchor_blended_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ring1")
+        self.existing_node("muscle_anchor_blended_ring1")
     }
     fn muscle_anchor_blended_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ring2")
+        self.existing_node("muscle_anchor_blended_ring2")
     }
     fn muscle_anchor_blended_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ring3")
+        self.existing_node("muscle_anchor_blended_ring3")
     }
     fn muscle_anchor_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb1")
+        self.existing_node("muscle_anchor_blended_thumb1")
     }
     fn muscle_anchor_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb2")
+        self.existing_node("muscle_anchor_blended_thumb2")
     }
     fn muscle_anchor_blended_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb3")
+        self.existing_node("muscle_anchor_blended_thumb3")
     }
     fn muscle_anchor_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1")
+        self.existing_node("muscle_anchor_index1")
     }
     fn muscle_anchor_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1_end")
+        self.existing_node("muscle_anchor_index1_end")
     }
     fn muscle_anchor_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2")
+        self.existing_node("muscle_anchor_index2")
     }
     fn muscle_anchor_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2_end")
+        self.existing_node("muscle_anchor_index2_end")
     }
     fn muscle_anchor_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index3")
+        self.existing_node("muscle_anchor_index3")
     }
     fn muscle_anchor_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root")
+        self.existing_node("muscle_anchor_index_root")
     }
     fn muscle_anchor_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root_end")
+        self.existing_node("muscle_anchor_index_root_end")
     }
     fn muscle_anchor_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_tip")
+        self.existing_node("muscle_anchor_index_tip")
     }
     fn muscle_anchor_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1")
+        self.existing_node("muscle_anchor_middle1")
     }
     fn muscle_anchor_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1_end")
+        self.existing_node("muscle_anchor_middle1_end")
     }
     fn muscle_anchor_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2")
+        self.existing_node("muscle_anchor_middle2")
     }
     fn muscle_anchor_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2_end")
+        self.existing_node("muscle_anchor_middle2_end")
     }
     fn muscle_anchor_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle3")
+        self.existing_node("muscle_anchor_middle3")
     }
     fn muscle_anchor_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root")
+        self.existing_node("muscle_anchor_middle_root")
     }
     fn muscle_anchor_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root_end")
+        self.existing_node("muscle_anchor_middle_root_end")
     }
     fn muscle_anchor_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_tip")
+        self.existing_node("muscle_anchor_middle_tip")
     }
     fn muscle_anchor_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1")
+        self.existing_node("muscle_anchor_pinky1")
     }
     fn muscle_anchor_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1_end")
+        self.existing_node("muscle_anchor_pinky1_end")
     }
     fn muscle_anchor_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2")
+        self.existing_node("muscle_anchor_pinky2")
     }
     fn muscle_anchor_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2_end")
+        self.existing_node("muscle_anchor_pinky2_end")
     }
     fn muscle_anchor_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky3")
+        self.existing_node("muscle_anchor_pinky3")
     }
     fn muscle_anchor_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root")
+        self.existing_node("muscle_anchor_pinky_root")
     }
     fn muscle_anchor_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root_end")
+        self.existing_node("muscle_anchor_pinky_root_end")
     }
     fn muscle_anchor_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_tip")
+        self.existing_node("muscle_anchor_pinky_tip")
     }
     fn muscle_anchor_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring1")
+        self.existing_node("muscle_anchor_ring1")
     }
     fn muscle_anchor_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring1_end")
+        self.existing_node("muscle_anchor_ring1_end")
     }
     fn muscle_anchor_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring2")
+        self.existing_node("muscle_anchor_ring2")
     }
     fn muscle_anchor_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring2_end")
+        self.existing_node("muscle_anchor_ring2_end")
     }
     fn muscle_anchor_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring3")
+        self.existing_node("muscle_anchor_ring3")
     }
     fn muscle_anchor_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring_root")
+        self.existing_node("muscle_anchor_ring_root")
     }
     fn muscle_anchor_ring_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring_root_end")
+        self.existing_node("muscle_anchor_ring_root_end")
     }
     fn muscle_anchor_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring_tip")
+        self.existing_node("muscle_anchor_ring_tip")
     }
     fn muscle_anchor_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1")
+        self.existing_node("muscle_anchor_thumb1")
     }
     fn muscle_anchor_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1_end")
+        self.existing_node("muscle_anchor_thumb1_end")
     }
     fn muscle_anchor_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2")
+        self.existing_node("muscle_anchor_thumb2")
     }
     fn muscle_anchor_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2_end")
+        self.existing_node("muscle_anchor_thumb2_end")
     }
     fn muscle_anchor_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb3")
+        self.existing_node("muscle_anchor_thumb3")
     }
     fn muscle_anchor_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root")
+        self.existing_node("muscle_anchor_thumb_root")
     }
     fn muscle_anchor_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root_end")
+        self.existing_node("muscle_anchor_thumb_root_end")
     }
     fn muscle_anchor_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_tip")
+        self.existing_node("muscle_anchor_thumb_tip")
     }
     fn muscle_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index1")
+        self.existing_node("muscle_index1")
     }
     fn muscle_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index2")
+        self.existing_node("muscle_index2")
     }
     fn muscle_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index3")
+        self.existing_node("muscle_index3")
     }
     fn muscle_index_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index_palm")
+        self.existing_node("muscle_index_palm")
     }
     fn muscle_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle1")
+        self.existing_node("muscle_middle1")
     }
     fn muscle_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle2")
+        self.existing_node("muscle_middle2")
     }
     fn muscle_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle3")
+        self.existing_node("muscle_middle3")
     }
     fn muscle_middle_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle_palm")
+        self.existing_node("muscle_middle_palm")
     }
     fn muscle_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky1")
+        self.existing_node("muscle_pinky1")
     }
     fn muscle_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky2")
+        self.existing_node("muscle_pinky2")
     }
     fn muscle_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky3")
+        self.existing_node("muscle_pinky3")
     }
     fn muscle_pinky_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky_palm")
+        self.existing_node("muscle_pinky_palm")
     }
     fn muscle_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring1")
+        self.existing_node("muscle_ring1")
     }
     fn muscle_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring2")
+        self.existing_node("muscle_ring2")
     }
     fn muscle_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring3")
+        self.existing_node("muscle_ring3")
     }
     fn muscle_ring_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring_palm")
+        self.existing_node("muscle_ring_palm")
     }
     fn muscle_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb1")
+        self.existing_node("muscle_thumb1")
     }
     fn muscle_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb2")
+        self.existing_node("muscle_thumb2")
     }
     fn muscle_thumb3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb3")
+        self.existing_node("muscle_thumb3")
     }
     fn muscle_thumb_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb_palm")
+        self.existing_node("muscle_thumb_palm")
     }
     fn null_flip_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null__flip_direction")
+        self.existing_node("null__flip_direction")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -67774,7 +67774,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHeadAndNeck {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -67803,82 +67803,82 @@ pub trait ObjectDeformRigBipedHeadAndNeckInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HEAD")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HEAD")
     }
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_JAW")
+        self.existing_node("HOOK_IN_DEFORM_OUT_JAW")
     }
     fn hook_in_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK")
     }
     fn hook_in_deform_out_neck_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_ROOT")
     }
     fn hook_in_spine_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_SPINE_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_SPINE_DEFORM_OUT_NECK")
     }
     fn blend_neck_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__neck_root")
+        self.existing_node("blend__neck_root")
     }
     fn blend_neck1_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_neck1_head")
+        self.existing_node("blend_neck1_head")
     }
     fn blend_neck_neck1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_neck_neck1")
+        self.existing_node("blend_neck_neck1")
     }
     fn bone_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bone_head")
+        self.existing_node("bone_head")
     }
     fn bone_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bone_jaw")
+        self.existing_node("bone_jaw")
     }
     fn fetch_left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__left_eye")
+        self.existing_node("fetch__left_eye")
     }
     fn fetch_right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__right_eye")
+        self.existing_node("fetch__right_eye")
     }
     fn guide_blended_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_head")
+        self.existing_node("guide_blended_head")
     }
     fn guide_blended_neck1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_neck1")
+        self.existing_node("guide_blended_neck1")
     }
     fn guide_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_head")
+        self.existing_node("guide_head")
     }
     fn guide_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_jaw")
+        self.existing_node("guide_jaw")
     }
     fn guide_neck1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck1")
+        self.existing_node("guide_neck1")
     }
     fn guide_neck_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck_root")
+        self.existing_node("guide_neck_root")
     }
     fn left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_eye")
+        self.existing_node("left_eye")
     }
     fn muscle_anchor_blended_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_head")
+        self.existing_node("muscle_anchor_blended_head")
     }
     fn muscle_anchor_blended_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_neck")
+        self.existing_node("muscle_anchor_blended_neck")
     }
     fn muscle_anchor_neck_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck_root")
+        self.existing_node("muscle_anchor_neck_root")
     }
     fn muscle_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_neck")
+        self.existing_node("muscle_neck")
     }
     fn right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_eye")
+        self.existing_node("right_eye")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -69587,7 +69587,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedLeg {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_ankle_tip(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -69643,163 +69643,163 @@ pub trait ObjectDeformRigBipedLegInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedLegInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
     }
     fn hook_in_deform_out_ankle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ANKLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ANKLE_TIP")
     }
     fn hook_in_deform_out_curved_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CURVED_SHIN")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CURVED_SHIN")
     }
     fn hook_in_deform_out_curved_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CURVED_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CURVED_THIGH")
     }
     fn hook_in_deform_out_knee(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_KNEE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_KNEE")
     }
     fn hook_in_deform_out_pelvis(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PELVIS")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PELVIS")
     }
     fn hook_in_deform_out_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN")
     }
     fn hook_in_deform_out_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
     }
     fn hook_in_deform_out_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THIGH")
     }
     fn hook_in_deform_out_tip_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TIP_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TIP_THIGH")
     }
     fn hook_in_deform_out_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE")
     }
     fn hook_in_deform_out_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
     }
     fn blend_ankle_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_ankle_toe")
+        self.existing_node("blend_ankle_toe")
     }
     fn blend_pelvis_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pelvis_thigh")
+        self.existing_node("blend_pelvis_thigh")
     }
     fn blend_shin_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_shin_ankle")
+        self.existing_node("blend_shin_ankle")
     }
     fn guide_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ankle")
+        self.existing_node("guide_ankle")
     }
     fn guide_ankle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ankle_tip")
+        self.existing_node("guide_ankle_tip")
     }
     fn guide_blended_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ankle")
+        self.existing_node("guide_blended_ankle")
     }
     fn guide_blended_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thigh")
+        self.existing_node("guide_blended_thigh")
     }
     fn guide_blended_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_toe")
+        self.existing_node("guide_blended_toe")
     }
     fn guide_curved_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_curved_shin")
+        self.existing_node("guide_curved_shin")
     }
     fn guide_curved_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_curved_thigh")
+        self.existing_node("guide_curved_thigh")
     }
     fn guide_curved_tip_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_curved_tip_thigh")
+        self.existing_node("guide_curved_tip_thigh")
     }
     fn guide_knee(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_knee")
+        self.existing_node("guide_knee")
     }
     fn guide_pelvis(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pelvis")
+        self.existing_node("guide_pelvis")
     }
     fn guide_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shin")
+        self.existing_node("guide_shin")
     }
     fn guide_shin1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shin1")
+        self.existing_node("guide_shin1")
     }
     fn guide_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thigh")
+        self.existing_node("guide_thigh")
     }
     fn guide_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_toe")
+        self.existing_node("guide_toe")
     }
     fn guide_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_toe_end")
+        self.existing_node("guide_toe_end")
     }
     fn joint_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ankle")
+        self.existing_node("joint_ankle")
     }
     fn joint_ball(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ball")
+        self.existing_node("joint_ball")
     }
     fn joint_knee(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_knee")
+        self.existing_node("joint_knee")
     }
     fn muscle_anchor_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ankle")
+        self.existing_node("muscle_anchor_ankle")
     }
     fn muscle_anchor_ankle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ankle_tip")
+        self.existing_node("muscle_anchor_ankle_tip")
     }
     fn muscle_anchor_ball(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ball")
+        self.existing_node("muscle_anchor_ball")
     }
     fn muscle_anchor_blended_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ankle")
+        self.existing_node("muscle_anchor_blended_ankle")
     }
     fn muscle_anchor_blended_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_toe")
+        self.existing_node("muscle_anchor_blended_toe")
     }
     fn muscle_anchor_knee(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_knee")
+        self.existing_node("muscle_anchor_knee")
     }
     fn muscle_anchor_knee_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_knee_shin")
+        self.existing_node("muscle_anchor_knee_shin")
     }
     fn muscle_anchor_knee_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_knee_thigh")
+        self.existing_node("muscle_anchor_knee_thigh")
     }
     fn muscle_anchor_pelvis(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pelvis")
+        self.existing_node("muscle_anchor_pelvis")
     }
     fn muscle_anchor_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shin")
+        self.existing_node("muscle_anchor_shin")
     }
     fn muscle_anchor_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shin_tip")
+        self.existing_node("muscle_anchor_shin_tip")
     }
     fn muscle_anchor_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thigh")
+        self.existing_node("muscle_anchor_thigh")
     }
     fn muscle_anchor_tip_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tip_thigh")
+        self.existing_node("muscle_anchor_tip_thigh")
     }
     fn muscle_anchor_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_toe")
+        self.existing_node("muscle_anchor_toe")
     }
     fn muscle_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ankle")
+        self.existing_node("muscle_ankle")
     }
     fn muscle_calf(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_calf")
+        self.existing_node("muscle_calf")
     }
     fn muscle_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thigh")
+        self.existing_node("muscle_thigh")
     }
     fn muscle_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_toe")
+        self.existing_node("muscle_toe")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -70766,7 +70766,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedSpine3pc {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedSpine3pcInnerExt {
     fn hook_in_deform_out_chest(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -70795,82 +70795,82 @@ pub trait ObjectDeformRigBipedSpine3pcInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedSpine3pcInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_chest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CHEST")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CHEST")
     }
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HIP")
     }
     fn hook_in_deform_out_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
     }
     fn hook_in_deform_out_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
     }
     fn hook_in_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK")
     }
     fn hook_in_deform_out_neck_from_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_FROM_HEAD")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_FROM_HEAD")
     }
     fn blend_chest_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__chest_lower_back2")
+        self.existing_node("blend__chest_lower_back2")
     }
     fn blend_lower_back1_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lower_back1_hip")
+        self.existing_node("blend__lower_back1_hip")
     }
     fn blend_lower_back2_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lower_back2_lower_back1")
+        self.existing_node("blend__lower_back2_lower_back1")
     }
     fn blend_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__neck")
+        self.existing_node("blend__neck")
     }
     fn blend_spine_end_source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__spine_end_source")
+        self.existing_node("blend__spine_end_source")
     }
     fn guide_blended_chest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_chest")
+        self.existing_node("guide_blended_chest")
     }
     fn guide_blended_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_lower_back1")
+        self.existing_node("guide_blended_lower_back1")
     }
     fn guide_blended_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_lower_back2")
+        self.existing_node("guide_blended_lower_back2")
     }
     fn guide_chest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_chest")
+        self.existing_node("guide_chest")
     }
     fn guide_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_hip")
+        self.existing_node("guide_hip")
     }
     fn guide_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_lower_back1")
+        self.existing_node("guide_lower_back1")
     }
     fn guide_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_lower_back2")
+        self.existing_node("guide_lower_back2")
     }
     fn guide_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck")
+        self.existing_node("guide_neck")
     }
     fn muscle_anchor_chest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_chest")
+        self.existing_node("muscle_anchor_chest")
     }
     fn muscle_anchor_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_lower_back1")
+        self.existing_node("muscle_anchor_lower_back1")
     }
     fn muscle_anchor_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_lower_back2")
+        self.existing_node("muscle_anchor_lower_back2")
     }
     fn muscle_anchor_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck")
+        self.existing_node("muscle_anchor_neck")
     }
     fn muscle_spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_spine")
+        self.existing_node("muscle_spine")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -71893,7 +71893,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedSpine5pc {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedSpine5pcInnerExt {
     fn hook_in_deform_out_chest1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_chest2(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -71932,112 +71932,112 @@ pub trait ObjectDeformRigBipedSpine5pcInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigBipedSpine5pcInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CHEST1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CHEST1")
     }
     fn hook_in_deform_out_chest2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_CHEST2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_CHEST2")
     }
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HIP")
     }
     fn hook_in_deform_out_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK1")
     }
     fn hook_in_deform_out_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK2")
     }
     fn hook_in_deform_out_lower_back3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_LOWER_BACK3")
     }
     fn hook_in_deform_out_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK")
     }
     fn hook_in_deform_out_neck_from_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_FROM_HEAD")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_FROM_HEAD")
     }
     fn blend_chest2_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__chest2_chest1")
+        self.existing_node("blend__chest2_chest1")
     }
     fn blend_chest_lower_back3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__chest_lower_back3")
+        self.existing_node("blend__chest_lower_back3")
     }
     fn blend_lower_back1_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lower_back1_lower_back2")
+        self.existing_node("blend__lower_back1_lower_back2")
     }
     fn blend_lower_back2_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lower_back2_lower_back1")
+        self.existing_node("blend__lower_back2_lower_back1")
     }
     fn blend_lower_back_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lower_back_hip")
+        self.existing_node("blend__lower_back_hip")
     }
     fn blend_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__neck")
+        self.existing_node("blend__neck")
     }
     fn blend_spine_end_source(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__spine_end_source")
+        self.existing_node("blend__spine_end_source")
     }
     fn guide_blended_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_chest1")
+        self.existing_node("guide_blended_chest1")
     }
     fn guide_blended_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_hip")
+        self.existing_node("guide_blended_hip")
     }
     fn guide_blended_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_lower_back1")
+        self.existing_node("guide_blended_lower_back1")
     }
     fn guide_blended_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_lower_back2")
+        self.existing_node("guide_blended_lower_back2")
     }
     fn guide_blended_lower_back3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_lower_back3")
+        self.existing_node("guide_blended_lower_back3")
     }
     fn guide_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_chest1")
+        self.existing_node("guide_chest1")
     }
     fn guide_chest2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_chest2")
+        self.existing_node("guide_chest2")
     }
     fn guide_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_hip")
+        self.existing_node("guide_hip")
     }
     fn guide_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_lower_back1")
+        self.existing_node("guide_lower_back1")
     }
     fn guide_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_lower_back2")
+        self.existing_node("guide_lower_back2")
     }
     fn guide_lower_back3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_lower_back3")
+        self.existing_node("guide_lower_back3")
     }
     fn guide_neck1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck1")
+        self.existing_node("guide_neck1")
     }
     fn muscle_anchor_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_chest1")
+        self.existing_node("muscle_anchor_chest1")
     }
     fn muscle_anchor_chest2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_chest2")
+        self.existing_node("muscle_anchor_chest2")
     }
     fn muscle_anchor_lower_back1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_lower_back1")
+        self.existing_node("muscle_anchor_lower_back1")
     }
     fn muscle_anchor_lower_back2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_lower_back2")
+        self.existing_node("muscle_anchor_lower_back2")
     }
     fn muscle_anchor_lower_back3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_lower_back3")
+        self.existing_node("muscle_anchor_lower_back3")
     }
     fn muscle_anchor_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck")
+        self.existing_node("muscle_anchor_neck")
     }
     fn muscle_spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_spine")
+        self.existing_node("muscle_spine")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -73634,7 +73634,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedBackLeg {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedBackLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -73681,136 +73681,136 @@ pub trait ObjectDeformRigQuadrupedBackLegInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedBackLegInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ANKLE")
     }
     fn hook_in_deform_out_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HIP")
     }
     fn hook_in_deform_out_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN")
     }
     fn hook_in_deform_out_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHIN_TIP")
     }
     fn hook_in_deform_out_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THIGH")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THIGH")
     }
     fn hook_in_deform_out_thigh_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THIGH_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THIGH_TIP")
     }
     fn hook_in_deform_out_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE")
     }
     fn hook_in_deform_out_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TOE_END")
     }
     fn blend_ankle_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_ankle_toe")
+        self.existing_node("blend_ankle_toe")
     }
     fn blend_pelvis_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pelvis_thigh")
+        self.existing_node("blend_pelvis_thigh")
     }
     fn blend_shin_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_shin_ankle")
+        self.existing_node("blend_shin_ankle")
     }
     fn blend_thigh_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thigh_shin")
+        self.existing_node("blend_thigh_shin")
     }
     fn guide_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ankle")
+        self.existing_node("guide_ankle")
     }
     fn guide_blended_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ankle")
+        self.existing_node("guide_blended_ankle")
     }
     fn guide_blended_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_shin")
+        self.existing_node("guide_blended_shin")
     }
     fn guide_blended_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thigh")
+        self.existing_node("guide_blended_thigh")
     }
     fn guide_blended_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_toe")
+        self.existing_node("guide_blended_toe")
     }
     fn guide_pelvis(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pelvis")
+        self.existing_node("guide_pelvis")
     }
     fn guide_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shin")
+        self.existing_node("guide_shin")
     }
     fn guide_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shin_tip")
+        self.existing_node("guide_shin_tip")
     }
     fn guide_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thigh")
+        self.existing_node("guide_thigh")
     }
     fn guide_thigh_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thigh_tip")
+        self.existing_node("guide_thigh_tip")
     }
     fn guide_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_toe")
+        self.existing_node("guide_toe")
     }
     fn guide_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_toe_end")
+        self.existing_node("guide_toe_end")
     }
     fn joint_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ankle")
+        self.existing_node("joint_ankle")
     }
     fn joint_ball(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ball")
+        self.existing_node("joint_ball")
     }
     fn joint_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_hip")
+        self.existing_node("joint_hip")
     }
     fn joint_knee(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_knee")
+        self.existing_node("joint_knee")
     }
     fn muscle_anchor_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ankle")
+        self.existing_node("muscle_anchor_ankle")
     }
     fn muscle_anchor_blended_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ankle")
+        self.existing_node("muscle_anchor_blended_ankle")
     }
     fn muscle_anchor_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_hip")
+        self.existing_node("muscle_anchor_hip")
     }
     fn muscle_anchor_knee(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_knee")
+        self.existing_node("muscle_anchor_knee")
     }
     fn muscle_anchor_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shin")
+        self.existing_node("muscle_anchor_shin")
     }
     fn muscle_anchor_shin_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shin_tip")
+        self.existing_node("muscle_anchor_shin_tip")
     }
     fn muscle_anchor_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thigh")
+        self.existing_node("muscle_anchor_thigh")
     }
     fn muscle_anchor_thigh_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thigh_tip")
+        self.existing_node("muscle_anchor_thigh_tip")
     }
     fn muscle_anchor_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_toe")
+        self.existing_node("muscle_anchor_toe")
     }
     fn muscle_anchor_toe_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_toe_end")
+        self.existing_node("muscle_anchor_toe_end")
     }
     fn muscle_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ankle")
+        self.existing_node("muscle_ankle")
     }
     fn muscle_shin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_shin")
+        self.existing_node("muscle_shin")
     }
     fn muscle_thigh(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thigh")
+        self.existing_node("muscle_thigh")
     }
     fn muscle_toe(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_toe")
+        self.existing_node("muscle_toe")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -75407,7 +75407,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedFrontLeg {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedFrontLegInnerExt {
     fn hook_in_deform_out_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -75454,136 +75454,136 @@ pub trait ObjectDeformRigQuadrupedFrontLegInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedFrontLegInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FINGER_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FINGER_END")
     }
     fn hook_in_deform_out_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM")
     }
     fn hook_in_deform_out_forearm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_FOREARM_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_FOREARM_TIP")
     }
     fn hook_in_deform_out_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PALM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PALM")
     }
     fn hook_in_deform_out_shoulderblade_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SHOULDERBLADE_TIP")
     }
     fn hook_in_deform_out_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_UPPERARM")
     }
     fn hook_in_deform_out_upperarm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_UPPERARM_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_UPPERARM_TIP")
     }
     fn hook_in_deform_out_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_WRIST")
+        self.existing_node("HOOK_IN_DEFORM_OUT_WRIST")
     }
     fn blend_shin_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_shin_wrist")
+        self.existing_node("blend_shin_wrist")
     }
     fn blend_shoulderblade_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_shoulderblade_upperarm")
+        self.existing_node("blend_shoulderblade_upperarm")
     }
     fn blend_thigh_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thigh_forearm")
+        self.existing_node("blend_thigh_forearm")
     }
     fn blend_wrist_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_wrist_palm")
+        self.existing_node("blend_wrist_palm")
     }
     fn guide_blended_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_forearm")
+        self.existing_node("guide_blended_forearm")
     }
     fn guide_blended_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_palm")
+        self.existing_node("guide_blended_palm")
     }
     fn guide_blended_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_upperarm")
+        self.existing_node("guide_blended_upperarm")
     }
     fn guide_blended_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_wrist")
+        self.existing_node("guide_blended_wrist")
     }
     fn guide_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_finger_end")
+        self.existing_node("guide_finger_end")
     }
     fn guide_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_forearm")
+        self.existing_node("guide_forearm")
     }
     fn guide_forearm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_forearm_tip")
+        self.existing_node("guide_forearm_tip")
     }
     fn guide_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_palm")
+        self.existing_node("guide_palm")
     }
     fn guide_shoulderblade_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_shoulderblade_tip")
+        self.existing_node("guide_shoulderblade_tip")
     }
     fn guide_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_upperarm")
+        self.existing_node("guide_upperarm")
     }
     fn guide_upperarm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_upperarm_tip")
+        self.existing_node("guide_upperarm_tip")
     }
     fn guide_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_wrist")
+        self.existing_node("guide_wrist")
     }
     fn joint_elbow(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_elbow")
+        self.existing_node("joint_elbow")
     }
     fn joint_shoulder(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_shoulder")
+        self.existing_node("joint_shoulder")
     }
     fn joint_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_wrist")
+        self.existing_node("joint_wrist")
     }
     fn muscle_anchor_elbow(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_elbow")
+        self.existing_node("muscle_anchor_elbow")
     }
     fn muscle_anchor_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_finger_end")
+        self.existing_node("muscle_anchor_finger_end")
     }
     fn muscle_anchor_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_forearm")
+        self.existing_node("muscle_anchor_forearm")
     }
     fn muscle_anchor_forearm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_forearm_tip")
+        self.existing_node("muscle_anchor_forearm_tip")
     }
     fn muscle_anchor_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_palm")
+        self.existing_node("muscle_anchor_palm")
     }
     fn muscle_anchor_shoulder(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shoulder")
+        self.existing_node("muscle_anchor_shoulder")
     }
     fn muscle_anchor_shoulderblade(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_shoulderblade")
+        self.existing_node("muscle_anchor_shoulderblade")
     }
     fn muscle_anchor_upperarm_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_upperarm_tip")
+        self.existing_node("muscle_anchor_upperarm_tip")
     }
     fn muscle_anchor_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_wrist")
+        self.existing_node("muscle_anchor_wrist")
     }
     fn muscle_anchor_wrist1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_wrist1")
+        self.existing_node("muscle_anchor_wrist1")
     }
     fn muscle_finger(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_finger")
+        self.existing_node("muscle_finger")
     }
     fn muscle_forearm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_forearm")
+        self.existing_node("muscle_forearm")
     }
     fn muscle_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_palm")
+        self.existing_node("muscle_palm")
     }
     fn muscle_upperarm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_upperarm")
+        self.existing_node("muscle_upperarm")
     }
     fn palm_joint(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("palm_joint")
+        self.existing_node("palm_joint")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -76808,7 +76808,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedHeadAndNeck {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -76849,118 +76849,118 @@ pub trait ObjectDeformRigQuadrupedHeadAndNeckInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_HEAD")
+        self.existing_node("HOOK_IN_DEFORM_OUT_HEAD")
     }
     fn hook_in_deform_out_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_JAW")
+        self.existing_node("HOOK_IN_DEFORM_OUT_JAW")
     }
     fn hook_in_deform_out_neck_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE1")
     }
     fn hook_in_deform_out_neck_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE2")
     }
     fn hook_in_deform_out_neck_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE3")
     }
     fn hook_in_deform_out_neck_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE4")
+        self.existing_node("HOOK_IN_DEFORM_OUT_NECK_BONE4")
     }
     fn hook_in_deform_out_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_ROOT")
     }
     fn blend_1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__1_2")
+        self.existing_node("blend__1_2")
     }
     fn blend_2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__2_3")
+        self.existing_node("blend__2_3")
     }
     fn blend_3_4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__3_4")
+        self.existing_node("blend__3_4")
     }
     fn blend_4_5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__4_5")
+        self.existing_node("blend__4_5")
     }
     fn fetch_left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__left_eye")
+        self.existing_node("fetch__left_eye")
     }
     fn fetch_right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fetch__right_eye")
+        self.existing_node("fetch__right_eye")
     }
     fn guide_blended_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_1")
+        self.existing_node("guide_blended_1")
     }
     fn guide_blended_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_2")
+        self.existing_node("guide_blended_2")
     }
     fn guide_blended_4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_4")
+        self.existing_node("guide_blended_4")
     }
     fn guide_blended_6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_6")
+        self.existing_node("guide_blended_6")
     }
     fn guide_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_head")
+        self.existing_node("guide_head")
     }
     fn guide_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_jaw")
+        self.existing_node("guide_jaw")
     }
     fn guide_neck_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck_bone1")
+        self.existing_node("guide_neck_bone1")
     }
     fn guide_neck_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck_bone2")
+        self.existing_node("guide_neck_bone2")
     }
     fn guide_neck_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck_bone3")
+        self.existing_node("guide_neck_bone3")
     }
     fn guide_neck_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_neck_bone4")
+        self.existing_node("guide_neck_bone4")
     }
     fn guide_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_root")
+        self.existing_node("guide_root")
     }
     fn joint_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_head")
+        self.existing_node("joint_head")
     }
     fn joint_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_jaw")
+        self.existing_node("joint_jaw")
     }
     fn left_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_eye")
+        self.existing_node("left_eye")
     }
     fn muscle_anchor_head(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_head")
+        self.existing_node("muscle_anchor_head")
     }
     fn muscle_anchor_jaw(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_jaw")
+        self.existing_node("muscle_anchor_jaw")
     }
     fn muscle_anchor_neck_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck_bone1")
+        self.existing_node("muscle_anchor_neck_bone1")
     }
     fn muscle_anchor_neck_bone2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck_bone2")
+        self.existing_node("muscle_anchor_neck_bone2")
     }
     fn muscle_anchor_neck_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck_bone3")
+        self.existing_node("muscle_anchor_neck_bone3")
     }
     fn muscle_anchor_neck_bone4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_neck_bone4")
+        self.existing_node("muscle_anchor_neck_bone4")
     }
     fn muscle_anchor_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_root")
+        self.existing_node("muscle_anchor_root")
     }
     fn neck_muscle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("neck_muscle")
+        self.existing_node("neck_muscle")
     }
     fn right_eye(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_eye")
+        self.existing_node("right_eye")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -78081,7 +78081,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedIkSpine {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedIkSpineInnerExt {
     fn hook_in_deform_out_sacrum(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -78137,163 +78137,163 @@ pub trait ObjectDeformRigQuadrupedIkSpineInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedIkSpineInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_sacrum(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SACRUM")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SACRUM")
     }
     fn hook_in_deform_out_spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE1")
     }
     fn hook_in_deform_out_spine_bone11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE11")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE11")
     }
     fn hook_in_deform_out_spine_bone13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE13")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE13")
     }
     fn hook_in_deform_out_spine_bone15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE15")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE15")
     }
     fn hook_in_deform_out_spine_bone17(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE17")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE17")
     }
     fn hook_in_deform_out_spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE3")
     }
     fn hook_in_deform_out_spine_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE5")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE5")
     }
     fn hook_in_deform_out_spine_bone7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE7")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE7")
     }
     fn hook_in_deform_out_spine_bone9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE9")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_BONE9")
     }
     fn hook_in_deform_out_spine_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_SPINE_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_SPINE_END")
     }
     fn blend_11_13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__11_13")
+        self.existing_node("blend__11_13")
     }
     fn blend_13_15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__13_15")
+        self.existing_node("blend__13_15")
     }
     fn blend_15_17(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__15_17")
+        self.existing_node("blend__15_17")
     }
     fn blend_17_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__17_end")
+        self.existing_node("blend__17_end")
     }
     fn blend_1_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__1_3")
+        self.existing_node("blend__1_3")
     }
     fn blend_3_5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__3_5")
+        self.existing_node("blend__3_5")
     }
     fn blend_5_7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__5_7")
+        self.existing_node("blend__5_7")
     }
     fn blend_7_9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__7_9")
+        self.existing_node("blend__7_9")
     }
     fn blend_lowerback_9_11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lowerback_9_11")
+        self.existing_node("blend__lowerback_9_11")
     }
     fn guide_blended_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_1")
+        self.existing_node("guide_blended_1")
     }
     fn guide_blended_11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_11")
+        self.existing_node("guide_blended_11")
     }
     fn guide_blended_13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_13")
+        self.existing_node("guide_blended_13")
     }
     fn guide_blended_15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_15")
+        self.existing_node("guide_blended_15")
     }
     fn guide_blended_17(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_17")
+        self.existing_node("guide_blended_17")
     }
     fn guide_blended_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_3")
+        self.existing_node("guide_blended_3")
     }
     fn guide_blended_5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_5")
+        self.existing_node("guide_blended_5")
     }
     fn guide_blended_7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_7")
+        self.existing_node("guide_blended_7")
     }
     fn guide_blended_9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_9")
+        self.existing_node("guide_blended_9")
     }
     fn guide_spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone1")
+        self.existing_node("guide_spine_bone1")
     }
     fn guide_spine_bone11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone11")
+        self.existing_node("guide_spine_bone11")
     }
     fn guide_spine_bone13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone13")
+        self.existing_node("guide_spine_bone13")
     }
     fn guide_spine_bone15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone15")
+        self.existing_node("guide_spine_bone15")
     }
     fn guide_spine_bone17(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone17")
+        self.existing_node("guide_spine_bone17")
     }
     fn guide_spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone3")
+        self.existing_node("guide_spine_bone3")
     }
     fn guide_spine_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone5")
+        self.existing_node("guide_spine_bone5")
     }
     fn guide_spine_bone7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone7")
+        self.existing_node("guide_spine_bone7")
     }
     fn guide_spine_bone9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_bone9")
+        self.existing_node("guide_spine_bone9")
     }
     fn guide_spine_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_spine_end")
+        self.existing_node("guide_spine_end")
     }
     fn joint_hip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_hip")
+        self.existing_node("joint_hip")
     }
     fn muscle_anchor_spine_bone1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone1")
+        self.existing_node("muscle_anchor_spine_bone1")
     }
     fn muscle_anchor_spine_bone11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone11")
+        self.existing_node("muscle_anchor_spine_bone11")
     }
     fn muscle_anchor_spine_bone13(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone13")
+        self.existing_node("muscle_anchor_spine_bone13")
     }
     fn muscle_anchor_spine_bone15(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone15")
+        self.existing_node("muscle_anchor_spine_bone15")
     }
     fn muscle_anchor_spine_bone17(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone17")
+        self.existing_node("muscle_anchor_spine_bone17")
     }
     fn muscle_anchor_spine_bone3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone3")
+        self.existing_node("muscle_anchor_spine_bone3")
     }
     fn muscle_anchor_spine_bone5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone5")
+        self.existing_node("muscle_anchor_spine_bone5")
     }
     fn muscle_anchor_spine_bone7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone7")
+        self.existing_node("muscle_anchor_spine_bone7")
     }
     fn muscle_anchor_spine_bone9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_bone9")
+        self.existing_node("muscle_anchor_spine_bone9")
     }
     fn muscle_anchor_spine_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_spine_end")
+        self.existing_node("muscle_anchor_spine_end")
     }
     fn muscle_spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_spine")
+        self.existing_node("muscle_spine")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -79470,7 +79470,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedTail {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedTailInnerExt {
     fn hook_in_deform_out_tail1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_tail10(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -79534,187 +79534,187 @@ pub trait ObjectDeformRigQuadrupedTailInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedTailInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_tail1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL1")
     }
     fn hook_in_deform_out_tail10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL10")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL10")
     }
     fn hook_in_deform_out_tail11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL11")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL11")
     }
     fn hook_in_deform_out_tail2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL2")
     }
     fn hook_in_deform_out_tail3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL3")
     }
     fn hook_in_deform_out_tail4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL4")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL4")
     }
     fn hook_in_deform_out_tail5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL5")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL5")
     }
     fn hook_in_deform_out_tail6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL6")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL6")
     }
     fn hook_in_deform_out_tail7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL7")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL7")
     }
     fn hook_in_deform_out_tail8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL8")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL8")
     }
     fn hook_in_deform_out_tail9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL9")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL9")
     }
     fn hook_in_deform_out_tail_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_TAIL_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_TAIL_ROOT")
     }
     fn blend_10_11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__10_11")
+        self.existing_node("blend__10_11")
     }
     fn blend_1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__1_2")
+        self.existing_node("blend__1_2")
     }
     fn blend_2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__2_3")
+        self.existing_node("blend__2_3")
     }
     fn blend_3_4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__3_4")
+        self.existing_node("blend__3_4")
     }
     fn blend_5_6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__5_6")
+        self.existing_node("blend__5_6")
     }
     fn blend_6_7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__6_7")
+        self.existing_node("blend__6_7")
     }
     fn blend_7_8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__7_8")
+        self.existing_node("blend__7_8")
     }
     fn blend_8_9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__8_9")
+        self.existing_node("blend__8_9")
     }
     fn blend_9_10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__9_10")
+        self.existing_node("blend__9_10")
     }
     fn blend_lowerback_4_5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__lowerback_4_5")
+        self.existing_node("blend__lowerback_4_5")
     }
     fn blend_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__root_1")
+        self.existing_node("blend__root_1")
     }
     fn guide_blended_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_1")
+        self.existing_node("guide_blended_1")
     }
     fn guide_blended_10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_10")
+        self.existing_node("guide_blended_10")
     }
     fn guide_blended_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_2")
+        self.existing_node("guide_blended_2")
     }
     fn guide_blended_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_3")
+        self.existing_node("guide_blended_3")
     }
     fn guide_blended_4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_4")
+        self.existing_node("guide_blended_4")
     }
     fn guide_blended_5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_5")
+        self.existing_node("guide_blended_5")
     }
     fn guide_blended_6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_6")
+        self.existing_node("guide_blended_6")
     }
     fn guide_blended_7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_7")
+        self.existing_node("guide_blended_7")
     }
     fn guide_blended_8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_8")
+        self.existing_node("guide_blended_8")
     }
     fn guide_blended_9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_9")
+        self.existing_node("guide_blended_9")
     }
     fn guide_blended_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_root")
+        self.existing_node("guide_blended_root")
     }
     fn guide_tail1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail1")
+        self.existing_node("guide_tail1")
     }
     fn guide_tail10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail10")
+        self.existing_node("guide_tail10")
     }
     fn guide_tail11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail11")
+        self.existing_node("guide_tail11")
     }
     fn guide_tail2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail2")
+        self.existing_node("guide_tail2")
     }
     fn guide_tail3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail3")
+        self.existing_node("guide_tail3")
     }
     fn guide_tail4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail4")
+        self.existing_node("guide_tail4")
     }
     fn guide_tail5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail5")
+        self.existing_node("guide_tail5")
     }
     fn guide_tail6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail6")
+        self.existing_node("guide_tail6")
     }
     fn guide_tail7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail7")
+        self.existing_node("guide_tail7")
     }
     fn guide_tail8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail8")
+        self.existing_node("guide_tail8")
     }
     fn guide_tail9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail9")
+        self.existing_node("guide_tail9")
     }
     fn guide_tail_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_tail_root")
+        self.existing_node("guide_tail_root")
     }
     fn muscle_anchor_tail1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail1")
+        self.existing_node("muscle_anchor_tail1")
     }
     fn muscle_anchor_tail10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail10")
+        self.existing_node("muscle_anchor_tail10")
     }
     fn muscle_anchor_tail11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail11")
+        self.existing_node("muscle_anchor_tail11")
     }
     fn muscle_anchor_tail2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail2")
+        self.existing_node("muscle_anchor_tail2")
     }
     fn muscle_anchor_tail3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail3")
+        self.existing_node("muscle_anchor_tail3")
     }
     fn muscle_anchor_tail4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail4")
+        self.existing_node("muscle_anchor_tail4")
     }
     fn muscle_anchor_tail5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail5")
+        self.existing_node("muscle_anchor_tail5")
     }
     fn muscle_anchor_tail6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail6")
+        self.existing_node("muscle_anchor_tail6")
     }
     fn muscle_anchor_tail7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail7")
+        self.existing_node("muscle_anchor_tail7")
     }
     fn muscle_anchor_tail8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail8")
+        self.existing_node("muscle_anchor_tail8")
     }
     fn muscle_anchor_tail9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail9")
+        self.existing_node("muscle_anchor_tail9")
     }
     fn muscle_anchor_tail_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_tail_root")
+        self.existing_node("muscle_anchor_tail_root")
     }
     fn muscle_tail(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_tail")
+        self.existing_node("muscle_tail")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -83915,7 +83915,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedToes4f {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedToes4fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -84071,463 +84071,463 @@ pub trait ObjectDeformRigQuadrupedToes4fInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedToes4fInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_root1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT1")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn hook_in_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_WRIST")
+        self.existing_node("HOOK_IN_WRIST")
     }
     fn blend_index1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index1_2")
+        self.existing_node("blend_index1_2")
     }
     fn blend_index2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index2_3")
+        self.existing_node("blend_index2_3")
     }
     fn blend_index_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index_root_1")
+        self.existing_node("blend_index_root_1")
     }
     fn blend_middle1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle1_2")
+        self.existing_node("blend_middle1_2")
     }
     fn blend_middle2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle2_3")
+        self.existing_node("blend_middle2_3")
     }
     fn blend_middle_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle_root_1")
+        self.existing_node("blend_middle_root_1")
     }
     fn blend_pinky1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky1_2")
+        self.existing_node("blend_pinky1_2")
     }
     fn blend_pinky2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky2_3")
+        self.existing_node("blend_pinky2_3")
     }
     fn blend_pinky_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky_root_1")
+        self.existing_node("blend_pinky_root_1")
     }
     fn blend_thumb1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb1_2")
+        self.existing_node("blend_thumb1_2")
     }
     fn blend_thumb_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb_root_1")
+        self.existing_node("blend_thumb_root_1")
     }
     fn guide_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index1")
+        self.existing_node("guide_blended_index1")
     }
     fn guide_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index2")
+        self.existing_node("guide_blended_index2")
     }
     fn guide_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index3")
+        self.existing_node("guide_blended_index3")
     }
     fn guide_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle1")
+        self.existing_node("guide_blended_middle1")
     }
     fn guide_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle2")
+        self.existing_node("guide_blended_middle2")
     }
     fn guide_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle3")
+        self.existing_node("guide_blended_middle3")
     }
     fn guide_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky1")
+        self.existing_node("guide_blended_pinky1")
     }
     fn guide_blended_pinky_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_2")
+        self.existing_node("guide_blended_pinky_2")
     }
     fn guide_blended_pinky_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_3")
+        self.existing_node("guide_blended_pinky_3")
     }
     fn guide_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb1")
+        self.existing_node("guide_blended_thumb1")
     }
     fn guide_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb2")
+        self.existing_node("guide_blended_thumb2")
     }
     fn guide_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1")
+        self.existing_node("guide_index1")
     }
     fn guide_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1_end")
+        self.existing_node("guide_index1_end")
     }
     fn guide_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index2")
+        self.existing_node("guide_index2")
     }
     fn guide_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index3")
+        self.existing_node("guide_index3")
     }
     fn guide_index4_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index4_end")
+        self.existing_node("guide_index4_end")
     }
     fn guide_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root")
+        self.existing_node("guide_index_root")
     }
     fn guide_index_root1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root1")
+        self.existing_node("guide_index_root1")
     }
     fn guide_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_tip")
+        self.existing_node("guide_index_tip")
     }
     fn guide_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1")
+        self.existing_node("guide_middle1")
     }
     fn guide_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1_end")
+        self.existing_node("guide_middle1_end")
     }
     fn guide_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2")
+        self.existing_node("guide_middle2")
     }
     fn guide_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2_end")
+        self.existing_node("guide_middle2_end")
     }
     fn guide_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle3")
+        self.existing_node("guide_middle3")
     }
     fn guide_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root")
+        self.existing_node("guide_middle_root")
     }
     fn guide_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root_end")
+        self.existing_node("guide_middle_root_end")
     }
     fn guide_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_tip")
+        self.existing_node("guide_middle_tip")
     }
     fn guide_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1")
+        self.existing_node("guide_pinky1")
     }
     fn guide_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1_end")
+        self.existing_node("guide_pinky1_end")
     }
     fn guide_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2")
+        self.existing_node("guide_pinky2")
     }
     fn guide_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2_end")
+        self.existing_node("guide_pinky2_end")
     }
     fn guide_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky3")
+        self.existing_node("guide_pinky3")
     }
     fn guide_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root")
+        self.existing_node("guide_pinky_root")
     }
     fn guide_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root_end")
+        self.existing_node("guide_pinky_root_end")
     }
     fn guide_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_tip")
+        self.existing_node("guide_pinky_tip")
     }
     fn guide_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1")
+        self.existing_node("guide_thumb1")
     }
     fn guide_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1_end")
+        self.existing_node("guide_thumb1_end")
     }
     fn guide_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2")
+        self.existing_node("guide_thumb2")
     }
     fn guide_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root")
+        self.existing_node("guide_thumb_root")
     }
     fn guide_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root_end")
+        self.existing_node("guide_thumb_root_end")
     }
     fn guide_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_tip")
+        self.existing_node("guide_thumb_tip")
     }
     fn joint_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index1")
+        self.existing_node("joint_index1")
     }
     fn joint_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index2")
+        self.existing_node("joint_index2")
     }
     fn joint_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index3")
+        self.existing_node("joint_index3")
     }
     fn joint_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle1")
+        self.existing_node("joint_middle1")
     }
     fn joint_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle2")
+        self.existing_node("joint_middle2")
     }
     fn joint_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle3")
+        self.existing_node("joint_middle3")
     }
     fn joint_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky1")
+        self.existing_node("joint_pinky1")
     }
     fn joint_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky2")
+        self.existing_node("joint_pinky2")
     }
     fn joint_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky3")
+        self.existing_node("joint_pinky3")
     }
     fn joint_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb1")
+        self.existing_node("joint_thumb1")
     }
     fn joint_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb2")
+        self.existing_node("joint_thumb2")
     }
     fn joint_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_wrist")
+        self.existing_node("joint_wrist")
     }
     fn mscle_anchor_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("mscle_anchor_index1_end")
+        self.existing_node("mscle_anchor_index1_end")
     }
     fn muscle_anchor_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index1")
+        self.existing_node("muscle_anchor_blended_index1")
     }
     fn muscle_anchor_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index2")
+        self.existing_node("muscle_anchor_blended_index2")
     }
     fn muscle_anchor_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index3")
+        self.existing_node("muscle_anchor_blended_index3")
     }
     fn muscle_anchor_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle1")
+        self.existing_node("muscle_anchor_blended_middle1")
     }
     fn muscle_anchor_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle2")
+        self.existing_node("muscle_anchor_blended_middle2")
     }
     fn muscle_anchor_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle3")
+        self.existing_node("muscle_anchor_blended_middle3")
     }
     fn muscle_anchor_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky1")
+        self.existing_node("muscle_anchor_blended_pinky1")
     }
     fn muscle_anchor_blended_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky2")
+        self.existing_node("muscle_anchor_blended_pinky2")
     }
     fn muscle_anchor_blended_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky3")
+        self.existing_node("muscle_anchor_blended_pinky3")
     }
     fn muscle_anchor_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb1")
+        self.existing_node("muscle_anchor_blended_thumb1")
     }
     fn muscle_anchor_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb2")
+        self.existing_node("muscle_anchor_blended_thumb2")
     }
     fn muscle_anchor_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1")
+        self.existing_node("muscle_anchor_index1")
     }
     fn muscle_anchor_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2")
+        self.existing_node("muscle_anchor_index2")
     }
     fn muscle_anchor_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2_end")
+        self.existing_node("muscle_anchor_index2_end")
     }
     fn muscle_anchor_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index3")
+        self.existing_node("muscle_anchor_index3")
     }
     fn muscle_anchor_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root")
+        self.existing_node("muscle_anchor_index_root")
     }
     fn muscle_anchor_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root_end")
+        self.existing_node("muscle_anchor_index_root_end")
     }
     fn muscle_anchor_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_tip")
+        self.existing_node("muscle_anchor_index_tip")
     }
     fn muscle_anchor_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1")
+        self.existing_node("muscle_anchor_middle1")
     }
     fn muscle_anchor_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1_end")
+        self.existing_node("muscle_anchor_middle1_end")
     }
     fn muscle_anchor_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2")
+        self.existing_node("muscle_anchor_middle2")
     }
     fn muscle_anchor_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2_end")
+        self.existing_node("muscle_anchor_middle2_end")
     }
     fn muscle_anchor_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle3")
+        self.existing_node("muscle_anchor_middle3")
     }
     fn muscle_anchor_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root")
+        self.existing_node("muscle_anchor_middle_root")
     }
     fn muscle_anchor_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root_end")
+        self.existing_node("muscle_anchor_middle_root_end")
     }
     fn muscle_anchor_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_tip")
+        self.existing_node("muscle_anchor_middle_tip")
     }
     fn muscle_anchor_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1")
+        self.existing_node("muscle_anchor_pinky1")
     }
     fn muscle_anchor_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1_end")
+        self.existing_node("muscle_anchor_pinky1_end")
     }
     fn muscle_anchor_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2")
+        self.existing_node("muscle_anchor_pinky2")
     }
     fn muscle_anchor_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2_end")
+        self.existing_node("muscle_anchor_pinky2_end")
     }
     fn muscle_anchor_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky3")
+        self.existing_node("muscle_anchor_pinky3")
     }
     fn muscle_anchor_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root")
+        self.existing_node("muscle_anchor_pinky_root")
     }
     fn muscle_anchor_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root_end")
+        self.existing_node("muscle_anchor_pinky_root_end")
     }
     fn muscle_anchor_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_tip")
+        self.existing_node("muscle_anchor_pinky_tip")
     }
     fn muscle_anchor_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1")
+        self.existing_node("muscle_anchor_thumb1")
     }
     fn muscle_anchor_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1_end")
+        self.existing_node("muscle_anchor_thumb1_end")
     }
     fn muscle_anchor_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2")
+        self.existing_node("muscle_anchor_thumb2")
     }
     fn muscle_anchor_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2_end")
+        self.existing_node("muscle_anchor_thumb2_end")
     }
     fn muscle_anchor_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root")
+        self.existing_node("muscle_anchor_thumb_root")
     }
     fn muscle_anchor_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root_end")
+        self.existing_node("muscle_anchor_thumb_root_end")
     }
     fn muscle_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index1")
+        self.existing_node("muscle_index1")
     }
     fn muscle_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index2")
+        self.existing_node("muscle_index2")
     }
     fn muscle_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index3")
+        self.existing_node("muscle_index3")
     }
     fn muscle_index_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index_palm")
+        self.existing_node("muscle_index_palm")
     }
     fn muscle_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle1")
+        self.existing_node("muscle_middle1")
     }
     fn muscle_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle2")
+        self.existing_node("muscle_middle2")
     }
     fn muscle_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle3")
+        self.existing_node("muscle_middle3")
     }
     fn muscle_middle_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle_palm")
+        self.existing_node("muscle_middle_palm")
     }
     fn muscle_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky1")
+        self.existing_node("muscle_pinky1")
     }
     fn muscle_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky2")
+        self.existing_node("muscle_pinky2")
     }
     fn muscle_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky3")
+        self.existing_node("muscle_pinky3")
     }
     fn muscle_pinky_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky_palm")
+        self.existing_node("muscle_pinky_palm")
     }
     fn muscle_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb1")
+        self.existing_node("muscle_thumb1")
     }
     fn muscle_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb2")
+        self.existing_node("muscle_thumb2")
     }
     fn muscle_thumb_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb_palm")
+        self.existing_node("muscle_thumb_palm")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -89610,7 +89610,7 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedToes5f {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedToes5fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -89806,583 +89806,583 @@ pub trait ObjectDeformRigQuadrupedToes5fInnerExt {
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDeformRigQuadrupedToes5fInnerExt for crate::core::graph::InnerGraph<'a> {
     fn hook_in_deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1")
     }
     fn hook_in_deform_out_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX1_END")
     }
     fn hook_in_deform_out_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2")
     }
     fn hook_in_deform_out_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX2_END")
     }
     fn hook_in_deform_out_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX3")
     }
     fn hook_in_deform_out_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT")
     }
     fn hook_in_deform_out_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_ROOT_END")
     }
     fn hook_in_deform_out_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_INDEX_TIP")
     }
     fn hook_in_deform_out_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1")
     }
     fn hook_in_deform_out_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE1_END")
     }
     fn hook_in_deform_out_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2")
     }
     fn hook_in_deform_out_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE2_END")
     }
     fn hook_in_deform_out_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE3")
     }
     fn hook_in_deform_out_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT")
     }
     fn hook_in_deform_out_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_ROOT_END")
     }
     fn hook_in_deform_out_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_MIDDLE_TIP")
     }
     fn hook_in_deform_out_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1")
     }
     fn hook_in_deform_out_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY1_END")
     }
     fn hook_in_deform_out_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2")
     }
     fn hook_in_deform_out_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY2_END")
     }
     fn hook_in_deform_out_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY3")
     }
     fn hook_in_deform_out_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT")
     }
     fn hook_in_deform_out_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_ROOT_END")
     }
     fn hook_in_deform_out_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_PINKY_TIP")
     }
     fn hook_in_deform_out_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1")
     }
     fn hook_in_deform_out_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING1_END")
     }
     fn hook_in_deform_out_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2")
     }
     fn hook_in_deform_out_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING2_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING2_END")
     }
     fn hook_in_deform_out_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING3")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING3")
     }
     fn hook_in_deform_out_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT")
     }
     fn hook_in_deform_out_ring_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_ROOT_END")
     }
     fn hook_in_deform_out_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_RING_TIP")
     }
     fn hook_in_deform_out_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1")
     }
     fn hook_in_deform_out_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB1_END")
     }
     fn hook_in_deform_out_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB2")
     }
     fn hook_in_deform_out_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT")
     }
     fn hook_in_deform_out_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_ROOT_END")
     }
     fn hook_in_deform_out_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
+        self.existing_node("HOOK_IN_DEFORM_OUT_THUMB_TIP")
     }
     fn hook_in_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("HOOK_IN_WRIST")
+        self.existing_node("HOOK_IN_WRIST")
     }
     fn blend_index1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index1_2")
+        self.existing_node("blend_index1_2")
     }
     fn blend_index2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index2_3")
+        self.existing_node("blend_index2_3")
     }
     fn blend_index_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_index_root_1")
+        self.existing_node("blend_index_root_1")
     }
     fn blend_middle1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle1_2")
+        self.existing_node("blend_middle1_2")
     }
     fn blend_middle2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle2_3")
+        self.existing_node("blend_middle2_3")
     }
     fn blend_middle_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_middle_root_1")
+        self.existing_node("blend_middle_root_1")
     }
     fn blend_pinky1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky1_2")
+        self.existing_node("blend_pinky1_2")
     }
     fn blend_pinky2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky2_3")
+        self.existing_node("blend_pinky2_3")
     }
     fn blend_pinky_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_pinky_root_1")
+        self.existing_node("blend_pinky_root_1")
     }
     fn blend_ring1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_ring1_2")
+        self.existing_node("blend_ring1_2")
     }
     fn blend_ring2_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_ring2_3")
+        self.existing_node("blend_ring2_3")
     }
     fn blend_ring_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_ring_root_1")
+        self.existing_node("blend_ring_root_1")
     }
     fn blend_thumb1_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb1_2")
+        self.existing_node("blend_thumb1_2")
     }
     fn blend_thumb_root_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend_thumb_root_1")
+        self.existing_node("blend_thumb_root_1")
     }
     fn guide_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index1")
+        self.existing_node("guide_blended_index1")
     }
     fn guide_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index2")
+        self.existing_node("guide_blended_index2")
     }
     fn guide_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_index3")
+        self.existing_node("guide_blended_index3")
     }
     fn guide_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle1")
+        self.existing_node("guide_blended_middle1")
     }
     fn guide_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle2")
+        self.existing_node("guide_blended_middle2")
     }
     fn guide_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_middle3")
+        self.existing_node("guide_blended_middle3")
     }
     fn guide_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky1")
+        self.existing_node("guide_blended_pinky1")
     }
     fn guide_blended_pinky_2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_2")
+        self.existing_node("guide_blended_pinky_2")
     }
     fn guide_blended_pinky_3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_pinky_3")
+        self.existing_node("guide_blended_pinky_3")
     }
     fn guide_blended_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ring1")
+        self.existing_node("guide_blended_ring1")
     }
     fn guide_blended_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ring2")
+        self.existing_node("guide_blended_ring2")
     }
     fn guide_blended_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_ring3")
+        self.existing_node("guide_blended_ring3")
     }
     fn guide_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb1")
+        self.existing_node("guide_blended_thumb1")
     }
     fn guide_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_blended_thumb2")
+        self.existing_node("guide_blended_thumb2")
     }
     fn guide_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1")
+        self.existing_node("guide_index1")
     }
     fn guide_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index1_end")
+        self.existing_node("guide_index1_end")
     }
     fn guide_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index2")
+        self.existing_node("guide_index2")
     }
     fn guide_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index3")
+        self.existing_node("guide_index3")
     }
     fn guide_index4_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index4_end")
+        self.existing_node("guide_index4_end")
     }
     fn guide_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root")
+        self.existing_node("guide_index_root")
     }
     fn guide_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_root_end")
+        self.existing_node("guide_index_root_end")
     }
     fn guide_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_index_tip")
+        self.existing_node("guide_index_tip")
     }
     fn guide_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1")
+        self.existing_node("guide_middle1")
     }
     fn guide_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle1_end")
+        self.existing_node("guide_middle1_end")
     }
     fn guide_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2")
+        self.existing_node("guide_middle2")
     }
     fn guide_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle2_end")
+        self.existing_node("guide_middle2_end")
     }
     fn guide_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle3")
+        self.existing_node("guide_middle3")
     }
     fn guide_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root")
+        self.existing_node("guide_middle_root")
     }
     fn guide_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_root_end")
+        self.existing_node("guide_middle_root_end")
     }
     fn guide_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_middle_tip")
+        self.existing_node("guide_middle_tip")
     }
     fn guide_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1")
+        self.existing_node("guide_pinky1")
     }
     fn guide_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky1_end")
+        self.existing_node("guide_pinky1_end")
     }
     fn guide_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2")
+        self.existing_node("guide_pinky2")
     }
     fn guide_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky2_end")
+        self.existing_node("guide_pinky2_end")
     }
     fn guide_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky3")
+        self.existing_node("guide_pinky3")
     }
     fn guide_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root")
+        self.existing_node("guide_pinky_root")
     }
     fn guide_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_root_end")
+        self.existing_node("guide_pinky_root_end")
     }
     fn guide_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_pinky_tip")
+        self.existing_node("guide_pinky_tip")
     }
     fn guide_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring1")
+        self.existing_node("guide_ring1")
     }
     fn guide_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring1_end")
+        self.existing_node("guide_ring1_end")
     }
     fn guide_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring2")
+        self.existing_node("guide_ring2")
     }
     fn guide_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring2_end")
+        self.existing_node("guide_ring2_end")
     }
     fn guide_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring3")
+        self.existing_node("guide_ring3")
     }
     fn guide_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring_root")
+        self.existing_node("guide_ring_root")
     }
     fn guide_ring_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring_root_end")
+        self.existing_node("guide_ring_root_end")
     }
     fn guide_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_ring_tip")
+        self.existing_node("guide_ring_tip")
     }
     fn guide_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1")
+        self.existing_node("guide_thumb1")
     }
     fn guide_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb1_end")
+        self.existing_node("guide_thumb1_end")
     }
     fn guide_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb2")
+        self.existing_node("guide_thumb2")
     }
     fn guide_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root")
+        self.existing_node("guide_thumb_root")
     }
     fn guide_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_root_end")
+        self.existing_node("guide_thumb_root_end")
     }
     fn guide_thumb_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("guide_thumb_tip")
+        self.existing_node("guide_thumb_tip")
     }
     fn joint_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index1")
+        self.existing_node("joint_index1")
     }
     fn joint_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index2")
+        self.existing_node("joint_index2")
     }
     fn joint_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_index3")
+        self.existing_node("joint_index3")
     }
     fn joint_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle1")
+        self.existing_node("joint_middle1")
     }
     fn joint_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle2")
+        self.existing_node("joint_middle2")
     }
     fn joint_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_middle3")
+        self.existing_node("joint_middle3")
     }
     fn joint_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky1")
+        self.existing_node("joint_pinky1")
     }
     fn joint_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky2")
+        self.existing_node("joint_pinky2")
     }
     fn joint_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_pinky3")
+        self.existing_node("joint_pinky3")
     }
     fn joint_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ring1")
+        self.existing_node("joint_ring1")
     }
     fn joint_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ring2")
+        self.existing_node("joint_ring2")
     }
     fn joint_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_ring3")
+        self.existing_node("joint_ring3")
     }
     fn joint_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb1")
+        self.existing_node("joint_thumb1")
     }
     fn joint_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_thumb2")
+        self.existing_node("joint_thumb2")
     }
     fn joint_wrist(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("joint_wrist")
+        self.existing_node("joint_wrist")
     }
     fn mscle_anchor_index1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("mscle_anchor_index1_end")
+        self.existing_node("mscle_anchor_index1_end")
     }
     fn muscle_anchor_blended_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index1")
+        self.existing_node("muscle_anchor_blended_index1")
     }
     fn muscle_anchor_blended_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index2")
+        self.existing_node("muscle_anchor_blended_index2")
     }
     fn muscle_anchor_blended_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_index3")
+        self.existing_node("muscle_anchor_blended_index3")
     }
     fn muscle_anchor_blended_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle1")
+        self.existing_node("muscle_anchor_blended_middle1")
     }
     fn muscle_anchor_blended_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle2")
+        self.existing_node("muscle_anchor_blended_middle2")
     }
     fn muscle_anchor_blended_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_middle3")
+        self.existing_node("muscle_anchor_blended_middle3")
     }
     fn muscle_anchor_blended_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky1")
+        self.existing_node("muscle_anchor_blended_pinky1")
     }
     fn muscle_anchor_blended_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky2")
+        self.existing_node("muscle_anchor_blended_pinky2")
     }
     fn muscle_anchor_blended_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_pinky3")
+        self.existing_node("muscle_anchor_blended_pinky3")
     }
     fn muscle_anchor_blended_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ring1")
+        self.existing_node("muscle_anchor_blended_ring1")
     }
     fn muscle_anchor_blended_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ring2")
+        self.existing_node("muscle_anchor_blended_ring2")
     }
     fn muscle_anchor_blended_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_ring3")
+        self.existing_node("muscle_anchor_blended_ring3")
     }
     fn muscle_anchor_blended_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb1")
+        self.existing_node("muscle_anchor_blended_thumb1")
     }
     fn muscle_anchor_blended_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_blended_thumb2")
+        self.existing_node("muscle_anchor_blended_thumb2")
     }
     fn muscle_anchor_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index1")
+        self.existing_node("muscle_anchor_index1")
     }
     fn muscle_anchor_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2")
+        self.existing_node("muscle_anchor_index2")
     }
     fn muscle_anchor_index2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index2_end")
+        self.existing_node("muscle_anchor_index2_end")
     }
     fn muscle_anchor_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index3")
+        self.existing_node("muscle_anchor_index3")
     }
     fn muscle_anchor_index_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root")
+        self.existing_node("muscle_anchor_index_root")
     }
     fn muscle_anchor_index_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_root_end")
+        self.existing_node("muscle_anchor_index_root_end")
     }
     fn muscle_anchor_index_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_index_tip")
+        self.existing_node("muscle_anchor_index_tip")
     }
     fn muscle_anchor_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1")
+        self.existing_node("muscle_anchor_middle1")
     }
     fn muscle_anchor_middle1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle1_end")
+        self.existing_node("muscle_anchor_middle1_end")
     }
     fn muscle_anchor_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2")
+        self.existing_node("muscle_anchor_middle2")
     }
     fn muscle_anchor_middle2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle2_end")
+        self.existing_node("muscle_anchor_middle2_end")
     }
     fn muscle_anchor_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle3")
+        self.existing_node("muscle_anchor_middle3")
     }
     fn muscle_anchor_middle_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root")
+        self.existing_node("muscle_anchor_middle_root")
     }
     fn muscle_anchor_middle_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_root_end")
+        self.existing_node("muscle_anchor_middle_root_end")
     }
     fn muscle_anchor_middle_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_tip")
+        self.existing_node("muscle_anchor_middle_tip")
     }
     fn muscle_anchor_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1")
+        self.existing_node("muscle_anchor_pinky1")
     }
     fn muscle_anchor_pinky1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky1_end")
+        self.existing_node("muscle_anchor_pinky1_end")
     }
     fn muscle_anchor_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2")
+        self.existing_node("muscle_anchor_pinky2")
     }
     fn muscle_anchor_pinky2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky2_end")
+        self.existing_node("muscle_anchor_pinky2_end")
     }
     fn muscle_anchor_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky3")
+        self.existing_node("muscle_anchor_pinky3")
     }
     fn muscle_anchor_pinky_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root")
+        self.existing_node("muscle_anchor_pinky_root")
     }
     fn muscle_anchor_pinky_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_root_end")
+        self.existing_node("muscle_anchor_pinky_root_end")
     }
     fn muscle_anchor_pinky_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_pinky_tip")
+        self.existing_node("muscle_anchor_pinky_tip")
     }
     fn muscle_anchor_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring1")
+        self.existing_node("muscle_anchor_ring1")
     }
     fn muscle_anchor_ring1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring1_end")
+        self.existing_node("muscle_anchor_ring1_end")
     }
     fn muscle_anchor_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring2")
+        self.existing_node("muscle_anchor_ring2")
     }
     fn muscle_anchor_ring2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring2_end")
+        self.existing_node("muscle_anchor_ring2_end")
     }
     fn muscle_anchor_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring3")
+        self.existing_node("muscle_anchor_ring3")
     }
     fn muscle_anchor_ring_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring_root")
+        self.existing_node("muscle_anchor_ring_root")
     }
     fn muscle_anchor_ring_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring_root_end")
+        self.existing_node("muscle_anchor_ring_root_end")
     }
     fn muscle_anchor_ring_tip(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_ring_tip")
+        self.existing_node("muscle_anchor_ring_tip")
     }
     fn muscle_anchor_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1")
+        self.existing_node("muscle_anchor_thumb1")
     }
     fn muscle_anchor_thumb1_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb1_end")
+        self.existing_node("muscle_anchor_thumb1_end")
     }
     fn muscle_anchor_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2")
+        self.existing_node("muscle_anchor_thumb2")
     }
     fn muscle_anchor_thumb2_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb2_end")
+        self.existing_node("muscle_anchor_thumb2_end")
     }
     fn muscle_anchor_thumb_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root")
+        self.existing_node("muscle_anchor_thumb_root")
     }
     fn muscle_anchor_thumb_root_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_thumb_root_end")
+        self.existing_node("muscle_anchor_thumb_root_end")
     }
     fn muscle_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index1")
+        self.existing_node("muscle_index1")
     }
     fn muscle_index2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index2")
+        self.existing_node("muscle_index2")
     }
     fn muscle_index3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index3")
+        self.existing_node("muscle_index3")
     }
     fn muscle_index_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_index_palm")
+        self.existing_node("muscle_index_palm")
     }
     fn muscle_middle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle1")
+        self.existing_node("muscle_middle1")
     }
     fn muscle_middle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle2")
+        self.existing_node("muscle_middle2")
     }
     fn muscle_middle3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle3")
+        self.existing_node("muscle_middle3")
     }
     fn muscle_middle_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_middle_palm")
+        self.existing_node("muscle_middle_palm")
     }
     fn muscle_pinky1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky1")
+        self.existing_node("muscle_pinky1")
     }
     fn muscle_pinky2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky2")
+        self.existing_node("muscle_pinky2")
     }
     fn muscle_pinky3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky3")
+        self.existing_node("muscle_pinky3")
     }
     fn muscle_pinky_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_pinky_palm")
+        self.existing_node("muscle_pinky_palm")
     }
     fn muscle_ring1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring1")
+        self.existing_node("muscle_ring1")
     }
     fn muscle_ring2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring2")
+        self.existing_node("muscle_ring2")
     }
     fn muscle_ring3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring3")
+        self.existing_node("muscle_ring3")
     }
     fn muscle_ring_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_ring_palm")
+        self.existing_node("muscle_ring_palm")
     }
     fn muscle_thumb1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb1")
+        self.existing_node("muscle_thumb1")
     }
     fn muscle_thumb2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb2")
+        self.existing_node("muscle_thumb2")
     }
     fn muscle_thumb_palm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_thumb_palm")
+        self.existing_node("muscle_thumb_palm")
     }
     fn scale_null(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("scale_null")
+        self.existing_node("scale_null")
     }
 }
 
@@ -91335,14 +91335,14 @@ impl crate::core::types::HoudiniNode for ObjectDopnet {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDopnetInnerExt {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectDopnetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output")
+        self.existing_node("output")
     }
 }

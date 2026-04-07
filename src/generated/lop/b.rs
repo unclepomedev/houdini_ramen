@@ -433,7 +433,7 @@ impl crate::core::types::HoudiniNode for LopBackgroundplate {
         Some("materiallibrary/background")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopBackgroundplateInnerExt {
     fn material_outputs_and_aovs(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn rx(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -541,319 +541,319 @@ pub trait LopBackgroundplateInnerExt {
     fn subnetinput6(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopBackgroundplateInnerExt for crate::core::graph::InnerGraph<'a> {
     fn material_outputs_and_aovs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/Material_Outputs_and_AOVs")
+        self.existing_node("materiallibrary/background/Material_Outputs_and_AOVs")
     }
     fn rx(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/_rx")
+        self.existing_node("materiallibrary/background/_rx")
     }
     fn ry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/_ry")
+        self.existing_node("materiallibrary/background/_ry")
     }
     fn siny(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/_siny")
+        self.existing_node("materiallibrary/background/_siny")
     }
     fn const1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/const1")
+        self.existing_node("materiallibrary/background/const1")
     }
     fn const4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/const4")
+        self.existing_node("materiallibrary/background/const4")
     }
     fn const5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/const5")
+        self.existing_node("materiallibrary/background/const5")
     }
     fn cos_x(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cos_x")
+        self.existing_node("materiallibrary/background/cos_x")
     }
     fn cos_y(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cos_y")
+        self.existing_node("materiallibrary/background/cos_y")
     }
     fn cos_z(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cos_z")
+        self.existing_node("materiallibrary/background/cos_z")
     }
     fn cosxcosy(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxcosy")
+        self.existing_node("materiallibrary/background/cosxcosy")
     }
     fn cosxcosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxcosz")
+        self.existing_node("materiallibrary/background/cosxcosz")
     }
     fn cosxsiny(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxsiny")
+        self.existing_node("materiallibrary/background/cosxsiny")
     }
     fn cosxsinycosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxsinycosz")
+        self.existing_node("materiallibrary/background/cosxsinycosz")
     }
     fn cosxsinycosz_sinxsinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxsinycosz_sinxsinz")
+        self.existing_node("materiallibrary/background/cosxsinycosz_sinxsinz")
     }
     fn cosxsinysinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxsinysinz")
+        self.existing_node("materiallibrary/background/cosxsinysinz")
     }
     fn cosxsinysinz_sinxcosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxsinysinz_sinxcosz")
+        self.existing_node("materiallibrary/background/cosxsinysinz_sinxcosz")
     }
     fn cosxsinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosxsinz")
+        self.existing_node("materiallibrary/background/cosxsinz")
     }
     fn cosycosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosycosz")
+        self.existing_node("materiallibrary/background/cosycosz")
     }
     fn cosysinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/cosysinz")
+        self.existing_node("materiallibrary/background/cosysinz")
     }
     fn inputs(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/inputs")
+        self.existing_node("materiallibrary/background/inputs")
     }
     fn kma_rayimport1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/kma_rayimport1")
+        self.existing_node("materiallibrary/background/kma_rayimport1")
     }
     fn kma_rayimport2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/kma_rayimport2")
+        self.existing_node("materiallibrary/background/kma_rayimport2")
     }
     fn material_properties(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/material_properties")
+        self.existing_node("materiallibrary/background/material_properties")
     }
     fn mtlxadd1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd1")
+        self.existing_node("materiallibrary/background/mtlxadd1")
     }
     fn mtlxadd2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd2")
+        self.existing_node("materiallibrary/background/mtlxadd2")
     }
     fn mtlxadd3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd3")
+        self.existing_node("materiallibrary/background/mtlxadd3")
     }
     fn mtlxadd4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd4")
+        self.existing_node("materiallibrary/background/mtlxadd4")
     }
     fn mtlxadd5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd5")
+        self.existing_node("materiallibrary/background/mtlxadd5")
     }
     fn mtlxadd6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd6")
+        self.existing_node("materiallibrary/background/mtlxadd6")
     }
     fn mtlxadd8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd8")
+        self.existing_node("materiallibrary/background/mtlxadd8")
     }
     fn mtlxadd9(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxadd9")
+        self.existing_node("materiallibrary/background/mtlxadd9")
     }
     fn mtlxasin1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxasin1")
+        self.existing_node("materiallibrary/background/mtlxasin1")
     }
     fn mtlxatan2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxatan2")
+        self.existing_node("materiallibrary/background/mtlxatan2")
     }
     fn mtlxcombine2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxcombine2")
+        self.existing_node("materiallibrary/background/mtlxcombine2")
     }
     fn mtlxcombine3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxcombine3")
+        self.existing_node("materiallibrary/background/mtlxcombine3")
     }
     fn mtlxcombine4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxcombine4")
+        self.existing_node("materiallibrary/background/mtlxcombine4")
     }
     fn mtlxcombine5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxcombine5")
+        self.existing_node("materiallibrary/background/mtlxcombine5")
     }
     fn mtlxcombine6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxcombine6")
+        self.existing_node("materiallibrary/background/mtlxcombine6")
     }
     fn mtlxcombine7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxcombine7")
+        self.existing_node("materiallibrary/background/mtlxcombine7")
     }
     fn mtlxdisplacement(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdisplacement")
+        self.existing_node("materiallibrary/background/mtlxdisplacement")
     }
     fn mtlxdivide1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdivide1")
+        self.existing_node("materiallibrary/background/mtlxdivide1")
     }
     fn mtlxdotproduct1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdotproduct1")
+        self.existing_node("materiallibrary/background/mtlxdotproduct1")
     }
     fn mtlxdotproduct2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdotproduct2")
+        self.existing_node("materiallibrary/background/mtlxdotproduct2")
     }
     fn mtlxdotproduct3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdotproduct3")
+        self.existing_node("materiallibrary/background/mtlxdotproduct3")
     }
     fn mtlxdotproduct4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdotproduct4")
+        self.existing_node("materiallibrary/background/mtlxdotproduct4")
     }
     fn mtlxdotproduct5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdotproduct5")
+        self.existing_node("materiallibrary/background/mtlxdotproduct5")
     }
     fn mtlxdotproduct6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxdotproduct6")
+        self.existing_node("materiallibrary/background/mtlxdotproduct6")
     }
     fn mtlxif_vx_greatereq_0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxif_vx_greatereq_0")
+        self.existing_node("materiallibrary/background/mtlxif_vx_greatereq_0")
     }
     fn mtlxif_vx_greatereq_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxif_vx_greatereq_1")
+        self.existing_node("materiallibrary/background/mtlxif_vx_greatereq_1")
     }
     fn mtlxif_vy_greatereq_0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxif_vy_greatereq_0")
+        self.existing_node("materiallibrary/background/mtlxif_vy_greatereq_0")
     }
     fn mtlxif_vy_greatereq_1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxif_vy_greatereq_1")
+        self.existing_node("materiallibrary/background/mtlxif_vy_greatereq_1")
     }
     fn mtlxif_vz_greater_0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxif_vz_greater_0")
+        self.existing_node("materiallibrary/background/mtlxif_vz_greater_0")
     }
     fn mtlxifequal1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxifequal1")
+        self.existing_node("materiallibrary/background/mtlxifequal1")
     }
     fn mtlxifequal2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxifequal2")
+        self.existing_node("materiallibrary/background/mtlxifequal2")
     }
     fn mtlximage1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlximage1")
+        self.existing_node("materiallibrary/background/mtlximage1")
     }
     fn mtlximage2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlximage2")
+        self.existing_node("materiallibrary/background/mtlximage2")
     }
     fn mtlxmultiply1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxmultiply1")
+        self.existing_node("materiallibrary/background/mtlxmultiply1")
     }
     fn mtlxmultiply10(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxmultiply10")
+        self.existing_node("materiallibrary/background/mtlxmultiply10")
     }
     fn mtlxmultiply11(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxmultiply11")
+        self.existing_node("materiallibrary/background/mtlxmultiply11")
     }
     fn mtlxmultiply12(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxmultiply12")
+        self.existing_node("materiallibrary/background/mtlxmultiply12")
     }
     fn mtlxmultiply2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxmultiply2")
+        self.existing_node("materiallibrary/background/mtlxmultiply2")
     }
     fn mtlxnormalize1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxnormalize1")
+        self.existing_node("materiallibrary/background/mtlxnormalize1")
     }
     fn mtlxposition1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxposition1")
+        self.existing_node("materiallibrary/background/mtlxposition1")
     }
     fn mtlxseparate2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate2")
+        self.existing_node("materiallibrary/background/mtlxseparate2")
     }
     fn mtlxseparate3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3")
+        self.existing_node("materiallibrary/background/mtlxseparate3")
     }
     fn mtlxseparate3v1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v1")
+        self.existing_node("materiallibrary/background/mtlxseparate3v1")
     }
     fn mtlxseparate3v2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v2")
+        self.existing_node("materiallibrary/background/mtlxseparate3v2")
     }
     fn mtlxseparate3v3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v3")
+        self.existing_node("materiallibrary/background/mtlxseparate3v3")
     }
     fn mtlxseparate3v4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v4")
+        self.existing_node("materiallibrary/background/mtlxseparate3v4")
     }
     fn mtlxseparate3v5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v5")
+        self.existing_node("materiallibrary/background/mtlxseparate3v5")
     }
     fn mtlxseparate3v6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v6")
+        self.existing_node("materiallibrary/background/mtlxseparate3v6")
     }
     fn mtlxseparate3v7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxseparate3v7")
+        self.existing_node("materiallibrary/background/mtlxseparate3v7")
     }
     fn mtlxstandard_surface(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxstandard_surface")
+        self.existing_node("materiallibrary/background/mtlxstandard_surface")
     }
     fn mtlxsubtract1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxsubtract1")
+        self.existing_node("materiallibrary/background/mtlxsubtract1")
     }
     fn mtlxswitch2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxswitch2")
+        self.existing_node("materiallibrary/background/mtlxswitch2")
     }
     fn mtlxtransformvector1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/mtlxtransformvector1")
+        self.existing_node("materiallibrary/background/mtlxtransformvector1")
     }
     fn row1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row1")
+        self.existing_node("materiallibrary/background/row1")
     }
     fn row1_const(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row1_const")
+        self.existing_node("materiallibrary/background/row1_const")
     }
     fn row1_transpose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row1_transpose")
+        self.existing_node("materiallibrary/background/row1_transpose")
     }
     fn row2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row2")
+        self.existing_node("materiallibrary/background/row2")
     }
     fn row2_const(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row2_const")
+        self.existing_node("materiallibrary/background/row2_const")
     }
     fn row2_transpose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row2_transpose")
+        self.existing_node("materiallibrary/background/row2_transpose")
     }
     fn row3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row3")
+        self.existing_node("materiallibrary/background/row3")
     }
     fn row3_const(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row3_const")
+        self.existing_node("materiallibrary/background/row3_const")
     }
     fn row3_transpose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/row3_transpose")
+        self.existing_node("materiallibrary/background/row3_transpose")
     }
     fn sin_x(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sin_x")
+        self.existing_node("materiallibrary/background/sin_x")
     }
     fn sin_y(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sin_y")
+        self.existing_node("materiallibrary/background/sin_y")
     }
     fn sin_z(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sin_z")
+        self.existing_node("materiallibrary/background/sin_z")
     }
     fn sinxcosy(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxcosy")
+        self.existing_node("materiallibrary/background/sinxcosy")
     }
     fn sinxcosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxcosz")
+        self.existing_node("materiallibrary/background/sinxcosz")
     }
     fn sinxsiny(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxsiny")
+        self.existing_node("materiallibrary/background/sinxsiny")
     }
     fn sinxsinycosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxsinycosz")
+        self.existing_node("materiallibrary/background/sinxsinycosz")
     }
     fn sinxsinycosz_cosxsinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxsinycosz_cosxsinz")
+        self.existing_node("materiallibrary/background/sinxsinycosz_cosxsinz")
     }
     fn sinxsinysinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxsinysinz")
+        self.existing_node("materiallibrary/background/sinxsinysinz")
     }
     fn sinxsinysinz_cosxcosz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxsinysinz_cosxcosz")
+        self.existing_node("materiallibrary/background/sinxsinysinz_cosxcosz")
     }
     fn sinxsinz(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/sinxsinz")
+        self.existing_node("materiallibrary/background/sinxsinz")
     }
     fn subnetinput(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput")
+        self.existing_node("materiallibrary/background/subnetinput")
     }
     fn subnetinput1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput1")
+        self.existing_node("materiallibrary/background/subnetinput1")
     }
     fn subnetinput2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput2")
+        self.existing_node("materiallibrary/background/subnetinput2")
     }
     fn subnetinput3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput3")
+        self.existing_node("materiallibrary/background/subnetinput3")
     }
     fn subnetinput4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput4")
+        self.existing_node("materiallibrary/background/subnetinput4")
     }
     fn subnetinput5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput5")
+        self.existing_node("materiallibrary/background/subnetinput5")
     }
     fn subnetinput6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("materiallibrary/background/subnetinput6")
+        self.existing_node("materiallibrary/background/subnetinput6")
     }
 }
 

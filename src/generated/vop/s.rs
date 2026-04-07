@@ -6242,19 +6242,19 @@ impl crate::core::types::HoudiniNode for VopShadow {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait VopShadowInnerExt {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> VopShadowInnerExt for crate::core::graph::InnerGraph<'a> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("global1")
+        self.existing_node("global1")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output1")
+        self.existing_node("output1")
     }
 }
 

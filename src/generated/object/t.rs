@@ -3148,7 +3148,7 @@ impl crate::core::types::HoudiniNode for ObjectThreePointLight {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectThreePointLightInnerExt {
     fn bounce_direction(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn bounce_light(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -3165,46 +3165,46 @@ pub trait ObjectThreePointLightInnerExt {
     fn rotate_to_camera(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectThreePointLightInnerExt for crate::core::graph::InnerGraph<'a> {
     fn bounce_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bounce_direction")
+        self.existing_node("bounce_direction")
     }
     fn bounce_light(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bounce_light")
+        self.existing_node("bounce_light")
     }
     fn camera_position(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("camera_position")
+        self.existing_node("camera_position")
     }
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("constraints")
+        self.existing_node("constraints")
     }
     fn direction_geo(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("direction_geo")
+        self.existing_node("direction_geo")
     }
     fn fill_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fill_direction")
+        self.existing_node("fill_direction")
     }
     fn fill_light(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("fill_light")
+        self.existing_node("fill_light")
     }
     fn key_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("key_direction")
+        self.existing_node("key_direction")
     }
     fn key_light(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("key_light")
+        self.existing_node("key_light")
     }
     fn lighting_target(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lighting_target")
+        self.existing_node("lighting_target")
     }
     fn rim_direction(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rim_direction")
+        self.existing_node("rim_direction")
     }
     fn rim_light(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rim_light")
+        self.existing_node("rim_light")
     }
     fn rotate_to_camera(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rotate_to_camera")
+        self.existing_node("rotate_to_camera")
     }
 }
 
@@ -4714,7 +4714,7 @@ impl crate::core::types::HoudiniNode for ObjectThreepointmuscle {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectThreepointmuscleInnerExt {
     fn blend1_middle(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn blend2_middle(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -4733,52 +4733,52 @@ pub trait ObjectThreepointmuscleInnerExt {
     fn muscle2_anchor_root(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectThreepointmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
     fn blend1_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend1__middle")
+        self.existing_node("blend1__middle")
     }
     fn blend2_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend2__middle")
+        self.existing_node("blend2__middle")
     }
     fn blend_jiggle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__jiggle1")
+        self.existing_node("blend__jiggle1")
     }
     fn blend_jiggle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__jiggle2")
+        self.existing_node("blend__jiggle2")
     }
     fn chopnet(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chopnet")
+        self.existing_node("chopnet")
     }
     fn muscle1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle1")
+        self.existing_node("muscle1")
     }
     fn muscle1_anchor_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle1_anchor_end")
+        self.existing_node("muscle1_anchor_end")
     }
     fn muscle1_anchor_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle1_anchor_middle")
+        self.existing_node("muscle1_anchor_middle")
     }
     fn muscle1_anchor_middle_jiggle_pos(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle1_anchor_middle_jiggle_pos")
+        self.existing_node("muscle1_anchor_middle_jiggle_pos")
     }
     fn muscle1_anchor_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle1_anchor_root")
+        self.existing_node("muscle1_anchor_root")
     }
     fn muscle2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle2")
+        self.existing_node("muscle2")
     }
     fn muscle2_anchor_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle2_anchor_end")
+        self.existing_node("muscle2_anchor_end")
     }
     fn muscle2_anchor_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle2_anchor_middle")
+        self.existing_node("muscle2_anchor_middle")
     }
     fn muscle2_anchor_middle_jiggle_pos(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle2_anchor_middle_jiggle_pos")
+        self.existing_node("muscle2_anchor_middle_jiggle_pos")
     }
     fn muscle2_anchor_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle2_anchor_root")
+        self.existing_node("muscle2_anchor_root")
     }
 }
 
@@ -10166,7 +10166,7 @@ impl crate::core::types::HoudiniNode for ObjectToonCharacter {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectToonCharacterInnerExt {
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -10181,40 +10181,40 @@ pub trait ObjectToonCharacterInnerExt {
     fn toon_character_deform_rig(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectToonCharacterInnerExt for crate::core::graph::InnerGraph<'a> {
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("character_placer")
+        self.existing_node("character_placer")
     }
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_and_neck")
+        self.existing_node("head_and_neck")
     }
     fn left_arm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_arm")
+        self.existing_node("left_arm")
     }
     fn left_hand(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_hand")
+        self.existing_node("left_hand")
     }
     fn left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_leg")
+        self.existing_node("left_leg")
     }
     fn right_arm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_arm")
+        self.existing_node("right_arm")
     }
     fn right_hand(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_hand")
+        self.existing_node("right_hand")
     }
     fn right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_leg")
+        self.existing_node("right_leg")
     }
     fn source_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("source_geometry")
+        self.existing_node("source_geometry")
     }
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine")
+        self.existing_node("spine")
     }
     fn toon_character_deform_rig(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("toon_character_deform_rig")
+        self.existing_node("toon_character_deform_rig")
     }
 }
 
@@ -20523,7 +20523,7 @@ impl crate::core::types::HoudiniNode for ObjectToonCharacterDeformRig {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectToonCharacterDeformRigInnerExt {
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn left_arm(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -20536,34 +20536,34 @@ pub trait ObjectToonCharacterDeformRigInnerExt {
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectToonCharacterDeformRigInnerExt for crate::core::graph::InnerGraph<'a> {
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_and_neck")
+        self.existing_node("head_and_neck")
     }
     fn left_arm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_arm")
+        self.existing_node("left_arm")
     }
     fn left_hand(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_hand")
+        self.existing_node("left_hand")
     }
     fn left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_leg")
+        self.existing_node("left_leg")
     }
     fn right_arm(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_arm")
+        self.existing_node("right_arm")
     }
     fn right_hand(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_hand")
+        self.existing_node("right_hand")
     }
     fn right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_leg")
+        self.existing_node("right_leg")
     }
     fn skin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("skin")
+        self.existing_node("skin")
     }
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine")
+        self.existing_node("spine")
     }
 }
 
@@ -20930,15 +20930,15 @@ impl crate::core::types::HoudiniNode for ObjectTopnet {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectTopnetInnerExt {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectTopnetInnerExt for crate::core::graph::InnerGraph<'a> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("localscheduler")
+        self.existing_node("localscheduler")
     }
 }
 
@@ -22009,7 +22009,7 @@ impl crate::core::types::HoudiniNode for ObjectTwopointmuscle {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectTwopointmuscleInnerExt {
     fn blend_jiggle(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn blend_middle(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -22021,30 +22021,30 @@ pub trait ObjectTwopointmuscleInnerExt {
     fn muscle_anchor_root(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectTwopointmuscleInnerExt for crate::core::graph::InnerGraph<'a> {
     fn blend_jiggle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__jiggle")
+        self.existing_node("blend__jiggle")
     }
     fn blend_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("blend__middle")
+        self.existing_node("blend__middle")
     }
     fn chopnet(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("chopnet")
+        self.existing_node("chopnet")
     }
     fn muscle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle")
+        self.existing_node("muscle")
     }
     fn muscle_anchor_end(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_end")
+        self.existing_node("muscle_anchor_end")
     }
     fn muscle_anchor_middle(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle")
+        self.existing_node("muscle_anchor_middle")
     }
     fn muscle_anchor_middle_jiggle_pos(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_middle_jiggle_pos")
+        self.existing_node("muscle_anchor_middle_jiggle_pos")
     }
     fn muscle_anchor_root(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("muscle_anchor_root")
+        self.existing_node("muscle_anchor_root")
     }
 }

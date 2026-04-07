@@ -1373,7 +1373,7 @@ impl crate::core::types::HoudiniNode for Cop2Anaglyph {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2AnaglyphInnerExt {
     fn combine(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn green_blue(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -1382,22 +1382,22 @@ pub trait Cop2AnaglyphInnerExt {
     fn right_hit(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2AnaglyphInnerExt for crate::core::graph::InnerGraph<'a> {
     fn combine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("combine")
+        self.existing_node("combine")
     }
     fn green_blue(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("green_blue")
+        self.existing_node("green_blue")
     }
     fn left_hit(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("left_HIT")
+        self.existing_node("left_HIT")
     }
     fn red(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("red")
+        self.existing_node("red")
     }
     fn right_hit(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("right_HIT")
+        self.existing_node("right_HIT")
     }
 }
 

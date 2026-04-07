@@ -3423,23 +3423,23 @@ impl crate::core::types::HoudiniNode for LopComponentgeometry {
         Some("sopnet/geo")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopComponentgeometryInnerExt {
     fn default(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn proxy(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn simproxy(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopComponentgeometryInnerExt for crate::core::graph::InnerGraph<'a> {
     fn default(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/geo/default")
+        self.existing_node("sopnet/geo/default")
     }
     fn proxy(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/geo/proxy")
+        self.existing_node("sopnet/geo/proxy")
     }
     fn simproxy(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/geo/simproxy")
+        self.existing_node("sopnet/geo/simproxy")
     }
 }
 
@@ -5690,15 +5690,15 @@ impl crate::core::types::HoudiniNode for LopComponentmaterial {
         Some("edit")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopComponentmaterialInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopComponentmaterialInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("edit/output0")
+        self.existing_node("edit/output0")
     }
 }
 
@@ -7152,15 +7152,15 @@ impl crate::core::types::HoudiniNode for LopComponentoutput {
         Some("extras")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopComponentoutputInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopComponentoutputInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("extras/output0")
+        self.existing_node("extras/output0")
     }
 }
 

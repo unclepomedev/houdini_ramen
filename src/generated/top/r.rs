@@ -3130,19 +3130,19 @@ impl crate::core::types::HoudiniNode for TopRopalembic {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopalembicInnerExt {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopalembicInnerExt for crate::core::graph::InnerGraph<'a> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropfetch1")
+        self.existing_node("ropfetch1")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
 }
 
@@ -5078,15 +5078,15 @@ impl crate::core::types::HoudiniNode for TopRopcomposite {
         Some("c")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopcompositeInnerExt {
     fn pdg_result(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopcompositeInnerExt for crate::core::graph::InnerGraph<'a> {
     fn pdg_result(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("c/pdg_result")
+        self.existing_node("c/pdg_result")
     }
 }
 
@@ -6514,19 +6514,19 @@ impl crate::core::types::HoudiniNode for TopRopfbx {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopfbxInnerExt {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopfbxInnerExt for crate::core::graph::InnerGraph<'a> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropfetch1")
+        self.existing_node("ropfetch1")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
 }
 
@@ -10996,19 +10996,19 @@ impl crate::core::types::HoudiniNode for TopRopflipbook {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopflipbookInnerExt {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopflipbookInnerExt for crate::core::graph::InnerGraph<'a> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropfetch1")
+        self.existing_node("ropfetch1")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
 }
 
@@ -12406,19 +12406,19 @@ impl crate::core::types::HoudiniNode for TopRopgeometry {
         Some("s/s")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopgeometryInnerExt {
     fn incoming(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopgeometryInnerExt for crate::core::graph::InnerGraph<'a> {
     fn incoming(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("s/s/incoming")
+        self.existing_node("s/s/incoming")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("s/s/output1")
+        self.existing_node("s/s/output1")
     }
 }
 
@@ -13897,19 +13897,19 @@ impl crate::core::types::HoudiniNode for TopRopgltf {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopgltfInnerExt {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopgltfInnerExt for crate::core::graph::InnerGraph<'a> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropfetch1")
+        self.existing_node("ropfetch1")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
 }
 
@@ -15724,15 +15724,15 @@ impl crate::core::types::HoudiniNode for TopRopimage {
         Some("c")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopimageInnerExt {
     fn pdg_result(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopimageInnerExt for crate::core::graph::InnerGraph<'a> {
     fn pdg_result(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("c/pdg_result")
+        self.existing_node("c/pdg_result")
     }
 }
 
@@ -20454,19 +20454,19 @@ impl crate::core::types::HoudiniNode for TopRopkarma {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopkarmaInnerExt {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopkarmaInnerExt for crate::core::graph::InnerGraph<'a> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropfetch1")
+        self.existing_node("ropfetch1")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
 }
 
@@ -27175,19 +27175,19 @@ impl crate::core::types::HoudiniNode for TopRopopengl {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopopenglInnerExt {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopopenglInnerExt for crate::core::graph::InnerGraph<'a> {
     fn ropfetch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropfetch1")
+        self.existing_node("ropfetch1")
     }
     fn ropnet1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ropnet1")
+        self.existing_node("ropnet1")
     }
 }
 
@@ -28692,18 +28692,18 @@ impl crate::core::types::HoudiniNode for TopRopusd {
         Some("l")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait TopRopusdInnerExt {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn sopcreate1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> TopRopusdInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("l/OUTPUT")
+        self.existing_node("l/OUTPUT")
     }
     fn sopcreate1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("l/sopcreate1")
+        self.existing_node("l/sopcreate1")
     }
 }

@@ -1491,7 +1491,7 @@ impl crate::core::types::HoudiniNode for ObjectEnvlight {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectEnvlightInnerExt {
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn null1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -1500,22 +1500,22 @@ pub trait ObjectEnvlightInnerExt {
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectEnvlightInnerExt for crate::core::graph::InnerGraph<'a> {
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("constraints")
+        self.existing_node("constraints")
     }
     fn null1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("null1")
+        self.existing_node("null1")
     }
     fn object_merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("object_merge1")
+        self.existing_node("object_merge1")
     }
     fn sky_env_net(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sky_env_net")
+        self.existing_node("sky_env_net")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("switch1")
+        self.existing_node("switch1")
     }
 }
 

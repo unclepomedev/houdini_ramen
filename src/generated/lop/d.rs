@@ -4875,7 +4875,7 @@ impl crate::core::types::HoudiniNode for LopDrop {
         Some("sopnet/dopnet")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopDropInnerExt {
     fn drag1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn geo1(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -4887,31 +4887,31 @@ pub trait LopDropInnerExt {
     fn rigidbodysolver1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopDropInnerExt for crate::core::graph::InnerGraph<'a> {
     fn drag1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/drag1")
+        self.existing_node("sopnet/dopnet/drag1")
     }
     fn geo1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/geo1")
+        self.existing_node("sopnet/dopnet/geo1")
     }
     fn geo2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/geo2")
+        self.existing_node("sopnet/dopnet/geo2")
     }
     fn gravity1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/gravity1")
+        self.existing_node("sopnet/dopnet/gravity1")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/merge1")
+        self.existing_node("sopnet/dopnet/merge1")
     }
     fn merge2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/merge2")
+        self.existing_node("sopnet/dopnet/merge2")
     }
     fn output(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/output")
+        self.existing_node("sopnet/dopnet/output")
     }
     fn rigidbodysolver1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/dopnet/rigidbodysolver1")
+        self.existing_node("sopnet/dopnet/rigidbodysolver1")
     }
 }
 

@@ -567,23 +567,23 @@ impl crate::core::types::HoudiniNode for ObjectCam {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectCamInnerExt {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn xform1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectCamInnerExt for crate::core::graph::InnerGraph<'a> {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("camOrigin")
+        self.existing_node("camOrigin")
     }
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("file1")
+        self.existing_node("file1")
     }
     fn xform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("xform1")
+        self.existing_node("xform1")
     }
 }
 
@@ -1937,15 +1937,15 @@ impl crate::core::types::HoudiniNode for ObjectCop2plane {
         Some("cop2net1")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectCop2planeInnerExt {
     fn default_pic(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectCop2planeInnerExt for crate::core::graph::InnerGraph<'a> {
     fn default_pic(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/default_pic")
+        self.existing_node("cop2net1/default_pic")
     }
 }
 

@@ -8541,7 +8541,7 @@ impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig4f {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectQuadrupedAutoRig4fInnerExt {
     fn back_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn back_left_toes(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -8559,49 +8559,49 @@ pub trait ObjectQuadrupedAutoRig4fInnerExt {
     fn tail(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectQuadrupedAutoRig4fInnerExt for crate::core::graph::InnerGraph<'a> {
     fn back_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_left_leg")
+        self.existing_node("back_left_leg")
     }
     fn back_left_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_left_toes")
+        self.existing_node("back_left_toes")
     }
     fn back_right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_right_leg")
+        self.existing_node("back_right_leg")
     }
     fn back_right_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_right_toes")
+        self.existing_node("back_right_toes")
     }
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("character_placer")
+        self.existing_node("character_placer")
     }
     fn front_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_left_leg")
+        self.existing_node("front_left_leg")
     }
     fn front_left_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_left_toes")
+        self.existing_node("front_left_toes")
     }
     fn front_right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_right_leg")
+        self.existing_node("front_right_leg")
     }
     fn front_right_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_right_toes")
+        self.existing_node("front_right_toes")
     }
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_and_neck")
+        self.existing_node("head_and_neck")
     }
     fn save_proxy_geo(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("save_proxy_geo")
+        self.existing_node("save_proxy_geo")
     }
     fn source_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("source_geometry")
+        self.existing_node("source_geometry")
     }
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine")
+        self.existing_node("spine")
     }
     fn tail(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail")
+        self.existing_node("tail")
     }
 }
 
@@ -18212,7 +18212,7 @@ impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig5f {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectQuadrupedAutoRig5fInnerExt {
     fn back_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn back_left_toes(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -18230,48 +18230,48 @@ pub trait ObjectQuadrupedAutoRig5fInnerExt {
     fn tail(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> ObjectQuadrupedAutoRig5fInnerExt for crate::core::graph::InnerGraph<'a> {
     fn back_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_left_leg")
+        self.existing_node("back_left_leg")
     }
     fn back_left_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_left_toes")
+        self.existing_node("back_left_toes")
     }
     fn back_right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_right_leg")
+        self.existing_node("back_right_leg")
     }
     fn back_right_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("back_right_toes")
+        self.existing_node("back_right_toes")
     }
     fn character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("character_placer")
+        self.existing_node("character_placer")
     }
     fn front_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_left_leg")
+        self.existing_node("front_left_leg")
     }
     fn front_left_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_left_toes")
+        self.existing_node("front_left_toes")
     }
     fn front_right_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_right_leg")
+        self.existing_node("front_right_leg")
     }
     fn front_right_toes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("front_right_toes")
+        self.existing_node("front_right_toes")
     }
     fn head_and_neck(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("head_and_neck")
+        self.existing_node("head_and_neck")
     }
     fn save_proxy_geo(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("save_proxy_geo")
+        self.existing_node("save_proxy_geo")
     }
     fn source_geometry(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("source_geometry")
+        self.existing_node("source_geometry")
     }
     fn spine(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("spine")
+        self.existing_node("spine")
     }
     fn tail(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("tail")
+        self.existing_node("tail")
     }
 }

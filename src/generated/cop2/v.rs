@@ -2789,19 +2789,19 @@ impl crate::core::types::HoudiniNode for Cop2Vopcop2filter {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2Vopcop2filterInnerExt {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2Vopcop2filterInnerExt for crate::core::graph::InnerGraph<'a> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("global1")
+        self.existing_node("global1")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output1")
+        self.existing_node("output1")
     }
 }
 
@@ -2920,19 +2920,19 @@ impl crate::core::types::HoudiniNode for Cop2Vopcop2filtertype {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2Vopcop2filtertypeInnerExt {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2Vopcop2filtertypeInnerExt for crate::core::graph::InnerGraph<'a> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("global1")
+        self.existing_node("global1")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output1")
+        self.existing_node("output1")
     }
 }
 
@@ -3609,19 +3609,19 @@ impl crate::core::types::HoudiniNode for Cop2Vopcop2gen {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2Vopcop2genInnerExt {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2Vopcop2genInnerExt for crate::core::graph::InnerGraph<'a> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("global1")
+        self.existing_node("global1")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output1")
+        self.existing_node("output1")
     }
 }
 
@@ -3710,19 +3710,19 @@ impl crate::core::types::HoudiniNode for Cop2Vopcop2gentype {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait Cop2Vopcop2gentypeInnerExt {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> Cop2Vopcop2gentypeInnerExt for crate::core::graph::InnerGraph<'a> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("global1")
+        self.existing_node("global1")
     }
     fn output1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output1")
+        self.existing_node("output1")
     }
 }
 

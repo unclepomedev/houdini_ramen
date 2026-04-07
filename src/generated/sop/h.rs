@@ -20187,7 +20187,7 @@ impl crate::core::types::HoudiniNode for SopHeightfieldOutput {
         Some("cop2net1")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopHeightfieldOutputInnerExt {
     fn n_16b(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn n_8bit(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -20240,154 +20240,154 @@ pub trait SopHeightfieldOutputInnerExt {
     fn window1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopHeightfieldOutputInnerExt for crate::core::graph::InnerGraph<'a> {
     fn n_16b(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/16b")
+        self.existing_node("cop2net1/16b")
     }
     fn n_8bit(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/8bit")
+        self.existing_node("cop2net1/8bit")
     }
     fn rgb(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/RGB")
+        self.existing_node("cop2net1/RGB")
     }
     fn rgba(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/RGBA")
+        self.existing_node("cop2net1/RGBA")
     }
     fn alpha_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/alpha_volume")
+        self.existing_node("cop2net1/alpha_volume")
     }
     fn blue_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/blue_volume")
+        self.existing_node("cop2net1/blue_volume")
     }
     fn chan1_zero(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan1_zero")
+        self.existing_node("cop2net1/chan1_zero")
     }
     fn chan2_zero(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan2_zero")
+        self.existing_node("cop2net1/chan2_zero")
     }
     fn chan3_zero(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan3_zero")
+        self.existing_node("cop2net1/chan3_zero")
     }
     fn chan4_one(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan4_one")
+        self.existing_node("cop2net1/chan4_one")
     }
     fn chan_fit1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan_fit1")
+        self.existing_node("cop2net1/chan_fit1")
     }
     fn chan_fit2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan_fit2")
+        self.existing_node("cop2net1/chan_fit2")
     }
     fn chan_fit3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan_fit3")
+        self.existing_node("cop2net1/chan_fit3")
     }
     fn chan_fit4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/chan_fit4")
+        self.existing_node("cop2net1/chan_fit4")
     }
     fn channelcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/channelcopy1")
+        self.existing_node("cop2net1/channelcopy1")
     }
     fn channelcopy2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/channelcopy2")
+        self.existing_node("cop2net1/channelcopy2")
     }
     fn channelcopy3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/channelcopy3")
+        self.existing_node("cop2net1/channelcopy3")
     }
     fn deep_raster_volumes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/deep_raster_volumes")
+        self.existing_node("cop2net1/deep_raster_volumes")
     }
     fn deep_raster_volumes1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/deep_raster_volumes1")
+        self.existing_node("cop2net1/deep_raster_volumes1")
     }
     fn deep_raster_volumes2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/deep_raster_volumes2")
+        self.existing_node("cop2net1/deep_raster_volumes2")
     }
     fn delete1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/delete1")
+        self.existing_node("cop2net1/delete1")
     }
     fn delete2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/delete2")
+        self.existing_node("cop2net1/delete2")
     }
     fn delete3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/delete3")
+        self.existing_node("cop2net1/delete3")
     }
     fn delete4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/delete4")
+        self.existing_node("cop2net1/delete4")
     }
     fn delete6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/delete6")
+        self.existing_node("cop2net1/delete6")
     }
     fn delete7(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/delete7")
+        self.existing_node("cop2net1/delete7")
     }
     fn flip1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/flip1")
+        self.existing_node("cop2net1/flip1")
     }
     fn fp16(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/fp16")
+        self.existing_node("cop2net1/fp16")
     }
     fn green_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/green_volume")
+        self.existing_node("cop2net1/green_volume")
     }
     fn merge1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/merge1")
+        self.existing_node("cop2net1/merge1")
     }
     fn merge2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/merge2")
+        self.existing_node("cop2net1/merge2")
     }
     fn merge3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/merge3")
+        self.existing_node("cop2net1/merge3")
     }
     fn merge4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/merge4")
+        self.existing_node("cop2net1/merge4")
     }
     fn red_volume(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/red_volume")
+        self.existing_node("cop2net1/red_volume")
     }
     fn rename1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/rename1")
+        self.existing_node("cop2net1/rename1")
     }
     fn rename2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/rename2")
+        self.existing_node("cop2net1/rename2")
     }
     fn rename3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/rename3")
+        self.existing_node("cop2net1/rename3")
     }
     fn rename4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/rename4")
+        self.existing_node("cop2net1/rename4")
     }
     fn single(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/single")
+        self.existing_node("cop2net1/single")
     }
     fn single_out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/single_out")
+        self.existing_node("cop2net1/single_out")
     }
     fn switch1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch1")
+        self.existing_node("cop2net1/switch1")
     }
     fn switch2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch2")
+        self.existing_node("cop2net1/switch2")
     }
     fn switch3(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch3")
+        self.existing_node("cop2net1/switch3")
     }
     fn switch4(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch4")
+        self.existing_node("cop2net1/switch4")
     }
     fn switch5(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch5")
+        self.existing_node("cop2net1/switch5")
     }
     fn switch6(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch6")
+        self.existing_node("cop2net1/switch6")
     }
     fn switch8(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/switch8")
+        self.existing_node("cop2net1/switch8")
     }
     fn tiled_out(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/tiled_out")
+        self.existing_node("cop2net1/tiled_out")
     }
     fn window1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("cop2net1/window1")
+        self.existing_node("cop2net1/window1")
     }
 }
 

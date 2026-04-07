@@ -914,19 +914,19 @@ impl crate::core::types::HoudiniNode for LopLayout {
         Some("ASSETS")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopLayoutInnerExt {
     fn brushes(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn end_assets(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopLayoutInnerExt for crate::core::graph::InnerGraph<'a> {
     fn brushes(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ASSETS/BRUSHES")
+        self.existing_node("ASSETS/BRUSHES")
     }
     fn end_assets(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ASSETS/END_ASSETS")
+        self.existing_node("ASSETS/END_ASSETS")
     }
 }
 
@@ -4275,15 +4275,15 @@ impl crate::core::types::HoudiniNode for LopLiverender {
         Some("USER_AREA")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopLiverenderInnerExt {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopLiverenderInnerExt for crate::core::graph::InnerGraph<'a> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("USER_AREA/output0")
+        self.existing_node("USER_AREA/output0")
     }
 }
 

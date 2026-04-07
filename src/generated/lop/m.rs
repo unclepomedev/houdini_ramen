@@ -3040,15 +3040,15 @@ impl crate::core::types::HoudiniNode for LopMaterialvariation {
         Some("sopnet/modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopMaterialvariationInnerExt {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopMaterialvariationInnerExt for crate::core::graph::InnerGraph<'a> {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/modify/from_lops")
+        self.existing_node("sopnet/modify/from_lops")
     }
 }
 
@@ -5489,15 +5489,15 @@ impl crate::core::types::HoudiniNode for LopModifypointinstances {
         Some("sopnet/modify")
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopModifypointinstancesInnerExt {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> LopModifypointinstancesInnerExt for crate::core::graph::InnerGraph<'a> {
     fn from_lops(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("sopnet/modify/from_lops")
+        self.existing_node("sopnet/modify/from_lops")
     }
 }
 

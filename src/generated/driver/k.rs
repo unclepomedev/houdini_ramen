@@ -4054,19 +4054,19 @@ impl crate::core::types::HoudiniNode for DriverKarma {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverKarmaInnerExt {
     fn lopnet(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn rop_usdrender(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> DriverKarmaInnerExt for crate::core::graph::InnerGraph<'a> {
     fn lopnet(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("lopnet")
+        self.existing_node("lopnet")
     }
     fn rop_usdrender(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("rop_usdrender")
+        self.existing_node("rop_usdrender")
     }
 }
 

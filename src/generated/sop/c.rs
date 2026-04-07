@@ -3749,7 +3749,7 @@ impl crate::core::types::HoudiniNode for SopCapturelayerpaint {
         &self.spare_params
     }
 }
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait SopCapturelayerpaintInnerExt {
     fn animated_pose(&mut self) -> crate::core::graph::ExistingNodeRef;
     fn capture_pose(&mut self) -> crate::core::graph::ExistingNodeRef;
@@ -3763,37 +3763,37 @@ pub trait SopCapturelayerpaintInnerExt {
     fn wiredeform1(&mut self) -> crate::core::graph::ExistingNodeRef;
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> SopCapturelayerpaintInnerExt for crate::core::graph::InnerGraph<'a> {
     fn animated_pose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("ANIMATED_POSE")
+        self.existing_node("ANIMATED_POSE")
     }
     fn capture_pose(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("CAPTURE_POSE")
+        self.existing_node("CAPTURE_POSE")
     }
     fn display(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("DISPLAY")
+        self.existing_node("DISPLAY")
     }
     fn rest(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("REST")
+        self.existing_node("REST")
     }
     fn visualize(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("VISUALIZE")
+        self.existing_node("VISUALIZE")
     }
     fn bonedeform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("bonedeform1")
+        self.existing_node("bonedeform1")
     }
     fn capturelayerpaint1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("capturelayerpaint1")
+        self.existing_node("capturelayerpaint1")
     }
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("output0")
+        self.existing_node("output0")
     }
     fn python2(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("python2")
+        self.existing_node("python2")
     }
     fn wiredeform1(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("wiredeform1")
+        self.existing_node("wiredeform1")
     }
 }
 
