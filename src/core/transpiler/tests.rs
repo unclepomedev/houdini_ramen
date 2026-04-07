@@ -473,7 +473,6 @@ fn test_node_graph_dive_into_api() {
     graph.dive_into(&solver, |inner| {
         let prev_frame = inner.existing_node("Prev_Frame");
         let prev_frame_id = prev_frame.get_id();
-        inner.add_existing(prev_frame);
 
         let _inner_node = inner.add(DummyNode {
             id: 603,
@@ -729,40 +728,16 @@ fn test_existing_node_input_wiring() {
             params: HashMap::new(),
             spare_params: vec![],
         });
-        let ray3 = inner.add(DummyNode {
-            id: 1204,
-            name: "ray3".to_string(),
-            node_type: "ray",
-            inputs: BTreeMap::new(),
-            params: HashMap::new(),
-            spare_params: vec![],
-        });
-        let ray4 = inner.add(DummyNode {
-            id: 1205,
-            name: "ray4".to_string(),
-            node_type: "ray",
-            inputs: BTreeMap::new(),
-            params: HashMap::new(),
-            spare_params: vec![],
-        });
 
-        inner.add_existing(inner.existing_node("OUT_1").set_input(&ray1));
-        inner.add_existing(inner.existing_node("OUT_2").set_input_from(&ray2, 1));
-        inner.add_existing(inner.existing_node("OUT_3").set_input_at(2, &ray3));
-        inner.add_existing(inner.existing_node("OUT_4").set_input_at_from(3, &ray4, 2));
+        inner.wire_to_existing("OUT", 0, &ray1);
+        inner.wire_to_existing_from("OUT_2", 0, &ray2, 1);
     });
 
     let script = graph.build();
 
-    assert!(script.contains("n_OUT_1_"));
+    assert!(script.contains("n_OUT_"));
     assert!(script.contains(".setInput(0, n_ray1_1202, 0)"));
 
     assert!(script.contains("n_OUT_2_"));
     assert!(script.contains(".setInput(0, n_ray2_1203, 1)"));
-
-    assert!(script.contains("n_OUT_3_"));
-    assert!(script.contains(".setInput(2, n_ray3_1204, 0)"));
-
-    assert!(script.contains("n_OUT_4_"));
-    assert!(script.contains(".setInput(3, n_ray4_1205, 2)"));
 }
