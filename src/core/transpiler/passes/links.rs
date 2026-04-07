@@ -1,5 +1,5 @@
 use crate::core::transpiler::builder::PythonBuilder;
-use crate::core::types::HoudiniNode;
+use crate::core::types::{HoudiniNode, OutputPort};
 use std::collections::HashMap;
 
 pub fn write_link_pass(
@@ -35,13 +35,13 @@ fn write_node_links(
         return;
     };
 
-    for (idx, (target_id, target_out_idx)) in node.get_inputs() {
+    for (idx, (target_id, target_out_port)) in node.get_inputs() {
         write_single_link(
             builder,
             var_name,
             *idx,
             *target_id,
-            *target_out_idx,
+            target_out_port,
             id_to_var,
         );
     }
@@ -52,13 +52,18 @@ fn write_single_link(
     var_name: &str,
     input_idx: usize,
     target_id: usize,
-    target_out_idx: usize,
+    target_out_port: &OutputPort,
     id_to_var: &HashMap<usize, String>,
 ) {
     if let Some(target_var) = id_to_var.get(&target_id) {
+        let port_arg = match target_out_port {
+            OutputPort::Index(i) => i.to_string(),
+            OutputPort::Name(name) => format!("{}.outputNames().index('{}')", target_var, name),
+        };
+
         builder.line(&format!(
             "{}.setInput({}, {}, {})",
-            var_name, input_idx, target_var, target_out_idx
+            var_name, input_idx, target_var, port_arg
         ));
     } else {
         emit_warning(

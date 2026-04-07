@@ -1,6 +1,6 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
-use crate::core::types::{ContainerType, HoudiniNode};
+use crate::core::types::{ContainerType, HoudiniNode, OutputPort};
 use std::collections::BTreeMap;
 use std::marker::PhantomData;
 
@@ -80,7 +80,8 @@ impl<'a, C> InnerGraph<'a, C> {
             .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
 
         if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (src.get_id(), 0));
+            node.inputs
+                .insert(input_idx, (src.get_id(), OutputPort::Index(0)));
         } else {
             // TODO: To avoid troublesome, but errors should be handled at a higher layer.
             panic!(
@@ -105,7 +106,8 @@ impl<'a, C> InnerGraph<'a, C> {
             .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
 
         if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (src.get_id(), output_idx));
+            node.inputs
+                .insert(input_idx, (src.get_id(), OutputPort::Index(output_idx)));
         } else {
             // TODO: To avoid troublesome, but errors should be handled at a higher layer.
             panic!(
@@ -133,7 +135,7 @@ impl<'a, C> InnerGraph<'a, C> {
 pub struct ExistingNodeRef {
     pub id: usize,
     pub name: String,
-    pub inputs: BTreeMap<usize, (usize, usize)>,
+    pub inputs: BTreeMap<usize, (usize, OutputPort)>,
 }
 
 impl HoudiniNode for ExistingNodeRef {
@@ -146,7 +148,7 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_node_type(&self) -> &'static str {
         ""
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPort)> {
         &self.inputs
     }
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {

@@ -4,6 +4,12 @@ use std::sync::atomic::AtomicUsize;
 
 pub static NODE_ID_COUNTER: AtomicUsize = AtomicUsize::new(1);
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum OutputPort {
+    Index(usize),
+    Name(String),
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum RampInterpolation {
     Constant = 0,
@@ -483,7 +489,7 @@ pub trait HoudiniNode {
     fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)>;
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPort)>;
     fn get_params(&self) -> &HashMap<String, ParamValue>;
     fn get_spare_params(&self) -> &[SpareParam] {
         &[]
