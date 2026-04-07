@@ -95,6 +95,41 @@ impl<'a> InnerGraph<'a> {
             .nested_display_nodes
             .push((node.get_id(), self.container_id));
     }
+
+    /// Receives a reference to a node and connects it as a target.
+    pub fn connect_existing<N: HoudiniNode>(
+        &mut self,
+        dst: &ExistingNodeRef,
+        input_idx: usize,
+        src: &N,
+    ) {
+        if let Some((node, _, _)) = self
+            .graph
+            .existing_nodes
+            .iter_mut()
+            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id)
+        {
+            node.inputs.insert(input_idx, (src.get_id(), 0));
+        }
+    }
+
+    /// Specify the output port and connect the wires.
+    pub fn connect_existing_from<N: HoudiniNode>(
+        &mut self,
+        dst: &ExistingNodeRef,
+        input_idx: usize,
+        src: &N,
+        output_idx: usize,
+    ) {
+        if let Some((node, _, _)) = self
+            .graph
+            .existing_nodes
+            .iter_mut()
+            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id)
+        {
+            node.inputs.insert(input_idx, (src.get_id(), output_idx));
+        }
+    }
 }
 
 /// A lightweight reference to a pre-existing node inside a subnet.
