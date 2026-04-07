@@ -2,7 +2,10 @@
 pub struct DataSamplecompnetworkCopernicus {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -39,7 +42,12 @@ impl crate::core::types::HoudiniNode for DataSamplecompnetworkCopernicus {
         "samplecompnetwork_copernicus"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -56,7 +64,10 @@ impl crate::core::types::HoudiniNode for DataSamplecompnetworkCopernicus {
 pub struct DataSamplecompnetworkOldCops {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -93,7 +104,12 @@ impl crate::core::types::HoudiniNode for DataSamplecompnetworkOldCops {
         "samplecompnetwork_old_cops"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -110,7 +126,10 @@ impl crate::core::types::HoudiniNode for DataSamplecompnetworkOldCops {
 pub struct DataSdfcollision {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -147,7 +166,12 @@ impl crate::core::types::HoudiniNode for DataSdfcollision {
         "sdfcollision"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -164,7 +188,10 @@ impl crate::core::types::HoudiniNode for DataSdfcollision {
 pub struct DataSharpen {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -201,7 +228,12 @@ impl crate::core::types::HoudiniNode for DataSharpen {
         "sharpen"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -218,7 +250,10 @@ impl crate::core::types::HoudiniNode for DataSharpen {
 pub struct DataShotrender {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -255,7 +290,12 @@ impl crate::core::types::HoudiniNode for DataShotrender {
         "shotrender"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -272,7 +312,10 @@ impl crate::core::types::HoudiniNode for DataShotrender {
 pub struct DataSidefxBlur {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -309,7 +352,12 @@ impl crate::core::types::HoudiniNode for DataSidefxBlur {
         "sidefx::blur"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -326,7 +374,10 @@ impl crate::core::types::HoudiniNode for DataSidefxBlur {
 pub struct DataSidefxBoxBlur {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -363,7 +414,12 @@ impl crate::core::types::HoudiniNode for DataSidefxBoxBlur {
         "sidefx::box_blur"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -380,7 +436,10 @@ impl crate::core::types::HoudiniNode for DataSidefxBoxBlur {
 pub struct DataSidefxDilate {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -417,7 +476,12 @@ impl crate::core::types::HoudiniNode for DataSidefxDilate {
         "sidefx::dilate"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -434,7 +498,10 @@ impl crate::core::types::HoudiniNode for DataSidefxDilate {
 pub struct DataSidefxEmboss {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -471,7 +538,12 @@ impl crate::core::types::HoudiniNode for DataSidefxEmboss {
         "sidefx::emboss"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -488,7 +560,10 @@ impl crate::core::types::HoudiniNode for DataSidefxEmboss {
 pub struct DataSidefxErode {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -525,7 +600,12 @@ impl crate::core::types::HoudiniNode for DataSidefxErode {
         "sidefx::erode"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -542,7 +622,10 @@ impl crate::core::types::HoudiniNode for DataSidefxErode {
 pub struct DataSidefxFeatherInwards {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -579,7 +662,12 @@ impl crate::core::types::HoudiniNode for DataSidefxFeatherInwards {
         "sidefx::feather_inwards"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -596,7 +684,10 @@ impl crate::core::types::HoudiniNode for DataSidefxFeatherInwards {
 pub struct DataSidefxFeatherOutwards {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -633,7 +724,12 @@ impl crate::core::types::HoudiniNode for DataSidefxFeatherOutwards {
         "sidefx::feather_outwards"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -650,7 +746,10 @@ impl crate::core::types::HoudiniNode for DataSidefxFeatherOutwards {
 pub struct DataSidefxOutline {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -687,7 +786,12 @@ impl crate::core::types::HoudiniNode for DataSidefxOutline {
         "sidefx::outline"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -704,7 +808,10 @@ impl crate::core::types::HoudiniNode for DataSidefxOutline {
 pub struct DataSidefxReactiondiffusionBlock {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -741,7 +848,12 @@ impl crate::core::types::HoudiniNode for DataSidefxReactiondiffusionBlock {
         "sidefx::reactiondiffusion_block"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -758,7 +870,10 @@ impl crate::core::types::HoudiniNode for DataSidefxReactiondiffusionBlock {
 pub struct DataSidefxRecipeCopSdfrebuild {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -795,7 +910,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeCopSdfrebuild {
         "sidefx::recipe::cop::sdfrebuild"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -812,7 +932,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeCopSdfrebuild {
 pub struct DataSidefxRecipeCoppyroFlame {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -849,7 +972,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeCoppyroFlame {
         "sidefx::recipe::coppyro::flame"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -866,7 +994,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeCoppyroFlame {
 pub struct DataSidefxRecipeLopTestsceneCornellbox {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -903,7 +1034,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneCornellbox 
         "sidefx::recipe::lop::testscene_cornellbox"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -920,7 +1056,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneCornellbox 
 pub struct DataSidefxRecipeLopTestsceneMateriallookdev {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -957,7 +1096,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneMaterialloo
         "sidefx::recipe::lop::testscene_materiallookdev"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -974,7 +1118,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneMaterialloo
 pub struct DataSidefxRecipeLopTestsceneNoisesampler {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1011,7 +1158,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneNoisesample
         "sidefx::recipe::lop::testscene_noisesampler"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1028,7 +1180,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneNoisesample
 pub struct DataSidefxRecipeLopTestsceneStandardshaderball {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1065,7 +1220,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneStandardsha
         "sidefx::recipe::lop::testscene_standardshaderball"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1082,7 +1242,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneStandardsha
 pub struct DataSidefxRecipeLopTestsceneVeachmisplanks {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1119,7 +1282,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneVeachmispla
         "sidefx::recipe::lop::testscene_veachmisplanks"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1136,7 +1304,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneVeachmispla
 pub struct DataSidefxRecipeMlTraindeformer {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1173,7 +1344,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTraindeformer {
         "sidefx::recipe::ml::traindeformer"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1190,7 +1366,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTraindeformer {
 pub struct DataSidefxRecipeMlTrainterrain {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1227,7 +1406,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainterrain {
         "sidefx::recipe::ml::trainterrain"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1244,7 +1428,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainterrain {
 pub struct DataSidefxRecipeMlTrainvolumeupres {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1281,7 +1468,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainvolumeupres {
         "sidefx::recipe::ml::trainvolumeupres"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1298,7 +1490,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainvolumeupres {
 pub struct DataSidefxRecipeMpmBuildingCollapse {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1335,7 +1530,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmBuildingCollapse {
         "sidefx::recipe::mpm_building_collapse"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1352,7 +1552,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmBuildingCollapse {
 pub struct DataSidefxRecipeMpmConfigure {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1389,7 +1592,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmConfigure {
         "sidefx::recipe::mpm_configure"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1406,7 +1614,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmConfigure {
 pub struct DataSidefxRecipeMpmJelloParty {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1443,7 +1654,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmJelloParty {
         "sidefx::recipe::mpm_jello_party"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1460,7 +1676,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmJelloParty {
 pub struct DataSidefxRecipeMpmLandslide {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1497,7 +1716,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmLandslide {
         "sidefx::recipe::mpm_landslide"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1514,7 +1738,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmLandslide {
 pub struct DataSidefxRecipeMpmMetalTearing {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1551,7 +1778,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmMetalTearing {
         "sidefx::recipe::mpm_metal_tearing"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1568,7 +1800,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmMetalTearing {
 pub struct DataSidefxRecipeMpmPancakes {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1605,7 +1840,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmPancakes {
         "sidefx::recipe::mpm_pancakes"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1622,7 +1862,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmPancakes {
 pub struct DataSidefxRecipeMpmRollingSnowball {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1659,7 +1902,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmRollingSnowball {
         "sidefx::recipe::mpm_rolling_snowball"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1676,7 +1924,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmRollingSnowball {
 pub struct DataSidefxRecipeMpmSandInstances {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1713,7 +1964,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSandInstances {
         "sidefx::recipe::mpm_sand_instances"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1730,7 +1986,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSandInstances {
 pub struct DataSidefxRecipeMpmSoftbody {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1767,7 +2026,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSoftbody {
         "sidefx::recipe::mpm_softbody"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1784,7 +2048,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSoftbody {
 pub struct DataSidefxRecipeMpmSpinningTire {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1821,7 +2088,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSpinningTire {
         "sidefx::recipe::mpm_spinning_tire"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1838,7 +2110,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSpinningTire {
 pub struct DataSidefxRecipeMpmWaterGlass {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1875,7 +2150,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmWaterGlass {
         "sidefx::recipe::mpm_water_glass"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1892,7 +2172,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmWaterGlass {
 pub struct DataSidefxRecipeMusclesOtismuscleandtissue {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1929,7 +2212,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesOtismuscleandtis
         "sidefx::recipe::muscles::otismuscleandtissue"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -1946,7 +2234,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesOtismuscleandtis
 pub struct DataSidefxRecipeMusclesTestgeometryOttoMuscleandtissuesim {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1983,7 +2274,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOtto
         "sidefx::recipe::muscles::testgeometry_otto_muscleandtissuesim"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2000,7 +2296,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOtto
 pub struct DataSidefxRecipeMusclesTestgeometryOttoMuscletransfer {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2037,7 +2336,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOtto
         "sidefx::recipe::muscles::testgeometry_otto_muscletransfer"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2054,7 +2358,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOtto
 pub struct DataSidefxRecipeOpeninmplay {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2091,7 +2398,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeOpeninmplay {
         "sidefx::recipe::openinmplay"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2108,7 +2420,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeOpeninmplay {
 pub struct DataSidefxRecipePopFireportal {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2145,7 +2460,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePopFireportal {
         "sidefx::recipe::pop::fireportal"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2162,7 +2482,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePopFireportal {
 pub struct DataSidefxRecipePyroAerialbarrage {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2199,7 +2522,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialbarrage {
         "sidefx::recipe::pyro::aerialbarrage"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2216,7 +2544,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialbarrage {
 pub struct DataSidefxRecipePyroAerialexplosion {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2253,7 +2584,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialexplosion {
         "sidefx::recipe::pyro::aerialexplosion"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2270,7 +2606,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialexplosion {
 pub struct DataSidefxRecipePyroAerialgroundbarrage {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2307,7 +2646,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialgroundbarrage
         "sidefx::recipe::pyro::aerialgroundbarrage"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2324,7 +2668,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialgroundbarrage
 pub struct DataSidefxRecipePyroBillowysmoke {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2361,7 +2708,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBillowysmoke {
         "sidefx::recipe::pyro::billowysmoke"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2378,7 +2730,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBillowysmoke {
 pub struct DataSidefxRecipePyroBonfire {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2415,7 +2770,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBonfire {
         "sidefx::recipe::pyro::bonfire"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2432,7 +2792,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBonfire {
 pub struct DataSidefxRecipePyroBullethits {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2469,7 +2832,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBullethits {
         "sidefx::recipe::pyro::bullethits"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2486,7 +2854,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBullethits {
 pub struct DataSidefxRecipePyroCandleflame {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2523,7 +2894,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroCandleflame {
         "sidefx::recipe::pyro::candleflame"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2540,7 +2916,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroCandleflame {
 pub struct DataSidefxRecipePyroDebrisdust {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2577,7 +2956,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDebrisdust {
         "sidefx::recipe::pyro::debrisdust"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2594,7 +2978,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDebrisdust {
 pub struct DataSidefxRecipePyroDryice {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2631,7 +3018,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDryice {
         "sidefx::recipe::pyro::dryice"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2648,7 +3040,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDryice {
 pub struct DataSidefxRecipePyroDustfireball {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2685,7 +3080,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDustfireball {
         "sidefx::recipe::pyro::dustfireball"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2702,7 +3102,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDustfireball {
 pub struct DataSidefxRecipePyroFireball {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2739,7 +3142,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireball {
         "sidefx::recipe::pyro::fireball"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2756,7 +3164,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireball {
 pub struct DataSidefxRecipePyroFireballwithtrails {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2793,7 +3204,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireballwithtrails 
         "sidefx::recipe::pyro::fireballwithtrails"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2810,7 +3226,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireballwithtrails 
 pub struct DataSidefxRecipePyroGpugroundexplosion {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2847,7 +3266,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGpugroundexplosion 
         "sidefx::recipe::pyro::gpugroundexplosion"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2864,7 +3288,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGpugroundexplosion 
 pub struct DataSidefxRecipePyroGputorch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2901,7 +3328,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGputorch {
         "sidefx::recipe::pyro::gputorch"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2918,7 +3350,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGputorch {
 pub struct DataSidefxRecipePyroGroundexplosion {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2955,7 +3390,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosion {
         "sidefx::recipe::pyro::groundexplosion"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -2972,7 +3412,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosion {
 pub struct DataSidefxRecipePyroGroundexplosiona {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3009,7 +3452,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosiona {
         "sidefx::recipe::pyro::groundexplosiona"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3026,7 +3474,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosiona {
 pub struct DataSidefxRecipePyroGroundexplosionb {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3063,7 +3514,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosionb {
         "sidefx::recipe::pyro::groundexplosionb"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3080,7 +3536,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosionb {
 pub struct DataSidefxRecipePyroGroundshockwave {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3117,7 +3576,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundshockwave {
         "sidefx::recipe::pyro::groundshockwave"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3134,7 +3598,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundshockwave {
 pub struct DataSidefxRecipePyroMuzzleflash {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3171,7 +3638,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroMuzzleflash {
         "sidefx::recipe::pyro::muzzleflash"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3188,7 +3660,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroMuzzleflash {
 pub struct DataSidefxRecipePyroRendersetup {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3225,7 +3700,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroRendersetup {
         "sidefx::recipe::pyro::rendersetup"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3242,7 +3722,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroRendersetup {
 pub struct DataSidefxRecipePyroShockwavefireball {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3279,7 +3762,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroShockwavefireball {
         "sidefx::recipe::pyro::shockwavefireball"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3296,7 +3784,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroShockwavefireball {
 pub struct DataSidefxRecipePyroSmokelessflame {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3333,7 +3824,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSmokelessflame {
         "sidefx::recipe::pyro::smokelessflame"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3350,7 +3846,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSmokelessflame {
 pub struct DataSidefxRecipePyroSpreadingfire {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3387,7 +3886,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSpreadingfire {
         "sidefx::recipe::pyro::spreadingfire"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3404,7 +3908,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSpreadingfire {
 pub struct DataSidefxRecipePyroStaggeredgroundshockwaves {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3441,7 +3948,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStaggeredgroundshoc
         "sidefx::recipe::pyro::staggeredgroundshockwaves"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3458,7 +3970,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStaggeredgroundshoc
 pub struct DataSidefxRecipePyroStylizedfire {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3495,7 +4010,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStylizedfire {
         "sidefx::recipe::pyro::stylizedfire"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3512,7 +4032,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStylizedfire {
 pub struct DataSidefxRecipePyroSynchronizedgroundshockwaves {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3549,7 +4072,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSynchronizedgrounds
         "sidefx::recipe::pyro::synchronizedgroundshockwaves"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3566,7 +4094,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSynchronizedgrounds
 pub struct DataSidefxRecipePyroThrusterexhaust {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3603,7 +4134,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroThrusterexhaust {
         "sidefx::recipe::pyro::thrusterexhaust"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3620,7 +4156,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroThrusterexhaust {
 pub struct DataSidefxRecipePyroWispysmokea {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3657,7 +4196,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokea {
         "sidefx::recipe::pyro::wispysmokea"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3674,7 +4218,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokea {
 pub struct DataSidefxRecipePyroWispysmokeb {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3711,7 +4258,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokeb {
         "sidefx::recipe::pyro::wispysmokeb"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3728,7 +4280,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokeb {
 pub struct DataSidefxRecipeRampFloatFlat {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3765,7 +4320,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatFlat {
         "sidefx::recipe::ramp_float::flat"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3782,7 +4342,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatFlat {
 pub struct DataSidefxRecipeRampFloatHill {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3819,7 +4382,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatHill {
         "sidefx::recipe::ramp_float::hill"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3836,7 +4404,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatHill {
 pub struct DataSidefxRecipeRampFloatLinear {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3873,7 +4444,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatLinear {
         "sidefx::recipe::ramp_float::linear"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3890,7 +4466,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatLinear {
 pub struct DataSidefxRecipeRampFloatRound {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3927,7 +4506,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatRound {
         "sidefx::recipe::ramp_float::round"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3944,7 +4528,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatRound {
 pub struct DataSidefxRecipeRampFloatSharp {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3981,7 +4568,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSharp {
         "sidefx::recipe::ramp_float::sharp"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -3998,7 +4590,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSharp {
 pub struct DataSidefxRecipeRampFloatSmooth {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4035,7 +4630,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSmooth {
         "sidefx::recipe::ramp_float::smooth"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4052,7 +4652,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSmooth {
 pub struct DataSidefxRecipeRampFloatSteps {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4089,7 +4692,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSteps {
         "sidefx::recipe::ramp_float::steps"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4106,7 +4714,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSteps {
 pub struct DataSidefxRecipeRampFloatValley {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4143,7 +4754,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatValley {
         "sidefx::recipe::ramp_float::valley"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4160,7 +4776,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatValley {
 pub struct DataSidefxRecipeRampRgbBlackbody {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4197,7 +4816,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlackbody {
         "sidefx::recipe::ramp_rgb::blackbody"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4214,7 +4838,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlackbody {
 pub struct DataSidefxRecipeRampRgbBlacktoorange {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4251,7 +4878,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlacktoorange {
         "sidefx::recipe::ramp_rgb::blacktoorange"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4268,7 +4900,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlacktoorange {
 pub struct DataSidefxRecipeRampRgbCividis {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4305,7 +4940,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbCividis {
         "sidefx::recipe::ramp_rgb::cividis"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4322,7 +4962,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbCividis {
 pub struct DataSidefxRecipeRampRgbGrayscale {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4359,7 +5002,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbGrayscale {
         "sidefx::recipe::ramp_rgb::grayscale"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4376,7 +5024,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbGrayscale {
 pub struct DataSidefxRecipeRampRgbInferno {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4413,7 +5064,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInferno {
         "sidefx::recipe::ramp_rgb::inferno"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4430,7 +5086,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInferno {
 pub struct DataSidefxRecipeRampRgbInfrared {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4467,7 +5126,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInfrared {
         "sidefx::recipe::ramp_rgb::infrared"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4484,7 +5148,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInfrared {
 pub struct DataSidefxRecipeRampRgbMagma {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4521,7 +5188,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbMagma {
         "sidefx::recipe::ramp_rgb::magma"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4538,7 +5210,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbMagma {
 pub struct DataSidefxRecipeRampRgbPlasma {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4575,7 +5250,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbPlasma {
         "sidefx::recipe::ramp_rgb::plasma"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4592,7 +5272,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbPlasma {
 pub struct DataSidefxRecipeRampRgbSand {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4629,7 +5312,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbSand {
         "sidefx::recipe::ramp_rgb::sand"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4646,7 +5334,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbSand {
 pub struct DataSidefxRecipeRampRgbTwilight {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4683,7 +5374,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilight {
         "sidefx::recipe::ramp_rgb::twilight"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4700,7 +5396,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilight {
 pub struct DataSidefxRecipeRampRgbTwilightshifted {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4737,7 +5436,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilightshifted 
         "sidefx::recipe::ramp_rgb::twilightshifted"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4754,7 +5458,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilightshifted 
 pub struct DataSidefxRecipeRampRgbTwotone {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4791,7 +5498,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwotone {
         "sidefx::recipe::ramp_rgb::twotone"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4808,7 +5520,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwotone {
 pub struct DataSidefxRecipeRampRgbViridis {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4845,7 +5560,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbViridis {
         "sidefx::recipe::ramp_rgb::viridis"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4862,7 +5582,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbViridis {
 pub struct DataSidefxRecipeRampRgbWhitetored {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4899,7 +5622,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitetored {
         "sidefx::recipe::ramp_rgb::whitetored"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4916,7 +5644,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitetored {
 pub struct DataSidefxRecipeRampRgbWhitewater {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4953,7 +5684,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitewater {
         "sidefx::recipe::ramp_rgb::whitewater"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -4970,7 +5706,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitewater {
 pub struct DataSidefxRecipeRandomseed {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5007,7 +5746,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRandomseed {
         "sidefx::recipe::randomseed"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5024,7 +5768,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRandomseed {
 pub struct DataSidefxRecipeRecipebuilderAvailablepostscriptkeys {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5061,7 +5808,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablep
         "sidefx::recipe::recipebuilder::availablepostscriptkeys"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5078,7 +5830,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablep
 pub struct DataSidefxRecipeRecipebuilderAvailableprescriptkeys {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5115,7 +5870,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablep
         "sidefx::recipe::recipebuilder::availableprescriptkeys"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5132,7 +5892,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablep
 pub struct DataSidefxRecipeRecipebuilderAvoidduplicateinstances {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5169,7 +5932,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvoiddupli
         "sidefx::recipe::recipebuilder::avoidduplicateinstances"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5186,7 +5954,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvoiddupli
 pub struct DataSidefxRecipeRecipebuilderDisableavoidoverlap {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5223,7 +5994,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisableavo
         "sidefx::recipe::recipebuilder::disableavoidoverlap"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5240,7 +6016,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisableavo
 pub struct DataSidefxRecipeRecipebuilderDisableclicktoplace {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5277,7 +6056,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisablecli
         "sidefx::recipe::recipebuilder::disableclicktoplace"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5294,7 +6078,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisablecli
 pub struct DataSidefxRecipeRecipebuilderDisabledroponwire {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5331,7 +6118,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisabledro
         "sidefx::recipe::recipebuilder::disabledroponwire"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5348,7 +6140,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisabledro
 pub struct DataSidefxRecipeRecipebuilderGetcreateditem {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5385,7 +6180,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderGetcreated
         "sidefx::recipe::recipebuilder::getcreateditem"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5402,7 +6202,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderGetcreated
 pub struct DataSidefxRecipeRecipebuilderHierarchicalrecipes {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5439,7 +6242,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderHierarchic
         "sidefx::recipe::recipebuilder::hierarchicalrecipes"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5456,7 +6264,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderHierarchic
 pub struct DataSidefxRecipeRecipebuilderInvokelocations {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5493,7 +6304,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderInvokeloca
         "sidefx::recipe::recipebuilder::invokelocations"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5510,7 +6326,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderInvokeloca
 pub struct DataSidefxRecipeRecipebuilderMergedecorations {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5547,7 +6366,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderMergedecor
         "sidefx::recipe::recipebuilder::mergedecorations"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5564,7 +6388,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderMergedecor
 pub struct DataSidefxRecipeRecipebuilderRandomseed {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5601,7 +6428,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderRandomseed
         "sidefx::recipe::recipebuilder::randomseed"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5618,7 +6450,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderRandomseed
 pub struct DataSidefxRecipeSopWhitewaterconfigure {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5655,7 +6490,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeSopWhitewaterconfigure 
         "sidefx::recipe::sop::whitewaterconfigure"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5672,7 +6512,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeSopWhitewaterconfigure 
 pub struct DataSidefxRecipeSubnetRecipeBuilder {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5709,7 +6552,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeSubnetRecipeBuilder {
         "sidefx::recipe::subnet::recipe_builder"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5726,7 +6574,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeSubnetRecipeBuilder {
 pub struct DataSidefxRecipeVopHoudiniViewportmaterialoutput {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5763,7 +6614,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopHoudiniViewportmater
         "sidefx::recipe::vop::houdini_viewportmaterialoutput"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5780,7 +6636,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopHoudiniViewportmater
 pub struct DataSidefxRecipeVopKmaBakedcloudmaterial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5817,7 +6676,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaBakedcloudmateria
         "sidefx::recipe::vop::kma_bakedcloudmaterial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5834,7 +6698,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaBakedcloudmateria
 pub struct DataSidefxRecipeVopKmaCloudmaterial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5871,7 +6738,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaCloudmaterial {
         "sidefx::recipe::vop::kma_cloudmaterial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5888,7 +6760,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaCloudmaterial {
 pub struct DataSidefxRecipeVopKmaPyroexplosionmaterial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5925,7 +6800,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyroexplosionmate
         "sidefx::recipe::vop::kma_pyroexplosionmaterial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5942,7 +6822,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyroexplosionmate
 pub struct DataSidefxRecipeVopKmaPyrofirematerial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5979,7 +6862,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrofirematerial 
         "sidefx::recipe::vop::kma_pyrofirematerial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -5996,7 +6884,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrofirematerial 
 pub struct DataSidefxRecipeVopKmaPyromaterial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6033,7 +6924,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyromaterial {
         "sidefx::recipe::vop::kma_pyromaterial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6050,7 +6946,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyromaterial {
 pub struct DataSidefxRecipeVopKmaPyrosmokematerial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6087,7 +6986,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrosmokematerial
         "sidefx::recipe::vop::kma_pyrosmokematerial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6104,7 +7008,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrosmokematerial
 pub struct DataSidefxRecipeVopKmaUniformvolumematerial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6141,7 +7048,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaUniformvolumemate
         "sidefx::recipe::vop::kma_uniformvolumematerial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6158,7 +7070,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaUniformvolumemate
 pub struct DataSidefxRecipeVopKmaWhitewatermaterial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6195,7 +7110,12 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaWhitewatermateria
         "sidefx::recipe::vop::kma_whitewatermaterial"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6212,7 +7132,10 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaWhitewatermateria
 pub struct DataSidefxSharpen {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6249,7 +7172,12 @@ impl crate::core::types::HoudiniNode for DataSidefxSharpen {
         "sidefx::sharpen"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6266,7 +7194,10 @@ impl crate::core::types::HoudiniNode for DataSidefxSharpen {
 pub struct DataSidefxSobelBottom {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6303,7 +7234,12 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelBottom {
         "sidefx::sobel_bottom"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6320,7 +7256,10 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelBottom {
 pub struct DataSidefxSobelLeft {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6357,7 +7296,12 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelLeft {
         "sidefx::sobel_left"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6374,7 +7318,10 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelLeft {
 pub struct DataSidefxSobelRight {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6411,7 +7358,12 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelRight {
         "sidefx::sobel_right"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6428,7 +7380,10 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelRight {
 pub struct DataSidefxSobelTop {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6465,7 +7420,12 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelTop {
         "sidefx::sobel_top"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6482,7 +7442,10 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelTop {
 pub struct DataSingleinputpoint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6519,7 +7482,12 @@ impl crate::core::types::HoudiniNode for DataSingleinputpoint {
         "singleinputpoint"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6536,7 +7504,10 @@ impl crate::core::types::HoudiniNode for DataSingleinputpoint {
 pub struct DataSizefrominput {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6573,7 +7544,12 @@ impl crate::core::types::HoudiniNode for DataSizefrominput {
         "sizefrominput"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6590,7 +7566,10 @@ impl crate::core::types::HoudiniNode for DataSizefrominput {
 pub struct DataSopSidefxApexConfigureragdoll {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6627,7 +7606,12 @@ impl crate::core::types::HoudiniNode for DataSopSidefxApexConfigureragdoll {
         "sop::sidefx::apex__configureragdoll"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6644,7 +7628,10 @@ impl crate::core::types::HoudiniNode for DataSopSidefxApexConfigureragdoll {
 pub struct DataSourceburn {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6681,7 +7668,12 @@ impl crate::core::types::HoudiniNode for DataSourceburn {
         "sourceburn"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6698,7 +7690,10 @@ impl crate::core::types::HoudiniNode for DataSourceburn {
 pub struct DataSourcecolor {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6735,7 +7730,12 @@ impl crate::core::types::HoudiniNode for DataSourcecolor {
         "sourcecolor"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6752,7 +7752,10 @@ impl crate::core::types::HoudiniNode for DataSourcecolor {
 pub struct DataSourcefuel {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6789,7 +7792,12 @@ impl crate::core::types::HoudiniNode for DataSourcefuel {
         "sourcefuel"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6806,7 +7814,10 @@ impl crate::core::types::HoudiniNode for DataSourcefuel {
 pub struct DataSourcesmoke {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6843,7 +7854,12 @@ impl crate::core::types::HoudiniNode for DataSourcesmoke {
         "sourcesmoke"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6860,7 +7876,10 @@ impl crate::core::types::HoudiniNode for DataSourcesmoke {
 pub struct DataSourcevolume {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6897,7 +7916,12 @@ impl crate::core::types::HoudiniNode for DataSourcevolume {
         "sourcevolume"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
@@ -6914,7 +7938,10 @@ impl crate::core::types::HoudiniNode for DataSourcevolume {
 pub struct DataStandardshaderball {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    >,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6951,7 +7978,12 @@ impl crate::core::types::HoudiniNode for DataStandardshaderball {
         "standardshaderball"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<
+        crate::core::types::InputPort,
+        (usize, crate::core::types::OutputPort),
+    > {
         &self.inputs
     }
 
