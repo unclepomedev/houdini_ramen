@@ -744,3 +744,91 @@ fn test_existing_node_input_wiring() {
     assert!(script.contains("/OUT_2"));
     assert!(script.contains(".setInput(0, n_ray2_1203, 1)"));
 }
+
+#[test]
+fn test_recursive_dive_into() {
+    let mut graph = NodeGraph::new("/obj/geo1");
+
+    let solver = graph.add(DummyNode {
+        id: 2001,
+        name: "solver".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    });
+
+    graph.dive_into(&solver, |solver_inner| {
+        let vop = solver_inner.add(DummyNode {
+            id: 2002,
+            name: "vop".to_string(),
+            node_type: "attribvop",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        });
+
+        solver_inner.dive_into(&vop, |vop_inner| {
+            let global = vop_inner.existing_node("global");
+            let add_node = vop_inner.add(DummyNode {
+                id: 2003,
+                name: "add".to_string(),
+                node_type: "add",
+                inputs: BTreeMap::new(),
+                params: HashMap::new(),
+                spare_params: vec![],
+            });
+
+            vop_inner.connect_existing(&global, 0, &add_node);
+        });
+    });
+
+    let script = graph.build();
+
+    assert!(script.contains("n_solver_2001 = parent.createNode('solver', 'solver')"));
+    assert!(script.contains("n_vop_2002 = n_solver_2001.createNode('attribvop', 'vop')"));
+    assert!(script.contains("n_add_2003 = n_vop_2002.createNode('add', 'add')"));
+    assert!(script.contains("hou.node(n_vop_2002.path() + '/global')"));
+}
+
+#[test]
+#[should_panic(expected = "Houdini Ramen Error: Attempted to wire to ExistingNodeRef 'OUT_A'")]
+fn test_cross_container_wiring_error() {
+    let mut graph = NodeGraph::new("/obj/geo1");
+
+    let solver_a = graph.add(DummyNode {
+        id: 3001,
+        name: "solver_a".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    });
+    let solver_b = graph.add(DummyNode {
+        id: 3002,
+        name: "solver_b".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    });
+
+    let mut leaked_out_a = None;
+    graph.dive_into(&solver_a, |inner_a| {
+        leaked_out_a = Some(inner_a.existing_node("OUT_A"));
+    });
+    let out_a = leaked_out_a.unwrap();
+
+    graph.dive_into(&solver_b, |inner_b| {
+        let ray_b = inner_b.add(DummyNode {
+            id: 3003,
+            name: "ray".to_string(),
+            node_type: "ray",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        });
+
+        inner_b.connect_existing(&out_a, 0, &ray_b);
+    });
+}
