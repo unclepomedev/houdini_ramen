@@ -10,7 +10,8 @@ pub struct TopnetRemotegraph {
 impl TopnetRemotegraph {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -24,39 +25,58 @@ impl TopnetRemotegraph {
         self
     }
 
-
-
     // --- Button parameters ---
     pub fn trigger_connectbutton(mut self) -> Self {
-        self.params.insert("connectbutton".to_string(), crate::core::types::ParamValue::Button);
+        self.params.insert(
+            "connectbutton".to_string(),
+            crate::core::types::ParamValue::Button,
+        );
         self
     }
 
     // --- Menu parameters ---
     pub fn with_clienttype(mut self, val: i32) -> Self {
-        self.params.insert("clienttype".to_string(), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            "clienttype".to_string(),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_clienttype_expr(mut self, expr: &str) -> Self {
-        self.params.insert("clienttype".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "clienttype".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_remotegraph(mut self, val: i32) -> Self {
-        self.params.insert("remotegraph".to_string(), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            "remotegraph".to_string(),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_remotegraph_expr(mut self, expr: &str) -> Self {
-        self.params.insert("remotegraph".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "remotegraph".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_host(mut self, val: &str) -> Self {
-        self.params.insert("host".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "host".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_host_expr(mut self, expr: &str) -> Self {
-        self.params.insert("host".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "host".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }

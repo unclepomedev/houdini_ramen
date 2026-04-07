@@ -10,7 +10,8 @@ pub struct VopnetChop {
 impl VopnetChop {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -24,43 +25,65 @@ impl VopnetChop {
         self
     }
 
-
-
     // --- Int parameters ---
     pub fn with_mininputs(mut self, val: i32) -> Self {
-        self.params.insert("mininputs".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "mininputs".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_mininputs_expr(mut self, expr: &str) -> Self {
-        self.params.insert("mininputs".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "mininputs".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_maxinputs(mut self, val: i32) -> Self {
-        self.params.insert("maxinputs".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "maxinputs".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_maxinputs_expr(mut self, expr: &str) -> Self {
-        self.params.insert("maxinputs".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "maxinputs".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -91,7 +114,6 @@ impl crate::core::types::HoudiniNode for VopnetChop {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetCop2filter {
     pub id: usize,
@@ -104,7 +126,8 @@ pub struct VopnetCop2filter {
 impl VopnetCop2filter {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -118,43 +141,65 @@ impl VopnetCop2filter {
         self
     }
 
-
-
     // --- Int parameters ---
     pub fn with_mininputs(mut self, val: i32) -> Self {
-        self.params.insert("mininputs".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "mininputs".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_mininputs_expr(mut self, expr: &str) -> Self {
-        self.params.insert("mininputs".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "mininputs".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_maxinputs(mut self, val: i32) -> Self {
-        self.params.insert("maxinputs".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "maxinputs".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_maxinputs_expr(mut self, expr: &str) -> Self {
-        self.params.insert("maxinputs".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "maxinputs".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -185,7 +230,6 @@ impl crate::core::types::HoudiniNode for VopnetCop2filter {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetCop2gen {
     pub id: usize,
@@ -198,7 +242,8 @@ pub struct VopnetCop2gen {
 impl VopnetCop2gen {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -212,25 +257,35 @@ impl VopnetCop2gen {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -261,7 +316,6 @@ impl crate::core::types::HoudiniNode for VopnetCop2gen {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct VopnetCvex {
     pub id: usize,
@@ -274,7 +328,8 @@ pub struct VopnetCvex {
 impl VopnetCvex {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -288,25 +343,35 @@ impl VopnetCvex {
         self
     }
 
-
-
     // --- String parameters ---
     pub fn with_englishname(mut self, val: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_englishname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("englishname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "englishname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_tabmenuflag(mut self, val: bool) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_tabmenuflag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tabmenuflag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tabmenuflag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }

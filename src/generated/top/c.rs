@@ -10,7 +10,8 @@ pub struct TopChopnet {
 impl TopChopnet {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl TopChopnet {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for TopChopnet {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for TopChopnet {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct TopCommandserverend {
     pub id: usize,
@@ -67,7 +65,8 @@ pub struct TopCommandserverend {
 impl TopCommandserverend {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -84,67 +83,105 @@ impl TopCommandserverend {
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs
+            .insert(self.next_input_index, (target.get_id(), 0));
         self.next_input_index += 1;
         self
     }
 
     /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
-        self.inputs.insert(self.next_input_index, (target.get_id(), output_index));
+    pub fn add_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
+        self.inputs
+            .insert(self.next_input_index, (target.get_id(), output_index));
         self.next_input_index += 1;
         self
     }
 
-
     // --- Menu parameters ---
     pub fn with_pdg_partitionmergeoperation_inst(mut self, index1: usize, val: i32) -> Self {
-        self.params.insert(format!("pdg_partitionmergeoperation{}", index1), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            format!("pdg_partitionmergeoperation{}", index1),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_pdg_partitionmergeoperation_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("pdg_partitionmergeoperation{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("pdg_partitionmergeoperation{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_pdg_feedbackbegin(mut self, val: &str) -> Self {
-        self.params.insert("pdg_feedbackbegin".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "pdg_feedbackbegin".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_pdg_feedbackbegin_expr(mut self, expr: &str) -> Self {
-        self.params.insert("pdg_feedbackbegin".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "pdg_feedbackbegin".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_pdg_partitionmergepattern_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(format!("pdg_partitionmergepattern{}", index1), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            format!("pdg_partitionmergepattern{}", index1),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_pdg_partitionmergepattern_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("pdg_partitionmergepattern{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("pdg_partitionmergepattern{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_pdg_partitionmergepreserve_inst(mut self, index1: usize, val: bool) -> Self {
-        self.params.insert(format!("pdg_partitionmergepreserve{}", index1), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            format!("pdg_partitionmergepreserve{}", index1),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_pdg_partitionmergepreserve_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("pdg_partitionmergepreserve{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("pdg_partitionmergepreserve{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -175,7 +212,6 @@ impl crate::core::types::HoudiniNode for TopCommandserverend {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct TopCop2net {
     pub id: usize,
@@ -188,7 +224,8 @@ pub struct TopCop2net {
 impl TopCop2net {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -201,8 +238,6 @@ impl TopCop2net {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for TopCop2net {
@@ -230,7 +265,6 @@ impl crate::core::types::HoudiniNode for TopCop2net {
         &self.spare_params
     }
 }
-
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCopnetBorder {
@@ -260,7 +294,8 @@ pub struct TopCopnet {
 impl TopCopnet {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -274,119 +309,191 @@ impl TopCopnet {
         self
     }
 
-
-
     // --- Float parameters ---
     pub fn with_pixelscale(mut self, val: f32) -> Self {
-        self.params.insert("pixelscale".to_string(), crate::core::types::ParamValue::Float(val));
+        self.params.insert(
+            "pixelscale".to_string(),
+            crate::core::types::ParamValue::Float(val),
+        );
         self
     }
     pub fn with_pixelscale_expr(mut self, expr: &str) -> Self {
-        self.params.insert("pixelscale".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "pixelscale".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Int parameters ---
     pub fn with_udim(mut self, val: i32) -> Self {
-        self.params.insert("udim".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params
+            .insert("udim".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_udim_expr(mut self, expr: &str) -> Self {
-        self.params.insert("udim".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "udim".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_vistile(mut self, val: i32) -> Self {
-        self.params.insert("vistile".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "vistile".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_vistile_expr(mut self, expr: &str) -> Self {
-        self.params.insert("vistile".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "vistile".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Int2 parameters ---
     pub fn with_res(mut self, val: [i32; 2]) -> Self {
-        self.params.insert("res".to_string(), crate::core::types::ParamValue::Int2(val));
+        self.params
+            .insert("res".to_string(), crate::core::types::ParamValue::Int2(val));
         self
     }
     pub fn with_res_expr(mut self, expr: &str) -> Self {
-        self.params.insert("res".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "res".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Menu parameters ---
     pub fn with_resmenu(mut self, val: i32) -> Self {
-        self.params.insert("resmenu".to_string(), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            "resmenu".to_string(),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_resmenu_expr(mut self, expr: &str) -> Self {
-        self.params.insert("resmenu".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "resmenu".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_border(mut self, val: TopCopnetBorder) -> Self {
-        self.params.insert("border".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "border".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_border_expr(mut self, expr: &str) -> Self {
-        self.params.insert("border".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "border".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_precision(mut self, val: TopCopnetPrecision) -> Self {
-        self.params.insert("precision".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "precision".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_precision_expr(mut self, expr: &str) -> Self {
-        self.params.insert("precision".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "precision".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_setres(mut self, val: bool) -> Self {
-        self.params.insert("setres".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setres".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setres_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setres".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setres".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setpixelscale(mut self, val: bool) -> Self {
-        self.params.insert("setpixelscale".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setpixelscale".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setpixelscale_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setpixelscale".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setpixelscale".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setborder(mut self, val: bool) -> Self {
-        self.params.insert("setborder".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setborder".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setborder_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setborder".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setborder".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setprecision(mut self, val: bool) -> Self {
-        self.params.insert("setprecision".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setprecision".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setprecision_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setprecision".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setprecision".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setudim(mut self, val: bool) -> Self {
-        self.params.insert("setudim".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setudim".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setudim_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setudim".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setudim".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_setvistile(mut self, val: bool) -> Self {
-        self.params.insert("setvistile".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "setvistile".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_setvistile_expr(mut self, expr: &str) -> Self {
-        self.params.insert("setvistile".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "setvistile".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -417,7 +524,6 @@ impl crate::core::types::HoudiniNode for TopCopnet {
     }
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvconcatConcatrows {
     ByColumn = 0,
@@ -436,7 +542,8 @@ pub struct TopCsvconcat {
 impl TopCsvconcat {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -452,13 +559,22 @@ impl TopCsvconcat {
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
@@ -470,7 +586,11 @@ impl TopCsvconcat {
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
@@ -482,47 +602,74 @@ impl TopCsvconcat {
     }
 
     /// Connects to input 0: "input" and specifies the output index of the target node.
-    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
-
     // --- Menu parameters ---
     pub fn with_concatrows(mut self, val: TopCsvconcatConcatrows) -> Self {
-        self.params.insert("concatrows".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "concatrows".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_concatrows_expr(mut self, expr: &str) -> Self {
-        self.params.insert("concatrows".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "concatrows".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_prefix2column(mut self, val: &str) -> Self {
-        self.params.insert("prefix2column".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "prefix2column".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_prefix2column_expr(mut self, expr: &str) -> Self {
-        self.params.insert("prefix2column".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "prefix2column".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extracts(mut self, val: &str) -> Self {
-        self.params.insert("extracts".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "extracts".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_extracts_expr(mut self, expr: &str) -> Self {
-        self.params.insert("extracts".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "extracts".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_hasheader(mut self, val: bool) -> Self {
-        self.params.insert("hasheader".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "hasheader".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_hasheader_expr(mut self, expr: &str) -> Self {
-        self.params.insert("hasheader".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "hasheader".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -552,7 +699,6 @@ impl crate::core::types::HoudiniNode for TopCsvconcat {
         &self.spare_params
     }
 }
-
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvinputUseparent {
@@ -594,7 +740,8 @@ pub struct TopCsvinput {
 impl TopCsvinput {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -610,13 +757,22 @@ impl TopCsvinput {
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
@@ -628,7 +784,11 @@ impl TopCsvinput {
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
@@ -640,185 +800,314 @@ impl TopCsvinput {
     }
 
     /// Connects to input 0: "input" and specifies the output index of the target node.
-    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
-
     // --- Int parameters ---
     pub fn with_limitrowcount(mut self, val: i32) -> Self {
-        self.params.insert("limitrowcount".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "limitrowcount".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_limitrowcount_expr(mut self, expr: &str) -> Self {
-        self.params.insert("limitrowcount".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "limitrowcount".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extractrow_inst(mut self, index1: usize, val: i32) -> Self {
-        self.params.insert(format!("extractrow{}", index1), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            format!("extractrow{}", index1),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_extractrow_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("extractrow{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("extractrow{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extractindex_inst(mut self, index1: usize, val: i32) -> Self {
-        self.params.insert(format!("extractindex{}", index1), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            format!("extractindex{}", index1),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_extractindex_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("extractindex{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("extractindex{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extracttype_inst(mut self, index1: usize, val: TopCsvinputExtracttype) -> Self {
-        self.params.insert(format!("extracttype{}", index1), crate::core::types::ParamValue::Int(val as i32));
+        self.params.insert(
+            format!("extracttype{}", index1),
+            crate::core::types::ParamValue::Int(val as i32),
+        );
         self
     }
     pub fn with_extracttype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("extracttype{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("extracttype{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Menu parameters ---
     pub fn with_pdg_workitemgeneration(mut self, val: i32) -> Self {
-        self.params.insert("pdg_workitemgeneration".to_string(), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            "pdg_workitemgeneration".to_string(),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_pdg_workitemgeneration_expr(mut self, expr: &str) -> Self {
-        self.params.insert("pdg_workitemgeneration".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "pdg_workitemgeneration".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_useparent(mut self, val: TopCsvinputUseparent) -> Self {
-        self.params.insert("useparent".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "useparent".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_useparent_expr(mut self, expr: &str) -> Self {
-        self.params.insert("useparent".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "useparent".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_indexmode(mut self, val: TopCsvinputIndexmode) -> Self {
-        self.params.insert("indexmode".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "indexmode".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_indexmode_expr(mut self, expr: &str) -> Self {
-        self.params.insert("indexmode".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "indexmode".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extractall(mut self, val: TopCsvinputExtractall) -> Self {
-        self.params.insert("extractall".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "extractall".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_extractall_expr(mut self, expr: &str) -> Self {
-        self.params.insert("extractall".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "extractall".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_useparenttag(mut self, val: &str) -> Self {
-        self.params.insert("useparenttag".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "useparenttag".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_useparenttag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("useparenttag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "useparenttag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_csvfilepath(mut self, val: &str) -> Self {
-        self.params.insert("csvfilepath".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "csvfilepath".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_csvfilepath_expr(mut self, expr: &str) -> Self {
-        self.params.insert("csvfilepath".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "csvfilepath".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_csvstring(mut self, val: &str) -> Self {
-        self.params.insert("csvstring".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "csvstring".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_csvstring_expr(mut self, expr: &str) -> Self {
-        self.params.insert("csvstring".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "csvstring".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_delimiter(mut self, val: &str) -> Self {
-        self.params.insert("delimiter".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "delimiter".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_delimiter_expr(mut self, expr: &str) -> Self {
-        self.params.insert("delimiter".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "delimiter".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_columnorderattrname(mut self, val: &str) -> Self {
-        self.params.insert("columnorderattrname".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "columnorderattrname".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_columnorderattrname_expr(mut self, expr: &str) -> Self {
-        self.params.insert("columnorderattrname".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "columnorderattrname".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extractbyattrattr(mut self, val: &str) -> Self {
-        self.params.insert("extractbyattrattr".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "extractbyattrattr".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_extractbyattrattr_expr(mut self, expr: &str) -> Self {
-        self.params.insert("extractbyattrattr".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "extractbyattrattr".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extractcolumnname_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(format!("extractcolumnname{}", index1), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            format!("extractcolumnname{}", index1),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_extractcolumnname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("extractcolumnname{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("extractcolumnname{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_extracttag_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(format!("extracttag{}", index1), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            format!("extracttag{}", index1),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_extracttag_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("extracttag{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("extracttag{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_hasheaderrow(mut self, val: bool) -> Self {
-        self.params.insert("hasheaderrow".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "hasheaderrow".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_hasheaderrow_expr(mut self, expr: &str) -> Self {
-        self.params.insert("hasheaderrow".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "hasheaderrow".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_escapedoublequotes(mut self, val: bool) -> Self {
-        self.params.insert("escapedoublequotes".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "escapedoublequotes".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_escapedoublequotes_expr(mut self, expr: &str) -> Self {
-        self.params.insert("escapedoublequotes".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "escapedoublequotes".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_specifycolumndelimiter(mut self, val: bool) -> Self {
-        self.params.insert("specifycolumndelimiter".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "specifycolumndelimiter".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_specifycolumndelimiter_expr(mut self, expr: &str) -> Self {
-        self.params.insert("specifycolumndelimiter".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "specifycolumndelimiter".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_limitrows(mut self, val: bool) -> Self {
-        self.params.insert("limitrows".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "limitrows".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_limitrows_expr(mut self, expr: &str) -> Self {
-        self.params.insert("limitrows".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "limitrows".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_addcolumnorderattr(mut self, val: bool) -> Self {
-        self.params.insert("addcolumnorderattr".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "addcolumnorderattr".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_addcolumnorderattr_expr(mut self, expr: &str) -> Self {
-        self.params.insert("addcolumnorderattr".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "addcolumnorderattr".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -848,7 +1137,6 @@ impl crate::core::types::HoudiniNode for TopCsvinput {
         &self.spare_params
     }
 }
-
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvmodifyOperation {
@@ -882,7 +1170,8 @@ pub struct TopCsvmodify {
 impl TopCsvmodify {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -898,13 +1187,22 @@ impl TopCsvmodify {
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
@@ -916,7 +1214,11 @@ impl TopCsvmodify {
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
@@ -928,141 +1230,237 @@ impl TopCsvmodify {
     }
 
     /// Connects to input 0: "input" and specifies the output index of the target node.
-    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
-
     // --- Button parameters ---
     pub fn trigger_generateexpr(mut self) -> Self {
-        self.params.insert("generateexpr".to_string(), crate::core::types::ParamValue::Button);
+        self.params.insert(
+            "generateexpr".to_string(),
+            crate::core::types::ParamValue::Button,
+        );
         self
     }
 
     // --- Int parameters ---
     pub fn with_operation(mut self, val: TopCsvmodifyOperation) -> Self {
-        self.params.insert("operation".to_string(), crate::core::types::ParamValue::Int(val as i32));
+        self.params.insert(
+            "operation".to_string(),
+            crate::core::types::ParamValue::Int(val as i32),
+        );
         self
     }
     pub fn with_operation_expr(mut self, expr: &str) -> Self {
-        self.params.insert("operation".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "operation".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_columnindex(mut self, val: i32) -> Self {
-        self.params.insert("columnindex".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "columnindex".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_columnindex_expr(mut self, expr: &str) -> Self {
-        self.params.insert("columnindex".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "columnindex".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_expr_op(mut self, val: TopCsvmodifyExprOp) -> Self {
-        self.params.insert("expr_op".to_string(), crate::core::types::ParamValue::Int(val as i32));
+        self.params.insert(
+            "expr_op".to_string(),
+            crate::core::types::ParamValue::Int(val as i32),
+        );
         self
     }
     pub fn with_expr_op_expr(mut self, expr: &str) -> Self {
-        self.params.insert("expr_op".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "expr_op".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_findcount(mut self, val: i32) -> Self {
-        self.params.insert("findcount".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "findcount".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_findcount_expr(mut self, expr: &str) -> Self {
-        self.params.insert("findcount".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "findcount".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_findcol(mut self, val: i32) -> Self {
-        self.params.insert("findcol".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "findcol".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_findcol_expr(mut self, expr: &str) -> Self {
-        self.params.insert("findcol".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "findcol".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_isolatecol(mut self, val: i32) -> Self {
-        self.params.insert("isolatecol".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params.insert(
+            "isolatecol".to_string(),
+            crate::core::types::ParamValue::Int(val),
+        );
         self
     }
     pub fn with_isolatecol_expr(mut self, expr: &str) -> Self {
-        self.params.insert("isolatecol".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "isolatecol".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_pdgnodedep_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(format!("pdgnodedep{}", index1), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            format!("pdgnodedep{}", index1),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_pdgnodedep_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("pdgnodedep{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("pdgnodedep{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_findstring(mut self, val: &str) -> Self {
-        self.params.insert("findstring".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "findstring".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_findstring_expr(mut self, expr: &str) -> Self {
-        self.params.insert("findstring".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "findstring".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_replacestring(mut self, val: &str) -> Self {
-        self.params.insert("replacestring".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "replacestring".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_replacestring_expr(mut self, expr: &str) -> Self {
-        self.params.insert("replacestring".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "replacestring".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_isolateprefix(mut self, val: &str) -> Self {
-        self.params.insert("isolateprefix".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "isolateprefix".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_isolateprefix_expr(mut self, expr: &str) -> Self {
-        self.params.insert("isolateprefix".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "isolateprefix".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_expr(mut self, val: &str) -> Self {
-        self.params.insert("expr".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "expr".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_expr_expr(mut self, expr: &str) -> Self {
-        self.params.insert("expr".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "expr".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_findinvert(mut self, val: bool) -> Self {
-        self.params.insert("findinvert".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "findinvert".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_findinvert_expr(mut self, expr: &str) -> Self {
-        self.params.insert("findinvert".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "findinvert".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_findbefore(mut self, val: bool) -> Self {
-        self.params.insert("findbefore".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "findbefore".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_findbefore_expr(mut self, expr: &str) -> Self {
-        self.params.insert("findbefore".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "findbefore".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_findafter(mut self, val: bool) -> Self {
-        self.params.insert("findafter".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "findafter".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_findafter_expr(mut self, expr: &str) -> Self {
-        self.params.insert("findafter".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "findafter".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_isolateinvert(mut self, val: bool) -> Self {
-        self.params.insert("isolateinvert".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "isolateinvert".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_isolateinvert_expr(mut self, expr: &str) -> Self {
-        self.params.insert("isolateinvert".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "isolateinvert".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }
@@ -1092,7 +1490,6 @@ impl crate::core::types::HoudiniNode for TopCsvmodify {
         &self.spare_params
     }
 }
-
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvoutputQuoting {
@@ -1134,7 +1531,8 @@ pub struct TopCsvoutput {
 impl TopCsvoutput {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1150,13 +1548,22 @@ impl TopCsvoutput {
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
@@ -1168,7 +1575,11 @@ impl TopCsvoutput {
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
@@ -1180,143 +1591,242 @@ impl TopCsvoutput {
     }
 
     /// Connects to input 0: "input" and specifies the output index of the target node.
-    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
-
     // --- Menu parameters ---
     pub fn with_pdg_workitemgeneration(mut self, val: i32) -> Self {
-        self.params.insert("pdg_workitemgeneration".to_string(), crate::core::types::ParamValue::Menu(val));
+        self.params.insert(
+            "pdg_workitemgeneration".to_string(),
+            crate::core::types::ParamValue::Menu(val),
+        );
         self
     }
     pub fn with_pdg_workitemgeneration_expr(mut self, expr: &str) -> Self {
-        self.params.insert("pdg_workitemgeneration".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "pdg_workitemgeneration".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_quoting(mut self, val: TopCsvoutputQuoting) -> Self {
-        self.params.insert("quoting".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "quoting".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_quoting_expr(mut self, expr: &str) -> Self {
-        self.params.insert("quoting".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "quoting".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_querymode(mut self, val: TopCsvoutputQuerymode) -> Self {
-        self.params.insert("querymode".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "querymode".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_querymode_expr(mut self, expr: &str) -> Self {
-        self.params.insert("querymode".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "querymode".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_errorifnomatch(mut self, val: TopCsvoutputErrorifnomatch) -> Self {
-        self.params.insert("errorifnomatch".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "errorifnomatch".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_errorifnomatch_expr(mut self, expr: &str) -> Self {
-        self.params.insert("errorifnomatch".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "errorifnomatch".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_multiplevalueshandling(mut self, val: TopCsvoutputMultiplevalueshandling) -> Self {
-        self.params.insert("multiplevalueshandling".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "multiplevalueshandling".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_multiplevalueshandling_expr(mut self, expr: &str) -> Self {
-        self.params.insert("multiplevalueshandling".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "multiplevalueshandling".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_csvfilepath(mut self, val: &str) -> Self {
-        self.params.insert("csvfilepath".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "csvfilepath".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_csvfilepath_expr(mut self, expr: &str) -> Self {
-        self.params.insert("csvfilepath".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "csvfilepath".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_resultdatatag(mut self, val: &str) -> Self {
-        self.params.insert("resultdatatag".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "resultdatatag".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_resultdatatag_expr(mut self, expr: &str) -> Self {
-        self.params.insert("resultdatatag".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "resultdatatag".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_delimiter(mut self, val: &str) -> Self {
-        self.params.insert("delimiter".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "delimiter".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_delimiter_expr(mut self, expr: &str) -> Self {
-        self.params.insert("delimiter".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "delimiter".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_queriesattr(mut self, val: &str) -> Self {
-        self.params.insert("queriesattr".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "queriesattr".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_queriesattr_expr(mut self, expr: &str) -> Self {
-        self.params.insert("queriesattr".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "queriesattr".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_pattern(mut self, val: &str) -> Self {
-        self.params.insert("pattern".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "pattern".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_pattern_expr(mut self, expr: &str) -> Self {
-        self.params.insert("pattern".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "pattern".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_dataqueriesmult_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(format!("dataqueriesmult{}", index1), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            format!("dataqueriesmult{}", index1),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_dataqueriesmult_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("dataqueriesmult{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("dataqueriesmult{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_dataqueriesoverride_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(format!("dataqueriesoverride{}", index1), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            format!("dataqueriesoverride{}", index1),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_dataqueriesoverride_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("dataqueriesoverride{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("dataqueriesoverride{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_enablecsvfile(mut self, val: bool) -> Self {
-        self.params.insert("enablecsvfile".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "enablecsvfile".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_enablecsvfile_expr(mut self, expr: &str) -> Self {
-        self.params.insert("enablecsvfile".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "enablecsvfile".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_specifycolumndelimiter(mut self, val: bool) -> Self {
-        self.params.insert("specifycolumndelimiter".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "specifycolumndelimiter".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_specifycolumndelimiter_expr(mut self, expr: &str) -> Self {
-        self.params.insert("specifycolumndelimiter".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "specifycolumndelimiter".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_writeheader(mut self, val: bool) -> Self {
-        self.params.insert("writeheader".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "writeheader".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_writeheader_expr(mut self, expr: &str) -> Self {
-        self.params.insert("writeheader".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "writeheader".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_usedataqueriesoverride_inst(mut self, index1: usize, val: bool) -> Self {
-        self.params.insert(format!("usedataqueriesoverride{}", index1), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            format!("usedataqueriesoverride{}", index1),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_usedataqueriesoverride_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(format!("usedataqueriesoverride{}", index1), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            format!("usedataqueriesoverride{}", index1),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }

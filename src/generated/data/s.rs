@@ -10,7 +10,8 @@ pub struct DataSamplecompnetworkCopernicus {
 impl DataSamplecompnetworkCopernicus {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataSamplecompnetworkCopernicus {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSamplecompnetworkCopernicus {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataSamplecompnetworkCopernicus {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSamplecompnetworkOldCops {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataSamplecompnetworkOldCops {
 impl DataSamplecompnetworkOldCops {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataSamplecompnetworkOldCops {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSamplecompnetworkOldCops {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataSamplecompnetworkOldCops {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSdfcollision {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataSdfcollision {
 impl DataSdfcollision {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataSdfcollision {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSdfcollision {
@@ -165,7 +160,6 @@ impl crate::core::types::HoudiniNode for DataSdfcollision {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSharpen {
     pub id: usize,
@@ -178,7 +172,8 @@ pub struct DataSharpen {
 impl DataSharpen {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -191,8 +186,6 @@ impl DataSharpen {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSharpen {
@@ -221,7 +214,6 @@ impl crate::core::types::HoudiniNode for DataSharpen {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataShotrender {
     pub id: usize,
@@ -234,7 +226,8 @@ pub struct DataShotrender {
 impl DataShotrender {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -247,8 +240,6 @@ impl DataShotrender {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataShotrender {
@@ -277,7 +268,6 @@ impl crate::core::types::HoudiniNode for DataShotrender {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxBlur {
     pub id: usize,
@@ -290,7 +280,8 @@ pub struct DataSidefxBlur {
 impl DataSidefxBlur {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -303,8 +294,6 @@ impl DataSidefxBlur {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxBlur {
@@ -333,7 +322,6 @@ impl crate::core::types::HoudiniNode for DataSidefxBlur {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxBoxBlur {
     pub id: usize,
@@ -346,7 +334,8 @@ pub struct DataSidefxBoxBlur {
 impl DataSidefxBoxBlur {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -359,8 +348,6 @@ impl DataSidefxBoxBlur {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxBoxBlur {
@@ -389,7 +376,6 @@ impl crate::core::types::HoudiniNode for DataSidefxBoxBlur {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxDilate {
     pub id: usize,
@@ -402,7 +388,8 @@ pub struct DataSidefxDilate {
 impl DataSidefxDilate {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -415,8 +402,6 @@ impl DataSidefxDilate {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxDilate {
@@ -445,7 +430,6 @@ impl crate::core::types::HoudiniNode for DataSidefxDilate {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxEmboss {
     pub id: usize,
@@ -458,7 +442,8 @@ pub struct DataSidefxEmboss {
 impl DataSidefxEmboss {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -471,8 +456,6 @@ impl DataSidefxEmboss {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxEmboss {
@@ -501,7 +484,6 @@ impl crate::core::types::HoudiniNode for DataSidefxEmboss {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxErode {
     pub id: usize,
@@ -514,7 +496,8 @@ pub struct DataSidefxErode {
 impl DataSidefxErode {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -527,8 +510,6 @@ impl DataSidefxErode {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxErode {
@@ -557,7 +538,6 @@ impl crate::core::types::HoudiniNode for DataSidefxErode {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxFeatherInwards {
     pub id: usize,
@@ -570,7 +550,8 @@ pub struct DataSidefxFeatherInwards {
 impl DataSidefxFeatherInwards {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -583,8 +564,6 @@ impl DataSidefxFeatherInwards {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxFeatherInwards {
@@ -613,7 +592,6 @@ impl crate::core::types::HoudiniNode for DataSidefxFeatherInwards {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxFeatherOutwards {
     pub id: usize,
@@ -626,7 +604,8 @@ pub struct DataSidefxFeatherOutwards {
 impl DataSidefxFeatherOutwards {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -639,8 +618,6 @@ impl DataSidefxFeatherOutwards {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxFeatherOutwards {
@@ -669,7 +646,6 @@ impl crate::core::types::HoudiniNode for DataSidefxFeatherOutwards {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxOutline {
     pub id: usize,
@@ -682,7 +658,8 @@ pub struct DataSidefxOutline {
 impl DataSidefxOutline {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -695,8 +672,6 @@ impl DataSidefxOutline {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxOutline {
@@ -725,7 +700,6 @@ impl crate::core::types::HoudiniNode for DataSidefxOutline {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxReactiondiffusionBlock {
     pub id: usize,
@@ -738,7 +712,8 @@ pub struct DataSidefxReactiondiffusionBlock {
 impl DataSidefxReactiondiffusionBlock {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -751,8 +726,6 @@ impl DataSidefxReactiondiffusionBlock {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxReactiondiffusionBlock {
@@ -781,7 +754,6 @@ impl crate::core::types::HoudiniNode for DataSidefxReactiondiffusionBlock {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeCopSdfrebuild {
     pub id: usize,
@@ -794,7 +766,8 @@ pub struct DataSidefxRecipeCopSdfrebuild {
 impl DataSidefxRecipeCopSdfrebuild {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -807,8 +780,6 @@ impl DataSidefxRecipeCopSdfrebuild {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeCopSdfrebuild {
@@ -837,7 +808,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeCopSdfrebuild {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeCoppyroFlame {
     pub id: usize,
@@ -850,7 +820,8 @@ pub struct DataSidefxRecipeCoppyroFlame {
 impl DataSidefxRecipeCoppyroFlame {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -863,8 +834,6 @@ impl DataSidefxRecipeCoppyroFlame {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeCoppyroFlame {
@@ -893,7 +862,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeCoppyroFlame {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeLopTestsceneCornellbox {
     pub id: usize,
@@ -906,7 +874,8 @@ pub struct DataSidefxRecipeLopTestsceneCornellbox {
 impl DataSidefxRecipeLopTestsceneCornellbox {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -919,8 +888,6 @@ impl DataSidefxRecipeLopTestsceneCornellbox {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneCornellbox {
@@ -949,7 +916,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneCornellbox 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeLopTestsceneMateriallookdev {
     pub id: usize,
@@ -962,7 +928,8 @@ pub struct DataSidefxRecipeLopTestsceneMateriallookdev {
 impl DataSidefxRecipeLopTestsceneMateriallookdev {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -975,8 +942,6 @@ impl DataSidefxRecipeLopTestsceneMateriallookdev {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneMateriallookdev {
@@ -1005,7 +970,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneMaterialloo
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeLopTestsceneNoisesampler {
     pub id: usize,
@@ -1018,7 +982,8 @@ pub struct DataSidefxRecipeLopTestsceneNoisesampler {
 impl DataSidefxRecipeLopTestsceneNoisesampler {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1031,8 +996,6 @@ impl DataSidefxRecipeLopTestsceneNoisesampler {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneNoisesampler {
@@ -1061,7 +1024,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneNoisesample
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeLopTestsceneStandardshaderball {
     pub id: usize,
@@ -1074,7 +1036,8 @@ pub struct DataSidefxRecipeLopTestsceneStandardshaderball {
 impl DataSidefxRecipeLopTestsceneStandardshaderball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1087,8 +1050,6 @@ impl DataSidefxRecipeLopTestsceneStandardshaderball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneStandardshaderball {
@@ -1117,7 +1078,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneStandardsha
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeLopTestsceneVeachmisplanks {
     pub id: usize,
@@ -1130,7 +1090,8 @@ pub struct DataSidefxRecipeLopTestsceneVeachmisplanks {
 impl DataSidefxRecipeLopTestsceneVeachmisplanks {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1143,8 +1104,6 @@ impl DataSidefxRecipeLopTestsceneVeachmisplanks {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneVeachmisplanks {
@@ -1173,7 +1132,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeLopTestsceneVeachmispla
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMlTraindeformer {
     pub id: usize,
@@ -1186,7 +1144,8 @@ pub struct DataSidefxRecipeMlTraindeformer {
 impl DataSidefxRecipeMlTraindeformer {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1199,8 +1158,6 @@ impl DataSidefxRecipeMlTraindeformer {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTraindeformer {
@@ -1229,7 +1186,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTraindeformer {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMlTrainterrain {
     pub id: usize,
@@ -1242,7 +1198,8 @@ pub struct DataSidefxRecipeMlTrainterrain {
 impl DataSidefxRecipeMlTrainterrain {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1255,8 +1212,6 @@ impl DataSidefxRecipeMlTrainterrain {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainterrain {
@@ -1285,7 +1240,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainterrain {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMlTrainvolumeupres {
     pub id: usize,
@@ -1298,7 +1252,8 @@ pub struct DataSidefxRecipeMlTrainvolumeupres {
 impl DataSidefxRecipeMlTrainvolumeupres {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1311,8 +1266,6 @@ impl DataSidefxRecipeMlTrainvolumeupres {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainvolumeupres {
@@ -1341,7 +1294,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMlTrainvolumeupres {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmBuildingCollapse {
     pub id: usize,
@@ -1354,7 +1306,8 @@ pub struct DataSidefxRecipeMpmBuildingCollapse {
 impl DataSidefxRecipeMpmBuildingCollapse {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1367,8 +1320,6 @@ impl DataSidefxRecipeMpmBuildingCollapse {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmBuildingCollapse {
@@ -1397,7 +1348,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmBuildingCollapse {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmConfigure {
     pub id: usize,
@@ -1410,7 +1360,8 @@ pub struct DataSidefxRecipeMpmConfigure {
 impl DataSidefxRecipeMpmConfigure {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1423,8 +1374,6 @@ impl DataSidefxRecipeMpmConfigure {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmConfigure {
@@ -1453,7 +1402,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmConfigure {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmJelloParty {
     pub id: usize,
@@ -1466,7 +1414,8 @@ pub struct DataSidefxRecipeMpmJelloParty {
 impl DataSidefxRecipeMpmJelloParty {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1479,8 +1428,6 @@ impl DataSidefxRecipeMpmJelloParty {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmJelloParty {
@@ -1509,7 +1456,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmJelloParty {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmLandslide {
     pub id: usize,
@@ -1522,7 +1468,8 @@ pub struct DataSidefxRecipeMpmLandslide {
 impl DataSidefxRecipeMpmLandslide {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1535,8 +1482,6 @@ impl DataSidefxRecipeMpmLandslide {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmLandslide {
@@ -1565,7 +1510,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmLandslide {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmMetalTearing {
     pub id: usize,
@@ -1578,7 +1522,8 @@ pub struct DataSidefxRecipeMpmMetalTearing {
 impl DataSidefxRecipeMpmMetalTearing {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1591,8 +1536,6 @@ impl DataSidefxRecipeMpmMetalTearing {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmMetalTearing {
@@ -1621,7 +1564,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmMetalTearing {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmPancakes {
     pub id: usize,
@@ -1634,7 +1576,8 @@ pub struct DataSidefxRecipeMpmPancakes {
 impl DataSidefxRecipeMpmPancakes {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1647,8 +1590,6 @@ impl DataSidefxRecipeMpmPancakes {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmPancakes {
@@ -1677,7 +1618,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmPancakes {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmRollingSnowball {
     pub id: usize,
@@ -1690,7 +1630,8 @@ pub struct DataSidefxRecipeMpmRollingSnowball {
 impl DataSidefxRecipeMpmRollingSnowball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1703,8 +1644,6 @@ impl DataSidefxRecipeMpmRollingSnowball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmRollingSnowball {
@@ -1733,7 +1672,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmRollingSnowball {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmSandInstances {
     pub id: usize,
@@ -1746,7 +1684,8 @@ pub struct DataSidefxRecipeMpmSandInstances {
 impl DataSidefxRecipeMpmSandInstances {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1759,8 +1698,6 @@ impl DataSidefxRecipeMpmSandInstances {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSandInstances {
@@ -1789,7 +1726,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSandInstances {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmSoftbody {
     pub id: usize,
@@ -1802,7 +1738,8 @@ pub struct DataSidefxRecipeMpmSoftbody {
 impl DataSidefxRecipeMpmSoftbody {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1815,8 +1752,6 @@ impl DataSidefxRecipeMpmSoftbody {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSoftbody {
@@ -1845,7 +1780,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSoftbody {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmSpinningTire {
     pub id: usize,
@@ -1858,7 +1792,8 @@ pub struct DataSidefxRecipeMpmSpinningTire {
 impl DataSidefxRecipeMpmSpinningTire {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1871,8 +1806,6 @@ impl DataSidefxRecipeMpmSpinningTire {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSpinningTire {
@@ -1901,7 +1834,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmSpinningTire {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMpmWaterGlass {
     pub id: usize,
@@ -1914,7 +1846,8 @@ pub struct DataSidefxRecipeMpmWaterGlass {
 impl DataSidefxRecipeMpmWaterGlass {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1927,8 +1860,6 @@ impl DataSidefxRecipeMpmWaterGlass {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmWaterGlass {
@@ -1957,7 +1888,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMpmWaterGlass {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMusclesOtismuscleandtissue {
     pub id: usize,
@@ -1970,7 +1900,8 @@ pub struct DataSidefxRecipeMusclesOtismuscleandtissue {
 impl DataSidefxRecipeMusclesOtismuscleandtissue {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -1983,8 +1914,6 @@ impl DataSidefxRecipeMusclesOtismuscleandtissue {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesOtismuscleandtissue {
@@ -2013,7 +1942,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesOtismuscleandtis
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMusclesTestgeometryOttoMuscleandtissuesim {
     pub id: usize,
@@ -2026,7 +1954,8 @@ pub struct DataSidefxRecipeMusclesTestgeometryOttoMuscleandtissuesim {
 impl DataSidefxRecipeMusclesTestgeometryOttoMuscleandtissuesim {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2039,8 +1968,6 @@ impl DataSidefxRecipeMusclesTestgeometryOttoMuscleandtissuesim {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOttoMuscleandtissuesim {
@@ -2069,7 +1996,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOtto
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeMusclesTestgeometryOttoMuscletransfer {
     pub id: usize,
@@ -2082,7 +2008,8 @@ pub struct DataSidefxRecipeMusclesTestgeometryOttoMuscletransfer {
 impl DataSidefxRecipeMusclesTestgeometryOttoMuscletransfer {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2095,8 +2022,6 @@ impl DataSidefxRecipeMusclesTestgeometryOttoMuscletransfer {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOttoMuscletransfer {
@@ -2125,7 +2050,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeMusclesTestgeometryOtto
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeOpeninmplay {
     pub id: usize,
@@ -2138,7 +2062,8 @@ pub struct DataSidefxRecipeOpeninmplay {
 impl DataSidefxRecipeOpeninmplay {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2151,8 +2076,6 @@ impl DataSidefxRecipeOpeninmplay {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeOpeninmplay {
@@ -2181,7 +2104,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeOpeninmplay {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePopFireportal {
     pub id: usize,
@@ -2194,7 +2116,8 @@ pub struct DataSidefxRecipePopFireportal {
 impl DataSidefxRecipePopFireportal {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2207,8 +2130,6 @@ impl DataSidefxRecipePopFireportal {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePopFireportal {
@@ -2237,7 +2158,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePopFireportal {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroAerialbarrage {
     pub id: usize,
@@ -2250,7 +2170,8 @@ pub struct DataSidefxRecipePyroAerialbarrage {
 impl DataSidefxRecipePyroAerialbarrage {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2263,8 +2184,6 @@ impl DataSidefxRecipePyroAerialbarrage {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialbarrage {
@@ -2293,7 +2212,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialbarrage {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroAerialexplosion {
     pub id: usize,
@@ -2306,7 +2224,8 @@ pub struct DataSidefxRecipePyroAerialexplosion {
 impl DataSidefxRecipePyroAerialexplosion {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2319,8 +2238,6 @@ impl DataSidefxRecipePyroAerialexplosion {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialexplosion {
@@ -2349,7 +2266,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialexplosion {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroAerialgroundbarrage {
     pub id: usize,
@@ -2362,7 +2278,8 @@ pub struct DataSidefxRecipePyroAerialgroundbarrage {
 impl DataSidefxRecipePyroAerialgroundbarrage {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2375,8 +2292,6 @@ impl DataSidefxRecipePyroAerialgroundbarrage {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialgroundbarrage {
@@ -2405,7 +2320,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroAerialgroundbarrage
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroBillowysmoke {
     pub id: usize,
@@ -2418,7 +2332,8 @@ pub struct DataSidefxRecipePyroBillowysmoke {
 impl DataSidefxRecipePyroBillowysmoke {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2431,8 +2346,6 @@ impl DataSidefxRecipePyroBillowysmoke {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBillowysmoke {
@@ -2461,7 +2374,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBillowysmoke {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroBonfire {
     pub id: usize,
@@ -2474,7 +2386,8 @@ pub struct DataSidefxRecipePyroBonfire {
 impl DataSidefxRecipePyroBonfire {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2487,8 +2400,6 @@ impl DataSidefxRecipePyroBonfire {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBonfire {
@@ -2517,7 +2428,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBonfire {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroBullethits {
     pub id: usize,
@@ -2530,7 +2440,8 @@ pub struct DataSidefxRecipePyroBullethits {
 impl DataSidefxRecipePyroBullethits {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2543,8 +2454,6 @@ impl DataSidefxRecipePyroBullethits {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBullethits {
@@ -2573,7 +2482,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroBullethits {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroCandleflame {
     pub id: usize,
@@ -2586,7 +2494,8 @@ pub struct DataSidefxRecipePyroCandleflame {
 impl DataSidefxRecipePyroCandleflame {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2599,8 +2508,6 @@ impl DataSidefxRecipePyroCandleflame {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroCandleflame {
@@ -2629,7 +2536,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroCandleflame {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroDebrisdust {
     pub id: usize,
@@ -2642,7 +2548,8 @@ pub struct DataSidefxRecipePyroDebrisdust {
 impl DataSidefxRecipePyroDebrisdust {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2655,8 +2562,6 @@ impl DataSidefxRecipePyroDebrisdust {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDebrisdust {
@@ -2685,7 +2590,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDebrisdust {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroDryice {
     pub id: usize,
@@ -2698,7 +2602,8 @@ pub struct DataSidefxRecipePyroDryice {
 impl DataSidefxRecipePyroDryice {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2711,8 +2616,6 @@ impl DataSidefxRecipePyroDryice {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDryice {
@@ -2741,7 +2644,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDryice {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroDustfireball {
     pub id: usize,
@@ -2754,7 +2656,8 @@ pub struct DataSidefxRecipePyroDustfireball {
 impl DataSidefxRecipePyroDustfireball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2767,8 +2670,6 @@ impl DataSidefxRecipePyroDustfireball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDustfireball {
@@ -2797,7 +2698,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroDustfireball {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroFireball {
     pub id: usize,
@@ -2810,7 +2710,8 @@ pub struct DataSidefxRecipePyroFireball {
 impl DataSidefxRecipePyroFireball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2823,8 +2724,6 @@ impl DataSidefxRecipePyroFireball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireball {
@@ -2853,7 +2752,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireball {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroFireballwithtrails {
     pub id: usize,
@@ -2866,7 +2764,8 @@ pub struct DataSidefxRecipePyroFireballwithtrails {
 impl DataSidefxRecipePyroFireballwithtrails {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2879,8 +2778,6 @@ impl DataSidefxRecipePyroFireballwithtrails {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireballwithtrails {
@@ -2909,7 +2806,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroFireballwithtrails 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroGpugroundexplosion {
     pub id: usize,
@@ -2922,7 +2818,8 @@ pub struct DataSidefxRecipePyroGpugroundexplosion {
 impl DataSidefxRecipePyroGpugroundexplosion {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2935,8 +2832,6 @@ impl DataSidefxRecipePyroGpugroundexplosion {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGpugroundexplosion {
@@ -2965,7 +2860,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGpugroundexplosion 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroGputorch {
     pub id: usize,
@@ -2978,7 +2872,8 @@ pub struct DataSidefxRecipePyroGputorch {
 impl DataSidefxRecipePyroGputorch {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -2991,8 +2886,6 @@ impl DataSidefxRecipePyroGputorch {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGputorch {
@@ -3021,7 +2914,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGputorch {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroGroundexplosion {
     pub id: usize,
@@ -3034,7 +2926,8 @@ pub struct DataSidefxRecipePyroGroundexplosion {
 impl DataSidefxRecipePyroGroundexplosion {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3047,8 +2940,6 @@ impl DataSidefxRecipePyroGroundexplosion {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosion {
@@ -3077,7 +2968,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosion {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroGroundexplosiona {
     pub id: usize,
@@ -3090,7 +2980,8 @@ pub struct DataSidefxRecipePyroGroundexplosiona {
 impl DataSidefxRecipePyroGroundexplosiona {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3103,8 +2994,6 @@ impl DataSidefxRecipePyroGroundexplosiona {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosiona {
@@ -3133,7 +3022,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosiona {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroGroundexplosionb {
     pub id: usize,
@@ -3146,7 +3034,8 @@ pub struct DataSidefxRecipePyroGroundexplosionb {
 impl DataSidefxRecipePyroGroundexplosionb {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3159,8 +3048,6 @@ impl DataSidefxRecipePyroGroundexplosionb {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosionb {
@@ -3189,7 +3076,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundexplosionb {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroGroundshockwave {
     pub id: usize,
@@ -3202,7 +3088,8 @@ pub struct DataSidefxRecipePyroGroundshockwave {
 impl DataSidefxRecipePyroGroundshockwave {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3215,8 +3102,6 @@ impl DataSidefxRecipePyroGroundshockwave {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundshockwave {
@@ -3245,7 +3130,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroGroundshockwave {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroMuzzleflash {
     pub id: usize,
@@ -3258,7 +3142,8 @@ pub struct DataSidefxRecipePyroMuzzleflash {
 impl DataSidefxRecipePyroMuzzleflash {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3271,8 +3156,6 @@ impl DataSidefxRecipePyroMuzzleflash {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroMuzzleflash {
@@ -3301,7 +3184,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroMuzzleflash {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroRendersetup {
     pub id: usize,
@@ -3314,7 +3196,8 @@ pub struct DataSidefxRecipePyroRendersetup {
 impl DataSidefxRecipePyroRendersetup {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3327,8 +3210,6 @@ impl DataSidefxRecipePyroRendersetup {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroRendersetup {
@@ -3357,7 +3238,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroRendersetup {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroShockwavefireball {
     pub id: usize,
@@ -3370,7 +3250,8 @@ pub struct DataSidefxRecipePyroShockwavefireball {
 impl DataSidefxRecipePyroShockwavefireball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3383,8 +3264,6 @@ impl DataSidefxRecipePyroShockwavefireball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroShockwavefireball {
@@ -3413,7 +3292,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroShockwavefireball {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroSmokelessflame {
     pub id: usize,
@@ -3426,7 +3304,8 @@ pub struct DataSidefxRecipePyroSmokelessflame {
 impl DataSidefxRecipePyroSmokelessflame {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3439,8 +3318,6 @@ impl DataSidefxRecipePyroSmokelessflame {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSmokelessflame {
@@ -3469,7 +3346,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSmokelessflame {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroSpreadingfire {
     pub id: usize,
@@ -3482,7 +3358,8 @@ pub struct DataSidefxRecipePyroSpreadingfire {
 impl DataSidefxRecipePyroSpreadingfire {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3495,8 +3372,6 @@ impl DataSidefxRecipePyroSpreadingfire {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSpreadingfire {
@@ -3525,7 +3400,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSpreadingfire {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroStaggeredgroundshockwaves {
     pub id: usize,
@@ -3538,7 +3412,8 @@ pub struct DataSidefxRecipePyroStaggeredgroundshockwaves {
 impl DataSidefxRecipePyroStaggeredgroundshockwaves {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3551,8 +3426,6 @@ impl DataSidefxRecipePyroStaggeredgroundshockwaves {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStaggeredgroundshockwaves {
@@ -3581,7 +3454,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStaggeredgroundshoc
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroStylizedfire {
     pub id: usize,
@@ -3594,7 +3466,8 @@ pub struct DataSidefxRecipePyroStylizedfire {
 impl DataSidefxRecipePyroStylizedfire {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3607,8 +3480,6 @@ impl DataSidefxRecipePyroStylizedfire {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStylizedfire {
@@ -3637,7 +3508,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroStylizedfire {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroSynchronizedgroundshockwaves {
     pub id: usize,
@@ -3650,7 +3520,8 @@ pub struct DataSidefxRecipePyroSynchronizedgroundshockwaves {
 impl DataSidefxRecipePyroSynchronizedgroundshockwaves {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3663,8 +3534,6 @@ impl DataSidefxRecipePyroSynchronizedgroundshockwaves {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSynchronizedgroundshockwaves {
@@ -3693,7 +3562,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroSynchronizedgrounds
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroThrusterexhaust {
     pub id: usize,
@@ -3706,7 +3574,8 @@ pub struct DataSidefxRecipePyroThrusterexhaust {
 impl DataSidefxRecipePyroThrusterexhaust {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3719,8 +3588,6 @@ impl DataSidefxRecipePyroThrusterexhaust {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroThrusterexhaust {
@@ -3749,7 +3616,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroThrusterexhaust {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroWispysmokea {
     pub id: usize,
@@ -3762,7 +3628,8 @@ pub struct DataSidefxRecipePyroWispysmokea {
 impl DataSidefxRecipePyroWispysmokea {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3775,8 +3642,6 @@ impl DataSidefxRecipePyroWispysmokea {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokea {
@@ -3805,7 +3670,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokea {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipePyroWispysmokeb {
     pub id: usize,
@@ -3818,7 +3682,8 @@ pub struct DataSidefxRecipePyroWispysmokeb {
 impl DataSidefxRecipePyroWispysmokeb {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3831,8 +3696,6 @@ impl DataSidefxRecipePyroWispysmokeb {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokeb {
@@ -3861,7 +3724,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipePyroWispysmokeb {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatFlat {
     pub id: usize,
@@ -3874,7 +3736,8 @@ pub struct DataSidefxRecipeRampFloatFlat {
 impl DataSidefxRecipeRampFloatFlat {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3887,8 +3750,6 @@ impl DataSidefxRecipeRampFloatFlat {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatFlat {
@@ -3917,7 +3778,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatFlat {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatHill {
     pub id: usize,
@@ -3930,7 +3790,8 @@ pub struct DataSidefxRecipeRampFloatHill {
 impl DataSidefxRecipeRampFloatHill {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3943,8 +3804,6 @@ impl DataSidefxRecipeRampFloatHill {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatHill {
@@ -3973,7 +3832,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatHill {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatLinear {
     pub id: usize,
@@ -3986,7 +3844,8 @@ pub struct DataSidefxRecipeRampFloatLinear {
 impl DataSidefxRecipeRampFloatLinear {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -3999,8 +3858,6 @@ impl DataSidefxRecipeRampFloatLinear {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatLinear {
@@ -4029,7 +3886,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatLinear {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatRound {
     pub id: usize,
@@ -4042,7 +3898,8 @@ pub struct DataSidefxRecipeRampFloatRound {
 impl DataSidefxRecipeRampFloatRound {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4055,8 +3912,6 @@ impl DataSidefxRecipeRampFloatRound {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatRound {
@@ -4085,7 +3940,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatRound {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatSharp {
     pub id: usize,
@@ -4098,7 +3952,8 @@ pub struct DataSidefxRecipeRampFloatSharp {
 impl DataSidefxRecipeRampFloatSharp {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4111,8 +3966,6 @@ impl DataSidefxRecipeRampFloatSharp {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSharp {
@@ -4141,7 +3994,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSharp {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatSmooth {
     pub id: usize,
@@ -4154,7 +4006,8 @@ pub struct DataSidefxRecipeRampFloatSmooth {
 impl DataSidefxRecipeRampFloatSmooth {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4167,8 +4020,6 @@ impl DataSidefxRecipeRampFloatSmooth {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSmooth {
@@ -4197,7 +4048,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSmooth {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatSteps {
     pub id: usize,
@@ -4210,7 +4060,8 @@ pub struct DataSidefxRecipeRampFloatSteps {
 impl DataSidefxRecipeRampFloatSteps {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4223,8 +4074,6 @@ impl DataSidefxRecipeRampFloatSteps {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSteps {
@@ -4253,7 +4102,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatSteps {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampFloatValley {
     pub id: usize,
@@ -4266,7 +4114,8 @@ pub struct DataSidefxRecipeRampFloatValley {
 impl DataSidefxRecipeRampFloatValley {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4279,8 +4128,6 @@ impl DataSidefxRecipeRampFloatValley {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatValley {
@@ -4309,7 +4156,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampFloatValley {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbBlackbody {
     pub id: usize,
@@ -4322,7 +4168,8 @@ pub struct DataSidefxRecipeRampRgbBlackbody {
 impl DataSidefxRecipeRampRgbBlackbody {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4335,8 +4182,6 @@ impl DataSidefxRecipeRampRgbBlackbody {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlackbody {
@@ -4365,7 +4210,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlackbody {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbBlacktoorange {
     pub id: usize,
@@ -4378,7 +4222,8 @@ pub struct DataSidefxRecipeRampRgbBlacktoorange {
 impl DataSidefxRecipeRampRgbBlacktoorange {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4391,8 +4236,6 @@ impl DataSidefxRecipeRampRgbBlacktoorange {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlacktoorange {
@@ -4421,7 +4264,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbBlacktoorange {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbCividis {
     pub id: usize,
@@ -4434,7 +4276,8 @@ pub struct DataSidefxRecipeRampRgbCividis {
 impl DataSidefxRecipeRampRgbCividis {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4447,8 +4290,6 @@ impl DataSidefxRecipeRampRgbCividis {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbCividis {
@@ -4477,7 +4318,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbCividis {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbGrayscale {
     pub id: usize,
@@ -4490,7 +4330,8 @@ pub struct DataSidefxRecipeRampRgbGrayscale {
 impl DataSidefxRecipeRampRgbGrayscale {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4503,8 +4344,6 @@ impl DataSidefxRecipeRampRgbGrayscale {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbGrayscale {
@@ -4533,7 +4372,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbGrayscale {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbInferno {
     pub id: usize,
@@ -4546,7 +4384,8 @@ pub struct DataSidefxRecipeRampRgbInferno {
 impl DataSidefxRecipeRampRgbInferno {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4559,8 +4398,6 @@ impl DataSidefxRecipeRampRgbInferno {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInferno {
@@ -4589,7 +4426,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInferno {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbInfrared {
     pub id: usize,
@@ -4602,7 +4438,8 @@ pub struct DataSidefxRecipeRampRgbInfrared {
 impl DataSidefxRecipeRampRgbInfrared {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4615,8 +4452,6 @@ impl DataSidefxRecipeRampRgbInfrared {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInfrared {
@@ -4645,7 +4480,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbInfrared {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbMagma {
     pub id: usize,
@@ -4658,7 +4492,8 @@ pub struct DataSidefxRecipeRampRgbMagma {
 impl DataSidefxRecipeRampRgbMagma {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4671,8 +4506,6 @@ impl DataSidefxRecipeRampRgbMagma {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbMagma {
@@ -4701,7 +4534,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbMagma {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbPlasma {
     pub id: usize,
@@ -4714,7 +4546,8 @@ pub struct DataSidefxRecipeRampRgbPlasma {
 impl DataSidefxRecipeRampRgbPlasma {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4727,8 +4560,6 @@ impl DataSidefxRecipeRampRgbPlasma {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbPlasma {
@@ -4757,7 +4588,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbPlasma {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbSand {
     pub id: usize,
@@ -4770,7 +4600,8 @@ pub struct DataSidefxRecipeRampRgbSand {
 impl DataSidefxRecipeRampRgbSand {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4783,8 +4614,6 @@ impl DataSidefxRecipeRampRgbSand {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbSand {
@@ -4813,7 +4642,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbSand {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbTwilight {
     pub id: usize,
@@ -4826,7 +4654,8 @@ pub struct DataSidefxRecipeRampRgbTwilight {
 impl DataSidefxRecipeRampRgbTwilight {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4839,8 +4668,6 @@ impl DataSidefxRecipeRampRgbTwilight {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilight {
@@ -4869,7 +4696,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilight {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbTwilightshifted {
     pub id: usize,
@@ -4882,7 +4708,8 @@ pub struct DataSidefxRecipeRampRgbTwilightshifted {
 impl DataSidefxRecipeRampRgbTwilightshifted {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4895,8 +4722,6 @@ impl DataSidefxRecipeRampRgbTwilightshifted {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilightshifted {
@@ -4925,7 +4750,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwilightshifted 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbTwotone {
     pub id: usize,
@@ -4938,7 +4762,8 @@ pub struct DataSidefxRecipeRampRgbTwotone {
 impl DataSidefxRecipeRampRgbTwotone {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -4951,8 +4776,6 @@ impl DataSidefxRecipeRampRgbTwotone {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwotone {
@@ -4981,7 +4804,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbTwotone {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbViridis {
     pub id: usize,
@@ -4994,7 +4816,8 @@ pub struct DataSidefxRecipeRampRgbViridis {
 impl DataSidefxRecipeRampRgbViridis {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5007,8 +4830,6 @@ impl DataSidefxRecipeRampRgbViridis {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbViridis {
@@ -5037,7 +4858,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbViridis {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbWhitetored {
     pub id: usize,
@@ -5050,7 +4870,8 @@ pub struct DataSidefxRecipeRampRgbWhitetored {
 impl DataSidefxRecipeRampRgbWhitetored {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5063,8 +4884,6 @@ impl DataSidefxRecipeRampRgbWhitetored {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitetored {
@@ -5093,7 +4912,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitetored {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRampRgbWhitewater {
     pub id: usize,
@@ -5106,7 +4924,8 @@ pub struct DataSidefxRecipeRampRgbWhitewater {
 impl DataSidefxRecipeRampRgbWhitewater {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5119,8 +4938,6 @@ impl DataSidefxRecipeRampRgbWhitewater {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitewater {
@@ -5149,7 +4966,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRampRgbWhitewater {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRandomseed {
     pub id: usize,
@@ -5162,7 +4978,8 @@ pub struct DataSidefxRecipeRandomseed {
 impl DataSidefxRecipeRandomseed {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5175,8 +4992,6 @@ impl DataSidefxRecipeRandomseed {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRandomseed {
@@ -5205,7 +5020,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRandomseed {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderAvailablepostscriptkeys {
     pub id: usize,
@@ -5218,7 +5032,8 @@ pub struct DataSidefxRecipeRecipebuilderAvailablepostscriptkeys {
 impl DataSidefxRecipeRecipebuilderAvailablepostscriptkeys {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5231,8 +5046,6 @@ impl DataSidefxRecipeRecipebuilderAvailablepostscriptkeys {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablepostscriptkeys {
@@ -5261,7 +5074,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablep
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderAvailableprescriptkeys {
     pub id: usize,
@@ -5274,7 +5086,8 @@ pub struct DataSidefxRecipeRecipebuilderAvailableprescriptkeys {
 impl DataSidefxRecipeRecipebuilderAvailableprescriptkeys {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5287,8 +5100,6 @@ impl DataSidefxRecipeRecipebuilderAvailableprescriptkeys {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailableprescriptkeys {
@@ -5317,7 +5128,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvailablep
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderAvoidduplicateinstances {
     pub id: usize,
@@ -5330,7 +5140,8 @@ pub struct DataSidefxRecipeRecipebuilderAvoidduplicateinstances {
 impl DataSidefxRecipeRecipebuilderAvoidduplicateinstances {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5343,8 +5154,6 @@ impl DataSidefxRecipeRecipebuilderAvoidduplicateinstances {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvoidduplicateinstances {
@@ -5373,7 +5182,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderAvoiddupli
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderDisableavoidoverlap {
     pub id: usize,
@@ -5386,7 +5194,8 @@ pub struct DataSidefxRecipeRecipebuilderDisableavoidoverlap {
 impl DataSidefxRecipeRecipebuilderDisableavoidoverlap {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5399,8 +5208,6 @@ impl DataSidefxRecipeRecipebuilderDisableavoidoverlap {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisableavoidoverlap {
@@ -5429,7 +5236,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisableavo
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderDisableclicktoplace {
     pub id: usize,
@@ -5442,7 +5248,8 @@ pub struct DataSidefxRecipeRecipebuilderDisableclicktoplace {
 impl DataSidefxRecipeRecipebuilderDisableclicktoplace {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5455,8 +5262,6 @@ impl DataSidefxRecipeRecipebuilderDisableclicktoplace {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisableclicktoplace {
@@ -5485,7 +5290,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisablecli
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderDisabledroponwire {
     pub id: usize,
@@ -5498,7 +5302,8 @@ pub struct DataSidefxRecipeRecipebuilderDisabledroponwire {
 impl DataSidefxRecipeRecipebuilderDisabledroponwire {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5511,8 +5316,6 @@ impl DataSidefxRecipeRecipebuilderDisabledroponwire {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisabledroponwire {
@@ -5541,7 +5344,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderDisabledro
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderGetcreateditem {
     pub id: usize,
@@ -5554,7 +5356,8 @@ pub struct DataSidefxRecipeRecipebuilderGetcreateditem {
 impl DataSidefxRecipeRecipebuilderGetcreateditem {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5567,8 +5370,6 @@ impl DataSidefxRecipeRecipebuilderGetcreateditem {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderGetcreateditem {
@@ -5597,7 +5398,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderGetcreated
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderHierarchicalrecipes {
     pub id: usize,
@@ -5610,7 +5410,8 @@ pub struct DataSidefxRecipeRecipebuilderHierarchicalrecipes {
 impl DataSidefxRecipeRecipebuilderHierarchicalrecipes {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5623,8 +5424,6 @@ impl DataSidefxRecipeRecipebuilderHierarchicalrecipes {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderHierarchicalrecipes {
@@ -5653,7 +5452,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderHierarchic
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderInvokelocations {
     pub id: usize,
@@ -5666,7 +5464,8 @@ pub struct DataSidefxRecipeRecipebuilderInvokelocations {
 impl DataSidefxRecipeRecipebuilderInvokelocations {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5679,8 +5478,6 @@ impl DataSidefxRecipeRecipebuilderInvokelocations {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderInvokelocations {
@@ -5709,7 +5506,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderInvokeloca
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderMergedecorations {
     pub id: usize,
@@ -5722,7 +5518,8 @@ pub struct DataSidefxRecipeRecipebuilderMergedecorations {
 impl DataSidefxRecipeRecipebuilderMergedecorations {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5735,8 +5532,6 @@ impl DataSidefxRecipeRecipebuilderMergedecorations {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderMergedecorations {
@@ -5765,7 +5560,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderMergedecor
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeRecipebuilderRandomseed {
     pub id: usize,
@@ -5778,7 +5572,8 @@ pub struct DataSidefxRecipeRecipebuilderRandomseed {
 impl DataSidefxRecipeRecipebuilderRandomseed {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5791,8 +5586,6 @@ impl DataSidefxRecipeRecipebuilderRandomseed {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderRandomseed {
@@ -5821,7 +5614,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeRecipebuilderRandomseed
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeSopWhitewaterconfigure {
     pub id: usize,
@@ -5834,7 +5626,8 @@ pub struct DataSidefxRecipeSopWhitewaterconfigure {
 impl DataSidefxRecipeSopWhitewaterconfigure {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5847,8 +5640,6 @@ impl DataSidefxRecipeSopWhitewaterconfigure {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeSopWhitewaterconfigure {
@@ -5877,7 +5668,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeSopWhitewaterconfigure 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeSubnetRecipeBuilder {
     pub id: usize,
@@ -5890,7 +5680,8 @@ pub struct DataSidefxRecipeSubnetRecipeBuilder {
 impl DataSidefxRecipeSubnetRecipeBuilder {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5903,8 +5694,6 @@ impl DataSidefxRecipeSubnetRecipeBuilder {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeSubnetRecipeBuilder {
@@ -5933,7 +5722,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeSubnetRecipeBuilder {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopHoudiniViewportmaterialoutput {
     pub id: usize,
@@ -5946,7 +5734,8 @@ pub struct DataSidefxRecipeVopHoudiniViewportmaterialoutput {
 impl DataSidefxRecipeVopHoudiniViewportmaterialoutput {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -5959,8 +5748,6 @@ impl DataSidefxRecipeVopHoudiniViewportmaterialoutput {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopHoudiniViewportmaterialoutput {
@@ -5989,7 +5776,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopHoudiniViewportmater
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaBakedcloudmaterial {
     pub id: usize,
@@ -6002,7 +5788,8 @@ pub struct DataSidefxRecipeVopKmaBakedcloudmaterial {
 impl DataSidefxRecipeVopKmaBakedcloudmaterial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6015,8 +5802,6 @@ impl DataSidefxRecipeVopKmaBakedcloudmaterial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaBakedcloudmaterial {
@@ -6045,7 +5830,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaBakedcloudmateria
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaCloudmaterial {
     pub id: usize,
@@ -6058,7 +5842,8 @@ pub struct DataSidefxRecipeVopKmaCloudmaterial {
 impl DataSidefxRecipeVopKmaCloudmaterial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6071,8 +5856,6 @@ impl DataSidefxRecipeVopKmaCloudmaterial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaCloudmaterial {
@@ -6101,7 +5884,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaCloudmaterial {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaPyroexplosionmaterial {
     pub id: usize,
@@ -6114,7 +5896,8 @@ pub struct DataSidefxRecipeVopKmaPyroexplosionmaterial {
 impl DataSidefxRecipeVopKmaPyroexplosionmaterial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6127,8 +5910,6 @@ impl DataSidefxRecipeVopKmaPyroexplosionmaterial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyroexplosionmaterial {
@@ -6157,7 +5938,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyroexplosionmate
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaPyrofirematerial {
     pub id: usize,
@@ -6170,7 +5950,8 @@ pub struct DataSidefxRecipeVopKmaPyrofirematerial {
 impl DataSidefxRecipeVopKmaPyrofirematerial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6183,8 +5964,6 @@ impl DataSidefxRecipeVopKmaPyrofirematerial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrofirematerial {
@@ -6213,7 +5992,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrofirematerial 
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaPyromaterial {
     pub id: usize,
@@ -6226,7 +6004,8 @@ pub struct DataSidefxRecipeVopKmaPyromaterial {
 impl DataSidefxRecipeVopKmaPyromaterial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6239,8 +6018,6 @@ impl DataSidefxRecipeVopKmaPyromaterial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyromaterial {
@@ -6269,7 +6046,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyromaterial {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaPyrosmokematerial {
     pub id: usize,
@@ -6282,7 +6058,8 @@ pub struct DataSidefxRecipeVopKmaPyrosmokematerial {
 impl DataSidefxRecipeVopKmaPyrosmokematerial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6295,8 +6072,6 @@ impl DataSidefxRecipeVopKmaPyrosmokematerial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrosmokematerial {
@@ -6325,7 +6100,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaPyrosmokematerial
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaUniformvolumematerial {
     pub id: usize,
@@ -6338,7 +6112,8 @@ pub struct DataSidefxRecipeVopKmaUniformvolumematerial {
 impl DataSidefxRecipeVopKmaUniformvolumematerial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6351,8 +6126,6 @@ impl DataSidefxRecipeVopKmaUniformvolumematerial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaUniformvolumematerial {
@@ -6381,7 +6154,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaUniformvolumemate
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxRecipeVopKmaWhitewatermaterial {
     pub id: usize,
@@ -6394,7 +6166,8 @@ pub struct DataSidefxRecipeVopKmaWhitewatermaterial {
 impl DataSidefxRecipeVopKmaWhitewatermaterial {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6407,8 +6180,6 @@ impl DataSidefxRecipeVopKmaWhitewatermaterial {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaWhitewatermaterial {
@@ -6437,7 +6208,6 @@ impl crate::core::types::HoudiniNode for DataSidefxRecipeVopKmaWhitewatermateria
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxSharpen {
     pub id: usize,
@@ -6450,7 +6220,8 @@ pub struct DataSidefxSharpen {
 impl DataSidefxSharpen {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6463,8 +6234,6 @@ impl DataSidefxSharpen {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxSharpen {
@@ -6493,7 +6262,6 @@ impl crate::core::types::HoudiniNode for DataSidefxSharpen {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxSobelBottom {
     pub id: usize,
@@ -6506,7 +6274,8 @@ pub struct DataSidefxSobelBottom {
 impl DataSidefxSobelBottom {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6519,8 +6288,6 @@ impl DataSidefxSobelBottom {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxSobelBottom {
@@ -6549,7 +6316,6 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelBottom {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxSobelLeft {
     pub id: usize,
@@ -6562,7 +6328,8 @@ pub struct DataSidefxSobelLeft {
 impl DataSidefxSobelLeft {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6575,8 +6342,6 @@ impl DataSidefxSobelLeft {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxSobelLeft {
@@ -6605,7 +6370,6 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelLeft {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxSobelRight {
     pub id: usize,
@@ -6618,7 +6382,8 @@ pub struct DataSidefxSobelRight {
 impl DataSidefxSobelRight {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6631,8 +6396,6 @@ impl DataSidefxSobelRight {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxSobelRight {
@@ -6661,7 +6424,6 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelRight {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSidefxSobelTop {
     pub id: usize,
@@ -6674,7 +6436,8 @@ pub struct DataSidefxSobelTop {
 impl DataSidefxSobelTop {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6687,8 +6450,6 @@ impl DataSidefxSobelTop {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSidefxSobelTop {
@@ -6717,7 +6478,6 @@ impl crate::core::types::HoudiniNode for DataSidefxSobelTop {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSingleinputpoint {
     pub id: usize,
@@ -6730,7 +6490,8 @@ pub struct DataSingleinputpoint {
 impl DataSingleinputpoint {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6743,8 +6504,6 @@ impl DataSingleinputpoint {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSingleinputpoint {
@@ -6773,7 +6532,6 @@ impl crate::core::types::HoudiniNode for DataSingleinputpoint {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSizefrominput {
     pub id: usize,
@@ -6786,7 +6544,8 @@ pub struct DataSizefrominput {
 impl DataSizefrominput {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6799,8 +6558,6 @@ impl DataSizefrominput {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSizefrominput {
@@ -6829,7 +6586,6 @@ impl crate::core::types::HoudiniNode for DataSizefrominput {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSopSidefxApexConfigureragdoll {
     pub id: usize,
@@ -6842,7 +6598,8 @@ pub struct DataSopSidefxApexConfigureragdoll {
 impl DataSopSidefxApexConfigureragdoll {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6855,8 +6612,6 @@ impl DataSopSidefxApexConfigureragdoll {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSopSidefxApexConfigureragdoll {
@@ -6885,7 +6640,6 @@ impl crate::core::types::HoudiniNode for DataSopSidefxApexConfigureragdoll {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSourceburn {
     pub id: usize,
@@ -6898,7 +6652,8 @@ pub struct DataSourceburn {
 impl DataSourceburn {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6911,8 +6666,6 @@ impl DataSourceburn {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSourceburn {
@@ -6941,7 +6694,6 @@ impl crate::core::types::HoudiniNode for DataSourceburn {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSourcecolor {
     pub id: usize,
@@ -6954,7 +6706,8 @@ pub struct DataSourcecolor {
 impl DataSourcecolor {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -6967,8 +6720,6 @@ impl DataSourcecolor {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSourcecolor {
@@ -6997,7 +6748,6 @@ impl crate::core::types::HoudiniNode for DataSourcecolor {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSourcefuel {
     pub id: usize,
@@ -7010,7 +6760,8 @@ pub struct DataSourcefuel {
 impl DataSourcefuel {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -7023,8 +6774,6 @@ impl DataSourcefuel {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSourcefuel {
@@ -7053,7 +6802,6 @@ impl crate::core::types::HoudiniNode for DataSourcefuel {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSourcesmoke {
     pub id: usize,
@@ -7066,7 +6814,8 @@ pub struct DataSourcesmoke {
 impl DataSourcesmoke {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -7079,8 +6828,6 @@ impl DataSourcesmoke {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSourcesmoke {
@@ -7109,7 +6856,6 @@ impl crate::core::types::HoudiniNode for DataSourcesmoke {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataSourcevolume {
     pub id: usize,
@@ -7122,7 +6868,8 @@ pub struct DataSourcevolume {
 impl DataSourcevolume {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -7135,8 +6882,6 @@ impl DataSourcevolume {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataSourcevolume {
@@ -7165,7 +6910,6 @@ impl crate::core::types::HoudiniNode for DataSourcevolume {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataStandardshaderball {
     pub id: usize,
@@ -7178,7 +6922,8 @@ pub struct DataStandardshaderball {
 impl DataStandardshaderball {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -7191,8 +6936,6 @@ impl DataStandardshaderball {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataStandardshaderball {

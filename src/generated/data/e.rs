@@ -10,7 +10,8 @@ pub struct DataEdgescattering {
 impl DataEdgescattering {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataEdgescattering {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataEdgescattering {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataEdgescattering {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataExplosionsim {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataExplosionsim {
 impl DataExplosionsim {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataExplosionsim {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataExplosionsim {

@@ -23,7 +23,8 @@ pub struct SopJoin {
 impl SopJoin {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -39,13 +40,22 @@ impl SopJoin {
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(mut self, index: usize, target: &N, output_index: usize) -> Self {
+    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(index, (target.get_id(), output_index));
         self
     }
@@ -57,127 +67,207 @@ impl SopJoin {
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Primitives to join"
-    pub fn set_input_primitives_to_join<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn set_input_primitives_to_join<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Primitives to join" and specifies the output index of the target node.
-    pub fn set_input_primitives_to_join_from<N: crate::core::types::HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+    pub fn set_input_primitives_to_join_from<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
         self.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
-
     // --- Float parameters ---
     pub fn with_tolerance(mut self, val: f32) -> Self {
-        self.params.insert("tolerance".to_string(), crate::core::types::ParamValue::Float(val));
+        self.params.insert(
+            "tolerance".to_string(),
+            crate::core::types::ParamValue::Float(val),
+        );
         self
     }
     pub fn with_tolerance_expr(mut self, expr: &str) -> Self {
-        self.params.insert("tolerance".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "tolerance".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_bias(mut self, val: f32) -> Self {
-        self.params.insert("bias".to_string(), crate::core::types::ParamValue::Float(val));
+        self.params.insert(
+            "bias".to_string(),
+            crate::core::types::ParamValue::Float(val),
+        );
         self
     }
     pub fn with_bias_expr(mut self, expr: &str) -> Self {
-        self.params.insert("bias".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "bias".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Int parameters ---
     pub fn with_inc(mut self, val: i32) -> Self {
-        self.params.insert("inc".to_string(), crate::core::types::ParamValue::Int(val));
+        self.params
+            .insert("inc".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_inc_expr(mut self, expr: &str) -> Self {
-        self.params.insert("inc".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "inc".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Menu parameters ---
     pub fn with_dir(mut self, val: SopJoinDir) -> Self {
-        self.params.insert("dir".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "dir".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_dir_expr(mut self, expr: &str) -> Self {
-        self.params.insert("dir".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "dir".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_joinop(mut self, val: SopJoinJoinop) -> Self {
-        self.params.insert("joinop".to_string(), crate::core::types::ParamValue::Menu(val as i32));
+        self.params.insert(
+            "joinop".to_string(),
+            crate::core::types::ParamValue::Menu(val as i32),
+        );
         self
     }
     pub fn with_joinop_expr(mut self, expr: &str) -> Self {
-        self.params.insert("joinop".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "joinop".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
-        self.params.insert("group".to_string(), crate::core::types::ParamValue::String(val.to_string()));
+        self.params.insert(
+            "group".to_string(),
+            crate::core::types::ParamValue::String(val.to_string()),
+        );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
-        self.params.insert("group".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "group".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 
     // --- Toggle parameters ---
     pub fn with_blend(mut self, val: bool) -> Self {
-        self.params.insert("blend".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "blend".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_blend_expr(mut self, expr: &str) -> Self {
-        self.params.insert("blend".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "blend".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_knotmult(mut self, val: bool) -> Self {
-        self.params.insert("knotmult".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "knotmult".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_knotmult_expr(mut self, expr: &str) -> Self {
-        self.params.insert("knotmult".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "knotmult".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_proximity(mut self, val: bool) -> Self {
-        self.params.insert("proximity".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "proximity".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_proximity_expr(mut self, expr: &str) -> Self {
-        self.params.insert("proximity".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "proximity".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_loop(mut self, val: bool) -> Self {
-        self.params.insert("loop".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "loop".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_loop_expr(mut self, expr: &str) -> Self {
-        self.params.insert("loop".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "loop".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_prim(mut self, val: bool) -> Self {
-        self.params.insert("prim".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "prim".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_prim_expr(mut self, expr: &str) -> Self {
-        self.params.insert("prim".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "prim".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
     pub fn with_onlyconnected(mut self, val: bool) -> Self {
-        self.params.insert("onlyconnected".to_string(), crate::core::types::ParamValue::Toggle(val));
+        self.params.insert(
+            "onlyconnected".to_string(),
+            crate::core::types::ParamValue::Toggle(val),
+        );
         self
     }
     pub fn with_onlyconnected_expr(mut self, expr: &str) -> Self {
-        self.params.insert("onlyconnected".to_string(), crate::core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(
+            "onlyconnected".to_string(),
+            crate::core::types::ParamValue::Expression(expr.to_string()),
+        );
         self
     }
 }

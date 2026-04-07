@@ -10,7 +10,8 @@ pub struct DataMaterialConcrete {
 impl DataMaterialConcrete {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -23,8 +24,6 @@ impl DataMaterialConcrete {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialConcrete {
@@ -53,7 +52,6 @@ impl crate::core::types::HoudiniNode for DataMaterialConcrete {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialHoney {
     pub id: usize,
@@ -66,7 +64,8 @@ pub struct DataMaterialHoney {
 impl DataMaterialHoney {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -79,8 +78,6 @@ impl DataMaterialHoney {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialHoney {
@@ -109,7 +106,6 @@ impl crate::core::types::HoudiniNode for DataMaterialHoney {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialJello {
     pub id: usize,
@@ -122,7 +118,8 @@ pub struct DataMaterialJello {
 impl DataMaterialJello {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -135,8 +132,6 @@ impl DataMaterialJello {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialJello {
@@ -165,7 +160,6 @@ impl crate::core::types::HoudiniNode for DataMaterialJello {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialMetal {
     pub id: usize,
@@ -178,7 +172,8 @@ pub struct DataMaterialMetal {
 impl DataMaterialMetal {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -191,8 +186,6 @@ impl DataMaterialMetal {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialMetal {
@@ -221,7 +214,6 @@ impl crate::core::types::HoudiniNode for DataMaterialMetal {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialMud {
     pub id: usize,
@@ -234,7 +226,8 @@ pub struct DataMaterialMud {
 impl DataMaterialMud {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -247,8 +240,6 @@ impl DataMaterialMud {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialMud {
@@ -277,7 +268,6 @@ impl crate::core::types::HoudiniNode for DataMaterialMud {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialRubber {
     pub id: usize,
@@ -290,7 +280,8 @@ pub struct DataMaterialRubber {
 impl DataMaterialRubber {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -303,8 +294,6 @@ impl DataMaterialRubber {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialRubber {
@@ -333,7 +322,6 @@ impl crate::core::types::HoudiniNode for DataMaterialRubber {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialSand {
     pub id: usize,
@@ -346,7 +334,8 @@ pub struct DataMaterialSand {
 impl DataMaterialSand {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -359,8 +348,6 @@ impl DataMaterialSand {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialSand {
@@ -389,7 +376,6 @@ impl crate::core::types::HoudiniNode for DataMaterialSand {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialSnow {
     pub id: usize,
@@ -402,7 +388,8 @@ pub struct DataMaterialSnow {
 impl DataMaterialSnow {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -415,8 +402,6 @@ impl DataMaterialSnow {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialSnow {
@@ -445,7 +430,6 @@ impl crate::core::types::HoudiniNode for DataMaterialSnow {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialSoil {
     pub id: usize,
@@ -458,7 +442,8 @@ pub struct DataMaterialSoil {
 impl DataMaterialSoil {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -471,8 +456,6 @@ impl DataMaterialSoil {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialSoil {
@@ -501,7 +484,6 @@ impl crate::core::types::HoudiniNode for DataMaterialSoil {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMaterialWater {
     pub id: usize,
@@ -514,7 +496,8 @@ pub struct DataMaterialWater {
 impl DataMaterialWater {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -527,8 +510,6 @@ impl DataMaterialWater {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMaterialWater {
@@ -557,7 +538,6 @@ impl crate::core::types::HoudiniNode for DataMaterialWater {
     }
 }
 
-
 #[derive(Debug, Clone)]
 pub struct DataMateriallookdev {
     pub id: usize,
@@ -570,7 +550,8 @@ pub struct DataMateriallookdev {
 impl DataMateriallookdev {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             name: name.to_string(),
             inputs: std::collections::BTreeMap::new(),
             params: std::collections::HashMap::new(),
@@ -583,8 +564,6 @@ impl DataMateriallookdev {
         self.spare_params.push(spare.into());
         self
     }
-
-
 }
 
 impl crate::core::types::HoudiniNode for DataMateriallookdev {
