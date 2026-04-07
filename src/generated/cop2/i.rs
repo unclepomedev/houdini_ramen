@@ -1094,7 +1094,7 @@ pub trait Cop2InterleaveInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2InterleaveInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2InterleaveInnerExt for crate::core::graph::InnerGraph<'a, Cop2Interleave> {
     fn input_1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("input_1")
     }

@@ -621,7 +621,7 @@ pub trait LopTopnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopTopnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopTopnetInnerExt for crate::core::graph::InnerGraph<'a, LopTopnet> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("localscheduler")
     }
@@ -1088,7 +1088,7 @@ pub trait LopTransformuvInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopTransformuvInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopTransformuvInnerExt for crate::core::graph::InnerGraph<'a, LopTransformuv> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

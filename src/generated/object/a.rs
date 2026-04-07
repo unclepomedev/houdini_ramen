@@ -692,7 +692,7 @@ pub trait ObjectAgentcamInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAgentcamInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAgentcamInnerExt for crate::core::graph::InnerGraph<'a, ObjectAgentcam> {
     fn agentcam_1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("cams/agentcam_1")
     }
@@ -3127,7 +3127,7 @@ pub trait ObjectAmbientInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAmbientInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAmbientInnerExt for crate::core::graph::InnerGraph<'a, ObjectAmbient> {
     fn point_light(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("point_light")
     }
@@ -5007,7 +5007,9 @@ pub trait ObjectAnimationRigBipedArmInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedArmInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedArmInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedArm>
+{
     fn deform_out_collarbone(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_COLLARBONE")
     }
@@ -7495,7 +7497,9 @@ pub trait ObjectAnimationRigBipedHand4f2sInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedHand4f2sInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedHand4f2sInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedHand4f2s>
+{
     fn deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_INDEX1")
     }
@@ -10167,7 +10171,9 @@ pub trait ObjectAnimationRigBipedHand4f3sInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedHand4f3sInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedHand4f3sInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedHand4f3s>
+{
     fn deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_INDEX1")
     }
@@ -13340,7 +13346,9 @@ pub trait ObjectAnimationRigBipedHand5f3sInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedHand5f3sInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedHand5f3sInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedHand5f3s>
+{
     fn deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_INDEX1")
     }
@@ -15300,7 +15308,9 @@ pub trait ObjectAnimationRigBipedHeadAndNeckInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedHeadAndNeckInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedHeadAndNeck>
+{
     fn deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_HEAD")
     }
@@ -17515,7 +17525,9 @@ pub trait ObjectAnimationRigBipedLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedLeg>
+{
     fn deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_ANKLE")
     }
@@ -19177,7 +19189,9 @@ pub trait ObjectAnimationRigBipedSpine3pcInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedSpine3pcInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedSpine3pcInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedSpine3pc>
+{
     fn deform_out_chest(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_CHEST")
     }
@@ -20941,7 +20955,9 @@ pub trait ObjectAnimationRigBipedSpine5pcInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigBipedSpine5pcInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigBipedSpine5pcInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigBipedSpine5pc>
+{
     fn deform_out_chest1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_CHEST1")
     }
@@ -21823,7 +21839,9 @@ pub trait ObjectAnimationRigCharacterPlacerInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigCharacterPlacerInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigCharacterPlacerInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigCharacterPlacer>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -23431,7 +23449,9 @@ pub trait ObjectAnimationRigQuadrupedBackLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedBackLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedBackLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedBackLeg>
+{
     fn deform_out_ankle(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_ANKLE")
     }
@@ -25382,7 +25402,9 @@ pub trait ObjectAnimationRigQuadrupedFrontLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedFrontLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedFrontLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedFrontLeg>
+{
     fn deform_out_finger_end(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_FINGER_END")
     }
@@ -27392,7 +27414,9 @@ pub trait ObjectAnimationRigQuadrupedHeadAndNeckInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedHeadAndNeckInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedHeadAndNeck>
+{
     fn deform_out_head(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_HEAD")
     }
@@ -30193,7 +30217,9 @@ pub trait ObjectAnimationRigQuadrupedIkSpineInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedIkSpineInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedIkSpineInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedIkSpine>
+{
     fn deform_out_sacrum(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_SACRUM")
     }
@@ -32679,7 +32705,9 @@ pub trait ObjectAnimationRigQuadrupedTailInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedTailInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedTailInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedTail>
+{
     fn deform_out_tail1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_TAIL1")
     }
@@ -35151,7 +35179,9 @@ pub trait ObjectAnimationRigQuadrupedToes4fInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedToes4fInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedToes4fInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedToes4f>
+{
     fn deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_INDEX1")
     }
@@ -38160,7 +38190,9 @@ pub trait ObjectAnimationRigQuadrupedToes5fInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAnimationRigQuadrupedToes5fInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAnimationRigQuadrupedToes5fInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAnimationRigQuadrupedToes5f>
+{
     fn deform_out_index1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DEFORM_OUT_INDEX1")
     }
@@ -39598,7 +39630,9 @@ pub trait ObjectAutoRigBipedArmInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedArmInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedArmInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedArm>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -41335,7 +41369,9 @@ pub trait ObjectAutoRigBipedHand4f2sInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedHand4f2sInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedHand4f2sInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedHand4f2s>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -43421,7 +43457,9 @@ pub trait ObjectAutoRigBipedHand4f3sInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedHand4f3sInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedHand4f3sInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedHand4f3s>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -45821,7 +45859,9 @@ pub trait ObjectAutoRigBipedHand5f3sInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedHand5f3sInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedHand5f3sInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedHand5f3s>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -47144,7 +47184,9 @@ pub trait ObjectAutoRigBipedHeadAndNeckInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedHeadAndNeckInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedHeadAndNeck>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -48340,7 +48382,9 @@ pub trait ObjectAutoRigBipedLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedLeg>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -49472,7 +49516,9 @@ pub trait ObjectAutoRigBipedSpine3pcInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedSpine3pcInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedSpine3pcInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedSpine3pc>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -50704,7 +50750,9 @@ pub trait ObjectAutoRigBipedSpine5pcInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigBipedSpine5pcInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigBipedSpine5pcInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigBipedSpine5pc>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -51538,7 +51586,9 @@ pub trait ObjectAutoRigCharacterPlacerInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigCharacterPlacerInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigCharacterPlacerInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigCharacterPlacer>
+{
     fn hook_out_character_placer(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_OUT_CHARACTER_PLACER")
     }
@@ -52314,7 +52364,7 @@ pub trait ObjectAutoRigEyeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigEyeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigEyeInnerExt for crate::core::graph::InnerGraph<'a, ObjectAutoRigEye> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }
@@ -53480,7 +53530,9 @@ pub trait ObjectAutoRigQuadrupedBackLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedBackLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedBackLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedBackLeg>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -54768,7 +54820,9 @@ pub trait ObjectAutoRigQuadrupedFrontLegInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedFrontLegInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedFrontLegInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedFrontLeg>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -56113,7 +56167,9 @@ pub trait ObjectAutoRigQuadrupedHeadAndNeckInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedHeadAndNeckInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedHeadAndNeckInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedHeadAndNeck>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -57890,7 +57946,9 @@ pub trait ObjectAutoRigQuadrupedIkSpineInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedIkSpineInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedIkSpineInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedIkSpine>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -59594,7 +59652,9 @@ pub trait ObjectAutoRigQuadrupedTailInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedTailInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedTailInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedTail>
+{
     fn hook_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN")
     }
@@ -61606,7 +61666,9 @@ pub trait ObjectAutoRigQuadrupedToes4fInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedToes4fInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedToes4fInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedToes4f>
+{
     fn hook_in_thumb(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN_THUMB")
     }
@@ -63938,7 +64000,9 @@ pub trait ObjectAutoRigQuadrupedToes5fInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutoRigQuadrupedToes5fInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutoRigQuadrupedToes5fInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectAutoRigQuadrupedToes5f>
+{
     fn hook_in_thumb(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("HOOK_IN_THUMB")
     }
@@ -66008,7 +66072,7 @@ pub trait ObjectAutorigsInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectAutorigsInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectAutorigsInnerExt for crate::core::graph::InnerGraph<'a, ObjectAutorigs> {
     fn stand_in(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("contents/stand_in")
     }

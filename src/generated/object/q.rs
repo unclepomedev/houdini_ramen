@@ -8560,7 +8560,9 @@ pub trait ObjectQuadrupedAutoRig4fInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectQuadrupedAutoRig4fInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectQuadrupedAutoRig4fInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectQuadrupedAutoRig4f>
+{
     fn back_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("back_left_leg")
     }
@@ -18231,7 +18233,9 @@ pub trait ObjectQuadrupedAutoRig5fInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectQuadrupedAutoRig5fInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectQuadrupedAutoRig5fInnerExt
+    for crate::core::graph::InnerGraph<'a, ObjectQuadrupedAutoRig5f>
+{
     fn back_left_leg(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("back_left_leg")
     }

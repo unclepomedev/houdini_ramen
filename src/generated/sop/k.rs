@@ -31890,7 +31890,7 @@ pub trait SopKinefxMotionmixerInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxMotionmixerInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxMotionmixerInnerExt for crate::core::graph::InnerGraph<'a, SopKinefxMotionmixer> {
     fn sources(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("SOURCES")
     }
@@ -32186,7 +32186,9 @@ pub trait SopKinefxMotionmixerfxInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxMotionmixerfxInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxMotionmixerfxInnerExt
+    for crate::core::graph::InnerGraph<'a, SopKinefxMotionmixerfx>
+{
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("fx/output0")
     }
@@ -41224,7 +41226,9 @@ pub trait SopKinefxRagdollsolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxRagdollsolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxRagdollsolverInnerExt
+    for crate::core::graph::InnerGraph<'a, SopKinefxRagdollsolver>
+{
     fn postsolve(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("solve/FORCES/POSTSOLVE")
     }
@@ -42050,7 +42054,9 @@ pub trait SopKinefxRetargetbipedInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxRetargetbipedInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxRetargetbipedInnerExt
+    for crate::core::graph::InnerGraph<'a, SopKinefxRetargetbiped>
+{
     fn animsop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ANIMSOP")
     }
@@ -42712,7 +42718,9 @@ pub trait SopKinefxRetargetbipedtemplateInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxRetargetbipedtemplateInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxRetargetbipedtemplateInnerExt
+    for crate::core::graph::InnerGraph<'a, SopKinefxRetargetbipedtemplate>
+{
     fn base_shp(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("Base_shp")
     }
@@ -43910,7 +43918,9 @@ pub trait SopKinefxRetargetmaptemplateInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxRetargetmaptemplateInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxRetargetmaptemplateInnerExt
+    for crate::core::graph::InnerGraph<'a, SopKinefxRetargetmaptemplate>
+{
     fn attribcopy1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("attribcopy1")
     }
@@ -51790,7 +51800,9 @@ pub trait SopKinefxScenecharacterexportInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopKinefxScenecharacterexportInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopKinefxScenecharacterexportInnerExt
+    for crate::core::graph::InnerGraph<'a, SopKinefxScenecharacterexport>
+{
     fn cache1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("cache1")
     }

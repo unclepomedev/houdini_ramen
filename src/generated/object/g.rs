@@ -2846,7 +2846,7 @@ pub trait ObjectGroommergeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectGroommergeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectGroommergeInnerExt for crate::core::graph::InnerGraph<'a, ObjectGroommerge> {
     fn display(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DISPLAY")
     }
@@ -4995,7 +4995,7 @@ pub trait ObjectGuidedeformInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectGuidedeformInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectGuidedeformInnerExt for crate::core::graph::InnerGraph<'a, ObjectGuidedeform> {
     fn anim_skin(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ANIM_SKIN")
     }
@@ -7194,7 +7194,7 @@ pub trait ObjectGuidegroomInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectGuidegroomInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectGuidegroomInnerExt for crate::core::graph::InnerGraph<'a, ObjectGuidegroom> {
     fn guides(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("groom/GUIDES")
     }
@@ -11564,7 +11564,7 @@ pub trait ObjectGuidesimInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectGuidesimInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectGuidesimInnerExt for crate::core::graph::InnerGraph<'a, ObjectGuidesim> {
     fn display(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("DISPLAY")
     }

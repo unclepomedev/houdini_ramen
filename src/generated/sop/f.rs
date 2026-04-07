@@ -23868,7 +23868,7 @@ pub trait SopFlipsolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopFlipsolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopFlipsolverInnerExt for crate::core::graph::InnerGraph<'a, SopFlipsolver> {
     fn force(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dopnet1/FORCES/FORCE")
     }
@@ -28027,7 +28027,7 @@ pub trait SopForeachInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopForeachInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopForeachInnerExt for crate::core::graph::InnerGraph<'a, SopForeach> {
     fn each1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("each1")
     }

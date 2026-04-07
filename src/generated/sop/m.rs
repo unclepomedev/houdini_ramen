@@ -12384,7 +12384,9 @@ pub trait SopMlVolumetilecomponentInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopMlVolumetilecomponentInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopMlVolumetilecomponentInnerExt
+    for crate::core::graph::InnerGraph<'a, SopMlVolumetilecomponent>
+{
     fn crop_bbox(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("custom_processing/Crop_BBOX")
     }
@@ -17787,7 +17789,7 @@ pub trait SopMpmsolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopMpmsolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopMpmsolverInnerExt for crate::core::graph::InnerGraph<'a, SopMpmsolver> {
     fn particles(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dopnet1/dive_target/PARTICLES")
     }

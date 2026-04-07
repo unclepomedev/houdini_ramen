@@ -12738,7 +12738,9 @@ pub trait SopApexDevAutorigcomponentInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopApexDevAutorigcomponentInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopApexDevAutorigcomponentInnerExt
+    for crate::core::graph::InnerGraph<'a, SopApexDevAutorigcomponent>
+{
     fn characterstream(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("CharacterStream")
     }
@@ -20182,7 +20184,9 @@ pub trait SopApexConfigurecontrolsInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopApexConfigurecontrolsInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopApexConfigurecontrolsInnerExt
+    for crate::core::graph::InnerGraph<'a, SopApexConfigurecontrols>
+{
     fn animation(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ANIMATION")
     }
@@ -24810,7 +24814,7 @@ pub trait SopApexSceneaddpropInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopApexSceneaddpropInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopApexSceneaddpropInnerExt for crate::core::graph::InnerGraph<'a, SopApexSceneaddprop> {
     fn collision_shapes(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("COLLISION_SHAPES")
     }
@@ -52134,7 +52138,7 @@ pub trait SopAttribvopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopAttribvopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopAttribvopInnerExt for crate::core::graph::InnerGraph<'a, SopAttribvop> {
     fn geometryvopglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("geometryvopglobal1")
     }

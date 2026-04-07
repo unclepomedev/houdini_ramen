@@ -3836,7 +3836,7 @@ pub trait ChopPosedifferenceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopPosedifferenceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopPosedifferenceInnerExt for crate::core::graph::InnerGraph<'a, ChopPosedifference> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

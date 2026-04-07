@@ -9652,7 +9652,7 @@ pub trait SopTexturemaskpaintInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopTexturemaskpaintInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopTexturemaskpaintInnerExt for crate::core::graph::InnerGraph<'a, SopTexturemaskpaint> {
     fn alpha(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("ALPHA")
     }
@@ -19721,7 +19721,7 @@ pub trait SopTopnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopTopnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopTopnetInnerExt for crate::core::graph::InnerGraph<'a, SopTopnet> {
     fn geometryimport(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("geometryimport")
     }
@@ -20099,7 +20099,7 @@ pub trait SopTopnetmgrInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopTopnetmgrInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopTopnetmgrInnerExt for crate::core::graph::InnerGraph<'a, SopTopnetmgr> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("localscheduler")
     }

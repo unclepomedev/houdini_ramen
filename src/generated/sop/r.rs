@@ -6821,7 +6821,7 @@ pub trait SopRbdbulletsolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopRbdbulletsolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopRbdbulletsolverInnerExt for crate::core::graph::InnerGraph<'a, SopRbdbulletsolver> {
     fn postsolve(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dopnet/forces/POSTSOLVE")
     }
@@ -7836,7 +7836,7 @@ pub trait SopRbdcardeformInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopRbdcardeformInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopRbdcardeformInnerExt for crate::core::graph::InnerGraph<'a, SopRbdcardeform> {
     fn falloffs(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("FALLOFFS")
     }
@@ -10410,7 +10410,7 @@ pub trait SopRbdcarfractureInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopRbdcarfractureInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopRbdcarfractureInnerExt for crate::core::graph::InnerGraph<'a, SopRbdcarfracture> {
     fn constraintgeometry(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("Manual_Edits/ConstraintGeometry")
     }
@@ -24705,7 +24705,7 @@ pub trait SopRbdexplodedviewInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopRbdexplodedviewInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopRbdexplodedviewInnerExt for crate::core::graph::InnerGraph<'a, SopRbdexplodedview> {
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("CONSTRAINTS")
     }

@@ -2046,7 +2046,7 @@ pub trait LopPointsconstraintInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopPointsconstraintInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopPointsconstraintInnerExt for crate::core::graph::InnerGraph<'a, LopPointsconstraint> {
     fn to_sop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("TO_SOP")
     }

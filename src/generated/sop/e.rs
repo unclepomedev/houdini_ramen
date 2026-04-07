@@ -5592,7 +5592,9 @@ pub trait SopExportobjtransformsInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopExportobjtransformsInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopExportobjtransformsInnerExt
+    for crate::core::graph::InnerGraph<'a, SopExportobjtransforms>
+{
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("OUT")
     }

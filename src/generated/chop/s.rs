@@ -4383,7 +4383,7 @@ pub trait ChopStashposeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopStashposeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopStashposeInnerExt for crate::core::graph::InnerGraph<'a, ChopStashpose> {
     fn drivers(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("drivers")
     }

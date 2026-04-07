@@ -381,7 +381,7 @@ pub trait DriverHaircardtexInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DriverHaircardtexInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DriverHaircardtexInnerExt for crate::core::graph::InnerGraph<'a, DriverHaircardtex> {
     fn paths(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("PATHS")
     }

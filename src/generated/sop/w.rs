@@ -3780,7 +3780,7 @@ pub trait SopWhitewatersolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopWhitewatersolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopWhitewatersolverInnerExt for crate::core::graph::InnerGraph<'a, SopWhitewatersolver> {
     fn extra_sources(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dopnet1/FORCES/EXTRA_SOURCES")
     }

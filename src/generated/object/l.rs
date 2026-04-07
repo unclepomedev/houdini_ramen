@@ -609,7 +609,7 @@ pub trait ObjectLightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectLightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectLightInnerExt for crate::core::graph::InnerGraph<'a, ObjectLight> {
     fn areashape_switch(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("areashape_switch")
     }
@@ -1989,7 +1989,7 @@ pub trait ObjectLopimportcamInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectLopimportcamInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectLopimportcamInnerExt for crate::core::graph::InnerGraph<'a, ObjectLopimportcam> {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("camOrigin")
     }

@@ -5448,7 +5448,7 @@ pub trait VopDisplaceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> VopDisplaceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> VopDisplaceInnerExt for crate::core::graph::InnerGraph<'a, VopDisplace> {
     fn global1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("global1")
     }

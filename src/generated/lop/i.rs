@@ -1150,7 +1150,7 @@ pub trait LopIsolatesceneInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopIsolatesceneInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopIsolatesceneInnerExt for crate::core::graph::InnerGraph<'a, LopIsolatescene> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("edits/output0")
     }

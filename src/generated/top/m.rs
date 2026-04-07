@@ -2016,7 +2016,7 @@ pub trait TopMlPreprocessoidnInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopMlPreprocessoidnInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopMlPreprocessoidnInnerExt for crate::core::graph::InnerGraph<'a, TopMlPreprocessoidn> {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("load_parameters")
     }
@@ -3428,7 +3428,7 @@ pub trait TopMlTrainoidnInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopMlTrainoidnInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopMlTrainoidnInnerExt for crate::core::graph::InnerGraph<'a, TopMlTrainoidn> {
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("load_parameters")
     }
@@ -6066,7 +6066,9 @@ pub trait TopMlTrainstyletransferInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopMlTrainstyletransferInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopMlTrainstyletransferInnerExt
+    for crate::core::graph::InnerGraph<'a, TopMlTrainstyletransfer>
+{
     fn load_parameters(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("load_parameters")
     }

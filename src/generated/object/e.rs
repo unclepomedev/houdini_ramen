@@ -1501,7 +1501,7 @@ pub trait ObjectEnvlightInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectEnvlightInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectEnvlightInnerExt for crate::core::graph::InnerGraph<'a, ObjectEnvlight> {
     fn constraints(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("constraints")
     }

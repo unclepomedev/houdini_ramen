@@ -1511,7 +1511,7 @@ pub trait TopTopnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopTopnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopTopnetInnerExt for crate::core::graph::InnerGraph<'a, TopTopnet> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("localscheduler")
     }

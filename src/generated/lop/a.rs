@@ -2586,7 +2586,7 @@ pub trait LopAttribvopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopAttribvopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopAttribvopInnerExt for crate::core::graph::InnerGraph<'a, LopAttribvop> {
     fn usdglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("usdglobal1")
     }

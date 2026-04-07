@@ -749,7 +749,7 @@ pub trait ChopFbxInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopFbxInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopFbxInnerExt for crate::core::graph::InnerGraph<'a, ChopFbx> {
     fn file1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("file1")
     }
@@ -2906,7 +2906,7 @@ pub trait ChopFootplantInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopFootplantInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopFootplantInnerExt for crate::core::graph::InnerGraph<'a, ChopFootplant> {
     fn channels_for_sop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("CHANNELS_FOR_SOP")
     }
@@ -3685,7 +3685,7 @@ pub trait ChopForeachInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ChopForeachInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ChopForeachInnerExt for crate::core::graph::InnerGraph<'a, ChopForeach> {
     fn foreach_iteration(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("Foreach_Iteration")
     }

@@ -32429,7 +32429,7 @@ pub trait SopPosespaceeditInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPosespaceeditInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPosespaceeditInnerExt for crate::core::graph::InnerGraph<'a, SopPosespaceedit> {
     fn dark_mask(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("edit/dark_mask")
     }
@@ -36636,7 +36636,7 @@ pub trait SopPyrobakevolumeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPyrobakevolumeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPyrobakevolumeInnerExt for crate::core::graph::InnerGraph<'a, SopPyrobakevolume> {
     fn pyro_shader(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("matnet/Pyro_Shader")
     }
@@ -39781,7 +39781,7 @@ pub trait SopPyroburstsourceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPyroburstsourceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPyroburstsourceInnerExt for crate::core::graph::InnerGraph<'a, SopPyroburstsource> {
     fn branch(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("BRANCH")
     }
@@ -47604,7 +47604,7 @@ pub trait SopPyrosolverInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPyrosolverInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPyrosolverInnerExt for crate::core::graph::InnerGraph<'a, SopPyrosolver> {
     fn advection_output(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("dopnet1/FORCES/advection_output")
     }
@@ -49696,7 +49696,7 @@ pub trait SopPyrosourcespreadInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPyrosourcespreadInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPyrosourcespreadInnerExt for crate::core::graph::InnerGraph<'a, SopPyrosourcespread> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("solver1/d/s/CUSTOM_RULES/output0")
     }
@@ -53159,7 +53159,7 @@ pub trait SopPyrotrailpathInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPyrotrailpathInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPyrotrailpathInnerExt for crate::core::graph::InnerGraph<'a, SopPyrotrailpath> {
     fn input_points(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("PATH_SOURCE_POINTS/INPUT_POINTS")
     }
@@ -55038,7 +55038,7 @@ pub trait SopPyrotrailsourceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopPyrotrailsourceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopPyrotrailsourceInnerExt for crate::core::graph::InnerGraph<'a, SopPyrotrailsource> {
     fn get_optimal_voxelsize(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("GET_OPTIMAL_VOXELSIZE")
     }

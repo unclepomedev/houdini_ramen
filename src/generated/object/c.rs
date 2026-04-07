@@ -575,7 +575,7 @@ pub trait ObjectCamInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectCamInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectCamInnerExt for crate::core::graph::InnerGraph<'a, ObjectCam> {
     fn camorigin(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("camOrigin")
     }
@@ -1943,7 +1943,7 @@ pub trait ObjectCop2planeInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectCop2planeInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectCop2planeInnerExt for crate::core::graph::InnerGraph<'a, ObjectCop2plane> {
     fn default_pic(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("cop2net1/default_pic")
     }

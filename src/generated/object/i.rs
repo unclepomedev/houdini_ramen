@@ -2170,7 +2170,7 @@ pub trait ObjectInstanceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> ObjectInstanceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> ObjectInstanceInnerExt for crate::core::graph::InnerGraph<'a, ObjectInstance> {
     fn add(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("add")
     }

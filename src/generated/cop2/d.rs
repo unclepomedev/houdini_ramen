@@ -2808,7 +2808,7 @@ pub trait Cop2DepthdarkenInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2DepthdarkenInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2DepthdarkenInnerExt for crate::core::graph::InnerGraph<'a, Cop2Depthdarken> {
     fn blur_depth(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("Blur_Depth")
     }
@@ -5627,7 +5627,7 @@ pub trait Cop2DropshadowInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2DropshadowInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2DropshadowInnerExt for crate::core::graph::InnerGraph<'a, Cop2Dropshadow> {
     fn blur1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("blur1")
     }

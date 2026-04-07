@@ -3847,7 +3847,7 @@ pub trait Cop2LoopInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2LoopInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2LoopInnerExt for crate::core::graph::InnerGraph<'a, Cop2Loop> {
     fn loopstart(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("loopstart")
     }
@@ -4942,7 +4942,7 @@ pub trait Cop2LumamatteInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2LumamatteInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2LumamatteInnerExt for crate::core::graph::InnerGraph<'a, Cop2Lumamatte> {
     fn bright1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("bright1")
     }

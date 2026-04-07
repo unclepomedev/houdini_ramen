@@ -3215,7 +3215,7 @@ pub trait LopShotlayereditInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopShotlayereditInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopShotlayereditInnerExt for crate::core::graph::InnerGraph<'a, LopShotlayeredit> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("workspace/output0")
     }
@@ -6571,7 +6571,7 @@ pub trait LopSimulationproxyInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopSimulationproxyInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopSimulationproxyInnerExt for crate::core::graph::InnerGraph<'a, LopSimulationproxy> {
     fn attribdelete1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("modify/modify/attribdelete1")
     }
@@ -11696,7 +11696,7 @@ pub trait LopSopmodifyInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopSopmodifyInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopSopmodifyInnerExt for crate::core::graph::InnerGraph<'a, LopSopmodify> {
     fn out(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("modify/modify/OUT")
     }
@@ -15710,7 +15710,7 @@ pub trait LopSubnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopSubnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopSubnetInnerExt for crate::core::graph::InnerGraph<'a, LopSubnet> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("output0")
     }
@@ -16651,7 +16651,7 @@ pub trait LopSurfaceconstraintInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> LopSurfaceconstraintInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> LopSurfaceconstraintInnerExt for crate::core::graph::InnerGraph<'a, LopSurfaceconstraint> {
     fn to_sop(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("TO_SOP")
     }

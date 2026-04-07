@@ -2197,7 +2197,7 @@ pub trait SopOceanevaluateInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> SopOceanevaluateInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> SopOceanevaluateInnerExt for crate::core::graph::InnerGraph<'a, SopOceanevaluate> {
     fn n_2d_grid_points(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("2d_grid_points")
     }

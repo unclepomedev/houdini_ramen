@@ -1400,7 +1400,7 @@ pub trait TopServicecreateInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopServicecreateInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopServicecreateInnerExt for crate::core::graph::InnerGraph<'a, TopServicecreate> {
     fn servicecreate(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("servicecreate")
     }
@@ -6968,7 +6968,7 @@ pub trait TopSubnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> TopSubnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> TopSubnetInnerExt for crate::core::graph::InnerGraph<'a, TopSubnet> {
     fn output0(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("output0")
     }

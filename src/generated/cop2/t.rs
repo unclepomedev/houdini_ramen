@@ -1848,7 +1848,7 @@ pub trait Cop2TopnetInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> Cop2TopnetInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> Cop2TopnetInnerExt for crate::core::graph::InnerGraph<'a, Cop2Topnet> {
     fn localscheduler(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("localscheduler")
     }

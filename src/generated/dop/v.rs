@@ -11190,7 +11190,7 @@ pub trait DopVopforceInnerExt {
 }
 
 #[allow(clippy::wrong_self_convention, non_snake_case)]
-impl<'a> DopVopforceInnerExt for crate::core::graph::InnerGraph<'a> {
+impl<'a> DopVopforceInnerExt for crate::core::graph::InnerGraph<'a, DopVopforce> {
     fn vopforceglobal1(&mut self) -> crate::core::graph::ExistingNodeRef {
         self.existing_node("vopforceglobal1")
     }
