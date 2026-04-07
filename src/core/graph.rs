@@ -49,38 +49,6 @@ impl<'a> InnerGraph<'a> {
         node
     }
 
-    /// Connect to the input port of an existing node.
-    pub fn wire_to_existing<N: HoudiniNode>(&mut self, name: &str, input_idx: usize, target: &N) {
-        self.existing_node(name);
-        if let Some((node, _, _)) = self
-            .graph
-            .existing_nodes
-            .iter_mut()
-            .find(|(_, cid, n)| *cid == self.container_id && n == name)
-        {
-            node.inputs.insert(input_idx, (target.get_id(), 0));
-        }
-    }
-
-    /// Specify the output port and connect the wire.
-    pub fn wire_to_existing_from<N: HoudiniNode>(
-        &mut self,
-        name: &str,
-        input_idx: usize,
-        target: &N,
-        output_idx: usize,
-    ) {
-        self.existing_node(name);
-        if let Some((node, _, _)) = self
-            .graph
-            .existing_nodes
-            .iter_mut()
-            .find(|(_, cid, n)| *cid == self.container_id && n == name)
-        {
-            node.inputs.insert(input_idx, (target.get_id(), output_idx));
-        }
-    }
-
     /// Adds a new node inside the container.
     pub fn add<T: HoudiniNode + Clone + 'static>(&mut self, node: T) -> T {
         self.graph
