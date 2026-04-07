@@ -38,13 +38,11 @@ impl<'a> InnerGraph<'a> {
     }
 
     /// Register the existing configured nodes in the graph and make them subject to processing by Transpiler.
-    pub fn add_existing(&mut self, node: ExistingNodeRef) -> ExistingNodeRef {
-        self.graph.existing_nodes.push((
-            Box::new(node.clone()),
-            self.container_id,
-            node.name.clone(),
-        ));
-        node
+    pub fn add_existing(&mut self, node: ExistingNodeRef) {
+        let original_name = node.name.clone();
+        self.graph
+            .existing_nodes
+            .push((Box::new(node), self.container_id, original_name));
     }
 
     /// Adds a new node inside the container.
