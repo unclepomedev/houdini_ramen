@@ -1,6 +1,7 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
 use crate::core::types::{ContainerType, HoudiniNode};
+use std::collections::BTreeMap;
 
 pub struct NodeGraph {
     parent_path: String,
@@ -23,21 +24,25 @@ pub struct InnerGraph<'a> {
 }
 
 impl<'a> InnerGraph<'a> {
-    /// Registers a pre-existing node inside the container (e.g., "Prev_Frame", "Input_1").
-    /// These nodes are fetched via `hou.item(...)` rather than created.
-    pub fn get_existing_node(&mut self, name: &str) -> ExistingNodeRef {
+    /// Generate a reference to an existing node.
+    pub fn existing_node(&self, name: &str) -> ExistingNodeRef {
         use crate::core::types::NODE_ID_COUNTER;
         use std::sync::atomic::Ordering;
 
         let id = NODE_ID_COUNTER.fetch_add(1, Ordering::Relaxed);
-        let node = ExistingNodeRef {
+        ExistingNodeRef {
             id,
             name: name.to_string(),
-        };
+            inputs: BTreeMap::new(),
+        }
+    }
+
+    /// Register the existing configured nodes in the graph and make them subject to processing by Transpiler.
+    pub fn add_existing(&mut self, node: ExistingNodeRef) -> ExistingNodeRef {
         self.graph.existing_nodes.push((
             Box::new(node.clone()),
             self.container_id,
-            name.to_string(),
+            node.name.clone(),
         ));
         node
     }
@@ -63,6 +68,33 @@ impl<'a> InnerGraph<'a> {
 pub struct ExistingNodeRef {
     pub id: usize,
     pub name: String,
+    pub inputs: BTreeMap<usize, (usize, usize)>,
+}
+impl ExistingNodeRef {
+    pub fn set_input<N: HoudiniNode>(mut self, target: &N) -> Self {
+        self.inputs.insert(0, (target.get_id(), 0));
+        self
+    }
+
+    pub fn set_input_from<N: HoudiniNode>(mut self, target: &N, output_index: usize) -> Self {
+        self.inputs.insert(0, (target.get_id(), output_index));
+        self
+    }
+
+    pub fn set_input_at<N: HoudiniNode>(mut self, index: usize, target: &N) -> Self {
+        self.inputs.insert(index, (target.get_id(), 0));
+        self
+    }
+
+    pub fn set_input_at_from<N: HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        output_index: usize,
+    ) -> Self {
+        self.inputs.insert(index, (target.get_id(), output_index));
+        self
+    }
 }
 
 impl HoudiniNode for ExistingNodeRef {
@@ -75,10 +107,8 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_node_type(&self) -> &'static str {
         ""
     }
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        static EMPTY: std::collections::BTreeMap<usize, (usize, usize)> =
-            std::collections::BTreeMap::new();
-        &EMPTY
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+        &self.inputs
     }
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
         static EMPTY: std::sync::LazyLock<

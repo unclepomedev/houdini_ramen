@@ -172,18 +172,18 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
     {% endif %}
 }
 {% if node.inner_methods %}
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait {{ node.struct_name }}InnerExt {
     {% for m in node.inner_methods %}
-    fn {{ m.method_name }}(&mut self) -> crate::core::graph::ExistingNodeRef;
+    fn {{ m.method_name }}(&self) -> crate::core::graph::ExistingNodeRef;
     {% endfor %}
 }
 
-#[allow(clippy::wrong_self_convention)]
+#[allow(clippy::wrong_self_convention, non_snake_case)]
 impl<'a> {{ node.struct_name }}InnerExt for crate::core::graph::InnerGraph<'a> {
     {% for m in node.inner_methods %}
-    fn {{ m.method_name }}(&mut self) -> crate::core::graph::ExistingNodeRef {
-        self.get_existing_node("{{ m.rel_path }}")
+    fn {{ m.method_name }}(&self) -> crate::core::graph::ExistingNodeRef {
+        self.existing_node("{{ m.rel_path }}")
     }
     {% endfor %}
 }
