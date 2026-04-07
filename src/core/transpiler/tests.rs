@@ -418,6 +418,7 @@ fn test_transpiler_nested_subnet_creation() {
     let existing = ExistingNodeRef {
         id: 502,
         name: "Prev_Frame".to_string(),
+        inputs: BTreeMap::new(),
     };
     transpiler
         .add_existing_node(Box::new(existing), 501, "Prev_Frame")
@@ -470,14 +471,16 @@ fn test_node_graph_dive_into_api() {
     });
 
     graph.dive_into(&solver, |inner| {
-        let prev_frame = inner.get_existing_node("Prev_Frame");
+        let prev_frame = inner.existing_node("Prev_Frame");
+        let prev_frame_id = prev_frame.get_id();
+
         let _inner_node = inner.add(DummyNode {
             id: 603,
             name: "inner_ray".to_string(),
             node_type: "ray",
             inputs: {
                 let mut m = BTreeMap::new();
-                m.insert(0, (prev_frame.get_id(), 0));
+                m.insert(0, (prev_frame_id, 0));
                 m
             },
             params: HashMap::new(),
@@ -544,6 +547,7 @@ fn test_existing_node_runtime_guard() {
     let existing = ExistingNodeRef {
         id: 802,
         name: "Prev_Frame".to_string(),
+        inputs: BTreeMap::new(),
     };
     transpiler
         .add_existing_node(Box::new(existing), 801, "Prev_Frame")
@@ -585,6 +589,7 @@ fn test_topological_sort_parent_before_child() {
     let existing = ExistingNodeRef {
         id: 903,
         name: "Input_1".to_string(),
+        inputs: BTreeMap::new(),
     };
     transpiler
         .add_existing_node(Box::new(existing), 902, "Input_1")
@@ -691,4 +696,48 @@ fn test_expression_parameter_emits_set_expression() {
         "Expression with quotes should be properly escaped: {}",
         script
     );
+}
+
+#[test]
+fn test_existing_node_input_wiring() {
+    let mut graph = NodeGraph::new("/obj/geo1");
+
+    let solver = graph.add(DummyNode {
+        id: 1201,
+        name: "solver".to_string(),
+        node_type: "solver",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    });
+
+    graph.dive_into(&solver, |inner| {
+        let ray1 = inner.add(DummyNode {
+            id: 1202,
+            name: "ray1".to_string(),
+            node_type: "ray",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        });
+        let ray2 = inner.add(DummyNode {
+            id: 1203,
+            name: "ray2".to_string(),
+            node_type: "ray",
+            inputs: BTreeMap::new(),
+            params: HashMap::new(),
+            spare_params: vec![],
+        });
+
+        inner.wire_to_existing("OUT", 0, &ray1);
+        inner.wire_to_existing_from("OUT_2", 0, &ray2, 1);
+    });
+
+    let script = graph.build();
+
+    assert!(script.contains("/OUT"));
+    assert!(script.contains(".setInput(0, n_ray1_1202, 0)"));
+
+    assert!(script.contains("/OUT_2"));
+    assert!(script.contains(".setInput(0, n_ray2_1203, 1)"));
 }

@@ -1,6 +1,7 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
 use crate::core::types::{ContainerType, HoudiniNode};
+use std::collections::BTreeMap;
 
 pub struct NodeGraph {
     parent_path: String,
@@ -11,7 +12,7 @@ pub struct NodeGraph {
     /// Nodes that belong to a specific parent node (nested inside a subnet)
     nested_nodes: Vec<(Box<dyn HoudiniNode>, usize)>,
     /// Existing nodes inside subnets (fetched, not created)
-    existing_nodes: Vec<(Box<dyn HoudiniNode>, usize, String)>,
+    existing_nodes: Vec<(ExistingNodeRef, usize, String)>,
     /// Display flags for subnet inner graphs: (display_node_id, parent_node_id)
     nested_display_nodes: Vec<(usize, usize)>,
 }
@@ -23,9 +24,16 @@ pub struct InnerGraph<'a> {
 }
 
 impl<'a> InnerGraph<'a> {
-    /// Registers a pre-existing node inside the container (e.g., "Prev_Frame", "Input_1").
-    /// These nodes are fetched via `hou.item(...)` rather than created.
-    pub fn get_existing_node(&mut self, name: &str) -> ExistingNodeRef {
+    /// Generate a reference to an existing node.
+    pub fn existing_node(&mut self, name: &str) -> ExistingNodeRef {
+        if let Some((node, _, _)) = self
+            .graph
+            .existing_nodes
+            .iter()
+            .find(|(_, cid, n)| *cid == self.container_id && n == name)
+        {
+            return node.clone();
+        }
         use crate::core::types::NODE_ID_COUNTER;
         use std::sync::atomic::Ordering;
 
@@ -33,13 +41,44 @@ impl<'a> InnerGraph<'a> {
         let node = ExistingNodeRef {
             id,
             name: name.to_string(),
+            inputs: BTreeMap::new(),
         };
-        self.graph.existing_nodes.push((
-            Box::new(node.clone()),
-            self.container_id,
-            name.to_string(),
-        ));
+        self.graph
+            .existing_nodes
+            .push((node.clone(), self.container_id, name.to_string()));
         node
+    }
+
+    /// Connect to the input port of an existing node.
+    pub fn wire_to_existing<N: HoudiniNode>(&mut self, name: &str, input_idx: usize, target: &N) {
+        self.existing_node(name);
+        if let Some((node, _, _)) = self
+            .graph
+            .existing_nodes
+            .iter_mut()
+            .find(|(_, cid, n)| *cid == self.container_id && n == name)
+        {
+            node.inputs.insert(input_idx, (target.get_id(), 0));
+        }
+    }
+
+    /// Specify the output port and connect the wire.
+    pub fn wire_to_existing_from<N: HoudiniNode>(
+        &mut self,
+        name: &str,
+        input_idx: usize,
+        target: &N,
+        output_idx: usize,
+    ) {
+        self.existing_node(name);
+        if let Some((node, _, _)) = self
+            .graph
+            .existing_nodes
+            .iter_mut()
+            .find(|(_, cid, n)| *cid == self.container_id && n == name)
+        {
+            node.inputs.insert(input_idx, (target.get_id(), output_idx));
+        }
     }
 
     /// Adds a new node inside the container.
@@ -63,6 +102,7 @@ impl<'a> InnerGraph<'a> {
 pub struct ExistingNodeRef {
     pub id: usize,
     pub name: String,
+    pub inputs: BTreeMap<usize, (usize, usize)>,
 }
 
 impl HoudiniNode for ExistingNodeRef {
@@ -75,10 +115,8 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_node_type(&self) -> &'static str {
         ""
     }
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        static EMPTY: std::collections::BTreeMap<usize, (usize, usize)> =
-            std::collections::BTreeMap::new();
-        &EMPTY
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+        &self.inputs
     }
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
         static EMPTY: std::sync::LazyLock<
@@ -152,11 +190,11 @@ impl NodeGraph {
             for node in self.nodes {
                 transpiler.add_boxed(node)?;
             }
-            for (node, parent_id, original_name) in self.existing_nodes {
-                transpiler.add_existing_node(node, parent_id, &original_name)?;
-            }
             for (node, parent_id) in self.nested_nodes {
                 transpiler.add_boxed_with_parent(node, parent_id)?;
+            }
+            for (node, parent_id, original_name) in self.existing_nodes {
+                transpiler.add_existing_node(Box::new(node), parent_id, &original_name)?;
             }
             transpiler.generate_script()
         })();
@@ -164,14 +202,9 @@ impl NodeGraph {
         // TODO: Error handling is done here to avoid hassle, but for users who want to control the process themselves, the Result should be exposed.
         result.unwrap_or_else(|e| {
             eprintln!("Houdini Ramen Build Error: {}", e);
-
             let full_msg = format!("Houdini Ramen Error: {}", e);
             let safe_msg = python_string_literal(&full_msg);
-
-            format!(
-                "import hou\nhou.ui.displayMessage({}, severity=hou.severityType.Error)\nraise RuntimeError({})",
-                safe_msg, safe_msg
-            )
+            format!("import hou\nhou.ui.displayMessage({}, severity=hou.severityType.Error)\nraise RuntimeError({})", safe_msg, safe_msg)
         })
     }
 }
