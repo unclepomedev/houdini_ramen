@@ -735,9 +735,9 @@ fn test_existing_node_input_wiring() {
 
     let script = graph.build();
 
-    assert!(script.contains("n_OUT_"));
+    assert!(script.contains("/OUT"));
     assert!(script.contains(".setInput(0, n_ray1_1202, 0)"));
 
-    assert!(script.contains("n_OUT_2_"));
+    assert!(script.contains("/OUT_2"));
     assert!(script.contains(".setInput(0, n_ray2_1203, 1)"));
 }
