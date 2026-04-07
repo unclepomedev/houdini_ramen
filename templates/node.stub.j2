@@ -8,6 +8,7 @@ pub enum {{ e.enum_name }} {
 }
 
 {% endfor %}
+#[must_use = "Nodes must be added to the graph using `graph.add(...)` or `inner.add(...)`"]
 pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
