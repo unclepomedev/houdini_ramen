@@ -47,7 +47,7 @@ pub enum ObjectGeoVportOnionskin {
 pub struct ObjectGeo {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -77,7 +77,10 @@ impl ObjectGeo {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -88,13 +91,38 @@ impl ObjectGeo {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -104,13 +132,37 @@ impl ObjectGeo {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "parent"
     pub fn set_input_parent<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -120,7 +172,28 @@ impl ObjectGeo {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_parent_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -632,7 +705,9 @@ impl crate::core::types::HoudiniNode for ObjectGeo {
         "geo"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -687,7 +762,7 @@ pub enum ObjectGltfHierarchyUparmtype {
 pub struct ObjectGltfHierarchy {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1409,7 +1484,9 @@ impl crate::core::types::HoudiniNode for ObjectGltfHierarchy {
         "gltf_hierarchy"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -1510,7 +1587,7 @@ pub enum ObjectGroommergeVportOnionskin {
 pub struct ObjectGroommerge {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
     next_input_index: usize,
@@ -1542,7 +1619,10 @@ impl ObjectGroommerge {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1553,14 +1633,38 @@ impl ObjectGroommerge {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs.insert(
+            self.next_input_index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self.next_input_index += 1;
         self
     }
@@ -1571,8 +1675,29 @@ impl ObjectGroommerge {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self.next_input_index += 1;
+        self
+    }
+
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self.next_input_index += 1;
         self
     }
@@ -2785,7 +2910,9 @@ impl crate::core::types::HoudiniNode for ObjectGroommerge {
         "groommerge"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -3131,7 +3258,7 @@ pub enum ObjectGuidedeformViewportlod2 {
 pub struct ObjectGuidedeform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3161,7 +3288,10 @@ impl ObjectGuidedeform {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3172,13 +3302,38 @@ impl ObjectGuidedeform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3188,13 +3343,37 @@ impl ObjectGuidedeform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Parent"
     pub fn set_input_parent<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3204,13 +3383,37 @@ impl ObjectGuidedeform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_parent_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Groom Data"
     pub fn set_input_groom_data<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3220,7 +3423,28 @@ impl ObjectGuidedeform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_groom_data_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -3229,7 +3453,10 @@ impl ObjectGuidedeform {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3239,7 +3466,28 @@ impl ObjectGuidedeform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_animated_skin_geometry_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4939,7 +5187,9 @@ impl crate::core::types::HoudiniNode for ObjectGuidedeform {
         "guidedeform"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -5266,7 +5516,7 @@ pub enum ObjectGuidegroomViewportlod {
 pub struct ObjectGuidegroom {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5296,7 +5546,10 @@ impl ObjectGuidegroom {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5307,13 +5560,38 @@ impl ObjectGuidegroom {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5323,13 +5601,37 @@ impl ObjectGuidegroom {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Parent"
     pub fn set_input_parent<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5339,7 +5641,28 @@ impl ObjectGuidegroom {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_parent_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -5348,7 +5671,10 @@ impl ObjectGuidegroom {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5358,7 +5684,28 @@ impl ObjectGuidegroom {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_skin_geometry_or_groom_data_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -7170,7 +7517,9 @@ impl crate::core::types::HoudiniNode for ObjectGuidegroom {
         "guidegroom"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -7465,7 +7814,7 @@ pub enum ObjectGuidesimDopioPackedviewedit {
 pub struct ObjectGuidesim {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -7495,7 +7844,10 @@ impl ObjectGuidesim {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7506,13 +7858,38 @@ impl ObjectGuidesim {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7522,13 +7899,37 @@ impl ObjectGuidesim {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Parent"
     pub fn set_input_parent<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7538,13 +7939,37 @@ impl ObjectGuidesim {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_parent_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Groom Data"
     pub fn set_input_groom_data<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7554,7 +7979,28 @@ impl ObjectGuidesim {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_groom_data_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -11425,7 +11871,9 @@ impl crate::core::types::HoudiniNode for ObjectGuidesim {
         "guidesim"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 

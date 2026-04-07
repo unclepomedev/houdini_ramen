@@ -120,7 +120,7 @@ pub enum DopFanSharedata {
 pub struct DopFan {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
     next_input_index: usize,
@@ -152,7 +152,10 @@ impl DopFan {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -163,14 +166,38 @@ impl DopFan {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs.insert(
+            self.next_input_index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self.next_input_index += 1;
         self
     }
@@ -181,8 +208,29 @@ impl DopFan {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self.next_input_index += 1;
+        self
+    }
+
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self.next_input_index += 1;
         self
     }
@@ -561,7 +609,9 @@ impl crate::core::types::HoudiniNode for DopFan {
         "fan"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -603,7 +653,7 @@ pub enum DopFemattachconstraintRestinitialization {
 pub struct DopFemattachconstraint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -633,7 +683,10 @@ impl DopFemattachconstraint {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -644,13 +697,38 @@ impl DopFemattachconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -660,7 +738,28 @@ impl DopFemattachconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -669,7 +768,10 @@ impl DopFemattachconstraint {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -679,7 +781,28 @@ impl DopFemattachconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1177,7 +1300,9 @@ impl crate::core::types::HoudiniNode for DopFemattachconstraint {
         "femattachconstraint"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -1206,7 +1331,7 @@ pub enum DopFemfuseconstraintMatchmethod {
 pub struct DopFemfuseconstraint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1236,7 +1361,10 @@ impl DopFemfuseconstraint {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1247,13 +1375,38 @@ impl DopFemfuseconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1263,7 +1416,28 @@ impl DopFemfuseconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1272,7 +1446,10 @@ impl DopFemfuseconstraint {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1282,7 +1459,28 @@ impl DopFemfuseconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1536,7 +1734,9 @@ impl crate::core::types::HoudiniNode for DopFemfuseconstraint {
         "femfuseconstraint"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -1583,7 +1783,7 @@ pub enum DopFemhybridconfigureobjectSdfUniformvoxels {
 pub struct DopFemhybridconfigureobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1613,7 +1813,10 @@ impl DopFemhybridconfigureobject {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1624,13 +1827,38 @@ impl DopFemhybridconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1640,7 +1868,28 @@ impl DopFemhybridconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1649,7 +1898,10 @@ impl DopFemhybridconfigureobject {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1659,7 +1911,28 @@ impl DopFemhybridconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_sub_network_input_1_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -2786,7 +3059,9 @@ impl crate::core::types::HoudiniNode for DopFemhybridconfigureobject {
         "femhybridconfigureobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -2827,7 +3102,7 @@ pub enum DopFemhybridobjectSdfUniformvoxels {
 pub struct DopFemhybridobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3920,7 +4195,9 @@ impl crate::core::types::HoudiniNode for DopFemhybridobject {
         "femhybridobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -3937,7 +4214,7 @@ impl crate::core::types::HoudiniNode for DopFemhybridobject {
 pub struct DopFemregionconstraint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3967,7 +4244,10 @@ impl DopFemregionconstraint {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3978,13 +4258,38 @@ impl DopFemregionconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3994,7 +4299,28 @@ impl DopFemregionconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4003,7 +4329,10 @@ impl DopFemregionconstraint {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4013,7 +4342,28 @@ impl DopFemregionconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4335,7 +4685,9 @@ impl crate::core::types::HoudiniNode for DopFemregionconstraint {
         "femregionconstraint"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -4387,7 +4739,7 @@ pub enum DopFemslideconstraintRestinitialization {
 pub struct DopFemslideconstraint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4417,7 +4769,10 @@ impl DopFemslideconstraint {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4428,13 +4783,38 @@ impl DopFemslideconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4444,7 +4824,28 @@ impl DopFemslideconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4453,7 +4854,10 @@ impl DopFemslideconstraint {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4463,7 +4867,28 @@ impl DopFemslideconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -5014,7 +5439,9 @@ impl crate::core::types::HoudiniNode for DopFemslideconstraint {
         "femslideconstraint"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -5049,7 +5476,7 @@ pub enum DopFemsolidconfigureobjectSdfUniformvoxels {
 pub struct DopFemsolidconfigureobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5079,7 +5506,10 @@ impl DopFemsolidconfigureobject {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5090,13 +5520,38 @@ impl DopFemsolidconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5106,7 +5561,28 @@ impl DopFemsolidconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -5115,7 +5591,10 @@ impl DopFemsolidconfigureobject {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -5125,7 +5604,28 @@ impl DopFemsolidconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_sub_network_input_1_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -5980,7 +6480,9 @@ impl crate::core::types::HoudiniNode for DopFemsolidconfigureobject {
         "femsolidconfigureobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -6029,7 +6531,7 @@ pub enum DopFemsolidobjectStrainmodel {
 pub struct DopFemsolidobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -6970,7 +7472,9 @@ impl crate::core::types::HoudiniNode for DopFemsolidobject {
         "femsolidobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -7013,7 +7517,7 @@ pub enum DopFemsolverFloatprecision {
 pub struct DopFemsolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -7043,7 +7547,10 @@ impl DopFemsolver {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7054,13 +7561,38 @@ impl DopFemsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7070,7 +7602,28 @@ impl DopFemsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -7079,7 +7632,10 @@ impl DopFemsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7089,7 +7645,28 @@ impl DopFemsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -7283,7 +7860,9 @@ impl crate::core::types::HoudiniNode for DopFemsolver {
         "femsolver"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -7555,7 +8134,7 @@ pub enum DopFemsolvercoreDefaultparmop {
 pub struct DopFemsolvercore {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
     next_input_index: usize,
@@ -7587,7 +8166,10 @@ impl DopFemsolvercore {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -7598,14 +8180,38 @@ impl DopFemsolvercore {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs.insert(
+            self.next_input_index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self.next_input_index += 1;
         self
     }
@@ -7616,8 +8222,29 @@ impl DopFemsolvercore {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self.next_input_index += 1;
+        self
+    }
+
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self.next_input_index += 1;
         self
     }
@@ -8264,7 +8891,9 @@ impl crate::core::types::HoudiniNode for DopFemsolvercore {
         "femsolvercore"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -8287,7 +8916,7 @@ pub enum DopFemtargetconstraintType {
 pub struct DopFemtargetconstraint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -8317,7 +8946,10 @@ impl DopFemtargetconstraint {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -8328,13 +8960,38 @@ impl DopFemtargetconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -8344,7 +9001,28 @@ impl DopFemtargetconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -8353,7 +9031,10 @@ impl DopFemtargetconstraint {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -8363,7 +9044,28 @@ impl DopFemtargetconstraint {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -8533,7 +9235,9 @@ impl crate::core::types::HoudiniNode for DopFemtargetconstraint {
         "femtargetconstraint"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -8624,7 +9328,7 @@ pub enum DopFeoutputattributesSharedata {
 pub struct DopFeoutputattributes {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -8654,7 +9358,10 @@ impl DopFeoutputattributes {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -8665,13 +9372,38 @@ impl DopFeoutputattributes {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -8681,7 +9413,28 @@ impl DopFeoutputattributes {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -8690,7 +9443,10 @@ impl DopFeoutputattributes {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -8700,7 +9456,28 @@ impl DopFeoutputattributes {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -8979,7 +9756,9 @@ impl crate::core::types::HoudiniNode for DopFeoutputattributes {
         "feoutputattributes"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -8996,7 +9775,7 @@ impl crate::core::types::HoudiniNode for DopFeoutputattributes {
 pub struct DopFetchdata {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
     next_input_index: usize,
@@ -9028,7 +9807,10 @@ impl DopFetchdata {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -9039,14 +9821,38 @@ impl DopFetchdata {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs.insert(
+            self.next_input_index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self.next_input_index += 1;
         self
     }
@@ -9057,8 +9863,29 @@ impl DopFetchdata {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self.next_input_index += 1;
+        self
+    }
+
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self.next_input_index += 1;
         self
     }
@@ -9183,7 +10010,9 @@ impl crate::core::types::HoudiniNode for DopFetchdata {
         "fetchdata"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -9318,7 +10147,7 @@ pub enum DopFieldforceSharedata {
 pub struct DopFieldforce {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
     next_input_index: usize,
@@ -9350,7 +10179,10 @@ impl DopFieldforce {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -9361,14 +10193,38 @@ impl DopFieldforce {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs.insert(
+            self.next_input_index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self.next_input_index += 1;
         self
     }
@@ -9379,8 +10235,29 @@ impl DopFieldforce {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self.next_input_index += 1;
+        self
+    }
+
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self.next_input_index += 1;
         self
     }
@@ -9834,7 +10711,9 @@ impl crate::core::types::HoudiniNode for DopFieldforce {
         "fieldforce"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -9851,7 +10730,7 @@ impl crate::core::types::HoudiniNode for DopFieldforce {
 pub struct DopFilamentobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -10034,7 +10913,9 @@ impl crate::core::types::HoudiniNode for DopFilamentobject {
         "filamentobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -10051,7 +10932,7 @@ impl crate::core::types::HoudiniNode for DopFilamentobject {
 pub struct DopFilamentsolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -10081,7 +10962,10 @@ impl DopFilamentsolver {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10092,13 +10976,38 @@ impl DopFilamentsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10108,13 +11017,37 @@ impl DopFilamentsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Object"
     pub fn set_input_object<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10124,13 +11057,37 @@ impl DopFilamentsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_object_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Pre-Solve"
     pub fn set_input_pre_solve<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10140,13 +11097,37 @@ impl DopFilamentsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_pre_solve_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 2: "Post-Solve"
     pub fn set_input_post_solve<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10156,7 +11137,28 @@ impl DopFilamentsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_post_solve_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -10364,7 +11366,9 @@ impl crate::core::types::HoudiniNode for DopFilamentsolver {
         "filamentsolver"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -10396,7 +11400,7 @@ pub enum DopFileCompresssims {
 pub struct DopFile {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -10426,7 +11430,10 @@ impl DopFile {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10437,13 +11444,38 @@ impl DopFile {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10453,7 +11485,28 @@ impl DopFile {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -10464,7 +11517,10 @@ impl DopFile {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10476,7 +11532,30 @@ impl DopFile {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_use_when_not_reading_from_fil_by_name<
+        N: crate::core::types::HoudiniNode,
+    >(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -10628,7 +11707,9 @@ impl crate::core::types::HoudiniNode for DopFile {
         "file"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -10660,7 +11741,7 @@ pub enum DopFiledataSharedata {
 pub struct DopFiledata {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
     next_input_index: usize,
@@ -10692,7 +11773,10 @@ impl DopFiledata {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -10703,14 +11787,38 @@ impl DopFiledata {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Adds an input automatically to the next available index.
     pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+        self.inputs.insert(
+            self.next_input_index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self.next_input_index += 1;
         self
     }
@@ -10721,8 +11829,29 @@ impl DopFiledata {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self.next_input_index += 1;
+        self
+    }
+
+    pub fn add_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            self.next_input_index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self.next_input_index += 1;
         self
     }
@@ -10889,7 +12018,9 @@ impl crate::core::types::HoudiniNode for DopFiledata {
         "filedata"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -11172,7 +12303,7 @@ pub enum DopFlipconfigureobjectDivergenceGuidevisdensitymode {
 pub struct DopFlipconfigureobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -11202,7 +12333,10 @@ impl DopFlipconfigureobject {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -11213,13 +12347,38 @@ impl DopFlipconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -11229,7 +12388,28 @@ impl DopFlipconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -11238,7 +12418,10 @@ impl DopFlipconfigureobject {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -11248,7 +12431,28 @@ impl DopFlipconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -13905,7 +15109,9 @@ impl crate::core::types::HoudiniNode for DopFlipconfigureobject {
         "flipconfigureobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -14231,7 +15437,7 @@ pub enum DopFlipobjectDivergenceGuidevisdensitymode {
 pub struct DopFlipobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -17441,7 +18647,9 @@ impl crate::core::types::HoudiniNode for DopFlipobject {
         "flipobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -17588,7 +18796,7 @@ pub enum DopFlipsolverExtrapmode {
 pub struct DopFlipsolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -17618,7 +18826,10 @@ impl DopFlipsolver {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -17629,13 +18840,38 @@ impl DopFlipsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -17645,7 +18881,28 @@ impl DopFlipsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -17654,7 +18911,10 @@ impl DopFlipsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -17664,7 +18924,28 @@ impl DopFlipsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_fluid_to_solve_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -17673,7 +18954,10 @@ impl DopFlipsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -17683,7 +18967,28 @@ impl DopFlipsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_particle_velocity_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -17692,7 +18997,10 @@ impl DopFlipsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -17702,7 +19010,28 @@ impl DopFlipsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_volume_velocity_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -17711,7 +19040,10 @@ impl DopFlipsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
+        self.inputs.insert(
+            3,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -17721,7 +19053,28 @@ impl DopFlipsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_sourcing_post_solve_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -19807,7 +21160,9 @@ impl crate::core::types::HoudiniNode for DopFlipsolver {
         "flipsolver"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -20026,7 +21381,7 @@ pub enum DopFluidconfigureobjectBorder {
 pub struct DopFluidconfigureobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -20056,7 +21411,10 @@ impl DopFluidconfigureobject {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -20067,13 +21425,38 @@ impl DopFluidconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -20083,7 +21466,28 @@ impl DopFluidconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -20092,7 +21496,10 @@ impl DopFluidconfigureobject {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -20102,7 +21509,28 @@ impl DopFluidconfigureobject {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -22117,7 +23545,9 @@ impl crate::core::types::HoudiniNode for DopFluidconfigureobject {
         "fluidconfigureobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -22156,7 +23586,7 @@ pub enum DopFluidforceSharedata {
 pub struct DopFluidforce {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -22186,7 +23616,10 @@ impl DopFluidforce {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -22197,13 +23630,38 @@ impl DopFluidforce {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -22213,7 +23671,28 @@ impl DopFluidforce {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -22222,7 +23701,10 @@ impl DopFluidforce {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -22232,13 +23714,37 @@ impl DopFluidforce {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_objects_to_be_processed_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Input 1"
     pub fn set_input_input_1<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -22248,7 +23754,28 @@ impl DopFluidforce {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_1_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -22446,7 +23973,9 @@ impl crate::core::types::HoudiniNode for DopFluidforce {
         "fluidforce"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -22665,7 +24194,7 @@ pub enum DopFluidobjectBorder {
 pub struct DopFluidobject {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -24829,7 +26358,9 @@ impl crate::core::types::HoudiniNode for DopFluidobject {
         "fluidobject"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -24932,7 +26463,7 @@ pub enum DopFluidsolverFieldsclear {
 pub struct DopFluidsolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -24962,7 +26493,10 @@ impl DopFluidsolver {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -24973,13 +26507,38 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -24989,13 +26548,37 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Object"
     pub fn set_input_object<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -25005,13 +26588,37 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_object_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Pre-solve"
     pub fn set_input_pre_solve<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -25021,7 +26628,28 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_pre_solve_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -25030,7 +26658,10 @@ impl DopFluidsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -25040,13 +26671,37 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_velocity_update_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 3: "Advection"
     pub fn set_input_advection<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
+        self.inputs.insert(
+            3,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -25056,7 +26711,28 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_advection_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -25065,7 +26741,10 @@ impl DopFluidsolver {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(4, (target.get_id(), 0));
+        self.inputs.insert(
+            4,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -25075,7 +26754,28 @@ impl DopFluidsolver {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(4, (target.get_id(), output_index));
+        self.inputs.insert(
+            4,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_sourcing_post_solve_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            4,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -26042,7 +27742,9 @@ impl crate::core::types::HoudiniNode for DopFluidsolver {
         "fluidsolver"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 

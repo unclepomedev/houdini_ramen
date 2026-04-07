@@ -2,7 +2,7 @@
 pub struct Cop2Fetch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -55,7 +55,9 @@ impl crate::core::types::HoudiniNode for Cop2Fetch {
         "fetch"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -80,7 +82,7 @@ pub enum Cop2FieldmergeFdominance {
 pub struct Cop2Fieldmerge {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -110,7 +112,10 @@ impl Cop2Fieldmerge {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -121,13 +126,38 @@ impl Cop2Fieldmerge {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -137,7 +167,28 @@ impl Cop2Fieldmerge {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -146,7 +197,10 @@ impl Cop2Fieldmerge {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -156,7 +210,28 @@ impl Cop2Fieldmerge {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_fields_to_merge_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -206,7 +281,9 @@ impl crate::core::types::HoudiniNode for Cop2Fieldmerge {
         "fieldmerge"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -238,7 +315,7 @@ pub enum Cop2FieldsplitFdominance {
 pub struct Cop2Fieldsplit {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -268,7 +345,10 @@ impl Cop2Fieldsplit {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -279,13 +359,38 @@ impl Cop2Fieldsplit {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -295,7 +400,28 @@ impl Cop2Fieldsplit {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -304,7 +430,10 @@ impl Cop2Fieldsplit {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -314,7 +443,28 @@ impl Cop2Fieldsplit {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_frames_to_split_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -362,7 +512,9 @@ impl crate::core::types::HoudiniNode for Cop2Fieldsplit {
         "fieldsplit"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -379,7 +531,7 @@ impl crate::core::types::HoudiniNode for Cop2Fieldsplit {
 pub struct Cop2Fieldswap {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -409,7 +561,10 @@ impl Cop2Fieldswap {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -420,13 +575,38 @@ impl Cop2Fieldswap {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -436,7 +616,28 @@ impl Cop2Fieldswap {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -445,7 +646,10 @@ impl Cop2Fieldswap {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -455,7 +659,28 @@ impl Cop2Fieldswap {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_frames_to_swap_fields_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 }
@@ -473,7 +698,9 @@ impl crate::core::types::HoudiniNode for Cop2Fieldswap {
         "fieldswap"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -630,7 +857,7 @@ pub enum Cop2FilePostextend {
 pub struct Cop2File {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -660,7 +887,10 @@ impl Cop2File {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -671,13 +901,38 @@ impl Cop2File {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -687,13 +942,37 @@ impl Cop2File {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Mask Input"
     pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -703,7 +982,28 @@ impl Cop2File {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_mask_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1363,7 +1663,9 @@ impl crate::core::types::HoudiniNode for Cop2File {
         "file"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -1417,7 +1719,7 @@ pub enum Cop2FlipFmenu {
 pub struct Cop2Flip {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1447,7 +1749,10 @@ impl Cop2Flip {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1458,13 +1763,38 @@ impl Cop2Flip {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1474,7 +1804,28 @@ impl Cop2Flip {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1483,7 +1834,10 @@ impl Cop2Flip {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1493,13 +1847,37 @@ impl Cop2Flip {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_images_to_flip_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Mask Input"
     pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1509,7 +1887,28 @@ impl Cop2Flip {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_mask_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1805,7 +2204,9 @@ impl crate::core::types::HoudiniNode for Cop2Flip {
         "flip"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -1901,7 +2302,7 @@ pub enum Cop2FogFmenu {
 pub struct Cop2Fog {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1931,7 +2332,10 @@ impl Cop2Fog {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1942,13 +2346,38 @@ impl Cop2Fog {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1958,7 +2387,28 @@ impl Cop2Fog {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -1967,7 +2417,10 @@ impl Cop2Fog {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1977,13 +2430,37 @@ impl Cop2Fog {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_image_to_fog_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Fog Matte"
     pub fn set_input_fog_matte<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -1993,13 +2470,37 @@ impl Cop2Fog {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_fog_matte_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 2: "Mask Input"
     pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -2009,7 +2510,28 @@ impl Cop2Fog {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_mask_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -2629,7 +3151,9 @@ impl crate::core::types::HoudiniNode for Cop2Fog {
         "fog"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -2787,7 +3311,7 @@ pub enum Cop2FontPostextend {
 pub struct Cop2Font {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -2817,7 +3341,10 @@ impl Cop2Font {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -2828,13 +3355,38 @@ impl Cop2Font {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -2844,7 +3396,28 @@ impl Cop2Font {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -2853,7 +3426,10 @@ impl Cop2Font {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -2863,13 +3439,37 @@ impl Cop2Font {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_image_to_add_to_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Mask Input"
     pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -2879,7 +3479,28 @@ impl Cop2Font {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_mask_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -3620,7 +4241,9 @@ impl crate::core::types::HoudiniNode for Cop2Font {
         "font"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -3681,7 +4304,7 @@ pub enum Cop2FrontfaceFmenu {
 pub struct Cop2Frontface {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -3711,7 +4334,10 @@ impl Cop2Frontface {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3722,13 +4348,38 @@ impl Cop2Frontface {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3738,13 +4389,37 @@ impl Cop2Frontface {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "Input 1"
     pub fn set_input_input_1<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3754,13 +4429,37 @@ impl Cop2Frontface {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_1_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Mask Input"
     pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -3770,7 +4469,28 @@ impl Cop2Frontface {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_mask_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4112,7 +4832,9 @@ impl crate::core::types::HoudiniNode for Cop2Frontface {
         "frontface"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -4244,7 +4966,7 @@ pub enum Cop2FunctionFmenu {
 pub struct Cop2Function {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -4274,7 +4996,10 @@ impl Cop2Function {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4285,13 +5010,38 @@ impl Cop2Function {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4301,7 +5051,28 @@ impl Cop2Function {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4310,7 +5081,10 @@ impl Cop2Function {
         mut self,
         target: &N,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4320,13 +5094,37 @@ impl Cop2Function {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_image_to_function_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: "Mask Input"
     pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -4336,7 +5134,28 @@ impl Cop2Function {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_mask_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -4697,7 +5516,9 @@ impl crate::core::types::HoudiniNode for Cop2Function {
         "function"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 

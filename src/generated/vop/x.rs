@@ -22,7 +22,7 @@ pub enum VopXformXyz {
 pub struct VopXform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -52,7 +52,10 @@ impl VopXform {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -63,13 +66,38 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -79,13 +107,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: ""
     pub fn set_input_input_0<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -95,13 +147,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_0_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: ""
     pub fn set_input_input_1<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -111,13 +187,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_1_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 2: ""
     pub fn set_input_input_2<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -127,13 +227,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_2_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 3: ""
     pub fn set_input_input_3<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
+        self.inputs.insert(
+            3,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -143,13 +267,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_3_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 4: ""
     pub fn set_input_input_4<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(4, (target.get_id(), 0));
+        self.inputs.insert(
+            4,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -159,13 +307,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(4, (target.get_id(), output_index));
+        self.inputs.insert(
+            4,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_4_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            4,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 5: ""
     pub fn set_input_input_5<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(5, (target.get_id(), 0));
+        self.inputs.insert(
+            5,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -175,13 +347,37 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(5, (target.get_id(), output_index));
+        self.inputs.insert(
+            5,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_5_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            5,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 6: ""
     pub fn set_input_input_6<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(6, (target.get_id(), 0));
+        self.inputs.insert(
+            6,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -191,7 +387,28 @@ impl VopXform {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(6, (target.get_id(), output_index));
+        self.inputs.insert(
+            6,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_6_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            6,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -343,7 +560,9 @@ impl crate::core::types::HoudiniNode for VopXform {
         "xform"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -360,7 +579,7 @@ impl crate::core::types::HoudiniNode for VopXform {
 pub struct VopXor {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -390,7 +609,10 @@ impl VopXor {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -401,13 +623,38 @@ impl VopXor {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -417,7 +664,28 @@ impl VopXor {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -451,7 +719,9 @@ impl crate::core::types::HoudiniNode for VopXor {
         "xor"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -468,7 +738,7 @@ impl crate::core::types::HoudiniNode for VopXor {
 pub struct VopXyzdist {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -498,7 +768,10 @@ impl VopXyzdist {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -509,13 +782,38 @@ impl VopXyzdist {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -525,13 +823,37 @@ impl VopXyzdist {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: ""
     pub fn set_input_input_0<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -541,13 +863,37 @@ impl VopXyzdist {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_0_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 1: ""
     pub fn set_input_input_1<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.inputs.insert(
+            1,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -557,13 +903,37 @@ impl VopXyzdist {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_1_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            1,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 2: ""
     pub fn set_input_input_2<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.inputs.insert(
+            2,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -573,13 +943,37 @@ impl VopXyzdist {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_2_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            2,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 3: ""
     pub fn set_input_input_3<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
+        self.inputs.insert(
+            3,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -589,7 +983,28 @@ impl VopXyzdist {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_input_3_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            3,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -653,7 +1068,9 @@ impl crate::core::types::HoudiniNode for VopXyzdist {
         "xyzdist"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 

@@ -91,7 +91,7 @@ pub enum ObjectQuadrupedAutoRig4fProxyDisplayHandles {
 pub struct ObjectQuadrupedAutoRig4f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -8529,7 +8529,9 @@ impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig4f {
         "quadruped_auto_rig_4f"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -8700,7 +8702,7 @@ pub enum ObjectQuadrupedAutoRig5fProxyDisplayHandles {
 pub struct ObjectQuadrupedAutoRig5f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -18202,7 +18204,9 @@ impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig5f {
         "quadruped_auto_rig_5f"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 

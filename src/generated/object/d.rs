@@ -40,7 +40,7 @@ pub enum ObjectDeformBoneRigBipedArmUparmtype {
 pub struct ObjectDeformBoneRigBipedArm {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -1957,7 +1957,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedArm {
         "deform_bone_rig_biped_arm"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -2073,7 +2075,7 @@ pub enum ObjectDeformBoneRigBipedHand4f2sUparmtype {
 pub struct ObjectDeformBoneRigBipedHand4f2s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -5852,7 +5854,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHand4f2s {
         "deform_bone_rig_biped_hand_4f_2s"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -6044,7 +6048,7 @@ pub enum ObjectDeformBoneRigBipedHand4f3sUparmtype {
 pub struct ObjectDeformBoneRigBipedHand4f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -10887,7 +10891,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHand4f3s {
         "deform_bone_rig_biped_hand_4f_3s"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -11127,7 +11133,7 @@ pub enum ObjectDeformBoneRigBipedHand5f3sUparmtype {
 pub struct ObjectDeformBoneRigBipedHand5f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -17034,7 +17040,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHand5f3s {
         "deform_bone_rig_biped_hand_5f_3s"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -17292,7 +17300,7 @@ pub enum ObjectDeformBoneRigBipedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformBoneRigBipedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -19089,7 +19097,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedHeadAndNeck {
         "deform_bone_rig_biped_head_and_neck"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -19201,7 +19211,7 @@ pub enum ObjectDeformBoneRigBipedLegUparmtype {
 pub struct ObjectDeformBoneRigBipedLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -21118,7 +21128,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedLeg {
         "deform_bone_rig_biped_leg"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -21238,7 +21250,7 @@ pub enum ObjectDeformBoneRigBipedSpine3pcUparmtype {
 pub struct ObjectDeformBoneRigBipedSpine3pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -22623,7 +22635,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedSpine3pc {
         "deform_bone_rig_biped_spine_3pc"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -22715,7 +22729,7 @@ pub enum ObjectDeformBoneRigBipedSpine5pcUparmtype {
 pub struct ObjectDeformBoneRigBipedSpine5pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -24632,7 +24646,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigBipedSpine5pc {
         "deform_bone_rig_biped_spine_5pc"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -24740,7 +24756,7 @@ pub enum ObjectDeformBoneRigQuadrupedBackLegUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedBackLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -26657,7 +26673,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedBackLeg {
         "deform_bone_rig_quadruped_back_leg"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -26773,7 +26791,7 @@ pub enum ObjectDeformBoneRigQuadrupedFrontLegUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedFrontLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -28956,7 +28974,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedFrontLeg {
         "deform_bone_rig_quadruped_front_leg"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -29098,7 +29118,7 @@ pub enum ObjectDeformBoneRigQuadrupedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformBoneRigQuadrupedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -31385,7 +31405,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedHeadAndNeck
         "deform_bone_rig_quadruped_head_and_neck"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -31513,7 +31535,7 @@ pub enum ObjectDeformBoneRigQuadrupedIkSpineUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedIkSpine {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -34760,7 +34782,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedIkSpine {
         "deform_bone_rig_quadruped_ik_spine"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -34912,7 +34936,7 @@ pub enum ObjectDeformBoneRigQuadrupedTailUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedTail {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -38425,7 +38449,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedTail {
         "deform_bone_rig_quadruped_tail"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -38581,7 +38607,7 @@ pub enum ObjectDeformBoneRigQuadrupedToes4fUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedToes4f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -43158,7 +43184,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedToes4f {
         "deform_bone_rig_quadruped_toes_4f"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -43386,7 +43414,7 @@ pub enum ObjectDeformBoneRigQuadrupedToes5fUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedToes5f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -49027,7 +49055,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedToes5f {
         "deform_bone_rig_quadruped_toes_5f"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -49299,7 +49329,7 @@ pub enum ObjectDeformRigBipedArmUparmtype {
 pub struct ObjectDeformRigBipedArm {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -50712,7 +50742,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedArm {
         "deform_rig_biped_arm"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -50940,7 +50972,7 @@ pub enum ObjectDeformRigBipedHand4f2sUparmtype {
 pub struct ObjectDeformRigBipedHand4f2s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -54985,7 +55017,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHand4f2s {
         "deform_rig_biped_hand_4f_2s"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -55529,7 +55563,7 @@ pub enum ObjectDeformRigBipedHand4f3sUparmtype {
 pub struct ObjectDeformRigBipedHand4f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -59882,7 +59916,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHand4f3s {
         "deform_rig_biped_hand_4f_3s"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -60602,7 +60638,7 @@ pub enum ObjectDeformRigBipedHand5f3sUparmtype {
 pub struct ObjectDeformRigBipedHand5f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -65865,7 +65901,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHand5f3s {
         "deform_rig_biped_hand_5f_3s"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -66759,7 +66797,7 @@ pub enum ObjectDeformRigBipedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformRigBipedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -67800,7 +67838,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedHeadAndNeck {
         "deform_rig_biped_head_and_neck"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -67964,7 +68004,7 @@ pub enum ObjectDeformRigBipedLegUparmtype {
 pub struct ObjectDeformRigBipedLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -69615,7 +69655,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedLeg {
         "deform_rig_biped_leg"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -69887,7 +69929,7 @@ pub enum ObjectDeformRigBipedSpine3pcUparmtype {
 pub struct ObjectDeformRigBipedSpine3pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -70796,7 +70838,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedSpine3pc {
         "deform_rig_biped_spine_3pc"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -70960,7 +71004,7 @@ pub enum ObjectDeformRigBipedSpine5pcUparmtype {
 pub struct ObjectDeformRigBipedSpine5pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -71925,7 +71969,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigBipedSpine5pc {
         "deform_rig_biped_spine_5pc"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -72129,7 +72175,7 @@ pub enum ObjectDeformRigQuadrupedBackLegUparmtype {
 pub struct ObjectDeformRigQuadrupedBackLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -73668,7 +73714,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedBackLeg {
         "deform_rig_quadruped_back_leg"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -73904,7 +73952,7 @@ pub enum ObjectDeformRigQuadrupedFrontLegUparmtype {
 pub struct ObjectDeformRigQuadrupedFrontLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -75443,7 +75491,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedFrontLeg {
         "deform_rig_quadruped_front_leg"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -75693,7 +75743,7 @@ pub enum ObjectDeformRigQuadrupedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformRigQuadrupedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -76846,7 +76896,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedHeadAndNeck {
         "deform_rig_quadruped_head_and_neck"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -77058,7 +77110,7 @@ pub enum ObjectDeformRigQuadrupedIkSpineUparmtype {
 pub struct ObjectDeformRigQuadrupedIkSpine {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -78121,7 +78173,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedIkSpine {
         "deform_rig_quadruped_ik_spine"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -78393,7 +78447,7 @@ pub enum ObjectDeformRigQuadrupedTailUparmtype {
 pub struct ObjectDeformRigQuadrupedTail {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -79512,7 +79566,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedTail {
         "deform_rig_quadruped_tail"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -79816,7 +79872,7 @@ pub enum ObjectDeformRigQuadrupedToes4fUparmtype {
 pub struct ObjectDeformRigQuadrupedToes4f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -83959,7 +84015,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedToes4f {
         "deform_rig_quadruped_toes_4f"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -84631,7 +84689,7 @@ pub enum ObjectDeformRigQuadrupedToes5fUparmtype {
 pub struct ObjectDeformRigQuadrupedToes5f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -89656,7 +89714,9 @@ impl crate::core::types::HoudiniNode for ObjectDeformRigQuadrupedToes5f {
         "deform_rig_quadruped_toes_5f"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
@@ -90495,7 +90555,7 @@ pub enum ObjectDopnetUparmtype {
 pub struct ObjectDopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)>,
     pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
     pub spare_params: Vec<crate::core::types::SpareParam>,
 }
@@ -90525,7 +90585,10 @@ impl ObjectDopnet {
         index: usize,
         target: &N,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.inputs.insert(
+            index,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -90536,13 +90599,38 @@ impl ObjectDopnet {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_at_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        index: usize,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            index,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to the primary input (index 0).
     pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -90552,13 +90640,37 @@ impl ObjectDopnet {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
     /// Connects to input 0: "parent"
     pub fn set_input_parent<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.inputs.insert(
+            0,
+            (target.get_id(), crate::core::types::OutputPort::Index(0)),
+        );
         self
     }
 
@@ -90568,7 +90680,28 @@ impl ObjectDopnet {
         target: &N,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Index(output_index),
+            ),
+        );
+        self
+    }
+
+    pub fn set_input_parent_by_name<N: crate::core::types::HoudiniNode>(
+        mut self,
+        target: &N,
+        port_name: &str,
+    ) -> Self {
+        self.inputs.insert(
+            0,
+            (
+                target.get_id(),
+                crate::core::types::OutputPort::Name(port_name.to_string()),
+            ),
+        );
         self
     }
 
@@ -91383,7 +91516,9 @@ impl crate::core::types::HoudiniNode for ObjectDopnet {
         "dopnet"
     }
 
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, crate::core::types::OutputPort)> {
         &self.inputs
     }
 
