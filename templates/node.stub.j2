@@ -18,20 +18,20 @@ impl {{ node.struct_name }} {
 
     {% if node.max_inputs > 0 %}
     // --- Inputs ---
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N, output_index: usize) -> Self;
+    pub fn set_input_at(self, index: usize, target: &dyn crate::core::types::HoudiniNode) -> Self;
+    pub fn set_input_at_from(self, index: usize, target: &dyn crate::core::types::HoudiniNode, output_index: usize) -> Self;
 
     {% if node.max_inputs >= 9999 %}
-    pub fn add_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
-    pub fn add_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn add_input(self, target: &dyn crate::core::types::HoudiniNode) -> Self;
+    pub fn add_input_from(self, target: &dyn crate::core::types::HoudiniNode, output_index: usize) -> Self;
     {% else %}
-    pub fn set_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input(self, target: &dyn crate::core::types::HoudiniNode) -> Self;
+    pub fn set_input_from(self, target: &dyn crate::core::types::HoudiniNode, output_index: usize) -> Self;
     {% for inp in node.inputs %}
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
-    pub fn set_input_{{ inp.safe_name }}<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    pub fn set_input_{{ inp.safe_name }}(self, target: &dyn crate::core::types::HoudiniNode) -> Self;
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}" and specifies the output index of the target node.
-    pub fn set_input_{{ inp.safe_name }}_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input_{{ inp.safe_name }}_from(self, target: &dyn crate::core::types::HoudiniNode, output_index: usize) -> Self;
     {% endfor %}
     {% endif %}
     {% endif %}
