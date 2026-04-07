@@ -43,107 +43,100 @@ pub enum Cop2QuantizeFmenu {
 
 #[derive(Debug, Clone)]
 pub struct Cop2Quantize {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl Cop2Quantize {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Image to Quantize"
-    pub fn set_input_image_to_quantize<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_image_to_quantize(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Image to Quantize" and specifies the output index of the target node.
-    pub fn set_input_image_to_quantize_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_image_to_quantize_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 1: "Mask Input"
-    pub fn set_input_mask_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+    pub fn set_input_mask_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(1, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 1: "Mask Input" and specifies the output index of the target node.
-    pub fn set_input_mask_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_mask_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.base.inputs.insert(1, (target.get_id(), output_index));
         self
     }
 
     // --- Button parameters ---
     pub fn trigger_showcurves(mut self) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "showcurves".to_string(),
             crate::core::types::ParamValue::Button,
         );
@@ -152,56 +145,56 @@ impl Cop2Quantize {
 
     // --- Float parameters ---
     pub fn with_step(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "step".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_step_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "step".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_offset(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "offset".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "offset".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_effectamount(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "effectamount".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_effectamount_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "effectamount".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_foutside(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "foutside".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_foutside_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "foutside".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -210,28 +203,28 @@ impl Cop2Quantize {
 
     // --- Float2 parameters ---
     pub fn with_frange(mut self, val: [f32; 2]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "frange".to_string(),
             crate::core::types::ParamValue::Float2(val),
         );
         self
     }
     pub fn with_frange_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "frange".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_fdropoff(mut self, val: [f32; 2]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fdropoff".to_string(),
             crate::core::types::ParamValue::Float2(val),
         );
         self
     }
     pub fn with_fdropoff_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fdropoff".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -240,28 +233,28 @@ impl Cop2Quantize {
 
     // --- Int parameters ---
     pub fn with_scopergba(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scopergba".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_scopergba_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scopergba".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_currange(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "currange".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_currange_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "currange".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -270,70 +263,70 @@ impl Cop2Quantize {
 
     // --- Menu parameters ---
     pub fn with_quantize(mut self, val: Cop2QuantizeQuantize) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "quantize".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_quantize_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "quantize".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_maskinput(mut self, val: Cop2QuantizeMaskinput) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskinput".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_maskinput_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskinput".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_fscope(mut self, val: Cop2QuantizeFscope) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fscope".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_fscope_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fscope".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_fdropfunc(mut self, val: Cop2QuantizeFdropfunc) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fdropfunc".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_fdropfunc_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fdropfunc".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_fmenu(mut self, val: Cop2QuantizeFmenu) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fmenu".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_fmenu_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fmenu".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -342,42 +335,42 @@ impl Cop2Quantize {
 
     // --- String parameters ---
     pub fn with_maskplane(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskplane".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_maskplane_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskplane".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pscope(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pscope".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pscope_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pscope".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_flist(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "flist".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_flist_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "flist".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -386,56 +379,56 @@ impl Cop2Quantize {
 
     // --- Toggle parameters ---
     pub fn with_dounpremult(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dounpremult".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_dounpremult_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dounpremult".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_maskresize(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskresize".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_maskresize_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskresize".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_maskinvert(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskinvert".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_maskinvert_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maskinvert".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_fautoadjust(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fautoadjust".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_fautoadjust_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fautoadjust".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -445,11 +438,11 @@ impl Cop2Quantize {
 
 impl crate::core::types::HoudiniNode for Cop2Quantize {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -457,14 +450,14 @@ impl crate::core::types::HoudiniNode for Cop2Quantize {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }

@@ -44,355 +44,348 @@ pub enum ChopBandUnits {
 
 #[derive(Debug, Clone)]
 pub struct ChopBand {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl ChopBand {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Channels to Filter"
-    pub fn set_input_channels_to_filter<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_channels_to_filter(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Channels to Filter" and specifies the output index of the target node.
-    pub fn set_input_channels_to_filter_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_channels_to_filter_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 1: "Filter Animation Channels"
-    pub fn set_input_filter_animation_channels<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_filter_animation_channels(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.base.inputs.insert(1, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 1: "Filter Animation Channels" and specifies the output index of the target node.
-    pub fn set_input_filter_animation_channels_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_filter_animation_channels_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.base.inputs.insert(1, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_base(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "base".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_base_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "base".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b10(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b10".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b10_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b10".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b20(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b20".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b20_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b20".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b40(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b40".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b40_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b40".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b80(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b80".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b80_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b80".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b160(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b160".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b160_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b160".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b320(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b320".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b320_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b320".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b640(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b640".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b640_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b640".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b1k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b1k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b1k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b1k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b2k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b2k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b2k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b2k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b5k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b5k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b5k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b5k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b10k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b10k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b10k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b10k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b20k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b20k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b20k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b20k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b41k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b41k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b41k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b41k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_b82k(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b82k".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_b82k_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "b82k".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_overlap(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "overlap".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_overlap_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "overlap".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_discard(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "discard".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_discard_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "discard".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_gcolorstep(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -401,14 +394,14 @@ impl ChopBand {
 
     // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -417,56 +410,56 @@ impl ChopBand {
 
     // --- Menu parameters ---
     pub fn with_shape(mut self, val: ChopBandShape) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shape".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_shape_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shape".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_chunk(mut self, val: ChopBandChunk) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "chunk".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_chunk_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "chunk".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srselect(mut self, val: ChopBandSrselect) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_units(mut self, val: ChopBandUnits) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_units_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -475,28 +468,28 @@ impl ChopBand {
 
     // --- String parameters ---
     pub fn with_scope(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -505,28 +498,28 @@ impl ChopBand {
 
     // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_unload(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -536,11 +529,11 @@ impl ChopBand {
 
 impl crate::core::types::HoudiniNode for ChopBand {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -548,15 +541,15 @@ impl crate::core::types::HoudiniNode for ChopBand {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
@@ -625,123 +618,116 @@ pub enum ChopBeatUnits {
 
 #[derive(Debug, Clone)]
 pub struct ChopBeat {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl ChopBeat {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Beats"
-    pub fn set_input_beats<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input_beats(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Beats" and specifies the output index of the target node.
-    pub fn set_input_beats_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_beats_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_grace(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "grace".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_grace_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "grace".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rate(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rate".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_rate_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_gcolorstep(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -750,14 +736,14 @@ impl ChopBeat {
 
     // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -766,84 +752,84 @@ impl ChopBeat {
 
     // --- Menu parameters ---
     pub fn with_lowerscale(mut self, val: ChopBeatLowerscale) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lowerscale".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_lowerscale_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lowerscale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_upperscale(mut self, val: ChopBeatUpperscale) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "upperscale".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_upperscale_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "upperscale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_output(mut self, val: ChopBeatOutput) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "output".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_output_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "output".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_synchon(mut self, val: ChopBeatSynchon) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "synchon".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_synchon_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "synchon".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srselect(mut self, val: ChopBeatSrselect) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_units(mut self, val: ChopBeatUnits) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_units_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -852,98 +838,98 @@ impl ChopBeat {
 
     // --- String parameters ---
     pub fn with_ramp(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "ramp".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_ramp_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "ramp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pulse(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pulse".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pulse_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pulse".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_count(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "count".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_count_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "count".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_period(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "period".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_period_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "period".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pstart(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pstart".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pstart_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pstart".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -952,28 +938,28 @@ impl ChopBeat {
 
     // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_unload(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -983,11 +969,11 @@ impl ChopBeat {
 
 impl crate::core::types::HoudiniNode for ChopBeat {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -995,15 +981,15 @@ impl crate::core::types::HoudiniNode for ChopBeat {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
@@ -1040,85 +1026,78 @@ pub enum ChopBlendUnits {
 
 #[derive(Debug, Clone)]
 pub struct ChopBlend {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
-    next_input_index: usize,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl ChopBlend {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
-            next_input_index: 0,
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Adds an input automatically to the next available index.
-    pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
-        self.next_input_index += 1;
+    pub fn add_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base
+            .inputs
+            .insert(self.base.next_input_index, (target.get_id(), 0));
+        self.base.next_input_index += 1;
         self
     }
 
     /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn add_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
+        self.base
+            .inputs
+            .insert(self.base.next_input_index, (target.get_id(), output_index));
+        self.base.next_input_index += 1;
         self
     }
 
     // --- Float parameters ---
     pub fn with_gcolorstep(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1127,28 +1106,28 @@ impl ChopBlend {
 
     // --- Float3 parameters ---
     pub fn with_hint(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "hint".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_hint_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "hint".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1157,56 +1136,56 @@ impl ChopBlend {
 
     // --- Menu parameters ---
     pub fn with_method(mut self, val: ChopBlendMethod) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "method".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_method_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "method".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shotrotblend(mut self, val: ChopBlendShotrotblend) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shotrotblend".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_shotrotblend_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shotrotblend".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srselect(mut self, val: ChopBlendSrselect) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_units(mut self, val: ChopBlendUnits) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_units_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1215,28 +1194,28 @@ impl ChopBlend {
 
     // --- String parameters ---
     pub fn with_scope(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1245,56 +1224,56 @@ impl ChopBlend {
 
     // --- Toggle parameters ---
     pub fn with_firstweight(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "firstweight".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_firstweight_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "firstweight".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_usehint(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "usehint".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_usehint_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "usehint".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_timeslice(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_unload(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1304,11 +1283,11 @@ impl ChopBlend {
 
 impl crate::core::types::HoudiniNode for ChopBlend {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -1316,15 +1295,15 @@ impl crate::core::types::HoudiniNode for ChopBlend {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
@@ -1377,164 +1356,157 @@ pub enum ChopBlendposeUnits {
 
 #[derive(Debug, Clone)]
 pub struct ChopBlendpose {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl ChopBlendpose {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Data to interpolate"
-    pub fn set_input_data_to_interpolate<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_data_to_interpolate(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Data to interpolate" and specifies the output index of the target node.
-    pub fn set_input_data_to_interpolate_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_data_to_interpolate_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 1: "Source examples"
-    pub fn set_input_source_examples<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_source_examples(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        self.base.inputs.insert(1, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 1: "Source examples" and specifies the output index of the target node.
-    pub fn set_input_source_examples_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_source_examples_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
+        self.base.inputs.insert(1, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 2: "Target examples"
-    pub fn set_input_target_examples<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_target_examples(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
+        self.base.inputs.insert(2, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 2: "Target examples" and specifies the output index of the target node.
-    pub fn set_input_target_examples_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_target_examples_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
+        self.base.inputs.insert(2, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_falloff(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "falloff".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_falloff_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "falloff".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_damping(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "damping".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_damping_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "damping".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_gcolorstep(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolorstep".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1543,14 +1515,14 @@ impl ChopBlendpose {
 
     // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "gcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1559,26 +1531,27 @@ impl ChopBlendpose {
 
     // --- Int parameters ---
     pub fn with_exp(mut self, val: i32) -> Self {
-        self.params
+        self.base
+            .params
             .insert("exp".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_exp_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "exp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_maxiterations(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maxiterations".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_maxiterations_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maxiterations".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1587,84 +1560,84 @@ impl ChopBlendpose {
 
     // --- Menu parameters ---
     pub fn with_interp(mut self, val: ChopBlendposeInterp) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "interp".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_interp_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "interp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_interpolation(mut self, val: ChopBlendposeInterpolation) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "interpolation".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_interpolation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "interpolation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_kernel(mut self, val: ChopBlendposeKernel) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "kernel".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_kernel_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "kernel".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_solver(mut self, val: ChopBlendposeSolver) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "solver".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_solver_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "solver".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srselect(mut self, val: ChopBlendposeSrselect) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srselect".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_units(mut self, val: ChopBlendposeUnits) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_units_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "units".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1673,28 +1646,28 @@ impl ChopBlendpose {
 
     // --- String parameters ---
     pub fn with_scope(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scope".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "export".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1703,70 +1676,70 @@ impl ChopBlendpose {
 
     // --- Toggle parameters ---
     pub fn with_clampinput(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "clampinput".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_clampinput_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "clampinput".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_bestfit(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "bestfit".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_bestfit_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "bestfit".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_maxbestfit(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maxbestfit".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_maxbestfit_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maxbestfit".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_timeslice(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "timeslice".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_unload(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "unload".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1776,11 +1749,11 @@ impl ChopBlendpose {
 
 impl crate::core::types::HoudiniNode for ChopBlendpose {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -1788,14 +1761,14 @@ impl crate::core::types::HoudiniNode for ChopBlendpose {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }

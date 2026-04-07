@@ -8,106 +8,99 @@ pub enum DriverLabsZibravdbCompressTrange {
 
 #[derive(Debug, Clone)]
 pub struct DriverLabsZibravdbCompress {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
-    next_input_index: usize,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DriverLabsZibravdbCompress {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
-            next_input_index: 0,
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Adds an input automatically to the next available index.
-    pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
-        self.next_input_index += 1;
+    pub fn add_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base
+            .inputs
+            .insert(self.base.next_input_index, (target.get_id(), 0));
+        self.base.next_input_index += 1;
         self
     }
 
     /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn add_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
+        self.base
+            .inputs
+            .insert(self.base.next_input_index, (target.get_id(), output_index));
+        self.base.next_input_index += 1;
         self
     }
 
     // --- Button parameters ---
     pub fn trigger_execute(mut self) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "execute".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_executebackground(mut self) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "executebackground".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_renderpreview(mut self) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "renderpreview".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_renderdialog(mut self) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "renderdialog".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_openmanagement(mut self) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "openmanagement".to_string(),
             crate::core::types::ParamValue::Button,
         );
@@ -116,28 +109,28 @@ impl DriverLabsZibravdbCompress {
 
     // --- Float parameters ---
     pub fn with_quality(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "quality".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_quality_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "quality".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_perchquality_inst(mut self, index1: usize, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("perchquality{}", index1),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_perchquality_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("perchquality{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -146,12 +139,13 @@ impl DriverLabsZibravdbCompress {
 
     // --- Float3 parameters ---
     pub fn with_f(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("f".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_f_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "f".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -160,14 +154,14 @@ impl DriverLabsZibravdbCompress {
 
     // --- Menu parameters ---
     pub fn with_trange(mut self, val: DriverLabsZibravdbCompressTrange) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "trange".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_trange_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "trange".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -176,168 +170,168 @@ impl DriverLabsZibravdbCompress {
 
     // --- String parameters ---
     pub fn with_take(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "take".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_take_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "take".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_soppath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "soppath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_soppath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "soppath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_filename(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "filename".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_filename_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "filename".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_perchname_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("perchname{}", index1),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_perchname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("perchname{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_prerender(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "prerender".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_prerender_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "prerender".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lprerender(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lprerender".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lprerender_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lprerender".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_preframe(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "preframe".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_preframe_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "preframe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lpreframe(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lpreframe".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lpreframe_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lpreframe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_postframe(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "postframe".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_postframe_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "postframe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lpostframe(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lpostframe".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lpostframe_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lpostframe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_postrender(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "postrender".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_postrender_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "postrender".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lpostrender(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lpostrender".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lpostrender_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lpostrender".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -346,70 +340,70 @@ impl DriverLabsZibravdbCompress {
 
     // --- Toggle parameters ---
     pub fn with_useperchsettings(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "useperchsettings".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_useperchsettings_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "useperchsettings".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tprerender(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tprerender".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tprerender_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tprerender".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tpreframe(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tpreframe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tpreframe_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tpreframe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tpostframe(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tpostframe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tpostframe_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tpostframe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tpostrender(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tpostrender".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tpostrender_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tpostrender".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -419,11 +413,11 @@ impl DriverLabsZibravdbCompress {
 
 impl crate::core::types::HoudiniNode for DriverLabsZibravdbCompress {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -431,55 +425,46 @@ impl crate::core::types::HoudiniNode for DriverLabsZibravdbCompress {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
 #[derive(Debug, Clone)]
 pub struct DriverLopnet {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DriverLopnet {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Int parameters ---
     pub fn with_modifiedprimcounttostartnewlayer(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "modifiedprimcounttostartnewlayer".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_modifiedprimcounttostartnewlayer_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "modifiedprimcounttostartnewlayer".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -488,49 +473,49 @@ impl DriverLopnet {
 
     // --- String parameters ---
     pub fn with_expansioneffect(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "expansioneffect".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_expansioneffect_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "expansioneffect".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pinnedprims(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pinnedprims".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pinnedprims_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pinnedprims".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_resolvercontextassetpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "resolvercontextassetpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_resolvercontextassetpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "resolvercontextassetpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_resolvercontextstringurlprefix_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("resolvercontextstringurlprefix{}", index1),
             crate::core::types::ParamValue::String(val.to_string()),
         );
@@ -541,77 +526,77 @@ impl DriverLopnet {
         index1: usize,
         expr: &str,
     ) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("resolvercontextstringurlprefix{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_resolvercontextstringvalue_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("resolvercontextstringvalue{}", index1),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_resolvercontextstringvalue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("resolvercontextstringvalue{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_variantselectionset_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("variantselectionset{}", index1),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_variantselectionset_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("variantselectionset{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_variantselectionvalue_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("variantselectionvalue{}", index1),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_variantselectionvalue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("variantselectionvalue{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_insertionpointdescriptor(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "insertionpointdescriptor".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_insertionpointdescriptor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "insertionpointdescriptor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rendergallerysource(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rendergallerysource".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_rendergallerysource_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rendergallerysource".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -620,28 +605,28 @@ impl DriverLopnet {
 
     // --- Toggle parameters ---
     pub fn with_resolvercontextstringenable_inst(mut self, index1: usize, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("resolvercontextstringenable{}", index1),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_resolvercontextstringenable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("resolvercontextstringenable{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_variantselectionenable_inst(mut self, index1: usize, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("variantselectionenable{}", index1),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_variantselectionenable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("variantselectionenable{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -651,11 +636,11 @@ impl DriverLopnet {
 
 impl crate::core::types::HoudiniNode for DriverLopnet {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -663,14 +648,14 @@ impl crate::core::types::HoudiniNode for DriverLopnet {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }

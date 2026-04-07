@@ -129,378 +129,371 @@ pub enum ObjectEnvlightShadowType {
 
 #[derive(Debug, Clone)]
 pub struct ObjectEnvlight {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl ObjectEnvlight {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Sub-Network Input #1"
-    pub fn set_input_sub_network_input_1<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_sub_network_input_1(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Sub-Network Input #1" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_1_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_sub_network_input_1_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_roll(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_roll_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pos(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_pos_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_bank(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_bank_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dimmer(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dimmer".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_dimmer_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dimmer".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_intensity(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_intensity".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_light_intensity_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_intensity".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_exposure(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_exposure".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_light_exposure_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_exposure".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_vm_samplingquality(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vm_samplingquality".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_vm_samplingquality_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vm_samplingquality".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_filteramount(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_filteramount".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_env_filteramount_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_filteramount".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_maxdist(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_maxdist".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_env_maxdist_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_maxdist".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_angle(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_angle".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_env_angle_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_angle".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_angular_size(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_angular_size".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_sun_angular_size_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_angular_size".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_azimuth(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_azimuth".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_sun_azimuth_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_azimuth".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_elevation(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_elevation".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_sun_elevation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_elevation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_latitude(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_latitude".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_geo_latitude_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_latitude".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_longitude(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_longitude".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_geo_longitude_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_longitude".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_doy(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_doy".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_geo_doy_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_doy".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sky_turbidity(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_turbidity".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_sky_turbidity_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_turbidity".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sky_brightness(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_brightness".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_sky_brightness_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_brightness".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_horizon_elevation(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_horizon_elevation".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_skymap_horizon_elevation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_horizon_elevation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shadow_intensity(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadow_intensity".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_shadow_intensity_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadow_intensity".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -509,14 +502,14 @@ impl ObjectEnvlight {
 
     // --- Float2 parameters ---
     pub fn with_skymap_geo_time(mut self, val: [f32; 2]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_time".to_string(),
             crate::core::types::ParamValue::Float2(val),
         );
         self
     }
     pub fn with_skymap_geo_time_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_time".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -525,188 +518,192 @@ impl ObjectEnvlight {
 
     // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("t".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_t_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_s(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("s".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_s_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_p(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("p".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_p_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "p".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_up(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_up_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dcolor(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_dcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_r(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("r".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_r_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_color(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_color".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_light_color_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_color".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_dir_rotate(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_dir_rotate".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_skymap_sun_dir_rotate_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_dir_rotate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_dir_vector(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_dir_vector".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_skymap_sun_dir_vector_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_dir_vector".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_calc_vector(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_calc_vector".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_skymap_sun_calc_vector_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_calc_vector".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_calc_rotate(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_calc_rotate".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_skymap_sun_calc_rotate_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_calc_rotate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_ground_color(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_ground_color".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_skymap_ground_color_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_ground_color".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_ground_normal(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_ground_normal".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_skymap_ground_normal_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_ground_normal".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pr(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_pr_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -715,56 +712,56 @@ impl ObjectEnvlight {
 
     // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_pathorient_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_resolution(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_resolution".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_skymap_resolution_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_resolution".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_day(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_day".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_skymap_geo_day_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_day".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_display_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -773,126 +770,126 @@ impl ObjectEnvlight {
 
     // --- Menu parameters ---
     pub fn with_uparmtype(mut self, val: ObjectEnvlightUparmtype) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_uparmtype_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_xord(mut self, val: ObjectEnvlightXord) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_xord_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rord(mut self, val: ObjectEnvlightRord) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_rord_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pre_xform(mut self, val: ObjectEnvlightPreXform) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_pre_xform_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_month(mut self, val: ObjectEnvlightSkymapGeoMonth) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_month".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_skymap_geo_month_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_month".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_hr_spec(mut self, val: ObjectEnvlightSkymapGeoHrSpec) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_hr_spec".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_skymap_geo_hr_spec_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_hr_spec".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_time_zone(mut self, val: ObjectEnvlightSkymapGeoTimeZone) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_time_zone".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_skymap_geo_time_zone_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_time_zone".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sky_color_spec(mut self, val: ObjectEnvlightSkymapSkyColorSpec) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_color_spec".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_skymap_sky_color_spec_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_color_spec".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shadow_type(mut self, val: ObjectEnvlightShadowType) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadow_type".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_shadow_type_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadow_type".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -901,14 +898,14 @@ impl ObjectEnvlight {
 
     // --- Ramp parameters ---
     pub fn with_skymap_sky_ramp(mut self, val: Vec<crate::core::types::RampPoint>) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_ramp".to_string(),
             crate::core::types::ParamValue::Ramp(val),
         );
         self
     }
     pub fn with_skymap_sky_ramp_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sky_ramp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -917,266 +914,266 @@ impl ObjectEnvlight {
 
     // --- String parameters ---
     pub fn with_pathobjpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pathobjpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_path(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_constraints_path_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookatpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookatpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookup(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookup_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_map(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_map".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_env_map_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_map".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_skymap(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_skymap".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_env_skymap_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_skymap".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_contribname_inst(mut self, index1: usize, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("light_contribname{}", index1),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_light_contribname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("light_contribname{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_categories(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "categories".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_categories_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "categories".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_vm_lpetag(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vm_lpetag".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_vm_lpetag_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vm_lpetag".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_mode(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_mode".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_env_mode_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_mode".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_portal(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_portal".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_env_portal_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_portal".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_dir_spec(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_dir_spec".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_dir_spec_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_dir_spec".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_angular_size_cone_onoff(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_angular_size_cone_onoff".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_angular_size_cone_onoff_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_angular_size_cone_onoff".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_calc_spec(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_calc_spec".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_skymap_sun_calc_spec_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_sun_calc_spec".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_ground_type(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "ground_type".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_ground_type_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "ground_type".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shadowmask(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadowmask".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_shadowmask_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadowmask".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pickscript(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pickscript_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_wrangler(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_wrangler".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_light_wrangler_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_wrangler".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1185,280 +1182,280 @@ impl ObjectEnvlight {
 
     // --- Toggle parameters ---
     pub fn with_use_dcolor(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_use_dcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_keeppos(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_keeppos_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_childcomp(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_childcomp_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_on(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_constraints_on_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_enable(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_enable".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_light_enable_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_enable".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_ogl_enablelight(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "ogl_enablelight".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_ogl_enablelight_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "ogl_enablelight".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_contribdiff(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_contribdiff".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_light_contribdiff_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_contribdiff".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_contribspec(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_contribspec".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_light_contribspec_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_contribspec".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_contribenable_inst(mut self, index1: usize, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("light_contribenable{}", index1),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_light_contribenable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             format!("light_contribenable{}", index1),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_light_contribprimary(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_contribprimary".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_light_contribprimary_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "light_contribprimary".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_clipy(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_clipy".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_env_clipy_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_clipy".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_portalenable(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_portalenable".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_env_portalenable_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_portalenable".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_domaxdist(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_domaxdist".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_env_domaxdist_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_domaxdist".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_env_doadaptive(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_doadaptive".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_env_doadaptive_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "env_doadaptive".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_enable(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_enable".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_skymap_enable_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_enable".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_skymap_geo_daylight(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_daylight".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_skymap_geo_daylight_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "skymap_geo_daylight".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shadow_transparent(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadow_transparent".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_shadow_transparent_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shadow_transparent".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tdisplay(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tdisplay_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_caching(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_caching_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_picking(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_picking_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1468,11 +1465,11 @@ impl ObjectEnvlight {
 
 impl crate::core::types::HoudiniNode for ObjectEnvlight {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -1480,15 +1477,15 @@ impl crate::core::types::HoudiniNode for ObjectEnvlight {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 #[allow(clippy::wrong_self_convention, non_snake_case)]
@@ -1559,137 +1556,130 @@ pub enum ObjectExtractgeoUparmtype {
 
 #[derive(Debug, Clone)]
 pub struct ObjectExtractgeo {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl ObjectExtractgeo {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "parent"
-    pub fn set_input_parent<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input_parent(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "parent" and specifies the output index of the target node.
-    pub fn set_input_parent_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_parent_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_roll(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_roll_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pos(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_pos_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_bank(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_bank_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1698,90 +1688,94 @@ impl ObjectExtractgeo {
 
     // --- Float3 parameters ---
     pub fn with_dcolor(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_dcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("t".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_t_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_r(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("r".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_r_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_s(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("s".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_s_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_p(mut self, val: [f32; 3]) -> Self {
-        self.params
+        self.base
+            .params
             .insert("p".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_p_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "p".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pr(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_pr_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_up(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_up_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1790,28 +1784,28 @@ impl ObjectExtractgeo {
 
     // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_pathorient_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_display_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1820,70 +1814,70 @@ impl ObjectExtractgeo {
 
     // --- Menu parameters ---
     pub fn with_xord(mut self, val: ObjectExtractgeoXord) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_xord_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rord(mut self, val: ObjectExtractgeoRord) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_rord_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pre_xform(mut self, val: ObjectExtractgeoPreXform) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_pre_xform_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_uparmtype(mut self, val: ObjectExtractgeoUparmtype) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_uparmtype_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shop_materialopts(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shop_materialopts".to_string(),
             crate::core::types::ParamValue::Menu(val),
         );
         self
     }
     pub fn with_shop_materialopts_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shop_materialopts".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1892,126 +1886,126 @@ impl ObjectExtractgeo {
 
     // --- String parameters ---
     pub fn with_srcpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_srcpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dstpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dstpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_dstpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dstpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pickscript(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pickscript_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_path(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_constraints_path_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookatpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookatpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookup(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookup_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pathobjpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pathobjpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_shop_materialpath(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shop_materialpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_shop_materialpath_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "shop_materialpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -2020,154 +2014,154 @@ impl ObjectExtractgeo {
 
     // --- Toggle parameters ---
     pub fn with_extracttranslate(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "extracttranslate".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_extracttranslate_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "extracttranslate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_extractrotate(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "extractrotate".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_extractrotate_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "extractrotate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_use_dcolor(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_use_dcolor_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_picking(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_picking_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_caching(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_caching_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_keeppos(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_keeppos_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_childcomp(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_childcomp_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_on(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_constraints_on_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tdisplay(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tdisplay_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_vport_shadeopen(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vport_shadeopen".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_vport_shadeopen_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vport_shadeopen".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_vport_displayassubdiv(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vport_displayassubdiv".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_vport_displayassubdiv_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "vport_displayassubdiv".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -2177,11 +2171,11 @@ impl ObjectExtractgeo {
 
 impl crate::core::types::HoudiniNode for ObjectExtractgeo {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -2189,14 +2183,14 @@ impl crate::core::types::HoudiniNode for ObjectExtractgeo {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }

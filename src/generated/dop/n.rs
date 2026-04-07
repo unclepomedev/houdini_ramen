@@ -1,136 +1,131 @@
 #[derive(Debug, Clone)]
 pub struct DopNetfetchdata {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
-    next_input_index: usize,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DopNetfetchdata {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
-            next_input_index: 0,
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Adds an input automatically to the next available index.
-    pub fn add_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
-        self.next_input_index += 1;
+    pub fn add_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base
+            .inputs
+            .insert(self.base.next_input_index, (target.get_id(), 0));
+        self.base.next_input_index += 1;
         self
     }
 
     /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn add_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
+        self.base
+            .inputs
+            .insert(self.base.next_input_index, (target.get_id(), output_index));
+        self.base.next_input_index += 1;
         self
     }
 
     // --- Int parameters ---
     pub fn with_port(mut self, val: i32) -> Self {
-        self.params
+        self.base
+            .params
             .insert("port".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_port_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "port".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_peer(mut self, val: i32) -> Self {
-        self.params
+        self.base
+            .params
             .insert("peer".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_peer_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "peer".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_npeer(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "npeer".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_npeer_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "npeer".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srcpeer(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcpeer".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_srcpeer_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcpeer".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_activation(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_activation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -139,14 +134,14 @@ impl DopNetfetchdata {
 
     // --- Menu parameters ---
     pub fn with_activationrules(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Menu(val),
         );
         self
     }
     pub fn with_activationrules_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -155,84 +150,84 @@ impl DopNetfetchdata {
 
     // --- String parameters ---
     pub fn with_address(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "address".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_address_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "address".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_jobname(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "jobname".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_jobname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "jobname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srcobject(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcobject".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_srcobject_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcobject".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_srcdataname(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcdataname".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_srcdataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "srcdataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_group(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dataname(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_dataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -241,14 +236,14 @@ impl DopNetfetchdata {
 
     // --- Toggle parameters ---
     pub fn with_uniquedataname(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_uniquedataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -258,11 +253,11 @@ impl DopNetfetchdata {
 
 impl crate::core::types::HoudiniNode for DopNetfetchdata {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -270,15 +265,15 @@ impl crate::core::types::HoudiniNode for DopNetfetchdata {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
@@ -291,98 +286,91 @@ pub enum DopNocolliderSharedata {
 
 #[derive(Debug, Clone)]
 pub struct DopNocollider {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DopNocollider {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_objects_to_be_processed(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_objects_to_be_processed_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_activation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -391,28 +379,28 @@ impl DopNocollider {
 
     // --- Menu parameters ---
     pub fn with_sharedata(mut self, val: DopNocolliderSharedata) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "sharedata".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_sharedata_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "sharedata".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_activationrules(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Menu(val),
         );
         self
     }
     pub fn with_activationrules_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -421,28 +409,28 @@ impl DopNocollider {
 
     // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dataname(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_dataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -451,14 +439,14 @@ impl DopNocollider {
 
     // --- Toggle parameters ---
     pub fn with_uniquedataname(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_uniquedataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -468,11 +456,11 @@ impl DopNocollider {
 
 impl crate::core::types::HoudiniNode for DopNocollider {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -480,15 +468,15 @@ impl crate::core::types::HoudiniNode for DopNocollider {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
@@ -501,98 +489,91 @@ pub enum DopNoconrelSharedata {
 
 #[derive(Debug, Clone)]
 pub struct DopNoconrel {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DopNoconrel {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_objects_to_be_processed(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_objects_to_be_processed_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_rad(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rad".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_rad_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "rad".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -601,14 +582,14 @@ impl DopNoconrel {
 
     // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_activation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -617,28 +598,28 @@ impl DopNoconrel {
 
     // --- Menu parameters ---
     pub fn with_sharedata(mut self, val: DopNoconrelSharedata) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "sharedata".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_sharedata_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "sharedata".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_activationrules(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Menu(val),
         );
         self
     }
     pub fn with_activationrules_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -647,28 +628,28 @@ impl DopNoconrel {
 
     // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dataname(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_dataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -677,28 +658,28 @@ impl DopNoconrel {
 
     // --- Toggle parameters ---
     pub fn with_showobjectlink(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "showobjectlink".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_showobjectlink_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "showobjectlink".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_uniquedataname(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_uniquedataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -708,11 +689,11 @@ impl DopNoconrel {
 
 impl crate::core::types::HoudiniNode for DopNoconrel {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -720,15 +701,15 @@ impl crate::core::types::HoudiniNode for DopNoconrel {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
@@ -876,112 +857,105 @@ pub enum DopNoiseSharedata {
 
 #[derive(Debug, Clone)]
 pub struct DopNoise {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DopNoise {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_objects_to_be_processed(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_objects_to_be_processed_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     // --- Float parameters ---
     pub fn with_roughness(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "roughness".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_roughness_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "roughness".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_attenuation(mut self, val: f32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "attenuation".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_attenuation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "attenuation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -990,56 +964,56 @@ impl DopNoise {
 
     // --- Float3 parameters ---
     pub fn with_frequency(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "frequency".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_frequency_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "frequency".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_minvalue(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "minvalue".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_minvalue_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "minvalue".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_maxvalue(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maxvalue".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_maxvalue_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "maxvalue".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_offset(mut self, val: [f32; 3]) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "offset".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "offset".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1048,40 +1022,41 @@ impl DopNoise {
 
     // --- Int parameters ---
     pub fn with_seed(mut self, val: i32) -> Self {
-        self.params
+        self.base
+            .params
             .insert("seed".to_string(), crate::core::types::ParamValue::Int(val));
         self
     }
     pub fn with_seed_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "seed".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_fractaldepth(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fractaldepth".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_fractaldepth_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "fractaldepth".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_activation(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_activation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1090,196 +1065,196 @@ impl DopNoise {
 
     // --- Menu parameters ---
     pub fn with_parmop_seed(mut self, val: DopNoiseParmopSeed) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_seed".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_seed_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_seed".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_fractaldepth(mut self, val: DopNoiseParmopFractaldepth) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_fractaldepth".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_fractaldepth_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_fractaldepth".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_roughness(mut self, val: DopNoiseParmopRoughness) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_roughness".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_roughness_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_roughness".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_attenuation(mut self, val: DopNoiseParmopAttenuation) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_attenuation".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_attenuation_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_attenuation".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_frequency(mut self, val: DopNoiseParmopFrequency) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_frequency".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_frequency_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_frequency".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_minvalue(mut self, val: DopNoiseParmopMinvalue) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_minvalue".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_minvalue_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_minvalue".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_maxvalue(mut self, val: DopNoiseParmopMaxvalue) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_maxvalue".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_maxvalue_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_maxvalue".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_offset(mut self, val: DopNoiseParmopOffset) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_offset".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_offset_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_offset".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_noisetype(mut self, val: DopNoiseParmopNoisetype) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_noisetype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_noisetype_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_noisetype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_noisetype(mut self, val: DopNoiseNoisetype) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "noisetype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_noisetype_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "noisetype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_parmop_scalarnoise(mut self, val: DopNoiseParmopScalarnoise) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_scalarnoise".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_parmop_scalarnoise_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "parmop_scalarnoise".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_defaultparmop(mut self, val: DopNoiseDefaultparmop) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "defaultparmop".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_defaultparmop_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "defaultparmop".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_sharedata(mut self, val: DopNoiseSharedata) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "sharedata".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_sharedata_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "sharedata".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_activationrules(mut self, val: i32) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Menu(val),
         );
         self
     }
     pub fn with_activationrules_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "activationrules".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1288,28 +1263,28 @@ impl DopNoise {
 
     // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "group".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dataname(mut self, val: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_dataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "dataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1318,28 +1293,28 @@ impl DopNoise {
 
     // --- Toggle parameters ---
     pub fn with_scalarnoise(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scalarnoise".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_scalarnoise_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "scalarnoise".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_uniquedataname(mut self, val: bool) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_uniquedataname_expr(mut self, expr: &str) -> Self {
-        self.params.insert(
+        self.base.params.insert(
             "uniquedataname".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1349,11 +1324,11 @@ impl DopNoise {
 
 impl crate::core::types::HoudiniNode for DopNoise {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -1361,107 +1336,100 @@ impl crate::core::types::HoudiniNode for DopNoise {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
 
 #[derive(Debug, Clone)]
 pub struct DopNull {
-    pub id: usize,
-    pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
-    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
-    pub spare_params: Vec<crate::core::types::SpareParam>,
+    pub base: crate::core::types::NodeBase,
 }
 
 impl DopNull {
     pub fn new(name: &str) -> Self {
         Self {
-            id: crate::core::types::NODE_ID_COUNTER
-                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
-            name: name.to_string(),
-            inputs: std::collections::BTreeMap::new(),
-            params: std::collections::HashMap::new(),
-            spare_params: Vec::new(),
+            base: crate::core::types::NodeBase::new(name),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.spare_params.push(spare.into());
+        self.base.spare_params.push(spare.into());
         self
     }
 
     // --- Inputs ---
     /// Manually connects to a specific input index.
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        self.base.inputs.insert(index, (target.get_id(), 0));
         self
     }
 
     /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_at_from(
         mut self,
         index: usize,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        self.base
+            .inputs
+            .insert(index, (target.get_id(), output_index));
         self
     }
 
     /// Connects to the primary input (index 0).
-    pub fn set_input<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 
     /// Connects to input 0: "Input 0"
-    pub fn set_input_input_0<N: crate::core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+    pub fn set_input_input_0(mut self, target: &dyn crate::core::types::HoudiniNode) -> Self {
+        self.base.inputs.insert(0, (target.get_id(), 0));
         self
     }
 
     /// Connects to input 0: "Input 0" and specifies the output index of the target node.
-    pub fn set_input_input_0_from<N: crate::core::types::HoudiniNode>(
+    pub fn set_input_input_0_from(
         mut self,
-        target: &N,
+        target: &dyn crate::core::types::HoudiniNode,
         output_index: usize,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        self.base.inputs.insert(0, (target.get_id(), output_index));
         self
     }
 }
 
 impl crate::core::types::HoudiniNode for DopNull {
     fn get_id(&self) -> usize {
-        self.id
+        self.base.id
     }
 
     fn get_name(&self) -> &str {
-        &self.name
+        &self.base.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -1469,14 +1437,14 @@ impl crate::core::types::HoudiniNode for DopNull {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.inputs
+        &self.base.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.params
+        &self.base.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.spare_params
+        &self.base.spare_params
     }
 }
