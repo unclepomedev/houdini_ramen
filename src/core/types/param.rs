@@ -71,11 +71,17 @@ impl ParamValue {
     }
 
     fn format_int_array(v: &[i32]) -> String {
+        if v.len() == 1 {
+            return format!("({},)", v[0]);
+        }
         let items: Vec<String> = v.iter().map(|x| x.to_string()).collect();
         format!("({})", items.join(", "))
     }
 
     fn format_float_array(v: &[f32]) -> String {
+        if v.len() == 1 {
+            return format!("({:.4},)", v[0]);
+        }
         let items: Vec<String> = v.iter().map(|x| format!("{:.4}", x)).collect();
         format!("({})", items.join(", "))
     }
@@ -100,17 +106,23 @@ impl ParamValue {
 
         let values: Vec<String> = points
             .iter()
-            .map(|p| {
+            .enumerate()
+            .map(|(i, p)| {
                 if is_color {
                     assert!(
                         p.value.len() >= 3,
-                        "Color Ramp point must have at least 3 elements."
+                        "Color Ramp point at index {} must have at least 3 elements, but found {}",
+                        i,
+                        p.value.len()
                     );
                     format!("({:.4}, {:.4}, {:.4})", p.value[0], p.value[1], p.value[2])
                 } else {
-                    assert!(
-                        !p.value.is_empty(),
-                        "Float Ramp point must have at least 1 element."
+                    assert_eq!(
+                        p.value.len(),
+                        1,
+                        "Float Ramp point at index {} must have exactly 1 element, but found {}",
+                        i,
+                        p.value.len()
                     );
                     format!("{:.4}", p.value[0])
                 }
@@ -164,6 +176,15 @@ mod tests {
     }
 
     #[test]
+    fn test_one_param_value_array_serialization() {
+        assert_eq!(ParamValue::IntArray(vec![42]).to_python_expr(), "(42,)");
+        assert_eq!(
+            ParamValue::FloatArray(vec![1.0]).to_python_expr(),
+            "(1.0000,)"
+        );
+    }
+
+    #[test]
     fn test_ramp_serialization_valid() {
         let float_ramp = ParamValue::Ramp(vec![
             RampPoint {
@@ -207,7 +228,9 @@ mod tests {
     }
 
     #[test]
-    #[should_panic(expected = "Color Ramp point must have at least 3 elements.")]
+    #[should_panic(
+        expected = "Color Ramp point at index 0 must have at least 3 elements, but found 1"
+    )]
     fn test_ramp_serialization_invalid_color_panics() {
         let invalid_mixed_ramp = ParamValue::Ramp(vec![
             RampPoint {
@@ -225,7 +248,9 @@ mod tests {
     }
 
     #[test]
-    #[should_panic(expected = "Float Ramp point must have at least 1 element.")]
+    #[should_panic(
+        expected = "Float Ramp point at index 0 must have exactly 1 element, but found 0"
+    )]
     fn test_ramp_serialization_empty_value_panics() {
         let invalid_empty_val_ramp = ParamValue::Ramp(vec![RampPoint {
             position: 0.0,

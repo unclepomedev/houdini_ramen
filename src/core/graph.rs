@@ -85,7 +85,6 @@ impl<'a, C> InnerGraph<'a, C> {
         if let Some((node, _, _)) = found {
             node.inputs.insert(input_idx, (src.get_id(), 0));
         } else {
-            // TODO: To avoid troublesome, but errors should be handled at a higher layer.
             panic!(
                 "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
                 dst.name
@@ -110,7 +109,6 @@ impl<'a, C> InnerGraph<'a, C> {
         if let Some((node, _, _)) = found {
             node.inputs.insert(input_idx, (src.get_id(), output_idx));
         } else {
-            // TODO: To avoid troublesome, but errors should be handled at a higher layer.
             panic!(
                 "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
                 dst.name
@@ -232,7 +230,6 @@ impl NodeGraph {
             transpiler.generate_script()
         })();
 
-        // TODO: Error handling is done here to avoid hassle, but for users who want to control the process themselves, the Result should be exposed.
         result.unwrap_or_else(|e| {
             eprintln!("Houdini Ramen Build Error: {}", e);
             let full_msg = format!("Houdini Ramen Error: {}", e);
