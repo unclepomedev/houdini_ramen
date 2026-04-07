@@ -21,6 +21,10 @@ pub struct {{ node.struct_name }} {
 }
 
 impl {{ node.struct_name }} {
+    {% for out in node.outputs %}
+    pub const OUT_{{ out.safe_name }}: &'static str = "{{ out.raw_name }}";
+    {% endfor %}
+
     pub fn new(name: &str) -> Self {
         Self {
             id: crate::core::types::NODE_ID_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed),

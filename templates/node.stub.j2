@@ -11,6 +11,9 @@ pub enum {{ e.enum_name }} {
 pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
+    {% for out in node.outputs %}
+    pub const OUT_{{ out.safe_name }}: &'static str = "{{ out.raw_name }}";
+    {% endfor %}
     pub fn new(name: &str) -> Self;
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(self, spare: S) -> Self;

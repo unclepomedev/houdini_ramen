@@ -324,12 +324,11 @@ def _parse_inputs(raw_labels: list[str]) -> list[ParsedInput]:
         clean_doc = re.sub(
             r"\s+", " ", label.replace("\n", " ").replace("\r", "")
         ).strip()
-
         # if it is too long, truncate it
         safe_base = snake_case(clean_doc) if clean_doc else f"input_{idx}"
         if len(safe_base) > 40:
             safe_base = safe_base[:40].rstrip("_")
-        safe_name = to_safe_ident(input_resolver.resolve(safe_base))
+        safe_name = input_resolver.resolve(safe_base)
         parsed.append(ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name))
     return parsed
 
@@ -341,7 +340,7 @@ def _parse_outputs(raw_outputs: list[str]) -> list[ParsedOutput]:
         if not raw_name:
             continue
         safe_base = snake_case(raw_name)
-        safe_name = to_safe_ident(output_resolver.resolve(safe_base))
+        safe_name = output_resolver.resolve(safe_base).upper()
         parsed.append(
             ParsedOutput(
                 index=idx, raw_name=safe_rust_string(raw_name), safe_name=safe_name
@@ -362,7 +361,7 @@ def _parse_params(
         if not p_name:
             continue
         parsed_param, menu_enum = parse_param(
-            p_name, p, struct_name, param_resolver, enum_resolver
+            str(p_name), p, struct_name, param_resolver, enum_resolver
         )
         if parsed_param is not None:
             params.append(parsed_param)

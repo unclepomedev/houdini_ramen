@@ -251,9 +251,8 @@ class HoudiniNodeExtractor:
                 parms.append(self._extract_single_parm(pt))
         return parms
 
-    def _extract_input_labels(
-        self, temp_node: hou.Node | None, max_inputs: int, node_name: str
-    ) -> list[str]:
+    @staticmethod
+    def _extract_input_labels(temp_node, max_inputs: int, node_name: str) -> list[str]:
         """Temporarily instantiates a node to extract its input labels, with fallback for failures."""
         if not temp_node or max_inputs <= 0:
             return [""] * max_inputs if max_inputs < 128 else []
@@ -264,9 +263,8 @@ class HoudiniNodeExtractor:
             logger.debug(f"Input-label extraction failed for '{node_name}': {e}")
         return [""] * max_inputs if max_inputs < 128 else []
 
-    def _extract_output_names(
-        self, temp_node: hou.Node | None, node_name: str
-    ) -> list[str]:
+    @staticmethod
+    def _extract_output_names(temp_node, node_name: str) -> list[str]:
         if not temp_node:
             return []
         try:
@@ -289,9 +287,7 @@ class HoudiniNodeExtractor:
         dive_path = sections["DiveTarget"].contents().strip()
         return dive_path if dive_path else None
 
-    def _extract_builtin_inner_nodes(
-        self, temp_node: hou.Node | None, node_name: str
-    ) -> InnerNodeData:
+    def _extract_builtin_inner_nodes(self, temp_node, node_name: str) -> InnerNodeData:
         result = InnerNodeData()
         if not temp_node:
             return result
