@@ -62,7 +62,6 @@ impl<'a> InnerGraph<'a> {
 }
 
 /// A lightweight reference to a pre-existing node inside a subnet.
-#[must_use = "Existing nodes (like OUT) must be registered to the graph using `inner.add_existing(...)`"]
 #[derive(Debug, Clone)]
 pub struct ExistingNodeRef {
     pub id: usize,
