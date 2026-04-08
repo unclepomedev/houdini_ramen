@@ -10,7 +10,6 @@ use houdini_ramen::sop::{
     SopConvertvdbConversion, SopConvertvdbVdbclass, SopPointwrangle, SopVdbsmoothsdf, SopVolume,
     SopVolumewrangle,
 };
-use houdini_ramen_core::py_escape::line_endings_to_unix;
 use std::sync::Mutex;
 use std::sync::atomic::Ordering;
 
@@ -48,7 +47,7 @@ fn test_loop_generation_snapshot() {
     );
 
     let python_script = graph.build();
-    let expected_script = line_endings_to_unix(include_str!("fixtures/expected_loop.py"));
+    let expected_script = include_str!("fixtures/expected_loop.py").replace("\r\n", "\n");
 
     assert_eq!(python_script, expected_script);
 }
@@ -151,7 +150,7 @@ fn test_mandelbulb() {
 
     graph.set_display(&color);
     let python_script = graph.build();
-    let expected_script = line_endings_to_unix(include_str!("fixtures/expected_mandelbulb.py"));
+    let expected_script = include_str!("fixtures/expected_mandelbulb.py").replace("\r\n", "\n");
 
     assert_eq!(python_script, expected_script);
 }
