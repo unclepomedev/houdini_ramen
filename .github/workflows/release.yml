@@ -18,7 +18,7 @@ jobs:
       - name: Check version consistency
         shell: bash
         run: |
-          CARGO_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+          CARGO_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "houdini_ramen") | .version')
           TAG_VERSION=${GITHUB_REF_NAME#v}
 
           echo "Cargo: $CARGO_VERSION, Tag: $TAG_VERSION"
@@ -28,7 +28,27 @@ jobs:
             exit 1
           fi
 
-      - name: Cargo Publish
+      - name: Cargo Publish All
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-        run: cargo publish
+        shell: bash
+        run: |
+          publish() {
+            for i in {1..10}; do
+              cargo publish -p "$1" && return 0
+              sleep 15
+            done
+            return 1
+          }
+
+          publish houdini_ramen_core
+
+          for dir in crates/houdini_ramen_*; do
+            crate=$(basename "$dir")
+            if [ "$crate" != "houdini_ramen_core" ] && [ "$crate" != "houdini_ramen_helpers" ]; then
+              publish "$crate"
+            fi
+          done
+
+          publish houdini_ramen_helpers
+          publish houdini_ramen
