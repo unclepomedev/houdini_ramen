@@ -14,24 +14,24 @@ impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self;
 
     // --- Spare Parameters ---
-    pub fn add_spare<S: Into<crate::core::types::SpareParam>>(self, spare: S) -> Self;
+    pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(self, spare: S) -> Self;
 
     {% if node.max_inputs > 0 %}
     // --- Inputs ---
-    pub fn set_input_at<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
-    pub fn set_input_at_from<N: crate::core::types::HoudiniNode>(self, index: usize, target: &N, output_index: usize) -> Self;
+    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
+    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(self, index: usize, target: &N, output_index: usize) -> Self;
 
     {% if node.max_inputs >= 9999 %}
-    pub fn add_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
-    pub fn add_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N) -> Self;
+    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
     {% else %}
-    pub fn set_input<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
-    pub fn set_input_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N) -> Self;
+    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
     {% for inp in node.inputs %}
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
-    pub fn set_input_{{ inp.safe_name }}<N: crate::core::types::HoudiniNode>(self, target: &N) -> Self;
+    pub fn set_input_{{ inp.safe_name }}<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N) -> Self;
     /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}" and specifies the output index of the target node.
-    pub fn set_input_{{ inp.safe_name }}_from<N: crate::core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input_{{ inp.safe_name }}_from<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
     {% endfor %}
     {% endif %}
     {% endif %}
@@ -61,13 +61,13 @@ impl {{ node.struct_name }} {
     {% endfor %}
 }
 
-impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
+impl houdini_ramen_core::types::HoudiniNode for {{ node.struct_name }} {
     fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)>;
-    fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue>;
-    fn get_spare_params(&self) -> &[crate::core::types::SpareParam];
+    fn get_params(&self) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>;
+    fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam];
     {% if node.dive_target %}
     fn get_dive_target(&self) -> Option<&'static str>;
     {% endif %}
@@ -75,12 +75,12 @@ impl crate::core::types::HoudiniNode for {{ node.struct_name }} {
 {% if node.inner_methods %}
 pub trait {{ node.struct_name }}InnerExt {
     {% for m in node.inner_methods %}
-    fn {{ m.method_name }}(&mut self) -> crate::core::graph::ExistingNodeRef;
+    fn {{ m.method_name }}(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
     {% endfor %}
 }
-impl<'a> {{ node.struct_name }}InnerExt for crate::core::graph::InnerGraph<'a, {{ node.struct_name }}> {
+impl<'a> {{ node.struct_name }}InnerExt for houdini_ramen_core::graph::InnerGraph<'a, {{ node.struct_name }}> {
     {% for m in node.inner_methods %}
-    fn {{ m.method_name }}(&mut self) -> crate::core::graph::ExistingNodeRef {
+    fn {{ m.method_name }}(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("{{ m.rel_path }}")
     }
     {% endfor %}

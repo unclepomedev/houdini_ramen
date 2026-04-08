@@ -185,7 +185,6 @@ def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
     # UI-specific parameters to ignore
     if h_type in ("Separator", "Label"):
         return None
-
     if h_type == "Toggle":
         return RustTypeInfo("bool", "Toggle", "val")
     if h_type in ("String", "Data"):
@@ -195,7 +194,7 @@ def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
     if h_type == "Button":
         return RustTypeInfo("()", "Button", "")
     if h_type == "Ramp":
-        return RustTypeInfo("Vec<crate::core::types::RampPoint>", "Ramp", "val")
+        return RustTypeInfo("Vec<houdini_ramen_core::types::RampPoint>", "Ramp", "val")
 
     is_list = isinstance(default_val, list)
     length = len(default_val) if is_list else 1
@@ -229,22 +228,19 @@ def resolve_multiparm(name: str) -> MultiparmInfo:
     count = name.count("#")
     if count == 0:
         return MultiparmInfo(False, "", "")
-
     fn_args = ", ".join(f"index{i + 1}: usize" for i in range(count))
     format_args = ", ".join(f"index{i + 1}" for i in range(count))
     return MultiparmInfo(True, fn_args, format_args)
 
 
 def _build_menu_enum(
-    p_name: str,
-    p_data: dict[str, Any],
-    struct_name: str,
-    enum_resolver: SuffixResolver,
+    p_name: str, p_data: dict[str, Any], struct_name: str, enum_resolver: SuffixResolver
 ) -> ParsedMenuEnum | None:
-    if p_data.get("type") not in ("Menu", "Int"):
-        return None
-
-    if not p_data.get("menu_items") or not p_data.get("menu_labels"):
+    if (
+        p_data.get("type") not in ("Menu", "Int")
+        or not p_data.get("menu_items")
+        or not p_data.get("menu_labels")
+    ):
         return None
 
     base_enum_name = pascal_case(p_name)
@@ -262,17 +258,14 @@ def _build_menu_enum(
         clean_lab = re.sub(r"!\[[^]]*]", "", raw_lab)
         if not clean_lab.strip():
             clean_lab = tok
-
         clean_lab = clean_lab.replace("+", " Plus ").replace("-", " Minus ")
         clean_lab = re.sub(r"[^a-zA-Z0-9_\s]", " ", clean_lab)
 
         base_v_name = pascal_case(clean_lab)
         if base_v_name == "Unknown":
             base_v_name = pascal_case(tok)
-
         safe_v_name = to_safe_ident(base_v_name)
         v_name = variant_resolver.resolve(safe_v_name)
-
         variants.append(
             ParsedMenuVariant(name=v_name, value=i, doc_label=safe_doc_label)
         )
@@ -295,7 +288,6 @@ def parse_param(
     base_suffix = snake_case(p_name.replace("#", ""))
     target_suffix = f"{base_suffix}_inst" if multi_info.is_multiparm else base_suffix
     method_suffix = resolver.resolve(target_suffix)
-
     menu_enum = _build_menu_enum(p_name, p_data, struct_name, enum_resolver)
 
     r_type = menu_enum.enum_name if menu_enum else type_info.r_type
@@ -323,7 +315,6 @@ def parse_node(
 
     input_resolver = SuffixResolver()
     parsed_inputs = []
-
     for idx, label in enumerate(raw_labels):
         # remove line breaks and consecutive spaces to create one clean string
         clean_doc = re.sub(
@@ -334,28 +325,24 @@ def parse_node(
         safe_base = snake_case(clean_doc) if clean_doc else f"input_{idx}"
         if len(safe_base) > 40:
             safe_base = safe_base[:40].rstrip("_")
-
         safe_name = to_safe_ident(input_resolver.resolve(safe_base))
-
         parsed_inputs.append(
             ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name)
         )
 
     param_resolver = SuffixResolver()
     enum_resolver = SuffixResolver(separator="")
-    params = []
-    enums = []
+    params, enums = [], []
     for p in node_info.get("parms", []):
         p_name = p.get("name")
         if not p_name:
             continue
-
         parsed_param, menu_enum = parse_param(
             p_name, p, struct_name, param_resolver, enum_resolver
         )
-        if parsed_param is not None:
+        if parsed_param:
             params.append(parsed_param)
-        if menu_enum is not None:
+        if menu_enum:
             enums.append(menu_enum)
 
     inner_methods = []
@@ -372,8 +359,6 @@ def parse_node(
             )
         )
 
-    dive_target = node_info.get("dive_target")
-
     return ParsedNode(
         struct_name=struct_name,
         node_type=node_type,
@@ -383,7 +368,7 @@ def parse_node(
         params=params,
         enums=enums,
         inner_methods=inner_methods,
-        dive_target=dive_target,
+        dive_target=node_info.get("dive_target"),
     )
 
 
@@ -399,6 +384,7 @@ class CodeGenerator:
         )
         self.template_rs = env.get_template("node.rs.j2")
         self.template_stub = env.get_template("node.stub.j2")
+        self.template_cargo = env.get_template("cargo.toml.j2")
 
     @staticmethod
     def _group_nodes_by_key(nodes: dict[str, Any]) -> dict[str, list[tuple[str, Any]]]:
@@ -417,41 +403,41 @@ class CodeGenerator:
         group_nodes: list[tuple[str, Any]],
         exported_structs: dict[str, str],
     ) -> tuple[list[str], list[str]]:
-        rs_blocks = []
-        stub_blocks = []
-
+        rs_blocks, stub_blocks = [], []
         for node_name, node_info in group_nodes:
             struct_name = f"{cat_pascal}{pascal_case(node_name)}"
-
-            prev_node = exported_structs.get(struct_name)
-            if prev_node is not None:
+            if struct_name in exported_structs:
                 raise ValueError(
-                    f"Duplicate exported struct '{struct_name}' in category '{cat_name}' "
-                    f"(from nodes '{prev_node}' and '{node_name}')"
+                    f"Duplicate exported struct '{struct_name}' in category '{cat_name}'"
                 )
             exported_structs[struct_name] = node_name
 
             parsed = parse_node(struct_name, node_name, node_info)
             rs_blocks.append(self.template_rs.render(node=parsed))
             stub_blocks.append(self.template_stub.render(node=parsed))
-
         return rs_blocks, stub_blocks
 
     # To speed up the editor's resolve process, split the code into modules a, b, c, ...,
     # but to avoid confusion when calling them with `use`, re-export them so they can be called as modules one level higher.
-    def process_category(self, cat_name: str, nodes: dict[str, Any]) -> str | None:
-        cat_snake = snake_case(cat_name)
-        if not cat_snake:
+    def process_category(self, cat_name: str, nodes: dict[str, Any]):
+        if not clean_identifier(cat_name):
             logger.warning(f"Skipping category with invalid name: {cat_name!r}")
-            return None
+            return
+        cat_snake = snake_case(cat_name)
 
         cat_pascal = pascal_case(cat_name)
-        cat_rs_dir = self.rs_root / cat_snake
-        cat_rs_dir.mkdir(parents=True, exist_ok=True)
+
+        crate_name = f"houdini_ramen_{cat_snake}"
+        crate_dir = self.rs_root / crate_name
+        src_dir = crate_dir / "src"
+
+        src_dir.mkdir(parents=True, exist_ok=True)
         self.stub_root.mkdir(parents=True, exist_ok=True)
 
-        groups = self._group_nodes_by_key(nodes)
+        cargo_content = self.template_cargo.render(category=cat_snake)
+        (crate_dir / "Cargo.toml").write_text(cargo_content, encoding="utf-8")
 
+        groups = self._group_nodes_by_key(nodes)
         mod_lines = []
         export_lines = []
         exported_structs: dict[str, str] = {}
@@ -466,27 +452,19 @@ class CodeGenerator:
                 cat_name, cat_pascal, group_nodes, exported_structs
             )
 
-            (cat_rs_dir / f"{key}.rs").write_text(
-                "\n\n".join(rs_blocks), encoding="utf-8"
-            )
+            (src_dir / f"{key}.rs").write_text("\n\n".join(rs_blocks), encoding="utf-8")
             all_stub_blocks.extend(stub_blocks)
 
         mod_content = "\n".join(mod_lines) + "\n\n" + "\n".join(export_lines) + "\n"
-        (cat_rs_dir / "mod.rs").write_text(mod_content, encoding="utf-8")
+        (src_dir / "lib.rs").write_text(mod_content, encoding="utf-8")
 
         (self.stub_root / f"{cat_snake}.stub").write_text(
             "\n\n".join(all_stub_blocks), encoding="utf-8"
         )
 
-        return f"pub mod {to_safe_ident(cat_snake)};"
-
     def generate_all(self, data: dict[str, Any]):
-        main_mods = []
         for cat_name, nodes in data.items():
-            mod_decl = self.process_category(cat_name, nodes)
-            if mod_decl:
-                main_mods.append(mod_decl)
-        (self.rs_root / "mod.rs").write_text("\n".join(main_mods), encoding="utf-8")
+            self.process_category(cat_name, nodes)
 
 
 def main():

@@ -1,12 +1,12 @@
 use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
-use houdini_ramen::generated::sop::{
+use houdini_ramen_sop::{
     SopAttribnoise, SopAttribnoiseAttribtype, SopAttribnoiseBasis, SopAttribnoiseOperation,
     SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter, SopSolver,
     SopSolverInnerExt, SopTestgeometryRubbertoy,
 };
-use houdini_ramen::generated::vop::VopAdd;
+use houdini_ramen_vop::VopAdd;
 
 fn main() {
     let mut graph = NodeGraph::new("/obj/geo1")

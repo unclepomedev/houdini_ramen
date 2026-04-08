@@ -15,18 +15,18 @@ test-py:
     uv run pytest
 # rust ==========================================================
 fix-rs:
-    cargo clippy --fix --allow-dirty --allow-staged --all-targets -- -D warnings
+    cargo clippy --workspace --fix --allow-dirty --allow-staged --all-targets -- -D warnings
 
 fmt-rs:
     just fix-rs
     cargo fmt --all
 
 test-rs:
-    cargo test
+    cargo test --workspace
 
 # common ========================================================
 no-jpn:
-    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md
+    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ crates/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md
 
 fmt-all: fmt-py fmt-rs
 
@@ -46,20 +46,20 @@ generate-api:
     #!/usr/bin/env bash
     set -e
 
-    rm -rf "{{ PROJECT_ROOT }}/src/generated"
+    find "{{ PROJECT_ROOT }}/crates" -mindepth 1 -maxdepth 1 -type d -name "houdini_ramen_*" ! -name "houdini_ramen_core" ! -name "houdini_ramen_helpers" -exec rm -rf {} + || true
     rm -rf "{{ PROJECT_ROOT }}/resources/stubs"
 
-    mkdir -p "{{ PROJECT_ROOT }}/src/generated"
+    mkdir -p "{{ PROJECT_ROOT }}/crates"
     mkdir -p "{{ PROJECT_ROOT }}/resources/stubs"
 
     uv run python tools/generate_rust_api.py \
         "{{ PROJECT_ROOT }}/node_api_dump.json" \
-        "{{ PROJECT_ROOT }}/src/generated" \
+        "{{ PROJECT_ROOT }}/crates" \
         "{{ PROJECT_ROOT }}/resources/stubs"
 
     uv run python tools/generate_auto_graph.py
 
-    cargo fmt
+    cargo fmt --all
 
 setup-e2e: dump-nodes test-py generate-api test-rs
 
@@ -99,7 +99,6 @@ ramp-value:
     hython tools/ramp_interpolation_value.py
 
 # run ============================================================
-# configure according to env
 houdini-link:
     HOUDINI_VEX_PATH="{{ HOUDINI_VEX_PATH }};&" HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} {{ HOUDINI_RESOURCES }}/bin/houdini tools/link_server.py
 
