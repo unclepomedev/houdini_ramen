@@ -1,31 +1,40 @@
 #[derive(Debug, Clone)]
 pub struct ShopApproxsssEval {
-    pub base: crate::core::types::NodeBase,
+    pub id: usize,
+    pub name: String,
+    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
+    pub spare_params: Vec<crate::core::types::SpareParam>,
 }
 
 impl ShopApproxsssEval {
     pub fn new(name: &str) -> Self {
         Self {
-            base: crate::core::types::NodeBase::new(name),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            name: name.to_string(),
+            inputs: std::collections::BTreeMap::new(),
+            params: std::collections::HashMap::new(),
+            spare_params: Vec::new(),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.base.spare_params.push(spare.into());
+        self.spare_params.push(spare.into());
         self
     }
 
     // --- Float parameters ---
     pub fn with_pdf(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pdf".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pdf".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -34,28 +43,28 @@ impl ShopApproxsssEval {
 
     // --- Float3 parameters ---
     pub fn with_refl(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "refl".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "refl".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_eval(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "eval".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_eval_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "eval".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -64,28 +73,28 @@ impl ShopApproxsssEval {
 
     // --- Int parameters ---
     pub fn with_bounces(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bounces".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bounces".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_mybounces(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mybounces".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mybounces".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -95,11 +104,11 @@ impl ShopApproxsssEval {
 
 impl crate::core::types::HoudiniNode for ShopApproxsssEval {
     fn get_id(&self) -> usize {
-        self.base.id
+        self.id
     }
 
     fn get_name(&self) -> &str {
-        &self.base.name
+        &self.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -107,86 +116,93 @@ impl crate::core::types::HoudiniNode for ShopApproxsssEval {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.base.inputs
+        &self.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.base.params
+        &self.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.base.spare_params
+        &self.spare_params
     }
 }
 
 #[derive(Debug, Clone)]
 pub struct ShopApproxsssSample {
-    pub base: crate::core::types::NodeBase,
+    pub id: usize,
+    pub name: String,
+    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
+    pub spare_params: Vec<crate::core::types::SpareParam>,
 }
 
 impl ShopApproxsssSample {
     pub fn new(name: &str) -> Self {
         Self {
-            base: crate::core::types::NodeBase::new(name),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            name: name.to_string(),
+            inputs: std::collections::BTreeMap::new(),
+            params: std::collections::HashMap::new(),
+            spare_params: Vec::new(),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.base.spare_params.push(spare.into());
+        self.spare_params.push(spare.into());
         self
     }
 
     // --- Float parameters ---
     pub fn with_sx(mut self, val: f32) -> Self {
-        self.base
-            .params
+        self.params
             .insert("sx".to_string(), crate::core::types::ParamValue::Float(val));
         self
     }
     pub fn with_sx_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "sx".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_sy(mut self, val: f32) -> Self {
-        self.base
-            .params
+        self.params
             .insert("sy".to_string(), crate::core::types::ParamValue::Float(val));
         self
     }
     pub fn with_sy_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "sy".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_mfp(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mfp".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_mfp_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mfp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pdf(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pdf".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pdf".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -195,69 +211,68 @@ impl ShopApproxsssSample {
 
     // --- Float3 parameters ---
     pub fn with_u(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("u".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_u_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "u".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_sssclr(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "sssclr".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_sssclr_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "sssclr".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_refl(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "refl".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "refl".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_sssmfp(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "sssmfp".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_sssmfp_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "sssmfp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_ssssampledist(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "ssssampledist".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_ssssampledist_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "ssssampledist".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -266,70 +281,70 @@ impl ShopApproxsssSample {
 
     // --- Int parameters ---
     pub fn with_bounces(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bounces".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bounces".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_bouncetype(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bouncetype".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_bouncetype_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bouncetype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_ssstype(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "ssstype".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_ssstype_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "ssstype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_mybounces(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mybounces".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mybounces".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_samplingmode(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "samplingmode".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_samplingmode_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "samplingmode".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -339,11 +354,11 @@ impl ShopApproxsssSample {
 
 impl crate::core::types::HoudiniNode for ShopApproxsssSample {
     fn get_id(&self) -> usize {
-        self.base.id
+        self.id
     }
 
     fn get_name(&self) -> &str {
-        &self.base.name
+        &self.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -351,14 +366,14 @@ impl crate::core::types::HoudiniNode for ShopApproxsssSample {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.base.inputs
+        &self.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.base.params
+        &self.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.base.spare_params
+        &self.spare_params
     }
 }

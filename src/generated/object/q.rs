@@ -89,32 +89,41 @@ pub enum ObjectQuadrupedAutoRig4fProxyDisplayHandles {
 
 #[derive(Debug, Clone)]
 pub struct ObjectQuadrupedAutoRig4f {
-    pub base: crate::core::types::NodeBase,
+    pub id: usize,
+    pub name: String,
+    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
+    pub spare_params: Vec<crate::core::types::SpareParam>,
 }
 
 impl ObjectQuadrupedAutoRig4f {
     pub fn new(name: &str) -> Self {
         Self {
-            base: crate::core::types::NodeBase::new(name),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            name: name.to_string(),
+            inputs: std::collections::BTreeMap::new(),
+            params: std::collections::HashMap::new(),
+            spare_params: Vec::new(),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.base.spare_params.push(spare.into());
+        self.spare_params.push(spare.into());
         self
     }
 
     // --- Button parameters ---
     pub fn trigger_set_rig(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "set_rig".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_proxy_save_geometry(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_save_geometry".to_string(),
             crate::core::types::ParamValue::Button,
         );
@@ -123,1036 +132,1036 @@ impl ObjectQuadrupedAutoRig4f {
 
     // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_roll(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_roll_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_bank(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_bank_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_character_scale(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_character_scale_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone2_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone2_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone2_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone2_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone3_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone3_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone3_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone3_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone4_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone4_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone4_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone4_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone5_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone5_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone5_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone5_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone6_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone6_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone6_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone6_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone7_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone7_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone7_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone7_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone8_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone8_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone8_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone8_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone9_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone9_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone9_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone9_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone10_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone10_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone10_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone10_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone11_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone11_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone11_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone11_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone12_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone12_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone12_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone12_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone13_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone13_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone13_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone13_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone14_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone14_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone14_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone14_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone15_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone15_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone15_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone15_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone16_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone16_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone16_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone16_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone17_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone17_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone17_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone17_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone18_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone18_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone18_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone18_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone2_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone2_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone2_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone2_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone3_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone3_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone3_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone3_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone4_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone4_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone4_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone4_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_control_scale(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "control_scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_control_scale_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "control_scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -1161,6506 +1170,6502 @@ impl ObjectQuadrupedAutoRig4f {
 
     // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("t".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_r(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("r".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_s(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("s".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_p(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("p".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_p_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "p".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_up(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_up_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dcolor(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_dcolor_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_cog_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_cog_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_cog_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_cog_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_neck_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_neck_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_neck_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_neck_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_neck_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_neck_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_ribcage_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_ribcage_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_ribcage_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_ribcage_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage1_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage1_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage1_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage1_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage2_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage2_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage2_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage2_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_hip_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_hip_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_hip_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_hip_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_hip_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_hip_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_hip_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_hip_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_sacrum_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_sacrum_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_sacrum_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_sacrum_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_head_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_head_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_head_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_head_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_jaw_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_jaw_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_jaw_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_jaw_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_arm_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_arm_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulder_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulder_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulderblade_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulderblade_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_elbow_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_elbow_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_wrist_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_wrist_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_finger_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_finger_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_thigh_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_thigh_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_knee_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_knee_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ankle_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ankle_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_toe_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_toe_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_arm_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_arm_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulder_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulder_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulderblade_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulderblade_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_elbow_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_elbow_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_wrist_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_wrist_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_finger_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_finger_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_thigh_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_thigh_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_knee_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_knee_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ankle_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ankle_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_toe_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_toe_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail1_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail1_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail1_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail1_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail2_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail2_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail2_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail2_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail3_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail3_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail3_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail3_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail4_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail4_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail4_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail4_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail5_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail5_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail5_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail5_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail6_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail6_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail6_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail6_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail7_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail7_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail7_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail7_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail8_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail8_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail8_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail8_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail9_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail9_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail9_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail9_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail10_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail10_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail10_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail10_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail11_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail11_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail11_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail11_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone17_cut_control(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pr(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_pr_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -7669,98 +7674,98 @@ impl ObjectQuadrupedAutoRig4f {
 
     // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_pathorient_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_display_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_layout(mut self, val: ObjectQuadrupedAutoRig4fLayout) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "layout".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_layout_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "layout".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_deform_type(mut self, val: ObjectQuadrupedAutoRig4fDeformType) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "deform_type".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_deform_type_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "deform_type".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_mode(mut self, val: ObjectQuadrupedAutoRig4fMode) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mode".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mode".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_geometry(mut self, val: ObjectQuadrupedAutoRig4fSourceGeometry) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_geometry".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_source_geometry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_geometry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_symmetry(mut self, val: ObjectQuadrupedAutoRig4fSymmetry) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "symmetry".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_symmetry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "symmetry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -7770,14 +7775,14 @@ impl ObjectQuadrupedAutoRig4f {
         mut self,
         val: ObjectQuadrupedAutoRig4fProxyDisplayGeometry,
     ) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_geometry".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_proxy_display_geometry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_geometry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -7787,14 +7792,14 @@ impl ObjectQuadrupedAutoRig4f {
         mut self,
         val: ObjectQuadrupedAutoRig4fProxyDisplayHandles,
     ) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_handles".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_proxy_display_handles_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_handles".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -7803,56 +7808,56 @@ impl ObjectQuadrupedAutoRig4f {
 
     // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectQuadrupedAutoRig4fPreXform) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_pre_xform_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_xord(mut self, val: ObjectQuadrupedAutoRig4fXord) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_xord_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rord(mut self, val: ObjectQuadrupedAutoRig4fRord) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_rord_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_uparmtype(mut self, val: ObjectQuadrupedAutoRig4fUparmtype) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_uparmtype_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -7862,14 +7867,14 @@ impl ObjectQuadrupedAutoRig4f {
         mut self,
         val: ObjectQuadrupedAutoRig4fHeadAndNeckEyeSymmetry,
     ) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_eye_symmetry".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_head_and_neck_eye_symmetry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_eye_symmetry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -7878,252 +7883,252 @@ impl ObjectQuadrupedAutoRig4f {
 
     // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookatpath_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookup(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookup_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pathobjpath(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pathobjpath_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label1(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label1".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label1_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label1".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label2(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label2".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label3(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label3".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label3_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label3".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label4(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label4".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label4_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label4".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_outputobj(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "outputobj".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_outputobj_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "outputobj".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_visibleobjects(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "visibleobjects".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_visibleobjects_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "visibleobjects".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pickscript(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pickscript_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_character_name(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_name".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_character_name_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_name".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_library_path(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "library_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_library_path_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "library_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rig_path(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rig_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_rig_path_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rig_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_from_file(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_file".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_source_from_file_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_file".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_from_scene(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_scene".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_source_from_scene_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_scene".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_proxy_file(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_file".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_proxy_file_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_file".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_path(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_constraints_path_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -8132,378 +8137,378 @@ impl ObjectQuadrupedAutoRig4f {
 
     // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_keeppos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tdisplay(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tdisplay_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_picking(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_picking_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_caching(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_caching_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_use_dcolor(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_use_dcolor_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_display_geometry(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_display_geometry".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_source_display_geometry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_display_geometry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_left_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_left_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_right_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_right_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display_proxy_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_proxy_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_display_proxy_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_proxy_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display_wire(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_wire".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_display_wire_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_wire".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_character_placer_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_placer_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_character_placer_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_placer_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_spine_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_head_and_neck_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_left_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_right_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_left_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_right_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tail_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_left_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_right_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_left_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_right_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_childcomp(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_childcomp_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_on(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_constraints_on_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -8513,11 +8518,11 @@ impl ObjectQuadrupedAutoRig4f {
 
 impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig4f {
     fn get_id(&self) -> usize {
-        self.base.id
+        self.id
     }
 
     fn get_name(&self) -> &str {
-        &self.base.name
+        &self.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -8525,15 +8530,15 @@ impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig4f {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.base.inputs
+        &self.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.base.params
+        &self.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.base.spare_params
+        &self.spare_params
     }
 }
 #[allow(clippy::wrong_self_convention, non_snake_case)]
@@ -8693,32 +8698,41 @@ pub enum ObjectQuadrupedAutoRig5fProxyDisplayHandles {
 
 #[derive(Debug, Clone)]
 pub struct ObjectQuadrupedAutoRig5f {
-    pub base: crate::core::types::NodeBase,
+    pub id: usize,
+    pub name: String,
+    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
+    pub spare_params: Vec<crate::core::types::SpareParam>,
 }
 
 impl ObjectQuadrupedAutoRig5f {
     pub fn new(name: &str) -> Self {
         Self {
-            base: crate::core::types::NodeBase::new(name),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            name: name.to_string(),
+            inputs: std::collections::BTreeMap::new(),
+            params: std::collections::HashMap::new(),
+            spare_params: Vec::new(),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.base.spare_params.push(spare.into());
+        self.spare_params.push(spare.into());
         self
     }
 
     // --- Button parameters ---
     pub fn trigger_set_rig(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "set_rig".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_proxy_save_geometry(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_save_geometry".to_string(),
             crate::core::types::ParamValue::Button,
         );
@@ -8727,1204 +8741,1204 @@ impl ObjectQuadrupedAutoRig5f {
 
     // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_roll(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_roll_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "roll".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_bank(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_bank_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "bank".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_character_scale(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_character_scale_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone2_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone2_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone2_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone2_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone3_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone3_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone3_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone3_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone4_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone4_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone4_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone4_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone5_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone5_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone5_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone5_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone6_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone6_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone6_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone6_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone7_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone7_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone7_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone7_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone8_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone8_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone8_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone8_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone9_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone9_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone9_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone9_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone10_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone10_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone10_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone10_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone11_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone11_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone11_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone11_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone12_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone12_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone12_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone12_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone13_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone13_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone13_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone13_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone14_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone14_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone14_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone14_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone15_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone15_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone15_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone15_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone16_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone16_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone16_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone16_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone17_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone17_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone17_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone17_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone18_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone18_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_bone18_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_bone18_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone2_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone2_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone2_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone2_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone3_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone3_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone3_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone3_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone4_pos(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone4_pos".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_bone4_pos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_bone4_pos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_r(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_tip_tz(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_tip_tz_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_tip_tz".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_control_scale(mut self, val: f32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "control_scale".to_string(),
             crate::core::types::ParamValue::Float(val),
         );
         self
     }
     pub fn with_control_scale_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "control_scale".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -9933,7402 +9947,7398 @@ impl ObjectQuadrupedAutoRig5f {
 
     // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("t".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_r(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("r".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_s(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("s".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_p(mut self, val: [f32; 3]) -> Self {
-        self.base
-            .params
+        self.params
             .insert("p".to_string(), crate::core::types::ParamValue::Float3(val));
         self
     }
     pub fn with_p_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "p".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_up(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_up_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "up".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_dcolor(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_dcolor_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_cog_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_cog_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_cog_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_cog_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_neck_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_neck_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_neck_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_neck_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_neck_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_neck_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_ribcage_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_ribcage_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_ribcage_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_ribcage_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage1_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage1_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage1_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage1_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage2_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage2_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_ribcage2_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_ribcage2_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_hip_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_hip_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_hip_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_hip_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_hip_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_hip_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_spine_hip_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_spine_hip_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_rig_ctrl_sacrum_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_sacrum_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_rig_ctrl_sacrum_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_rig_ctrl_sacrum_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_head_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_head_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_head_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_head_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_jaw_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_jaw_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_jaw_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_jaw_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_left_eye_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_left_eye_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_right_eye_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_right_eye_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_rig_ctrl_neck_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_rig_ctrl_neck_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_arm_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_arm_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulder_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulder_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulderblade_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_shoulderblade_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_elbow_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_elbow_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_wrist_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_wrist_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_palm_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_finger_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_rig_ctrl_finger_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_thigh_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_thigh_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_knee_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_knee_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ankle_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ankle_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_ball_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_toe_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_rig_ctrl_toe_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_ring_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_ring_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_arm_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_arm_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_arm_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulder_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulder_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulder_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulderblade_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_shoulderblade_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_shoulderblade_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_elbow_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_elbow_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_elbow_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_wrist_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_wrist_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_wrist_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_palm_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_palm_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_finger_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_rig_ctrl_finger_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_rig_ctrl_finger_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_thigh_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_thigh_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_thigh_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_knee_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_knee_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_knee_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ankle_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ankle_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ankle_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_ball_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_ball_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_toe_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_rig_ctrl_toe_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_rig_ctrl_toe_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_ring_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_thumb_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_thumb_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_index_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_index_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_middle_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_middle_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_ring_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_ring_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_root_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_root_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle1_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle1_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_rig_ctrl_pinky_middle2_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_rig_ctrl_pinky_middle2_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail1_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail1_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail1_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail1_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail2_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail2_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail2_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail2_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail3_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail3_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail3_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail3_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail4_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail4_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail4_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail4_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail5_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail5_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail5_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail5_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail6_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail6_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail6_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail6_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail7_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail7_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail7_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail7_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail8_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail8_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail8_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail8_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail9_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail9_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail9_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail9_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail10_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail10_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail10_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail10_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail11_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail11_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_rig_ctrl_tail11_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_rig_ctrl_tail11_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone3_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone5_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone7_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone9_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone11_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone13_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone13_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone15_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone15_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_bone17_cut_control(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_bone17_cut_control_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_bone17_cut_control".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_spine_end_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_spine_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_spine_sacrum_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_sacrum_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone3_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_bone4_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_bone4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_head_end_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_head_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_head_and_neck_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulderblade_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_shoulder_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_elbow_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_wrist_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_palm_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_leg_finger_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_thigh_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_knee_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ankle_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_ball_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_leg_toe_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle2_cut_control(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_middle2_cut_control_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_ring_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_ring_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_left_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle2_cut_control(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_middle2_cut_control_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_ring_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_ring_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_left_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulderblade_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulderblade_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_shoulder_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_shoulder_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_elbow_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_elbow_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_wrist_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_wrist_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_palm_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_palm_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_leg_finger_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_finger_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_thigh_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_thigh_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_knee_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_knee_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ankle_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ankle_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_ball_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_ball_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_leg_toe_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_toe_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle2_cut_control(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_middle2_cut_control_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_ring_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_ring_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_front_right_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s2(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_middle2_cut_control_s2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_middle2_cut_control_s2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_thumb_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_thumb_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_index_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_index_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_middle_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_middle_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle2_cut_control(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_middle2_cut_control_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_middle2_cut_control".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_ring_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_ring_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_ring_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_root_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_root_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_middle2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_middle2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_back_right_toes_pinky_tip_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_pinky_tip_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail1_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail1_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail2_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail2_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail3_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail3_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail4_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail4_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail5_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail5_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail6_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail6_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail7_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail7_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail8_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail8_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail9_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail9_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail10_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail10_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail11_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail11_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_t(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_t_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_t".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_r(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_r_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_r".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_s(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_tail_tail_end_cut_control_s_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_tail_end_cut_control_s".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pr(mut self, val: [f32; 3]) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Float3(val),
         );
         self
     }
     pub fn with_pr_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pr".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17337,98 +17347,98 @@ impl ObjectQuadrupedAutoRig5f {
 
     // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_pathorient_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathorient".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_display_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_layout(mut self, val: ObjectQuadrupedAutoRig5fLayout) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "layout".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_layout_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "layout".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_deform_type(mut self, val: ObjectQuadrupedAutoRig5fDeformType) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "deform_type".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_deform_type_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "deform_type".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_mode(mut self, val: ObjectQuadrupedAutoRig5fMode) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mode".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "mode".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_geometry(mut self, val: ObjectQuadrupedAutoRig5fSourceGeometry) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_geometry".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_source_geometry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_geometry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_symmetry(mut self, val: ObjectQuadrupedAutoRig5fSymmetry) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "symmetry".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_symmetry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "symmetry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17438,14 +17448,14 @@ impl ObjectQuadrupedAutoRig5f {
         mut self,
         val: ObjectQuadrupedAutoRig5fProxyDisplayGeometry,
     ) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_geometry".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_proxy_display_geometry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_geometry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17455,14 +17465,14 @@ impl ObjectQuadrupedAutoRig5f {
         mut self,
         val: ObjectQuadrupedAutoRig5fProxyDisplayHandles,
     ) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_handles".to_string(),
             crate::core::types::ParamValue::Int(val as i32),
         );
         self
     }
     pub fn with_proxy_display_handles_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_display_handles".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17471,56 +17481,56 @@ impl ObjectQuadrupedAutoRig5f {
 
     // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectQuadrupedAutoRig5fPreXform) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_pre_xform_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pre_xform".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_xord(mut self, val: ObjectQuadrupedAutoRig5fXord) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_xord_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "xOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rord(mut self, val: ObjectQuadrupedAutoRig5fRord) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_rord_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rOrd".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_uparmtype(mut self, val: ObjectQuadrupedAutoRig5fUparmtype) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_uparmtype_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "uparmtype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17530,14 +17540,14 @@ impl ObjectQuadrupedAutoRig5f {
         mut self,
         val: ObjectQuadrupedAutoRig5fHeadAndNeckEyeSymmetry,
     ) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_eye_symmetry".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_head_and_neck_eye_symmetry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_eye_symmetry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17546,252 +17556,252 @@ impl ObjectQuadrupedAutoRig5f {
 
     // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookatpath_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookatpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookup(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookup_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookup".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pathobjpath(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pathobjpath_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pathobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label1(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label1".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label1_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label1".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label2(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label2".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label2_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label2".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label3(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label3".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label3_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label3".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_label4(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label4".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_label4_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "label4".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_outputobj(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "outputobj".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_outputobj_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "outputobj".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_visibleobjects(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "visibleobjects".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_visibleobjects_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "visibleobjects".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_pickscript(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_pickscript_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "pickscript".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_character_name(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_name".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_character_name_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_name".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_library_path(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "library_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_library_path_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "library_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_rig_path(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rig_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_rig_path_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "rig_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_from_file(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_file".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_source_from_file_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_file".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_from_scene(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_scene".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_source_from_scene_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_from_scene".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_proxy_file(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_file".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_proxy_file_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "proxy_file".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_path(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_constraints_path_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_path".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_lookupobjpath_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "lookupobjpath".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -17800,378 +17810,378 @@ impl ObjectQuadrupedAutoRig5f {
 
     // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_keeppos_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "keeppos".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tdisplay(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tdisplay_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tdisplay".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_picking(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_picking_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "picking".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_caching(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_caching_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "caching".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_use_dcolor(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_use_dcolor_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "use_dcolor".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_source_display_geometry(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_display_geometry".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_source_display_geometry_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "source_display_geometry".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_left_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_left_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_right_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_disable_toe(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_right_leg_disable_toe_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_disable_toe".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display_proxy_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_proxy_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_display_proxy_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_proxy_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_display_wire(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_wire".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_display_wire_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "display_wire".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_character_placer_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_placer_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_character_placer_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "character_placer_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_spine_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_spine_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "spine_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_head_and_neck_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_head_and_neck_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "head_and_neck_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_left_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_right_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_left_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_leg_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_right_leg_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_leg_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_tail_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_tail_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "tail_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_left_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_left_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_front_right_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_front_right_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "front_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_left_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_left_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_left_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_back_right_toes_display_controls(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_back_right_toes_display_controls_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "back_right_toes_display_controls".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_childcomp(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_childcomp_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "childcomp".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_constraints_on(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_constraints_on_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "constraints_on".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -18181,11 +18191,11 @@ impl ObjectQuadrupedAutoRig5f {
 
 impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig5f {
     fn get_id(&self) -> usize {
-        self.base.id
+        self.id
     }
 
     fn get_name(&self) -> &str {
-        &self.base.name
+        &self.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -18193,15 +18203,15 @@ impl crate::core::types::HoudiniNode for ObjectQuadrupedAutoRig5f {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.base.inputs
+        &self.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.base.params
+        &self.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.base.spare_params
+        &self.spare_params
     }
 }
 #[allow(clippy::wrong_self_convention, non_snake_case)]

@@ -27,67 +27,76 @@ pub enum DriverTopnetEvaluationtime {
 
 #[derive(Debug, Clone)]
 pub struct DriverTopnet {
-    pub base: crate::core::types::NodeBase,
+    pub id: usize,
+    pub name: String,
+    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub params: std::collections::HashMap<String, crate::core::types::ParamValue>,
+    pub spare_params: Vec<crate::core::types::SpareParam>,
 }
 
 impl DriverTopnet {
     pub fn new(name: &str) -> Self {
         Self {
-            base: crate::core::types::NodeBase::new(name),
+            id: crate::core::types::NODE_ID_COUNTER
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed),
+            name: name.to_string(),
+            inputs: std::collections::BTreeMap::new(),
+            params: std::collections::HashMap::new(),
+            spare_params: Vec::new(),
         }
     }
 
     // --- Spare Parameters ---
     pub fn add_spare<S: Into<crate::core::types::SpareParam>>(mut self, spare: S) -> Self {
-        self.base.spare_params.push(spare.into());
+        self.spare_params.push(spare.into());
         self
     }
 
     // --- Button parameters ---
     pub fn trigger_generatestatic(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "generatestatic".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_cookbutton(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "cookbutton".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_dirtybutton(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "dirtybutton".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_cancelbutton(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "cancelbutton".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_savetaskgraph(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "savetaskgraph".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_loadtaskgraph(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "loadtaskgraph".to_string(),
             crate::core::types::ParamValue::Button,
         );
         self
     }
     pub fn trigger_loadcheckpoint(mut self) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "loadcheckpoint".to_string(),
             crate::core::types::ParamValue::Button,
         );
@@ -96,42 +105,42 @@ impl DriverTopnet {
 
     // --- Int parameters ---
     pub fn with_taskgraphsaverate(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "taskgraphsaverate".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_taskgraphsaverate_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "taskgraphsaverate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_checkpointrate(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointrate".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_checkpointrate_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointrate".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_customtime(mut self, val: i32) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "customtime".to_string(),
             crate::core::types::ParamValue::Int(val),
         );
         self
     }
     pub fn with_customtime_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "customtime".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -140,56 +149,56 @@ impl DriverTopnet {
 
     // --- Menu parameters ---
     pub fn with_checkpointformat(mut self, val: DriverTopnetCheckpointformat) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointformat".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_checkpointformat_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointformat".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_checkpointload(mut self, val: DriverTopnetCheckpointload) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointload".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_checkpointload_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointload".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_regenerationtype(mut self, val: DriverTopnetRegenerationtype) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "regenerationtype".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_regenerationtype_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "regenerationtype".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_evaluationtime(mut self, val: DriverTopnetEvaluationtime) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "evaluationtime".to_string(),
             crate::core::types::ParamValue::Menu(val as i32),
         );
         self
     }
     pub fn with_evaluationtime_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "evaluationtime".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -198,56 +207,56 @@ impl DriverTopnet {
 
     // --- String parameters ---
     pub fn with_taskgraphfile(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "taskgraphfile".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_taskgraphfile_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "taskgraphfile".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_checkpointfile(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointfile".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_checkpointfile_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointfile".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_topscheduler(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "topscheduler".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_topscheduler_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "topscheduler".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_defaultlabel(mut self, val: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "defaultlabel".to_string(),
             crate::core::types::ParamValue::String(val.to_string()),
         );
         self
     }
     pub fn with_defaultlabel_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "defaultlabel".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -256,70 +265,70 @@ impl DriverTopnet {
 
     // --- Toggle parameters ---
     pub fn with_taskgraphautosave(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "taskgraphautosave".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_taskgraphautosave_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "taskgraphautosave".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_checkpointenabled(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointenabled".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_checkpointenabled_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "checkpointenabled".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_savegraphattribs(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "savegraphattribs".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_savegraphattribs_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "savegraphattribs".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_usedefaultlabel(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "usedefaultlabel".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_usedefaultlabel_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "usedefaultlabel".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
         self
     }
     pub fn with_savescenefile(mut self, val: bool) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "savescenefile".to_string(),
             crate::core::types::ParamValue::Toggle(val),
         );
         self
     }
     pub fn with_savescenefile_expr(mut self, expr: &str) -> Self {
-        self.base.params.insert(
+        self.params.insert(
             "savescenefile".to_string(),
             crate::core::types::ParamValue::Expression(expr.to_string()),
         );
@@ -329,11 +338,11 @@ impl DriverTopnet {
 
 impl crate::core::types::HoudiniNode for DriverTopnet {
     fn get_id(&self) -> usize {
-        self.base.id
+        self.id
     }
 
     fn get_name(&self) -> &str {
-        &self.base.name
+        &self.name
     }
 
     fn get_node_type(&self) -> &'static str {
@@ -341,15 +350,15 @@ impl crate::core::types::HoudiniNode for DriverTopnet {
     }
 
     fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
-        &self.base.inputs
+        &self.inputs
     }
 
     fn get_params(&self) -> &std::collections::HashMap<String, crate::core::types::ParamValue> {
-        &self.base.params
+        &self.params
     }
 
     fn get_spare_params(&self) -> &[crate::core::types::SpareParam] {
-        &self.base.spare_params
+        &self.spare_params
     }
 }
 #[allow(clippy::wrong_self_convention, non_snake_case)]
