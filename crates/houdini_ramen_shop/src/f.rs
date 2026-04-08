@@ -36,7 +36,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -50,7 +52,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_eta_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eta".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -66,7 +70,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -80,7 +86,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -94,7 +102,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -108,7 +118,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_eval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -122,7 +134,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "N".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -138,7 +152,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -152,7 +168,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_reverse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reverse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -166,7 +184,9 @@ impl ShopFresneldiffuseEval {
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mybounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -238,7 +258,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_sx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -252,7 +274,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_sy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -266,7 +290,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -280,7 +306,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_eta_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eta".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -296,7 +324,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -310,7 +340,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -324,7 +356,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -338,7 +372,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "N".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -354,7 +390,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_flags_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "flags".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -368,7 +406,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -382,7 +422,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_bouncetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bouncetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -396,7 +438,9 @@ impl ShopFresneldiffuseSample {
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mybounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

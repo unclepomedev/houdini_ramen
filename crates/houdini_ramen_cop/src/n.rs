@@ -67,14 +67,18 @@ impl CopNull {
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

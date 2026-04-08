@@ -175,7 +175,9 @@ impl SopQuadremesh {
     pub fn with_targetquadarea_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetquadarea".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -189,7 +191,9 @@ impl SopQuadremesh {
     pub fn with_targettolerance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targettolerance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -203,7 +207,9 @@ impl SopQuadremesh {
     pub fn with_trianglearea_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "trianglearea".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -217,7 +223,9 @@ impl SopQuadremesh {
     pub fn with_adaptivityweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adaptivityweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -231,7 +239,9 @@ impl SopQuadremesh {
     pub fn with_adaptivitysizingweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adaptivitysizingweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -245,7 +255,9 @@ impl SopQuadremesh {
     pub fn with_globalweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -259,7 +271,9 @@ impl SopQuadremesh {
     pub fn with_localcurvatureweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localcurvatureweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -273,7 +287,9 @@ impl SopQuadremesh {
     pub fn with_curvaturerotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curvaturerotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -287,7 +303,9 @@ impl SopQuadremesh {
     pub fn with_localboundaryweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localboundaryweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -301,7 +319,9 @@ impl SopQuadremesh {
     pub fn with_boundaryrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boundaryrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -315,7 +335,9 @@ impl SopQuadremesh {
     pub fn with_localguideweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localguideweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -331,7 +353,9 @@ impl SopQuadremesh {
     pub fn with_symmetrycenter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "symmetrycenter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -347,7 +371,9 @@ impl SopQuadremesh {
     pub fn with_decimationlevel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "decimationlevel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -361,7 +387,9 @@ impl SopQuadremesh {
     pub fn with_targetquadcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetquadcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -375,7 +403,9 @@ impl SopQuadremesh {
     pub fn with_resolutionscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "resolutionscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -391,7 +421,9 @@ impl SopQuadremesh {
     pub fn with_output_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "output".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -405,7 +437,9 @@ impl SopQuadremesh {
     pub fn with_resolution_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "resolution".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -419,7 +453,9 @@ impl SopQuadremesh {
     pub fn with_resolutionsource_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "resolutionsource".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -433,7 +469,9 @@ impl SopQuadremesh {
     pub fn with_xdirection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "xdirection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -447,7 +485,9 @@ impl SopQuadremesh {
     pub fn with_ydirection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ydirection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -461,7 +501,9 @@ impl SopQuadremesh {
     pub fn with_zdirection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "zdirection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -475,7 +517,9 @@ impl SopQuadremesh {
     pub fn with_field_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "field".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -489,7 +533,9 @@ impl SopQuadremesh {
     pub fn with_boundarymode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boundarymode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -503,7 +549,9 @@ impl SopQuadremesh {
     pub fn with_guidemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -512,112 +560,144 @@ impl SopQuadremesh {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_adaptivitymaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "adaptivitymaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_adaptivitymaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adaptivitymaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_adaptivitysizingattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "adaptivitysizingattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_adaptivitysizingattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adaptivitysizingattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_globalmask(mut self, val: &str) -> Self {
         self.params.insert(
             "globalmask".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_globalmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_curvaturemaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "curvaturemaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_curvaturemaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curvaturemaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_boundarymaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "boundarymaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_boundarymaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boundarymaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_guidemaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "guidemaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_guidemaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_guideattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "guideattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_guideattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guideattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -633,7 +713,9 @@ impl SopQuadremesh {
     pub fn with_decimation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "decimation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -647,7 +729,9 @@ impl SopQuadremesh {
     pub fn with_xaxis_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "xaxis".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -661,7 +745,9 @@ impl SopQuadremesh {
     pub fn with_yaxis_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "yaxis".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -675,7 +761,9 @@ impl SopQuadremesh {
     pub fn with_zaxis_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "zaxis".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -689,7 +777,9 @@ impl SopQuadremesh {
     pub fn with_mirroroutput_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirroroutput".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -703,7 +793,9 @@ impl SopQuadremesh {
     pub fn with_enableadaptivity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableadaptivity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -717,7 +809,9 @@ impl SopQuadremesh {
     pub fn with_adaptivitysizing_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adaptivitysizing".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -731,7 +825,9 @@ impl SopQuadremesh {
     pub fn with_featureboundaries_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "featureboundaries".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -745,7 +841,9 @@ impl SopQuadremesh {
     pub fn with_curvature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curvature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -759,7 +857,9 @@ impl SopQuadremesh {
     pub fn with_boundary_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boundary".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -773,7 +873,9 @@ impl SopQuadremesh {
     pub fn with_guide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

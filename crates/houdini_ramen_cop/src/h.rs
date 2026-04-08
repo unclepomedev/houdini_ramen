@@ -155,7 +155,9 @@ impl CopHeatdistort {
     pub fn with_mask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -169,7 +171,9 @@ impl CopHeatdistort {
     pub fn with_globaldistortscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globaldistortscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -183,7 +187,9 @@ impl CopHeatdistort {
     pub fn with_globalelementsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalelementsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -197,7 +203,9 @@ impl CopHeatdistort {
     pub fn with_angle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "angle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -211,7 +219,9 @@ impl CopHeatdistort {
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -225,7 +235,9 @@ impl CopHeatdistort {
     pub fn with_elementsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elementsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -239,7 +251,9 @@ impl CopHeatdistort {
     pub fn with_detailscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "detailscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -253,7 +267,9 @@ impl CopHeatdistort {
     pub fn with_detailelementsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "detailelementsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -267,7 +283,9 @@ impl CopHeatdistort {
     pub fn with_cutoff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cutoff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -281,7 +299,9 @@ impl CopHeatdistort {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -295,7 +315,9 @@ impl CopHeatdistort {
     pub fn with_sourceblursize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourceblursize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -309,7 +331,9 @@ impl CopHeatdistort {
     pub fn with_cascale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cascale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -323,7 +347,9 @@ impl CopHeatdistort {
     pub fn with_carshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "carshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -337,7 +363,9 @@ impl CopHeatdistort {
     pub fn with_cagshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cagshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -351,7 +379,9 @@ impl CopHeatdistort {
     pub fn with_cabshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cabshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -365,7 +395,9 @@ impl CopHeatdistort {
     pub fn with_timeoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -379,7 +411,9 @@ impl CopHeatdistort {
     pub fn with_pulselength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pulselength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -393,7 +427,9 @@ impl CopHeatdistort {
     pub fn with_diranimangle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "diranimangle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -407,7 +443,9 @@ impl CopHeatdistort {
     pub fn with_diranimspeed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "diranimspeed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -423,7 +461,9 @@ impl CopHeatdistort {
     pub fn with_globalelementscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalelementscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -437,7 +477,9 @@ impl CopHeatdistort {
     pub fn with_elementscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elementscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -451,7 +493,9 @@ impl CopHeatdistort {
     pub fn with_detailelementscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "detailelementscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -465,7 +509,9 @@ impl CopHeatdistort {
     pub fn with_sourceblurscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourceblurscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -481,7 +527,9 @@ impl CopHeatdistort {
     pub fn with_globalelementsizetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalelementsizetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -495,7 +543,9 @@ impl CopHeatdistort {
     pub fn with_elementsizetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elementsizetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -509,7 +559,9 @@ impl CopHeatdistort {
     pub fn with_detailelementsizetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "detailelementsizetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -523,7 +575,9 @@ impl CopHeatdistort {
     pub fn with_sourceblursizetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourceblursizetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -532,14 +586,18 @@ impl CopHeatdistort {
     pub fn with_signature(mut self, val: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_signature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -555,7 +613,9 @@ impl CopHeatdistort {
     pub fn with_usecfl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecfl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -569,7 +629,9 @@ impl CopHeatdistort {
     pub fn with_streakblur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "streakblur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -583,7 +645,9 @@ impl CopHeatdistort {
     pub fn with_scalebytimeinc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scalebytimeinc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -597,7 +661,9 @@ impl CopHeatdistort {
     pub fn with_dodistort_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dodistort".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -611,7 +677,9 @@ impl CopHeatdistort {
     pub fn with_dodetaildistort_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dodetaildistort".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -625,7 +693,9 @@ impl CopHeatdistort {
     pub fn with_dosourceblur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dosourceblur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -639,7 +709,9 @@ impl CopHeatdistort {
     pub fn with_doca_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "doca".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -653,7 +725,9 @@ impl CopHeatdistort {
     pub fn with_dopulselength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dopulselength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -667,7 +741,9 @@ impl CopHeatdistort {
     pub fn with_dodiranim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dodiranim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -884,7 +960,9 @@ impl CopHeatdistortbylayer {
     pub fn with_mask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -898,7 +976,9 @@ impl CopHeatdistortbylayer {
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -912,7 +992,9 @@ impl CopHeatdistortbylayer {
     pub fn with_angle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "angle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -926,7 +1008,9 @@ impl CopHeatdistortbylayer {
     pub fn with_sourceblursize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourceblursize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -940,7 +1024,9 @@ impl CopHeatdistortbylayer {
     pub fn with_noiseblursize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "noiseblursize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -954,7 +1040,9 @@ impl CopHeatdistortbylayer {
     pub fn with_cascale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cascale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -968,7 +1056,9 @@ impl CopHeatdistortbylayer {
     pub fn with_carshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "carshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -982,7 +1072,9 @@ impl CopHeatdistortbylayer {
     pub fn with_cagshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cagshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -996,7 +1088,9 @@ impl CopHeatdistortbylayer {
     pub fn with_cabshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cabshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1012,7 +1106,9 @@ impl CopHeatdistortbylayer {
     pub fn with_sourceblurscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourceblurscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1026,7 +1122,9 @@ impl CopHeatdistortbylayer {
     pub fn with_noiseblurscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "noiseblurscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1042,7 +1140,9 @@ impl CopHeatdistortbylayer {
     pub fn with_sourceblursizetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourceblursizetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1056,7 +1156,9 @@ impl CopHeatdistortbylayer {
     pub fn with_noiseblursizetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "noiseblursizetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1065,14 +1167,18 @@ impl CopHeatdistortbylayer {
     pub fn with_signature(mut self, val: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_signature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1088,7 +1194,9 @@ impl CopHeatdistortbylayer {
     pub fn with_usecfl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecfl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1102,7 +1210,9 @@ impl CopHeatdistortbylayer {
     pub fn with_streakblur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "streakblur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1116,7 +1226,9 @@ impl CopHeatdistortbylayer {
     pub fn with_scalebytimeinc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scalebytimeinc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1130,7 +1242,9 @@ impl CopHeatdistortbylayer {
     pub fn with_dosourceblur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dosourceblur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1144,7 +1258,9 @@ impl CopHeatdistortbylayer {
     pub fn with_donoiseblur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "donoiseblur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1158,7 +1274,9 @@ impl CopHeatdistortbylayer {
     pub fn with_doca_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "doca".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1306,7 +1424,9 @@ impl CopHeightfieldVisualize {
     pub fn with_heightscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "heightscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1320,7 +1440,9 @@ impl CopHeightfieldVisualize {
     pub fn with_heightoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "heightoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1449,7 +1571,9 @@ impl CopHeighttoambientocclusion {
     pub fn with_heightscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "heightscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1463,7 +1587,9 @@ impl CopHeighttoambientocclusion {
     pub fn with_viewradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viewradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1477,7 +1603,9 @@ impl CopHeighttoambientocclusion {
     pub fn with_stepscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stepscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1493,7 +1621,9 @@ impl CopHeighttoambientocclusion {
     pub fn with_axiscount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "axiscount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1509,7 +1639,9 @@ impl CopHeighttoambientocclusion {
     pub fn with_remap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1525,7 +1657,9 @@ impl CopHeighttoambientocclusion {
     pub fn with_dohemisphere_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dohemisphere".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1662,7 +1796,9 @@ impl CopHeighttonormal {
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1678,7 +1814,9 @@ impl CopHeighttonormal {
     pub fn with_kernel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kernel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1694,7 +1832,9 @@ impl CopHeighttonormal {
     pub fn with_normaltype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "normaltype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1710,7 +1850,9 @@ impl CopHeighttonormal {
     pub fn with_readoutside_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "readoutside".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1860,7 +2002,9 @@ impl CopHeighttoshadow {
     pub fn with_radius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "radius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1874,7 +2018,9 @@ impl CopHeighttoshadow {
     pub fn with_angularsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "angularsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1888,7 +2034,9 @@ impl CopHeighttoshadow {
     pub fn with_heightmapscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "heightmapscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1902,7 +2050,9 @@ impl CopHeighttoshadow {
     pub fn with_azimuth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "azimuth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1916,7 +2066,9 @@ impl CopHeighttoshadow {
     pub fn with_altitude_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "altitude".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1930,7 +2082,9 @@ impl CopHeighttoshadow {
     pub fn with_distance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "distance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1944,7 +2098,9 @@ impl CopHeighttoshadow {
     pub fn with_directional_azimuth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directional_azimuth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1958,7 +2114,9 @@ impl CopHeighttoshadow {
     pub fn with_directional_altitude_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directional_altitude".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1972,7 +2130,9 @@ impl CopHeighttoshadow {
     pub fn with_viewradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viewradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1986,7 +2146,9 @@ impl CopHeighttoshadow {
     pub fn with_stepscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stepscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2002,7 +2164,9 @@ impl CopHeighttoshadow {
     pub fn with_position_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "position".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2016,7 +2180,9 @@ impl CopHeighttoshadow {
     pub fn with_lightnormal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lightnormal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2030,7 +2196,9 @@ impl CopHeighttoshadow {
     pub fn with_directional_direction_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directional_direction".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2046,7 +2214,9 @@ impl CopHeighttoshadow {
     pub fn with_type_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "type".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2060,7 +2230,9 @@ impl CopHeighttoshadow {
     pub fn with_use_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "use".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2074,7 +2246,9 @@ impl CopHeighttoshadow {
     pub fn with_directional_use_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directional_use".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2090,7 +2264,9 @@ impl CopHeighttoshadow {
     pub fn with_singlesided_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "singlesided".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2390,7 +2566,9 @@ impl CopHextile {
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2404,7 +2582,9 @@ impl CopHextile {
     pub fn with_scalerand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scalerand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2418,7 +2598,9 @@ impl CopHextile {
     pub fn with_rot_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rot".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2432,7 +2614,9 @@ impl CopHextile {
     pub fn with_rotrand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rotrand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2446,7 +2630,9 @@ impl CopHextile {
     pub fn with_seed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "seed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2460,7 +2646,9 @@ impl CopHextile {
     pub fn with_contrast_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "contrast".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2474,7 +2662,9 @@ impl CopHextile {
     pub fn with_contrast_falloff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "contrast_falloff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2488,7 +2678,9 @@ impl CopHextile {
     pub fn with_weightexp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "weightexp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2504,7 +2696,9 @@ impl CopHextile {
     pub fn with_size_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "size".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2665,7 +2859,9 @@ impl CopHistogram {
     pub fn with_buckets_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "buckets".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2679,7 +2875,9 @@ impl CopHistogram {
     pub fn with_min_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "min".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2693,7 +2891,9 @@ impl CopHistogram {
     pub fn with_max_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "max".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2707,7 +2907,9 @@ impl CopHistogram {
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2723,7 +2925,9 @@ impl CopHistogram {
     pub fn with_res_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "res".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2739,7 +2943,9 @@ impl CopHistogram {
     pub fn with_channelscope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "channelscope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2755,7 +2961,9 @@ impl CopHistogram {
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2769,7 +2977,9 @@ impl CopHistogram {
     pub fn with_outside_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outside".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2778,14 +2988,18 @@ impl CopHistogram {
     pub fn with_signature(mut self, val: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_signature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2801,7 +3015,9 @@ impl CopHistogram {
     pub fn with_setres_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setres".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3021,7 +3237,9 @@ impl CopHsv {
     pub fn with_mask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3035,7 +3253,9 @@ impl CopHsv {
     pub fn with_hueshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hueshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3049,7 +3269,9 @@ impl CopHsv {
     pub fn with_hueshiftmin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hueshiftmin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3063,7 +3285,9 @@ impl CopHsv {
     pub fn with_hueshiftmax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hueshiftmax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3077,7 +3301,9 @@ impl CopHsv {
     pub fn with_hueshiftwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hueshiftwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3091,7 +3317,9 @@ impl CopHsv {
     pub fn with_satscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "satscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3105,7 +3333,9 @@ impl CopHsv {
     pub fn with_satshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "satshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3119,7 +3349,9 @@ impl CopHsv {
     pub fn with_valscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "valscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3133,7 +3365,9 @@ impl CopHsv {
     pub fn with_valshift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "valshift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3149,7 +3383,9 @@ impl CopHsv {
     pub fn with_op_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "op".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3163,7 +3399,9 @@ impl CopHsv {
     pub fn with_hueshiftmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hueshiftmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3172,14 +3410,18 @@ impl CopHsv {
     pub fn with_signature(mut self, val: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_signature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3195,7 +3437,9 @@ impl CopHsv {
     pub fn with_keepluma_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keepluma".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3209,7 +3453,9 @@ impl CopHsv {
     pub fn with_ispremult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ispremult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3347,7 +3593,9 @@ impl CopHyperbolictile {
     pub fn with_flattening_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "flattening".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3361,7 +3609,9 @@ impl CopHyperbolictile {
     pub fn with_size_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "size".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3375,7 +3625,9 @@ impl CopHyperbolictile {
     pub fn with_tilefitting_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tilefitting".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3391,7 +3643,9 @@ impl CopHyperbolictile {
     pub fn with_iterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3405,7 +3659,9 @@ impl CopHyperbolictile {
     pub fn with_polygon_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "polygon".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3421,7 +3677,9 @@ impl CopHyperbolictile {
     pub fn with_mappingtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mappingtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3437,7 +3695,9 @@ impl CopHyperbolictile {
     pub fn with_rectanglize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rectanglize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3451,7 +3711,9 @@ impl CopHyperbolictile {
     pub fn with_stretchtofit_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchtofit".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3465,7 +3727,9 @@ impl CopHyperbolictile {
     pub fn with_diskmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "diskmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

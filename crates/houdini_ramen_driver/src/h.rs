@@ -52,7 +52,9 @@ impl DriverHaircardtex {
     pub fn with_res_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "res".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -66,7 +68,9 @@ impl DriverHaircardtex {
     pub fn with_vm_samples_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vm_samples".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -75,168 +79,216 @@ impl DriverHaircardtex {
     pub fn with_camera(mut self, val: &str) -> Self {
         self.params.insert(
             "camera".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_camera_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "camera".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hairobjects(mut self, val: &str) -> Self {
         self.params.insert(
             "hairobjects".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hairobjects_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hairobjects".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_vm_picture(mut self, val: &str) -> Self {
         self.params.insert(
             "vm_picture".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_vm_picture_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vm_picture".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nameprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "nameprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nameprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nameprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_namesep(mut self, val: &str) -> Self {
         self.params.insert(
             "namesep".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_namesep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "namesep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nameext(mut self, val: &str) -> Self {
         self.params.insert(
             "nameext".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nameext_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nameext".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_diffusename(mut self, val: &str) -> Self {
         self.params.insert(
             "diffusename".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_diffusename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "diffusename".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_alphaname(mut self, val: &str) -> Self {
         self.params.insert(
             "alphaname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_alphaname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alphaname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idname(mut self, val: &str) -> Self {
         self.params.insert(
             "idname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "idname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tipname(mut self, val: &str) -> Self {
         self.params.insert(
             "tipname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tipname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tipname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_depthname(mut self, val: &str) -> Self {
         self.params.insert(
             "depthname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_depthname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "depthname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_uvboundsname(mut self, val: &str) -> Self {
         self.params.insert(
             "uvboundsname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_uvboundsname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uvboundsname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -252,7 +304,9 @@ impl DriverHaircardtex {
     pub fn with_forceobjects_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "forceobjects".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -266,7 +320,9 @@ impl DriverHaircardtex {
     pub fn with_outputdiffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputdiffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -280,7 +336,9 @@ impl DriverHaircardtex {
     pub fn with_outputalpha_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputalpha".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -294,7 +352,9 @@ impl DriverHaircardtex {
     pub fn with_outputid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -308,7 +368,9 @@ impl DriverHaircardtex {
     pub fn with_outputtip_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputtip".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -322,7 +384,9 @@ impl DriverHaircardtex {
     pub fn with_outputdepth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputdepth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -336,7 +400,9 @@ impl DriverHaircardtex {
     pub fn with_outputuvbounds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputuvbounds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -653,7 +719,9 @@ impl DriverHqRender {
     pub fn with_f_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "f".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -667,7 +735,9 @@ impl DriverHqRender {
     pub fn with_hq_frame_range_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_frame_range_".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -683,7 +753,9 @@ impl DriverHqRender {
     pub fn with_soho_outputmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soho_outputmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -697,7 +769,9 @@ impl DriverHqRender {
     pub fn with_hq_num_cloud_machines_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_num_cloud_machines".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -711,7 +785,9 @@ impl DriverHqRender {
     pub fn with_hq_min_hosts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_min_hosts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -725,7 +801,9 @@ impl DriverHqRender {
     pub fn with_hq_max_hosts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_max_hosts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -739,7 +817,9 @@ impl DriverHqRender {
     pub fn with_hq_framesperjob_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_framesperjob".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -753,7 +833,9 @@ impl DriverHqRender {
     pub fn with_hq_cpus_to_use_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_CPUs_to_use".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -767,7 +849,9 @@ impl DriverHqRender {
     pub fn with_hq_tries_left_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_tries_left".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -781,7 +865,9 @@ impl DriverHqRender {
     pub fn with_res_count_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("res_count{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -797,7 +883,9 @@ impl DriverHqRender {
     pub fn with_trange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "trange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -811,7 +899,9 @@ impl DriverHqRender {
     pub fn with_hq_priority_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_priority".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -825,7 +915,9 @@ impl DriverHqRender {
     pub fn with_hq_cloud_region_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_cloud_region".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -839,7 +931,9 @@ impl DriverHqRender {
     pub fn with_hq_assign_ifdgen_to_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_assign_ifdgen_to".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -853,7 +947,9 @@ impl DriverHqRender {
     pub fn with_hq_assign_usdgen_to_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_assign_usdgen_to".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -867,7 +963,9 @@ impl DriverHqRender {
     pub fn with_hq_assign_to_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_assign_to".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -881,7 +979,9 @@ impl DriverHqRender {
     pub fn with_hq_render_frame_order_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_render_frame_order".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -890,448 +990,576 @@ impl DriverHqRender {
     pub fn with_take(mut self, val: &str) -> Self {
         self.params.insert(
             "take".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_take_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "take".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_soho_program(mut self, val: &str) -> Self {
         self.params.insert(
             "soho_program".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_soho_program_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soho_program".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_server(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_server".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_server_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_server".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_job_name(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_job_name".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_job_name_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_job_name".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_driver(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_driver".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_driver_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_driver".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_linux(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs_linux".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_linux_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs_linux".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_macos(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs_macos".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_macos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs_macos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_windows(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs_windows".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_windows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs_windows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip_action(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hip_action".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip_action_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hip_action".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hip".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hip".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_project_path(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_project_path".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_project_path_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_project_path".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_input_ifd(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_input_ifd".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_input_ifd_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_input_ifd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_input_usd(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_input_usd".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_input_usd_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_input_usd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_renderer(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_renderer".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_renderer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_renderer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_outputimage(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_outputimage".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_outputimage_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_outputimage".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_rendercommand(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_rendercommand".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_rendercommand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_rendercommand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_cloud_cached_file_info(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_cloud_cached_file_info".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_cloud_cached_file_info_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_cloud_cached_file_info".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_cloud_machine_type(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_cloud_machine_type".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_cloud_machine_type_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_cloud_machine_type".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_emailto(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_emailTo".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_emailto_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_emailTo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_outputifd(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_outputifd".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_outputifd_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_outputifd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_ifdgen_clients(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_ifdgen_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_ifdgen_clients_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_ifdgen_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_ifdgen_client_groups(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_ifdgen_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_ifdgen_client_groups_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_ifdgen_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_output_usd(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_output_usd".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_output_usd_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_output_usd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_usdgen_clients(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_usdgen_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_usdgen_clients_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_usdgen_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_usdgen_client_groups(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_usdgen_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_usdgen_client_groups_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_usdgen_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_clients(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_clients_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_client_groups(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_client_groups_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_res_name_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("res_name{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_res_name_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("res_name{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_name_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("var_name{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_name_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("var_name{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_value_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("var_value{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_value_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("var_value{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_directory_path_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("directory_path{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_directory_path_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("directory_path{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1347,7 +1575,9 @@ impl DriverHqRender {
     pub fn with_soho_multiframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soho_multiframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1361,7 +1591,9 @@ impl DriverHqRender {
     pub fn with_hq_use_render_tracker_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_use_render_tracker".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1375,7 +1607,9 @@ impl DriverHqRender {
     pub fn with_hq_openbrowser_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_openbrowser".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1389,7 +1623,9 @@ impl DriverHqRender {
     pub fn with_hq_report_submitted_job_id_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_report_submitted_job_id".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1403,7 +1639,9 @@ impl DriverHqRender {
     pub fn with_hq_useuniversalhfs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_useuniversalhfs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1417,7 +1655,9 @@ impl DriverHqRender {
     pub fn with_hq_autosave_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_autosave".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1431,7 +1671,9 @@ impl DriverHqRender {
     pub fn with_hq_warn_unsaved_changes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_warn_unsaved_changes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1445,7 +1687,9 @@ impl DriverHqRender {
     pub fn with_hq_skip_file_dependency_dialog_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_skip_file_dependency_dialog".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1459,7 +1703,9 @@ impl DriverHqRender {
     pub fn with_hq_will_email_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_will_email".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1473,7 +1719,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_start_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_start".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1487,7 +1735,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_success_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_success".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1501,7 +1751,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_failure_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_failure".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1515,7 +1767,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_pause_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_pause".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1529,7 +1783,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_resume_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_resume".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1543,7 +1799,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_reschedule_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_reschedule".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1557,7 +1815,9 @@ impl DriverHqRender {
     pub fn with_hq_email_on_priority_change_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_priority_change".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1571,7 +1831,9 @@ impl DriverHqRender {
     pub fn with_hq_makeifds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_makeifds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1585,7 +1847,9 @@ impl DriverHqRender {
     pub fn with_hq_delete_ifds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_delete_ifds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1599,7 +1863,9 @@ impl DriverHqRender {
     pub fn with_hq_cross_platform_ifd_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_cross_platform_ifd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1613,7 +1879,9 @@ impl DriverHqRender {
     pub fn with_hq_distribute_ifd_gen_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_distribute_ifd_gen".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1627,7 +1895,9 @@ impl DriverHqRender {
     pub fn with_hq_render_single_tile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_render_single_tile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1641,7 +1911,9 @@ impl DriverHqRender {
     pub fn with_hq_enable_checkpoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_enable_checkpoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1655,7 +1927,9 @@ impl DriverHqRender {
     pub fn with_hq_make_usds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_make_usds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1669,7 +1943,9 @@ impl DriverHqRender {
     pub fn with_hq_delete_usds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_delete_usds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1683,7 +1959,9 @@ impl DriverHqRender {
     pub fn with_hq_distribute_usd_gen_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_distribute_usd_gen".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1697,7 +1975,9 @@ impl DriverHqRender {
     pub fn with_hq_batch_all_frames_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_batch_all_frames".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1711,7 +1991,9 @@ impl DriverHqRender {
     pub fn with_hq_is_cpu_number_set_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_is_CPU_number_set".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1725,7 +2007,9 @@ impl DriverHqRender {
     pub fn with_hq_tries_different_client_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_tries_different_client".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1928,7 +2212,9 @@ impl DriverHqSim {
     pub fn with_f_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "f".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1944,7 +2230,9 @@ impl DriverHqSim {
     pub fn with_soho_outputmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soho_outputmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1958,7 +2246,9 @@ impl DriverHqSim {
     pub fn with_num_slices_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "num_slices".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1972,7 +2262,9 @@ impl DriverHqSim {
     pub fn with_hq_cpus_to_use_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_CPUs_to_use".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1986,7 +2278,9 @@ impl DriverHqSim {
     pub fn with_res_count_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("res_count{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2002,7 +2296,9 @@ impl DriverHqSim {
     pub fn with_slicediv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "slicediv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2018,7 +2314,9 @@ impl DriverHqSim {
     pub fn with_trange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "trange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2032,7 +2330,9 @@ impl DriverHqSim {
     pub fn with_hq_priority_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_priority".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2046,7 +2346,9 @@ impl DriverHqSim {
     pub fn with_slice_type_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "slice_type".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2060,7 +2362,9 @@ impl DriverHqSim {
     pub fn with_hq_assign_to_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_assign_to".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2074,7 +2378,9 @@ impl DriverHqSim {
     pub fn with_hq_dependency_order_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_dependency_order".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2083,294 +2389,378 @@ impl DriverHqSim {
     pub fn with_take(mut self, val: &str) -> Self {
         self.params.insert(
             "take".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_take_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "take".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_soho_program(mut self, val: &str) -> Self {
         self.params.insert(
             "soho_program".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_soho_program_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soho_program".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_server(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_server".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_server_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_server".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_job_name(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_job_name".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_job_name_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_job_name".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_driver(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_driver".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_driver_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_driver".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_linux(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs_linux".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_linux_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs_linux".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_macos(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs_macos".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_macos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs_macos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_windows(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hfs_windows".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hfs_windows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hfs_windows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip_action(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hip_action".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip_action_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hip_action".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_hip".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_hip_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_hip".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_project_path(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_project_path".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_project_path_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_project_path".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_sim_controls(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_sim_controls".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_sim_controls_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_sim_controls".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_cluster_node(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_cluster_node".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_cluster_node_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_cluster_node".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_emailto(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_emailTo".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_emailto_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_emailTo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_clients(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_clients_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_clients".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_client_groups(mut self, val: &str) -> Self {
         self.params.insert(
             "hq_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_hq_client_groups_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_client_groups".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_res_name_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("res_name{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_res_name_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("res_name{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_name_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("var_name{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_name_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("var_name{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_value_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("var_value{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_var_value_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("var_value{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_directory_path_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("directory_path{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_directory_path_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("directory_path{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2386,7 +2776,9 @@ impl DriverHqSim {
     pub fn with_soho_multiframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soho_multiframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2400,7 +2792,9 @@ impl DriverHqSim {
     pub fn with_hq_report_submitted_job_id_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_report_submitted_job_id".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2414,7 +2808,9 @@ impl DriverHqSim {
     pub fn with_hq_useuniversalhfs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_useuniversalhfs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2428,7 +2824,9 @@ impl DriverHqSim {
     pub fn with_hq_autosave_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_autosave".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2442,7 +2840,9 @@ impl DriverHqSim {
     pub fn with_hq_warn_unsaved_changes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_warn_unsaved_changes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2456,7 +2856,9 @@ impl DriverHqSim {
     pub fn with_hq_skip_file_dependency_dialog_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_skip_file_dependency_dialog".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2470,7 +2872,9 @@ impl DriverHqSim {
     pub fn with_hq_use_dedicated_tracker_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_use_dedicated_tracker".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2484,7 +2888,9 @@ impl DriverHqSim {
     pub fn with_hq_openbrowser_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_openbrowser".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2498,7 +2904,9 @@ impl DriverHqSim {
     pub fn with_hq_will_email_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_will_email".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2512,7 +2920,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_start_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_start".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2526,7 +2936,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_success_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_success".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2540,7 +2952,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_failure_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_failure".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2554,7 +2968,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_pause_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_pause".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2568,7 +2984,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_resume_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_resume".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2582,7 +3000,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_reschedule_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_reschedule".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2596,7 +3016,9 @@ impl DriverHqSim {
     pub fn with_hq_email_on_priority_change_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_email_on_priority_change".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2610,7 +3032,9 @@ impl DriverHqSim {
     pub fn with_hq_is_cpu_number_set_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hq_is_CPU_number_set".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2624,7 +3048,9 @@ impl DriverHqSim {
     pub fn with_enable_perfmon_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enable_perfmon".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

@@ -45,7 +45,9 @@ impl TopnetRemotegraph {
     pub fn with_clienttype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clienttype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -59,7 +61,9 @@ impl TopnetRemotegraph {
     pub fn with_remotegraph_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remotegraph".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -68,14 +72,18 @@ impl TopnetRemotegraph {
     pub fn with_host(mut self, val: &str) -> Self {
         self.params.insert(
             "host".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_host_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "host".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
