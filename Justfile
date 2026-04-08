@@ -85,59 +85,21 @@ run-live TARGET:
     HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run --example "$BASENAME"
 
 # probe (temp scripts for investigation) ===================================================
-probe-inner-node:
+[private]
+_hython script:
     #!/usr/bin/env bash
     set -e
-
     cd {{ HOUDINI_RESOURCES }}
     source houdini_setup
     cd {{ PROJECT_ROOT }}
-    hython tools/probe/probe_inner_node.py
+    hython {{ script }}
 
-probe-deep-node:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/probe_deep_node.py
-
-probe-metadata:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/metadata.py
-
-explore-api:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/explore_api.py
+probe-inner-node: (_hython "tools/probe/probe_inner_node.py")
+probe-deep-node: (_hython "tools/probe/probe_deep_node.py")
+probe-metadata: (_hython "tools/probe/metadata.py")
+explore-api: (_hython "tools/probe/explore_api.py")
+explore-label: (_hython "tools/probe/explore_label.py")
+ramp-value: (_hython "tools/probe/ramp_interpolation_value.py")
 
 list-types:
     uv run python tools/probe/list_types.py
-
-explore-label:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/explore_label.py
-
-ramp-value:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/ramp_interpolation_value.py
