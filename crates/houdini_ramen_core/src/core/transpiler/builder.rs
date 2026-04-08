@@ -39,7 +39,7 @@ impl PythonBuilder {
     }
 
     pub fn build(self) -> String {
-        self.buffer
+        self.buffer.replace("\r\n", "\n")
     }
 }
 
