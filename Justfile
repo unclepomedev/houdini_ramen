@@ -84,37 +84,7 @@ run-live TARGET:
     echo "🚀 Running: cargo run --example $BASENAME"
     HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run --example "$BASENAME"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# probe ===================================================
+# probe (temp scripts for investigation) ===================================================
 probe-inner-node:
     #!/usr/bin/env bash
     set -e
