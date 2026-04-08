@@ -109,9 +109,10 @@ impl ParamValue {
             .enumerate()
             .map(|(i, p)| {
                 if is_color {
-                    assert!(
-                        p.value.len() >= 3,
-                        "Color Ramp point at index {} must have at least 3 elements, but found {}",
+                    assert_eq!(
+                        p.value.len(),
+                        3,
+                        "Color Ramp point at index {} must have exactly 3 elements, but found {}",
                         i,
                         p.value.len()
                     );
@@ -229,7 +230,7 @@ mod tests {
 
     #[test]
     #[should_panic(
-        expected = "Color Ramp point at index 0 must have at least 3 elements, but found 1"
+        expected = "Color Ramp point at index 0 must have exactly 3 elements, but found 1"
     )]
     fn test_ramp_serialization_invalid_color_panics() {
         let invalid_mixed_ramp = ParamValue::Ramp(vec![
@@ -259,5 +260,18 @@ mod tests {
         }]);
 
         let _ = invalid_empty_val_ramp.to_python_expr();
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "Color Ramp point at index 0 must have exactly 3 elements, but found 4"
+    )]
+    fn test_ramp_serialization_truncation_panics() {
+        let invalid_color_ramp = ParamValue::Ramp(vec![RampPoint {
+            position: 0.0,
+            value: vec![1.0, 0.5, 0.2, 0.9],
+            interpolation: RampInterpolation::Linear,
+        }]);
+        let _ = invalid_color_ramp.to_python_expr();
     }
 }
