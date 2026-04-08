@@ -2,6 +2,7 @@
 name = "houdini_ramen_sop"
 version.workspace = true
 edition.workspace = true
+rust-version.workspace = true
 
 [dependencies]
 houdini_ramen_core = { workspace = true }

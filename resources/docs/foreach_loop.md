@@ -1,10 +1,10 @@
 # For-Each Loop
 
-NEVER manually instantiate `SopBlockBegin`/`SopBlockEnd`. ALWAYS use `helpers::add_foreach_loop` to auto-handle scoping, input wiring, and `blockpath` boilerplate.
+NEVER manually instantiate `SopBlockBegin`/`SopBlockEnd`. ALWAYS use `add_foreach_loop` to auto-handle scoping, input wiring, and `blockpath` boilerplate.
 
 ## Implementation Example
 ```rust
-use crate::helpers::loops::add_foreach_loop;
+use houdini_ramen::helpers::loops::add_foreach_loop;
 
 let mut graph = NodeGraph::new("/obj/geo1");
 let box_node = graph.add(SopBox::new("base_geo"));

@@ -1,2 +1,8 @@
-src/generated/**/* linguist-generated=true
-src/generated/**/* -diff
+crates/houdini_ramen_*/**/* linguist-generated=true
+crates/houdini_ramen_*/**/* -diff
+
+crates/houdini_ramen_core/**/* linguist-generated=false
+crates/houdini_ramen_core/**/* diff
+
+crates/houdini_ramen_helpers/**/* linguist-generated=false
+crates/houdini_ramen_helpers/**/* diff

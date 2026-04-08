@@ -2,7 +2,7 @@ use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
 use houdini_ramen::helpers::loops::add_foreach_loop;
-use houdini_ramen_sop::{SopAttribwrangle, SopAttribwrangleClass, SopBox};
+use houdini_ramen::sop::{SopAttribwrangle, SopAttribwrangleClass, SopBox};
 
 fn main() {
     println!("--- Houdini Ramen: Loop Generation Test ---\n");

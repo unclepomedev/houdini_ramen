@@ -1,7 +1,7 @@
 use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
-use houdini_ramen_sop::{
+use houdini_ramen::sop::{
     SopAttribnoise, SopAttribnoiseAttribtype, SopAttribnoiseBasis, SopAttribnoiseOperation,
     SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter, SopSolver,
     SopSolverInnerExt, SopTestgeometryRubbertoy,

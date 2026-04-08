@@ -5,7 +5,7 @@ use houdini_ramen::helpers::loops::add_foreach_loop;
 use houdini_ramen::core::types::{
     NODE_ID_COUNTER, RampInterpolation, RampPoint, SpareFloat, SpareInt,
 };
-use houdini_ramen_sop::{
+use houdini_ramen::sop::{
     SopAttribwrangle, SopAttribwrangleClass, SopBox, SopColor, SopColorColortype, SopConvertvdb,
     SopConvertvdbConversion, SopConvertvdbVdbclass, SopPointwrangle, SopVdbsmoothsdf, SopVolume,
     SopVolumewrangle,
