@@ -420,10 +420,10 @@ class CodeGenerator:
     # To speed up the editor's resolve process, split the code into modules a, b, c, ...,
     # but to avoid confusion when calling them with `use`, re-export them so they can be called as modules one level higher.
     def process_category(self, cat_name: str, nodes: dict[str, Any]):
-        cat_snake = snake_case(cat_name)
-        if not cat_snake:
+        if not clean_identifier(cat_name):
             logger.warning(f"Skipping category with invalid name: {cat_name!r}")
             return
+        cat_snake = snake_case(cat_name)
 
         cat_pascal = pascal_case(cat_name)
 
