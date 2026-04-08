@@ -13,6 +13,7 @@ fmt-py:
 
 test-py:
     uv run pytest
+
 # rust ==========================================================
 fix-rs:
     cargo clippy --workspace --fix --allow-dirty --allow-staged --all-targets -- -D warnings
@@ -67,37 +68,6 @@ setup-e2e: dump-nodes test-py generate-api test-rs
 get-context TARGET:
     uv run python tools/compile_context.py {{ TARGET }}
 
-# debug =======================================================
-list-types:
-    uv run python tools/list_types.py
-
-explore-api:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/explore_api.py
-
-explore-label:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/explore_label.py
-
-ramp-value:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/ramp_interpolation_value.py
-
 # run ============================================================
 houdini-link:
     HOUDINI_VEX_PATH="{{ HOUDINI_VEX_PATH }};&" HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} {{ HOUDINI_RESOURCES }}/bin/houdini tools/link_server.py
@@ -105,69 +75,31 @@ houdini-link:
 run-live TARGET:
     #!/usr/bin/env bash
     set -euo pipefail
-    MATCH=$(find examples -maxdepth 1 -type f -name "*{{TARGET}}*.rs" | sort | head -n 1)
+    MATCH=$(find examples -maxdepth 1 -type f -name "*{{ TARGET }}*.rs" | sort | head -n 1)
     if [ -z "$MATCH" ]; then
-        echo "❌ Error: No example matching '{{TARGET}}' found."
+        echo "❌ Error: No example matching '{{ TARGET }}' found."
         exit 1
     fi
     BASENAME=$(basename "$MATCH" .rs)
     echo "🚀 Running: cargo run --example $BASENAME"
     HOUDINI_RAMEN_TOKEN={{ HOUDINI_RAMEN_TOKEN }} HOUDINI_RAMEN_PORT={{ HOUDINI_RAMEN_PORT }} cargo run --example "$BASENAME"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# probe ===================================================
-probe-inner-node:
+# probe (temp scripts for investigation) ===================================================
+[private]
+_hython script:
     #!/usr/bin/env bash
     set -e
-
     cd {{ HOUDINI_RESOURCES }}
     source houdini_setup
     cd {{ PROJECT_ROOT }}
-    hython tools/probe/probe_inner_node.py
+    hython {{ script }}
 
-probe-deep-node:
-    #!/usr/bin/env bash
-    set -e
+probe-inner-node: (_hython "tools/probe/probe_inner_node.py")
+probe-deep-node: (_hython "tools/probe/probe_deep_node.py")
+probe-metadata: (_hython "tools/probe/metadata.py")
+explore-api: (_hython "tools/probe/explore_api.py")
+explore-label: (_hython "tools/probe/explore_label.py")
+ramp-value: (_hython "tools/probe/ramp_interpolation_value.py")
 
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/probe_deep_node.py
-
-probe-metadata:
-    #!/usr/bin/env bash
-    set -e
-
-    cd {{ HOUDINI_RESOURCES }}
-    source houdini_setup
-    cd {{ PROJECT_ROOT }}
-    hython tools/probe/metadata.py
+list-types:
+    uv run python tools/probe/list_types.py
