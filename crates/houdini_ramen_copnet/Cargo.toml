@@ -1,0 +1,7 @@
+[package]
+name = "houdini_ramen_copnet"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+houdini_ramen_core = { workspace = true }
