@@ -2,7 +2,7 @@
 pub struct DopDelete {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -19,70 +19,36 @@ impl DopDelete {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
         self.params.insert(
             "activation".to_string(),
@@ -99,8 +65,6 @@ impl DopDelete {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_activationrules(mut self, val: i32) -> Self {
         self.params.insert(
             "activationrules".to_string(),
@@ -117,8 +81,6 @@ impl DopDelete {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_objgroup_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("objgroup{}", index1),
@@ -155,8 +117,6 @@ impl DopDelete {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_deleteobjects_inst(mut self, index1: usize, val: bool) -> Self {
         self.params.insert(
             format!("deleteobjects{}", index1),
@@ -179,29 +139,39 @@ impl houdini_ramen_core::types::HoudiniNode for DopDelete {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "delete"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DopDeleteOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopDeleteOutputs for DopDelete {}
+impl DopDeleteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopDelete> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopDopnetCompresssims {
@@ -252,7 +222,7 @@ pub enum DopDopnetUparmtype {
 pub struct DopDopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -269,13 +239,11 @@ impl DopDopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_resimulate(mut self) -> Self {
         self.params.insert(
             "resimulate".to_string(),
@@ -283,8 +251,6 @@ impl DopDopnet {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_timestep(mut self, val: f32) -> Self {
         self.params.insert(
             "timestep".to_string(),
@@ -397,8 +363,6 @@ impl DopDopnet {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -511,8 +475,6 @@ impl DopDopnet {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_display(mut self, val: i32) -> Self {
         self.params.insert(
             "display".to_string(),
@@ -657,8 +619,6 @@ impl DopDopnet {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_compresssims(mut self, val: DopDopnetCompresssims) -> Self {
         self.params.insert(
             "compresssims".to_string(),
@@ -739,8 +699,6 @@ impl DopDopnet {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_playfilesname(mut self, val: &str) -> Self {
         self.params.insert(
             "playfilesname".to_string(),
@@ -921,8 +879,6 @@ impl DopDopnet {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_isplayer(mut self, val: bool) -> Self {
         self.params.insert(
             "isplayer".to_string(),
@@ -1217,25 +1173,22 @@ impl houdini_ramen_core::types::HoudiniNode for DopDopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dopnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -1339,7 +1292,7 @@ pub enum DopDragSharedata {
 pub struct DopDrag {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -1358,55 +1311,29 @@ impl DopDrag {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_forcescale(mut self, val: f32) -> Self {
         self.params.insert(
             "forcescale".to_string(),
@@ -1439,8 +1366,6 @@ impl DopDrag {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_vel(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "vel".to_string(),
@@ -1473,8 +1398,6 @@ impl DopDrag {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
         self.params.insert(
             "activation".to_string(),
@@ -1491,8 +1414,6 @@ impl DopDrag {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_ignoremass(mut self, val: DopDragParmopIgnoremass) -> Self {
         self.params.insert(
             "parmop_ignoremass".to_string(),
@@ -1653,8 +1574,6 @@ impl DopDrag {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
@@ -1691,8 +1610,6 @@ impl DopDrag {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_ignoremass(mut self, val: bool) -> Self {
         self.params.insert(
             "ignoremass".to_string(),
@@ -1731,29 +1648,39 @@ impl houdini_ramen_core::types::HoudiniNode for DopDrag {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "drag"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DopDragOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopDragOutputs for DopDrag {}
+impl DopDragOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopDrag> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopDragpropertiesParmopNormaldrag {
@@ -1821,7 +1748,7 @@ pub enum DopDragpropertiesSharedata {
 pub struct DopDragproperties {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1838,70 +1765,36 @@ impl DopDragproperties {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_normaldrag(mut self, val: f32) -> Self {
         self.params.insert(
             "normaldrag".to_string(),
@@ -1934,8 +1827,6 @@ impl DopDragproperties {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_externalvelocityoffset(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "externalvelocityoffset".to_string(),
@@ -1952,8 +1843,6 @@ impl DopDragproperties {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
         self.params.insert(
             "activation".to_string(),
@@ -1970,8 +1859,6 @@ impl DopDragproperties {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_normaldrag(mut self, val: DopDragpropertiesParmopNormaldrag) -> Self {
         self.params.insert(
             "parmop_normaldrag".to_string(),
@@ -2090,8 +1977,6 @@ impl DopDragproperties {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_externalvelocityfield(mut self, val: &str) -> Self {
         self.params.insert(
             "externalvelocityfield".to_string(),
@@ -2146,8 +2031,6 @@ impl DopDragproperties {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_uniquedataname(mut self, val: bool) -> Self {
         self.params.insert(
             "uniquedataname".to_string(),
@@ -2170,26 +2053,39 @@ impl houdini_ramen_core::types::HoudiniNode for DopDragproperties {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dragproperties"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait DopDragpropertiesOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopDragpropertiesOutputs for DopDragproperties {}
+impl DopDragpropertiesOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<DopDragproperties>
+{
 }

@@ -25,7 +25,7 @@ pub enum ChopDelayUnits {
 pub struct ChopDelay {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -42,70 +42,36 @@ impl ChopDelay {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input 1"
-    pub fn set_input_input_1<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input 1" and specifies the output index of the target node.
-    pub fn set_input_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_delay1(mut self, val: f32) -> Self {
         self.params.insert(
             "delay1".to_string(),
@@ -250,8 +216,6 @@ impl ChopDelay {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -268,8 +232,6 @@ impl ChopDelay {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_numcopies(mut self, val: i32) -> Self {
         self.params.insert(
             "numcopies".to_string(),
@@ -286,8 +248,6 @@ impl ChopDelay {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_remainder(mut self, val: ChopDelayRemainder) -> Self {
         self.params.insert(
             "remainder".to_string(),
@@ -336,8 +296,6 @@ impl ChopDelay {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
@@ -374,8 +332,6 @@ impl ChopDelay {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
         self.params.insert(
             "timeslice".to_string(),
@@ -414,29 +370,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopDelay {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "delay"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopDelayOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopDelayOutputs for ChopDelay {}
+impl ChopDelayOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDelay> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopDeleteDiscard {
@@ -479,7 +445,7 @@ pub enum ChopDeleteUnits {
 pub struct ChopDelete {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -496,89 +462,44 @@ impl ChopDelete {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_delete_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 0: "Source"
-    pub fn set_input_source<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Source" and specifies the output index of the target node.
-    pub fn set_input_source_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Delete Reference"
-    pub fn set_input_delete_reference<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Delete Reference" and specifies the output index of the target node.
-    pub fn set_input_delete_reference_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_gcolorstep(mut self, val: f32) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
@@ -595,8 +516,6 @@ impl ChopDelete {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_selrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "selrange".to_string(),
@@ -613,8 +532,6 @@ impl ChopDelete {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -631,8 +548,6 @@ impl ChopDelete {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_discard(mut self, val: ChopDeleteDiscard) -> Self {
         self.params.insert(
             "discard".to_string(),
@@ -713,8 +628,6 @@ impl ChopDelete {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_delscope(mut self, val: &str) -> Self {
         self.params.insert(
             "delscope".to_string(),
@@ -787,8 +700,6 @@ impl ChopDelete {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_selconst(mut self, val: bool) -> Self {
         self.params.insert(
             "selconst".to_string(),
@@ -843,29 +754,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopDelete {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "delete"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopDeleteOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopDeleteOutputs for ChopDelete {}
+impl ChopDeleteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDelete> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopDevicetransformRange {
@@ -915,7 +836,7 @@ pub enum ChopDevicetransformUnits {
 pub struct ChopDevicetransform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -932,70 +853,36 @@ impl ChopDevicetransform {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input 1"
-    pub fn set_input_input_1<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input 1" and specifies the output index of the target node.
-    pub fn set_input_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_reset(mut self) -> Self {
         self.params.insert(
             "reset".to_string(),
@@ -1017,8 +904,6 @@ impl ChopDevicetransform {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_tspeed(mut self, val: f32) -> Self {
         self.params.insert(
             "tspeed".to_string(),
@@ -1131,8 +1016,6 @@ impl ChopDevicetransform {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -1149,8 +1032,6 @@ impl ChopDevicetransform {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_range(mut self, val: ChopDevicetransformRange) -> Self {
         self.params.insert(
             "range".to_string(),
@@ -1231,8 +1112,6 @@ impl ChopDevicetransform {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_mode(mut self, val: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
@@ -1431,8 +1310,6 @@ impl ChopDevicetransform {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_invertbackforth(mut self, val: bool) -> Self {
         self.params.insert(
             "invertbackforth".to_string(),
@@ -1599,28 +1476,41 @@ impl houdini_ramen_core::types::HoudiniNode for ChopDevicetransform {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "devicetransform"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait ChopDevicetransformOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopDevicetransformOutputs for ChopDevicetransform {}
+impl ChopDevicetransformOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDevicetransform>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -1672,7 +1562,7 @@ pub enum ChopDopnetUparmtype {
 pub struct ChopDopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1689,13 +1579,11 @@ impl ChopDopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_resimulate(mut self) -> Self {
         self.params.insert(
             "resimulate".to_string(),
@@ -1703,8 +1591,6 @@ impl ChopDopnet {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_timestep(mut self, val: f32) -> Self {
         self.params.insert(
             "timestep".to_string(),
@@ -1817,8 +1703,6 @@ impl ChopDopnet {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -1931,8 +1815,6 @@ impl ChopDopnet {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_display(mut self, val: i32) -> Self {
         self.params.insert(
             "display".to_string(),
@@ -2077,8 +1959,6 @@ impl ChopDopnet {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_compresssims(mut self, val: ChopDopnetCompresssims) -> Self {
         self.params.insert(
             "compresssims".to_string(),
@@ -2159,8 +2039,6 @@ impl ChopDopnet {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_playfilesname(mut self, val: &str) -> Self {
         self.params.insert(
             "playfilesname".to_string(),
@@ -2341,8 +2219,6 @@ impl ChopDopnet {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_isplayer(mut self, val: bool) -> Self {
         self.params.insert(
             "isplayer".to_string(),
@@ -2637,25 +2513,22 @@ impl houdini_ramen_core::types::HoudiniNode for ChopDopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dopnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -2715,7 +2588,7 @@ pub enum ChopDynamicsUnits {
 pub struct ChopDynamics {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2732,13 +2605,11 @@ impl ChopDynamics {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_update(mut self) -> Self {
         self.params.insert(
             "update".to_string(),
@@ -2746,8 +2617,6 @@ impl ChopDynamics {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_start(mut self, val: f32) -> Self {
         self.params.insert(
             "start".to_string(),
@@ -2828,8 +2697,6 @@ impl ChopDynamics {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -2846,8 +2713,6 @@ impl ChopDynamics {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_method(mut self, val: ChopDynamicsMethod) -> Self {
         self.params.insert(
             "method".to_string(),
@@ -2944,8 +2809,6 @@ impl ChopDynamics {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_doppath(mut self, val: &str) -> Self {
         self.params.insert(
             "doppath".to_string(),
@@ -3054,8 +2917,6 @@ impl ChopDynamics {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_verbosetracks(mut self, val: bool) -> Self {
         self.params.insert(
             "verbosetracks".to_string(),
@@ -3110,29 +2971,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopDynamics {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dynamics"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopDynamicsOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopDynamicsOutputs for ChopDynamics {}
+impl ChopDynamicsOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDynamics> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopDynamicwarpOutputmode {
@@ -3174,7 +3045,7 @@ pub enum ChopDynamicwarpUnits {
 pub struct ChopDynamicwarp {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3191,89 +3062,44 @@ impl ChopDynamicwarp {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_source_channels_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_reference_channels_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 0: "Source Channels"
-    pub fn set_input_source_channels<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Source Channels" and specifies the output index of the target node.
-    pub fn set_input_source_channels_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Reference Channels"
-    pub fn set_input_reference_channels<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Reference Channels" and specifies the output index of the target node.
-    pub fn set_input_reference_channels_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scalesourcelength(mut self, val: f32) -> Self {
         self.params.insert(
             "scalesourcelength".to_string(),
@@ -3338,8 +3164,6 @@ impl ChopDynamicwarp {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -3356,8 +3180,6 @@ impl ChopDynamicwarp {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_maxstep(mut self, val: i32) -> Self {
         self.params.insert(
             "maxstep".to_string(),
@@ -3406,8 +3228,6 @@ impl ChopDynamicwarp {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_outputmode(mut self, val: ChopDynamicwarpOutputmode) -> Self {
         self.params.insert(
             "outputmode".to_string(),
@@ -3488,8 +3308,6 @@ impl ChopDynamicwarp {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_txchannels(mut self, val: &str) -> Self {
         self.params.insert(
             "txchannels".to_string(),
@@ -3688,8 +3506,6 @@ impl ChopDynamicwarp {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_interpretasmotion(mut self, val: bool) -> Self {
         self.params.insert(
             "interpretasmotion".to_string(),
@@ -3792,26 +3608,36 @@ impl houdini_ramen_core::types::HoudiniNode for ChopDynamicwarp {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dynamicwarp"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopDynamicwarpOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopDynamicwarpOutputs for ChopDynamicwarp {}
+impl ChopDynamicwarpOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDynamicwarp> {}

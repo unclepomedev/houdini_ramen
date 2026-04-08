@@ -65,7 +65,7 @@ pub enum SopQuadremeshGuidemode {
 pub struct SopQuadremesh {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -82,89 +82,44 @@ impl SopQuadremesh {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_geometry_to_remesh_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_reference_for_edge_flows_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 0: "Geometry to Remesh"
-    pub fn set_input_geometry_to_remesh<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Geometry to Remesh" and specifies the output index of the target node.
-    pub fn set_input_geometry_to_remesh_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Reference For Edge Flows"
-    pub fn set_input_reference_for_edge_flows<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Reference For Edge Flows" and specifies the output index of the target node.
-    pub fn set_input_reference_for_edge_flows_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_targetquadarea(mut self, val: f32) -> Self {
         self.params.insert(
             "targetquadarea".to_string(),
@@ -341,8 +296,6 @@ impl SopQuadremesh {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_symmetrycenter(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "symmetrycenter".to_string(),
@@ -359,8 +312,6 @@ impl SopQuadremesh {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_decimationlevel(mut self, val: i32) -> Self {
         self.params.insert(
             "decimationlevel".to_string(),
@@ -409,8 +360,6 @@ impl SopQuadremesh {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_output(mut self, val: SopQuadremeshOutput) -> Self {
         self.params.insert(
             "output".to_string(),
@@ -555,8 +504,6 @@ impl SopQuadremesh {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
@@ -701,8 +648,6 @@ impl SopQuadremesh {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_decimation(mut self, val: bool) -> Self {
         self.params.insert(
             "decimation".to_string(),
@@ -885,26 +830,36 @@ impl houdini_ramen_core::types::HoudiniNode for SopQuadremesh {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "quadremesh"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait SopQuadremeshOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl SopQuadremeshOutputs for SopQuadremesh {}
+impl SopQuadremeshOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopQuadremesh> {}

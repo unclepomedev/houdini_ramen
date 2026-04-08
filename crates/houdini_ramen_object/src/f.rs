@@ -47,7 +47,7 @@ pub enum ObjectFetchVportOnionskin {
 pub struct ObjectFetch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -64,70 +64,36 @@ impl ObjectFetch {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "parent"
-    pub fn set_input_parent<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "parent" and specifies the output index of the target node.
-    pub fn set_input_parent_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -192,8 +158,6 @@ impl ObjectFetch {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_dcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "dcolor".to_string(),
@@ -306,8 +270,6 @@ impl ObjectFetch {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -340,8 +302,6 @@ impl ObjectFetch {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_xord(mut self, val: ObjectFetchXord) -> Self {
         self.params.insert(
             "xOrd".to_string(),
@@ -438,8 +398,6 @@ impl ObjectFetch {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_fetchobjpath(mut self, val: &str) -> Self {
         self.params.insert(
             "fetchobjpath".to_string(),
@@ -584,8 +542,6 @@ impl ObjectFetch {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_useinputofthis(mut self, val: bool) -> Self {
         self.params.insert(
             "useinputofthis".to_string(),
@@ -800,29 +756,40 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFetch {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "fetch"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFetchOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFetchOutputs for ObjectFetch {}
+impl ObjectFetchOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFetch> {}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFetchInnerExt {
     fn point1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -881,7 +848,7 @@ pub enum ObjectFogUparmtype {
 pub struct ObjectFog {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -898,70 +865,36 @@ impl ObjectFog {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "parent"
-    pub fn set_input_parent<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "parent" and specifies the output index of the target node.
-    pub fn set_input_parent_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -1026,8 +959,6 @@ impl ObjectFog {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -1140,8 +1071,6 @@ impl ObjectFog {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -1174,8 +1103,6 @@ impl ObjectFog {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_xord(mut self, val: ObjectFogXord) -> Self {
         self.params.insert(
             "xOrd".to_string(),
@@ -1256,8 +1183,6 @@ impl ObjectFog {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_constraints_path(mut self, val: &str) -> Self {
         self.params.insert(
             "constraints_path".to_string(),
@@ -1384,8 +1309,6 @@ impl ObjectFog {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -1504,29 +1427,39 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFog {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "fog"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFogOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFogOutputs for ObjectFog {}
+impl ObjectFogOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFog> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectFormationcrowdsexamplePreXform {
@@ -1570,7 +1503,7 @@ pub enum ObjectFormationcrowdsexampleUparmtype {
 pub struct ObjectFormationcrowdsexample {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1587,13 +1520,11 @@ impl ObjectFormationcrowdsexample {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -1658,8 +1589,6 @@ impl ObjectFormationcrowdsexample {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -1772,8 +1701,6 @@ impl ObjectFormationcrowdsexample {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -1806,8 +1733,6 @@ impl ObjectFormationcrowdsexample {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectFormationcrowdsexamplePreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -1872,8 +1797,6 @@ impl ObjectFormationcrowdsexample {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -2090,8 +2013,6 @@ impl ObjectFormationcrowdsexample {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -2210,29 +2131,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFormationcrowdsexample {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "formationcrowdsexample"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFormationcrowdsexampleOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFormationcrowdsexampleOutputs for ObjectFormationcrowdsexample {}
+impl ObjectFormationcrowdsexampleOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFormationcrowdsexample>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFormationcrowdsexampleInnerExt {
     fn agent1_setup(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -2337,7 +2272,7 @@ pub enum ObjectFourpointmuscleUparmtype {
 pub struct ObjectFourpointmuscle {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2354,127 +2289,60 @@ impl ObjectFourpointmuscle {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_muscle_anchor_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_muscle_anchor_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 0: "Muscle Anchor Input #1"
-    pub fn set_input_muscle_anchor_input_1<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_muscle_anchor_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(2, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 0: "Muscle Anchor Input #1" and specifies the output index of the target node.
-    pub fn set_input_muscle_anchor_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_muscle_anchor_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(3, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 1: "Muscle Anchor Input #2"
-    pub fn set_input_muscle_anchor_input_2<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Muscle Anchor Input #2" and specifies the output index of the target node.
-    pub fn set_input_muscle_anchor_input_2_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 2: "Muscle Anchor Input #3"
-    pub fn set_input_muscle_anchor_input_3<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 2: "Muscle Anchor Input #3" and specifies the output index of the target node.
-    pub fn set_input_muscle_anchor_input_3_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 3: "Muscle Anchor Input #4"
-    pub fn set_input_muscle_anchor_input_4<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 3: "Muscle Anchor Input #4" and specifies the output index of the target node.
-    pub fn set_input_muscle_anchor_input_4_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -2971,8 +2839,6 @@ impl ObjectFourpointmuscle {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -3757,8 +3623,6 @@ impl ObjectFourpointmuscle {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -3839,8 +3703,6 @@ impl ObjectFourpointmuscle {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectFourpointmusclePreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -3905,8 +3767,6 @@ impl ObjectFourpointmuscle {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -4231,8 +4091,6 @@ impl ObjectFourpointmuscle {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -4479,29 +4337,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFourpointmuscle {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "fourpointmuscle"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFourpointmuscleOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFourpointmuscleOutputs for ObjectFourpointmuscle {}
+impl ObjectFourpointmuscleOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFourpointmuscle>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFourpointmuscleInnerExt {
     fn blend1_middle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -4663,7 +4535,7 @@ pub enum ObjectFrankenmuscleCollisiondetection {
 pub struct ObjectFrankenmuscle {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -4680,70 +4552,36 @@ impl ObjectFrankenmuscle {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "parent"
-    pub fn set_input_parent<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "parent" and specifies the output index of the target node.
-    pub fn set_input_parent_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_stashgeo(mut self) -> Self {
         self.params.insert(
             "stashgeo".to_string(),
@@ -4772,8 +4610,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Data parameters ---
     pub fn with_stashedgeo(mut self, val: &str) -> Self {
         self.params.insert(
             "stashedgeo".to_string(),
@@ -4792,8 +4628,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -5306,8 +5140,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -5436,8 +5268,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -5582,8 +5412,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_xord(mut self, val: ObjectFrankenmuscleXord) -> Self {
         self.params.insert(
             "xOrd".to_string(),
@@ -5696,8 +5524,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Ramp parameters ---
     pub fn with_colorramp(mut self, val: Vec<houdini_ramen_core::types::RampPoint>) -> Self {
         self.params.insert(
             "colorramp".to_string(),
@@ -5784,8 +5610,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -6128,8 +5952,6 @@ impl ObjectFrankenmuscle {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_childcomp(mut self, val: bool) -> Self {
         self.params.insert(
             "childcomp".to_string(),
@@ -6600,29 +6422,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFrankenmuscle {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "frankenmuscle"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFrankenmuscleOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFrankenmuscleOutputs for ObjectFrankenmuscle {}
+impl ObjectFrankenmuscleOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFrankenmuscle>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFrankenmuscleInnerExt {
     fn guide(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -6761,7 +6597,7 @@ pub enum ObjectFurUparmtype {
 pub struct ObjectFur {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -6778,70 +6614,36 @@ impl ObjectFur {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Sub-Network Input #1"
-    pub fn set_input_sub_network_input_1<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Sub-Network Input #1" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_skinupdatefromsop(mut self) -> Self {
         self.params.insert(
             "skinupdatefromsop".to_string(),
@@ -6849,8 +6651,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_length(mut self, val: f32) -> Self {
         self.params.insert(
             "length".to_string(),
@@ -7827,8 +7627,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_displaybboxcenter(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "displaybboxcenter".to_string(),
@@ -8053,8 +7851,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_segs(mut self, val: i32) -> Self {
         self.params.insert(
             "segs".to_string(),
@@ -8231,8 +8027,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_type(mut self, val: ObjectFurType) -> Self {
         self.params.insert(
             "type".to_string(),
@@ -8441,8 +8235,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- Ramp parameters ---
     pub fn with_furstyle_thickness(
         mut self,
         val: Vec<houdini_ramen_core::types::RampPoint>,
@@ -8535,8 +8327,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_shop_materialpath(mut self, val: &str) -> Self {
         self.params.insert(
             "shop_materialpath".to_string(),
@@ -9455,8 +9245,6 @@ impl ObjectFur {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_enabledeform(mut self, val: bool) -> Self {
         self.params.insert(
             "enabledeform".to_string(),
@@ -10071,29 +9859,40 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFur {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "fur"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFurOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFurOutputs for ObjectFur {}
+impl ObjectFurOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFur> {}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFurInnerExt {
     fn apply_display_offset(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -10208,7 +10007,7 @@ pub enum ObjectFuzzyobstacleavoidanceUparmtype {
 pub struct ObjectFuzzyobstacleavoidance {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -10225,13 +10024,11 @@ impl ObjectFuzzyobstacleavoidance {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -10296,8 +10093,6 @@ impl ObjectFuzzyobstacleavoidance {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -10410,8 +10205,6 @@ impl ObjectFuzzyobstacleavoidance {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -10444,8 +10237,6 @@ impl ObjectFuzzyobstacleavoidance {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectFuzzyobstacleavoidancePreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -10510,8 +10301,6 @@ impl ObjectFuzzyobstacleavoidance {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -10728,8 +10517,6 @@ impl ObjectFuzzyobstacleavoidance {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -10848,29 +10635,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFuzzyobstacleavoidance {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "fuzzyObstacleAvoidance"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFuzzyobstacleavoidanceOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFuzzyobstacleavoidanceOutputs for ObjectFuzzyobstacleavoidance {}
+impl ObjectFuzzyobstacleavoidanceOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFuzzyobstacleavoidance>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFuzzyobstacleavoidanceInnerExt {
     fn agent_path(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -10955,7 +10756,7 @@ pub enum ObjectFuzzystatetransitionUparmtype {
 pub struct ObjectFuzzystatetransition {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -10972,13 +10773,11 @@ impl ObjectFuzzystatetransition {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -11043,8 +10842,6 @@ impl ObjectFuzzystatetransition {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -11157,8 +10954,6 @@ impl ObjectFuzzystatetransition {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -11191,8 +10986,6 @@ impl ObjectFuzzystatetransition {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectFuzzystatetransitionPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -11257,8 +11050,6 @@ impl ObjectFuzzystatetransition {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -11475,8 +11266,6 @@ impl ObjectFuzzystatetransition {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -11595,29 +11384,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectFuzzystatetransition {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "fuzzystatetransition"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectFuzzystatetransitionOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectFuzzystatetransitionOutputs for ObjectFuzzystatetransition {}
+impl ObjectFuzzystatetransitionOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFuzzystatetransition>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectFuzzystatetransitionInnerExt {
     fn biped_rest_cycle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;

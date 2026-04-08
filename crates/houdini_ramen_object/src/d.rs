@@ -40,7 +40,7 @@ pub enum ObjectDeformBoneRigBipedArmUparmtype {
 pub struct ObjectDeformBoneRigBipedArm {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -57,13 +57,11 @@ impl ObjectDeformBoneRigBipedArm {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -528,8 +526,6 @@ impl ObjectDeformBoneRigBipedArm {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -1762,8 +1758,6 @@ impl ObjectDeformBoneRigBipedArm {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -1796,8 +1790,6 @@ impl ObjectDeformBoneRigBipedArm {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedArmPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -1862,8 +1854,6 @@ impl ObjectDeformBoneRigBipedArm {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -2098,8 +2088,6 @@ impl ObjectDeformBoneRigBipedArm {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -2250,29 +2238,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedArm {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_arm"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedArmOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedArmOutputs for ObjectDeformBoneRigBipedArm {}
+impl ObjectDeformBoneRigBipedArmOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedArm>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedArmInnerExt {
     fn hook_in_deform_out_collarbone(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -2381,7 +2383,7 @@ pub enum ObjectDeformBoneRigBipedHand4f2sUparmtype {
 pub struct ObjectDeformBoneRigBipedHand4f2s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2398,13 +2400,11 @@ impl ObjectDeformBoneRigBipedHand4f2s {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -3429,8 +3429,6 @@ impl ObjectDeformBoneRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -6231,8 +6229,6 @@ impl ObjectDeformBoneRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -6265,8 +6261,6 @@ impl ObjectDeformBoneRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedHand4f2sPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -6331,8 +6325,6 @@ impl ObjectDeformBoneRigBipedHand4f2s {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -6567,8 +6559,6 @@ impl ObjectDeformBoneRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -6719,29 +6709,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedHand4f2s
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_hand_4f_2s"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedHand4f2sOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedHand4f2sOutputs for ObjectDeformBoneRigBipedHand4f2s {}
+impl ObjectDeformBoneRigBipedHand4f2sOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedHand4f2s>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHand4f2sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -6922,7 +6926,7 @@ pub enum ObjectDeformBoneRigBipedHand4f3sUparmtype {
 pub struct ObjectDeformBoneRigBipedHand4f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -6939,13 +6943,11 @@ impl ObjectDeformBoneRigBipedHand4f3s {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -8290,8 +8292,6 @@ impl ObjectDeformBoneRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -11988,8 +11988,6 @@ impl ObjectDeformBoneRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -12022,8 +12020,6 @@ impl ObjectDeformBoneRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedHand4f3sPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -12088,8 +12084,6 @@ impl ObjectDeformBoneRigBipedHand4f3s {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -12324,8 +12318,6 @@ impl ObjectDeformBoneRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -12476,29 +12468,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedHand4f3s
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_hand_4f_3s"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedHand4f3sOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedHand4f3sOutputs for ObjectDeformBoneRigBipedHand4f3s {}
+impl ObjectDeformBoneRigBipedHand4f3sOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedHand4f3s>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHand4f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -12727,7 +12733,7 @@ pub enum ObjectDeformBoneRigBipedHand5f3sUparmtype {
 pub struct ObjectDeformBoneRigBipedHand5f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -12744,13 +12750,11 @@ impl ObjectDeformBoneRigBipedHand5f3s {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -14415,8 +14419,6 @@ impl ObjectDeformBoneRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -19009,8 +19011,6 @@ impl ObjectDeformBoneRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -19043,8 +19043,6 @@ impl ObjectDeformBoneRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedHand5f3sPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -19109,8 +19107,6 @@ impl ObjectDeformBoneRigBipedHand5f3s {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -19345,8 +19341,6 @@ impl ObjectDeformBoneRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -19497,29 +19491,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedHand5f3s
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_hand_5f_3s"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedHand5f3sOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedHand5f3sOutputs for ObjectDeformBoneRigBipedHand5f3s {}
+impl ObjectDeformBoneRigBipedHand5f3sOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedHand5f3s>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHand5f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -19766,7 +19774,7 @@ pub enum ObjectDeformBoneRigBipedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformBoneRigBipedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -19783,13 +19791,11 @@ impl ObjectDeformBoneRigBipedHeadAndNeck {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -20174,8 +20180,6 @@ impl ObjectDeformBoneRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -21184,8 +21188,6 @@ impl ObjectDeformBoneRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -21218,8 +21220,6 @@ impl ObjectDeformBoneRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedHeadAndNeckPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -21322,8 +21322,6 @@ impl ObjectDeformBoneRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -21684,8 +21682,6 @@ impl ObjectDeformBoneRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -21852,29 +21848,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedHeadAndN
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_head_and_neck"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedHeadAndNeckOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedHeadAndNeckOutputs for ObjectDeformBoneRigBipedHeadAndNeck {}
+impl ObjectDeformBoneRigBipedHeadAndNeckOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedHeadAndNeck>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -21975,7 +21987,7 @@ pub enum ObjectDeformBoneRigBipedLegUparmtype {
 pub struct ObjectDeformBoneRigBipedLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -21992,13 +22004,11 @@ impl ObjectDeformBoneRigBipedLeg {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -22463,8 +22473,6 @@ impl ObjectDeformBoneRigBipedLeg {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -23697,8 +23705,6 @@ impl ObjectDeformBoneRigBipedLeg {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -23731,8 +23737,6 @@ impl ObjectDeformBoneRigBipedLeg {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedLegPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -23797,8 +23801,6 @@ impl ObjectDeformBoneRigBipedLeg {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -24033,8 +24035,6 @@ impl ObjectDeformBoneRigBipedLeg {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -24185,29 +24185,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedLeg {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_leg"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedLegOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedLegOutputs for ObjectDeformBoneRigBipedLeg {}
+impl ObjectDeformBoneRigBipedLegOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedLeg>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -24316,7 +24330,7 @@ pub enum ObjectDeformBoneRigBipedSpine3pcUparmtype {
 pub struct ObjectDeformBoneRigBipedSpine3pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -24333,13 +24347,11 @@ impl ObjectDeformBoneRigBipedSpine3pc {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -24644,8 +24656,6 @@ impl ObjectDeformBoneRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -25430,8 +25440,6 @@ impl ObjectDeformBoneRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -25464,8 +25472,6 @@ impl ObjectDeformBoneRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedSpine3pcPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -25530,8 +25536,6 @@ impl ObjectDeformBoneRigBipedSpine3pc {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -25766,8 +25770,6 @@ impl ObjectDeformBoneRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -25918,29 +25920,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedSpine3pc
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_spine_3pc"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedSpine3pcOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedSpine3pcOutputs for ObjectDeformBoneRigBipedSpine3pc {}
+impl ObjectDeformBoneRigBipedSpine3pcOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedSpine3pc>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedSpine3pcInnerExt {
     fn hook_in_deform_out_chest(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -26021,7 +26037,7 @@ pub enum ObjectDeformBoneRigBipedSpine5pcUparmtype {
 pub struct ObjectDeformBoneRigBipedSpine5pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -26038,13 +26054,11 @@ impl ObjectDeformBoneRigBipedSpine5pc {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -26509,8 +26523,6 @@ impl ObjectDeformBoneRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -27743,8 +27755,6 @@ impl ObjectDeformBoneRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -27777,8 +27787,6 @@ impl ObjectDeformBoneRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigBipedSpine5pcPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -27843,8 +27851,6 @@ impl ObjectDeformBoneRigBipedSpine5pc {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -28079,8 +28085,6 @@ impl ObjectDeformBoneRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -28231,29 +28235,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigBipedSpine5pc
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_biped_spine_5pc"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigBipedSpine5pcOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigBipedSpine5pcOutputs for ObjectDeformBoneRigBipedSpine5pc {}
+impl ObjectDeformBoneRigBipedSpine5pcOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigBipedSpine5pc>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigBipedSpine5pcInnerExt {
     fn hook_in_deform_out_chest1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -28350,7 +28368,7 @@ pub enum ObjectDeformBoneRigQuadrupedBackLegUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedBackLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -28367,13 +28385,11 @@ impl ObjectDeformBoneRigQuadrupedBackLeg {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -28838,8 +28854,6 @@ impl ObjectDeformBoneRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -30072,8 +30086,6 @@ impl ObjectDeformBoneRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -30106,8 +30118,6 @@ impl ObjectDeformBoneRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedBackLegPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -30172,8 +30182,6 @@ impl ObjectDeformBoneRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -30408,8 +30416,6 @@ impl ObjectDeformBoneRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -30560,29 +30566,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedBack
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_back_leg"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedBackLegOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedBackLegOutputs for ObjectDeformBoneRigQuadrupedBackLeg {}
+impl ObjectDeformBoneRigQuadrupedBackLegOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedBackLeg>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedBackLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -30687,7 +30709,7 @@ pub enum ObjectDeformBoneRigQuadrupedFrontLegUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedFrontLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -30704,13 +30726,11 @@ impl ObjectDeformBoneRigQuadrupedFrontLeg {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -31255,8 +31275,6 @@ impl ObjectDeformBoneRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -32713,8 +32731,6 @@ impl ObjectDeformBoneRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -32747,8 +32763,6 @@ impl ObjectDeformBoneRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedFrontLegPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -32813,8 +32827,6 @@ impl ObjectDeformBoneRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -33049,8 +33061,6 @@ impl ObjectDeformBoneRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -33201,29 +33211,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedFron
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_front_leg"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedFrontLegOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedFrontLegOutputs for ObjectDeformBoneRigQuadrupedFrontLeg {}
+impl ObjectDeformBoneRigQuadrupedFrontLegOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedFrontLeg>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedFrontLegInnerExt {
     fn hook_in_deform_out_finger_end(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -33362,7 +33388,7 @@ pub enum ObjectDeformBoneRigQuadrupedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformBoneRigQuadrupedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -33379,13 +33405,11 @@ impl ObjectDeformBoneRigQuadrupedHeadAndNeck {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -33930,8 +33954,6 @@ impl ObjectDeformBoneRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -35388,8 +35410,6 @@ impl ObjectDeformBoneRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -35422,8 +35442,6 @@ impl ObjectDeformBoneRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedHeadAndNeckPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -35526,8 +35544,6 @@ impl ObjectDeformBoneRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -35834,8 +35850,6 @@ impl ObjectDeformBoneRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -36002,29 +36016,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedHead
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_head_and_neck"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedHeadAndNeckOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedHeadAndNeckOutputs for ObjectDeformBoneRigQuadrupedHeadAndNeck {}
+impl ObjectDeformBoneRigQuadrupedHeadAndNeckOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedHeadAndNeck>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -36141,7 +36171,7 @@ pub enum ObjectDeformBoneRigQuadrupedIkSpineUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedIkSpine {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -36158,13 +36188,11 @@ impl ObjectDeformBoneRigQuadrupedIkSpine {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -37029,8 +37057,6 @@ impl ObjectDeformBoneRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -39383,8 +39409,6 @@ impl ObjectDeformBoneRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -39417,8 +39441,6 @@ impl ObjectDeformBoneRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedIkSpinePreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -39483,8 +39505,6 @@ impl ObjectDeformBoneRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -39719,8 +39739,6 @@ impl ObjectDeformBoneRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -39871,29 +39889,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedIkSp
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_ik_spine"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedIkSpineOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedIkSpineOutputs for ObjectDeformBoneRigQuadrupedIkSpine {}
+impl ObjectDeformBoneRigQuadrupedIkSpineOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedIkSpine>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedIkSpineInnerExt {
     fn hook_in_deform_out_sacrum(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -40034,7 +40068,7 @@ pub enum ObjectDeformBoneRigQuadrupedTailUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedTail {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -40051,13 +40085,11 @@ impl ObjectDeformBoneRigQuadrupedTail {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -41002,8 +41034,6 @@ impl ObjectDeformBoneRigQuadrupedTail {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -43580,8 +43610,6 @@ impl ObjectDeformBoneRigQuadrupedTail {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -43614,8 +43642,6 @@ impl ObjectDeformBoneRigQuadrupedTail {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedTailPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -43680,8 +43706,6 @@ impl ObjectDeformBoneRigQuadrupedTail {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -43916,8 +43940,6 @@ impl ObjectDeformBoneRigQuadrupedTail {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -44068,29 +44090,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedTail
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_tail"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedTailOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedTailOutputs for ObjectDeformBoneRigQuadrupedTail {}
+impl ObjectDeformBoneRigQuadrupedTailOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedTail>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedTailInnerExt {
     fn hook_in_deform_out_tail1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -44235,7 +44271,7 @@ pub enum ObjectDeformBoneRigQuadrupedToes4fUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedToes4f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -44252,13 +44288,11 @@ impl ObjectDeformBoneRigQuadrupedToes4f {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -45523,8 +45557,6 @@ impl ObjectDeformBoneRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -48997,8 +49029,6 @@ impl ObjectDeformBoneRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -49031,8 +49061,6 @@ impl ObjectDeformBoneRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedToes4fPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -49097,8 +49125,6 @@ impl ObjectDeformBoneRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -49333,8 +49359,6 @@ impl ObjectDeformBoneRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -49485,29 +49509,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedToes
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_toes_4f"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedToes4fOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedToes4fOutputs for ObjectDeformBoneRigQuadrupedToes4f {}
+impl ObjectDeformBoneRigQuadrupedToes4fOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedToes4f>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedToes4fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -49724,7 +49764,7 @@ pub enum ObjectDeformBoneRigQuadrupedToes5fUparmtype {
 pub struct ObjectDeformBoneRigQuadrupedToes5f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -49741,13 +49781,11 @@ impl ObjectDeformBoneRigQuadrupedToes5f {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -51332,8 +51370,6 @@ impl ObjectDeformBoneRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -55702,8 +55738,6 @@ impl ObjectDeformBoneRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -55736,8 +55770,6 @@ impl ObjectDeformBoneRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformBoneRigQuadrupedToes5fPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -55802,8 +55834,6 @@ impl ObjectDeformBoneRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -56038,8 +56068,6 @@ impl ObjectDeformBoneRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -56190,29 +56218,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformBoneRigQuadrupedToes
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_bone_rig_quadruped_toes_5f"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformBoneRigQuadrupedToes5fOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformBoneRigQuadrupedToes5fOutputs for ObjectDeformBoneRigQuadrupedToes5f {}
+impl ObjectDeformBoneRigQuadrupedToes5fOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformBoneRigQuadrupedToes5f>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformBoneRigQuadrupedToes5fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -56473,7 +56517,7 @@ pub enum ObjectDeformRigBipedArmUparmtype {
 pub struct ObjectDeformRigBipedArm {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -56490,13 +56534,11 @@ impl ObjectDeformRigBipedArm {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -56753,8 +56795,6 @@ impl ObjectDeformRigBipedArm {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -57555,8 +57595,6 @@ impl ObjectDeformRigBipedArm {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -57637,8 +57675,6 @@ impl ObjectDeformRigBipedArm {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedArmPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -57703,8 +57739,6 @@ impl ObjectDeformRigBipedArm {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -57939,8 +57973,6 @@ impl ObjectDeformRigBipedArm {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -58107,29 +58139,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedArm {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_arm"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedArmOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedArmOutputs for ObjectDeformRigBipedArm {}
+impl ObjectDeformRigBipedArmOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedArm>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedArmInnerExt {
     fn hook_in_deform_out_collarbone(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -58350,7 +58396,7 @@ pub enum ObjectDeformRigBipedHand4f2sUparmtype {
 pub struct ObjectDeformRigBipedHand4f2s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -58367,13 +58413,11 @@ impl ObjectDeformRigBipedHand4f2s {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -59254,8 +59298,6 @@ impl ObjectDeformRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -62216,8 +62258,6 @@ impl ObjectDeformRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -62522,8 +62562,6 @@ impl ObjectDeformRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedHand4f2sPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -62588,8 +62626,6 @@ impl ObjectDeformRigBipedHand4f2s {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -62824,8 +62860,6 @@ impl ObjectDeformRigBipedHand4f2s {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -62992,29 +63026,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedHand4f2s {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_hand_4f_2s"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedHand4f2sOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedHand4f2sOutputs for ObjectDeformRigBipedHand4f2s {}
+impl ObjectDeformRigBipedHand4f2sOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedHand4f2s>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHand4f2sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -63547,7 +63595,7 @@ pub enum ObjectDeformRigBipedHand4f3sUparmtype {
 pub struct ObjectDeformRigBipedHand4f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -63564,13 +63612,11 @@ impl ObjectDeformRigBipedHand4f3s {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -64451,8 +64497,6 @@ impl ObjectDeformRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -67765,8 +67809,6 @@ impl ObjectDeformRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -68071,8 +68113,6 @@ impl ObjectDeformRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedHand4f3sPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -68137,8 +68177,6 @@ impl ObjectDeformRigBipedHand4f3s {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -68373,8 +68411,6 @@ impl ObjectDeformRigBipedHand4f3s {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -68541,29 +68577,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedHand4f3s {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_hand_4f_3s"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedHand4f3sOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedHand4f3sOutputs for ObjectDeformRigBipedHand4f3s {}
+impl ObjectDeformRigBipedHand4f3sOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedHand4f3s>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHand4f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -69272,7 +69322,7 @@ pub enum ObjectDeformRigBipedHand5f3sUparmtype {
 pub struct ObjectDeformRigBipedHand5f3s {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -69289,13 +69339,11 @@ impl ObjectDeformRigBipedHand5f3s {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -70368,8 +70416,6 @@ impl ObjectDeformRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -74482,8 +74528,6 @@ impl ObjectDeformRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -74836,8 +74880,6 @@ impl ObjectDeformRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedHand5f3sPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -74902,8 +74944,6 @@ impl ObjectDeformRigBipedHand5f3s {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -75138,8 +75178,6 @@ impl ObjectDeformRigBipedHand5f3s {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -75306,29 +75344,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedHand5f3s {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_hand_5f_3s"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedHand5f3sOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedHand5f3sOutputs for ObjectDeformRigBipedHand5f3s {}
+impl ObjectDeformRigBipedHand5f3sOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedHand5f3s>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHand5f3sInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -76211,7 +76263,7 @@ pub enum ObjectDeformRigBipedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformRigBipedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -76228,13 +76280,11 @@ impl ObjectDeformRigBipedHeadAndNeck {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -76411,8 +76461,6 @@ impl ObjectDeformRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -76733,8 +76781,6 @@ impl ObjectDeformRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -76783,8 +76829,6 @@ impl ObjectDeformRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedHeadAndNeckPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -76887,8 +76931,6 @@ impl ObjectDeformRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -77249,8 +77291,6 @@ impl ObjectDeformRigBipedHeadAndNeck {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -77433,29 +77473,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedHeadAndNeck 
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_head_and_neck"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedHeadAndNeckOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedHeadAndNeckOutputs for ObjectDeformRigBipedHeadAndNeck {}
+impl ObjectDeformRigBipedHeadAndNeckOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedHeadAndNeck>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -77608,7 +77662,7 @@ pub enum ObjectDeformRigBipedLegUparmtype {
 pub struct ObjectDeformRigBipedLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -77625,13 +77679,11 @@ impl ObjectDeformRigBipedLeg {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -77936,8 +77988,6 @@ impl ObjectDeformRigBipedLeg {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -78946,8 +78996,6 @@ impl ObjectDeformRigBipedLeg {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -79044,8 +79092,6 @@ impl ObjectDeformRigBipedLeg {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedLegPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -79110,8 +79156,6 @@ impl ObjectDeformRigBipedLeg {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -79346,8 +79390,6 @@ impl ObjectDeformRigBipedLeg {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -79514,29 +79556,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedLeg {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_leg"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedLegOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedLegOutputs for ObjectDeformRigBipedLeg {}
+impl ObjectDeformRigBipedLegOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedLeg>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -79797,7 +79853,7 @@ pub enum ObjectDeformRigBipedSpine3pcUparmtype {
 pub struct ObjectDeformRigBipedSpine3pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -79814,13 +79870,11 @@ impl ObjectDeformRigBipedSpine3pc {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -79965,8 +80019,6 @@ impl ObjectDeformRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -80319,8 +80371,6 @@ impl ObjectDeformRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -80369,8 +80419,6 @@ impl ObjectDeformRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedSpine3pcPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -80435,8 +80483,6 @@ impl ObjectDeformRigBipedSpine3pc {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -80689,8 +80735,6 @@ impl ObjectDeformRigBipedSpine3pc {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -80857,29 +80901,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedSpine3pc {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_spine_3pc"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedSpine3pcOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedSpine3pcOutputs for ObjectDeformRigBipedSpine3pc {}
+impl ObjectDeformRigBipedSpine3pcOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedSpine3pc>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedSpine3pcInnerExt {
     fn hook_in_deform_out_chest(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -81032,7 +81090,7 @@ pub enum ObjectDeformRigBipedSpine5pcUparmtype {
 pub struct ObjectDeformRigBipedSpine5pc {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -81049,13 +81107,11 @@ impl ObjectDeformRigBipedSpine5pc {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -81200,8 +81256,6 @@ impl ObjectDeformRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -81618,8 +81672,6 @@ impl ObjectDeformRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -81668,8 +81720,6 @@ impl ObjectDeformRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigBipedSpine5pcPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -81734,8 +81784,6 @@ impl ObjectDeformRigBipedSpine5pc {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -81988,8 +82036,6 @@ impl ObjectDeformRigBipedSpine5pc {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -82156,29 +82202,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigBipedSpine5pc {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_biped_spine_5pc"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigBipedSpine5pcOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigBipedSpine5pcOutputs for ObjectDeformRigBipedSpine5pc {}
+impl ObjectDeformRigBipedSpine5pcOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigBipedSpine5pc>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigBipedSpine5pcInnerExt {
     fn hook_in_deform_out_chest1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -82371,7 +82431,7 @@ pub enum ObjectDeformRigQuadrupedBackLegUparmtype {
 pub struct ObjectDeformRigQuadrupedBackLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -82388,13 +82448,11 @@ impl ObjectDeformRigQuadrupedBackLeg {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -82699,8 +82757,6 @@ impl ObjectDeformRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -83581,8 +83637,6 @@ impl ObjectDeformRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -83679,8 +83733,6 @@ impl ObjectDeformRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedBackLegPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -83745,8 +83797,6 @@ impl ObjectDeformRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -83981,8 +84031,6 @@ impl ObjectDeformRigQuadrupedBackLeg {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -84149,29 +84197,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedBackLeg 
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_back_leg"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedBackLegOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedBackLegOutputs for ObjectDeformRigQuadrupedBackLeg {}
+impl ObjectDeformRigQuadrupedBackLegOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedBackLeg>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedBackLegInnerExt {
     fn hook_in_deform_out_ankle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -84396,7 +84458,7 @@ pub enum ObjectDeformRigQuadrupedFrontLegUparmtype {
 pub struct ObjectDeformRigQuadrupedFrontLeg {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -84413,13 +84475,11 @@ impl ObjectDeformRigQuadrupedFrontLeg {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -84724,8 +84784,6 @@ impl ObjectDeformRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -85606,8 +85664,6 @@ impl ObjectDeformRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -85704,8 +85760,6 @@ impl ObjectDeformRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedFrontLegPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -85770,8 +85824,6 @@ impl ObjectDeformRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -86006,8 +86058,6 @@ impl ObjectDeformRigQuadrupedFrontLeg {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -86174,29 +86224,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedFrontLeg
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_front_leg"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedFrontLegOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedFrontLegOutputs for ObjectDeformRigQuadrupedFrontLeg {}
+impl ObjectDeformRigQuadrupedFrontLegOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedFrontLeg>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedFrontLegInnerExt {
     fn hook_in_deform_out_finger_end(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -86439,7 +86503,7 @@ pub enum ObjectDeformRigQuadrupedHeadAndNeckRightEyeUseCustomEye {
 pub struct ObjectDeformRigQuadrupedHeadAndNeck {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -86456,13 +86520,11 @@ impl ObjectDeformRigQuadrupedHeadAndNeck {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -86639,8 +86701,6 @@ impl ObjectDeformRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -87121,8 +87181,6 @@ impl ObjectDeformRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -87171,8 +87229,6 @@ impl ObjectDeformRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedHeadAndNeckPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -87275,8 +87331,6 @@ impl ObjectDeformRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -87601,8 +87655,6 @@ impl ObjectDeformRigQuadrupedHeadAndNeck {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -87785,29 +87837,45 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedHeadAndN
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_head_and_neck"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedHeadAndNeckOutputs:
+    houdini_ramen_core::types::HoudiniNode
+{
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedHeadAndNeckOutputs for ObjectDeformRigQuadrupedHeadAndNeck {}
+impl ObjectDeformRigQuadrupedHeadAndNeckOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedHeadAndNeck>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedHeadAndNeckInnerExt {
     fn hook_in_deform_out_head(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -88008,7 +88076,7 @@ pub enum ObjectDeformRigQuadrupedIkSpineUparmtype {
 pub struct ObjectDeformRigQuadrupedIkSpine {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -88025,13 +88093,11 @@ impl ObjectDeformRigQuadrupedIkSpine {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -88176,8 +88242,6 @@ impl ObjectDeformRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -88722,8 +88786,6 @@ impl ObjectDeformRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -88772,8 +88834,6 @@ impl ObjectDeformRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedIkSpinePreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -88838,8 +88898,6 @@ impl ObjectDeformRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -89074,8 +89132,6 @@ impl ObjectDeformRigQuadrupedIkSpine {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -89242,29 +89298,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedIkSpine 
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_ik_spine"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedIkSpineOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedIkSpineOutputs for ObjectDeformRigQuadrupedIkSpine {}
+impl ObjectDeformRigQuadrupedIkSpineOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedIkSpine>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedIkSpineInnerExt {
     fn hook_in_deform_out_sacrum(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -89525,7 +89595,7 @@ pub enum ObjectDeformRigQuadrupedTailUparmtype {
 pub struct ObjectDeformRigQuadrupedTail {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -89542,13 +89612,11 @@ impl ObjectDeformRigQuadrupedTail {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -89693,8 +89761,6 @@ impl ObjectDeformRigQuadrupedTail {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -90303,8 +90369,6 @@ impl ObjectDeformRigQuadrupedTail {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -90353,8 +90417,6 @@ impl ObjectDeformRigQuadrupedTail {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedTailPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -90419,8 +90481,6 @@ impl ObjectDeformRigQuadrupedTail {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -90655,8 +90715,6 @@ impl ObjectDeformRigQuadrupedTail {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -90823,29 +90881,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedTail {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_tail"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedTailOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedTailOutputs for ObjectDeformRigQuadrupedTail {}
+impl ObjectDeformRigQuadrupedTailOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedTail>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedTailInnerExt {
     fn hook_in_deform_out_tail1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -91138,7 +91210,7 @@ pub enum ObjectDeformRigQuadrupedToes4fUparmtype {
 pub struct ObjectDeformRigQuadrupedToes4f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -91155,13 +91227,11 @@ impl ObjectDeformRigQuadrupedToes4f {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -91994,8 +92064,6 @@ impl ObjectDeformRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -95132,8 +95200,6 @@ impl ObjectDeformRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -95422,8 +95488,6 @@ impl ObjectDeformRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedToes4fPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -95488,8 +95552,6 @@ impl ObjectDeformRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -95724,8 +95786,6 @@ impl ObjectDeformRigQuadrupedToes4f {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -95892,29 +95952,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedToes4f {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_toes_4f"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedToes4fOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedToes4fOutputs for ObjectDeformRigQuadrupedToes4f {}
+impl ObjectDeformRigQuadrupedToes4fOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedToes4f>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedToes4fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -96575,7 +96649,7 @@ pub enum ObjectDeformRigQuadrupedToes5fUparmtype {
 pub struct ObjectDeformRigQuadrupedToes5f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -96592,13 +96666,11 @@ impl ObjectDeformRigQuadrupedToes5f {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -97623,8 +97695,6 @@ impl ObjectDeformRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -101529,8 +101599,6 @@ impl ObjectDeformRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -101867,8 +101935,6 @@ impl ObjectDeformRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectDeformRigQuadrupedToes5fPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -101933,8 +101999,6 @@ impl ObjectDeformRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -102169,8 +102233,6 @@ impl ObjectDeformRigQuadrupedToes5f {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -102337,29 +102399,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDeformRigQuadrupedToes5f {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deform_rig_quadruped_toes_5f"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDeformRigQuadrupedToes5fOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDeformRigQuadrupedToes5fOutputs for ObjectDeformRigQuadrupedToes5f {}
+impl ObjectDeformRigQuadrupedToes5fOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDeformRigQuadrupedToes5f>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDeformRigQuadrupedToes5fInnerExt {
     fn hook_in_deform_out_index1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -103187,7 +103263,7 @@ pub enum ObjectDopnetUparmtype {
 pub struct ObjectDopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -103204,70 +103280,36 @@ impl ObjectDopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "parent"
-    pub fn set_input_parent<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "parent" and specifies the output index of the target node.
-    pub fn set_input_parent_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_resimulate(mut self) -> Self {
         self.params.insert(
             "resimulate".to_string(),
@@ -103275,8 +103317,6 @@ impl ObjectDopnet {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_timestep(mut self, val: f32) -> Self {
         self.params.insert(
             "timestep".to_string(),
@@ -103389,8 +103429,6 @@ impl ObjectDopnet {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -103503,8 +103541,6 @@ impl ObjectDopnet {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_display(mut self, val: i32) -> Self {
         self.params.insert(
             "display".to_string(),
@@ -103649,8 +103685,6 @@ impl ObjectDopnet {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_compresssims(mut self, val: ObjectDopnetCompresssims) -> Self {
         self.params.insert(
             "compresssims".to_string(),
@@ -103731,8 +103765,6 @@ impl ObjectDopnet {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_playfilesname(mut self, val: &str) -> Self {
         self.params.insert(
             "playfilesname".to_string(),
@@ -103913,8 +103945,6 @@ impl ObjectDopnet {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_isplayer(mut self, val: bool) -> Self {
         self.params.insert(
             "isplayer".to_string(),
@@ -104209,29 +104239,40 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectDopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dopnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectDopnetOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectDopnetOutputs for ObjectDopnet {}
+impl ObjectDopnetOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectDopnet> {}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectDopnetInnerExt {
     fn output(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;

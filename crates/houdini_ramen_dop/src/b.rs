@@ -40,7 +40,7 @@ pub enum DopBlendfactorSharedata {
 pub struct DopBlendfactor {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -57,93 +57,46 @@ impl DopBlendfactor {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Data to attach Accepts 1 of: Active Value Anchor: Align Axis Anchor: Object Attach Anchor: Object Point Group Position Anchor: Object Point Group Rotation Anchor: Object Point Id Position Anchor: Object Point Id Rotation Anchor: Object Point Number Position Anchor: Object Point Number Rotation Anchor: Object Primitive Position Anchor: Object Region Anchor: Object Slide Anchor: Object Space Position Anchor: Object Space Rotation Anchor: Target Anchor: World Space Position Anchor: World Space Rotation Blend Factor Blend Solver Bullet Data Bullet Soft Constraint Relationship Bullet Solver Buoyancy Force Cloth Visualization Collide Relationship Collider Label Cone Twist Constraint Relationship Constraint Constraint Network Relationship Constraint Network Visualization Container Copy Data Solver Drag Force Drag Properties Embedding Properties Empty Data Empty Relationship FEM Solver - Core Fan Force Field Force Finite Element Output Attributes Gas Adaptive Viscosity Gas Adjust Elasticity Gas Adjust Particle Coordinates Gas Advect Gas Advect CL Gas Advect CL Gas Advect Field Gas Analysis Gas Attribute Swap Gas Blur Gas Build Collision Mask Gas Build Collision Mask From Pieces Gas Build Occupancy Mask Gas Build Relationship Mask Gas Buoyancy Gas Calculate Gas Collision Detect Gas Compute Particle Attributes Gas Convex Clip SDF Gas Correct By Markers Gas Cross Gas DSD Gas Diffuse Gas Disturbance CL Gas Each Data Solver Gas Elasticity Gas Enforce Boundary Gas Error Gas External Forces Gas Extrapolate Gas Feedback Gas Field to Particle Gas Filter Hourglass Modes Gas Geometry Defragment Gas Geometry to SDF Gas Geometry/Option Transfer Gas Impact to Attributes Gas Integrate Shallow Water Equations Gas Integrator Gas Interleave Solver Gas Intermittent Solve Gas Limit Gas Limit Particles Gas Linear Combination Gas Lookup Gas Match Field Gas Net Fetch Data Gas Net Field Border Exchange Gas Net Field Slice Exchange Gas Net Slice Balance Gas Net Slice Exchange Gas Particle Count Gas Particle Fluid Density CL Gas Particle Fluid Forces CL Gas Particle Forces Gas Particle Move to Iso Gas Particle Neighbour Update Gas Particle Pressure Gas Particle Separate Gas Particle to Field Gas Particle to SDF Gas Project Non Divergent Gas Project Non Divergent Adaptive Gas Project Non Divergent Multigrid Gas Project Non Divergent Variational Gas Reduce Gas Reduce Local Gas Reinitialize SDF Gas Repeat Solver Gas Reset Inactive Gas Resize Field Gas Rest Gas SDF to Fog Gas SPH Density Gas SPH Forces Gas Sand Forces Gas Seed Fluid Particles Gas Seed Markers Gas Seed Particles Gas Seed Volume Gas Slice To Index Field Gas Strain Forces Gas Strain Integrate Gas SubStep Gas Surface Snap Gas Surface Tension Gas Synchronize Fields Gas Velocity Stretch Gas Viscosity Gas Vorticle Forces Gas Wavelets Geometry Copy Glue Constraint Relationship Gravity Force Group Relationship Hard Constraint Relationship Impulse Force Index Field Index Field Visualization Initial Overlap Relationship Intangible Value Magnet Force Mask Field Matrix Field Matrix Field Visualization Motion Multi-Field Visualization Multiple Solver No Collider No Constraint Relationship Noise Field POP Shape Match Particle Fluid Visualization Particle Material Property Parameters Physical Parameters Point Collider Point Force Point Position Position Position Composite Pump Relationship RBD Solver RBD State RBD Visualization Reference Frame Force Rendering Parameters Rendering Parameters Volatile Rod Material Property Parameters SDF Representation SOP Merge Field SOP Scalar Field SOP Vector Field Scalar Field Scalar Field Visualization Seam Properties Shell Material Property Parameters Sink Relationship Slice by Plane Slider Constraint Relationship Soft Body Collision Properties Soft Body Fracture Properties Soft Body Rest Properties Soft Body Target Properties SoftAttach Constraint Relationship Solid Material Property Parameters Source Relationship Sphere Edge Tree Sphere Point Tree Spring Constraint Relationship Static Solver Static Visualization Surface Collision Parameters Switch Solver Switch Value Target Relationship ThinPlate/ThinPlate Collider Two State Constraint Relationship Uniform Force Vector Field Vector Field Visualization Velocity Impulse Force Volume Instance Source Volume/Volume Collider Voronoi Fracture Parameters Vortex Force Wire Elasticity Wire Physical Parameters Wire Plasticity Wire Solver Wire Visualization Wire/Volume Collider Wire/Wire Collider"
-    pub fn set_input_data_to_attach_accepts_1_of_active_value<
-        N: houdini_ramen_core::types::HoudiniNode,
+    pub fn set_data_to_attach_accepts_1_of_active_value_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
     >(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 1: "Data to attach Accepts 1 of: Active Value Anchor: Align Axis Anchor: Object Attach Anchor: Object Point Group Position Anchor: Object Point Group Rotation Anchor: Object Point Id Position Anchor: Object Point Id Rotation Anchor: Object Point Number Position Anchor: Object Point Number Rotation Anchor: Object Primitive Position Anchor: Object Region Anchor: Object Slide Anchor: Object Space Position Anchor: Object Space Rotation Anchor: Target Anchor: World Space Position Anchor: World Space Rotation Blend Factor Blend Solver Bullet Data Bullet Soft Constraint Relationship Bullet Solver Buoyancy Force Cloth Visualization Collide Relationship Collider Label Cone Twist Constraint Relationship Constraint Constraint Network Relationship Constraint Network Visualization Container Copy Data Solver Drag Force Drag Properties Embedding Properties Empty Data Empty Relationship FEM Solver - Core Fan Force Field Force Finite Element Output Attributes Gas Adaptive Viscosity Gas Adjust Elasticity Gas Adjust Particle Coordinates Gas Advect Gas Advect CL Gas Advect CL Gas Advect Field Gas Analysis Gas Attribute Swap Gas Blur Gas Build Collision Mask Gas Build Collision Mask From Pieces Gas Build Occupancy Mask Gas Build Relationship Mask Gas Buoyancy Gas Calculate Gas Collision Detect Gas Compute Particle Attributes Gas Convex Clip SDF Gas Correct By Markers Gas Cross Gas DSD Gas Diffuse Gas Disturbance CL Gas Each Data Solver Gas Elasticity Gas Enforce Boundary Gas Error Gas External Forces Gas Extrapolate Gas Feedback Gas Field to Particle Gas Filter Hourglass Modes Gas Geometry Defragment Gas Geometry to SDF Gas Geometry/Option Transfer Gas Impact to Attributes Gas Integrate Shallow Water Equations Gas Integrator Gas Interleave Solver Gas Intermittent Solve Gas Limit Gas Limit Particles Gas Linear Combination Gas Lookup Gas Match Field Gas Net Fetch Data Gas Net Field Border Exchange Gas Net Field Slice Exchange Gas Net Slice Balance Gas Net Slice Exchange Gas Particle Count Gas Particle Fluid Density CL Gas Particle Fluid Forces CL Gas Particle Forces Gas Particle Move to Iso Gas Particle Neighbour Update Gas Particle Pressure Gas Particle Separate Gas Particle to Field Gas Particle to SDF Gas Project Non Divergent Gas Project Non Divergent Adaptive Gas Project Non Divergent Multigrid Gas Project Non Divergent Variational Gas Reduce Gas Reduce Local Gas Reinitialize SDF Gas Repeat Solver Gas Reset Inactive Gas Resize Field Gas Rest Gas SDF to Fog Gas SPH Density Gas SPH Forces Gas Sand Forces Gas Seed Fluid Particles Gas Seed Markers Gas Seed Particles Gas Seed Volume Gas Slice To Index Field Gas Strain Forces Gas Strain Integrate Gas SubStep Gas Surface Snap Gas Surface Tension Gas Synchronize Fields Gas Velocity Stretch Gas Viscosity Gas Vorticle Forces Gas Wavelets Geometry Copy Glue Constraint Relationship Gravity Force Group Relationship Hard Constraint Relationship Impulse Force Index Field Index Field Visualization Initial Overlap Relationship Intangible Value Magnet Force Mask Field Matrix Field Matrix Field Visualization Motion Multi-Field Visualization Multiple Solver No Collider No Constraint Relationship Noise Field POP Shape Match Particle Fluid Visualization Particle Material Property Parameters Physical Parameters Point Collider Point Force Point Position Position Position Composite Pump Relationship RBD Solver RBD State RBD Visualization Reference Frame Force Rendering Parameters Rendering Parameters Volatile Rod Material Property Parameters SDF Representation SOP Merge Field SOP Scalar Field SOP Vector Field Scalar Field Scalar Field Visualization Seam Properties Shell Material Property Parameters Sink Relationship Slice by Plane Slider Constraint Relationship Soft Body Collision Properties Soft Body Fracture Properties Soft Body Rest Properties Soft Body Target Properties SoftAttach Constraint Relationship Solid Material Property Parameters Source Relationship Sphere Edge Tree Sphere Point Tree Spring Constraint Relationship Static Solver Static Visualization Surface Collision Parameters Switch Solver Switch Value Target Relationship ThinPlate/ThinPlate Collider Two State Constraint Relationship Uniform Force Vector Field Vector Field Visualization Velocity Impulse Force Volume Instance Source Volume/Volume Collider Voronoi Fracture Parameters Vortex Force Wire Elasticity Wire Physical Parameters Wire Plasticity Wire Solver Wire Visualization Wire/Volume Collider Wire/Wire Collider" and specifies the output index of the target node.
-    pub fn set_input_data_to_attach_accepts_1_of_active_value_from<
-        N: houdini_ramen_core::types::HoudiniNode,
-    >(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_blend(mut self, val: f32) -> Self {
         self.params.insert(
             "blend".to_string(),
@@ -160,8 +113,6 @@ impl DopBlendfactor {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
         self.params.insert(
             "activation".to_string(),
@@ -178,8 +129,6 @@ impl DopBlendfactor {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_blend(mut self, val: DopBlendfactorParmopBlend) -> Self {
         self.params.insert(
             "parmop_blend".to_string(),
@@ -260,8 +209,6 @@ impl DopBlendfactor {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
@@ -298,8 +245,6 @@ impl DopBlendfactor {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_useblendeddata(mut self, val: bool) -> Self {
         self.params.insert(
             "useblendeddata".to_string(),
@@ -338,29 +283,39 @@ impl houdini_ramen_core::types::HoudiniNode for DopBlendfactor {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "blendfactor"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DopBlendfactorOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopBlendfactorOutputs for DopBlendfactor {}
+impl DopBlendfactorOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopBlendfactor> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopBlendsolverParmopBlenddataname {
@@ -421,7 +376,7 @@ pub enum DopBlendsolverDefaultparmop {
 pub struct DopBlendsolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -440,55 +395,29 @@ impl DopBlendsolver {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Int parameters ---
     pub fn with_primarysolver(mut self, val: i32) -> Self {
         self.params.insert(
             "primarysolver".to_string(),
@@ -505,8 +434,6 @@ impl DopBlendsolver {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_blenddataname(mut self, val: DopBlendsolverParmopBlenddataname) -> Self {
         self.params.insert(
             "parmop_blenddataname".to_string(),
@@ -590,8 +517,6 @@ impl DopBlendsolver {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_blenddataname(mut self, val: &str) -> Self {
         self.params.insert(
             "blenddataname".to_string(),
@@ -664,8 +589,6 @@ impl DopBlendsolver {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_matchbyname(mut self, val: bool) -> Self {
         self.params.insert(
             "matchbyname".to_string(),
@@ -736,29 +659,39 @@ impl houdini_ramen_core::types::HoudiniNode for DopBlendsolver {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "blendsolver"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DopBlendsolverOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopBlendsolverOutputs for DopBlendsolver {}
+impl DopBlendsolverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopBlendsolver> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopBulletdataParmopBulletGeorep {
@@ -958,7 +891,7 @@ pub enum DopBulletdataSharedata {
 pub struct DopBulletdata {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -975,70 +908,36 @@ impl DopBulletdata {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_bullet_radius(mut self, val: f32) -> Self {
         self.params.insert(
             "bullet_radius".to_string(),
@@ -1135,8 +1034,6 @@ impl DopBulletdata {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_bullet_primt(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "bullet_primT".to_string(),
@@ -1217,8 +1114,6 @@ impl DopBulletdata {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
         self.params.insert(
             "activation".to_string(),
@@ -1235,8 +1130,6 @@ impl DopBulletdata {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_bullet_georep(mut self, val: DopBulletdataParmopBulletGeorep) -> Self {
         self.params.insert(
             "parmop_bullet_georep".to_string(),
@@ -1549,8 +1442,6 @@ impl DopBulletdata {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_bullet_georep(mut self, val: &str) -> Self {
         self.params.insert(
             "bullet_georep".to_string(),
@@ -1605,8 +1496,6 @@ impl DopBulletdata {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_bullet_groupconnected(mut self, val: bool) -> Self {
         self.params.insert(
             "bullet_groupconnected".to_string(),
@@ -1725,29 +1614,39 @@ impl houdini_ramen_core::types::HoudiniNode for DopBulletdata {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "bulletdata"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DopBulletdataOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopBulletdataOutputs for DopBulletdata {}
+impl DopBulletdataOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopBulletdata> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopBulletrbdsolverParmopTimescale {
@@ -2008,7 +1907,7 @@ pub enum DopBulletrbdsolverDefaultparmop {
 pub struct DopBulletrbdsolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -2027,55 +1926,29 @@ impl DopBulletrbdsolver {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_timescale(mut self, val: f32) -> Self {
         self.params.insert(
             "timescale".to_string(),
@@ -2204,8 +2077,6 @@ impl DopBulletrbdsolver {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_substeps(mut self, val: i32) -> Self {
         self.params.insert(
             "substeps".to_string(),
@@ -2238,8 +2109,6 @@ impl DopBulletrbdsolver {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_timescale(mut self, val: DopBulletrbdsolverParmopTimescale) -> Self {
         self.params.insert(
             "parmop_timescale".to_string(),
@@ -2628,8 +2497,6 @@ impl DopBulletrbdsolver {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_initialoverlaprel(mut self, val: &str) -> Self {
         self.params.insert(
             "initialoverlaprel".to_string(),
@@ -2702,8 +2569,6 @@ impl DopBulletrbdsolver {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_implicitdrag(mut self, val: bool) -> Self {
         self.params.insert(
             "implicitdrag".to_string(),
@@ -2870,28 +2735,41 @@ impl houdini_ramen_core::types::HoudiniNode for DopBulletrbdsolver {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "bulletrbdsolver"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait DopBulletrbdsolverOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopBulletrbdsolverOutputs for DopBulletrbdsolver {}
+impl DopBulletrbdsolverOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<DopBulletrbdsolver>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -3116,7 +2994,7 @@ pub enum DopBulletsoftconrelSharedata {
 pub struct DopBulletsoftconrel {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3133,70 +3011,36 @@ impl DopBulletsoftconrel {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed"
-    pub fn set_input_objects_to_be_processed<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Objects to be processed" and specifies the output index of the target node.
-    pub fn set_input_objects_to_be_processed_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_restlength(mut self, val: f32) -> Self {
         self.params.insert(
             "restlength".to_string(),
@@ -3389,8 +3233,6 @@ impl DopBulletsoftconrel {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_color(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "color".to_string(),
@@ -3407,8 +3249,6 @@ impl DopBulletsoftconrel {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_numiterations(mut self, val: i32) -> Self {
         self.params.insert(
             "numiterations".to_string(),
@@ -3441,8 +3281,6 @@ impl DopBulletsoftconrel {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_restlength(mut self, val: DopBulletsoftconrelParmopRestlength) -> Self {
         self.params.insert(
             "parmop_restlength".to_string(),
@@ -3802,8 +3640,6 @@ impl DopBulletsoftconrel {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
@@ -3840,8 +3676,6 @@ impl DopBulletsoftconrel {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_enableangular(mut self, val: bool) -> Self {
         self.params.insert(
             "enableangular".to_string(),
@@ -3960,28 +3794,41 @@ impl houdini_ramen_core::types::HoudiniNode for DopBulletsoftconrel {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "bulletsoftconrel"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait DopBulletsoftconrelOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopBulletsoftconrelOutputs for DopBulletsoftconrel {}
+impl DopBulletsoftconrelOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<DopBulletsoftconrel>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -4034,7 +3881,7 @@ pub enum DopBuoyancyforceSharedata {
 pub struct DopBuoyancyforce {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -4053,55 +3900,29 @@ impl DopBuoyancyforce {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Float3 parameters ---
     pub fn with_force(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "force".to_string(),
@@ -4118,8 +3939,6 @@ impl DopBuoyancyforce {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_activation(mut self, val: i32) -> Self {
         self.params.insert(
             "activation".to_string(),
@@ -4136,8 +3955,6 @@ impl DopBuoyancyforce {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_parmop_force(mut self, val: DopBuoyancyforceParmopForce) -> Self {
         self.params.insert(
             "parmop_force".to_string(),
@@ -4234,8 +4051,6 @@ impl DopBuoyancyforce {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
@@ -4272,8 +4087,6 @@ impl DopBuoyancyforce {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_uniquedataname(mut self, val: bool) -> Self {
         self.params.insert(
             "uniquedataname".to_string(),
@@ -4296,26 +4109,36 @@ impl houdini_ramen_core::types::HoudiniNode for DopBuoyancyforce {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "buoyancyforce"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DopBuoyancyforceOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DopBuoyancyforceOutputs for DopBuoyancyforce {}
+impl DopBuoyancyforceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopBuoyancyforce> {}

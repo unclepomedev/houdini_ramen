@@ -92,7 +92,7 @@ pub enum ChopMathUnits {
 pub struct ChopMath {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -111,55 +111,29 @@ impl ChopMath {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_preoff(mut self, val: f32) -> Self {
         self.params.insert(
             "preoff".to_string(),
@@ -224,8 +198,6 @@ impl ChopMath {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_fromrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "fromrange".to_string(),
@@ -258,8 +230,6 @@ impl ChopMath {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -276,8 +246,6 @@ impl ChopMath {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_preop(mut self, val: ChopMathPreop) -> Self {
         self.params.insert(
             "preop".to_string(),
@@ -422,8 +390,6 @@ impl ChopMath {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
@@ -460,8 +426,6 @@ impl ChopMath {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
         self.params.insert(
             "timeslice".to_string(),
@@ -500,35 +464,45 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMath {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "math"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
 
+pub trait ChopMathOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMathOutputs for ChopMath {}
+impl ChopMathOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMath> {}
+
 #[derive(Debug, Clone)]
 pub struct ChopMatnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -545,7 +519,6 @@ impl ChopMatnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
@@ -556,25 +529,22 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMatnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "matnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -626,7 +596,7 @@ pub enum ChopMergeUnits {
 pub struct ChopMerge {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -645,55 +615,29 @@ impl ChopMerge {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_gcolorstep(mut self, val: f32) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
@@ -710,8 +654,6 @@ impl ChopMerge {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -728,8 +670,6 @@ impl ChopMerge {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_align(mut self, val: ChopMergeAlign) -> Self {
         self.params.insert(
             "align".to_string(),
@@ -794,8 +734,6 @@ impl ChopMerge {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
@@ -832,8 +770,6 @@ impl ChopMerge {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
         self.params.insert(
             "timeslice".to_string(),
@@ -872,29 +808,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMerge {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "merge"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopMergeOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMergeOutputs for ChopMerge {}
+impl ChopMergeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMerge> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopMidiinRecordtype {
@@ -1024,7 +970,7 @@ pub enum ChopMidiinUnits {
 pub struct ChopMidiin {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1041,13 +987,11 @@ impl ChopMidiin {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_reset(mut self) -> Self {
         self.params.insert(
             "reset".to_string(),
@@ -1055,8 +999,6 @@ impl ChopMidiin {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_start(mut self, val: f32) -> Self {
         self.params.insert(
             "start".to_string(),
@@ -1137,8 +1079,6 @@ impl ChopMidiin {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -1155,8 +1095,6 @@ impl ChopMidiin {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_ticks(mut self, val: i32) -> Self {
         self.params.insert(
             "ticks".to_string(),
@@ -1173,8 +1111,6 @@ impl ChopMidiin {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_recordtype(mut self, val: ChopMidiinRecordtype) -> Self {
         self.params.insert(
             "recordtype".to_string(),
@@ -1351,8 +1287,6 @@ impl ChopMidiin {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_source(mut self, val: &str) -> Self {
         self.params.insert(
             "source".to_string(),
@@ -2181,8 +2115,6 @@ impl ChopMidiin {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_entire(mut self, val: bool) -> Self {
         self.params.insert(
             "entire".to_string(),
@@ -2285,29 +2217,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMidiin {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "midiin"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopMidiinOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMidiinOutputs for ChopMidiin {}
+impl ChopMidiinOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMidiin> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopMidioutRecover {
@@ -2381,7 +2323,7 @@ pub enum ChopMidioutUnits {
 pub struct ChopMidiout {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2398,70 +2340,36 @@ impl ChopMidiout {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input 1"
-    pub fn set_input_input_1<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input 1" and specifies the output index of the target node.
-    pub fn set_input_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_entire(mut self) -> Self {
         self.params.insert(
             "entire".to_string(),
@@ -2483,8 +2391,6 @@ impl ChopMidiout {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_prequeue(mut self, val: f32) -> Self {
         self.params.insert(
             "prequeue".to_string(),
@@ -2549,8 +2455,6 @@ impl ChopMidiout {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -2567,8 +2471,6 @@ impl ChopMidiout {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_barticks(mut self, val: i32) -> Self {
         self.params.insert(
             "barticks".to_string(),
@@ -2601,8 +2503,6 @@ impl ChopMidiout {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_recover(mut self, val: ChopMidioutRecover) -> Self {
         self.params.insert(
             "recover".to_string(),
@@ -2731,8 +2631,6 @@ impl ChopMidiout {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_destination(mut self, val: &str) -> Self {
         self.params.insert(
             "destination".to_string(),
@@ -3039,8 +2937,6 @@ impl ChopMidiout {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_echo(mut self, val: bool) -> Self {
         self.params.insert(
             "echo".to_string(),
@@ -3111,29 +3007,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMidiout {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "midiout"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopMidioutOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMidioutOutputs for ChopMidiout {}
+impl ChopMidioutOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMidiout> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopMouseActive {
@@ -3182,7 +3088,7 @@ pub enum ChopMouseUnits {
 pub struct ChopMouse {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3199,13 +3105,11 @@ impl ChopMouse {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_rate(mut self, val: f32) -> Self {
         self.params.insert(
             "rate".to_string(),
@@ -3254,8 +3158,6 @@ impl ChopMouse {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -3272,8 +3174,6 @@ impl ChopMouse {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_active(mut self, val: ChopMouseActive) -> Self {
         self.params.insert(
             "active".to_string(),
@@ -3354,8 +3254,6 @@ impl ChopMouse {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_posxname(mut self, val: &str) -> Self {
         self.params.insert(
             "posxname".to_string(),
@@ -3518,8 +3416,6 @@ impl ChopMouse {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_usetablet(mut self, val: bool) -> Self {
         self.params.insert(
             "usetablet".to_string(),
@@ -3574,29 +3470,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMouse {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "mouse"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopMouseOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMouseOutputs for ChopMouse {}
+impl ChopMouseOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMouse> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopMouse3dRange {
@@ -3646,7 +3552,7 @@ pub enum ChopMouse3dUnits {
 pub struct ChopMouse3d {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3663,13 +3569,11 @@ impl ChopMouse3d {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_setfocus(mut self) -> Self {
         self.params.insert(
             "setfocus".to_string(),
@@ -3684,8 +3588,6 @@ impl ChopMouse3d {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_start(mut self, val: f32) -> Self {
         self.params.insert(
             "start".to_string(),
@@ -3766,8 +3668,6 @@ impl ChopMouse3d {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -3784,8 +3684,6 @@ impl ChopMouse3d {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_range(mut self, val: ChopMouse3dRange) -> Self {
         self.params.insert(
             "range".to_string(),
@@ -3866,8 +3764,6 @@ impl ChopMouse3d {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_axes(mut self, val: &str) -> Self {
         self.params.insert(
             "axes".to_string(),
@@ -3940,8 +3836,6 @@ impl ChopMouse3d {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
         self.params.insert(
             "timeslice".to_string(),
@@ -3980,29 +3874,39 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMouse3d {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "mouse3d"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopMouse3dOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMouse3dOutputs for ChopMouse3d {}
+impl ChopMouse3dOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMouse3d> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopMultiplyVexAlign {
@@ -4054,7 +3958,7 @@ pub enum ChopMultiplyUnits {
 pub struct ChopMultiply {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -4071,1951 +3975,828 @@ impl ChopMultiply {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input 1"
-    pub fn set_input_input_1<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input 1" and specifies the output index of the target node.
-    pub fn set_input_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Input 2"
-    pub fn set_input_input_2<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Input 2" and specifies the output index of the target node.
-    pub fn set_input_input_2_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 2: "Pivot"
-    pub fn set_input_pivot<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 2: "Pivot" and specifies the output index of the target node.
-    pub fn set_input_pivot_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 3: "Sub-Network Input #4"
-    pub fn set_input_sub_network_input_4<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 3: "Sub-Network Input #4" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_4_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 4: "Sub-Network Input #5"
-    pub fn set_input_sub_network_input_5<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(4, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 4: "Sub-Network Input #5" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_5_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(4, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 5: "Sub-Network Input #6"
-    pub fn set_input_sub_network_input_6<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(5, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 5: "Sub-Network Input #6" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_6_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(5, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 6: "Sub-Network Input #7"
-    pub fn set_input_sub_network_input_7<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(6, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 6: "Sub-Network Input #7" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_7_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(6, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 7: "Sub-Network Input #8"
-    pub fn set_input_sub_network_input_8<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(7, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 7: "Sub-Network Input #8" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_8_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(7, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 8: "Sub-Network Input #9"
-    pub fn set_input_sub_network_input_9<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(8, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 8: "Sub-Network Input #9" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_9_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(8, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 9: "Sub-Network Input #10"
-    pub fn set_input_sub_network_input_10<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(9, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 9: "Sub-Network Input #10" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_10_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(9, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 10: "Sub-Network Input #11"
-    pub fn set_input_sub_network_input_11<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(10, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 10: "Sub-Network Input #11" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_11_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(10, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 11: "Sub-Network Input #12"
-    pub fn set_input_sub_network_input_12<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(11, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 11: "Sub-Network Input #12" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_12_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(11, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 12: "Sub-Network Input #13"
-    pub fn set_input_sub_network_input_13<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(12, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 12: "Sub-Network Input #13" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_13_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(12, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 13: "Sub-Network Input #14"
-    pub fn set_input_sub_network_input_14<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(13, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 13: "Sub-Network Input #14" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_14_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(13, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 14: "Sub-Network Input #15"
-    pub fn set_input_sub_network_input_15<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(14, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 14: "Sub-Network Input #15" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_15_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(14, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 15: "Sub-Network Input #16"
-    pub fn set_input_sub_network_input_16<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(15, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 15: "Sub-Network Input #16" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_16_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(15, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 16: "Sub-Network Input #17"
-    pub fn set_input_sub_network_input_17<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(16, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 16: "Sub-Network Input #17" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_17_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(16, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 17: "Sub-Network Input #18"
-    pub fn set_input_sub_network_input_18<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(17, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 17: "Sub-Network Input #18" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_18_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(17, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 18: "Sub-Network Input #19"
-    pub fn set_input_sub_network_input_19<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(18, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 18: "Sub-Network Input #19" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_19_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(18, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 19: "Sub-Network Input #20"
-    pub fn set_input_sub_network_input_20<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(19, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 19: "Sub-Network Input #20" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_20_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(19, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 20: "Sub-Network Input #21"
-    pub fn set_input_sub_network_input_21<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(20, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 20: "Sub-Network Input #21" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_21_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(20, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 21: "Sub-Network Input #22"
-    pub fn set_input_sub_network_input_22<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(21, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 21: "Sub-Network Input #22" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_22_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(21, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 22: "Sub-Network Input #23"
-    pub fn set_input_sub_network_input_23<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(22, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 22: "Sub-Network Input #23" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_23_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(22, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 23: "Sub-Network Input #24"
-    pub fn set_input_sub_network_input_24<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(23, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 23: "Sub-Network Input #24" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_24_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(23, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 24: "Sub-Network Input #25"
-    pub fn set_input_sub_network_input_25<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(24, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 24: "Sub-Network Input #25" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_25_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(24, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 25: "Sub-Network Input #26"
-    pub fn set_input_sub_network_input_26<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(25, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 25: "Sub-Network Input #26" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_26_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(25, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 26: "Sub-Network Input #27"
-    pub fn set_input_sub_network_input_27<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(26, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 26: "Sub-Network Input #27" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_27_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(26, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 27: "Sub-Network Input #28"
-    pub fn set_input_sub_network_input_28<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(27, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 27: "Sub-Network Input #28" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_28_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(27, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 28: "Sub-Network Input #29"
-    pub fn set_input_sub_network_input_29<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(28, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 28: "Sub-Network Input #29" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_29_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(28, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 29: "Sub-Network Input #30"
-    pub fn set_input_sub_network_input_30<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(29, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 29: "Sub-Network Input #30" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_30_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(29, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 30: "Sub-Network Input #31"
-    pub fn set_input_sub_network_input_31<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(30, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 30: "Sub-Network Input #31" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_31_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(30, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 31: "Sub-Network Input #32"
-    pub fn set_input_sub_network_input_32<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(31, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 31: "Sub-Network Input #32" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_32_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(31, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 32: "Sub-Network Input #33"
-    pub fn set_input_sub_network_input_33<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(32, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 32: "Sub-Network Input #33" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_33_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(32, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 33: "Sub-Network Input #34"
-    pub fn set_input_sub_network_input_34<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(33, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 33: "Sub-Network Input #34" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_34_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(33, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 34: "Sub-Network Input #35"
-    pub fn set_input_sub_network_input_35<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(34, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 34: "Sub-Network Input #35" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_35_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(34, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 35: "Sub-Network Input #36"
-    pub fn set_input_sub_network_input_36<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(35, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 35: "Sub-Network Input #36" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_36_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(35, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 36: "Sub-Network Input #37"
-    pub fn set_input_sub_network_input_37<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(36, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 36: "Sub-Network Input #37" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_37_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(36, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 37: "Sub-Network Input #38"
-    pub fn set_input_sub_network_input_38<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(37, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 37: "Sub-Network Input #38" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_38_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(37, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 38: "Sub-Network Input #39"
-    pub fn set_input_sub_network_input_39<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(38, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 38: "Sub-Network Input #39" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_39_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(38, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 39: "Sub-Network Input #40"
-    pub fn set_input_sub_network_input_40<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(39, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 39: "Sub-Network Input #40" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_40_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(39, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 40: "Sub-Network Input #41"
-    pub fn set_input_sub_network_input_41<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(40, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 40: "Sub-Network Input #41" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_41_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(40, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 41: "Sub-Network Input #42"
-    pub fn set_input_sub_network_input_42<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(41, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 41: "Sub-Network Input #42" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_42_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(41, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 42: "Sub-Network Input #43"
-    pub fn set_input_sub_network_input_43<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(42, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 42: "Sub-Network Input #43" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_43_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(42, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 43: "Sub-Network Input #44"
-    pub fn set_input_sub_network_input_44<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(43, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 43: "Sub-Network Input #44" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_44_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(43, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 44: "Sub-Network Input #45"
-    pub fn set_input_sub_network_input_45<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(44, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 44: "Sub-Network Input #45" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_45_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(44, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 45: "Sub-Network Input #46"
-    pub fn set_input_sub_network_input_46<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(45, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 45: "Sub-Network Input #46" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_46_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(45, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 46: "Sub-Network Input #47"
-    pub fn set_input_sub_network_input_47<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(46, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 46: "Sub-Network Input #47" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_47_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(46, (target.get_id(), output_index));
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 47: "Sub-Network Input #48"
-    pub fn set_input_sub_network_input_48<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(47, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 47: "Sub-Network Input #48" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_48_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(47, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 48: "Sub-Network Input #49"
-    pub fn set_input_sub_network_input_49<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(48, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 48: "Sub-Network Input #49" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_49_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(48, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 49: "Sub-Network Input #50"
-    pub fn set_input_sub_network_input_50<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(49, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 49: "Sub-Network Input #50" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_50_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(49, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 50: "Sub-Network Input #51"
-    pub fn set_input_sub_network_input_51<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(50, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 50: "Sub-Network Input #51" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_51_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(50, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 51: "Sub-Network Input #52"
-    pub fn set_input_sub_network_input_52<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_pivot_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(51, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(2, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 51: "Sub-Network Input #52" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_52_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(51, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(3, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 52: "Sub-Network Input #53"
-    pub fn set_input_sub_network_input_53<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(52, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(4, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 52: "Sub-Network Input #53" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_53_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(52, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(5, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 53: "Sub-Network Input #54"
-    pub fn set_input_sub_network_input_54<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(53, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(6, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 53: "Sub-Network Input #54" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_54_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(53, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(7, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 54: "Sub-Network Input #55"
-    pub fn set_input_sub_network_input_55<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(54, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(8, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 54: "Sub-Network Input #55" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_55_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_10_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(54, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(9, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 55: "Sub-Network Input #56"
-    pub fn set_input_sub_network_input_56<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_11_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(55, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(10, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 55: "Sub-Network Input #56" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_56_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_12_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(55, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(11, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 56: "Sub-Network Input #57"
-    pub fn set_input_sub_network_input_57<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_13_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(56, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(12, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 56: "Sub-Network Input #57" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_57_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_14_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(56, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(13, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 57: "Sub-Network Input #58"
-    pub fn set_input_sub_network_input_58<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_15_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(57, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(14, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 57: "Sub-Network Input #58" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_58_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_16_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(57, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(15, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 58: "Sub-Network Input #59"
-    pub fn set_input_sub_network_input_59<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_17_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(58, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(16, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 58: "Sub-Network Input #59" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_59_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_18_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(58, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(17, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 59: "Sub-Network Input #60"
-    pub fn set_input_sub_network_input_60<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_19_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(59, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(18, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 59: "Sub-Network Input #60" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_60_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_20_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(59, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(19, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 60: "Sub-Network Input #61"
-    pub fn set_input_sub_network_input_61<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_21_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(60, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(20, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 60: "Sub-Network Input #61" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_61_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_22_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(60, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(21, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 61: "Sub-Network Input #62"
-    pub fn set_input_sub_network_input_62<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_23_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(61, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(22, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 61: "Sub-Network Input #62" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_62_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_24_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(61, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(23, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 62: "Sub-Network Input #63"
-    pub fn set_input_sub_network_input_63<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_25_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(62, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(24, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 62: "Sub-Network Input #63" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_63_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_26_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(62, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(25, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 63: "Sub-Network Input #64"
-    pub fn set_input_sub_network_input_64<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_27_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(63, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(26, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 63: "Sub-Network Input #64" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_64_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_28_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(63, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(27, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 64: "Sub-Network Input #65"
-    pub fn set_input_sub_network_input_65<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_29_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(64, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(28, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 64: "Sub-Network Input #65" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_65_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_30_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(64, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(29, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 65: "Sub-Network Input #66"
-    pub fn set_input_sub_network_input_66<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_31_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(65, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(30, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 65: "Sub-Network Input #66" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_66_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_32_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(65, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(31, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 66: "Sub-Network Input #67"
-    pub fn set_input_sub_network_input_67<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_33_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(66, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(32, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 66: "Sub-Network Input #67" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_67_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_34_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(66, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(33, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 67: "Sub-Network Input #68"
-    pub fn set_input_sub_network_input_68<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_35_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(67, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(34, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 67: "Sub-Network Input #68" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_68_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_36_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(67, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(35, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 68: "Sub-Network Input #69"
-    pub fn set_input_sub_network_input_69<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_37_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(68, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(36, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 68: "Sub-Network Input #69" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_69_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_38_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(68, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(37, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 69: "Sub-Network Input #70"
-    pub fn set_input_sub_network_input_70<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_39_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(69, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(38, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 69: "Sub-Network Input #70" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_70_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_40_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(69, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(39, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 70: "Sub-Network Input #71"
-    pub fn set_input_sub_network_input_71<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_41_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(70, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(40, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 70: "Sub-Network Input #71" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_71_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_42_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(70, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(41, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 71: "Sub-Network Input #72"
-    pub fn set_input_sub_network_input_72<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_43_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(71, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(42, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 71: "Sub-Network Input #72" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_72_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_44_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(71, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(43, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 72: "Sub-Network Input #73"
-    pub fn set_input_sub_network_input_73<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_45_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(72, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(44, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 72: "Sub-Network Input #73" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_73_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_46_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(72, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(45, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 73: "Sub-Network Input #74"
-    pub fn set_input_sub_network_input_74<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_47_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(73, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(46, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 73: "Sub-Network Input #74" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_74_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_48_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(73, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(47, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 74: "Sub-Network Input #75"
-    pub fn set_input_sub_network_input_75<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_49_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(74, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(48, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 74: "Sub-Network Input #75" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_75_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_50_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(74, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(49, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 75: "Sub-Network Input #76"
-    pub fn set_input_sub_network_input_76<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_51_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(75, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(50, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 75: "Sub-Network Input #76" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_76_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_52_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(75, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(51, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 76: "Sub-Network Input #77"
-    pub fn set_input_sub_network_input_77<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_53_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(76, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(52, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 76: "Sub-Network Input #77" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_77_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_54_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(76, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(53, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 77: "Sub-Network Input #78"
-    pub fn set_input_sub_network_input_78<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_55_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(77, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(54, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 77: "Sub-Network Input #78" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_78_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_56_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(77, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(55, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 78: "Sub-Network Input #79"
-    pub fn set_input_sub_network_input_79<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_57_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(78, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(56, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 78: "Sub-Network Input #79" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_79_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_58_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(78, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(57, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 79: "Sub-Network Input #80"
-    pub fn set_input_sub_network_input_80<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_59_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(79, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(58, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 79: "Sub-Network Input #80" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_80_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_60_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(79, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(59, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 80: "Sub-Network Input #81"
-    pub fn set_input_sub_network_input_81<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_61_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(80, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(60, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 80: "Sub-Network Input #81" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_81_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_62_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(80, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(61, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 81: "Sub-Network Input #82"
-    pub fn set_input_sub_network_input_82<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_63_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(81, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(62, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 81: "Sub-Network Input #82" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_82_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_64_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(81, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(63, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 82: "Sub-Network Input #83"
-    pub fn set_input_sub_network_input_83<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_65_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(82, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(64, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 82: "Sub-Network Input #83" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_83_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_66_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(82, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(65, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 83: "Sub-Network Input #84"
-    pub fn set_input_sub_network_input_84<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_67_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(83, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(66, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 83: "Sub-Network Input #84" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_84_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_68_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(83, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(67, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 84: "Sub-Network Input #85"
-    pub fn set_input_sub_network_input_85<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_69_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(84, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(68, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 84: "Sub-Network Input #85" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_85_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_70_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(84, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(69, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 85: "Sub-Network Input #86"
-    pub fn set_input_sub_network_input_86<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_71_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(85, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(70, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 85: "Sub-Network Input #86" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_86_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_72_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(85, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(71, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 86: "Sub-Network Input #87"
-    pub fn set_input_sub_network_input_87<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_73_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(86, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(72, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 86: "Sub-Network Input #87" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_87_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_74_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(86, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(73, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 87: "Sub-Network Input #88"
-    pub fn set_input_sub_network_input_88<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_75_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(87, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(74, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 87: "Sub-Network Input #88" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_88_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_76_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(87, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(75, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 88: "Sub-Network Input #89"
-    pub fn set_input_sub_network_input_89<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_77_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(88, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(76, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 88: "Sub-Network Input #89" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_89_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_78_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(88, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(77, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 89: "Sub-Network Input #90"
-    pub fn set_input_sub_network_input_90<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_79_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(89, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(78, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 89: "Sub-Network Input #90" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_90_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_80_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(89, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(79, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 90: "Sub-Network Input #91"
-    pub fn set_input_sub_network_input_91<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_81_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(90, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(80, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 90: "Sub-Network Input #91" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_91_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_82_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(90, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(81, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 91: "Sub-Network Input #92"
-    pub fn set_input_sub_network_input_92<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_83_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(91, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(82, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 91: "Sub-Network Input #92" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_92_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_84_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(91, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(83, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 92: "Sub-Network Input #93"
-    pub fn set_input_sub_network_input_93<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_85_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(92, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(84, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 92: "Sub-Network Input #93" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_93_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_86_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(92, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(85, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 93: "Sub-Network Input #94"
-    pub fn set_input_sub_network_input_94<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_87_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(93, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(86, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 93: "Sub-Network Input #94" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_94_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_88_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(93, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(87, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 94: "Sub-Network Input #95"
-    pub fn set_input_sub_network_input_95<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_89_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(94, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(88, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 94: "Sub-Network Input #95" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_95_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_90_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(94, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(89, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 95: "Sub-Network Input #96"
-    pub fn set_input_sub_network_input_96<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_91_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(95, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(90, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 95: "Sub-Network Input #96" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_96_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_92_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(95, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(91, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 96: "Sub-Network Input #97"
-    pub fn set_input_sub_network_input_97<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_93_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(96, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(92, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 96: "Sub-Network Input #97" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_97_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_94_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(96, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(93, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 97: "Sub-Network Input #98"
-    pub fn set_input_sub_network_input_98<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_95_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(97, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(94, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 97: "Sub-Network Input #98" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_98_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_96_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(97, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(95, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 98: "Sub-Network Input #99"
-    pub fn set_input_sub_network_input_99<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_97_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(98, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(96, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 98: "Sub-Network Input #99" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_99_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_98_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(98, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(97, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 99: "Sub-Network Input #100"
-    pub fn set_input_sub_network_input_100<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_99_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(99, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(98, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 99: "Sub-Network Input #100" and specifies the output index of the target node.
-    pub fn set_input_sub_network_input_100_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_sub_network_input_100_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(99, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(99, (out.node_id, out.pin));
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_vex_edit(mut self) -> Self {
         self.params.insert(
             "vex_edit".to_string(),
@@ -6030,8 +4811,6 @@ impl ChopMultiply {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_vex_start(mut self, val: f32) -> Self {
         self.params.insert(
             "vex_start".to_string(),
@@ -6096,8 +4875,6 @@ impl ChopMultiply {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -6114,8 +4891,6 @@ impl ChopMultiply {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_iterate_over_channels(mut self, val: i32) -> Self {
         self.params.insert(
             "__iterate_over_channels__".to_string(),
@@ -6132,8 +4907,6 @@ impl ChopMultiply {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_vex_align(mut self, val: ChopMultiplyVexAlign) -> Self {
         self.params.insert(
             "vex_align".to_string(),
@@ -6214,8 +4987,6 @@ impl ChopMultiply {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_vex_name(mut self, val: &str) -> Self {
         self.params.insert(
             "vex_name".to_string(),
@@ -6288,8 +5059,6 @@ impl ChopMultiply {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
         self.params.insert(
             "timeslice".to_string(),
@@ -6328,26 +5097,36 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMultiply {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "multiply"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopMultiplyOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Sub-Network Output #1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopMultiplyOutputs for ChopMultiply {}
+impl ChopMultiplyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMultiply> {}

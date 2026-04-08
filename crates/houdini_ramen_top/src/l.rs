@@ -82,7 +82,7 @@ pub enum TopLocalschedulerLocalEchandleby {
 pub struct TopLocalscheduler {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -99,13 +99,11 @@ impl TopLocalscheduler {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_pdg_rpcbatch(mut self, val: f32) -> Self {
         self.params.insert(
             "pdg_rpcbatch".to_string(),
@@ -186,8 +184,6 @@ impl TopLocalscheduler {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_maxprocs(mut self, val: i32) -> Self {
         self.params.insert(
             "maxprocs".to_string(),
@@ -364,8 +360,6 @@ impl TopLocalscheduler {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_maxprocsmenu(mut self, val: TopLocalschedulerMaxprocsmenu) -> Self {
         self.params.insert(
             "maxprocsmenu".to_string(),
@@ -561,8 +555,6 @@ impl TopLocalscheduler {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_pdg_workingdir(mut self, val: &str) -> Self {
         self.params.insert(
             "pdg_workingdir".to_string(),
@@ -761,8 +753,6 @@ impl TopLocalscheduler {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_pdg_usemaxtasks(mut self, val: bool) -> Self {
         self.params.insert(
             "pdg_usemaxtasks".to_string(),
@@ -1073,25 +1063,22 @@ impl houdini_ramen_core::types::HoudiniNode for TopLocalscheduler {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "localscheduler"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -1101,7 +1088,7 @@ impl houdini_ramen_core::types::HoudiniNode for TopLocalscheduler {
 pub struct TopLopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1118,13 +1105,11 @@ impl TopLopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Int parameters ---
     pub fn with_modifiedprimcounttostartnewlayer(mut self, val: i32) -> Self {
         self.params.insert(
             "modifiedprimcounttostartnewlayer".to_string(),
@@ -1141,8 +1126,6 @@ impl TopLopnet {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_expansioneffect(mut self, val: &str) -> Self {
         self.params.insert(
             "expansioneffect".to_string(),
@@ -1309,8 +1292,6 @@ impl TopLopnet {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_resolvercontextstringenable_inst(mut self, index1: usize, val: bool) -> Self {
         self.params.insert(
             format!("resolvercontextstringenable{}", index1),
@@ -1349,25 +1330,22 @@ impl houdini_ramen_core::types::HoudiniNode for TopLopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "lopnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
