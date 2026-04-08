@@ -1,10 +1,11 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
 use crate::core::types::ParamValue;
-use crate::core::types::{ContainerType, HoudiniNode};
+use crate::core::types::{ContainerType, HoudiniNode, NodeOutput, OutputPin};
 use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::marker::PhantomData;
+use std::ops::Deref;
 use std::sync::LazyLock;
 
 pub struct NodeGraph {
@@ -69,45 +70,20 @@ impl<'a, C> InnerGraph<'a, C> {
             .push((node.get_id(), self.container_id));
     }
 
-    /// Receives a reference to a node and connects it as a target.
-    pub fn connect_existing<N: HoudiniNode>(
+    pub fn connect_existing<O: Into<NodeOutput>>(
         &mut self,
         dst: &ExistingNodeRef,
         input_idx: usize,
-        src: &N,
+        output: O,
     ) {
+        let out = output.into();
         let found = self
             .graph
             .existing_nodes
             .iter_mut()
             .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
-
         if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (src.get_id(), 0));
-        } else {
-            panic!(
-                "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
-                dst.name
-            );
-        }
-    }
-
-    /// Specify the output port and connect the wires.
-    pub fn connect_existing_from<N: HoudiniNode>(
-        &mut self,
-        dst: &ExistingNodeRef,
-        input_idx: usize,
-        src: &N,
-        output_idx: usize,
-    ) {
-        let found = self
-            .graph
-            .existing_nodes
-            .iter_mut()
-            .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
-
-        if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (src.get_id(), output_idx));
+            node.inputs.insert(input_idx, (out.node_id, out.pin));
         } else {
             panic!(
                 "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
@@ -134,7 +110,16 @@ impl<'a, C> InnerGraph<'a, C> {
 pub struct ExistingNodeRef {
     pub id: usize,
     pub name: String,
-    pub inputs: BTreeMap<usize, (usize, usize)>,
+    pub inputs: BTreeMap<usize, (usize, OutputPin)>,
+}
+
+impl ExistingNodeRef {
+    pub fn typed_as<N: HoudiniNode>(self) -> TypedExistingNodeRef<N> {
+        TypedExistingNodeRef {
+            base: self,
+            _phantom: PhantomData,
+        }
+    }
 }
 
 impl HoudiniNode for ExistingNodeRef {
@@ -147,12 +132,43 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_node_type(&self) -> &'static str {
         ""
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)> {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
         static EMPTY: LazyLock<HashMap<String, ParamValue>> = LazyLock::new(HashMap::new);
         &EMPTY
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct TypedExistingNodeRef<N> {
+    pub base: ExistingNodeRef,
+    _phantom: PhantomData<N>,
+}
+
+impl<N> Deref for TypedExistingNodeRef<N> {
+    type Target = ExistingNodeRef;
+    fn deref(&self) -> &Self::Target {
+        &self.base
+    }
+}
+
+impl<N> HoudiniNode for TypedExistingNodeRef<N> {
+    fn get_id(&self) -> usize {
+        self.base.get_id()
+    }
+    fn get_name(&self) -> &str {
+        self.base.get_name()
+    }
+    fn get_node_type(&self) -> &'static str {
+        self.base.get_node_type()
+    }
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)> {
+        self.base.get_inputs()
+    }
+    fn get_params(&self) -> &HashMap<String, ParamValue> {
+        self.base.get_params()
     }
 }
 
@@ -208,15 +224,12 @@ impl NodeGraph {
     pub fn build(self) -> String {
         let mut transpiler =
             Transpiler::new(&self.parent_path, self.auto_create_type, self.auto_clear);
-
         if let Some(id) = self.display_node_id {
             transpiler.set_display_node(id);
         }
-
         if !self.nested_display_nodes.is_empty() {
             transpiler.add_nested_display_nodes(self.nested_display_nodes);
         }
-
         let result = (|| -> Result<String, String> {
             for node in self.nodes {
                 transpiler.add_boxed(node)?;
@@ -229,7 +242,6 @@ impl NodeGraph {
             }
             transpiler.generate_script()
         })();
-
         result.unwrap_or_else(|e| {
             eprintln!("Houdini Ramen Build Error: {}", e);
             let full_msg = format!("Houdini Ramen Error: {}", e);

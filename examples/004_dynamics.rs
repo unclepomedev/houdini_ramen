@@ -6,7 +6,7 @@ use houdini_ramen::sop::{
     SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter, SopSolver,
     SopSolverInnerExt, SopTestgeometryRubbertoy,
 };
-use houdini_ramen_vop::VopAdd;
+use houdini_ramen_vop::{VopAdd, VopGeometryvopglobal, VopGeometryvopglobalOutputs};
 
 fn main() {
     let mut graph = NodeGraph::new("/obj/geo1")
@@ -32,9 +32,13 @@ fn main() {
                 .with_bindclass(SopAttribvopBindclass::Points),
         );
         inner_graph.dive_into(&pointvop1, |vop_graph| {
-            let in1 = vop_graph.geometryvopglobal1();
+            let in1 = vop_graph
+                .geometryvopglobal1()
+                .typed_as::<VopGeometryvopglobal>();
             let out1 = vop_graph.geometryvopoutput1();
-            let add1 = vop_graph.add(VopAdd::new("add1").set_input(&in1));
+
+            let add1 = vop_graph.add(VopAdd::new("add1").set_input(in1.out_force()));
+
             vop_graph.connect_existing(&out1, 0, &add1);
         });
 
