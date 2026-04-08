@@ -240,6 +240,8 @@ class TempNodeManager:
                 if not node:
                     continue
                 try:
+                    # VOP attribvop nodes are created under a temp geo, so destroy the geo parent
+                    # Direct roots (/obj, /stage, /out) and /mat should not be destroyed
                     if cat_name == "Vop" and node.type().name() == "attribvop":
                         node.parent().destroy()
                     elif cat_name not in self._direct_roots and not (

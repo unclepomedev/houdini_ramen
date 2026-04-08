@@ -427,14 +427,15 @@ def _parse_inner_methods(
 def parse_node(
     struct_name: str, node_type: str, node_info: dict[str, Any]
 ) -> ParsedNode:
+    params, enums = _parse_params(struct_name, node_info.get("parms", []))
     return ParsedNode(
         struct_name=struct_name,
         node_type=node_type,
         min_inputs=node_info.get("min_inputs", 0),
         max_inputs=node_info.get("max_inputs", 0),
         inputs=_parse_inputs(node_info.get("input_labels", [])),
-        params=_parse_params(struct_name, node_info.get("parms", []))[0],
-        enums=_parse_params(struct_name, node_info.get("parms", []))[1],
+        params=params,
+        enums=enums,
         output_enum=_parse_outputs(struct_name, node_info.get("outputs", [])),
         inner_methods=_parse_inner_methods(node_info.get("builtin_inner_nodes", {})),
         dive_target=node_info.get("dive_target"),
