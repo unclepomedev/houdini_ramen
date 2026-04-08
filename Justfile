@@ -46,7 +46,7 @@ generate-api:
     #!/usr/bin/env bash
     set -e
 
-    find "{{ PROJECT_ROOT }}/crates" -mindepth 1 -maxdepth 1 -type d -name "houdini_ramen_*" ! -name "houdini_ramen_core" -exec rm -rf {} + || true
+    find "{{ PROJECT_ROOT }}/crates" -mindepth 1 -maxdepth 1 -type d -name "houdini_ramen_*" ! -name "houdini_ramen_core" ! -name "houdini_ramen_helpers" -exec rm -rf {} + || true
     rm -rf "{{ PROJECT_ROOT }}/resources/stubs"
 
     mkdir -p "{{ PROJECT_ROOT }}/crates"
@@ -59,7 +59,7 @@ generate-api:
 
     uv run python tools/generate_auto_graph.py
 
-    cargo fmt
+    cargo fmt --all
 
 setup-e2e: dump-nodes test-py generate-api test-rs
 
