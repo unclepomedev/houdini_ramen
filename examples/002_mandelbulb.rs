@@ -2,7 +2,7 @@ use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
 use houdini_ramen::core::types::{RampInterpolation, RampPoint, SpareFloat, SpareInt};
-use houdini_ramen_sop::{
+use houdini_ramen::sop::{
     SopColor, SopColorColortype, SopConvertvdb, SopConvertvdbConversion, SopConvertvdbVdbclass,
     SopPointwrangle, SopVdbsmoothsdf, SopVolume, SopVolumewrangle,
 };

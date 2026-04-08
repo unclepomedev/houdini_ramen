@@ -1,6 +1,6 @@
 # Ramp Parameters
 
-Unlike standard auto-generated node parameters, Ramp parameters (gradients or float curves) rely on hardcoded structs in `core::types`. When a node stub requires a `Vec<crate::core::types::RampPoint>`, you MUST construct it using `RampPoint` and `RampInterpolation`.
+Unlike standard auto-generated node parameters, Ramp parameters (gradients or float curves) rely on hardcoded structs in `core::types`. When a node stub requires a `Vec<RampPoint>`, you MUST construct it using `RampPoint` and `RampInterpolation`.
 
 ## Allowed Interpolations
 

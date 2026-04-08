@@ -12,7 +12,7 @@ Use `graph.dive_into` to construct graphs inside container nodes like `solver` o
 ## Implementation Example
 
 ```rust
-use houdini_ramen::generated::sop::{SopSolver, SopSolverInnerExt, SopXform};
+use houdini_ramen::sop::{SopSolver, SopSolverInnerExt, SopXform};
 
 let solver = graph.add(SopSolver::new("solver1").set_input(&base_geo));
 

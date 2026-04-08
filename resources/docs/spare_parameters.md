@@ -1,6 +1,6 @@
 # Spare Parameters
 
-You can add custom spare parameters to any Houdini node using the `.add_spare()` method combined with parameter builder structs from `crate::core::types`. This is highly readable and scalable.
+You can add custom spare parameters to any Houdini node using the `.add_spare()` method combined with parameter builder structs from `houdini_ramen::core::types`. This is highly readable and scalable.
 
 ## Implementation Example
 ```rust
