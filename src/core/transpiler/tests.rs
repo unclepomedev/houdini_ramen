@@ -789,6 +789,7 @@ fn test_recursive_dive_into() {
     assert!(script.contains("n_vop_2002 = n_solver_2001.createNode('attribvop', 'vop')"));
     assert!(script.contains("n_add_2003 = n_vop_2002.createNode('add', 'add')"));
     assert!(script.contains("hou.node(n_vop_2002.path() + '/global')"));
+    assert!(script.contains(".setInput(0, n_add_2003, 0)"));
 }
 
 #[test]
