@@ -118,6 +118,20 @@ class ParsedMenuEnum:
 
 
 @dataclass(frozen=True)
+class ParsedOutput:
+    variant_name: str
+    raw_name: str
+    doc_label: str
+    method_name: str
+
+
+@dataclass(frozen=True)
+class ParsedOutputEnum:
+    enum_name: str
+    variants: list[ParsedOutput]
+
+
+@dataclass(frozen=True)
 class ParsedInnerMethod:
     method_name: str
     rel_path: str
@@ -132,6 +146,7 @@ class ParsedNode:
     inputs: list[ParsedInput] = field(default_factory=list)
     params: list[ParsedParam] = field(default_factory=list)
     enums: list[ParsedMenuEnum] = field(default_factory=list)
+    output_enum: ParsedOutputEnum | None = None
     inner_methods: list[ParsedInnerMethod] = field(default_factory=list)
     dive_target: str | None = None
 
@@ -308,13 +323,7 @@ def parse_param(
     return parsed_param, menu_enum
 
 
-def parse_node(
-    struct_name: str, node_type: str, node_info: dict[str, Any]
-) -> ParsedNode:
-    min_inputs = node_info.get("min_inputs", 0)
-    max_inputs = node_info.get("max_inputs", 0)
-    raw_labels = node_info.get("input_labels", [])
-
+def _parse_inputs(raw_labels: list[str]) -> list[ParsedInput]:
     input_resolver = SuffixResolver()
     parsed_inputs = []
     for idx, label in enumerate(raw_labels):
@@ -327,15 +336,61 @@ def parse_node(
         safe_base = snake_case(clean_doc) if clean_doc else f"input_{idx}"
         if len(safe_base) > 40:
             safe_base = safe_base[:40].rstrip("_")
-        safe_name = to_safe_ident(input_resolver.resolve(safe_base))
+
+        safe_name = input_resolver.resolve(safe_base)
         parsed_inputs.append(
             ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name)
         )
+    return parsed_inputs
 
+
+def _parse_outputs(
+    struct_name: str, raw_outputs: list[dict[str, Any]]
+) -> ParsedOutputEnum | None:
+    if not raw_outputs:
+        return None
+
+    enum_name = f"{struct_name}OutputPin"
+    variants = []
+    out_resolver = SuffixResolver(separator="")
+    method_resolver = SuffixResolver(separator="")
+
+    for out in raw_outputs:
+        raw_name = out.get("name", "")
+        if not raw_name:
+            continue
+
+        raw_label = out.get("label", raw_name)
+        clean_doc = re.sub(r"\s+", " ", raw_label).strip()
+
+        safe_v_name = to_safe_ident(pascal_case(raw_name))
+        v_name = out_resolver.resolve(safe_v_name)
+
+        safe_m_name = to_safe_ident(snake_case(raw_name))
+        m_name = method_resolver.resolve(safe_m_name)
+
+        variants.append(
+            ParsedOutput(
+                variant_name=v_name,
+                raw_name=raw_name,
+                doc_label=clean_doc,
+                method_name=m_name,
+            )
+        )
+
+    if variants:
+        return ParsedOutputEnum(enum_name=enum_name, variants=variants)
+    return None
+
+
+def _parse_params(
+    struct_name: str, raw_parms: list[dict[str, Any]]
+) -> tuple[list[ParsedParam], list[ParsedMenuEnum]]:
     param_resolver = SuffixResolver()
     enum_resolver = SuffixResolver(separator="")
     params, enums = [], []
-    for p in node_info.get("parms", []):
+
+    for p in raw_parms:
         p_name = p.get("name")
         if not p_name:
             continue
@@ -347,11 +402,16 @@ def parse_node(
         if menu_enum:
             enums.append(menu_enum)
 
+    return params, enums
+
+
+def _parse_inner_methods(
+    builtin_inner_nodes: dict[str, str],
+) -> list[ParsedInnerMethod]:
     inner_methods = []
     inner_method_resolver = SuffixResolver()
-    for child_name, rel_path in sorted(
-        node_info.get("builtin_inner_nodes", {}).items()
-    ):
+
+    for child_name, rel_path in sorted(builtin_inner_nodes.items()):
         method_name = to_safe_ident(
             inner_method_resolver.resolve(snake_case(child_name))
         )
@@ -361,15 +421,22 @@ def parse_node(
             )
         )
 
+    return inner_methods
+
+
+def parse_node(
+    struct_name: str, node_type: str, node_info: dict[str, Any]
+) -> ParsedNode:
     return ParsedNode(
         struct_name=struct_name,
         node_type=node_type,
-        min_inputs=min_inputs,
-        max_inputs=max_inputs,
-        inputs=parsed_inputs,
-        params=params,
-        enums=enums,
-        inner_methods=inner_methods,
+        min_inputs=node_info.get("min_inputs", 0),
+        max_inputs=node_info.get("max_inputs", 0),
+        inputs=_parse_inputs(node_info.get("input_labels", [])),
+        params=_parse_params(struct_name, node_info.get("parms", []))[0],
+        enums=_parse_params(struct_name, node_info.get("parms", []))[1],
+        output_enum=_parse_outputs(struct_name, node_info.get("outputs", [])),
+        inner_methods=_parse_inner_methods(node_info.get("builtin_inner_nodes", {})),
         dive_target=node_info.get("dive_target"),
     )
 

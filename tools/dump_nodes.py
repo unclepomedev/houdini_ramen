@@ -40,6 +40,13 @@ class ParmInfo:
 
 
 @dataclass
+class OutputInfo:
+    name: str
+    label: str
+    type: str
+
+
+@dataclass
 class InnerNodeData:
     nodes: dict[str, str] = field(default_factory=dict)
     dive_target: str | None = None
@@ -50,6 +57,7 @@ class NodeInfo:
     min_inputs: int
     max_inputs: int
     input_labels: list[str] = field(default_factory=list)
+    outputs: list[OutputInfo] = field(default_factory=list)
     parms: list[ParmInfo] = field(default_factory=list)
     builtin_inner_nodes: dict[str, str] = field(default_factory=dict)
     dive_target: str | None = None
@@ -175,14 +183,13 @@ class HoudiniLogContext:
 
 class TempNodeManager:
     def __init__(self):
-        self.parents: dict[str, hou.Node] = {}
+        self.parents: dict[str, list[hou.Node]] = {}
         self._strategies = {
             "Sop": ("/obj", "geo", "temp_sop_parent"),
             "Chop": ("/ch", "ch", "temp_chop_parent"),
             "Cop2": ("/img", "img", "temp_cop_parent"),
             "Dop": ("/obj", "dopnet", "temp_dop_parent"),
             "Top": ("/tasks", "topnet", "temp_top_parent"),
-            "Vop": ("/obj", "vopnet", "temp_vop_parent"),
         }
         self._direct_roots = {
             "Object": "/obj",
@@ -190,37 +197,59 @@ class TempNodeManager:
             "Driver": "/out",
         }
 
-    def get_parent(self, cat_name: str):
+    def get_parents(self, cat_name: str) -> list[hou.Node]:
         if cat_name in self.parents:
             return self.parents[cat_name]
 
-        parent = None
+        parents = []
         try:
-            if cat_name in self._strategies:
+            if cat_name == "Vop":
+                root = hou.node("/obj")
+                if root:
+                    geo = root.createNode("geo", "temp_vop_geo", run_init_scripts=False)
+                    parents.append(
+                        geo.createNode(
+                            "attribvop", "temp_attribvop", run_init_scripts=True
+                        )
+                    )
+                mat = hou.node("/mat")
+                if mat:
+                    parents.append(mat)
+            elif cat_name in self._strategies:
                 root_path, node_type, node_name = self._strategies[cat_name]
                 root = hou.node(root_path)
                 if root:
-                    parent = root.createNode(
-                        node_type, node_name, run_init_scripts=False
+                    parents.append(
+                        root.createNode(node_type, node_name, run_init_scripts=False)
                     )
             elif cat_name in self._direct_roots:
-                parent = hou.node(self._direct_roots[cat_name])
+                node = hou.node(self._direct_roots[cat_name])
+                if node:
+                    parents.append(node)
         except Exception as e:
-            logger.debug(f"Failed to create temp parent for category '{cat_name}': {e}")
+            logger.debug(
+                f"Failed to create temp parents for category '{cat_name}': {e}"
+            )
 
-        self.parents[cat_name] = parent
-        return parent
+        self.parents[cat_name] = parents
+        return parents
 
     def cleanup(self):
-        for cat_name, node in self.parents.items():
-            if not node or cat_name not in self._strategies:
-                continue
-            try:
-                node.destroy()
-            except Exception as e:
-                logger.debug(
-                    f"Failed to destroy temp parent for category '{cat_name}': {e}"
-                )
+        for cat_name, node_list in self.parents.items():
+            for node in node_list:
+                if not node:
+                    continue
+                try:
+                    if cat_name == "Vop" and node.type().name() == "attribvop":
+                        node.parent().destroy()
+                    elif cat_name not in self._direct_roots and not (
+                        cat_name == "Vop" and node.path() == "/mat"
+                    ):
+                        node.destroy()
+                except Exception as e:
+                    logger.debug(
+                        f"Failed to destroy temp parent for category '{cat_name}': {e}"
+                    )
         self.parents.clear()
 
 
@@ -263,37 +292,26 @@ class HoudiniNodeExtractor:
                 parms.append(self._extract_single_parm(pt))
         return parms
 
-    def _extract_input_labels(
-        self, node_type: hou.NodeType, cat_name: str
-    ) -> list[str]:
-        """Temporarily instantiates a node to extract its input labels, with fallback for failures."""
-        max_inputs = node_type.maxNumInputs()
-        if max_inputs <= 0:
-            return []
+    def _create_temp_node(
+        self, parents: list[hou.Node], node_type_name: str, run_init_scripts: bool
+    ) -> hou.Node | None:
+        for parent in parents:
+            try:
+                return parent.createNode(
+                    node_type_name, run_init_scripts=run_init_scripts
+                )
+            except Exception as e:
+                logger.debug(
+                    f"Failed to create temp node '{node_type_name}' under '{parent.path()}': {e}"
+                )
+        return None
 
-        parent = self.temp_manager.get_parent(cat_name)
-        if not parent:
-            return [""] * max_inputs if max_inputs < 128 else []
-
-        temp_node = None
-        try:
-            temp_node = parent.createNode(node_type.name(), run_init_scripts=False)
-            if hasattr(temp_node, "inputLabels"):
-                return list(temp_node.inputLabels())
-            return [""] * max_inputs if max_inputs < 128 else []
-        except Exception as e:
-            logger.debug(
-                f"Input-label extraction failed for '{cat_name}/{node_type.name()}': {e}"
-            )
-            return [""] * max_inputs if 0 < max_inputs < 128 else []
-        finally:
-            if temp_node is not None:
-                try:
-                    temp_node.destroy()
-                except Exception as destroy_error:
-                    logger.debug(
-                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
-                    )
+    def _destroy_temp_node(self, temp_node: hou.Node | None) -> None:
+        if temp_node is not None:
+            try:
+                temp_node.destroy()
+            except Exception as e:
+                logger.debug(f"Failed to destroy temp node '{temp_node.name()}': {e}")
 
     @staticmethod
     def _get_dive_target_path(node: hou.Node) -> str | None:
@@ -312,15 +330,18 @@ class HoudiniNodeExtractor:
         self, node_type: hou.NodeType, cat_name: str
     ) -> InnerNodeData:
         result = InnerNodeData()
-        parent = self.temp_manager.get_parent(cat_name)
-        if not parent:
+        parents = self.temp_manager.get_parents(cat_name)
+        if not parents:
             return result
 
-        temp_node = None
-        try:
-            temp_node = parent.createNode(node_type.name())
-            target_node = temp_node
+        temp_node = self._create_temp_node(
+            parents, node_type.name(), run_init_scripts=True
+        )
+        if not temp_node:
+            return result
 
+        try:
+            target_node = temp_node
             dive_target_path = self._get_dive_target_path(temp_node)
             if dive_target_path:
                 dive_node = temp_node.node(dive_target_path)
@@ -339,15 +360,97 @@ class HoudiniNodeExtractor:
         except Exception as e:
             logger.debug(f"Failed to extract inner nodes for {node_type.name()}: {e}")
         finally:
-            if temp_node is not None:
-                try:
-                    temp_node.destroy()
-                except Exception as destroy_error:
-                    logger.debug(
-                        f"Failed to destroy temp node '{node_type.name()}': {destroy_error}"
-                    )
+            self._destroy_temp_node(temp_node)
 
         return result
+
+    def _get_input_labels(
+        self, temp_node: hou.Node | None, max_inputs: int
+    ) -> list[str]:
+        if max_inputs <= 0 or max_inputs >= 128:
+            return []
+
+        if temp_node and hasattr(temp_node, "inputLabels"):
+            labels = list(temp_node.inputLabels())
+            return labels + [""] * (max_inputs - len(labels))
+
+        return [""] * max_inputs
+
+    def _get_outputs(
+        self, temp_node: hou.Node | None, max_outputs: int
+    ) -> list[OutputInfo]:
+        if max_outputs <= 0:
+            return []
+
+        outputs = []
+        limit = min(max_outputs, 32)
+
+        if temp_node:
+            labels = (
+                list(temp_node.outputLabels())
+                if hasattr(temp_node, "outputLabels")
+                else []
+            )
+            names = (
+                list(temp_node.outputNames())
+                if hasattr(temp_node, "outputNames")
+                else []
+            )
+            types = (
+                list(temp_node.outputDataTypes())
+                if hasattr(temp_node, "outputDataTypes")
+                else []
+            )
+
+            actual_out_count = len(labels)
+            loop_count = max(actual_out_count, limit) if actual_out_count > 0 else limit
+
+            for i in range(loop_count):
+                label = labels[i] if i < len(labels) else f"Output {i}"
+                name = names[i] if i < len(names) else f"output{i}"
+                typ = types[i] if i < len(types) else "undef"
+                outputs.append(OutputInfo(name=name, label=label, type=typ))
+
+        if not outputs:
+            for i in range(limit):
+                outputs.append(
+                    OutputInfo(name=f"output{i}", label=f"Output {i}", type="undef")
+                )
+
+        return outputs
+
+    def _extract_io_info(
+        self, node_type: hou.NodeType, cat_name: str
+    ) -> tuple[list[str], list[OutputInfo]]:
+        max_inputs = node_type.maxNumInputs()
+        max_outputs = node_type.maxNumOutputs()
+
+        if max_inputs <= 0 and max_outputs <= 0:
+            return [], []
+
+        parents = self.temp_manager.get_parents(cat_name)
+        if not parents:
+            return self._get_input_labels(None, max_inputs), self._get_outputs(
+                None, max_outputs
+            )
+
+        temp_node = self._create_temp_node(
+            parents, node_type.name(), run_init_scripts=True
+        )
+
+        try:
+            input_labels = self._get_input_labels(temp_node, max_inputs)
+            outputs = self._get_outputs(temp_node, max_outputs)
+        except Exception as e:
+            logger.debug(
+                f"I/O extraction failed for '{cat_name}/{node_type.name()}': {e}"
+            )
+            input_labels = self._get_input_labels(None, max_inputs)
+            outputs = self._get_outputs(None, max_outputs)
+        finally:
+            self._destroy_temp_node(temp_node)
+
+        return input_labels, outputs
 
     def _extract_node_info(self, node_type: hou.NodeType, cat_name: str) -> NodeInfo:
         parms = []
@@ -361,11 +464,13 @@ class HoudiniNodeExtractor:
             )
 
         inner_data = self._extract_builtin_inner_nodes(node_type, cat_name)
+        input_labels, outputs = self._extract_io_info(node_type, cat_name)
 
         return NodeInfo(
             min_inputs=node_type.minNumInputs(),
             max_inputs=node_type.maxNumInputs(),
-            input_labels=self._extract_input_labels(node_type, cat_name),
+            input_labels=input_labels,
+            outputs=outputs,
             parms=parms,
             builtin_inner_nodes=inner_data.nodes,
             dive_target=inner_data.dive_target,
@@ -382,7 +487,9 @@ class HoudiniNodeExtractor:
         return names
 
     @staticmethod
-    def _resolve_default_node_type(cat: hou.NodeTypeCategory, base_key: str, parent):
+    def _resolve_default_node_type(
+        cat: hou.NodeTypeCategory, base_key: str, parents: list[hou.Node]
+    ):
         if "::" in base_key:
             ns, base = base_key.split("::", 1)
         else:
@@ -390,7 +497,7 @@ class HoudiniNodeExtractor:
 
         create_name = f"{ns}::{base}" if ns else base
 
-        if parent:
+        for parent in parents:
             try:
                 temp_node = parent.createNode(create_name, run_init_scripts=False)
                 node_type = temp_node.type()
@@ -440,10 +547,10 @@ class HoudiniNodeExtractor:
 
                 logger.info(f"Processing category: {cat_name}")
                 cat_data: dict[str, NodeInfo] = {}
-                parent = self.temp_manager.get_parent(cat_name)
+                parents = self.temp_manager.get_parents(cat_name)
 
                 for base_name in sorted(self._get_base_names(cat)):
-                    node_type = self._resolve_default_node_type(cat, base_name, parent)
+                    node_type = self._resolve_default_node_type(cat, base_name, parents)
                     if not node_type:
                         continue
 

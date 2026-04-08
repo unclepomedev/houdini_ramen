@@ -1,5 +1,7 @@
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::HoudiniNode;
+use crate::py_escape::escape_py_key;
+use crate::types::OutputPin;
 use std::collections::HashMap;
 
 pub fn write_link_pass(
@@ -35,13 +37,13 @@ fn write_node_links(
         return;
     };
 
-    for (idx, (target_id, target_out_idx)) in node.get_inputs() {
+    for (idx, (target_id, target_out_pin)) in node.get_inputs() {
         write_single_link(
             builder,
             var_name,
             *idx,
             *target_id,
-            *target_out_idx,
+            target_out_pin,
             id_to_var,
         );
     }
@@ -52,13 +54,17 @@ fn write_single_link(
     var_name: &str,
     input_idx: usize,
     target_id: usize,
-    target_out_idx: usize,
+    target_out_pin: &OutputPin,
     id_to_var: &HashMap<usize, String>,
 ) {
     if let Some(target_var) = id_to_var.get(&target_id) {
+        let out_str = match target_out_pin {
+            OutputPin::Index(i) => i.to_string(),
+            OutputPin::Name(n) => format!("'{}'", escape_py_key(n)),
+        };
         builder.line(&format!(
             "{}.setInput({}, {}, {})",
-            var_name, input_idx, target_var, target_out_idx
+            var_name, input_idx, target_var, out_str
         ));
     } else {
         emit_warning(

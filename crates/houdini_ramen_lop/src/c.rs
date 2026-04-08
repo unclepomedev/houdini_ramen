@@ -2,7 +2,7 @@
 pub struct LopCache {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -19,70 +19,36 @@ impl LopCache {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -99,8 +65,6 @@ impl LopCache {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -117,8 +81,6 @@ impl LopCache {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -135,8 +97,6 @@ impl LopCache {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "behavior".to_string(),
@@ -191,8 +151,6 @@ impl LopCache {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_trackprimexistence(mut self, val: bool) -> Self {
         self.params.insert(
             "trackprimexistence".to_string(),
@@ -247,29 +205,39 @@ impl houdini_ramen_core::types::HoudiniNode for LopCache {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "cache"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCacheOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCacheOutputs for LopCache {}
+impl LopCacheOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCache> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopCameraCreateprims {
@@ -303,7 +271,7 @@ pub enum LopCameraRord {
 pub struct LopCamera {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -320,70 +288,36 @@ impl LopCamera {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -688,8 +622,6 @@ impl LopCamera {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -738,8 +670,6 @@ impl LopCamera {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -916,8 +846,6 @@ impl LopCamera {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -950,8 +878,6 @@ impl LopCamera {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_createprims(mut self, val: LopCameraCreateprims) -> Self {
         self.params.insert(
             "createprims".to_string(),
@@ -1032,8 +958,6 @@ impl LopCamera {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -1646,8 +1570,6 @@ impl LopCamera {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -1734,29 +1656,39 @@ impl houdini_ramen_core::types::HoudiniNode for LopCamera {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "camera"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCameraOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCameraOutputs for LopCamera {}
+impl LopCameraOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCamera> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopCapsuleCreateprims {
@@ -1790,7 +1722,7 @@ pub enum LopCapsuleRord {
 pub struct LopCapsule {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1807,70 +1739,36 @@ impl LopCapsule {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_height(mut self, val: f32) -> Self {
         self.params.insert(
             "height".to_string(),
@@ -1951,8 +1849,6 @@ impl LopCapsule {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -1969,8 +1865,6 @@ impl LopCapsule {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -2099,8 +1993,6 @@ impl LopCapsule {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -2133,8 +2025,6 @@ impl LopCapsule {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_createprims(mut self, val: LopCapsuleCreateprims) -> Self {
         self.params.insert(
             "createprims".to_string(),
@@ -2199,8 +2089,6 @@ impl LopCapsule {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -2561,8 +2449,6 @@ impl LopCapsule {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -2633,35 +2519,45 @@ impl houdini_ramen_core::types::HoudiniNode for LopCapsule {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "capsule"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
 
+pub trait LopCapsuleOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCapsuleOutputs for LopCapsule {}
+impl LopCapsuleOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCapsule> {}
+
 #[derive(Debug, Clone)]
 pub struct LopChopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2678,7 +2574,6 @@ impl LopChopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
@@ -2689,25 +2584,22 @@ impl houdini_ramen_core::types::HoudiniNode for LopChopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "chopnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -2717,7 +2609,7 @@ impl houdini_ramen_core::types::HoudiniNode for LopChopnet {
 pub struct LopCollection {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2734,70 +2626,36 @@ impl LopCollection {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- String parameters ---
     pub fn with_defaultprimpath(mut self, val: &str) -> Self {
         self.params.insert(
             "defaultprimpath".to_string(),
@@ -2924,8 +2782,6 @@ impl LopCollection {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_createprimitive(mut self, val: bool) -> Self {
         self.params.insert(
             "createprimitive".to_string(),
@@ -3044,29 +2900,39 @@ impl houdini_ramen_core::types::HoudiniNode for LopCollection {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "collection"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCollectionOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCollectionOutputs for LopCollection {}
+impl LopCollectionOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCollection> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopComponentgeometrySourceinput {
@@ -3092,7 +2958,7 @@ pub enum LopComponentgeometryMaterialbindsubsets {
 pub struct LopComponentgeometry {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3109,13 +2975,11 @@ impl LopComponentgeometry {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_fixsopoutputs(mut self) -> Self {
         self.params.insert(
             "fixsopoutputs".to_string(),
@@ -3137,8 +3001,6 @@ impl LopComponentgeometry {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_setmissingwidths(mut self, val: f32) -> Self {
         self.params.insert(
             "setmissingwidths".to_string(),
@@ -3171,8 +3033,6 @@ impl LopComponentgeometry {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_drawmodecolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "drawmodecolor".to_string(),
@@ -3189,8 +3049,6 @@ impl LopComponentgeometry {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sourceinput(mut self, val: LopComponentgeometrySourceinput) -> Self {
         self.params.insert(
             "sourceinput".to_string(),
@@ -3242,8 +3100,6 @@ impl LopComponentgeometry {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_missingframe(mut self, val: LopComponentgeometryMissingframe) -> Self {
         self.params.insert(
             "missingframe".to_string(),
@@ -3260,8 +3116,6 @@ impl LopComponentgeometry {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_source(mut self, val: &str) -> Self {
         self.params.insert(
             "source".to_string(),
@@ -3784,8 +3638,6 @@ impl LopComponentgeometry {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_prefixpartitionsubsets(mut self, val: bool) -> Self {
         self.params.insert(
             "prefixpartitionsubsets".to_string(),
@@ -4016,33 +3868,46 @@ impl houdini_ramen_core::types::HoudiniNode for LopComponentgeometry {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "componentgeometry"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
-
     fn get_dive_target(&self) -> Option<&'static str> {
         Some("sopnet/geo")
     }
 }
+
+pub trait LopComponentgeometryOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopComponentgeometryOutputs for LopComponentgeometry {}
+impl LopComponentgeometryOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopComponentgeometry>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopComponentgeometryInnerExt {
     fn default(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -4081,7 +3946,7 @@ pub enum LopComponentgeometryvariantsVariantnamesrc {
 pub struct LopComponentgeometryvariants {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -4098,1932 +3963,820 @@ impl LopComponentgeometryvariants {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Input 2"
-    pub fn set_input_input_2<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Input 2" and specifies the output index of the target node.
-    pub fn set_input_input_2_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 2: "Input 3"
-    pub fn set_input_input_3<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(2, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 2: "Input 3" and specifies the output index of the target node.
-    pub fn set_input_input_3_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(2, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 3: "Input 4"
-    pub fn set_input_input_4<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(3, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 3: "Input 4" and specifies the output index of the target node.
-    pub fn set_input_input_4_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(3, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 4: "Input #5"
-    pub fn set_input_input_5<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(4, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 4: "Input #5" and specifies the output index of the target node.
-    pub fn set_input_input_5_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(4, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 5: "Input #6"
-    pub fn set_input_input_6<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(5, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 5: "Input #6" and specifies the output index of the target node.
-    pub fn set_input_input_6_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(5, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 6: "Input #7"
-    pub fn set_input_input_7<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(6, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 6: "Input #7" and specifies the output index of the target node.
-    pub fn set_input_input_7_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(6, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 7: "Input #8"
-    pub fn set_input_input_8<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(7, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 7: "Input #8" and specifies the output index of the target node.
-    pub fn set_input_input_8_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(7, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 8: "Input #9"
-    pub fn set_input_input_9<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(8, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 8: "Input #9" and specifies the output index of the target node.
-    pub fn set_input_input_9_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(8, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 9: "Input #10"
-    pub fn set_input_input_10<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(9, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 9: "Input #10" and specifies the output index of the target node.
-    pub fn set_input_input_10_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(9, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 10: "Input #11"
-    pub fn set_input_input_11<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(10, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 10: "Input #11" and specifies the output index of the target node.
-    pub fn set_input_input_11_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(10, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 11: "Input #12"
-    pub fn set_input_input_12<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(11, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 11: "Input #12" and specifies the output index of the target node.
-    pub fn set_input_input_12_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(11, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 12: "Input #13"
-    pub fn set_input_input_13<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(12, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 12: "Input #13" and specifies the output index of the target node.
-    pub fn set_input_input_13_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(12, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 13: "Input #14"
-    pub fn set_input_input_14<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(13, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 13: "Input #14" and specifies the output index of the target node.
-    pub fn set_input_input_14_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(13, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 14: "Input #15"
-    pub fn set_input_input_15<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(14, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 14: "Input #15" and specifies the output index of the target node.
-    pub fn set_input_input_15_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(14, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 15: "Input #16"
-    pub fn set_input_input_16<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(15, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 15: "Input #16" and specifies the output index of the target node.
-    pub fn set_input_input_16_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(15, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 16: "Input #17"
-    pub fn set_input_input_17<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(16, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 16: "Input #17" and specifies the output index of the target node.
-    pub fn set_input_input_17_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(16, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 17: "Input #18"
-    pub fn set_input_input_18<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(17, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 17: "Input #18" and specifies the output index of the target node.
-    pub fn set_input_input_18_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(17, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 18: "Input #19"
-    pub fn set_input_input_19<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(18, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 18: "Input #19" and specifies the output index of the target node.
-    pub fn set_input_input_19_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(18, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 19: "Input #20"
-    pub fn set_input_input_20<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(19, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 19: "Input #20" and specifies the output index of the target node.
-    pub fn set_input_input_20_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(19, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 20: "Input #21"
-    pub fn set_input_input_21<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(20, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 20: "Input #21" and specifies the output index of the target node.
-    pub fn set_input_input_21_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(20, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 21: "Input #22"
-    pub fn set_input_input_22<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(21, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 21: "Input #22" and specifies the output index of the target node.
-    pub fn set_input_input_22_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(21, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 22: "Input #23"
-    pub fn set_input_input_23<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(22, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 22: "Input #23" and specifies the output index of the target node.
-    pub fn set_input_input_23_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(22, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 23: "Input #24"
-    pub fn set_input_input_24<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(23, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 23: "Input #24" and specifies the output index of the target node.
-    pub fn set_input_input_24_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(23, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 24: "Input #25"
-    pub fn set_input_input_25<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(24, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 24: "Input #25" and specifies the output index of the target node.
-    pub fn set_input_input_25_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(24, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 25: "Input #26"
-    pub fn set_input_input_26<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(25, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 25: "Input #26" and specifies the output index of the target node.
-    pub fn set_input_input_26_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(25, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 26: "Input #27"
-    pub fn set_input_input_27<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(26, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 26: "Input #27" and specifies the output index of the target node.
-    pub fn set_input_input_27_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(26, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 27: "Input #28"
-    pub fn set_input_input_28<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(27, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 27: "Input #28" and specifies the output index of the target node.
-    pub fn set_input_input_28_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(27, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 28: "Input #29"
-    pub fn set_input_input_29<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(28, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 28: "Input #29" and specifies the output index of the target node.
-    pub fn set_input_input_29_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(28, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 29: "Input #30"
-    pub fn set_input_input_30<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(29, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 29: "Input #30" and specifies the output index of the target node.
-    pub fn set_input_input_30_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(29, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 30: "Input #31"
-    pub fn set_input_input_31<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(30, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 30: "Input #31" and specifies the output index of the target node.
-    pub fn set_input_input_31_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(30, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 31: "Input #32"
-    pub fn set_input_input_32<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(31, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 31: "Input #32" and specifies the output index of the target node.
-    pub fn set_input_input_32_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(31, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 32: "Input #33"
-    pub fn set_input_input_33<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(32, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 32: "Input #33" and specifies the output index of the target node.
-    pub fn set_input_input_33_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(32, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 33: "Input #34"
-    pub fn set_input_input_34<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(33, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 33: "Input #34" and specifies the output index of the target node.
-    pub fn set_input_input_34_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(33, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 34: "Input #35"
-    pub fn set_input_input_35<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(34, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 34: "Input #35" and specifies the output index of the target node.
-    pub fn set_input_input_35_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(34, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 35: "Input #36"
-    pub fn set_input_input_36<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(35, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 35: "Input #36" and specifies the output index of the target node.
-    pub fn set_input_input_36_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(35, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 36: "Input #37"
-    pub fn set_input_input_37<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(36, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 36: "Input #37" and specifies the output index of the target node.
-    pub fn set_input_input_37_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(36, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 37: "Input #38"
-    pub fn set_input_input_38<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(37, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 37: "Input #38" and specifies the output index of the target node.
-    pub fn set_input_input_38_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(37, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 38: "Input #39"
-    pub fn set_input_input_39<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(38, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 38: "Input #39" and specifies the output index of the target node.
-    pub fn set_input_input_39_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(38, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 39: "Input #40"
-    pub fn set_input_input_40<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(39, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 39: "Input #40" and specifies the output index of the target node.
-    pub fn set_input_input_40_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(39, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 40: "Input #41"
-    pub fn set_input_input_41<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(40, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 40: "Input #41" and specifies the output index of the target node.
-    pub fn set_input_input_41_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(40, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 41: "Input #42"
-    pub fn set_input_input_42<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(41, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 41: "Input #42" and specifies the output index of the target node.
-    pub fn set_input_input_42_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(41, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 42: "Input #43"
-    pub fn set_input_input_43<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(42, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 42: "Input #43" and specifies the output index of the target node.
-    pub fn set_input_input_43_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(42, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 43: "Input #44"
-    pub fn set_input_input_44<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(43, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 43: "Input #44" and specifies the output index of the target node.
-    pub fn set_input_input_44_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(43, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 44: "Input #45"
-    pub fn set_input_input_45<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(44, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 44: "Input #45" and specifies the output index of the target node.
-    pub fn set_input_input_45_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(44, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 45: "Input #46"
-    pub fn set_input_input_46<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(45, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 45: "Input #46" and specifies the output index of the target node.
-    pub fn set_input_input_46_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(45, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 46: "Input #47"
-    pub fn set_input_input_47<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(46, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 46: "Input #47" and specifies the output index of the target node.
-    pub fn set_input_input_47_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(46, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 47: "Input #48"
-    pub fn set_input_input_48<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(47, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 47: "Input #48" and specifies the output index of the target node.
-    pub fn set_input_input_48_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(47, (target.get_id(), output_index));
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 48: "Input #49"
-    pub fn set_input_input_49<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(48, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 48: "Input #49" and specifies the output index of the target node.
-    pub fn set_input_input_49_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(48, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 49: "Input #50"
-    pub fn set_input_input_50<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(49, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 49: "Input #50" and specifies the output index of the target node.
-    pub fn set_input_input_50_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(49, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 50: "Input #51"
-    pub fn set_input_input_51<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(50, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 50: "Input #51" and specifies the output index of the target node.
-    pub fn set_input_input_51_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(50, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(2, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 51: "Input #52"
-    pub fn set_input_input_52<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(51, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(3, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 51: "Input #52" and specifies the output index of the target node.
-    pub fn set_input_input_52_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(51, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(4, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 52: "Input #53"
-    pub fn set_input_input_53<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(52, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(5, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 52: "Input #53" and specifies the output index of the target node.
-    pub fn set_input_input_53_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(52, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(6, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 53: "Input #54"
-    pub fn set_input_input_54<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(53, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(7, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 53: "Input #54" and specifies the output index of the target node.
-    pub fn set_input_input_54_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(53, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(8, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 54: "Input #55"
-    pub fn set_input_input_55<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_10_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(54, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(9, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 54: "Input #55" and specifies the output index of the target node.
-    pub fn set_input_input_55_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_11_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(54, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(10, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 55: "Input #56"
-    pub fn set_input_input_56<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_12_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(55, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(11, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 55: "Input #56" and specifies the output index of the target node.
-    pub fn set_input_input_56_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_13_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(55, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(12, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 56: "Input #57"
-    pub fn set_input_input_57<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_14_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(56, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(13, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 56: "Input #57" and specifies the output index of the target node.
-    pub fn set_input_input_57_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_15_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(56, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(14, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 57: "Input #58"
-    pub fn set_input_input_58<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_16_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(57, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(15, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 57: "Input #58" and specifies the output index of the target node.
-    pub fn set_input_input_58_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_17_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(57, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(16, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 58: "Input #59"
-    pub fn set_input_input_59<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_18_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(58, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(17, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 58: "Input #59" and specifies the output index of the target node.
-    pub fn set_input_input_59_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_19_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(58, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(18, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 59: "Input #60"
-    pub fn set_input_input_60<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_20_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(59, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(19, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 59: "Input #60" and specifies the output index of the target node.
-    pub fn set_input_input_60_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_21_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(59, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(20, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 60: "Input #61"
-    pub fn set_input_input_61<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_22_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(60, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(21, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 60: "Input #61" and specifies the output index of the target node.
-    pub fn set_input_input_61_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_23_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(60, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(22, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 61: "Input #62"
-    pub fn set_input_input_62<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_24_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(61, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(23, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 61: "Input #62" and specifies the output index of the target node.
-    pub fn set_input_input_62_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_25_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(61, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(24, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 62: "Input #63"
-    pub fn set_input_input_63<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_26_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(62, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(25, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 62: "Input #63" and specifies the output index of the target node.
-    pub fn set_input_input_63_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_27_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(62, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(26, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 63: "Input #64"
-    pub fn set_input_input_64<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_28_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(63, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(27, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 63: "Input #64" and specifies the output index of the target node.
-    pub fn set_input_input_64_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_29_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(63, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(28, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 64: "Input #65"
-    pub fn set_input_input_65<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_30_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(64, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(29, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 64: "Input #65" and specifies the output index of the target node.
-    pub fn set_input_input_65_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_31_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(64, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(30, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 65: "Input #66"
-    pub fn set_input_input_66<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_32_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(65, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(31, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 65: "Input #66" and specifies the output index of the target node.
-    pub fn set_input_input_66_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_33_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(65, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(32, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 66: "Input #67"
-    pub fn set_input_input_67<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_34_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(66, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(33, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 66: "Input #67" and specifies the output index of the target node.
-    pub fn set_input_input_67_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_35_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(66, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(34, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 67: "Input #68"
-    pub fn set_input_input_68<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_36_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(67, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(35, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 67: "Input #68" and specifies the output index of the target node.
-    pub fn set_input_input_68_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_37_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(67, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(36, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 68: "Input #69"
-    pub fn set_input_input_69<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_38_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(68, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(37, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 68: "Input #69" and specifies the output index of the target node.
-    pub fn set_input_input_69_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_39_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(68, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(38, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 69: "Input #70"
-    pub fn set_input_input_70<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_40_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(69, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(39, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 69: "Input #70" and specifies the output index of the target node.
-    pub fn set_input_input_70_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_41_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(69, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(40, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 70: "Input #71"
-    pub fn set_input_input_71<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_42_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(70, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(41, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 70: "Input #71" and specifies the output index of the target node.
-    pub fn set_input_input_71_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_43_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(70, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(42, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 71: "Input #72"
-    pub fn set_input_input_72<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_44_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(71, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(43, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 71: "Input #72" and specifies the output index of the target node.
-    pub fn set_input_input_72_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_45_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(71, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(44, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 72: "Input #73"
-    pub fn set_input_input_73<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_46_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(72, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(45, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 72: "Input #73" and specifies the output index of the target node.
-    pub fn set_input_input_73_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_47_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(72, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(46, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 73: "Input #74"
-    pub fn set_input_input_74<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_48_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(73, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(47, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 73: "Input #74" and specifies the output index of the target node.
-    pub fn set_input_input_74_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_49_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(73, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(48, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 74: "Input #75"
-    pub fn set_input_input_75<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_50_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(74, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(49, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 74: "Input #75" and specifies the output index of the target node.
-    pub fn set_input_input_75_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_51_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(74, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(50, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 75: "Input #76"
-    pub fn set_input_input_76<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_52_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(75, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(51, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 75: "Input #76" and specifies the output index of the target node.
-    pub fn set_input_input_76_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_53_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(75, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(52, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 76: "Input #77"
-    pub fn set_input_input_77<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_54_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(76, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(53, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 76: "Input #77" and specifies the output index of the target node.
-    pub fn set_input_input_77_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_55_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(76, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(54, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 77: "Input #78"
-    pub fn set_input_input_78<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_56_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(77, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(55, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 77: "Input #78" and specifies the output index of the target node.
-    pub fn set_input_input_78_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_57_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(77, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(56, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 78: "Input #79"
-    pub fn set_input_input_79<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_58_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(78, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(57, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 78: "Input #79" and specifies the output index of the target node.
-    pub fn set_input_input_79_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_59_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(78, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(58, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 79: "Input #80"
-    pub fn set_input_input_80<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_60_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(79, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(59, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 79: "Input #80" and specifies the output index of the target node.
-    pub fn set_input_input_80_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_61_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(79, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(60, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 80: "Input #81"
-    pub fn set_input_input_81<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_62_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(80, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(61, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 80: "Input #81" and specifies the output index of the target node.
-    pub fn set_input_input_81_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_63_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(80, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(62, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 81: "Input #82"
-    pub fn set_input_input_82<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_64_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(81, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(63, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 81: "Input #82" and specifies the output index of the target node.
-    pub fn set_input_input_82_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_65_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(81, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(64, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 82: "Input #83"
-    pub fn set_input_input_83<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_66_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(82, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(65, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 82: "Input #83" and specifies the output index of the target node.
-    pub fn set_input_input_83_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_67_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(82, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(66, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 83: "Input #84"
-    pub fn set_input_input_84<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_68_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(83, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(67, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 83: "Input #84" and specifies the output index of the target node.
-    pub fn set_input_input_84_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_69_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(83, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(68, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 84: "Input #85"
-    pub fn set_input_input_85<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_70_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(84, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(69, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 84: "Input #85" and specifies the output index of the target node.
-    pub fn set_input_input_85_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_71_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(84, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(70, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 85: "Input #86"
-    pub fn set_input_input_86<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_72_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(85, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(71, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 85: "Input #86" and specifies the output index of the target node.
-    pub fn set_input_input_86_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_73_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(85, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(72, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 86: "Input #87"
-    pub fn set_input_input_87<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_74_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(86, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(73, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 86: "Input #87" and specifies the output index of the target node.
-    pub fn set_input_input_87_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_75_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(86, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(74, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 87: "Input #88"
-    pub fn set_input_input_88<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_76_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(87, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(75, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 87: "Input #88" and specifies the output index of the target node.
-    pub fn set_input_input_88_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_77_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(87, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(76, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 88: "Input #89"
-    pub fn set_input_input_89<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_78_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(88, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(77, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 88: "Input #89" and specifies the output index of the target node.
-    pub fn set_input_input_89_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_79_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(88, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(78, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 89: "Input #90"
-    pub fn set_input_input_90<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_80_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(89, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(79, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 89: "Input #90" and specifies the output index of the target node.
-    pub fn set_input_input_90_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_81_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(89, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(80, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 90: "Input #91"
-    pub fn set_input_input_91<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_82_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(90, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(81, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 90: "Input #91" and specifies the output index of the target node.
-    pub fn set_input_input_91_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_83_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(90, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(82, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 91: "Input #92"
-    pub fn set_input_input_92<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_84_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(91, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(83, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 91: "Input #92" and specifies the output index of the target node.
-    pub fn set_input_input_92_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_85_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(91, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(84, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 92: "Input #93"
-    pub fn set_input_input_93<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_86_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(92, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(85, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 92: "Input #93" and specifies the output index of the target node.
-    pub fn set_input_input_93_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_87_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(92, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(86, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 93: "Input #94"
-    pub fn set_input_input_94<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_88_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(93, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(87, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 93: "Input #94" and specifies the output index of the target node.
-    pub fn set_input_input_94_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_89_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(93, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(88, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 94: "Input #95"
-    pub fn set_input_input_95<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_90_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(94, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(89, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 94: "Input #95" and specifies the output index of the target node.
-    pub fn set_input_input_95_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_91_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(94, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(90, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 95: "Input #96"
-    pub fn set_input_input_96<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_92_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(95, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(91, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 95: "Input #96" and specifies the output index of the target node.
-    pub fn set_input_input_96_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_93_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(95, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(92, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 96: "Input #97"
-    pub fn set_input_input_97<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_94_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(96, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(93, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 96: "Input #97" and specifies the output index of the target node.
-    pub fn set_input_input_97_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_95_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(96, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(94, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 97: "Input #98"
-    pub fn set_input_input_98<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_96_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(97, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(95, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 97: "Input #98" and specifies the output index of the target node.
-    pub fn set_input_input_98_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_97_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(97, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(96, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 98: "Input #99"
-    pub fn set_input_input_99<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_98_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(98, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(97, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to input 98: "Input #99" and specifies the output index of the target node.
-    pub fn set_input_input_99_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_99_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(98, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(98, (out.node_id, out.pin));
         self
     }
 
-    // --- Int parameters ---
     pub fn with_variantsource(mut self, val: LopComponentgeometryvariantsVariantsource) -> Self {
         self.params.insert(
             "variantsource".to_string(),
@@ -6072,8 +4825,6 @@ impl LopComponentgeometryvariants {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_variantset(mut self, val: &str) -> Self {
         self.params.insert(
             "variantset".to_string(),
@@ -6164,8 +4915,6 @@ impl LopComponentgeometryvariants {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_setcurrentselection(mut self, val: bool) -> Self {
         self.params.insert(
             "setcurrentselection".to_string(),
@@ -6188,28 +4937,41 @@ impl houdini_ramen_core::types::HoudiniNode for LopComponentgeometryvariants {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "componentgeometryvariants"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait LopComponentgeometryvariantsOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopComponentgeometryvariantsOutputs for LopComponentgeometryvariants {}
+impl LopComponentgeometryvariantsOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopComponentgeometryvariants>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6236,7 +4998,7 @@ pub enum LopComponentmaterialBindmethod {
 pub struct LopComponentmaterial {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -6253,89 +5015,44 @@ impl LopComponentmaterial {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_materials_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Materials"
-    pub fn set_input_materials<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Materials" and specifies the output index of the target node.
-    pub fn set_input_materials_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_addmateriallibrary(mut self) -> Self {
         self.params.insert(
             "addmateriallibrary".to_string(),
@@ -6343,8 +5060,6 @@ impl LopComponentmaterial {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_secondinputbehavior(
         mut self,
         val: LopComponentmaterialSecondinputbehavior,
@@ -6364,8 +5079,6 @@ impl LopComponentmaterial {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_quickmaterials(mut self, val: i32) -> Self {
         self.params.insert(
             "quickmaterials".to_string(),
@@ -6438,8 +5151,6 @@ impl LopComponentmaterial {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_variantset(mut self, val: &str) -> Self {
         self.params.insert(
             "variantset".to_string(),
@@ -6584,8 +5295,6 @@ impl LopComponentmaterial {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_autoroot(mut self, val: bool) -> Self {
         self.params.insert(
             "autoroot".to_string(),
@@ -6672,33 +5381,46 @@ impl houdini_ramen_core::types::HoudiniNode for LopComponentmaterial {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "componentmaterial"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
-
     fn get_dive_target(&self) -> Option<&'static str> {
         Some("edit")
     }
 }
+
+pub trait LopComponentmaterialOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopComponentmaterialOutputs for LopComponentmaterial {}
+impl LopComponentmaterialOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopComponentmaterial>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopComponentmaterialInnerExt {
     fn output0(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -6738,7 +5460,7 @@ pub enum LopComponentoutputThumbnailscenesource {
 pub struct LopComponentoutput {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -6755,89 +5477,44 @@ impl LopComponentoutput {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
-
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_thumbnail_scene_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(1, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 1: "Thumbnail Scene"
-    pub fn set_input_thumbnail_scene<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 1: "Thumbnail Scene" and specifies the output index of the target node.
-    pub fn set_input_thumbnail_scene_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(1, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_execute(mut self) -> Self {
         self.params.insert(
             "execute".to_string(),
@@ -6908,8 +5585,6 @@ impl LopComponentoutput {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_customdatafloatvalue_inst(mut self, index1: usize, val: f32) -> Self {
         self.params.insert(
             format!("customdatafloatvalue{}", index1),
@@ -7006,8 +5681,6 @@ impl LopComponentoutput {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_mode(mut self, val: LopComponentoutputMode) -> Self {
         self.params.insert(
             "mode".to_string(),
@@ -7075,8 +5748,6 @@ impl LopComponentoutput {
         );
         self
     }
-
-    // --- Int2 parameters ---
     pub fn with_res(mut self, val: [i32; 2]) -> Self {
         self.params.insert(
             "res".to_string(),
@@ -7093,8 +5764,6 @@ impl LopComponentoutput {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_rootprim(mut self, val: &str) -> Self {
         self.params.insert(
             "rootprim".to_string(),
@@ -7869,8 +6538,6 @@ impl LopComponentoutput {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_setdefaultvariants(mut self, val: bool) -> Self {
         self.params.insert(
             "setdefaultvariants".to_string(),
@@ -8405,33 +7072,46 @@ impl houdini_ramen_core::types::HoudiniNode for LopComponentoutput {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "componentoutput"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
-
     fn get_dive_target(&self) -> Option<&'static str> {
         Some("extras")
     }
 }
+
+pub trait LopComponentoutputOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopComponentoutputOutputs for LopComponentoutput {}
+impl LopComponentoutputOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopComponentoutput>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait LopComponentoutputInnerExt {
     fn output0(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -8478,7 +7158,7 @@ pub enum LopConeRord {
 pub struct LopCone {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -8495,70 +7175,36 @@ impl LopCone {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_height(mut self, val: f32) -> Self {
         self.params.insert(
             "height".to_string(),
@@ -8623,8 +7269,6 @@ impl LopCone {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -8641,8 +7285,6 @@ impl LopCone {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -8771,8 +7413,6 @@ impl LopCone {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -8805,8 +7445,6 @@ impl LopCone {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_createprims(mut self, val: LopConeCreateprims) -> Self {
         self.params.insert(
             "createprims".to_string(),
@@ -8871,8 +7509,6 @@ impl LopCone {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -9215,8 +7851,6 @@ impl LopCone {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -9287,35 +7921,45 @@ impl houdini_ramen_core::types::HoudiniNode for LopCone {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "cone"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
 
+pub trait LopConeOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopConeOutputs for LopCone {}
+impl LopConeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCone> {}
+
 #[derive(Debug, Clone)]
 pub struct LopConfigurelayer {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -9332,70 +7976,36 @@ impl LopConfigurelayer {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_starttime(mut self, val: f32) -> Self {
         self.params.insert(
             "starttime".to_string(),
@@ -9508,8 +8118,6 @@ impl LopConfigurelayer {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_customdataintvalue_inst(mut self, index1: usize, val: i32) -> Self {
         self.params.insert(
             format!("customdataintvalue{}", index1),
@@ -9542,8 +8150,6 @@ impl LopConfigurelayer {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_savepath(mut self, val: &str) -> Self {
         self.params.insert(
             "savepath".to_string(),
@@ -9796,8 +8402,6 @@ impl LopConfigurelayer {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_setsavepath(mut self, val: bool) -> Self {
         self.params.insert(
             "setsavepath".to_string(),
@@ -10076,35 +8680,48 @@ impl houdini_ramen_core::types::HoudiniNode for LopConfigurelayer {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "configurelayer"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait LopConfigurelayerOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopConfigurelayerOutputs for LopConfigurelayer {}
+impl LopConfigurelayerOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopConfigurelayer>
+{
 }
 
 #[derive(Debug, Clone)]
 pub struct LopConfigureprimitive {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -10121,70 +8738,36 @@ impl LopConfigureprimitive {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_assetinfofloatvalue_inst(mut self, index1: usize, val: f32) -> Self {
         self.params.insert(
             format!("assetinfofloatvalue{}", index1),
@@ -10217,8 +8800,6 @@ impl LopConfigureprimitive {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -10235,8 +8816,6 @@ impl LopConfigureprimitive {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -10269,8 +8848,6 @@ impl LopConfigureprimitive {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -10319,8 +8896,6 @@ impl LopConfigureprimitive {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -10933,8 +9508,6 @@ impl LopConfigureprimitive {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -11581,35 +10154,48 @@ impl houdini_ramen_core::types::HoudiniNode for LopConfigureprimitive {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "configureprimitive"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait LopConfigureprimitiveOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopConfigureprimitiveOutputs for LopConfigureprimitive {}
+impl LopConfigureprimitiveOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopConfigureprimitive>
+{
 }
 
 #[derive(Debug, Clone)]
 pub struct LopConfigureproperty {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -11626,70 +10212,36 @@ impl LopConfigureproperty {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_customdatafloatvalue_inst(mut self, index1: usize, val: f32) -> Self {
         self.params.insert(
             format!("customdatafloatvalue{}", index1),
@@ -11722,8 +10274,6 @@ impl LopConfigureproperty {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_elementsize(mut self, val: i32) -> Self {
         self.params.insert(
             "elementsize".to_string(),
@@ -11772,8 +10322,6 @@ impl LopConfigureproperty {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_primpattern(mut self, val: &str) -> Self {
         self.params.insert(
             "primpattern".to_string(),
@@ -11972,8 +10520,6 @@ impl LopConfigureproperty {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_setvariability(mut self, val: bool) -> Self {
         self.params.insert(
             "setvariability".to_string(),
@@ -12076,35 +10622,48 @@ impl houdini_ramen_core::types::HoudiniNode for LopConfigureproperty {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "configureproperty"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait LopConfigurepropertyOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopConfigurepropertyOutputs for LopConfigureproperty {}
+impl LopConfigurepropertyOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopConfigureproperty>
+{
 }
 
 #[derive(Debug, Clone)]
 pub struct LopConfigurestage {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -12121,70 +10680,36 @@ impl LopConfigurestage {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_stagevariablesfloatvalue_inst(mut self, index1: usize, val: f32) -> Self {
         self.params.insert(
             format!("stagevariablesfloatvalue{}", index1),
@@ -12201,8 +10726,6 @@ impl LopConfigurestage {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_stagevariablesintvalue_inst(mut self, index1: usize, val: i32) -> Self {
         self.params.insert(
             format!("stagevariablesintvalue{}", index1),
@@ -12219,8 +10742,6 @@ impl LopConfigurestage {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_editpopulate(mut self, val: &str) -> Self {
         self.params.insert(
             "editpopulate".to_string(),
@@ -12603,8 +11124,6 @@ impl LopConfigurestage {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_resolvercontextstringenable_inst(mut self, index1: usize, val: bool) -> Self {
         self.params.insert(
             format!("resolvercontextstringenable{}", index1),
@@ -12659,28 +11178,41 @@ impl houdini_ramen_core::types::HoudiniNode for LopConfigurestage {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "configurestage"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait LopConfigurestageOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopConfigurestageOutputs for LopConfigurestage {}
+impl LopConfigurestageOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<LopConfigurestage>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -12713,7 +11245,7 @@ pub enum LopCoordsysRord {
 pub struct LopCoordsys {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -12730,70 +11262,36 @@ impl LopCoordsys {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -12858,8 +11356,6 @@ impl LopCoordsys {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_aspectratio(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "aspectratio".to_string(),
@@ -12876,8 +11372,6 @@ impl LopCoordsys {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -12974,8 +11468,6 @@ impl LopCoordsys {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_targettype(mut self, val: LopCoordsysTargettype) -> Self {
         self.params.insert(
             "targettype".to_string(),
@@ -12992,8 +11484,6 @@ impl LopCoordsys {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_xord(mut self, val: LopCoordsysXord) -> Self {
         self.params.insert(
             "xOrd".to_string(),
@@ -13042,8 +11532,6 @@ impl LopCoordsys {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_primpath(mut self, val: &str) -> Self {
         self.params.insert(
             "primpath".to_string(),
@@ -13170,8 +11658,6 @@ impl LopCoordsys {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_createtarget(mut self, val: bool) -> Self {
         self.params.insert(
             "createtarget".to_string(),
@@ -13226,35 +11712,45 @@ impl houdini_ramen_core::types::HoudiniNode for LopCoordsys {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "coordsys"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
 
+pub trait LopCoordsysOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCoordsysOutputs for LopCoordsys {}
+impl LopCoordsysOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCoordsys> {}
+
 #[derive(Debug, Clone)]
 pub struct LopCop2net {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -13271,7 +11767,6 @@ impl LopCop2net {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
@@ -13282,25 +11777,22 @@ impl houdini_ramen_core::types::HoudiniNode for LopCop2net {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "cop2net"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -13326,7 +11818,7 @@ pub enum LopCopnetPrecision {
 pub struct LopCopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -13343,13 +11835,11 @@ impl LopCopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_pixelscale(mut self, val: f32) -> Self {
         self.params.insert(
             "pixelscale".to_string(),
@@ -13366,8 +11856,6 @@ impl LopCopnet {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_udim(mut self, val: i32) -> Self {
         self.params.insert(
             "udim".to_string(),
@@ -13400,8 +11888,6 @@ impl LopCopnet {
         );
         self
     }
-
-    // --- Int2 parameters ---
     pub fn with_res(mut self, val: [i32; 2]) -> Self {
         self.params.insert(
             "res".to_string(),
@@ -13418,8 +11904,6 @@ impl LopCopnet {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_resmenu(mut self, val: i32) -> Self {
         self.params.insert(
             "resmenu".to_string(),
@@ -13468,8 +11952,6 @@ impl LopCopnet {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_setres(mut self, val: bool) -> Self {
         self.params.insert(
             "setres".to_string(),
@@ -13572,25 +12054,22 @@ impl houdini_ramen_core::types::HoudiniNode for LopCopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "copnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -13600,7 +12079,7 @@ impl houdini_ramen_core::types::HoudiniNode for LopCopnet {
 pub struct LopCopyproperty {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -13617,70 +12096,36 @@ impl LopCopyproperty {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- String parameters ---
     pub fn with_primpattern(mut self, val: &str) -> Self {
         self.params.insert(
             "primpattern".to_string(),
@@ -13753,8 +12198,6 @@ impl LopCopyproperty {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_separatedestprimpattern(mut self, val: bool) -> Self {
         self.params.insert(
             "separatedestprimpattern".to_string(),
@@ -13809,35 +12252,45 @@ impl houdini_ramen_core::types::HoudiniNode for LopCopyproperty {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "copyproperty"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
 
+pub trait LopCopypropertyOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCopypropertyOutputs for LopCopyproperty {}
+impl LopCopypropertyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCopyproperty> {}
+
 #[derive(Debug, Clone)]
 pub struct LopCreatelod {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -13854,70 +12307,36 @@ impl LopCreatelod {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_lodpercent_inst(mut self, index1: usize, val: f32) -> Self {
         self.params.insert(
             format!("lodpercent{}", index1),
@@ -13966,8 +12385,6 @@ impl LopCreatelod {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_idoffset(mut self, val: i32) -> Self {
         self.params.insert(
             "idoffset".to_string(),
@@ -13984,8 +12401,6 @@ impl LopCreatelod {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_primpath(mut self, val: &str) -> Self {
         self.params.insert(
             "primpath".to_string(),
@@ -14130,8 +12545,6 @@ impl LopCreatelod {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sourceprim(mut self, val: bool) -> Self {
         self.params.insert(
             "sourceprim".to_string(),
@@ -14234,29 +12647,39 @@ impl houdini_ramen_core::types::HoudiniNode for LopCreatelod {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "createlod"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCreatelodOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCreatelodOutputs for LopCreatelod {}
+impl LopCreatelodOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCreatelod> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopCreatexformCreateprims {
@@ -14290,7 +12713,7 @@ pub enum LopCreatexformRord {
 pub struct LopCreatexform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -14307,70 +12730,36 @@ impl LopCreatexform {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -14387,8 +12776,6 @@ impl LopCreatexform {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -14405,8 +12792,6 @@ impl LopCreatexform {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -14519,8 +12904,6 @@ impl LopCreatexform {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -14553,8 +12936,6 @@ impl LopCreatexform {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_createprims(mut self, val: LopCreatexformCreateprims) -> Self {
         self.params.insert(
             "createprims".to_string(),
@@ -14619,8 +13000,6 @@ impl LopCreatexform {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -14837,8 +13216,6 @@ impl LopCreatexform {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -14877,29 +13254,39 @@ impl houdini_ramen_core::types::HoudiniNode for LopCreatexform {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "createxform"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCreatexformOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCreatexformOutputs for LopCreatexform {}
+impl LopCreatexformOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCreatexform> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopCubeCreateprims {
@@ -14933,7 +13320,7 @@ pub enum LopCubeRord {
 pub struct LopCube {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -14950,70 +13337,36 @@ impl LopCube {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_size(mut self, val: f32) -> Self {
         self.params.insert(
             "size".to_string(),
@@ -15062,8 +13415,6 @@ impl LopCube {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -15080,8 +13431,6 @@ impl LopCube {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -15210,8 +13559,6 @@ impl LopCube {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -15244,8 +13591,6 @@ impl LopCube {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_createprims(mut self, val: LopCubeCreateprims) -> Self {
         self.params.insert(
             "createprims".to_string(),
@@ -15310,8 +13655,6 @@ impl LopCube {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -15600,8 +13943,6 @@ impl LopCube {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -15672,29 +14013,39 @@ impl houdini_ramen_core::types::HoudiniNode for LopCube {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "cube"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCubeOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCubeOutputs for LopCube {}
+impl LopCubeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCube> {}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopCylinderCreateprims {
@@ -15728,7 +14079,7 @@ pub enum LopCylinderRord {
 pub struct LopCylinder {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -15745,70 +14096,36 @@ impl LopCylinder {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage"
-    pub fn set_input_input_stage<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input Stage" and specifies the output index of the target node.
-    pub fn set_input_input_stage_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_height(mut self, val: f32) -> Self {
         self.params.insert(
             "height".to_string(),
@@ -15889,8 +14206,6 @@ impl LopCylinder {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_sample_shutterrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "sample_shutterrange".to_string(),
@@ -15907,8 +14222,6 @@ impl LopCylinder {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_sample_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "sample_f".to_string(),
@@ -16037,8 +14350,6 @@ impl LopCylinder {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_sample_count(mut self, val: i32) -> Self {
         self.params.insert(
             "sample_count".to_string(),
@@ -16071,8 +14382,6 @@ impl LopCylinder {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_createprims(mut self, val: LopCylinderCreateprims) -> Self {
         self.params.insert(
             "createprims".to_string(),
@@ -16137,8 +14446,6 @@ impl LopCylinder {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_sample_behavior(mut self, val: &str) -> Self {
         self.params.insert(
             "sample_behavior".to_string(),
@@ -16499,8 +14806,6 @@ impl LopCylinder {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_sample_subframeenable(mut self, val: bool) -> Self {
         self.params.insert(
             "sample_subframeenable".to_string(),
@@ -16571,26 +14876,36 @@ impl houdini_ramen_core::types::HoudiniNode for LopCylinder {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "cylinder"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait LopCylinderOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output Stage"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl LopCylinderOutputs for LopCylinder {}
+impl LopCylinderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopCylinder> {}
