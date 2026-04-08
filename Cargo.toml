@@ -5,6 +5,7 @@ edition = "2024"
 description = "Nodes as Code for Houdini (Under Development)"
 license = "MIT"
 repository = "https://github.com/unclepomedev/houdini_ramen"
+rust-version = "1.94"
 
 include = [
     "src/**/*",

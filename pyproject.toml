@@ -1,7 +1,7 @@
 [project]
 name = "houdini-ramen"
 version = "0.0.1"
-description = "TODO"
+description = "Dump houdini data, auto-generate Rust structures, generate docs for AI-agents, and helpers to probe houdini."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
