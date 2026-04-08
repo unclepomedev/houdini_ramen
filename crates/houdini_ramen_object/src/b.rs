@@ -91,7 +91,7 @@ pub enum ObjectBipedAutoRigProxyDisplayHandles {
 pub struct ObjectBipedAutoRig {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -108,13 +108,11 @@ impl ObjectBipedAutoRig {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_set_rig(mut self) -> Self {
         self.params.insert(
             "set_rig".to_string(),
@@ -129,8 +127,6 @@ impl ObjectBipedAutoRig {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -803,8 +799,6 @@ impl ObjectBipedAutoRig {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -5381,8 +5375,6 @@ impl ObjectBipedAutoRig {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -5533,8 +5525,6 @@ impl ObjectBipedAutoRig {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectBipedAutoRigPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -5618,8 +5608,6 @@ impl ObjectBipedAutoRig {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -5944,8 +5932,6 @@ impl ObjectBipedAutoRig {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -6304,29 +6290,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectBipedAutoRig {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "biped_auto_rig"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectBipedAutoRigOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectBipedAutoRigOutputs for ObjectBipedAutoRig {}
+impl ObjectBipedAutoRigOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectBipedAutoRig>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBipedAutoRigInnerExt {
     fn character_placer(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -6524,7 +6524,7 @@ pub enum ObjectBlendUparmtype {
 pub struct ObjectBlend {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -6543,55 +6543,29 @@ impl ObjectBlend {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_blendw1(mut self, val: f32) -> Self {
         self.params.insert(
             "blendw1".to_string(),
@@ -6784,8 +6758,6 @@ impl ObjectBlend {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_blendrest1(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "blendrest1".to_string(),
@@ -6962,8 +6934,6 @@ impl ObjectBlend {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -6996,8 +6966,6 @@ impl ObjectBlend {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_shortrotblend(mut self, val: ObjectBlendShortrotblend) -> Self {
         self.params.insert(
             "shortrotblend".to_string(),
@@ -7222,8 +7190,6 @@ impl ObjectBlend {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_constraints_path(mut self, val: &str) -> Self {
         self.params.insert(
             "constraints_path".to_string(),
@@ -7350,8 +7316,6 @@ impl ObjectBlend {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_userestangles(mut self, val: bool) -> Self {
         self.params.insert(
             "userestangles".to_string(),
@@ -7566,29 +7530,40 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectBlend {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "blend"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectBlendOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectBlendOutputs for ObjectBlend {}
+impl ObjectBlendOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectBlend> {}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBlendInnerExt {
     fn point1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -7688,7 +7663,7 @@ pub enum ObjectBlendstickyUparmtype {
 pub struct ObjectBlendsticky {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -7707,55 +7682,29 @@ impl ObjectBlendsticky {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_stickyclearuv(mut self) -> Self {
         self.params.insert(
             "stickyclearuv".to_string(),
@@ -7763,8 +7712,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_blend_inst(mut self, index1: usize, val: f32) -> Self {
         self.params.insert(
             format!("blend{}", index1),
@@ -7861,8 +7808,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_stickyurange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "stickyurange".to_string(),
@@ -7895,8 +7840,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_dcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "dcolor".to_string(),
@@ -8057,8 +8000,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_display(mut self, val: i32) -> Self {
         self.params.insert(
             "display".to_string(),
@@ -8091,8 +8032,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_mask_inst(mut self, index1: usize, val: ObjectBlendstickyMask) -> Self {
         self.params.insert(
             format!("mask{}", index1),
@@ -8237,8 +8176,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_stickyattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "stickyattrib".to_string(),
@@ -8401,8 +8338,6 @@ impl ObjectBlendsticky {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_stickyorient(mut self, val: bool) -> Self {
         self.params.insert(
             "stickyorient".to_string(),
@@ -8665,29 +8600,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectBlendsticky {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "blendsticky"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectBlendstickyOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectBlendstickyOutputs for ObjectBlendsticky {}
+impl ObjectBlendstickyOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectBlendsticky>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBlendstickyInnerExt {
     fn control1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -8748,7 +8697,7 @@ pub enum ObjectBoneRord {
 pub struct ObjectBone {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -8765,70 +8714,36 @@ impl ObjectBone {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "parent"
-    pub fn set_input_parent<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "parent" and specifies the output index of the target node.
-    pub fn set_input_parent_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -9101,8 +9016,6 @@ impl ObjectBone {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_xrange(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "xrange".to_string(),
@@ -9151,8 +9064,6 @@ impl ObjectBone {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -9489,8 +9400,6 @@ impl ObjectBone {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -9523,8 +9432,6 @@ impl ObjectBone {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectBonePreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -9605,8 +9512,6 @@ impl ObjectBone {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_constraints_path(mut self, val: &str) -> Self {
         self.params.insert(
             "constraints_path".to_string(),
@@ -9751,8 +9656,6 @@ impl ObjectBone {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -9951,29 +9854,40 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectBone {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "bone"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectBoneOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectBoneOutputs for ObjectBone {}
+impl ObjectBoneOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectBone> {}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectBoneInnerExt {
     fn bonelink(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;

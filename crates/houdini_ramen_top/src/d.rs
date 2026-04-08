@@ -67,7 +67,7 @@ pub enum TopDeadlineschedulerHythonbin {
 pub struct TopDeadlinescheduler {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -84,13 +84,11 @@ impl TopDeadlinescheduler {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_submitjob(mut self) -> Self {
         self.params.insert(
             "submitjob".to_string(),
@@ -98,8 +96,6 @@ impl TopDeadlinescheduler {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_deadline_submitcommandtimeout(mut self, val: f32) -> Self {
         self.params.insert(
             "deadline_submitcommandtimeout".to_string(),
@@ -132,8 +128,6 @@ impl TopDeadlinescheduler {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_task_file_timeout(mut self, val: i32) -> Self {
         self.params.insert(
             "task_file_timeout".to_string(),
@@ -566,8 +560,6 @@ impl TopDeadlinescheduler {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pdg_workitemdatasource(
         mut self,
         val: TopDeadlineschedulerPdgWorkitemdatasource,
@@ -718,8 +710,6 @@ impl TopDeadlinescheduler {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_deadline_launch_monitor(mut self, val: &str) -> Self {
         self.params.insert(
             "deadline_launch_monitor".to_string(),
@@ -2034,8 +2024,6 @@ impl TopDeadlinescheduler {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_deadline_verbose_log(mut self, val: bool) -> Self {
         self.params.insert(
             "deadline_verbose_log".to_string(),
@@ -2634,25 +2622,22 @@ impl houdini_ramen_core::types::HoudiniNode for TopDeadlinescheduler {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "deadlinescheduler"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -2707,7 +2692,7 @@ pub enum TopDopnetUparmtype {
 pub struct TopDopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2724,13 +2709,11 @@ impl TopDopnet {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_resimulate(mut self) -> Self {
         self.params.insert(
             "resimulate".to_string(),
@@ -2738,8 +2721,6 @@ impl TopDopnet {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_timestep(mut self, val: f32) -> Self {
         self.params.insert(
             "timestep".to_string(),
@@ -2852,8 +2833,6 @@ impl TopDopnet {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -2966,8 +2945,6 @@ impl TopDopnet {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_display(mut self, val: i32) -> Self {
         self.params.insert(
             "display".to_string(),
@@ -3112,8 +3089,6 @@ impl TopDopnet {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_compresssims(mut self, val: TopDopnetCompresssims) -> Self {
         self.params.insert(
             "compresssims".to_string(),
@@ -3194,8 +3169,6 @@ impl TopDopnet {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_playfilesname(mut self, val: &str) -> Self {
         self.params.insert(
             "playfilesname".to_string(),
@@ -3376,8 +3349,6 @@ impl TopDopnet {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_isplayer(mut self, val: bool) -> Self {
         self.params.insert(
             "isplayer".to_string(),
@@ -3672,25 +3643,22 @@ impl houdini_ramen_core::types::HoudiniNode for TopDopnet {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "dopnet"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
@@ -3714,7 +3682,7 @@ pub enum TopDownloadfilePdgCooktype {
 pub struct TopDownloadfile {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3731,70 +3699,36 @@ impl TopDownloadfile {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
+        self
+    }
+
+    pub fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "input"
-    pub fn set_input_input<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "input" and specifies the output index of the target node.
-    pub fn set_input_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Menu parameters ---
     pub fn with_pdg_workitemgeneration(mut self, val: i32) -> Self {
         self.params.insert(
             "pdg_workitemgeneration".to_string(),
@@ -3859,8 +3793,6 @@ impl TopDownloadfile {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_url_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("url{}", index1),
@@ -3915,8 +3847,6 @@ impl TopDownloadfile {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_split(mut self, val: bool) -> Self {
         self.params.insert(
             "split".to_string(),
@@ -3971,26 +3901,36 @@ impl houdini_ramen_core::types::HoudiniNode for TopDownloadfile {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "downloadfile"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait TopDownloadfileOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "output"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl TopDownloadfileOutputs for TopDownloadfile {}
+impl TopDownloadfileOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopDownloadfile> {}

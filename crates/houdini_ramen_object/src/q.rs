@@ -91,7 +91,7 @@ pub enum ObjectQuadrupedAutoRig4fProxyDisplayHandles {
 pub struct ObjectQuadrupedAutoRig4f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -108,13 +108,11 @@ impl ObjectQuadrupedAutoRig4f {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_set_rig(mut self) -> Self {
         self.params.insert(
             "set_rig".to_string(),
@@ -129,8 +127,6 @@ impl ObjectQuadrupedAutoRig4f {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -1315,8 +1311,6 @@ impl ObjectQuadrupedAutoRig4f {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -8757,8 +8751,6 @@ impl ObjectQuadrupedAutoRig4f {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -8909,8 +8901,6 @@ impl ObjectQuadrupedAutoRig4f {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectQuadrupedAutoRig4fPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -8994,8 +8984,6 @@ impl ObjectQuadrupedAutoRig4f {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -9320,8 +9308,6 @@ impl ObjectQuadrupedAutoRig4f {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -9760,29 +9746,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectQuadrupedAutoRig4f {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "quadruped_auto_rig_4f"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectQuadrupedAutoRig4fOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectQuadrupedAutoRig4fOutputs for ObjectQuadrupedAutoRig4f {}
+impl ObjectQuadrupedAutoRig4fOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectQuadrupedAutoRig4f>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectQuadrupedAutoRig4fInnerExt {
     fn back_left_leg(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -9942,7 +9942,7 @@ pub enum ObjectQuadrupedAutoRig5fProxyDisplayHandles {
 pub struct ObjectQuadrupedAutoRig5f {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -9959,13 +9959,11 @@ impl ObjectQuadrupedAutoRig5f {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Button parameters ---
     pub fn trigger_set_rig(mut self) -> Self {
         self.params.insert(
             "set_rig".to_string(),
@@ -9980,8 +9978,6 @@ impl ObjectQuadrupedAutoRig5f {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_scale(mut self, val: f32) -> Self {
         self.params.insert(
             "scale".to_string(),
@@ -11358,8 +11354,6 @@ impl ObjectQuadrupedAutoRig5f {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_t(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "t".to_string(),
@@ -19824,8 +19818,6 @@ impl ObjectQuadrupedAutoRig5f {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_pathorient(mut self, val: i32) -> Self {
         self.params.insert(
             "pathorient".to_string(),
@@ -19976,8 +19968,6 @@ impl ObjectQuadrupedAutoRig5f {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_pre_xform(mut self, val: ObjectQuadrupedAutoRig5fPreXform) -> Self {
         self.params.insert(
             "pre_xform".to_string(),
@@ -20061,8 +20051,6 @@ impl ObjectQuadrupedAutoRig5f {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_lookatpath(mut self, val: &str) -> Self {
         self.params.insert(
             "lookatpath".to_string(),
@@ -20387,8 +20375,6 @@ impl ObjectQuadrupedAutoRig5f {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_keeppos(mut self, val: bool) -> Self {
         self.params.insert(
             "keeppos".to_string(),
@@ -20827,29 +20813,43 @@ impl houdini_ramen_core::types::HoudiniNode for ObjectQuadrupedAutoRig5f {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "quadruped_auto_rig_5f"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ObjectQuadrupedAutoRig5fOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ObjectQuadrupedAutoRig5fOutputs for ObjectQuadrupedAutoRig5f {}
+impl ObjectQuadrupedAutoRig5fOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectQuadrupedAutoRig5f>
+{
+}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait ObjectQuadrupedAutoRig5fInnerExt {
     fn back_left_leg(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;

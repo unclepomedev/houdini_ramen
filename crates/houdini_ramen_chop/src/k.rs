@@ -668,7 +668,7 @@ pub enum ChopKeyboardUnits {
 pub struct ChopKeyboard {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -685,13 +685,11 @@ impl ChopKeyboard {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Float parameters ---
     pub fn with_rate(mut self, val: f32) -> Self {
         self.params.insert(
             "rate".to_string(),
@@ -740,8 +738,6 @@ impl ChopKeyboard {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_gcolor(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "gcolor".to_string(),
@@ -758,8 +754,6 @@ impl ChopKeyboard {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_modifiers(mut self, val: ChopKeyboardModifiers) -> Self {
         self.params.insert(
             "modifiers".to_string(),
@@ -1128,8 +1122,6 @@ impl ChopKeyboard {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_name1(mut self, val: &str) -> Self {
         self.params.insert(
             "name1".to_string(),
@@ -1328,8 +1320,6 @@ impl ChopKeyboard {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_timeslice(mut self, val: bool) -> Self {
         self.params.insert(
             "timeslice".to_string(),
@@ -1368,26 +1358,36 @@ impl houdini_ramen_core::types::HoudiniNode for ChopKeyboard {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "keyboard"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait ChopKeyboardOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl ChopKeyboardOutputs for ChopKeyboard {}
+impl ChopKeyboardOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopKeyboard> {}

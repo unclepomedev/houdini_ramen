@@ -43,7 +43,7 @@ pub enum DriverKarmaPreviewscale {
 pub struct DriverKarma {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -60,70 +60,27 @@ impl DriverKarma {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
+        self.inputs.insert(0, (out.node_id, out.pin));
         self
     }
 
-    /// Connects to the primary input (index 0).
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to the primary input (index 0) and specifies the output index of the target node.
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    /// Connects to input 0: "Input #1"
-    pub fn set_input_input_1<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), 0));
-        self
-    }
-
-    /// Connects to input 0: "Input #1" and specifies the output index of the target node.
-    pub fn set_input_input_1_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(0, (target.get_id(), output_index));
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_execute(mut self) -> Self {
         self.params.insert(
             "execute".to_string(),
@@ -166,8 +123,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_head_ao_distance(mut self, val: f32) -> Self {
         self.params.insert(
             "head_ao_distance".to_string(),
@@ -808,8 +763,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Float2 parameters ---
     pub fn with_head_depthcue_z(mut self, val: [f32; 2]) -> Self {
         self.params.insert(
             "head_depthcue_z".to_string(),
@@ -826,8 +779,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "f".to_string(),
@@ -876,8 +827,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Float4 parameters ---
     pub fn with_datawindowndc(mut self, val: [f32; 4]) -> Self {
         self.params.insert(
             "dataWindowNDC".to_string(),
@@ -894,8 +843,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_samplesperpixel(mut self, val: i32) -> Self {
         self.params.insert(
             "samplesperpixel".to_string(),
@@ -1296,8 +1243,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Int2 parameters ---
     pub fn with_res_override(mut self, val: [i32; 2]) -> Self {
         self.params.insert(
             "res_override".to_string(),
@@ -1346,8 +1291,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_trange(mut self, val: DriverKarmaTrange) -> Self {
         self.params.insert(
             "trange".to_string(),
@@ -1460,8 +1403,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Ramp parameters ---
     pub fn with_tonemapcurve(mut self, val: Vec<houdini_ramen_core::types::RampPoint>) -> Self {
         self.params.insert(
             "tonemapcurve".to_string(),
@@ -1478,8 +1419,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_res_fraction(mut self, val: &str) -> Self {
         self.params.insert(
             "res_fraction".to_string(),
@@ -3010,8 +2949,6 @@ impl DriverKarma {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_override_camerares(mut self, val: bool) -> Self {
         self.params.insert(
             "override_camerares".to_string(),
@@ -4762,29 +4699,40 @@ impl houdini_ramen_core::types::HoudiniNode for DriverKarma {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "karma"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
 }
+
+pub trait DriverKarmaOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DriverKarmaOutputs for DriverKarma {}
+impl DriverKarmaOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DriverKarma> {}
+
 #[allow(clippy::wrong_self_convention, non_snake_case)]
 pub trait DriverKarmaInnerExt {
     fn lopnet(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
@@ -4820,7 +4768,7 @@ pub enum DriverKinefxFilmboxfbxanimationOutputunit {
 pub struct DriverKinefxFilmboxfbxanimation {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -4839,55 +4787,29 @@ impl DriverKinefxFilmboxfbxanimation {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_execute(mut self) -> Self {
         self.params.insert(
             "execute".to_string(),
@@ -4902,8 +4824,6 @@ impl DriverKinefxFilmboxfbxanimation {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_jointdisplayscale(mut self, val: f32) -> Self {
         self.params.insert(
             "jointdisplayscale".to_string(),
@@ -4920,8 +4840,6 @@ impl DriverKinefxFilmboxfbxanimation {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "f".to_string(),
@@ -4938,8 +4856,6 @@ impl DriverKinefxFilmboxfbxanimation {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_cliprangemode(mut self, val: DriverKinefxFilmboxfbxanimationCliprangemode) -> Self {
         self.params.insert(
             "cliprangemode".to_string(),
@@ -5004,8 +4920,6 @@ impl DriverKinefxFilmboxfbxanimation {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_take(mut self, val: &str) -> Self {
         self.params.insert(
             "take".to_string(),
@@ -5258,8 +5172,6 @@ impl DriverKinefxFilmboxfbxanimation {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_userestpose(mut self, val: bool) -> Self {
         self.params.insert(
             "userestpose".to_string(),
@@ -5506,28 +5418,41 @@ impl houdini_ramen_core::types::HoudiniNode for DriverKinefxFilmboxfbxanimation 
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "kinefx::filmboxfbxanimation"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait DriverKinefxFilmboxfbxanimationOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DriverKinefxFilmboxfbxanimationOutputs for DriverKinefxFilmboxfbxanimation {}
+impl DriverKinefxFilmboxfbxanimationOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<DriverKinefxFilmboxfbxanimation>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -5556,7 +5481,7 @@ pub enum DriverKinefxFilmboxfbxcharacterOutputunit {
 pub struct DriverKinefxFilmboxfbxcharacter {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -5575,55 +5500,29 @@ impl DriverKinefxFilmboxfbxcharacter {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_execute(mut self) -> Self {
         self.params.insert(
             "execute".to_string(),
@@ -5638,8 +5537,6 @@ impl DriverKinefxFilmboxfbxcharacter {
         );
         self
     }
-
-    // --- Float parameters ---
     pub fn with_jointdisplayscale(mut self, val: f32) -> Self {
         self.params.insert(
             "jointdisplayscale".to_string(),
@@ -5656,8 +5553,6 @@ impl DriverKinefxFilmboxfbxcharacter {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "f".to_string(),
@@ -5674,8 +5569,6 @@ impl DriverKinefxFilmboxfbxcharacter {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_cliprangemode(mut self, val: DriverKinefxFilmboxfbxcharacterCliprangemode) -> Self {
         self.params.insert(
             "cliprangemode".to_string(),
@@ -5756,8 +5649,6 @@ impl DriverKinefxFilmboxfbxcharacter {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_take(mut self, val: &str) -> Self {
         self.params.insert(
             "take".to_string(),
@@ -6064,8 +5955,6 @@ impl DriverKinefxFilmboxfbxcharacter {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_userestpose(mut self, val: bool) -> Self {
         self.params.insert(
             "userestpose".to_string(),
@@ -6328,28 +6217,41 @@ impl houdini_ramen_core::types::HoudiniNode for DriverKinefxFilmboxfbxcharacter 
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "kinefx::filmboxfbxcharacter"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait DriverKinefxFilmboxfbxcharacterOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DriverKinefxFilmboxfbxcharacterOutputs for DriverKinefxFilmboxfbxcharacter {}
+impl DriverKinefxFilmboxfbxcharacterOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<DriverKinefxFilmboxfbxcharacter>
+{
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6407,7 +6309,7 @@ pub enum DriverKinefxGltfcharacterMeshnamesource {
 pub struct DriverKinefxGltfcharacter {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, usize)>,
+    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -6426,55 +6328,29 @@ impl DriverKinefxGltfcharacter {
         }
     }
 
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(mut self, spare: S) -> Self {
         self.spare_params.push(spare.into());
         self
     }
 
-    // --- Inputs ---
-    /// Manually connects to a specific input index.
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(
         mut self,
         index: usize,
-        target: &N,
+        output: O,
     ) -> Self {
-        self.inputs.insert(index, (target.get_id(), 0));
+        let out = output.into();
+        self.inputs.insert(index, (out.node_id, out.pin));
         self
     }
 
-    /// Manually connects to a specific input index and specifies the output index of the target node.
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        index: usize,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs.insert(index, (target.get_id(), output_index));
-        self
-    }
-
-    /// Adds an input automatically to the next available index.
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(mut self, target: &N) -> Self {
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
+        let out = output.into();
         self.inputs
-            .insert(self.next_input_index, (target.get_id(), 0));
+            .insert(self.next_input_index, (out.node_id, out.pin));
         self.next_input_index += 1;
         self
     }
 
-    /// Adds an input automatically to the next available index and specifies the output index of the target node.
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(
-        mut self,
-        target: &N,
-        output_index: usize,
-    ) -> Self {
-        self.inputs
-            .insert(self.next_input_index, (target.get_id(), output_index));
-        self.next_input_index += 1;
-        self
-    }
-
-    // --- Button parameters ---
     pub fn trigger_execute(mut self) -> Self {
         self.params.insert(
             "execute".to_string(),
@@ -6489,8 +6365,6 @@ impl DriverKinefxGltfcharacter {
         );
         self
     }
-
-    // --- Float3 parameters ---
     pub fn with_f(mut self, val: [f32; 3]) -> Self {
         self.params.insert(
             "f".to_string(),
@@ -6507,8 +6381,6 @@ impl DriverKinefxGltfcharacter {
         );
         self
     }
-
-    // --- Int parameters ---
     pub fn with_imagequality(mut self, val: i32) -> Self {
         self.params.insert(
             "imagequality".to_string(),
@@ -6525,8 +6397,6 @@ impl DriverKinefxGltfcharacter {
         );
         self
     }
-
-    // --- Menu parameters ---
     pub fn with_cliprangemode(mut self, val: DriverKinefxGltfcharacterCliprangemode) -> Self {
         self.params.insert(
             "cliprangemode".to_string(),
@@ -6623,8 +6493,6 @@ impl DriverKinefxGltfcharacter {
         );
         self
     }
-
-    // --- String parameters ---
     pub fn with_take(mut self, val: &str) -> Self {
         self.params.insert(
             "take".to_string(),
@@ -6949,8 +6817,6 @@ impl DriverKinefxGltfcharacter {
         );
         self
     }
-
-    // --- Toggle parameters ---
     pub fn with_mkpath(mut self, val: bool) -> Self {
         self.params.insert(
             "mkpath".to_string(),
@@ -7133,26 +6999,39 @@ impl houdini_ramen_core::types::HoudiniNode for DriverKinefxGltfcharacter {
     fn get_id(&self) -> usize {
         self.id
     }
-
     fn get_name(&self) -> &str {
         &self.name
     }
-
     fn get_node_type(&self) -> &'static str {
         "kinefx::gltfcharacter"
     }
-
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)> {
+    fn get_inputs(
+        &self,
+    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
         &self.inputs
     }
-
     fn get_params(
         &self,
     ) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue> {
         &self.params
     }
-
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
     }
+}
+
+pub trait DriverKinefxGltfcharacterOutputs: houdini_ramen_core::types::HoudiniNode {
+    /// Output pin: "Output 1"
+    fn out_output1(&self) -> houdini_ramen_core::types::NodeOutput {
+        houdini_ramen_core::types::NodeOutput {
+            node_id: self.get_id(),
+            pin: houdini_ramen_core::types::OutputPin::Name("output1".to_string()),
+        }
+    }
+}
+
+impl DriverKinefxGltfcharacterOutputs for DriverKinefxGltfcharacter {}
+impl DriverKinefxGltfcharacterOutputs
+    for houdini_ramen_core::graph::TypedExistingNodeRef<DriverKinefxGltfcharacter>
+{
 }
