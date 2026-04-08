@@ -1,3 +1,5 @@
+use crate::py_escape::line_endings_to_unix;
+
 pub struct PythonBuilder {
     buffer: String,
     indent_level: usize,
@@ -39,7 +41,7 @@ impl PythonBuilder {
     }
 
     pub fn build(self) -> String {
-        self.buffer.replace("\r\n", "\n")
+        line_endings_to_unix(&self.buffer)
     }
 }
 

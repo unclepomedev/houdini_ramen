@@ -36,6 +36,10 @@ pub fn sanitize_py_ident(name: &str) -> String {
         .collect()
 }
 
+pub fn line_endings_to_unix(s: &str) -> String {
+    s.replace("\r\n", "\n").replace("\\r", "\\n")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
