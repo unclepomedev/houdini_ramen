@@ -17,6 +17,18 @@ logger = logging.getLogger(__name__)
 
 LOG_FILE = "houdini_warnings.log"
 
+IGNORED_CATEGORIES = {
+    "Cop",
+    "Shop",
+    "Data",
+    "Manager",
+    "Director",
+    "VopNet",
+    "CopNet",
+    "ChopNet",
+    "TopNet",
+}
+
 
 @dataclass
 class ParmInfo:
@@ -422,6 +434,10 @@ class HoudiniNodeExtractor:
         data: dict[str, dict[str, NodeInfo]] = {}
         try:
             for cat_name, cat in sorted(hou.nodeTypeCategories().items()):
+                if cat_name in IGNORED_CATEGORIES:
+                    logger.info(f"Skipping ignored category: {cat_name}")
+                    continue
+
                 logger.info(f"Processing category: {cat_name}")
                 cat_data: dict[str, NodeInfo] = {}
                 parent = self.temp_manager.get_parent(cat_name)
