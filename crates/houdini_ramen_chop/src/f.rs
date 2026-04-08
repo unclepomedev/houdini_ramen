@@ -129,7 +129,9 @@ impl ChopFan {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -145,7 +147,9 @@ impl ChopFan {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -161,7 +165,9 @@ impl ChopFan {
     pub fn with_fanop_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fanop".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -175,7 +181,9 @@ impl ChopFan {
     pub fn with_range_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "range".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -189,7 +197,9 @@ impl ChopFan {
     pub fn with_alloff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alloff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -203,7 +213,9 @@ impl ChopFan {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -217,7 +229,9 @@ impl ChopFan {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -226,42 +240,54 @@ impl ChopFan {
     pub fn with_channame(mut self, val: &str) -> Self {
         self.params.insert(
             "channame".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_channame_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "channame".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -277,7 +303,9 @@ impl ChopFan {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -291,7 +319,9 @@ impl ChopFan {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -417,7 +447,9 @@ impl ChopFbx {
     pub fn with_fbxsamplerate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fbxsamplerate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -431,7 +463,9 @@ impl ChopFbx {
     pub fn with_rate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -445,7 +479,9 @@ impl ChopFbx {
     pub fn with_defval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "defval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -459,7 +495,9 @@ impl ChopFbx {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -475,7 +513,9 @@ impl ChopFbx {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -491,7 +531,9 @@ impl ChopFbx {
     pub fn with_rateoption_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rateoption".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -505,7 +547,9 @@ impl ChopFbx {
     pub fn with_left_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "left".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -519,7 +563,9 @@ impl ChopFbx {
     pub fn with_right_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "right".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -533,7 +579,9 @@ impl ChopFbx {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -547,7 +595,9 @@ impl ChopFbx {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -556,70 +606,90 @@ impl ChopFbx {
     pub fn with_file(mut self, val: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_file_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_fbxtake(mut self, val: &str) -> Self {
         self.params.insert(
             "fbxtake".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_fbxtake_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fbxtake".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_opmenu(mut self, val: &str) -> Self {
         self.params.insert(
             "opmenu".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_opmenu_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "opmenu".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -635,7 +705,9 @@ impl ChopFbx {
     pub fn with_fbxoverridesamplerate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fbxoverridesamplerate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -649,7 +721,9 @@ impl ChopFbx {
     pub fn with_convertunits_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "convertunits".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -663,7 +737,9 @@ impl ChopFbx {
     pub fn with_removenamespaces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "removenamespaces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -677,7 +753,9 @@ impl ChopFbx {
     pub fn with_minimalnodes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minimalnodes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -691,7 +769,9 @@ impl ChopFbx {
     pub fn with_keepdeformingshapexforms_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keepdeformingshapexforms".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -705,7 +785,9 @@ impl ChopFbx {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -719,7 +801,9 @@ impl ChopFbx {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -920,7 +1004,9 @@ impl ChopFeedback {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -936,7 +1022,9 @@ impl ChopFeedback {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -952,7 +1040,9 @@ impl ChopFeedback {
     pub fn with_output_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "output".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -966,7 +1056,9 @@ impl ChopFeedback {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -980,7 +1072,9 @@ impl ChopFeedback {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -989,28 +1083,36 @@ impl ChopFeedback {
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1026,7 +1128,9 @@ impl ChopFeedback {
     pub fn with_delta_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "delta".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1040,7 +1144,9 @@ impl ChopFeedback {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1054,7 +1160,9 @@ impl ChopFeedback {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1179,7 +1287,9 @@ impl ChopFetch {
     pub fn with_start_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "start".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1193,7 +1303,9 @@ impl ChopFetch {
     pub fn with_end_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "end".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1207,7 +1319,9 @@ impl ChopFetch {
     pub fn with_rate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1221,7 +1335,9 @@ impl ChopFetch {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1237,7 +1353,9 @@ impl ChopFetch {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1253,7 +1371,9 @@ impl ChopFetch {
     pub fn with_data_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "data".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1267,7 +1387,9 @@ impl ChopFetch {
     pub fn with_select_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "select".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1281,7 +1403,9 @@ impl ChopFetch {
     pub fn with_nameformat_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nameformat".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1295,7 +1419,9 @@ impl ChopFetch {
     pub fn with_range_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "range".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1309,7 +1435,9 @@ impl ChopFetch {
     pub fn with_sample_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sample".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1323,7 +1451,9 @@ impl ChopFetch {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1337,7 +1467,9 @@ impl ChopFetch {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1346,56 +1478,72 @@ impl ChopFetch {
     pub fn with_nodepath(mut self, val: &str) -> Self {
         self.params.insert(
             "nodepath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nodepath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nodepath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_path(mut self, val: &str) -> Self {
         self.params.insert(
             "path".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_path_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "path".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1411,7 +1559,9 @@ impl ChopFetch {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1425,7 +1575,9 @@ impl ChopFetch {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1513,7 +1665,9 @@ impl ChopFetchchop {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1529,7 +1683,9 @@ impl ChopFetchchop {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1545,7 +1701,9 @@ impl ChopFetchchop {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1559,7 +1717,9 @@ impl ChopFetchchop {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1568,42 +1728,54 @@ impl ChopFetchchop {
     pub fn with_nodepath(mut self, val: &str) -> Self {
         self.params.insert(
             "nodepath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nodepath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nodepath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1619,7 +1791,9 @@ impl ChopFetchchop {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1633,7 +1807,9 @@ impl ChopFetchchop {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1766,7 +1942,9 @@ impl ChopFile {
     pub fn with_rate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1780,7 +1958,9 @@ impl ChopFile {
     pub fn with_defval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "defval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1794,7 +1974,9 @@ impl ChopFile {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1810,7 +1992,9 @@ impl ChopFile {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1826,7 +2010,9 @@ impl ChopFile {
     pub fn with_nameoption_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nameoption".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1840,7 +2026,9 @@ impl ChopFile {
     pub fn with_rateoption_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rateoption".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1854,7 +2042,9 @@ impl ChopFile {
     pub fn with_left_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "left".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1868,7 +2058,9 @@ impl ChopFile {
     pub fn with_right_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "right".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1882,7 +2074,9 @@ impl ChopFile {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1896,7 +2090,9 @@ impl ChopFile {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1905,56 +2101,72 @@ impl ChopFile {
     pub fn with_file(mut self, val: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_file_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_name(mut self, val: &str) -> Self {
         self.params.insert(
             "name".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_name_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "name".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1970,7 +2182,9 @@ impl ChopFile {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1984,7 +2198,9 @@ impl ChopFile {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2141,7 +2357,9 @@ impl ChopFilter {
     pub fn with_effect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "effect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2155,7 +2373,9 @@ impl ChopFilter {
     pub fn with_width_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "width".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2169,7 +2389,9 @@ impl ChopFilter {
     pub fn with_spike_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "spike".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2183,7 +2405,9 @@ impl ChopFilter {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2199,7 +2423,9 @@ impl ChopFilter {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2215,7 +2441,9 @@ impl ChopFilter {
     pub fn with_passes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "passes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2231,7 +2459,9 @@ impl ChopFilter {
     pub fn with_type_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "type".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2245,7 +2475,9 @@ impl ChopFilter {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2259,7 +2491,9 @@ impl ChopFilter {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2268,28 +2502,36 @@ impl ChopFilter {
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2305,7 +2547,9 @@ impl ChopFilter {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2319,7 +2563,9 @@ impl ChopFilter {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2483,7 +2729,9 @@ impl ChopFootplant {
     pub fn with_speedthreshold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "speedthreshold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2497,7 +2745,9 @@ impl ChopFootplant {
     pub fn with_distancethreshold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "distancethreshold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2511,7 +2761,9 @@ impl ChopFootplant {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2527,7 +2779,9 @@ impl ChopFootplant {
     pub fn with_framerange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "framerange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2543,7 +2797,9 @@ impl ChopFootplant {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2557,7 +2813,9 @@ impl ChopFootplant {
     pub fn with_planeorigin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "planeorigin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2571,7 +2829,9 @@ impl ChopFootplant {
     pub fn with_planenormal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "planenormal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2585,7 +2845,9 @@ impl ChopFootplant {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2601,7 +2863,9 @@ impl ChopFootplant {
     pub fn with_blendinframes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blendinframes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2615,7 +2879,9 @@ impl ChopFootplant {
     pub fn with_blendoutframes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blendoutframes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2631,7 +2897,9 @@ impl ChopFootplant {
     pub fn with_source_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "source".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2645,7 +2913,9 @@ impl ChopFootplant {
     pub fn with_method_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "method".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2659,7 +2929,9 @@ impl ChopFootplant {
     pub fn with_terrainsource_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "terrainsource".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2673,7 +2945,9 @@ impl ChopFootplant {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2687,7 +2961,9 @@ impl ChopFootplant {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2696,154 +2972,198 @@ impl ChopFootplant {
     pub fn with_soppath(mut self, val: &str) -> Self {
         self.params.insert(
             "soppath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_soppath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soppath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_clipname(mut self, val: &str) -> Self {
         self.params.insert(
             "clipname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_clipname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clipname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transformname(mut self, val: &str) -> Self {
         self.params.insert(
             "transformname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transformname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "transformname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpath(mut self, val: &str) -> Self {
         self.params.insert(
             "targetpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_referencepath(mut self, val: &str) -> Self {
         self.params.insert(
             "referencepath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_referencepath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "referencepath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_terrain_soppath(mut self, val: &str) -> Self {
         self.params.insert(
             "terrain_soppath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_terrain_soppath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "terrain_soppath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_channelname(mut self, val: &str) -> Self {
         self.params.insert(
             "channelname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_channelname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "channelname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_opmenu(mut self, val: &str) -> Self {
         self.params.insert(
             "opmenu".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_opmenu_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "opmenu".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2859,7 +3179,9 @@ impl ChopFootplant {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2873,7 +3195,9 @@ impl ChopFootplant {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3064,7 +3388,9 @@ impl ChopFor {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3080,7 +3406,9 @@ impl ChopFor {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3096,7 +3424,9 @@ impl ChopFor {
     pub fn with_loopindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "loopindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3112,7 +3442,9 @@ impl ChopFor {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3126,7 +3458,9 @@ impl ChopFor {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3135,42 +3469,54 @@ impl ChopFor {
     pub fn with_loopgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "loopgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_loopgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "loopgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3186,7 +3532,9 @@ impl ChopFor {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3200,7 +3548,9 @@ impl ChopFor {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3416,7 +3766,9 @@ impl ChopForeach {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3432,7 +3784,9 @@ impl ChopForeach {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3448,7 +3802,9 @@ impl ChopForeach {
     pub fn with_count_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "count".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3462,7 +3818,9 @@ impl ChopForeach {
     pub fn with_baseindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "baseindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3478,7 +3836,9 @@ impl ChopForeach {
     pub fn with_iterate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3492,7 +3852,9 @@ impl ChopForeach {
     pub fn with_chanindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "chanindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3506,7 +3868,9 @@ impl ChopForeach {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3520,7 +3884,9 @@ impl ChopForeach {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3529,84 +3895,108 @@ impl ChopForeach {
     pub fn with_changrp(mut self, val: &str) -> Self {
         self.params.insert(
             "changrp".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_changrp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "changrp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_chanreplace(mut self, val: &str) -> Self {
         self.params.insert(
             "chanreplace".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_chanreplace_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "chanreplace".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_previewgrp(mut self, val: &str) -> Self {
         self.params.insert(
             "previewgrp".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_previewgrp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "previewgrp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_debuggrp(mut self, val: &str) -> Self {
         self.params.insert(
             "debuggrp".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_debuggrp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "debuggrp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3622,7 +4012,9 @@ impl ChopForeach {
     pub fn with_reindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3636,7 +4028,9 @@ impl ChopForeach {
     pub fn with_preview_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "preview".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3650,7 +4044,9 @@ impl ChopForeach {
     pub fn with_debug_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "debug".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3664,7 +4060,9 @@ impl ChopForeach {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3678,7 +4076,9 @@ impl ChopForeach {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3930,7 +4330,9 @@ impl ChopFunction {
     pub fn with_baseval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "baseval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3944,7 +4346,9 @@ impl ChopFunction {
     pub fn with_expval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3958,7 +4362,9 @@ impl ChopFunction {
     pub fn with_pinfval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pinfval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3972,7 +4378,9 @@ impl ChopFunction {
     pub fn with_ninfval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ninfval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3986,7 +4394,9 @@ impl ChopFunction {
     pub fn with_domval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4000,7 +4410,9 @@ impl ChopFunction {
     pub fn with_divval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "divval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4014,7 +4426,9 @@ impl ChopFunction {
     pub fn with_gcolorstep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolorstep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4030,7 +4444,9 @@ impl ChopFunction {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4046,7 +4462,9 @@ impl ChopFunction {
     pub fn with_func_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "func".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4060,7 +4478,9 @@ impl ChopFunction {
     pub fn with_angunit_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "angunit".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4074,7 +4494,9 @@ impl ChopFunction {
     pub fn with_match_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "match".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4088,7 +4510,9 @@ impl ChopFunction {
     pub fn with_matchfailure_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "matchfailure".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4102,7 +4526,9 @@ impl ChopFunction {
     pub fn with_error_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "error".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4116,7 +4542,9 @@ impl ChopFunction {
     pub fn with_srselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4130,7 +4558,9 @@ impl ChopFunction {
     pub fn with_units_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "units".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4139,28 +4569,36 @@ impl ChopFunction {
     pub fn with_scope(mut self, val: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_scope_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scope".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export(mut self, val: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_export_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "export".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4176,7 +4614,9 @@ impl ChopFunction {
     pub fn with_timeslice_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timeslice".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4190,7 +4630,9 @@ impl ChopFunction {
     pub fn with_unload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

@@ -111,7 +111,9 @@ impl TopEnvironmentedit {
     pub fn with_floatvarvalue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("floatvarvalue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -127,7 +129,9 @@ impl TopEnvironmentedit {
     pub fn with_intvarvalue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("intvarvalue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -143,7 +147,9 @@ impl TopEnvironmentedit {
     pub fn with_pdg_workitemgeneration_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdg_workitemgeneration".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -157,7 +163,9 @@ impl TopEnvironmentedit {
     pub fn with_vartype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("vartype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -175,7 +183,9 @@ impl TopEnvironmentedit {
     pub fn with_varconflict_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("varconflict{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -184,28 +194,36 @@ impl TopEnvironmentedit {
     pub fn with_varname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("varname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_varname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("varname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_strvarvalue_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("strvarvalue{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_strvarvalue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("strvarvalue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -221,7 +239,9 @@ impl TopEnvironmentedit {
     pub fn with_reset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -235,7 +255,9 @@ impl TopEnvironmentedit {
     pub fn with_varenable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("varenable{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -386,7 +408,9 @@ impl TopError {
     pub fn with_enable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enable{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -402,7 +426,9 @@ impl TopError {
     pub fn with_pdg_workitemgeneration_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdg_workitemgeneration".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -416,7 +442,9 @@ impl TopError {
     pub fn with_evaluateduring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "evaluateduring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -430,7 +458,9 @@ impl TopError {
     pub fn with_pdg_cooktype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdg_cooktype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -444,7 +474,9 @@ impl TopError {
     pub fn with_type_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("type{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -453,14 +485,18 @@ impl TopError {
     pub fn with_message_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("message{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_message_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("message{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

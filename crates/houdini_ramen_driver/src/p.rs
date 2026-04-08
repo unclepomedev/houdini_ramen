@@ -171,7 +171,9 @@ impl DriverPrepost {
     pub fn with_prerange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prerange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -185,7 +187,9 @@ impl DriverPrepost {
     pub fn with_postrange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postrange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -201,7 +205,9 @@ impl DriverPrepost {
     pub fn with_enablepre_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablepre".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -215,7 +221,9 @@ impl DriverPrepost {
     pub fn with_enablepost_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablepost".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

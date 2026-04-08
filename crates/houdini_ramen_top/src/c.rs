@@ -136,7 +136,9 @@ impl TopCommandserverend {
     pub fn with_pdg_partitionmergeoperation_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("pdg_partitionmergeoperation{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -145,28 +147,36 @@ impl TopCommandserverend {
     pub fn with_pdg_feedbackbegin(mut self, val: &str) -> Self {
         self.params.insert(
             "pdg_feedbackbegin".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pdg_feedbackbegin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdg_feedbackbegin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pdg_partitionmergepattern_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("pdg_partitionmergepattern{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pdg_partitionmergepattern_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("pdg_partitionmergepattern{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -182,7 +192,9 @@ impl TopCommandserverend {
     pub fn with_pdg_partitionmergepreserve_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("pdg_partitionmergepreserve{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -326,7 +338,9 @@ impl TopCopnet {
     pub fn with_pixelscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pixelscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -342,7 +356,9 @@ impl TopCopnet {
     pub fn with_udim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "udim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -356,7 +372,9 @@ impl TopCopnet {
     pub fn with_vistile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vistile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -372,7 +390,9 @@ impl TopCopnet {
     pub fn with_res_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "res".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -388,7 +408,9 @@ impl TopCopnet {
     pub fn with_resmenu_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "resmenu".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -402,7 +424,9 @@ impl TopCopnet {
     pub fn with_border_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "border".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -416,7 +440,9 @@ impl TopCopnet {
     pub fn with_precision_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "precision".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -432,7 +458,9 @@ impl TopCopnet {
     pub fn with_setres_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setres".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -446,7 +474,9 @@ impl TopCopnet {
     pub fn with_setpixelscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setpixelscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -460,7 +490,9 @@ impl TopCopnet {
     pub fn with_setborder_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setborder".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -474,7 +506,9 @@ impl TopCopnet {
     pub fn with_setprecision_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setprecision".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -488,7 +522,9 @@ impl TopCopnet {
     pub fn with_setudim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setudim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -502,7 +538,9 @@ impl TopCopnet {
     pub fn with_setvistile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setvistile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -637,7 +675,9 @@ impl TopCsvconcat {
     pub fn with_concatrows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "concatrows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -646,28 +686,36 @@ impl TopCsvconcat {
     pub fn with_prefix2column(mut self, val: &str) -> Self {
         self.params.insert(
             "prefix2column".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_prefix2column_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prefix2column".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extracts(mut self, val: &str) -> Self {
         self.params.insert(
             "extracts".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extracts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extracts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -683,7 +731,9 @@ impl TopCsvconcat {
     pub fn with_hasheader_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hasheader".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -840,7 +890,9 @@ impl TopCsvinput {
     pub fn with_limitrowcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "limitrowcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -854,7 +906,9 @@ impl TopCsvinput {
     pub fn with_extractrow_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("extractrow{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -868,7 +922,9 @@ impl TopCsvinput {
     pub fn with_extractindex_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("extractindex{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -882,7 +938,9 @@ impl TopCsvinput {
     pub fn with_extracttype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("extracttype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -898,7 +956,9 @@ impl TopCsvinput {
     pub fn with_pdg_workitemgeneration_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdg_workitemgeneration".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -912,7 +972,9 @@ impl TopCsvinput {
     pub fn with_useparent_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useparent".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -926,7 +988,9 @@ impl TopCsvinput {
     pub fn with_indexmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "indexmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -940,7 +1004,9 @@ impl TopCsvinput {
     pub fn with_extractall_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extractall".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -949,112 +1015,144 @@ impl TopCsvinput {
     pub fn with_useparenttag(mut self, val: &str) -> Self {
         self.params.insert(
             "useparenttag".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_useparenttag_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useparenttag".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_csvfilepath(mut self, val: &str) -> Self {
         self.params.insert(
             "csvfilepath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_csvfilepath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "csvfilepath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_csvstring(mut self, val: &str) -> Self {
         self.params.insert(
             "csvstring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_csvstring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "csvstring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_delimiter(mut self, val: &str) -> Self {
         self.params.insert(
             "delimiter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_delimiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "delimiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_columnorderattrname(mut self, val: &str) -> Self {
         self.params.insert(
             "columnorderattrname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_columnorderattrname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "columnorderattrname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extractbyattrattr(mut self, val: &str) -> Self {
         self.params.insert(
             "extractbyattrattr".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extractbyattrattr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extractbyattrattr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extractcolumnname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("extractcolumnname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extractcolumnname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("extractcolumnname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extracttag_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("extracttag{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extracttag_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("extracttag{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1070,7 +1168,9 @@ impl TopCsvinput {
     pub fn with_hasheaderrow_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hasheaderrow".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1084,7 +1184,9 @@ impl TopCsvinput {
     pub fn with_escapedoublequotes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "escapedoublequotes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1098,7 +1200,9 @@ impl TopCsvinput {
     pub fn with_specifycolumndelimiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "specifycolumndelimiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1112,7 +1216,9 @@ impl TopCsvinput {
     pub fn with_limitrows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "limitrows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1126,7 +1232,9 @@ impl TopCsvinput {
     pub fn with_addcolumnorderattr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "addcolumnorderattr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1284,7 +1392,9 @@ impl TopCsvmodify {
     pub fn with_operation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "operation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1298,7 +1408,9 @@ impl TopCsvmodify {
     pub fn with_columnindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "columnindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1312,7 +1424,9 @@ impl TopCsvmodify {
     pub fn with_expr_op_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expr_op".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1326,7 +1440,9 @@ impl TopCsvmodify {
     pub fn with_findcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "findcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1340,7 +1456,9 @@ impl TopCsvmodify {
     pub fn with_findcol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "findcol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1354,7 +1472,9 @@ impl TopCsvmodify {
     pub fn with_isolatecol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "isolatecol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1363,70 +1483,90 @@ impl TopCsvmodify {
     pub fn with_pdgnodedep_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("pdgnodedep{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pdgnodedep_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("pdgnodedep{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_findstring(mut self, val: &str) -> Self {
         self.params.insert(
             "findstring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_findstring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "findstring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_replacestring(mut self, val: &str) -> Self {
         self.params.insert(
             "replacestring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_replacestring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "replacestring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_isolateprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "isolateprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_isolateprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "isolateprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_expr(mut self, val: &str) -> Self {
         self.params.insert(
             "expr".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_expr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1442,7 +1582,9 @@ impl TopCsvmodify {
     pub fn with_findinvert_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "findinvert".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1456,7 +1598,9 @@ impl TopCsvmodify {
     pub fn with_findbefore_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "findbefore".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1470,7 +1614,9 @@ impl TopCsvmodify {
     pub fn with_findafter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "findafter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1484,7 +1630,9 @@ impl TopCsvmodify {
     pub fn with_isolateinvert_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "isolateinvert".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1641,7 +1789,9 @@ impl TopCsvoutput {
     pub fn with_pdg_workitemgeneration_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdg_workitemgeneration".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1655,7 +1805,9 @@ impl TopCsvoutput {
     pub fn with_quoting_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "quoting".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1669,7 +1821,9 @@ impl TopCsvoutput {
     pub fn with_querymode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "querymode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1683,7 +1837,9 @@ impl TopCsvoutput {
     pub fn with_errorifnomatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "errorifnomatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1697,7 +1853,9 @@ impl TopCsvoutput {
     pub fn with_multiplevalueshandling_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "multiplevalueshandling".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1706,98 +1864,126 @@ impl TopCsvoutput {
     pub fn with_csvfilepath(mut self, val: &str) -> Self {
         self.params.insert(
             "csvfilepath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_csvfilepath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "csvfilepath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_resultdatatag(mut self, val: &str) -> Self {
         self.params.insert(
             "resultdatatag".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_resultdatatag_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "resultdatatag".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_delimiter(mut self, val: &str) -> Self {
         self.params.insert(
             "delimiter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_delimiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "delimiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_queriesattr(mut self, val: &str) -> Self {
         self.params.insert(
             "queriesattr".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_queriesattr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "queriesattr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pattern(mut self, val: &str) -> Self {
         self.params.insert(
             "pattern".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pattern_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pattern".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dataqueriesmult_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("dataqueriesmult{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dataqueriesmult_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("dataqueriesmult{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dataqueriesoverride_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("dataqueriesoverride{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dataqueriesoverride_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("dataqueriesoverride{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1813,7 +1999,9 @@ impl TopCsvoutput {
     pub fn with_enablecsvfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablecsvfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1827,7 +2015,9 @@ impl TopCsvoutput {
     pub fn with_specifycolumndelimiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "specifycolumndelimiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1841,7 +2031,9 @@ impl TopCsvoutput {
     pub fn with_writeheader_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "writeheader".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1855,7 +2047,9 @@ impl TopCsvoutput {
     pub fn with_usedataqueriesoverride_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("usedataqueriesoverride{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

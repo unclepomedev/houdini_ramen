@@ -188,7 +188,9 @@ def resolve_rust_type(h_type: str, default_val: Any) -> RustTypeInfo | None:
     if h_type == "Toggle":
         return RustTypeInfo("bool", "Toggle", "val")
     if h_type in ("String", "Data"):
-        return RustTypeInfo("&str", h_type, "val.to_string()")
+        return RustTypeInfo(
+            "&str", h_type, 'val.replace("\\r\\n", "\\n").replace(\'\\r\', "\\n")'
+        )
     if h_type == "Menu":
         return RustTypeInfo("i32", "Menu", "val")
     if h_type == "Button":

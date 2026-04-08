@@ -310,7 +310,9 @@ impl VopBakeexports {
     pub fn with_occlusionbias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "occlusionbias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -324,7 +326,9 @@ impl VopBakeexports {
     pub fn with_cavitydistance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cavitydistance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -338,7 +342,9 @@ impl VopBakeexports {
     pub fn with_cavitybias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cavitybias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -352,7 +358,9 @@ impl VopBakeexports {
     pub fn with_curvaturescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curvaturescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -366,7 +374,9 @@ impl VopBakeexports {
     pub fn with_curvaturebias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curvaturebias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -382,7 +392,9 @@ impl VopBakeexports {
     pub fn with_samples_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samples".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -396,7 +408,9 @@ impl VopBakeexports {
     pub fn with_normalspace_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "normalspace".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -405,14 +419,18 @@ impl VopBakeexports {
     pub fn with_vop_force_code_context(mut self, val: &str) -> Self {
         self.params.insert(
             "vop_force_code_context".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_vop_force_code_context_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vop_force_code_context".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -428,7 +446,9 @@ impl VopBakeexports {
     pub fn with_tangentnormalflipx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tangentnormalflipx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -442,7 +462,9 @@ impl VopBakeexports {
     pub fn with_tangentnormalflipy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tangentnormalflipy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -456,7 +478,9 @@ impl VopBakeexports {
     pub fn with_includedispnt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "includedispnt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -737,7 +761,9 @@ impl VopBanana {
     pub fn with_ripeness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ripeness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -753,7 +779,9 @@ impl VopBanana {
     pub fn with_green_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "green".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -767,7 +795,9 @@ impl VopBanana {
     pub fn with_yellow_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "yellow".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -781,7 +811,9 @@ impl VopBanana {
     pub fn with_brown_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "brown".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -795,7 +827,9 @@ impl VopBanana {
     pub fn with_highfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "highfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -809,7 +843,9 @@ impl VopBanana {
     pub fn with_lowfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lowfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -950,28 +986,36 @@ impl VopBbox {
     pub fn with_opinput(mut self, val: &str) -> Self {
         self.params.insert(
             "opinput".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_opinput_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "opinput".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1119,7 +1163,9 @@ impl VopBias {
     pub fn with_val_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "val".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1133,7 +1179,9 @@ impl VopBias {
     pub fn with_amount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1149,7 +1197,9 @@ impl VopBias {
     pub fn with_val_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "val_u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1163,7 +1213,9 @@ impl VopBias {
     pub fn with_amount_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amount_u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1179,7 +1231,9 @@ impl VopBias {
     pub fn with_val_c_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "val_c".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1193,7 +1247,9 @@ impl VopBias {
     pub fn with_amount_c_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amount_c".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1207,7 +1263,9 @@ impl VopBias {
     pub fn with_val_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "val_v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1221,7 +1279,9 @@ impl VopBias {
     pub fn with_amount_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amount_v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1237,7 +1297,9 @@ impl VopBias {
     pub fn with_val_v4_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "val_v4".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1251,7 +1313,9 @@ impl VopBias {
     pub fn with_amount_v4_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amount_v4".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1260,14 +1324,18 @@ impl VopBias {
     pub fn with_signature(mut self, val: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_signature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1481,14 +1549,18 @@ impl VopBind {
     pub fn with_dictdef(mut self, val: &str) -> Self {
         self.params.insert(
             "dictdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dictdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dictdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1504,7 +1576,9 @@ impl VopBind {
     pub fn with_floatdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "floatdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1518,7 +1592,9 @@ impl VopBind {
     pub fn with_angledef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "angledef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1532,7 +1608,9 @@ impl VopBind {
     pub fn with_logfloatdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "logfloatdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1548,7 +1626,9 @@ impl VopBind {
     pub fn with_float2def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "float2def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1564,7 +1644,9 @@ impl VopBind {
     pub fn with_float3def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "float3def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1578,7 +1660,9 @@ impl VopBind {
     pub fn with_vectordef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vectordef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1592,7 +1676,9 @@ impl VopBind {
     pub fn with_normaldef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "normaldef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1606,7 +1692,9 @@ impl VopBind {
     pub fn with_pointdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pointdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1620,7 +1708,9 @@ impl VopBind {
     pub fn with_directiondef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directiondef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1634,7 +1724,9 @@ impl VopBind {
     pub fn with_colordef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "colordef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1650,7 +1742,9 @@ impl VopBind {
     pub fn with_float4def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "float4def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1664,7 +1758,9 @@ impl VopBind {
     pub fn with_floatm2def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "floatm2def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1678,7 +1774,9 @@ impl VopBind {
     pub fn with_color4def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "color4def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1694,7 +1792,9 @@ impl VopBind {
     pub fn with_float9def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "float9def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1708,7 +1808,9 @@ impl VopBind {
     pub fn with_float16def_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "float16def".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1724,7 +1826,9 @@ impl VopBind {
     pub fn with_intdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "intdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1740,7 +1844,9 @@ impl VopBind {
     pub fn with_parmtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1754,7 +1860,9 @@ impl VopBind {
     pub fn with_exportparm_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportparm".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1763,126 +1871,162 @@ impl VopBind {
     pub fn with_parmname(mut self, val: &str) -> Self {
         self.params.insert(
             "parmname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_parmname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_parmtypename(mut self, val: &str) -> Self {
         self.params.insert(
             "parmtypename".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_parmtypename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmtypename".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stringdef(mut self, val: &str) -> Self {
         self.params.insert(
             "stringdef".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stringdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stringdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filedef(mut self, val: &str) -> Self {
         self.params.insert(
             "filedef".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filedef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filedef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_imagedef(mut self, val: &str) -> Self {
         self.params.insert(
             "imagedef".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_imagedef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "imagedef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_geometrydef(mut self, val: &str) -> Self {
         self.params.insert(
             "geometrydef".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_geometrydef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "geometrydef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_coshaderdef(mut self, val: &str) -> Self {
         self.params.insert(
             "coshaderdef".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_coshaderdef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "coshaderdef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_coshaderadef(mut self, val: &str) -> Self {
         self.params.insert(
             "coshaderadef".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_coshaderadef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "coshaderadef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_exportcontext(mut self, val: &str) -> Self {
         self.params.insert(
             "exportcontext".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_exportcontext_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportcontext".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1898,7 +2042,9 @@ impl VopBind {
     pub fn with_overridetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overridetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1912,7 +2058,9 @@ impl VopBind {
     pub fn with_toggledef_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toggledef".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1926,7 +2074,9 @@ impl VopBind {
     pub fn with_useasparmdefiner_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useasparmdefiner".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1940,7 +2090,9 @@ impl VopBind {
     pub fn with_useownexportcontext_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useownexportcontext".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1954,7 +2106,9 @@ impl VopBind {
     pub fn with_parmuniform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmuniform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1968,7 +2122,9 @@ impl VopBind {
     pub fn with_usebound_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usebound".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2249,7 +2405,9 @@ impl VopBlendregions {
     pub fn with_region1_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2263,7 +2421,9 @@ impl VopBlendregions {
     pub fn with_region2_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2277,7 +2437,9 @@ impl VopBlendregions {
     pub fn with_region3_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2291,7 +2453,9 @@ impl VopBlendregions {
     pub fn with_region1_uf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_uf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2305,7 +2469,9 @@ impl VopBlendregions {
     pub fn with_region2_uf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_uf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2319,7 +2485,9 @@ impl VopBlendregions {
     pub fn with_region3_uf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_uf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2333,7 +2501,9 @@ impl VopBlendregions {
     pub fn with_bias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2347,7 +2517,9 @@ impl VopBlendregions {
     pub fn with_thresh12_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "thresh12".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2361,7 +2533,9 @@ impl VopBlendregions {
     pub fn with_thresh23_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "thresh23".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2375,7 +2549,9 @@ impl VopBlendregions {
     pub fn with_blur12_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blur12".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2389,7 +2565,9 @@ impl VopBlendregions {
     pub fn with_blur23_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blur23".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2405,7 +2583,9 @@ impl VopBlendregions {
     pub fn with_region1_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2419,7 +2599,9 @@ impl VopBlendregions {
     pub fn with_region2_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2433,7 +2615,9 @@ impl VopBlendregions {
     pub fn with_region3_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2447,7 +2631,9 @@ impl VopBlendregions {
     pub fn with_region1_p_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_p".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2461,7 +2647,9 @@ impl VopBlendregions {
     pub fn with_region2_p_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_p".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2475,7 +2663,9 @@ impl VopBlendregions {
     pub fn with_region3_p_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_p".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2489,7 +2679,9 @@ impl VopBlendregions {
     pub fn with_region1_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_n".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2503,7 +2695,9 @@ impl VopBlendregions {
     pub fn with_region2_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_n".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2517,7 +2711,9 @@ impl VopBlendregions {
     pub fn with_region3_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_n".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2531,7 +2727,9 @@ impl VopBlendregions {
     pub fn with_region1_c_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_c".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2545,7 +2743,9 @@ impl VopBlendregions {
     pub fn with_region2_c_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_c".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2559,7 +2759,9 @@ impl VopBlendregions {
     pub fn with_region3_c_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_c".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2573,7 +2775,9 @@ impl VopBlendregions {
     pub fn with_region1_uv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_uv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2587,7 +2791,9 @@ impl VopBlendregions {
     pub fn with_region2_uv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_uv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2601,7 +2807,9 @@ impl VopBlendregions {
     pub fn with_region3_uv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_uv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2615,7 +2823,9 @@ impl VopBlendregions {
     pub fn with_region1_up_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_up".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2629,7 +2839,9 @@ impl VopBlendregions {
     pub fn with_region2_up_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_up".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2643,7 +2855,9 @@ impl VopBlendregions {
     pub fn with_region3_up_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_up".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2657,7 +2871,9 @@ impl VopBlendregions {
     pub fn with_region1_un_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_un".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2671,7 +2887,9 @@ impl VopBlendregions {
     pub fn with_region2_un_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_un".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2685,7 +2903,9 @@ impl VopBlendregions {
     pub fn with_region3_un_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_un".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2699,7 +2919,9 @@ impl VopBlendregions {
     pub fn with_region1_uc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_uc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2713,7 +2935,9 @@ impl VopBlendregions {
     pub fn with_region2_uc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_uc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2727,7 +2951,9 @@ impl VopBlendregions {
     pub fn with_region3_uc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_uc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2743,7 +2969,9 @@ impl VopBlendregions {
     pub fn with_region1_v4_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region1_v4".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2757,7 +2985,9 @@ impl VopBlendregions {
     pub fn with_region2_v4_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region2_v4".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2771,7 +3001,9 @@ impl VopBlendregions {
     pub fn with_region3_v4_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "region3_v4".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2780,28 +3012,36 @@ impl VopBlendregions {
     pub fn with_signature(mut self, val: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_signature_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "signature".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filter(mut self, val: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2904,42 +3144,54 @@ impl VopBlockBegin {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3042,42 +3294,54 @@ impl VopBlockBeginFor {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3180,42 +3444,54 @@ impl VopBlockBeginForeach {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3318,42 +3594,54 @@ impl VopBlockBeginIf {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3456,42 +3744,54 @@ impl VopBlockEnd {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3507,7 +3807,9 @@ impl VopBlockEnd {
     pub fn with_encloseinputs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "encloseinputs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3610,42 +3912,54 @@ impl VopBlockEndBreakif {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3661,7 +3975,9 @@ impl VopBlockEndBreakif {
     pub fn with_encloseinputs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "encloseinputs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3764,42 +4080,54 @@ impl VopBlockEndWhile {
     pub fn with_blockpath(mut self, val: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_blockpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blockpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3815,7 +4143,9 @@ impl VopBlockEndWhile {
     pub fn with_encloseinputs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "encloseinputs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4001,7 +4331,9 @@ impl VopBoxclip {
     pub fn with_p1_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "p1".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4015,7 +4347,9 @@ impl VopBoxclip {
     pub fn with_p2_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "p2".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4029,7 +4363,9 @@ impl VopBoxclip {
     pub fn with_min_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "min".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4043,7 +4379,9 @@ impl VopBoxclip {
     pub fn with_max_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "max".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4400,7 +4738,9 @@ impl VopBoxes {
     pub fn with_boxsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boxsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4414,7 +4754,9 @@ impl VopBoxes {
     pub fn with_boxrand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boxrand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4428,7 +4770,9 @@ impl VopBoxes {
     pub fn with_sfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4442,7 +4786,9 @@ impl VopBoxes {
     pub fn with_tfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4456,7 +4802,9 @@ impl VopBoxes {
     pub fn with_soff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4470,7 +4818,9 @@ impl VopBoxes {
     pub fn with_toff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4484,7 +4834,9 @@ impl VopBoxes {
     pub fn with_srand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4498,7 +4850,9 @@ impl VopBoxes {
     pub fn with_trand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "trand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4512,7 +4866,9 @@ impl VopBoxes {
     pub fn with_blur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4528,7 +4884,9 @@ impl VopBoxes {
     pub fn with_layers_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "layers".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4537,14 +4895,18 @@ impl VopBoxes {
     pub fn with_filter(mut self, val: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4806,7 +5168,9 @@ impl VopBoxtile {
     pub fn with_swidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "swidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4820,7 +5184,9 @@ impl VopBoxtile {
     pub fn with_twidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "twidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4834,7 +5200,9 @@ impl VopBoxtile {
     pub fn with_soff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4848,7 +5216,9 @@ impl VopBoxtile {
     pub fn with_toff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4862,7 +5232,9 @@ impl VopBoxtile {
     pub fn with_stagger_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stagger".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4876,7 +5248,9 @@ impl VopBoxtile {
     pub fn with_jitter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jitter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5119,7 +5493,9 @@ impl VopBricker {
     pub fn with_swidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "swidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5133,7 +5509,9 @@ impl VopBricker {
     pub fn with_twidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "twidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5147,7 +5525,9 @@ impl VopBricker {
     pub fn with_bwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5161,7 +5541,9 @@ impl VopBricker {
     pub fn with_stagger_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stagger".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5175,7 +5557,9 @@ impl VopBricker {
     pub fn with_jitter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jitter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5608,7 +5992,9 @@ impl VopBricks {
     pub fn with_bwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5622,7 +6008,9 @@ impl VopBricks {
     pub fn with_bheight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bheight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5636,7 +6024,9 @@ impl VopBricks {
     pub fn with_gwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5650,7 +6040,9 @@ impl VopBricks {
     pub fn with_gdepth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gdepth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5664,7 +6056,9 @@ impl VopBricks {
     pub fn with_bstagger_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bstagger".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5678,7 +6072,9 @@ impl VopBricks {
     pub fn with_bjitter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bjitter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5692,7 +6088,9 @@ impl VopBricks {
     pub fn with_damp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "damp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5706,7 +6104,9 @@ impl VopBricks {
     pub fn with_dchip_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dchip".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5720,7 +6120,9 @@ impl VopBricks {
     pub fn with_dscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5736,7 +6138,9 @@ impl VopBricks {
     pub fn with_bcolor1_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bcolor1".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5750,7 +6154,9 @@ impl VopBricks {
     pub fn with_bcolor2_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bcolor2".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5764,7 +6170,9 @@ impl VopBricks {
     pub fn with_gcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5778,7 +6186,9 @@ impl VopBricks {
     pub fn with_dfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6040,7 +6450,9 @@ impl VopBrushedcircles {
     pub fn with_sfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6054,7 +6466,9 @@ impl VopBrushedcircles {
     pub fn with_tfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6068,7 +6482,9 @@ impl VopBrushedcircles {
     pub fn with_stagger_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stagger".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6082,7 +6498,9 @@ impl VopBrushedcircles {
     pub fn with_jitter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jitter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6098,7 +6516,9 @@ impl VopBrushedcircles {
     pub fn with_soverlap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soverlap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6112,7 +6532,9 @@ impl VopBrushedcircles {
     pub fn with_toverlap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toverlap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6450,7 +6872,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6464,7 +6888,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_amount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6478,7 +6904,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_amountrand_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amountrand".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6492,7 +6920,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_stagger_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stagger".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6506,7 +6936,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_jitter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jitter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6520,7 +6952,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_brushtracks_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "brushtracks".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6534,7 +6968,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_brushtrackfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "brushtrackfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6548,7 +6984,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_brushtrackoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "brushtrackoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6562,7 +7000,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_aniso_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aniso".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6578,7 +7018,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_freq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "freq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6594,7 +7036,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_basecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "basecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6610,7 +7054,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_soverlap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soverlap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6624,7 +7070,9 @@ impl VopBrushedmetalshadercore {
     pub fn with_toverlap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toverlap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6810,7 +7258,9 @@ impl VopBsdftint {
     pub fn with_tintamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tintamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6824,7 +7274,9 @@ impl VopBsdftint {
     pub fn with_lumamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lumamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6840,7 +7292,9 @@ impl VopBsdftint {
     pub fn with_tintcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tintcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7291,7 +7745,9 @@ impl VopBumpmap {
     pub fn with_width_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "width".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7305,7 +7761,9 @@ impl VopBumpmap {
     pub fn with_height_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "height".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7321,7 +7779,9 @@ impl VopBumpmap {
     pub fn with_border_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "border".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7330,42 +7790,54 @@ impl VopBumpmap {
     pub fn with_filter(mut self, val: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tmap(mut self, val: &str) -> Self {
         self.params.insert(
             "tmap".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tmap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tmap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_wrap(mut self, val: &str) -> Self {
         self.params.insert(
             "wrap".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_wrap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "wrap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7381,7 +7853,9 @@ impl VopBumpmap {
     pub fn with_extrapol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extrapol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7395,7 +7869,9 @@ impl VopBumpmap {
     pub fn with_interp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "interp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7714,7 +8190,9 @@ impl VopBumpnoise {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7728,7 +8206,9 @@ impl VopBumpnoise {
     pub fn with_height_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "height".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7742,7 +8222,9 @@ impl VopBumpnoise {
     pub fn with_min_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "min".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7756,7 +8238,9 @@ impl VopBumpnoise {
     pub fn with_max_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "max".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7770,7 +8254,9 @@ impl VopBumpnoise {
     pub fn with_rolloff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rolloff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7786,7 +8272,9 @@ impl VopBumpnoise {
     pub fn with_freq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "freq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7800,7 +8288,9 @@ impl VopBumpnoise {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7816,7 +8306,9 @@ impl VopBumpnoise {
     pub fn with_clamp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clamp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7830,7 +8322,9 @@ impl VopBumpnoise {
     pub fn with_absolute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "absolute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8081,7 +8575,9 @@ impl VopBumptonormalmap {
     pub fn with_heightscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "heightScale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8097,7 +8593,9 @@ impl VopBumptonormalmap {
     pub fn with_onspace_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "onspace".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8106,14 +8604,18 @@ impl VopBumptonormalmap {
     pub fn with_map(mut self, val: &str) -> Self {
         self.params.insert(
             "map".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_map_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "map".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8129,7 +8631,9 @@ impl VopBumptonormalmap {
     pub fn with_flipx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "flipX".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8143,7 +8647,9 @@ impl VopBumptonormalmap {
     pub fn with_flipy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "flipY".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8386,7 +8892,9 @@ impl VopBurlap {
     pub fn with_freq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "freq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8400,7 +8908,9 @@ impl VopBurlap {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8414,7 +8924,9 @@ impl VopBurlap {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8428,7 +8940,9 @@ impl VopBurlap {
     pub fn with_height_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "height".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8633,7 +9147,9 @@ impl VopBurlapPattern {
     pub fn with_freq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "freq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8647,7 +9163,9 @@ impl VopBurlapPattern {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8661,7 +9179,9 @@ impl VopBurlapPattern {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

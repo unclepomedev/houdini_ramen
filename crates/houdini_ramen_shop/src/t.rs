@@ -36,7 +36,9 @@ impl ShopToonoutlineshader {
     pub fn with_outlinescenethickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outlinescenethickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -50,7 +52,9 @@ impl ShopToonoutlineshader {
     pub fn with_outlineimagethickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outlineimagethickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -64,7 +68,9 @@ impl ShopToonoutlineshader {
     pub fn with_imagethicknessblend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "imagethicknessblend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -78,7 +84,9 @@ impl ShopToonoutlineshader {
     pub fn with_spillin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "spillin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -92,7 +100,9 @@ impl ShopToonoutlineshader {
     pub fn with_maxobjdepth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxobjdepth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -108,7 +118,9 @@ impl ShopToonoutlineshader {
     pub fn with_outlinecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outlinecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -180,7 +192,9 @@ impl ShopToonshading {
     pub fn with_difframp_min_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "difframp_min".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -194,7 +208,9 @@ impl ShopToonshading {
     pub fn with_difframp_max_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "difframp_max".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -208,7 +224,9 @@ impl ShopToonshading {
     pub fn with_difftex_blend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "difftex_blend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -222,7 +240,9 @@ impl ShopToonshading {
     pub fn with_glossramp_min_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "glossramp_min".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -236,7 +256,9 @@ impl ShopToonshading {
     pub fn with_glossramp_max_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "glossramp_max".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -250,7 +272,9 @@ impl ShopToonshading {
     pub fn with_coatramp_min_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "coatramp_min".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -264,7 +288,9 @@ impl ShopToonshading {
     pub fn with_coatramp_max_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "coatramp_max".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -280,7 +306,9 @@ impl ShopToonshading {
     pub fn with_albedo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "albedo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -294,7 +322,9 @@ impl ShopToonshading {
     pub fn with_directdiffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directdiffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -308,7 +338,9 @@ impl ShopToonshading {
     pub fn with_indirectdiffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "indirectdiffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -322,7 +354,9 @@ impl ShopToonshading {
     pub fn with_sss_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sss".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -336,7 +370,9 @@ impl ShopToonshading {
     pub fn with_reflecteddirectdiffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reflecteddirectdiffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -350,7 +386,9 @@ impl ShopToonshading {
     pub fn with_reflectedalbedodiffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reflectedalbedodiffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -364,7 +402,9 @@ impl ShopToonshading {
     pub fn with_reflectedglossy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reflectedglossy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -378,7 +418,9 @@ impl ShopToonshading {
     pub fn with_reflectedcoat_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reflectedcoat".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -392,7 +434,9 @@ impl ShopToonshading {
     pub fn with_transmittedglossydiffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "transmittedglossydiffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -406,7 +450,9 @@ impl ShopToonshading {
     pub fn with_toon_diffuse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toon_diffuse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -420,7 +466,9 @@ impl ShopToonshading {
     pub fn with_toon_glossy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toon_glossy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -434,7 +482,9 @@ impl ShopToonshading {
     pub fn with_toon_coat_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toon_coat".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -450,7 +500,9 @@ impl ShopToonshading {
     pub fn with_outline_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outline".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -464,7 +516,9 @@ impl ShopToonshading {
     pub fn with_c_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "C".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -478,7 +532,9 @@ impl ShopToonshading {
     pub fn with_toon_outline_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toon_outline".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -494,7 +550,9 @@ impl ShopToonshading {
     pub fn with_outline_glossy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outline_glossy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -508,7 +566,9 @@ impl ShopToonshading {
     pub fn with_apply_albedo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "apply_albedo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -658,7 +718,9 @@ impl ShopTopnet {
     pub fn with_taskgraphsaverate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "taskgraphsaverate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -672,7 +734,9 @@ impl ShopTopnet {
     pub fn with_checkpointrate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpointrate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -686,7 +750,9 @@ impl ShopTopnet {
     pub fn with_customtime_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "customtime".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -702,7 +768,9 @@ impl ShopTopnet {
     pub fn with_checkpointformat_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpointformat".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -716,7 +784,9 @@ impl ShopTopnet {
     pub fn with_checkpointload_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpointload".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -730,7 +800,9 @@ impl ShopTopnet {
     pub fn with_regenerationtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "regenerationtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -744,7 +816,9 @@ impl ShopTopnet {
     pub fn with_evaluationtime_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "evaluationtime".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -753,56 +827,72 @@ impl ShopTopnet {
     pub fn with_taskgraphfile(mut self, val: &str) -> Self {
         self.params.insert(
             "taskgraphfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_taskgraphfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "taskgraphfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_checkpointfile(mut self, val: &str) -> Self {
         self.params.insert(
             "checkpointfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_checkpointfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpointfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_topscheduler(mut self, val: &str) -> Self {
         self.params.insert(
             "topscheduler".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_topscheduler_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "topscheduler".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_defaultlabel(mut self, val: &str) -> Self {
         self.params.insert(
             "defaultlabel".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_defaultlabel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "defaultlabel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -818,7 +908,9 @@ impl ShopTopnet {
     pub fn with_taskgraphautosave_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "taskgraphautosave".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -832,7 +924,9 @@ impl ShopTopnet {
     pub fn with_checkpointenabled_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpointenabled".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -846,7 +940,9 @@ impl ShopTopnet {
     pub fn with_savegraphattribs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "savegraphattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -860,7 +956,9 @@ impl ShopTopnet {
     pub fn with_usedefaultlabel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usedefaultlabel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -874,7 +972,9 @@ impl ShopTopnet {
     pub fn with_savescenefile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "savescenefile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -946,7 +1046,9 @@ impl ShopTranslucencyEval {
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -960,7 +1062,9 @@ impl ShopTranslucencyEval {
     pub fn with_sigma_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sigma".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -976,7 +1080,9 @@ impl ShopTranslucencyEval {
     pub fn with_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -990,7 +1096,9 @@ impl ShopTranslucencyEval {
     pub fn with_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1004,7 +1112,9 @@ impl ShopTranslucencyEval {
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1018,7 +1128,9 @@ impl ShopTranslucencyEval {
     pub fn with_eval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1032,7 +1144,9 @@ impl ShopTranslucencyEval {
     pub fn with_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "N".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1048,7 +1162,9 @@ impl ShopTranslucencyEval {
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1062,7 +1178,9 @@ impl ShopTranslucencyEval {
     pub fn with_reverse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reverse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1076,7 +1194,9 @@ impl ShopTranslucencyEval {
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mybounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1148,7 +1268,9 @@ impl ShopTranslucencySample {
     pub fn with_sx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1162,7 +1284,9 @@ impl ShopTranslucencySample {
     pub fn with_sy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1176,7 +1300,9 @@ impl ShopTranslucencySample {
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1192,7 +1318,9 @@ impl ShopTranslucencySample {
     pub fn with_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1206,7 +1334,9 @@ impl ShopTranslucencySample {
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1220,7 +1350,9 @@ impl ShopTranslucencySample {
     pub fn with_v_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "v".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1234,7 +1366,9 @@ impl ShopTranslucencySample {
     pub fn with_n_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "N".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1250,7 +1384,9 @@ impl ShopTranslucencySample {
     pub fn with_flags_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "flags".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1264,7 +1400,9 @@ impl ShopTranslucencySample {
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1278,7 +1416,9 @@ impl ShopTranslucencySample {
     pub fn with_bouncetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bouncetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1292,7 +1432,9 @@ impl ShopTranslucencySample {
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mybounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

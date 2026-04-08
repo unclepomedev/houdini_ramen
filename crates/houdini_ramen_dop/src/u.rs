@@ -150,7 +150,9 @@ impl DopUniformforce {
     pub fn with_force_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "force".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -164,7 +166,9 @@ impl DopUniformforce {
     pub fn with_torque_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "torque".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -178,7 +182,9 @@ impl DopUniformforce {
     pub fn with_handlepos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "handlepos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -194,7 +200,9 @@ impl DopUniformforce {
     pub fn with_activation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "activation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -210,7 +218,9 @@ impl DopUniformforce {
     pub fn with_parmop_force_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmop_force".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -224,7 +234,9 @@ impl DopUniformforce {
     pub fn with_parmop_torque_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmop_torque".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -238,7 +250,9 @@ impl DopUniformforce {
     pub fn with_parmop_handlepos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmop_handlepos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -252,7 +266,9 @@ impl DopUniformforce {
     pub fn with_parmop_samplemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "parmop_samplemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -266,7 +282,9 @@ impl DopUniformforce {
     pub fn with_samplemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samplemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -280,7 +298,9 @@ impl DopUniformforce {
     pub fn with_defaultparmop_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "defaultparmop".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -294,7 +314,9 @@ impl DopUniformforce {
     pub fn with_sharedata_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sharedata".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -308,7 +330,9 @@ impl DopUniformforce {
     pub fn with_activationrules_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "activationrules".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -317,28 +341,36 @@ impl DopUniformforce {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dataname(mut self, val: &str) -> Self {
         self.params.insert(
             "dataname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_dataname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dataname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -354,7 +386,9 @@ impl DopUniformforce {
     pub fn with_uniquedataname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uniquedataname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

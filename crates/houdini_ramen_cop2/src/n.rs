@@ -242,7 +242,9 @@ impl Cop2Noise {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -256,7 +258,9 @@ impl Cop2Noise {
     pub fn with_exp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -270,7 +274,9 @@ impl Cop2Noise {
     pub fn with_tfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -284,7 +290,9 @@ impl Cop2Noise {
     pub fn with_toffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "toffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -298,7 +306,9 @@ impl Cop2Noise {
     pub fn with_effectamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "effectamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -312,7 +322,9 @@ impl Cop2Noise {
     pub fn with_aspect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aspect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -328,7 +340,9 @@ impl Cop2Noise {
     pub fn with_sfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -342,7 +356,9 @@ impl Cop2Noise {
     pub fn with_soffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "soffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -358,7 +374,9 @@ impl Cop2Noise {
     pub fn with_amp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -372,7 +390,9 @@ impl Cop2Noise {
     pub fn with_shift_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shift".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -388,7 +408,9 @@ impl Cop2Noise {
     pub fn with_seed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "seed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -402,7 +424,9 @@ impl Cop2Noise {
     pub fn with_turb_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "turb".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -416,7 +440,9 @@ impl Cop2Noise {
     pub fn with_depthglobal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "depthglobal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -430,7 +456,9 @@ impl Cop2Noise {
     pub fn with_start_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "start".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -444,7 +472,9 @@ impl Cop2Noise {
     pub fn with_length_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "length".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -458,7 +488,9 @@ impl Cop2Noise {
     pub fn with_prehold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prehold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -472,7 +504,9 @@ impl Cop2Noise {
     pub fn with_posthold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "posthold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -488,7 +522,9 @@ impl Cop2Noise {
     pub fn with_size_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "size".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -502,7 +538,9 @@ impl Cop2Noise {
     pub fn with_bwpoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bwpoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -518,7 +556,9 @@ impl Cop2Noise {
     pub fn with_noisetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "noisetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -532,7 +572,9 @@ impl Cop2Noise {
     pub fn with_sizemenu_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sizemenu".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -546,7 +588,9 @@ impl Cop2Noise {
     pub fn with_planes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "planes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -560,7 +604,9 @@ impl Cop2Noise {
     pub fn with_addplanes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "addplanes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -574,7 +620,9 @@ impl Cop2Noise {
     pub fn with_addplaneop_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "addplaneop".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -588,7 +636,9 @@ impl Cop2Noise {
     pub fn with_depth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "depth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -602,7 +652,9 @@ impl Cop2Noise {
     pub fn with_depthmenu_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "depthmenu".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -616,7 +668,9 @@ impl Cop2Noise {
     pub fn with_interlace_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "interlace".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -630,7 +684,9 @@ impl Cop2Noise {
     pub fn with_idominance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "idominance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -644,7 +700,9 @@ impl Cop2Noise {
     pub fn with_preextend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "preextend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -658,7 +716,9 @@ impl Cop2Noise {
     pub fn with_postextend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postextend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -667,28 +727,36 @@ impl Cop2Noise {
     pub fn with_maskplane(mut self, val: &str) -> Self {
         self.params.insert(
             "maskplane".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_maskplane_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maskplane".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_customplanes(mut self, val: &str) -> Self {
         self.params.insert(
             "customplanes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_customplanes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "customplanes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -704,7 +772,9 @@ impl Cop2Noise {
     pub fn with_percomp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "percomp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -718,7 +788,9 @@ impl Cop2Noise {
     pub fn with_adjustaspect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adjustaspect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -732,7 +804,9 @@ impl Cop2Noise {
     pub fn with_maskresize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maskresize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -746,7 +820,9 @@ impl Cop2Noise {
     pub fn with_maskinvert_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maskinvert".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -760,7 +836,9 @@ impl Cop2Noise {
     pub fn with_overridesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overridesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -774,7 +852,9 @@ impl Cop2Noise {
     pub fn with_overrideaspect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overrideaspect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -788,7 +868,9 @@ impl Cop2Noise {
     pub fn with_usebwpoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usebwpoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -802,7 +884,9 @@ impl Cop2Noise {
     pub fn with_overriderange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overriderange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -816,7 +900,9 @@ impl Cop2Noise {
     pub fn with_singleimage_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "singleimage".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

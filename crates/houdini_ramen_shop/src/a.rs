@@ -36,7 +36,9 @@ impl ShopApproxsssEval {
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -52,7 +54,9 @@ impl ShopApproxsssEval {
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -66,7 +70,9 @@ impl ShopApproxsssEval {
     pub fn with_eval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -82,7 +88,9 @@ impl ShopApproxsssEval {
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -96,7 +104,9 @@ impl ShopApproxsssEval {
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mybounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -168,7 +178,9 @@ impl ShopApproxsssSample {
     pub fn with_sx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -182,7 +194,9 @@ impl ShopApproxsssSample {
     pub fn with_sy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -196,7 +210,9 @@ impl ShopApproxsssSample {
     pub fn with_mfp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mfp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -210,7 +226,9 @@ impl ShopApproxsssSample {
     pub fn with_pdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -226,7 +244,9 @@ impl ShopApproxsssSample {
     pub fn with_u_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "u".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -240,7 +260,9 @@ impl ShopApproxsssSample {
     pub fn with_sssclr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sssclr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -254,7 +276,9 @@ impl ShopApproxsssSample {
     pub fn with_refl_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refl".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -268,7 +292,9 @@ impl ShopApproxsssSample {
     pub fn with_sssmfp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sssmfp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -282,7 +308,9 @@ impl ShopApproxsssSample {
     pub fn with_ssssampledist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ssssampledist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -298,7 +326,9 @@ impl ShopApproxsssSample {
     pub fn with_bounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -312,7 +342,9 @@ impl ShopApproxsssSample {
     pub fn with_bouncetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bouncetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -326,7 +358,9 @@ impl ShopApproxsssSample {
     pub fn with_ssstype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ssstype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -340,7 +374,9 @@ impl ShopApproxsssSample {
     pub fn with_mybounces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mybounces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -354,7 +390,9 @@ impl ShopApproxsssSample {
     pub fn with_samplingmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samplingmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

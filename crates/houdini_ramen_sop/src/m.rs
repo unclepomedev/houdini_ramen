@@ -141,7 +141,9 @@ impl SopMagnet {
     pub fn with_t_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "t".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -155,7 +157,9 @@ impl SopMagnet {
     pub fn with_r_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "r".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -169,7 +173,9 @@ impl SopMagnet {
     pub fn with_s_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "s".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -183,7 +189,9 @@ impl SopMagnet {
     pub fn with_p_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "p".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -199,7 +207,9 @@ impl SopMagnet {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -213,7 +223,9 @@ impl SopMagnet {
     pub fn with_xord_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "xOrd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -227,7 +239,9 @@ impl SopMagnet {
     pub fn with_rord_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rOrd".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -236,28 +250,36 @@ impl SopMagnet {
     pub fn with_deformgrp(mut self, val: &str) -> Self {
         self.params.insert(
             "deformGrp".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_deformgrp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "deformGrp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_magnetgrp(mut self, val: &str) -> Self {
         self.params.insert(
             "magnetGrp".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_magnetgrp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "magnetGrp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -273,7 +295,9 @@ impl SopMagnet {
     pub fn with_position_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "position".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -287,7 +311,9 @@ impl SopMagnet {
     pub fn with_color_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "color".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -301,7 +327,9 @@ impl SopMagnet {
     pub fn with_clampcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clampcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -315,7 +343,9 @@ impl SopMagnet {
     pub fn with_nml_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nml".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -329,7 +359,9 @@ impl SopMagnet {
     pub fn with_velocity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "velocity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -523,7 +555,9 @@ impl SopMaskbyfeature {
     pub fn with_maxangle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxangle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -537,7 +571,9 @@ impl SopMaskbyfeature {
     pub fn with_maxrad_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxrad".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -551,7 +587,9 @@ impl SopMaskbyfeature {
     pub fn with_proxrad_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "proxrad".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -565,7 +603,9 @@ impl SopMaskbyfeature {
     pub fn with_maxraydist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxraydist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -579,7 +619,9 @@ impl SopMaskbyfeature {
     pub fn with_coneangle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "coneangle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -593,7 +635,9 @@ impl SopMaskbyfeature {
     pub fn with_rayoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rayoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -607,7 +651,9 @@ impl SopMaskbyfeature {
     pub fn with_aobias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aobias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -621,7 +667,9 @@ impl SopMaskbyfeature {
     pub fn with_aoproxrad_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aoproxrad".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -635,7 +683,9 @@ impl SopMaskbyfeature {
     pub fn with_aomaxraydist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aomaxraydist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -649,7 +699,9 @@ impl SopMaskbyfeature {
     pub fn with_aoconeangle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aoconeangle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -663,7 +715,9 @@ impl SopMaskbyfeature {
     pub fn with_aorayoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aorayoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -679,7 +733,9 @@ impl SopMaskbyfeature {
     pub fn with_direction_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "direction".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -695,7 +751,9 @@ impl SopMaskbyfeature {
     pub fn with_maxsourcepoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxsourcepoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -709,7 +767,9 @@ impl SopMaskbyfeature {
     pub fn with_samples_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samples".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -723,7 +783,9 @@ impl SopMaskbyfeature {
     pub fn with_bluriterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bluriterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -737,7 +799,9 @@ impl SopMaskbyfeature {
     pub fn with_maxneigh_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxneigh".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -751,7 +815,9 @@ impl SopMaskbyfeature {
     pub fn with_seed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "seed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -765,7 +831,9 @@ impl SopMaskbyfeature {
     pub fn with_aosamples_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aosamples".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -779,7 +847,9 @@ impl SopMaskbyfeature {
     pub fn with_aobluriterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aobluriterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -793,7 +863,9 @@ impl SopMaskbyfeature {
     pub fn with_aomaxneigh_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aomaxneigh".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -807,7 +879,9 @@ impl SopMaskbyfeature {
     pub fn with_aoseed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aoseed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -823,7 +897,9 @@ impl SopMaskbyfeature {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -837,7 +913,9 @@ impl SopMaskbyfeature {
     pub fn with_directionfrom_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directionfrom".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -851,7 +929,9 @@ impl SopMaskbyfeature {
     pub fn with_influencetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "influencetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -865,7 +945,9 @@ impl SopMaskbyfeature {
     pub fn with_aoinfluencetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aoinfluencetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -881,7 +963,9 @@ impl SopMaskbyfeature {
     pub fn with_distfallofframp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "distfallofframp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -895,7 +979,9 @@ impl SopMaskbyfeature {
     pub fn with_combinedramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "combinedramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -909,7 +995,9 @@ impl SopMaskbyfeature {
     pub fn with_directionramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directionramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -923,7 +1011,9 @@ impl SopMaskbyfeature {
     pub fn with_shadowramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shadowramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -937,7 +1027,9 @@ impl SopMaskbyfeature {
     pub fn with_aoramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aoramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -946,84 +1038,108 @@ impl SopMaskbyfeature {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_combinedmaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "combinedmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_combinedmaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "combinedmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_directionmaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "directionmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_directionmaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "directionmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shadowmaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "shadowmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shadowmaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shadowmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_aomaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "aomaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_aomaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aomaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sourcepoints(mut self, val: &str) -> Self {
         self.params.insert(
             "sourcepoints".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sourcepoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourcepoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1039,7 +1155,9 @@ impl SopMaskbyfeature {
     pub fn with_usecombinedmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecombinedmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1053,7 +1171,9 @@ impl SopMaskbyfeature {
     pub fn with_usedirectionmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usedirectionmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1067,7 +1187,9 @@ impl SopMaskbyfeature {
     pub fn with_useshadowmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useshadowmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1081,7 +1203,9 @@ impl SopMaskbyfeature {
     pub fn with_useaomask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useaomask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1095,7 +1219,9 @@ impl SopMaskbyfeature {
     pub fn with_enabledirection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enabledirection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1109,7 +1235,9 @@ impl SopMaskbyfeature {
     pub fn with_clampdirectionmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clampdirectionmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1123,7 +1251,9 @@ impl SopMaskbyfeature {
     pub fn with_falloffbydist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "falloffbydist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1137,7 +1267,9 @@ impl SopMaskbyfeature {
     pub fn with_castshadows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "castshadows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1151,7 +1283,9 @@ impl SopMaskbyfeature {
     pub fn with_selfshadows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "selfshadows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1165,7 +1299,9 @@ impl SopMaskbyfeature {
     pub fn with_pinborder_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pinborder".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1179,7 +1315,9 @@ impl SopMaskbyfeature {
     pub fn with_enableao_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableao".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1193,7 +1331,9 @@ impl SopMaskbyfeature {
     pub fn with_aoselfshadows_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aoselfshadows".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1207,7 +1347,9 @@ impl SopMaskbyfeature {
     pub fn with_aopinborder_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "aopinborder".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1221,7 +1363,9 @@ impl SopMaskbyfeature {
     pub fn with_remapcombinedmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapcombinedmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1235,7 +1379,9 @@ impl SopMaskbyfeature {
     pub fn with_remapdirectionmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapdirectionmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1249,7 +1395,9 @@ impl SopMaskbyfeature {
     pub fn with_remapshadowmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapshadowmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1263,7 +1411,9 @@ impl SopMaskbyfeature {
     pub fn with_remapaomask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapaomask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1394,7 +1544,9 @@ impl SopMatchaxis {
     pub fn with_from_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "from".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1408,7 +1560,9 @@ impl SopMatchaxis {
     pub fn with_to_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "to".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1417,14 +1571,18 @@ impl SopMatchaxis {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1679,7 +1837,9 @@ impl SopMatchsize {
     pub fn with_offset_x_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset_x".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1693,7 +1853,9 @@ impl SopMatchsize {
     pub fn with_offset_y_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset_y".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1707,7 +1869,9 @@ impl SopMatchsize {
     pub fn with_offset_z_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset_z".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1723,7 +1887,9 @@ impl SopMatchsize {
     pub fn with_t_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "t".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1737,7 +1903,9 @@ impl SopMatchsize {
     pub fn with_size_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "size".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1753,7 +1921,9 @@ impl SopMatchsize {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1767,7 +1937,9 @@ impl SopMatchsize {
     pub fn with_justifytarget_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "justifytarget".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1781,7 +1953,9 @@ impl SopMatchsize {
     pub fn with_sourcegrouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourcegrouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1795,7 +1969,9 @@ impl SopMatchsize {
     pub fn with_refgrouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refgrouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1809,7 +1985,9 @@ impl SopMatchsize {
     pub fn with_justify_x_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "justify_x".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1823,7 +2001,9 @@ impl SopMatchsize {
     pub fn with_goal_x_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "goal_x".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1837,7 +2017,9 @@ impl SopMatchsize {
     pub fn with_justify_y_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "justify_y".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1851,7 +2033,9 @@ impl SopMatchsize {
     pub fn with_goal_y_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "goal_y".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1865,7 +2049,9 @@ impl SopMatchsize {
     pub fn with_justify_z_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "justify_z".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1879,7 +2065,9 @@ impl SopMatchsize {
     pub fn with_goal_z_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "goal_z".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1893,7 +2081,9 @@ impl SopMatchsize {
     pub fn with_scale_axis_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale_axis".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1907,7 +2097,9 @@ impl SopMatchsize {
     pub fn with_stashmerge_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stashmerge".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1916,70 +2108,90 @@ impl SopMatchsize {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sourcegroup(mut self, val: &str) -> Self {
         self.params.insert(
             "sourcegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sourcegroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sourcegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_refgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "refgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_refgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_restoreattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "restoreattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_restoreattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "restoreattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stashattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "stashattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stashattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stashattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -1995,7 +2207,9 @@ impl SopMatchsize {
     pub fn with_doboundgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "doboundgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2009,7 +2223,9 @@ impl SopMatchsize {
     pub fn with_dotranslate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dotranslate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2023,7 +2239,9 @@ impl SopMatchsize {
     pub fn with_doscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "doscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2037,7 +2255,9 @@ impl SopMatchsize {
     pub fn with_uniformscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uniformscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2051,7 +2271,9 @@ impl SopMatchsize {
     pub fn with_scale_x_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale_x".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2065,7 +2287,9 @@ impl SopMatchsize {
     pub fn with_scale_y_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale_y".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2079,7 +2303,9 @@ impl SopMatchsize {
     pub fn with_scale_z_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale_z".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2093,7 +2319,9 @@ impl SopMatchsize {
     pub fn with_restorexform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "restorexform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2107,7 +2335,9 @@ impl SopMatchsize {
     pub fn with_stashxform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stashxform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2252,28 +2482,36 @@ impl SopMatchtopology {
     pub fn with_trackpts(mut self, val: &str) -> Self {
         self.params.insert(
             "trackpts".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_trackpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "trackpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_refpts(mut self, val: &str) -> Self {
         self.params.insert(
             "refpts".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_refpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2289,7 +2527,9 @@ impl SopMatchtopology {
     pub fn with_assumeprimmatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "assumeprimmatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2424,7 +2664,9 @@ impl SopMaterial {
     pub fn with_local_fval_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_fval{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2440,7 +2682,9 @@ impl SopMaterial {
     pub fn with_local_cval_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_cval{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2456,7 +2700,9 @@ impl SopMaterial {
     pub fn with_local_vval_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_vval{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2472,7 +2718,9 @@ impl SopMaterial {
     pub fn with_local_ival_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_ival{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2488,7 +2736,9 @@ impl SopMaterial {
     pub fn with_uselabels_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uselabels".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2502,7 +2752,9 @@ impl SopMaterial {
     pub fn with_local_menu_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_menu{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2511,84 +2763,108 @@ impl SopMaterial {
     pub fn with_style(mut self, val: &str) -> Self {
         self.params.insert(
             "style".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_style_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "style".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shop_materialpath_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("shop_materialpath{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shop_materialpath_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("shop_materialpath{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_local_name_inst(mut self, index1: usize, index2: usize, val: &str) -> Self {
         self.params.insert(
             format!("local{}_name{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_local_name_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_name{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_local_type_inst(mut self, index1: usize, index2: usize, val: &str) -> Self {
         self.params.insert(
             format!("local{}_type{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_local_type_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_type{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_local_sval_inst(mut self, index1: usize, index2: usize, val: &str) -> Self {
         self.params.insert(
             format!("local{}_sval{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_local_sval_inst_expr(mut self, index1: usize, index2: usize, expr: &str) -> Self {
         self.params.insert(
             format!("local{}_sval{}", index1, index2),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2604,7 +2880,9 @@ impl SopMaterial {
     pub fn with_createstylesheets_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "createstylesheets".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2618,7 +2896,9 @@ impl SopMaterial {
     pub fn with_fullpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fullpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2632,7 +2912,9 @@ impl SopMaterial {
     pub fn with_localvar_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("localvar{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2646,7 +2928,9 @@ impl SopMaterial {
     pub fn with_mergeoverride_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mergeoverride{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2855,7 +3139,9 @@ impl SopMdd {
     pub fn with_frame_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "frame".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2871,7 +3157,9 @@ impl SopMdd {
     pub fn with_interp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "interp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2885,7 +3173,9 @@ impl SopMdd {
     pub fn with_coordsys_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "coordsys".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2894,14 +3184,18 @@ impl SopMdd {
     pub fn with_file(mut self, val: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_file_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -2917,7 +3211,9 @@ impl SopMdd {
     pub fn with_shiftstart_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shiftstart".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3131,7 +3427,9 @@ impl SopMeasure {
     pub fn with_umbiliccutoff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "umbiliccutoff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3145,7 +3443,9 @@ impl SopMeasure {
     pub fn with_rangemin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rangemin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3159,7 +3459,9 @@ impl SopMeasure {
     pub fn with_rangemax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rangemax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3173,7 +3475,9 @@ impl SopMeasure {
     pub fn with_width_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "width".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3187,7 +3491,9 @@ impl SopMeasure {
     pub fn with_fixedcenter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fixedcenter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3201,7 +3507,9 @@ impl SopMeasure {
     pub fn with_vectorscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vectorscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3217,7 +3525,9 @@ impl SopMeasure {
     pub fn with_remaprange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remaprange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3233,7 +3543,9 @@ impl SopMeasure {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3247,7 +3559,9 @@ impl SopMeasure {
     pub fn with_measure_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "measure".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3261,7 +3575,9 @@ impl SopMeasure {
     pub fn with_curvaturetype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curvaturetype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3275,7 +3591,9 @@ impl SopMeasure {
     pub fn with_principaltype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "principaltype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3289,7 +3607,9 @@ impl SopMeasure {
     pub fn with_principalsign_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "principalsign".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3303,7 +3623,9 @@ impl SopMeasure {
     pub fn with_principalreportas_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "principalreportas".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3317,7 +3639,9 @@ impl SopMeasure {
     pub fn with_integrationmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "integrationmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3331,7 +3655,9 @@ impl SopMeasure {
     pub fn with_srccomp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srccomp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3345,7 +3671,9 @@ impl SopMeasure {
     pub fn with_integrationdomain_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "integrationdomain".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3359,7 +3687,9 @@ impl SopMeasure {
     pub fn with_widthscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "widthscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3373,7 +3703,9 @@ impl SopMeasure {
     pub fn with_centertype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "centertype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3389,7 +3721,9 @@ impl SopMeasure {
     pub fn with_colorramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "colorramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3398,98 +3732,126 @@ impl SopMeasure {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_srcattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "srcattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_srcattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "srcattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pieceattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "pieceattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pieceattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pieceattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_posattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "posattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_posattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "posattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribname(mut self, val: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_totalattribname(mut self, val: &str) -> Self {
         self.params.insert(
             "totalattribname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_totalattribname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "totalattribname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rangegroup(mut self, val: &str) -> Self {
         self.params.insert(
             "rangegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rangegroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rangegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3505,7 +3867,9 @@ impl SopMeasure {
     pub fn with_divideelementarea_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "divideelementarea".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3519,7 +3883,9 @@ impl SopMeasure {
     pub fn with_scalenormalize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scalenormalize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3533,7 +3899,9 @@ impl SopMeasure {
     pub fn with_refinetomanifold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refinetomanifold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3547,7 +3915,9 @@ impl SopMeasure {
     pub fn with_usecustompos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecustompos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3561,7 +3931,9 @@ impl SopMeasure {
     pub fn with_userangemin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "userangemin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3575,7 +3947,9 @@ impl SopMeasure {
     pub fn with_userangemax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "userangemax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3589,7 +3963,9 @@ impl SopMeasure {
     pub fn with_usecenterwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecenterwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3603,7 +3979,9 @@ impl SopMeasure {
     pub fn with_usetotalattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usetotalattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3617,7 +3995,9 @@ impl SopMeasure {
     pub fn with_userangegroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "userangegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3631,7 +4011,9 @@ impl SopMeasure {
     pub fn with_bakeintooutput_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bakeintooutput".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3645,7 +4027,9 @@ impl SopMeasure {
     pub fn with_useremaprange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useremaprange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3789,7 +4173,9 @@ impl SopMeasurethickness {
     pub fn with_maxthickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxthickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3803,7 +4189,9 @@ impl SopMeasurethickness {
     pub fn with_snapdistance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "snapdistance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3817,7 +4205,9 @@ impl SopMeasurethickness {
     pub fn with_raybias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "raybias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3831,7 +4221,9 @@ impl SopMeasurethickness {
     pub fn with_scanconeangle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scanconeangle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3845,7 +4237,9 @@ impl SopMeasurethickness {
     pub fn with_edgesharpnesstolerance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "edgesharpnesstolerance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3859,7 +4253,9 @@ impl SopMeasurethickness {
     pub fn with_minthickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minthickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3873,7 +4269,9 @@ impl SopMeasurethickness {
     pub fn with_sdfvoxelsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sdfvoxelsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3889,7 +4287,9 @@ impl SopMeasurethickness {
     pub fn with_extrasamples_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extrasamples".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3903,7 +4303,9 @@ impl SopMeasurethickness {
     pub fn with_randomseed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "randomseed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3917,7 +4319,9 @@ impl SopMeasurethickness {
     pub fn with_refinementiterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refinementiterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3931,7 +4335,9 @@ impl SopMeasurethickness {
     pub fn with_bluriterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bluriterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3947,7 +4353,9 @@ impl SopMeasurethickness {
     pub fn with_samplefilter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samplefilter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3961,7 +4369,9 @@ impl SopMeasurethickness {
     pub fn with_measurementmethod_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "measurementmethod".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -3970,28 +4380,36 @@ impl SopMeasurethickness {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attrname(mut self, val: &str) -> Self {
         self.params.insert(
             "attrname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attrname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attrname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4007,7 +4425,9 @@ impl SopMeasurethickness {
     pub fn with_useinputnormal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinputnormal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4021,7 +4441,9 @@ impl SopMeasurethickness {
     pub fn with_consolidatenormal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "consolidatenormal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4035,7 +4457,9 @@ impl SopMeasurethickness {
     pub fn with_stratifysamples_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stratifysamples".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4049,7 +4473,9 @@ impl SopMeasurethickness {
     pub fn with_usesdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usesdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4063,7 +4489,9 @@ impl SopMeasurethickness {
     pub fn with_medianofneighbors_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "medianofneighbors".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4077,7 +4505,9 @@ impl SopMeasurethickness {
     pub fn with_useblur_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useblur".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4322,7 +4752,9 @@ impl SopMergepacked {
     pub fn with_singleindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "singleindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4338,7 +4770,9 @@ impl SopMergepacked {
     pub fn with_pivot_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pivot".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4352,7 +4786,9 @@ impl SopMergepacked {
     pub fn with_namingmethod_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "namingmethod".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4370,7 +4806,9 @@ impl SopMergepacked {
     pub fn with_treatasfolder_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("treatasfolder{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4379,56 +4817,72 @@ impl SopMergepacked {
     pub fn with_primname(mut self, val: &str) -> Self {
         self.params.insert(
             "primname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_primname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "primname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_primindex(mut self, val: &str) -> Self {
         self.params.insert(
             "primindex".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_primindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "primindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nameoverrideattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "nameoverrideattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nameoverrideattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nameoverrideattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_name_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("name{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_name_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("name{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4444,7 +4898,9 @@ impl SopMergepacked {
     pub fn with_setprimname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setprimname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4458,7 +4914,9 @@ impl SopMergepacked {
     pub fn with_setprimindex_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setprimindex".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4472,7 +4930,9 @@ impl SopMergepacked {
     pub fn with_nameoverride_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nameoverride".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4486,7 +4946,9 @@ impl SopMergepacked {
     pub fn with_pack_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pack".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4500,7 +4962,9 @@ impl SopMergepacked {
     pub fn with_onlypackunpacked_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "onlypackunpacked".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4514,7 +4978,9 @@ impl SopMergepacked {
     pub fn with_ignoreempty_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ignoreempty".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4528,7 +4994,9 @@ impl SopMergepacked {
     pub fn with_singlemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "singlemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4542,7 +5010,9 @@ impl SopMergepacked {
     pub fn with_useinput_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("useinput{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4620,7 +5090,9 @@ impl SopMetaball {
     pub fn with_metaweight_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "metaweight".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4634,7 +5106,9 @@ impl SopMetaball {
     pub fn with_expxy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expxy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4648,7 +5122,9 @@ impl SopMetaball {
     pub fn with_expz_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expz".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4664,7 +5140,9 @@ impl SopMetaball {
     pub fn with_rad_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rad".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4678,7 +5156,9 @@ impl SopMetaball {
     pub fn with_t_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "t".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4692,7 +5172,9 @@ impl SopMetaball {
     pub fn with_r_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "r".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4708,7 +5190,9 @@ impl SopMetaball {
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4717,14 +5201,18 @@ impl SopMetaball {
     pub fn with_kernel(mut self, val: &str) -> Self {
         self.params.insert(
             "kernel".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_kernel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kernel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -4846,14 +5334,18 @@ impl SopMetagroups {
     pub fn with_grpname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("grpname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_grpname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("grpname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5002,7 +5494,9 @@ impl SopMirror {
     pub fn with_dist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5016,7 +5510,9 @@ impl SopMirror {
     pub fn with_consolidatetol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "consolidatetol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5032,7 +5528,9 @@ impl SopMirror {
     pub fn with_t_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "t".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5046,7 +5544,9 @@ impl SopMirror {
     pub fn with_r_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "r".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5060,7 +5560,9 @@ impl SopMirror {
     pub fn with_origin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "origin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5074,7 +5576,9 @@ impl SopMirror {
     pub fn with_dir_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dir".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5090,7 +5594,9 @@ impl SopMirror {
     pub fn with_operation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "operation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5104,7 +5610,9 @@ impl SopMirror {
     pub fn with_dirtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dirtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5118,7 +5626,9 @@ impl SopMirror {
     pub fn with_reversenml_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reversenml".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5127,28 +5637,36 @@ impl SopMirror {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "outputgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5164,7 +5682,9 @@ impl SopMirror {
     pub fn with_keeporiginal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keepOriginal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5178,7 +5698,9 @@ impl SopMirror {
     pub fn with_consolidatepts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "consolidatepts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5192,7 +5714,9 @@ impl SopMirror {
     pub fn with_consolidateunshared_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "consolidateunshared".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5206,7 +5730,9 @@ impl SopMirror {
     pub fn with_createoutputgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "createoutputgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5340,7 +5866,9 @@ impl SopMlAttribgenerate {
     pub fn with_randomseed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "randomseed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5354,7 +5882,9 @@ impl SopMlAttribgenerate {
     pub fn with_samplecount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samplecount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5368,7 +5898,9 @@ impl SopMlAttribgenerate {
     pub fn with_tuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5384,7 +5916,9 @@ impl SopMlAttribgenerate {
     pub fn with_type_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("type{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5393,28 +5927,36 @@ impl SopMlAttribgenerate {
     pub fn with_pointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("pointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("pointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_distribution_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("distribution{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_distribution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("distribution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5609,7 +6151,9 @@ impl SopMlDeform {
     pub fn with_provider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "provider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5618,42 +6162,54 @@ impl SopMlDeform {
     pub fn with_modelfile(mut self, val: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_modelfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointlimits(mut self, val: &str) -> Self {
         self.params.insert(
             "jointlimits".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointlimits_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointlimits".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5669,7 +6225,9 @@ impl SopMlDeform {
     pub fn with_enforcejointlimits_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enforcejointlimits".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5810,28 +6368,36 @@ impl SopMlExample {
     pub fn with_inputvalidityattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "inputvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvalidityattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvalidityattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "targetvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvalidityattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5847,7 +6413,9 @@ impl SopMlExample {
     pub fn with_usepackedinputcomponent_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usepackedinputcomponent".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -5861,7 +6429,9 @@ impl SopMlExample {
     pub fn with_usepackedtargetcomponent_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usepackedtargetcomponent".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6002,28 +6572,36 @@ impl SopMlExamplecreatecore {
     pub fn with_inputvalidityattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "inputvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvalidityattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvalidityattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "targetvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvalidityattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetvalidityattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6039,7 +6617,9 @@ impl SopMlExamplecreatecore {
     pub fn with_usepackedinputcomponent_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usepackedinputcomponent".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6053,7 +6633,9 @@ impl SopMlExamplecreatecore {
     pub fn with_usepackedtargetcomponent_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usepackedtargetcomponent".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6182,7 +6764,9 @@ impl SopMlExampledecompose {
     pub fn with_keepinputcomponentpacked_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keepinputcomponentpacked".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6196,7 +6780,9 @@ impl SopMlExampledecompose {
     pub fn with_keeptargetcomponentpacked_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keeptargetcomponentpacked".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6331,7 +6917,9 @@ impl SopMlExampledecomposecore {
     pub fn with_componenttype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "componenttype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6347,7 +6935,9 @@ impl SopMlExampledecomposecore {
     pub fn with_keepcomponentpacked_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keepcomponentpacked".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6488,7 +7078,9 @@ impl SopMlExampledeserializepacked {
     pub fn with_inputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6502,7 +7094,9 @@ impl SopMlExampledeserializepacked {
     pub fn with_targettuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targettuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6518,7 +7112,9 @@ impl SopMlExampledeserializepacked {
     pub fn with_inputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6532,7 +7128,9 @@ impl SopMlExampledeserializepacked {
     pub fn with_targetvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6552,7 +7150,9 @@ impl SopMlExampledeserializepacked {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6570,7 +7170,9 @@ impl SopMlExampledeserializepacked {
     pub fn with_targettype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targettype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6579,98 +7181,126 @@ impl SopMlExampledeserializepacked {
     pub fn with_inputdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6792,70 +7422,90 @@ impl SopMlExampledeserializepoint {
     pub fn with_inputdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattributes(mut self, val: &str) -> Self {
         self.params.insert(
             "inputpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattributes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattributes(mut self, val: &str) -> Self {
         self.params.insert(
             "targetpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattributes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6948,7 +7598,9 @@ impl SopMlExampleimport {
     pub fn with_inputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6962,7 +7614,9 @@ impl SopMlExampleimport {
     pub fn with_targettuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targettuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6978,7 +7632,9 @@ impl SopMlExampleimport {
     pub fn with_inputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -6992,7 +7648,9 @@ impl SopMlExampleimport {
     pub fn with_targetvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7008,7 +7666,9 @@ impl SopMlExampleimport {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7026,7 +7686,9 @@ impl SopMlExampleimport {
     pub fn with_targettype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targettype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7035,70 +7697,90 @@ impl SopMlExampleimport {
     pub fn with_file(mut self, val: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_file_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "file".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7248,7 +7930,9 @@ impl SopMlExampleoutput {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7266,7 +7950,9 @@ impl SopMlExampleoutput {
     pub fn with_targettype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targettype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7275,140 +7961,180 @@ impl SopMlExampleoutput {
     pub fn with_sopoutput(mut self, val: &str) -> Self {
         self.params.insert(
             "sopoutput".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sopoutput_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sopoutput".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_prerender(mut self, val: &str) -> Self {
         self.params.insert(
             "prerender".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_prerender_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prerender".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_preframe(mut self, val: &str) -> Self {
         self.params.insert(
             "preframe".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_preframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "preframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_postframe(mut self, val: &str) -> Self {
         self.params.insert(
             "postframe".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_postframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_postwrite(mut self, val: &str) -> Self {
         self.params.insert(
             "postwrite".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_postwrite_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postwrite".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_postrender(mut self, val: &str) -> Self {
         self.params.insert(
             "postrender".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_postrender_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postrender".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7537,7 +8263,9 @@ impl SopMlExamplepartition {
     pub fn with_maximumpartsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maximumpartsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7690,7 +8418,9 @@ impl SopMlExampleserializepacked {
     pub fn with_outputmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7708,7 +8438,9 @@ impl SopMlExampleserializepacked {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7726,7 +8458,9 @@ impl SopMlExampleserializepacked {
     pub fn with_targettype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targettype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7743,7 +8477,9 @@ impl SopMlExampleserializepacked {
     pub fn with_componentlayoutencoding_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "componentlayoutencoding".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7752,112 +8488,144 @@ impl SopMlExampleserializepacked {
     pub fn with_inputdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sopoutput(mut self, val: &str) -> Self {
         self.params.insert(
             "sopoutput".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sopoutput_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sopoutput".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("targetvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -7979,70 +8747,90 @@ impl SopMlExampleserializepoint {
     pub fn with_inputdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetdimensionattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetdimensionattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattributes(mut self, val: &str) -> Self {
         self.params.insert(
             "inputpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattributes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattributes(mut self, val: &str) -> Self {
         self.params.insert(
             "targetpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetpointattributes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetpointattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8171,7 +8959,9 @@ impl SopMlExtractexample {
     pub fn with_index_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "index".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8187,7 +8977,9 @@ impl SopMlExtractexample {
     pub fn with_keeppacked_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keeppacked".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8316,7 +9108,9 @@ impl SopMlExtractexamplecore {
     pub fn with_index_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "index".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8332,7 +9126,9 @@ impl SopMlExtractexamplecore {
     pub fn with_keeppacked_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "keeppacked".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8486,7 +9282,9 @@ impl SopMlPosedeserialize {
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8495,56 +9293,72 @@ impl SopMlPosedeserialize {
     pub fn with_jointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8560,7 +9374,9 @@ impl SopMlPosedeserialize {
     pub fn with_subskeletonincludeworldrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "subskeletonincludeworldrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8574,7 +9390,9 @@ impl SopMlPosedeserialize {
     pub fn with_alllocalrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocalrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8588,7 +9406,9 @@ impl SopMlPosedeserialize {
     pub fn with_alllocaltranslation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocaltranslation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8742,7 +9562,9 @@ impl SopMlPosedeserializecore {
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8751,56 +9573,72 @@ impl SopMlPosedeserializecore {
     pub fn with_jointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8816,7 +9654,9 @@ impl SopMlPosedeserializecore {
     pub fn with_subskeletonincludeworldrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "subskeletonincludeworldrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8830,7 +9670,9 @@ impl SopMlPosedeserializecore {
     pub fn with_alllocalrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocalrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8844,7 +9686,9 @@ impl SopMlPosedeserializecore {
     pub fn with_alllocaltranslation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocaltranslation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8973,7 +9817,9 @@ impl SopMlPosegenerate {
     pub fn with_randomseed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "randomseed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8987,7 +9833,9 @@ impl SopMlPosegenerate {
     pub fn with_samplecount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samplecount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -8996,14 +9844,18 @@ impl SopMlPosegenerate {
     pub fn with_jointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9248,7 +10100,9 @@ impl SopMlPoseserialize {
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9257,56 +10111,72 @@ impl SopMlPoseserialize {
     pub fn with_jointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9322,7 +10192,9 @@ impl SopMlPoseserialize {
     pub fn with_subskeletonincludeworldrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "subskeletonincludeworldrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9336,7 +10208,9 @@ impl SopMlPoseserialize {
     pub fn with_alllocalrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocalrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9350,7 +10224,9 @@ impl SopMlPoseserialize {
     pub fn with_alllocaltranslation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocaltranslation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9485,7 +10361,9 @@ impl SopMlPoseserializecore {
     pub fn with_mode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9494,56 +10372,72 @@ impl SopMlPoseserializecore {
     pub fn with_jointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_jointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute(mut self, val: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_serialattribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "serialattribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localrotationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localrotationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_localtranslationgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localtranslationgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9559,7 +10453,9 @@ impl SopMlPoseserializecore {
     pub fn with_subskeletonincludeworldrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "subskeletonincludeworldrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9573,7 +10469,9 @@ impl SopMlPoseserializecore {
     pub fn with_alllocalrotation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocalrotation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9587,7 +10485,9 @@ impl SopMlPoseserializecore {
     pub fn with_alllocaltranslation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alllocaltranslation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9743,7 +10643,9 @@ impl SopMlRegressioninference {
     pub fn with_maxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9757,7 +10659,9 @@ impl SopMlRegressioninference {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9773,7 +10677,9 @@ impl SopMlRegressioninference {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9789,7 +10695,9 @@ impl SopMlRegressioninference {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9803,7 +10711,9 @@ impl SopMlRegressioninference {
     pub fn with_provider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "provider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9821,7 +10731,9 @@ impl SopMlRegressioninference {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9839,7 +10751,9 @@ impl SopMlRegressioninference {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9848,70 +10762,90 @@ impl SopMlRegressioninference {
     pub fn with_modelfile(mut self, val: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_modelfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -9927,7 +10861,9 @@ impl SopMlRegressioninference {
     pub fn with_domaxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domaxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10083,7 +11019,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_maxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10097,7 +11035,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10113,7 +11053,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10129,7 +11071,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_provider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "provider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10143,7 +11087,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10161,7 +11107,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10179,7 +11127,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10188,70 +11138,90 @@ impl SopMlRegressioninferencecore {
     pub fn with_modelfile(mut self, val: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_modelfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10267,7 +11237,9 @@ impl SopMlRegressioninferencecore {
     pub fn with_domaxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domaxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10440,7 +11412,9 @@ impl SopMlRegressionkernel {
     pub fn with_weightdecay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "weightdecay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10454,7 +11428,9 @@ impl SopMlRegressionkernel {
     pub fn with_errorthreshold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "errorthreshold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10468,7 +11444,9 @@ impl SopMlRegressionkernel {
     pub fn with_width_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "width".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10482,7 +11460,9 @@ impl SopMlRegressionkernel {
     pub fn with_polynomialoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "polynomialoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10496,7 +11476,9 @@ impl SopMlRegressionkernel {
     pub fn with_sigmoidscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sigmoidscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10510,7 +11492,9 @@ impl SopMlRegressionkernel {
     pub fn with_sigmoidoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sigmoidoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10526,7 +11510,9 @@ impl SopMlRegressionkernel {
     pub fn with_polynomialdegree_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "polynomialdegree".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10540,7 +11526,9 @@ impl SopMlRegressionkernel {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10556,7 +11544,9 @@ impl SopMlRegressionkernel {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10572,7 +11562,9 @@ impl SopMlRegressionkernel {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10586,7 +11578,9 @@ impl SopMlRegressionkernel {
     pub fn with_kerneltype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kerneltype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10604,7 +11598,9 @@ impl SopMlRegressionkernel {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10622,7 +11618,9 @@ impl SopMlRegressionkernel {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10631,56 +11629,72 @@ impl SopMlRegressionkernel {
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10859,7 +11873,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_weightdecay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "weightdecay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10873,7 +11889,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_errorthreshold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "errorthreshold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10887,7 +11905,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_width_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "width".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10901,7 +11921,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_sigmoidscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sigmoidscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10915,7 +11937,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_polynomialoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "polynomialoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10929,7 +11953,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_sigmoidoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sigmoidoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10945,7 +11971,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_polynomialdegree_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "polynomialdegree".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10959,7 +11987,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10975,7 +12005,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -10991,7 +12023,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11005,7 +12039,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_kerneltype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kerneltype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11019,7 +12055,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_modelmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "modelmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11037,7 +12075,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11055,7 +12095,9 @@ impl SopMlRegressionkernelcore {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11064,56 +12106,72 @@ impl SopMlRegressionkernelcore {
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11279,7 +12337,9 @@ impl SopMlRegressionlinear {
     pub fn with_weightdecay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "weightdecay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11293,7 +12353,9 @@ impl SopMlRegressionlinear {
     pub fn with_errorthreshold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "errorthreshold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11309,7 +12371,9 @@ impl SopMlRegressionlinear {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11325,7 +12389,9 @@ impl SopMlRegressionlinear {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11341,7 +12407,9 @@ impl SopMlRegressionlinear {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11359,7 +12427,9 @@ impl SopMlRegressionlinear {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11377,7 +12447,9 @@ impl SopMlRegressionlinear {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11386,56 +12458,72 @@ impl SopMlRegressionlinear {
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11620,7 +12708,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_weightdecay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "weightdecay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11634,7 +12724,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_errorthreshold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "errorthreshold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11650,7 +12742,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11666,7 +12760,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11682,7 +12778,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11700,7 +12798,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11718,7 +12818,9 @@ impl SopMlRegressionlinearcore {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11727,56 +12829,72 @@ impl SopMlRegressionlinearcore {
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11942,7 +13060,9 @@ impl SopMlRegressionproximity {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11958,7 +13078,9 @@ impl SopMlRegressionproximity {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11974,7 +13096,9 @@ impl SopMlRegressionproximity {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -11992,7 +13116,9 @@ impl SopMlRegressionproximity {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12010,7 +13136,9 @@ impl SopMlRegressionproximity {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12019,56 +13147,72 @@ impl SopMlRegressionproximity {
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12234,7 +13378,9 @@ impl SopMlRegressionproximitycore {
     pub fn with_outputtuplesize_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtuplesize{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12250,7 +13396,9 @@ impl SopMlRegressionproximitycore {
     pub fn with_outputvolumeresolution_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumeresolution{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12266,7 +13414,9 @@ impl SopMlRegressionproximitycore {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12284,7 +13434,9 @@ impl SopMlRegressionproximitycore {
     pub fn with_inputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12302,7 +13454,9 @@ impl SopMlRegressionproximitycore {
     pub fn with_outputtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputtype{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12311,56 +13465,72 @@ impl SopMlRegressionproximitycore {
     pub fn with_inputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputpointattribute_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputpointattribute{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_outputvolumename_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("outputvolumename{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12508,7 +13678,9 @@ impl SopMlVolumetilecomponent {
     pub fn with_tilesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tilesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12522,7 +13694,9 @@ impl SopMlVolumetilecomponent {
     pub fn with_padding_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "padding".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12536,7 +13710,9 @@ impl SopMlVolumetilecomponent {
     pub fn with_safety_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "safety".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12545,14 +13721,18 @@ impl SopMlVolumetilecomponent {
     pub fn with_volume(mut self, val: &str) -> Self {
         self.params.insert(
             "volume".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volume_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "volume".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12568,7 +13748,9 @@ impl SopMlVolumetilecomponent {
     pub fn with_hide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12746,7 +13928,9 @@ impl SopMlVolumetileinference {
     pub fn with_prunetolerance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prunetolerance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12762,7 +13946,9 @@ impl SopMlVolumetileinference {
     pub fn with_maxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12776,7 +13962,9 @@ impl SopMlVolumetileinference {
     pub fn with_inputfields_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inputfields".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12790,7 +13978,9 @@ impl SopMlVolumetileinference {
     pub fn with_output_fields_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "output_fields".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12804,7 +13994,9 @@ impl SopMlVolumetileinference {
     pub fn with_tilesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tilesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12818,7 +14010,9 @@ impl SopMlVolumetileinference {
     pub fn with_padding_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "padding".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12832,7 +14026,9 @@ impl SopMlVolumetileinference {
     pub fn with_crop_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "crop".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12846,7 +14042,9 @@ impl SopMlVolumetileinference {
     pub fn with_disable_parms_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "disable_parms".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12862,7 +14060,9 @@ impl SopMlVolumetileinference {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12876,7 +14076,9 @@ impl SopMlVolumetileinference {
     pub fn with_provider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "provider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12885,28 +14087,36 @@ impl SopMlVolumetileinference {
     pub fn with_modelfile(mut self, val: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_modelfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volume(mut self, val: &str) -> Self {
         self.params.insert(
             "volume".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volume_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "volume".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12922,7 +14132,9 @@ impl SopMlVolumetileinference {
     pub fn with_domaxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domaxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -12936,7 +14148,9 @@ impl SopMlVolumetileinference {
     pub fn with_prune_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prune".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13081,7 +14295,9 @@ impl SopMlVolumeupres {
     pub fn with_presharpenamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "presharpenamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13095,7 +14311,9 @@ impl SopMlVolumeupres {
     pub fn with_postsharpenamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postsharpenamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13109,7 +14327,9 @@ impl SopMlVolumeupres {
     pub fn with_prunetolerance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prunetolerance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13123,7 +14343,9 @@ impl SopMlVolumeupres {
     pub fn with_minclamp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minclamp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13137,7 +14359,9 @@ impl SopMlVolumeupres {
     pub fn with_maxclamp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxclamp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13151,7 +14375,9 @@ impl SopMlVolumeupres {
     pub fn with_masktolerance_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "masktolerance".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13165,7 +14391,9 @@ impl SopMlVolumeupres {
     pub fn with_naivefilterscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "naivefilterscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13179,7 +14407,9 @@ impl SopMlVolumeupres {
     pub fn with_scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13193,7 +14423,9 @@ impl SopMlVolumeupres {
     pub fn with_filterscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filterscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13207,7 +14439,9 @@ impl SopMlVolumeupres {
     pub fn with_blurradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blurradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13223,7 +14457,9 @@ impl SopMlVolumeupres {
     pub fn with_clampval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clampval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13239,7 +14475,9 @@ impl SopMlVolumeupres {
     pub fn with_maxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13253,7 +14491,9 @@ impl SopMlVolumeupres {
     pub fn with_prepasses_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prepasses".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13267,7 +14507,9 @@ impl SopMlVolumeupres {
     pub fn with_postpasses_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postpasses".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13281,7 +14523,9 @@ impl SopMlVolumeupres {
     pub fn with_tilesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tilesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13295,7 +14539,9 @@ impl SopMlVolumeupres {
     pub fn with_padding_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "padding".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13309,7 +14555,9 @@ impl SopMlVolumeupres {
     pub fn with_crop_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "crop".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13325,7 +14573,9 @@ impl SopMlVolumeupres {
     pub fn with_batch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "batch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13339,7 +14589,9 @@ impl SopMlVolumeupres {
     pub fn with_provider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "provider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13348,70 +14600,90 @@ impl SopMlVolumeupres {
     pub fn with_modelfile(mut self, val: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_modelfile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "modelfile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volume(mut self, val: &str) -> Self {
         self.params.insert(
             "volume".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volume_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "volume".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_naivevolumes(mut self, val: &str) -> Self {
         self.params.insert(
             "naivevolumes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_naivevolumes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "naivevolumes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_naivefilter(mut self, val: &str) -> Self {
         self.params.insert(
             "naivefilter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_naivefilter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "naivefilter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filter(mut self, val: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_filter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13427,7 +14699,9 @@ impl SopMlVolumeupres {
     pub fn with_domaxbatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domaxbatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13441,7 +14715,9 @@ impl SopMlVolumeupres {
     pub fn with_presharpen_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "presharpen".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13455,7 +14731,9 @@ impl SopMlVolumeupres {
     pub fn with_postsharpen_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "postsharpen".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13469,7 +14747,9 @@ impl SopMlVolumeupres {
     pub fn with_prune_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prune".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13483,7 +14763,9 @@ impl SopMlVolumeupres {
     pub fn with_clamp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clamp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13497,7 +14779,9 @@ impl SopMlVolumeupres {
     pub fn with_mask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13511,7 +14795,9 @@ impl SopMlVolumeupres {
     pub fn with_otherfields_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "otherfields".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13525,7 +14811,9 @@ impl SopMlVolumeupres {
     pub fn with_frommeta_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "frommeta".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13539,7 +14827,9 @@ impl SopMlVolumeupres {
     pub fn with_localnorm_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localnorm".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13668,7 +14958,9 @@ impl SopMountain {
     pub fn with_height_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "height".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13682,7 +14974,9 @@ impl SopMountain {
     pub fn with_elementsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elementsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13696,7 +14990,9 @@ impl SopMountain {
     pub fn with_pulselength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pulselength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13710,7 +15006,9 @@ impl SopMountain {
     pub fn with_time_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "time".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13724,7 +15022,9 @@ impl SopMountain {
     pub fn with_lac_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lac".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13738,7 +15038,9 @@ impl SopMountain {
     pub fn with_rough_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rough".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13752,7 +15054,9 @@ impl SopMountain {
     pub fn with_flowrot_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "flowrot".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13766,7 +15070,9 @@ impl SopMountain {
     pub fn with_gain_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gain".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13780,7 +15086,9 @@ impl SopMountain {
     pub fn with_bias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13794,7 +15102,9 @@ impl SopMountain {
     pub fn with_clipmin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clipmin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13808,7 +15118,9 @@ impl SopMountain {
     pub fn with_clipmax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "clipmax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13822,7 +15134,9 @@ impl SopMountain {
     pub fn with_dispfreq_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dispfreq".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13836,7 +15150,9 @@ impl SopMountain {
     pub fn with_disp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "disp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13850,7 +15166,9 @@ impl SopMountain {
     pub fn with_gflow_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gflow".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13866,7 +15184,9 @@ impl SopMountain {
     pub fn with_elementscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elementscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13880,7 +15200,9 @@ impl SopMountain {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13896,7 +15218,9 @@ impl SopMountain {
     pub fn with_oct_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "oct".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13905,42 +15229,54 @@ impl SopMountain {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_basis(mut self, val: &str) -> Self {
         self.params.insert(
             "basis".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_basis_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "basis".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_fractal(mut self, val: &str) -> Self {
         self.params.insert(
             "fractal".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_fractal_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fractal".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13956,7 +15292,9 @@ impl SopMountain {
     pub fn with_centernoise_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "centernoise".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13970,7 +15308,9 @@ impl SopMountain {
     pub fn with_fold_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fold".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13984,7 +15324,9 @@ impl SopMountain {
     pub fn with_complement_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "complement".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -13998,7 +15340,9 @@ impl SopMountain {
     pub fn with_dogain_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dogain".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14012,7 +15356,9 @@ impl SopMountain {
     pub fn with_dobias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dobias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14026,7 +15372,9 @@ impl SopMountain {
     pub fn with_dolwarp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dolwarp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14040,7 +15388,9 @@ impl SopMountain {
     pub fn with_accuml_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "accuml".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14054,7 +15404,9 @@ impl SopMountain {
     pub fn with_dogwarp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dogwarp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14068,7 +15420,9 @@ impl SopMountain {
     pub fn with_accumg_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "accumg".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14082,7 +15436,9 @@ impl SopMountain {
     pub fn with_updatenmls_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "updatenmls".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14262,7 +15618,9 @@ impl SopMpmcollider {
     pub fn with_refframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14276,7 +15634,9 @@ impl SopMpmcollider {
     pub fn with_voxelsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "voxelsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14290,7 +15650,9 @@ impl SopMpmcollider {
     pub fn with_inc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "inc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14304,7 +15666,9 @@ impl SopMpmcollider {
     pub fn with_velvoxelscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "velvoxelscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14318,7 +15682,9 @@ impl SopMpmcollider {
     pub fn with_friction_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "friction".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14332,7 +15698,9 @@ impl SopMpmcollider {
     pub fn with_sticky_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sticky".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14348,7 +15716,9 @@ impl SopMpmcollider {
     pub fn with_frictionrange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "frictionrange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14362,7 +15732,9 @@ impl SopMpmcollider {
     pub fn with_stickyrange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stickyrange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14378,7 +15750,9 @@ impl SopMpmcollider {
     pub fn with_activation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "activation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14392,7 +15766,9 @@ impl SopMpmcollider {
     pub fn with_exterirobandvoxels_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exterirobandvoxels".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14406,7 +15782,9 @@ impl SopMpmcollider {
     pub fn with_npts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "npts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14422,7 +15800,9 @@ impl SopMpmcollider {
     pub fn with_type_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "type".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14436,7 +15816,9 @@ impl SopMpmcollider {
     pub fn with_segmentation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "segmentation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14450,7 +15832,9 @@ impl SopMpmcollider {
     pub fn with_response_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "response".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14464,7 +15848,9 @@ impl SopMpmcollider {
     pub fn with_displaygrid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaygrid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14473,14 +15859,18 @@ impl SopMpmcollider {
     pub fn with_mpmcontainer(mut self, val: &str) -> Self {
         self.params.insert(
             "mpmcontainer".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mpmcontainer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mpmcontainer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14496,7 +15886,9 @@ impl SopMpmcollider {
     pub fn with_useinputanimation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinputanimation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14510,7 +15902,9 @@ impl SopMpmcollider {
     pub fn with_centerpivot_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "centerpivot".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14524,7 +15918,9 @@ impl SopMpmcollider {
     pub fn with_vdbfrompolygon_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vdbfrompolygon".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14538,7 +15934,9 @@ impl SopMpmcollider {
     pub fn with_voxelsizeoverride_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "voxelsizeoverride".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14552,7 +15950,9 @@ impl SopMpmcollider {
     pub fn with_expandtovol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expandtovol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14566,7 +15966,9 @@ impl SopMpmcollider {
     pub fn with_fillinterior_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fillinterior".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14580,7 +15982,9 @@ impl SopMpmcollider {
     pub fn with_invertsdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "invertsdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14594,7 +15998,9 @@ impl SopMpmcollider {
     pub fn with_computevelocity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "computevelocity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14608,7 +16014,9 @@ impl SopMpmcollider {
     pub fn with_createfrictiongrid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "createfrictiongrid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14622,7 +16030,9 @@ impl SopMpmcollider {
     pub fn with_createstickygrid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "createstickygrid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14636,7 +16046,9 @@ impl SopMpmcollider {
     pub fn with_trailvel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "trailvel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14821,7 +16233,9 @@ impl SopMpmcontainer {
     pub fn with_particlesep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "particlesep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14835,7 +16249,9 @@ impl SopMpmcontainer {
     pub fn with_gridscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gridscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14849,7 +16265,9 @@ impl SopMpmcontainer {
     pub fn with_friction_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "friction".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14863,7 +16281,9 @@ impl SopMpmcontainer {
     pub fn with_sticky_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sticky".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14879,7 +16299,9 @@ impl SopMpmcontainer {
     pub fn with_size_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "size".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14893,7 +16315,9 @@ impl SopMpmcontainer {
     pub fn with_center_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "center".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14907,7 +16331,9 @@ impl SopMpmcontainer {
     pub fn with_maxpad_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxpad".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14921,7 +16347,9 @@ impl SopMpmcontainer {
     pub fn with_minpad_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minpad".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14937,7 +16365,9 @@ impl SopMpmcontainer {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14953,7 +16383,9 @@ impl SopMpmcontainer {
     pub fn with_geotype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "geotype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14967,7 +16399,9 @@ impl SopMpmcontainer {
     pub fn with_allbounds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "allbounds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14981,7 +16415,9 @@ impl SopMpmcontainer {
     pub fn with_xpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "xpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -14995,7 +16431,9 @@ impl SopMpmcontainer {
     pub fn with_xneg_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "xneg".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15009,7 +16447,9 @@ impl SopMpmcontainer {
     pub fn with_ypos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ypos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15023,7 +16463,9 @@ impl SopMpmcontainer {
     pub fn with_yneg_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "yneg".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15037,7 +16479,9 @@ impl SopMpmcontainer {
     pub fn with_zpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "zpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15051,7 +16495,9 @@ impl SopMpmcontainer {
     pub fn with_zneg_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "zneg".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15067,7 +16513,9 @@ impl SopMpmcontainer {
     pub fn with_allboundsoverride_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "allboundsoverride".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15215,7 +16663,9 @@ impl SopMpmdebrissource {
     pub fn with_timescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15229,7 +16679,9 @@ impl SopMpmdebrissource {
     pub fn with_mindjp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mindjp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15243,7 +16695,9 @@ impl SopMpmdebrissource {
     pub fn with_minspeed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minspeed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15257,7 +16711,9 @@ impl SopMpmdebrissource {
     pub fn with_maxdist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxdist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15271,7 +16727,9 @@ impl SopMpmdebrissource {
     pub fn with_ratiotokeep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ratiotokeep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15285,7 +16743,9 @@ impl SopMpmdebrissource {
     pub fn with_stretchnptsperpt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchnptsperpt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15299,7 +16759,9 @@ impl SopMpmdebrissource {
     pub fn with_speednptsperpt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "speednptsperpt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15313,7 +16775,9 @@ impl SopMpmdebrissource {
     pub fn with_pscalemult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pscalemult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15329,7 +16793,9 @@ impl SopMpmdebrissource {
     pub fn with_remapstretchin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapstretchin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15343,7 +16809,9 @@ impl SopMpmdebrissource {
     pub fn with_remapstretchout_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapstretchout".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15357,7 +16825,9 @@ impl SopMpmdebrissource {
     pub fn with_remapspeedin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapspeedin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15371,7 +16841,9 @@ impl SopMpmdebrissource {
     pub fn with_remapspeedout_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remapspeedout".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15387,7 +16859,9 @@ impl SopMpmdebrissource {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15396,14 +16870,18 @@ impl SopMpmdebrissource {
     pub fn with_ptattribdel(mut self, val: &str) -> Self {
         self.params.insert(
             "ptattribdel".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_ptattribdel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "ptattribdel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15419,7 +16897,9 @@ impl SopMpmdebrissource {
     pub fn with_overwritestartframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overwritestartframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15433,7 +16913,9 @@ impl SopMpmdebrissource {
     pub fn with_overwritetimescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overwritetimescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15447,7 +16929,9 @@ impl SopMpmdebrissource {
     pub fn with_emitonintegerframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "emitonintegerframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15461,7 +16945,9 @@ impl SopMpmdebrissource {
     pub fn with_djpfilter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "djpfilter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15475,7 +16961,9 @@ impl SopMpmdebrissource {
     pub fn with_speedfilter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "speedfilter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15489,7 +16977,9 @@ impl SopMpmdebrissource {
     pub fn with_distfilter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "distfilter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15503,7 +16993,9 @@ impl SopMpmdebrissource {
     pub fn with_enableratiotokeep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableratiotokeep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15517,7 +17009,9 @@ impl SopMpmdebrissource {
     pub fn with_djpreplicate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "djpreplicate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15531,7 +17025,9 @@ impl SopMpmdebrissource {
     pub fn with_enablestretchremap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablestretchremap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15545,7 +17041,9 @@ impl SopMpmdebrissource {
     pub fn with_speedreplicate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "speedreplicate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15559,7 +17057,9 @@ impl SopMpmdebrissource {
     pub fn with_enablespeedremap_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablespeedremap".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15573,7 +17073,9 @@ impl SopMpmdebrissource {
     pub fn with_spreadacrossvel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "spreadacrossvel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15587,7 +17089,9 @@ impl SopMpmdebrissource {
     pub fn with_initorient_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initorient".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15745,7 +17249,9 @@ impl SopMpmdeformpieces {
     pub fn with_stretchtol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchtol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15759,7 +17265,9 @@ impl SopMpmdeformpieces {
     pub fn with_gaptol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gaptol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15773,7 +17281,9 @@ impl SopMpmdeformpieces {
     pub fn with_gapwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gapwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15787,7 +17297,9 @@ impl SopMpmdeformpieces {
     pub fn with_kernelradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kernelradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15803,7 +17315,9 @@ impl SopMpmdeformpieces {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15817,7 +17331,9 @@ impl SopMpmdeformpieces {
     pub fn with_endframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "endframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15831,7 +17347,9 @@ impl SopMpmdeformpieces {
     pub fn with_maxsamplecount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxsamplecount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15847,7 +17365,9 @@ impl SopMpmdeformpieces {
     pub fn with_type_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "type".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15856,14 +17376,18 @@ impl SopMpmdeformpieces {
     pub fn with_attriblist(mut self, val: &str) -> Self {
         self.params.insert(
             "attriblist".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attriblist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attriblist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15879,7 +17403,9 @@ impl SopMpmdeformpieces {
     pub fn with_overwritestartframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overwritestartframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15893,7 +17419,9 @@ impl SopMpmdeformpieces {
     pub fn with_overwriteendframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overwriteendframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15907,7 +17435,9 @@ impl SopMpmdeformpieces {
     pub fn with_orthogonalize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "orthogonalize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15921,7 +17451,9 @@ impl SopMpmdeformpieces {
     pub fn with_polysoup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "polysoup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15935,7 +17467,9 @@ impl SopMpmdeformpieces {
     pub fn with_computevel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "computevel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15949,7 +17483,9 @@ impl SopMpmdeformpieces {
     pub fn with_enableclosegaps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableclosegaps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -15963,7 +17499,9 @@ impl SopMpmdeformpieces {
     pub fn with_enableattribtransfer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableattribtransfer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16123,7 +17661,9 @@ impl SopMpmpostfracture {
     pub fn with_globalscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16137,7 +17677,9 @@ impl SopMpmpostfracture {
     pub fn with_minlength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minlength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16151,7 +17693,9 @@ impl SopMpmpostfracture {
     pub fn with_snapdist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "snapdist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16165,7 +17709,9 @@ impl SopMpmpostfracture {
     pub fn with_minjp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minjp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16179,7 +17725,9 @@ impl SopMpmpostfracture {
     pub fn with_particlesep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "particlesep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16193,7 +17741,9 @@ impl SopMpmpostfracture {
     pub fn with_maxdistmpmpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxdistmpmpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16207,7 +17757,9 @@ impl SopMpmpostfracture {
     pub fn with_targetsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16221,7 +17773,9 @@ impl SopMpmpostfracture {
     pub fn with_elementsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elementsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16235,7 +17789,9 @@ impl SopMpmpostfracture {
     pub fn with_amplitude_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "amplitude".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16251,7 +17807,9 @@ impl SopMpmpostfracture {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16265,7 +17823,9 @@ impl SopMpmpostfracture {
     pub fn with_endframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "endframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16281,7 +17841,9 @@ impl SopMpmpostfracture {
     pub fn with_cutteralgo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cutteralgo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16295,7 +17857,9 @@ impl SopMpmpostfracture {
     pub fn with_geotype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "geotype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16304,14 +17868,18 @@ impl SopMpmpostfracture {
     pub fn with_fracturenamespace(mut self, val: &str) -> Self {
         self.params.insert(
             "fracturenamespace".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_fracturenamespace_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fracturenamespace".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16327,7 +17895,9 @@ impl SopMpmpostfracture {
     pub fn with_overwritestartframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overwritestartframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16341,7 +17911,9 @@ impl SopMpmpostfracture {
     pub fn with_dofracture_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dofracture".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16355,7 +17927,9 @@ impl SopMpmpostfracture {
     pub fn with_showinputgeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showinputgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16369,7 +17943,9 @@ impl SopMpmpostfracture {
     pub fn with_showguidespieces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showguidespieces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16383,7 +17959,9 @@ impl SopMpmpostfracture {
     pub fn with_showguidespoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showguidespoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16397,7 +17975,9 @@ impl SopMpmpostfracture {
     pub fn with_enablempmpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablempmpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16411,7 +17991,9 @@ impl SopMpmpostfracture {
     pub fn with_alignfractures_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "alignfractures".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16425,7 +18007,9 @@ impl SopMpmpostfracture {
     pub fn with_enablefillerpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablefillerpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16439,7 +18023,9 @@ impl SopMpmpostfracture {
     pub fn with_showguidesdetails_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showguidesdetails".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16453,7 +18039,9 @@ impl SopMpmpostfracture {
     pub fn with_enableintdetails_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableintdetails".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16692,7 +18280,9 @@ impl SopMpmsolver {
     pub fn with_timescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "timescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16706,7 +18296,9 @@ impl SopMpmsolver {
     pub fn with_cflcondition_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cflcondition".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16720,7 +18312,9 @@ impl SopMpmsolver {
     pub fn with_materialcondition_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "materialcondition".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16734,7 +18328,9 @@ impl SopMpmsolver {
     pub fn with_airdrag_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "airdrag".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16748,7 +18344,9 @@ impl SopMpmsolver {
     pub fn with_surfacetension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfacetension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16762,7 +18360,9 @@ impl SopMpmsolver {
     pub fn with_kernelwidth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kernelwidth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16776,7 +18376,9 @@ impl SopMpmsolver {
     pub fn with_speedtol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "speedtol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16790,7 +18392,9 @@ impl SopMpmsolver {
     pub fn with_delay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "delay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16804,7 +18408,9 @@ impl SopMpmsolver {
     pub fn with_projdist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "projdist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16818,7 +18424,9 @@ impl SopMpmsolver {
     pub fn with_surfoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16832,7 +18440,9 @@ impl SopMpmsolver {
     pub fn with_groundscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16846,7 +18456,9 @@ impl SopMpmsolver {
     pub fn with_groundfriction_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundfriction".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16860,7 +18472,9 @@ impl SopMpmsolver {
     pub fn with_groundsticky_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundsticky".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16874,7 +18488,9 @@ impl SopMpmsolver {
     pub fn with_attribmin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribmin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16888,7 +18504,9 @@ impl SopMpmsolver {
     pub fn with_attribmax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribmax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16902,7 +18520,9 @@ impl SopMpmsolver {
     pub fn with_pscalemult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pscalemult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16918,7 +18538,9 @@ impl SopMpmsolver {
     pub fn with_minmaxvoxelpadding_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minmaxvoxelpadding".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16934,7 +18556,9 @@ impl SopMpmsolver {
     pub fn with_gravity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gravity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16948,7 +18572,9 @@ impl SopMpmsolver {
     pub fn with_windvelocity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "windvelocity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16962,7 +18588,9 @@ impl SopMpmsolver {
     pub fn with_groundpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16976,7 +18604,9 @@ impl SopMpmsolver {
     pub fn with_groundup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -16990,7 +18620,9 @@ impl SopMpmsolver {
     pub fn with_groundrot_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundrot".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17006,7 +18638,9 @@ impl SopMpmsolver {
     pub fn with_showdomaincolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showdomaincolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17020,7 +18654,9 @@ impl SopMpmsolver {
     pub fn with_showcolliderscolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showcolliderscolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17034,7 +18670,9 @@ impl SopMpmsolver {
     pub fn with_showgroundcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showgroundcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17048,7 +18686,9 @@ impl SopMpmsolver {
     pub fn with_showbggridcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showbggridcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17064,7 +18704,9 @@ impl SopMpmsolver {
     pub fn with_globalsubsteps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "globalsubsteps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17078,7 +18720,9 @@ impl SopMpmsolver {
     pub fn with_cachemaxsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachemaxsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17092,7 +18736,9 @@ impl SopMpmsolver {
     pub fn with_checkpoint_version_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpoint_version".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17106,7 +18752,9 @@ impl SopMpmsolver {
     pub fn with_checkpoint_explicitcachensteps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpoint_explicitcachensteps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17120,7 +18768,9 @@ impl SopMpmsolver {
     pub fn with_checkpoint_explicitcachespacing_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpoint_explicitcachespacing".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17136,7 +18786,9 @@ impl SopMpmsolver {
     pub fn with_substeprange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "substeprange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17152,7 +18804,9 @@ impl SopMpmsolver {
     pub fn with_stmethod_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stmethod".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17166,7 +18820,9 @@ impl SopMpmsolver {
     pub fn with_initstate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initstate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17180,7 +18836,9 @@ impl SopMpmsolver {
     pub fn with_moveoutsidecolliders_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "moveoutsidecolliders".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17194,7 +18852,9 @@ impl SopMpmsolver {
     pub fn with_groundresponse_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundresponse".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17208,7 +18868,9 @@ impl SopMpmsolver {
     pub fn with_dilationunits_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dilationunits".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17222,7 +18884,9 @@ impl SopMpmsolver {
     pub fn with_pointattribname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pointattribname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17238,7 +18902,9 @@ impl SopMpmsolver {
     pub fn with_remaptocolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remaptocolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17247,70 +18913,90 @@ impl SopMpmsolver {
     pub fn with_kerneloptions(mut self, val: &str) -> Self {
         self.params.insert(
             "kerneloptions".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_kerneloptions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kerneloptions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_checkpoint_basename(mut self, val: &str) -> Self {
         self.params.insert(
             "checkpoint_basename".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_checkpoint_basename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpoint_basename".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_checkpoint_basedir(mut self, val: &str) -> Self {
         self.params.insert(
             "checkpoint_basedir".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_checkpoint_basedir_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpoint_basedir".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pointextraattributes(mut self, val: &str) -> Self {
         self.params.insert(
             "pointextraattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pointextraattributes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pointextraattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_detailextraattributes(mut self, val: &str) -> Self {
         self.params.insert(
             "detailextraattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_detailextraattributes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "detailextraattributes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17326,7 +19012,9 @@ impl SopMpmsolver {
     pub fn with_doglobalsubsteps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "doglobalsubsteps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17340,7 +19028,9 @@ impl SopMpmsolver {
     pub fn with_stenable_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stenable".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17354,7 +19044,9 @@ impl SopMpmsolver {
     pub fn with_externalforcesonly_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "externalforcesonly".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17368,7 +19060,9 @@ impl SopMpmsolver {
     pub fn with_enablesleep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablesleep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17382,7 +19076,9 @@ impl SopMpmsolver {
     pub fn with_pruneintpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pruneintpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17396,7 +19092,9 @@ impl SopMpmsolver {
     pub fn with_particlelevelcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "particlelevelcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17410,7 +19108,9 @@ impl SopMpmsolver {
     pub fn with_uniscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uniscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17424,7 +19124,9 @@ impl SopMpmsolver {
     pub fn with_groundactive_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundactive".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17438,7 +19140,9 @@ impl SopMpmsolver {
     pub fn with_cacheenabled_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cacheenabled".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17452,7 +19156,9 @@ impl SopMpmsolver {
     pub fn with_autoresim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "autoresim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17466,7 +19172,9 @@ impl SopMpmsolver {
     pub fn with_staticmaterials_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "staticmaterials".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17480,7 +19188,9 @@ impl SopMpmsolver {
     pub fn with_cclamping_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cclamping".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17494,7 +19204,9 @@ impl SopMpmsolver {
     pub fn with_deterministic_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "deterministic".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17508,7 +19220,9 @@ impl SopMpmsolver {
     pub fn with_gpugridrebuild_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gpugridrebuild".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17522,7 +19236,9 @@ impl SopMpmsolver {
     pub fn with_velbasedgridactivation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "velbasedgridactivation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17536,7 +19252,9 @@ impl SopMpmsolver {
     pub fn with_finish_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "finish".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17550,7 +19268,9 @@ impl SopMpmsolver {
     pub fn with_recompile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "recompile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17564,7 +19284,9 @@ impl SopMpmsolver {
     pub fn with_savecheckpoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "savecheckpoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17578,7 +19300,9 @@ impl SopMpmsolver {
     pub fn with_checkpoint_enableversion_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "checkpoint_enableversion".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17592,7 +19316,9 @@ impl SopMpmsolver {
     pub fn with_showdomain_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showdomain".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17606,7 +19332,9 @@ impl SopMpmsolver {
     pub fn with_showcolliders_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showcolliders".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17620,7 +19348,9 @@ impl SopMpmsolver {
     pub fn with_showground_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showground".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17634,7 +19364,9 @@ impl SopMpmsolver {
     pub fn with_showbggrid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showbggrid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17648,7 +19380,9 @@ impl SopMpmsolver {
     pub fn with_enablecolorfromattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablecolorfromattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17662,7 +19396,9 @@ impl SopMpmsolver {
     pub fn with_enabledisplayassphere_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enabledisplayassphere".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17676,7 +19412,9 @@ impl SopMpmsolver {
     pub fn with_displayassphere_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayassphere".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17690,7 +19428,9 @@ impl SopMpmsolver {
     pub fn with_enablepscalemult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablepscalemult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17704,7 +19444,9 @@ impl SopMpmsolver {
     pub fn with_displaypinned_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaypinned".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17718,7 +19460,9 @@ impl SopMpmsolver {
     pub fn with_exportf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17732,7 +19476,9 @@ impl SopMpmsolver {
     pub fn with_exportorient_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportorient".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17746,7 +19492,9 @@ impl SopMpmsolver {
     pub fn with_exportc_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportc".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17760,7 +19508,9 @@ impl SopMpmsolver {
     pub fn with_exportv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17774,7 +19524,9 @@ impl SopMpmsolver {
     pub fn with_exportjp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportjp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17788,7 +19540,9 @@ impl SopMpmsolver {
     pub fn with_exportje_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportje".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17802,7 +19556,9 @@ impl SopMpmsolver {
     pub fn with_exportpscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportpscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17816,7 +19572,9 @@ impl SopMpmsolver {
     pub fn with_exportid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17830,7 +19588,9 @@ impl SopMpmsolver {
     pub fn with_exportpintoanimation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportpintoanimation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17844,7 +19604,9 @@ impl SopMpmsolver {
     pub fn with_exportstate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportstate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17858,7 +19620,9 @@ impl SopMpmsolver {
     pub fn with_exportsleepdelay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportsleepdelay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17872,7 +19636,9 @@ impl SopMpmsolver {
     pub fn with_exportage_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportage".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17886,7 +19652,9 @@ impl SopMpmsolver {
     pub fn with_exportsourcename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportsourcename".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17900,7 +19668,9 @@ impl SopMpmsolver {
     pub fn with_exportstartframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportstartframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17914,7 +19684,9 @@ impl SopMpmsolver {
     pub fn with_exporttimescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exporttimescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17928,7 +19700,9 @@ impl SopMpmsolver {
     pub fn with_exportsubstepcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportsubstepcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17942,7 +19716,9 @@ impl SopMpmsolver {
     pub fn with_exportdx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportdx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17956,7 +19732,9 @@ impl SopMpmsolver {
     pub fn with_exportgridscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportgridscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17970,7 +19748,9 @@ impl SopMpmsolver {
     pub fn with_exportparticlesep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exportparticlesep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17984,7 +19764,9 @@ impl SopMpmsolver {
     pub fn with_distribution_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "distribution".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -17998,7 +19780,9 @@ impl SopMpmsolver {
     pub fn with_massgrid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "massgrid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18012,7 +19796,9 @@ impl SopMpmsolver {
     pub fn with_velgrid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "velgrid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18350,7 +20136,9 @@ impl SopMpmsource {
     pub fn with_expansion_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "expansion".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18364,7 +20152,9 @@ impl SopMpmsource {
     pub fn with_particlesep_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "particlesep".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18378,7 +20168,9 @@ impl SopMpmsource {
     pub fn with_jitterscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "jitterscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18392,7 +20184,9 @@ impl SopMpmsource {
     pub fn with_oversampling_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "oversampling".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18406,7 +20200,9 @@ impl SopMpmsource {
     pub fn with_density_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "density".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18420,7 +20216,9 @@ impl SopMpmsource {
     pub fn with_criticalcompressionstretchx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18434,7 +20232,9 @@ impl SopMpmsource {
     pub fn with_criticalcompressionstretchy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18448,7 +20248,9 @@ impl SopMpmsource {
     pub fn with_compressionhardening_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "compressionhardening".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18462,7 +20264,9 @@ impl SopMpmsource {
     pub fn with_e_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "e".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18476,7 +20280,9 @@ impl SopMpmsource {
     pub fn with_nu_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nu".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18490,7 +20296,9 @@ impl SopMpmsource {
     pub fn with_k_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "k".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18504,7 +20312,9 @@ impl SopMpmsource {
     pub fn with_gamma_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gamma".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18518,7 +20328,9 @@ impl SopMpmsource {
     pub fn with_viscosity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viscosity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18532,7 +20344,9 @@ impl SopMpmsource {
     pub fn with_viscokappa_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viscokappa".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18546,7 +20360,9 @@ impl SopMpmsource {
     pub fn with_surfacetension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfacetension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18560,7 +20376,9 @@ impl SopMpmsource {
     pub fn with_sandfrictionangle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sandfrictionangle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18574,7 +20392,9 @@ impl SopMpmsource {
     pub fn with_sandcohesion_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sandcohesion".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18588,7 +20408,9 @@ impl SopMpmsource {
     pub fn with_refframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18602,7 +20424,9 @@ impl SopMpmsource {
     pub fn with_pscalemult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pscalemult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18618,7 +20442,9 @@ impl SopMpmsource {
     pub fn with_initialvelocity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initialvelocity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18634,7 +20460,9 @@ impl SopMpmsource {
     pub fn with_emission_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "emission".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18648,7 +20476,9 @@ impl SopMpmsource {
     pub fn with_relaxiterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "relaxiterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18662,7 +20492,9 @@ impl SopMpmsource {
     pub fn with_phase_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "phase".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18678,7 +20510,9 @@ impl SopMpmsource {
     pub fn with_emissiontype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "emissiontype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18692,7 +20526,9 @@ impl SopMpmsource {
     pub fn with_segmentation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "segmentation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18706,7 +20542,9 @@ impl SopMpmsource {
     pub fn with_geotype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "geotype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18720,7 +20558,9 @@ impl SopMpmsource {
     pub fn with_materialpreset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "materialpreset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18734,7 +20574,9 @@ impl SopMpmsource {
     pub fn with_materialtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "materialtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18748,7 +20590,9 @@ impl SopMpmsource {
     pub fn with_densityscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "densityscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18765,7 +20609,9 @@ impl SopMpmsource {
     pub fn with_criticalcompressionstretchxscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchxscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18782,7 +20628,9 @@ impl SopMpmsource {
     pub fn with_criticalcompressionstretchyscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchyscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18799,7 +20647,9 @@ impl SopMpmsource {
     pub fn with_compressionhardeningscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "compressionhardeningscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18813,7 +20663,9 @@ impl SopMpmsource {
     pub fn with_eexp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eexp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18827,7 +20679,9 @@ impl SopMpmsource {
     pub fn with_escalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "escalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18841,7 +20695,9 @@ impl SopMpmsource {
     pub fn with_nuscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nuscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18855,7 +20711,9 @@ impl SopMpmsource {
     pub fn with_kexp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kexp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18869,7 +20727,9 @@ impl SopMpmsource {
     pub fn with_kscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18883,7 +20743,9 @@ impl SopMpmsource {
     pub fn with_gammascalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gammascalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18897,7 +20759,9 @@ impl SopMpmsource {
     pub fn with_viscosityscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viscosityscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18911,7 +20775,9 @@ impl SopMpmsource {
     pub fn with_viscokappascalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viscokappascalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18928,7 +20794,9 @@ impl SopMpmsource {
     pub fn with_surfacetensionscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfacetensionscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18942,7 +20810,9 @@ impl SopMpmsource {
     pub fn with_phasescalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "phasescalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18959,7 +20829,9 @@ impl SopMpmsource {
     pub fn with_sandfrictionanglescalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sandfrictionanglescalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18973,7 +20845,9 @@ impl SopMpmsource {
     pub fn with_sandcohesionscalemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sandcohesionscalemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18987,7 +20861,9 @@ impl SopMpmsource {
     pub fn with_state_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "state".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -18996,238 +20872,306 @@ impl SopMpmsource {
     pub fn with_mpmcontainer(mut self, val: &str) -> Self {
         self.params.insert(
             "mpmcontainer".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mpmcontainer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mpmcontainer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribtransfer(mut self, val: &str) -> Self {
         self.params.insert(
             "attribtransfer".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribtransfer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribtransfer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_densityattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "densityattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_densityattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "densityattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_criticalcompressionstretchxattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchxattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_criticalcompressionstretchxattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchxattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_criticalcompressionstretchyattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchyattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_criticalcompressionstretchyattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "criticalcompressionstretchyattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_compressionhardeningattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "compressionhardeningattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_compressionhardeningattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "compressionhardeningattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_eattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "eattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_eattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "eattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nuattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "nuattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_nuattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "nuattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_kattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "kattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_kattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_gammaattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "gammaattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_gammaattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gammaattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_viscosityattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "viscosityattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_viscosityattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viscosityattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_viscokappaattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "viscokappaattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_viscokappaattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viscokappaattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_surfacetensionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "surfacetensionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_surfacetensionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfacetensionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_phaseattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "phaseattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_phaseattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "phaseattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sandfrictionangleattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "sandfrictionangleattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sandfrictionangleattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sandfrictionangleattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sandcohesionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "sandcohesionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_sandcohesionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sandcohesionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pointgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "pointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_pointgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pointgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19243,7 +21187,9 @@ impl SopMpmsource {
     pub fn with_overlappingemissionexpansion_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overlappingemissionexpansion".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19257,7 +21203,9 @@ impl SopMpmsource {
     pub fn with_enableattribtransfer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableattribtransfer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19271,7 +21219,9 @@ impl SopMpmsource {
     pub fn with_particlesepoverride_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "particlesepoverride".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19285,7 +21235,9 @@ impl SopMpmsource {
     pub fn with_dooversampling_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dooversampling".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19299,7 +21251,9 @@ impl SopMpmsource {
     pub fn with_relaxpoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "relaxpoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19313,7 +21267,9 @@ impl SopMpmsource {
     pub fn with_fuseoverlappingpts_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fuseoverlappingpts".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19327,7 +21283,9 @@ impl SopMpmsource {
     pub fn with_enablesurfacetension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablesurfacetension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19341,7 +21299,9 @@ impl SopMpmsource {
     pub fn with_enablephase_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablephase".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19355,7 +21315,9 @@ impl SopMpmsource {
     pub fn with_addageattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "addageattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19369,7 +21331,9 @@ impl SopMpmsource {
     pub fn with_enablepinconstraint_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablepinconstraint".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19383,7 +21347,9 @@ impl SopMpmsource {
     pub fn with_initpinvalue_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initpinvalue".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19397,7 +21363,9 @@ impl SopMpmsource {
     pub fn with_enableanimation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableanimation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19411,7 +21379,9 @@ impl SopMpmsource {
     pub fn with_useinputanim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinputanim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19425,7 +21395,9 @@ impl SopMpmsource {
     pub fn with_displayassphere_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayassphere".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19439,7 +21411,9 @@ impl SopMpmsource {
     pub fn with_displaypinned_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaypinned".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19647,7 +21621,9 @@ impl SopMpmsurface {
     pub fn with_voxelsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "voxelsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19661,7 +21637,9 @@ impl SopMpmsurface {
     pub fn with_voxelscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "voxelscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19675,7 +21653,9 @@ impl SopMpmsurface {
     pub fn with_densitypscalemult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "densitypscalemult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19689,7 +21669,9 @@ impl SopMpmsurface {
     pub fn with_densitymult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "densitymult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19703,7 +21685,9 @@ impl SopMpmsurface {
     pub fn with_surfacepscalemult_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfacepscalemult".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19717,7 +21701,9 @@ impl SopMpmsurface {
     pub fn with_sdfdilate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sdfdilate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19731,7 +21717,9 @@ impl SopMpmsurface {
     pub fn with_sdferode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sdferode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19745,7 +21733,9 @@ impl SopMpmsurface {
     pub fn with_minstretch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minstretch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19759,7 +21749,9 @@ impl SopMpmsurface {
     pub fn with_mincurv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mincurv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19773,7 +21765,9 @@ impl SopMpmsurface {
     pub fn with_velvoxelscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "velvoxelscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19787,7 +21781,9 @@ impl SopMpmsurface {
     pub fn with_adaptivity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "adaptivity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19801,7 +21797,9 @@ impl SopMpmsurface {
     pub fn with_kernelradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kernelradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19815,7 +21813,9 @@ impl SopMpmsurface {
     pub fn with_kernelradiussecond_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "kernelradiussecond".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19829,7 +21829,9 @@ impl SopMpmsurface {
     pub fn with_maskoffset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maskoffset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19845,7 +21847,9 @@ impl SopMpmsurface {
     pub fn with_maxpartptcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxpartptcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19859,7 +21863,9 @@ impl SopMpmsurface {
     pub fn with_iterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19873,7 +21879,9 @@ impl SopMpmsurface {
     pub fn with_iterationssecond_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterationssecond".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19887,7 +21895,9 @@ impl SopMpmsurface {
     pub fn with_maxsamplecount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxsamplecount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19901,7 +21911,9 @@ impl SopMpmsurface {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19915,7 +21927,9 @@ impl SopMpmsurface {
     pub fn with_maxsamplecountsecond_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxsamplecountsecond".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19929,7 +21943,9 @@ impl SopMpmsurface {
     pub fn with_spreaditer_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "spreaditer".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19945,7 +21961,9 @@ impl SopMpmsurface {
     pub fn with_outputtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19959,7 +21977,9 @@ impl SopMpmsurface {
     pub fn with_surfacingmethod_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "surfacingmethod".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19973,7 +21993,9 @@ impl SopMpmsurface {
     pub fn with_model_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "model".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -19982,42 +22004,54 @@ impl SopMpmsurface {
     pub fn with_onnxmodelpath(mut self, val: &str) -> Self {
         self.params.insert(
             "onnxmodelpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_onnxmodelpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "onnxmodelpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transferattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "transferattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transferattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "transferattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transferattribsecond(mut self, val: &str) -> Self {
         self.params.insert(
             "transferattribsecond".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transferattribsecond_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "transferattribsecond".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20033,7 +22067,9 @@ impl SopMpmsurface {
     pub fn with_enablevoxelsizeoverwrite_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablevoxelsizeoverwrite".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20047,7 +22083,9 @@ impl SopMpmsurface {
     pub fn with_maskdensitybysurface_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maskdensitybysurface".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20061,7 +22099,9 @@ impl SopMpmsurface {
     pub fn with_useinputsdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinputsdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20075,7 +22115,9 @@ impl SopMpmsurface {
     pub fn with_closesdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "closesdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20089,7 +22131,9 @@ impl SopMpmsurface {
     pub fn with_rebuildsdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rebuildsdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20103,7 +22147,9 @@ impl SopMpmsurface {
     pub fn with_fillinterior_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fillinterior".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20117,7 +22163,9 @@ impl SopMpmsurface {
     pub fn with_enablepartitioning_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablepartitioning".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20131,7 +22179,9 @@ impl SopMpmsurface {
     pub fn with_showpartitioning_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showpartitioning".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20145,7 +22195,9 @@ impl SopMpmsurface {
     pub fn with_enabledilate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enabledilate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20159,7 +22211,9 @@ impl SopMpmsurface {
     pub fn with_enablesmooth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablesmooth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20173,7 +22227,9 @@ impl SopMpmsurface {
     pub fn with_enableerode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableerode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20187,7 +22243,9 @@ impl SopMpmsurface {
     pub fn with_enablemaskedsmooth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemaskedsmooth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20201,7 +22259,9 @@ impl SopMpmsurface {
     pub fn with_visminstretch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "visminstretch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20215,7 +22275,9 @@ impl SopMpmsurface {
     pub fn with_vismincurv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vismincurv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20229,7 +22291,9 @@ impl SopMpmsurface {
     pub fn with_useinputvel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinputvel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20243,7 +22307,9 @@ impl SopMpmsurface {
     pub fn with_computevel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "computevel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20257,7 +22323,9 @@ impl SopMpmsurface {
     pub fn with_samplevel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "samplevel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20271,7 +22339,9 @@ impl SopMpmsurface {
     pub fn with_converttopolysoup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "converttopolysoup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20285,7 +22355,9 @@ impl SopMpmsurface {
     pub fn with_enabletransferfrommpm_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enabletransferfrommpm".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20299,7 +22371,9 @@ impl SopMpmsurface {
     pub fn with_enabletransferfrommodel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enabletransferfrommodel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20313,7 +22387,9 @@ impl SopMpmsurface {
     pub fn with_overwritestartframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overwritestartframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20327,7 +22403,9 @@ impl SopMpmsurface {
     pub fn with_enablesdfmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablesdfmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20460,7 +22538,9 @@ impl SopMuscle {
     pub fn with_positionbias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "positionbias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20474,7 +22554,9 @@ impl SopMuscle {
     pub fn with_control2position_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control2position".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20488,7 +22570,9 @@ impl SopMuscle {
     pub fn with_control3position_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control3position".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20502,7 +22586,9 @@ impl SopMuscle {
     pub fn with_control4position_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control4position".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20516,7 +22602,9 @@ impl SopMuscle {
     pub fn with_gradient_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gradient".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20530,7 +22618,9 @@ impl SopMuscle {
     pub fn with_tension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20546,7 +22636,9 @@ impl SopMuscle {
     pub fn with_musclescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "musclescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20560,7 +22652,9 @@ impl SopMuscle {
     pub fn with_control1scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control1scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20574,7 +22668,9 @@ impl SopMuscle {
     pub fn with_control2scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control2scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20588,7 +22684,9 @@ impl SopMuscle {
     pub fn with_control3scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control3scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20602,7 +22700,9 @@ impl SopMuscle {
     pub fn with_control4scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control4scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20616,7 +22716,9 @@ impl SopMuscle {
     pub fn with_control5scale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "control5scale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20630,7 +22732,9 @@ impl SopMuscle {
     pub fn with_musclecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "musclecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20646,7 +22750,9 @@ impl SopMuscle {
     pub fn with_primspersegment_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "primspersegment".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20660,7 +22766,9 @@ impl SopMuscle {
     pub fn with_sampledivs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sampledivs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20674,7 +22782,9 @@ impl SopMuscle {
     pub fn with_first_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "first".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20688,7 +22798,9 @@ impl SopMuscle {
     pub fn with_last_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "last".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20704,7 +22816,9 @@ impl SopMuscle {
     pub fn with_muscletype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscleType".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20718,7 +22832,9 @@ impl SopMuscle {
     pub fn with_basis_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "basis".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20727,42 +22843,54 @@ impl SopMuscle {
     pub fn with_musclename(mut self, val: &str) -> Self {
         self.params.insert(
             "muscleName".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscleName".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_restanchor(mut self, val: &str) -> Self {
         self.params.insert(
             "restanchor".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_restanchor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "restanchor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("inputname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_inputname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("inputname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20778,7 +22906,9 @@ impl SopMuscle {
     pub fn with_togglecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "togglecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20792,7 +22922,9 @@ impl SopMuscle {
     pub fn with_enablegradient_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablegradient".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20971,7 +23103,9 @@ impl SopMuscleadjustvolume {
     pub fn with_volumechange_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "volumechange".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20985,7 +23119,9 @@ impl SopMuscleadjustvolume {
     pub fn with_thicknesscutoff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "thicknesscutoff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -20999,7 +23135,9 @@ impl SopMuscleadjustvolume {
     pub fn with_normalamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "normalamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21013,7 +23151,9 @@ impl SopMuscleadjustvolume {
     pub fn with_tangentamount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tangentamount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21027,7 +23167,9 @@ impl SopMuscleadjustvolume {
     pub fn with_minthickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minthickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21041,7 +23183,9 @@ impl SopMuscleadjustvolume {
     pub fn with_tendonmaskbias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tendonmaskbias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21055,7 +23199,9 @@ impl SopMuscleadjustvolume {
     pub fn with_collisionthickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisionthickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21071,7 +23217,9 @@ impl SopMuscleadjustvolume {
     pub fn with_bluriterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bluriterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21085,7 +23233,9 @@ impl SopMuscleadjustvolume {
     pub fn with_collisioniterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisioniterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21099,7 +23249,9 @@ impl SopMuscleadjustvolume {
     pub fn with_collisionbluriterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisionbluriterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21115,7 +23267,9 @@ impl SopMuscleadjustvolume {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21132,7 +23286,9 @@ impl SopMuscleadjustvolume {
     pub fn with_volumechangemaskmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "volumechangemaskmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21141,42 +23297,54 @@ impl SopMuscleadjustvolume {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetposattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "targetposattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_targetposattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "targetposattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volumechangemaskattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "volumechangemaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_volumechangemaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "volumechangemaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21192,7 +23360,9 @@ impl SopMuscleadjustvolume {
     pub fn with_usetargetpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usetargetpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21206,7 +23376,9 @@ impl SopMuscleadjustvolume {
     pub fn with_scaletendons_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "scaletendons".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21220,7 +23392,9 @@ impl SopMuscleadjustvolume {
     pub fn with_useminthickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useminthickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21234,7 +23408,9 @@ impl SopMuscleadjustvolume {
     pub fn with_tendonminthickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tendonminthickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21248,7 +23424,9 @@ impl SopMuscleadjustvolume {
     pub fn with_resolvecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "resolvecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21262,7 +23440,9 @@ impl SopMuscleadjustvolume {
     pub fn with_collidewithskin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidewithskin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21391,7 +23571,9 @@ impl SopMuscleautotensionlines {
     pub fn with_endmaskthresh_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "endmaskthresh".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21400,42 +23582,54 @@ impl SopMuscleautotensionlines {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idattr(mut self, val: &str) -> Self {
         self.params.insert(
             "idattr".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idattr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "idattr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_endmaskattr(mut self, val: &str) -> Self {
         self.params.insert(
             "endmaskattr".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_endmaskattr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "endmaskattr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21592,7 +23786,9 @@ impl SopMusclecapture {
     pub fn with_radius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "radius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21606,7 +23802,9 @@ impl SopMusclecapture {
     pub fn with_falloffradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "falloffradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21622,7 +23820,9 @@ impl SopMusclecapture {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21631,42 +23831,54 @@ impl SopMusclecapture {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscleid(mut self, val: &str) -> Self {
         self.params.insert(
             "muscleid".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscleid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscleid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_falloffattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "falloffattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_falloffattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "falloffattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21682,7 +23894,9 @@ impl SopMusclecapture {
     pub fn with_usesdf_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usesdf".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21696,7 +23910,9 @@ impl SopMusclecapture {
     pub fn with_outputfalloff_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "outputfalloff".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21930,7 +24146,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleendstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21944,7 +24162,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleendstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21958,7 +24178,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleenddamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21972,7 +24194,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleenddampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -21986,7 +24210,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleenddistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22000,7 +24226,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleenddistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22014,7 +24242,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_end1radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end1radius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22028,7 +24258,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_end2radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end2radius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22042,7 +24274,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletomusclestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22056,7 +24290,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletomusclestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22070,7 +24306,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletomuscledamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22084,7 +24322,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletomuscledampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22098,7 +24338,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletomuscledistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22112,7 +24354,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletomuscledistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22126,7 +24370,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22140,7 +24386,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22154,7 +24402,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonedamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22168,7 +24418,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonedampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22182,7 +24434,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonefalloff_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonefalloff{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22196,7 +24450,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonefalloffrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonefalloffrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22210,7 +24466,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonedistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22224,7 +24482,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscletobonedistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22238,7 +24498,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_velocityblend_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("velocityblend{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22252,7 +24514,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_velocityblendrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("velocityblendrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22266,7 +24530,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_repulsion_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("repulsion{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22280,7 +24546,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_repulsionrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("repulsionrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22294,7 +24562,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_tposeframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22314,7 +24584,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleendstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22332,7 +24604,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleenddampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22350,7 +24624,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_muscleenddistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22368,7 +24644,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtomstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22386,7 +24664,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtomdampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomdampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22404,7 +24684,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtomdistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomdistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22422,7 +24704,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtobstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22440,7 +24724,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtobdampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobdampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22458,7 +24744,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtobfalloffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobfalloffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22476,7 +24764,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtobdistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobdistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22494,7 +24784,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_mtobvelblendmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobvelblendmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22512,7 +24804,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_repulsionmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("repulsionmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22526,7 +24820,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22542,7 +24838,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_viztype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viztype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22551,42 +24849,54 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_propertylabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22602,7 +24912,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_displayguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22616,7 +24928,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_absoluteradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "absoluteradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22630,7 +24944,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscleendstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22644,7 +24960,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscleenddamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleenddamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22658,7 +24976,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscleenddistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleenddistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22672,7 +24992,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscleradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22690,7 +25012,9 @@ impl SopMuscleconstraintpropertiesfem {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22704,7 +25028,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscletomuscledamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletomuscledamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22722,7 +25048,9 @@ impl SopMuscleconstraintpropertiesfem {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomuscledistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22736,7 +25064,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscletobonestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22750,7 +25080,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscletobonedamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonedamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22764,7 +25096,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscletobonefalloff_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonefalloff{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22778,7 +25112,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablemuscletobonedistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonedistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22792,7 +25128,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablevelocityblend_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablevelocityblend{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -22806,7 +25144,9 @@ impl SopMuscleconstraintpropertiesfem {
     pub fn with_enablerepulsion_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablerepulsion{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23017,7 +25357,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleendstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23031,7 +25373,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleendstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23045,7 +25389,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleenddamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23059,7 +25405,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleenddampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23073,7 +25421,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleenddistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23087,7 +25437,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleenddistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23101,7 +25453,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleendrestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendrestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23115,7 +25469,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleendrestscalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendrestscalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23129,7 +25485,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_end1radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end1radius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23143,7 +25501,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_end2radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end2radius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23157,7 +25517,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomusclegluestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclegluestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23175,7 +25537,9 @@ impl SopMuscleconstraintpropertiesotis {
     ) -> Self {
         self.params.insert(
             format!("muscletomusclegluestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23189,7 +25553,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomusclegluedamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclegluedamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23207,7 +25573,9 @@ impl SopMuscleconstraintpropertiesotis {
     ) -> Self {
         self.params.insert(
             format!("muscletomusclegluedampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23221,7 +25589,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomusclegluedistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclegluedistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23239,7 +25609,9 @@ impl SopMuscleconstraintpropertiesotis {
     ) -> Self {
         self.params.insert(
             format!("muscletomusclegluedistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23253,7 +25625,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomuscleglue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscleglue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23267,7 +25641,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_gluecenterdistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("gluecenterdistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23281,7 +25657,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_end1radiusglue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end1radiusglue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23295,7 +25673,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_end2radiusglue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end2radiusglue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23309,7 +25689,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletotissuemask_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletotissuemask{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23323,7 +25705,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletotissuemaskrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletotissuemaskrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23337,7 +25721,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_tposeframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23357,7 +25743,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleendstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23375,7 +25763,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleenddampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23393,7 +25783,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleenddistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23411,7 +25803,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscleendrestscalemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendrestscalemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23429,7 +25823,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomusclegluestiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclegluestiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23447,7 +25843,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomusclegluedampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclegluedampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23465,7 +25863,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletomusclegluedistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclegluedistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23483,7 +25883,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_muscletotissuemaskmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletotissuemaskmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23497,7 +25899,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23513,7 +25917,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_viztype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viztype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23522,84 +25928,108 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclegluetargets_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("musclegluetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclegluetargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("musclegluetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_boneidattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "boneidattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_boneidattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boneidattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23615,7 +26045,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_displayguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23629,7 +26061,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_absoluteradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "absoluteradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23643,7 +26077,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enableaxialcorrection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableaxialcorrection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23657,7 +26093,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_constrainsurfacepointsonly_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "constrainsurfacepointsonly".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23671,7 +26109,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_usetablabels_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usetablabels".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23685,7 +26125,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_strip_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strip_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23699,7 +26141,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enableall_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableall{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23713,7 +26157,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscleendstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23727,7 +26173,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscleenddamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleenddamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23741,7 +26189,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscleenddistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleenddistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23755,7 +26205,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscleendrestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendrestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23769,7 +26221,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscleradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23787,7 +26241,9 @@ impl SopMuscleconstraintpropertiesotis {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclegluestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23805,7 +26261,9 @@ impl SopMuscleconstraintpropertiesotis {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclegluedamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23823,7 +26281,9 @@ impl SopMuscleconstraintpropertiesotis {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclegluedistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23837,7 +26297,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscletomuscleglue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletomuscleglue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23851,7 +26313,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablegluecenterdistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablegluecenterdistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23865,7 +26329,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemusclegluetargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemusclegluetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23879,7 +26345,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enableglueradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableglueradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -23893,7 +26361,9 @@ impl SopMuscleconstraintpropertiesotis {
     pub fn with_enablemuscletotissuemask_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletotissuemask{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24194,7 +26664,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24208,7 +26680,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24222,7 +26696,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleenddamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24236,7 +26712,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleenddampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24250,7 +26728,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleenddistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24264,7 +26744,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleenddistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24278,7 +26760,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendcompress_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendcompress{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24292,7 +26776,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendcompressrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendcompressrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24306,7 +26792,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendrestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendrestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24320,7 +26808,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendrestscalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendrestscalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24334,7 +26824,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendtangent_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendtangent{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24348,7 +26840,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendtangentrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendtangentrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24362,7 +26856,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_end1radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end1radius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24376,7 +26872,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_end2radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end2radius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24390,7 +26888,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24404,7 +26904,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24418,7 +26920,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomuscledamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24432,7 +26936,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomuscledampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24446,7 +26952,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclecompress_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclecompress{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24460,7 +26968,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclecompressrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclecompressrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24474,7 +26984,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclerestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclerestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24488,7 +27000,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclerestscalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclerestscalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24502,7 +27016,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomuscledistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24516,7 +27032,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomuscledistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscledistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24530,7 +27048,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomusclesliderate_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomusclesliderate{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24544,7 +27064,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletomuscleslideraterel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscleslideraterel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24558,7 +27080,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_gluecenterdistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("gluecenterdistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24572,7 +27096,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_end1radiusglue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end1radiusglue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24586,7 +27112,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_end2radiusglue_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("end2radiusglue{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24600,7 +27128,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24614,7 +27144,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24628,7 +27160,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonedamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24642,7 +27176,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonedampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24656,7 +27192,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonefalloff_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonefalloff{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24670,7 +27208,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonefalloffrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonefalloffrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24684,7 +27224,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonedistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24698,7 +27240,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonedistancerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonedistancerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24712,7 +27256,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonecompress_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonecompress{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24726,7 +27272,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonecompressrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonecompressrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24740,7 +27288,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonerestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonerestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24754,7 +27304,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonerestscalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonerestscalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24768,7 +27320,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonesliderate_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonesliderate{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24782,7 +27336,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletoboneslideraterel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletoboneslideraterel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24796,7 +27352,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonetangent_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonetangent{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24810,7 +27368,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonetangentrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonetangentrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24824,7 +27384,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonevelfactor_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonevelfactor{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24838,7 +27400,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscletobonevelfactorrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonevelfactorrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24852,7 +27416,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_musclecollisionradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("musclecollisionradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24866,7 +27432,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_musclecollisionradiusrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("musclecollisionradiusrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24880,7 +27448,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_velocityblend_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("velocityblend{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24894,7 +27464,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_velocityblendrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("velocityblendrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24908,7 +27480,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_tposeframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24928,7 +27502,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24946,7 +27522,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleenddampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24964,7 +27542,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleenddistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleenddistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -24982,7 +27562,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendcompressmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendcompressmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25000,7 +27582,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendrestscalemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendrestscalemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25018,7 +27602,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_muscleendtangentmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscleendtangentmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25036,7 +27622,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtomstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25054,7 +27642,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtomdampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomdampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25072,7 +27662,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtomcompressmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomcompressmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25090,7 +27682,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtomrestscalemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomrestscalemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25108,7 +27702,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtomdistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomdistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25126,7 +27722,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtomslidemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtomslidemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25144,7 +27742,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobstiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobstiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25162,7 +27762,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobdampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobdampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25180,7 +27782,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobfalloffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobfalloffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25198,7 +27802,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobdistmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobdistmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25216,7 +27822,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobcompressmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobcompressmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25234,7 +27842,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobrestscalemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobrestscalemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25252,7 +27862,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobslidemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobslidemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25270,7 +27882,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobtangentmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobtangentmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25288,7 +27902,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobvelfactormode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobvelfactormode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25306,7 +27922,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobcollisionscalemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobcollisionscalemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25324,7 +27942,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_mtobvelblendmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mtobvelblendmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25338,7 +27958,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25354,7 +27976,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_viztype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "viztype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25363,112 +27987,144 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletomuscletargets_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("muscletomuscletargets{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletomuscletargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletomuscletargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclegluetargets_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("musclegluetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclegluetargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("musclegluetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletobonetargets_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("muscletobonetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletobonetargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("muscletobonetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_boneidattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "boneidattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_boneidattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "boneidattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25484,7 +28140,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_displayguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25498,7 +28156,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_absoluteradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "absoluteradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25512,7 +28172,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enableaxialcorrection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableaxialcorrection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25526,7 +28188,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_usetablabels_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usetablabels".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25540,7 +28204,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_strip_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strip_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25554,7 +28220,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enableall_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableall{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25568,7 +28236,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleendstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25582,7 +28252,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleenddamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleenddamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25596,7 +28268,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleenddistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleenddistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25610,7 +28284,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleendcompress_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendcompress{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25624,7 +28300,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleendrestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendrestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25638,7 +28316,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleendtangent_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleendtangent{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25652,7 +28332,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscleradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscleradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25670,7 +28352,9 @@ impl SopMuscleconstraintpropertiesvellum {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25684,7 +28368,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletomuscledamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletomuscledamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25702,7 +28388,9 @@ impl SopMuscleconstraintpropertiesvellum {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclecompress{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25720,7 +28408,9 @@ impl SopMuscleconstraintpropertiesvellum {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclerestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25738,7 +28428,9 @@ impl SopMuscleconstraintpropertiesvellum {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomuscledistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25756,7 +28448,9 @@ impl SopMuscleconstraintpropertiesvellum {
     ) -> Self {
         self.params.insert(
             format!("enablemuscletomusclesliderate{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25770,7 +28464,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletomuscletargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletomuscletargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25784,7 +28480,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablegluecenterdistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablegluecenterdistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25798,7 +28496,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemusclegluetargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemusclegluetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25812,7 +28512,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enableglueradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableglueradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25826,7 +28528,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25840,7 +28544,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonedamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonedamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25854,7 +28560,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonefalloff_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonefalloff{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25868,7 +28576,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonedistance_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonedistance{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25882,7 +28592,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonecompress_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonecompress{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25896,7 +28608,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonerestscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonerestscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25910,7 +28624,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonesliderate_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonesliderate{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25924,7 +28640,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonetangent_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonetangent{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25938,7 +28656,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonevelfactor_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonevelfactor{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25952,7 +28672,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablemuscletobonetargets_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemuscletobonetargets{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25966,7 +28688,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablecollisionradius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablecollisionradius{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -25980,7 +28704,9 @@ impl SopMuscleconstraintpropertiesvellum {
     pub fn with_enablevelocityblend_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablevelocityblend{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26159,7 +28885,9 @@ impl SopMuscledeform {
     pub fn with_fiberstiffness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fiberstiffness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26173,7 +28901,9 @@ impl SopMuscledeform {
     pub fn with_muscleendstiffness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscleendstiffness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26187,7 +28917,9 @@ impl SopMuscledeform {
     pub fn with_autotension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "autotension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26201,7 +28933,9 @@ impl SopMuscledeform {
     pub fn with_musclebasetension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "musclebasetension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26215,7 +28949,9 @@ impl SopMuscledeform {
     pub fn with_muscletension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26231,7 +28967,9 @@ impl SopMuscledeform {
     pub fn with_solveiterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "solveiterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26247,7 +28985,9 @@ impl SopMuscledeform {
     pub fn with_musclebasetensionmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "musclebasetensionmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26261,7 +29001,9 @@ impl SopMuscledeform {
     pub fn with_muscletensionmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletensionmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26270,42 +29012,54 @@ impl SopMuscledeform {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclebasetensionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "musclebasetensionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_musclebasetensionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "musclebasetensionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletensionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "muscletensionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletensionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletensionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26321,7 +29075,9 @@ impl SopMuscledeform {
     pub fn with_quasistaticsolve_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "quasistaticsolve".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26469,7 +29225,9 @@ impl SopMuscledeintersect {
     pub fn with_thickness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "thickness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26485,7 +29243,9 @@ impl SopMuscledeintersect {
     pub fn with_iterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26694,14 +29454,18 @@ impl SopMuscleflex {
     pub fn with_stash(mut self, val: &str) -> Self {
         self.params.insert(
             "stash".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stash_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stash".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26717,7 +29481,9 @@ impl SopMuscleflex {
     pub fn with_blend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26731,7 +29497,9 @@ impl SopMuscleflex {
     pub fn with_radius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "radius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26745,7 +29513,9 @@ impl SopMuscleflex {
     pub fn with_tposeframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26761,7 +29531,9 @@ impl SopMuscleflex {
     pub fn with_bonecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26777,7 +29549,9 @@ impl SopMuscleflex {
     pub fn with_meshintegrity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "meshintegrity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26791,7 +29565,9 @@ impl SopMuscleflex {
     pub fn with_usebonecapture_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usebonecapture".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26805,7 +29581,9 @@ impl SopMuscleflex {
     pub fn with_minpt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minpt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26819,7 +29597,9 @@ impl SopMuscleflex {
     pub fn with_maxpt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxpt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26833,7 +29613,9 @@ impl SopMuscleflex {
     pub fn with_deltamushiterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "deltamushiterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26847,7 +29629,9 @@ impl SopMuscleflex {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26856,112 +29640,144 @@ impl SopMuscleflex {
     pub fn with_idstring(mut self, val: &str) -> Self {
         self.params.insert(
             "idstring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idstring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "idstring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_autoflexidstring(mut self, val: &str) -> Self {
         self.params.insert(
             "autoflexidstring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_autoflexidstring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "autoflexidstring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribname(mut self, val: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idattrtomatch(mut self, val: &str) -> Self {
         self.params.insert(
             "idattrtomatch".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idattrtomatch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "idattrtomatch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_currentid(mut self, val: &str) -> Self {
         self.params.insert(
             "currentid".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_currentid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "currentid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigpath(mut self, val: &str) -> Self {
         self.params.insert(
             "rigpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rigpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigrestpath(mut self, val: &str) -> Self {
         self.params.insert(
             "rigrestpath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigrestpath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rigrestpath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26977,7 +29793,9 @@ impl SopMuscleflex {
     pub fn with_includefiberscaleblend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "includefiberscaleblend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -26991,7 +29809,9 @@ impl SopMuscleflex {
     pub fn with_matchlinesbyname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "matchlinesbyname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27005,7 +29825,9 @@ impl SopMuscleflex {
     pub fn with_manualflexing_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "manualflexing".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27019,7 +29841,9 @@ impl SopMuscleflex {
     pub fn with_manuallinking_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "manuallinking".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27033,7 +29857,9 @@ impl SopMuscleflex {
     pub fn with_dodisplaydeform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dodisplaydeform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27047,7 +29873,9 @@ impl SopMuscleflex {
     pub fn with_dodeform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dodeform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27061,7 +29889,9 @@ impl SopMuscleflex {
     pub fn with_rigidprojection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rigidprojection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27075,7 +29905,9 @@ impl SopMuscleflex {
     pub fn with_updateaffectednmls_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "updateaffectednmls".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27089,7 +29921,9 @@ impl SopMuscleflex {
     pub fn with_animtensionlines_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "animtensionlines".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27103,7 +29937,9 @@ impl SopMuscleflex {
     pub fn with_enabledeltamush_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enabledeltamush".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27117,7 +29953,9 @@ impl SopMuscleflex {
     pub fn with_vizmuscletension_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vizmuscletension".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27131,7 +29969,9 @@ impl SopMuscleflex {
     pub fn with_displayguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27145,7 +29985,9 @@ impl SopMuscleflex {
     pub fn with_displaylines_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaylines".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27159,7 +30001,9 @@ impl SopMuscleflex {
     pub fn with_setoutputforview_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setoutputforview".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27288,7 +30132,9 @@ impl SopMuscleid {
     pub fn with_mirrordist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrordist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27304,7 +30150,9 @@ impl SopMuscleid {
     pub fn with_mirrororigin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrororigin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27318,7 +30166,9 @@ impl SopMuscleid {
     pub fn with_mirrordir_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrordir".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27334,7 +30184,9 @@ impl SopMuscleid {
     pub fn with_initframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27348,7 +30200,9 @@ impl SopMuscleid {
     pub fn with_elemposfromend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "elemposfromend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27357,238 +30211,306 @@ impl SopMuscleid {
     pub fn with_idstring(mut self, val: &str) -> Self {
         self.params.insert(
             "idstring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_idstring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "idstring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_defaultname(mut self, val: &str) -> Self {
         self.params.insert(
             "defaultname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_defaultname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "defaultname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_renamestring(mut self, val: &str) -> Self {
         self.params.insert(
             "renamestring".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_renamestring_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "renamestring".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_basename(mut self, val: &str) -> Self {
         self.params.insert(
             "basename".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_basename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "basename".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_from0(mut self, val: &str) -> Self {
         self.params.insert(
             "from0".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_from0_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "from0".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_to0(mut self, val: &str) -> Self {
         self.params.insert(
             "to0".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_to0_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "to0".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attrinname(mut self, val: &str) -> Self {
         self.params.insert(
             "attrinname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attrinname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attrinname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_name_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("name{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_name_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("name{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorgroup_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("mirrorgroup{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorgroup_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mirrorgroup{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorname_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("mirrorname{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorname_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("mirrorname{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorfromprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrorfromprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorfromprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrorfromprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrortoprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrortoprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrortoprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrortoprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_currentid(mut self, val: &str) -> Self {
         self.params.insert(
             "currentid".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_currentid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "currentid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_located(mut self, val: &str) -> Self {
         self.params.insert(
             "located".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_located_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "located".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorlocated(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrorlocated".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorlocated_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrorlocated".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorid(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrorid".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorid_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrorid".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27604,7 +30526,9 @@ impl SopMuscleid {
     pub fn with_destroyexisting_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "destroyexisting".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27618,7 +30542,9 @@ impl SopMuscleid {
     pub fn with_filter0_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "filter0".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27632,7 +30558,9 @@ impl SopMuscleid {
     pub fn with_regex0_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "regex0".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27646,7 +30574,9 @@ impl SopMuscleid {
     pub fn with_global0_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "global0".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27660,7 +30590,9 @@ impl SopMuscleid {
     pub fn with_useinputattr_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinputattr".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27674,7 +30606,9 @@ impl SopMuscleid {
     pub fn with_extractpathelem_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extractpathelem".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27688,7 +30622,9 @@ impl SopMuscleid {
     pub fn with_usesymmetry_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usesymmetry".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -27702,7 +30638,9 @@ impl SopMuscleid {
     pub fn with_exposemirrorparms_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "exposemirrorparms".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28039,7 +30977,9 @@ impl SopMusclemirror {
     pub fn with_mirrordist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrordist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28055,7 +30995,9 @@ impl SopMusclemirror {
     pub fn with_mirrororigin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrororigin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28069,7 +31011,9 @@ impl SopMusclemirror {
     pub fn with_mirrordir_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrordir".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28078,70 +31022,90 @@ impl SopMusclemirror {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorfromprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrorfromprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorfromprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrorfromprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrortoprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrortoprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrortoprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrortoprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_prefixedattribs(mut self, val: &str) -> Self {
         self.params.insert(
             "prefixedattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_prefixedattribs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prefixedattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattribs(mut self, val: &str) -> Self {
         self.params.insert(
             "shapeattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattribs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shapeattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28396,70 +31360,90 @@ impl SopMusclepaint {
     pub fn with_strokegeo(mut self, val: &str) -> Self {
         self.params.insert(
             "strokegeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_strokegeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokegeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_isectgeo(mut self, val: &str) -> Self {
         self.params.insert(
             "isectgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_isectgeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "isectgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_activestrokegeo(mut self, val: &str) -> Self {
         self.params.insert(
             "activestrokegeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_activestrokegeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "activestrokegeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bakedgeo(mut self, val: &str) -> Self {
         self.params.insert(
             "bakedgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bakedgeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bakedgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_unsavedbakedgeo(mut self, val: &str) -> Self {
         self.params.insert(
             "unsavedbakedgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Data(val.to_string()),
+            houdini_ramen_core::types::ParamValue::Data(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_unsavedbakedgeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unsavedbakedgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28475,7 +31459,9 @@ impl SopMusclepaint {
     pub fn with_fgfloat_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fgfloat".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28489,7 +31475,9 @@ impl SopMusclepaint {
     pub fn with_bgfloat_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bgfloat".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28503,7 +31491,9 @@ impl SopMusclepaint {
     pub fn with_stroke_radius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_radius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28517,7 +31507,9 @@ impl SopMusclepaint {
     pub fn with_stroke_screensize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_screensize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28531,7 +31523,9 @@ impl SopMusclepaint {
     pub fn with_stroke_opacity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_opacity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28545,7 +31539,9 @@ impl SopMusclepaint {
     pub fn with_stroke_softedge_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_softedge".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28559,7 +31555,9 @@ impl SopMusclepaint {
     pub fn with_visibilitybias_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "visibilitybias".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28573,7 +31571,9 @@ impl SopMusclepaint {
     pub fn with_stroke_opacitypressure_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_opacitypressure".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28587,7 +31587,9 @@ impl SopMusclepaint {
     pub fn with_stroke_radiuspressure_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_radiuspressure".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28601,7 +31603,9 @@ impl SopMusclepaint {
     pub fn with_stroke_float_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_float".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28615,7 +31619,9 @@ impl SopMusclepaint {
     pub fn with_stroke_radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_radius", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28629,7 +31635,9 @@ impl SopMusclepaint {
     pub fn with_stroke_opacity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_opacity", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28645,7 +31653,9 @@ impl SopMusclepaint {
     pub fn with_fgcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fgcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28659,7 +31669,9 @@ impl SopMusclepaint {
     pub fn with_bgcolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bgcolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28673,7 +31685,9 @@ impl SopMusclepaint {
     pub fn with_stroke_color_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_color".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28687,7 +31701,9 @@ impl SopMusclepaint {
     pub fn with_stroke_projcenter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_projcenter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28701,7 +31717,9 @@ impl SopMusclepaint {
     pub fn with_stroke_color_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_color", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28715,7 +31733,9 @@ impl SopMusclepaint {
     pub fn with_stroke_projcenter_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projcenter", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28729,7 +31749,9 @@ impl SopMusclepaint {
     pub fn with_stroke_projdir_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projdir", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28743,7 +31765,9 @@ impl SopMusclepaint {
     pub fn with_mirror_t_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirror_t".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28757,7 +31781,9 @@ impl SopMusclepaint {
     pub fn with_mirror_dir_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirror_dir".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28773,7 +31799,9 @@ impl SopMusclepaint {
     pub fn with_attribute_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribute".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28787,7 +31815,9 @@ impl SopMusclepaint {
     pub fn with_fgint_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fgint".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28801,7 +31831,9 @@ impl SopMusclepaint {
     pub fn with_bgint_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bgint".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28815,7 +31847,9 @@ impl SopMusclepaint {
     pub fn with_stroke_tool_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_tool".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28829,7 +31863,9 @@ impl SopMusclepaint {
     pub fn with_stroke_int_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_int".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28843,7 +31879,9 @@ impl SopMusclepaint {
     pub fn with_stroke_tool_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_tool", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28857,7 +31895,9 @@ impl SopMusclepaint {
     pub fn with_stroke_projtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projtype", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28873,7 +31913,9 @@ impl SopMusclepaint {
     pub fn with_stroke_attribtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_attribtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28887,7 +31929,9 @@ impl SopMusclepaint {
     pub fn with_lmboperation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lmboperation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28901,7 +31945,9 @@ impl SopMusclepaint {
     pub fn with_lmboperation2_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lmboperation2".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28915,7 +31961,9 @@ impl SopMusclepaint {
     pub fn with_lmboperation3_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "lmboperation3".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28929,7 +31977,9 @@ impl SopMusclepaint {
     pub fn with_mmboperation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mmboperation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28943,7 +31993,9 @@ impl SopMusclepaint {
     pub fn with_mmboperation2_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mmboperation2".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28957,7 +32009,9 @@ impl SopMusclepaint {
     pub fn with_mmboperation3_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mmboperation3".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28971,7 +32025,9 @@ impl SopMusclepaint {
     pub fn with_stroke_operation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_operation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28985,7 +32041,9 @@ impl SopMusclepaint {
     pub fn with_stroke_paintmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_paintmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -28999,7 +32057,9 @@ impl SopMusclepaint {
     pub fn with_stroke_shape_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_shape".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29013,7 +32073,9 @@ impl SopMusclepaint {
     pub fn with_stroke_projtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_projtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29027,7 +32089,9 @@ impl SopMusclepaint {
     pub fn with_recachemethod_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "recachemethod".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29036,56 +32100,72 @@ impl SopMusclepaint {
     pub fn with_stroke_group(mut self, val: &str) -> Self {
         self.params.insert(
             "stroke_group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_attrib(mut self, val: &str) -> Self {
         self.params.insert(
             "stroke_attrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_attrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_attrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_data_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("stroke{}_data", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_data_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_data", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_metadata_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("stroke{}_metadata", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_metadata_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_metadata", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29101,7 +32181,9 @@ impl SopMusclepaint {
     pub fn with_displaygroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaygroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29115,7 +32197,9 @@ impl SopMusclepaint {
     pub fn with_otisattrs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "otisattrs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29129,7 +32213,9 @@ impl SopMusclepaint {
     pub fn with_stroke_connectivity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_connectivity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29143,7 +32229,9 @@ impl SopMusclepaint {
     pub fn with_stroke_frontface_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_frontface".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29157,7 +32245,9 @@ impl SopMusclepaint {
     pub fn with_stroke_visibility_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_visibility".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29171,7 +32261,9 @@ impl SopMusclepaint {
     pub fn with_stroke_enable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_enable", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29185,7 +32277,9 @@ impl SopMusclepaint {
     pub fn with_domirror_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domirror".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29199,7 +32293,9 @@ impl SopMusclepaint {
     pub fn with_savecache_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "savecache".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29213,7 +32309,9 @@ impl SopMusclepaint {
     pub fn with_livemode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "livemode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29227,7 +32325,9 @@ impl SopMusclepaint {
     pub fn with_docaching_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "docaching".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29368,7 +32468,9 @@ impl SopMusclepreroll {
     pub fn with_t_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "t".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29382,7 +32484,9 @@ impl SopMusclepreroll {
     pub fn with_r_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "r".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29396,7 +32500,9 @@ impl SopMusclepreroll {
     pub fn with_p_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "p".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29410,7 +32516,9 @@ impl SopMusclepreroll {
     pub fn with_pivot_r_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pivot_r".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29426,7 +32534,9 @@ impl SopMusclepreroll {
     pub fn with_deformationtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "deformationtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29440,7 +32550,9 @@ impl SopMusclepreroll {
     pub fn with_initframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29454,7 +32566,9 @@ impl SopMusclepreroll {
     pub fn with_holdframes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "holdframes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29468,7 +32582,9 @@ impl SopMusclepreroll {
     pub fn with_prerollframes_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "prerollframes".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29482,7 +32598,9 @@ impl SopMusclepreroll {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29491,28 +32609,36 @@ impl SopMusclepreroll {
     pub fn with_transformref(mut self, val: &str) -> Self {
         self.params.insert(
             "transformref".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_transformref_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "transformref".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29528,7 +32654,9 @@ impl SopMusclepreroll {
     pub fn with_matchuntransformed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "matchuntransformed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29542,7 +32670,9 @@ impl SopMusclepreroll {
     pub fn with_matchreference_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "matchreference".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29556,7 +32686,9 @@ impl SopMusclepreroll {
     pub fn with_invertxform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "invertxform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29570,7 +32702,9 @@ impl SopMusclepreroll {
     pub fn with_showhandle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "showhandle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29759,7 +32893,9 @@ impl SopMuscleproperties {
     pub fn with_solidshapestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidshapestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29773,7 +32909,9 @@ impl SopMuscleproperties {
     pub fn with_solidshapestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidshapestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29787,7 +32925,9 @@ impl SopMuscleproperties {
     pub fn with_solidvolumestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidvolumestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29801,7 +32941,9 @@ impl SopMuscleproperties {
     pub fn with_solidvolumestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidvolumestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29815,7 +32957,9 @@ impl SopMuscleproperties {
     pub fn with_soliddampingratio_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("soliddampingratio{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29829,7 +32973,9 @@ impl SopMuscleproperties {
     pub fn with_soliddampingratiorel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("soliddampingratiorel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29843,7 +32989,9 @@ impl SopMuscleproperties {
     pub fn with_solidmassdensity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidmassdensity{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29857,7 +33005,9 @@ impl SopMuscleproperties {
     pub fn with_solidmassdensityrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidmassdensityrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29871,7 +33021,9 @@ impl SopMuscleproperties {
     pub fn with_fiberstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29885,7 +33037,9 @@ impl SopMuscleproperties {
     pub fn with_fiberstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29899,7 +33053,9 @@ impl SopMuscleproperties {
     pub fn with_fiberdamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberdamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29913,7 +33069,9 @@ impl SopMuscleproperties {
     pub fn with_fiberdampingrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberdampingrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29927,7 +33085,9 @@ impl SopMuscleproperties {
     pub fn with_fibervolumescale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fibervolumescale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29941,7 +33101,9 @@ impl SopMuscleproperties {
     pub fn with_fibervolumescalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fibervolumescalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29955,7 +33117,9 @@ impl SopMuscleproperties {
     pub fn with_tendonstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29969,7 +33133,9 @@ impl SopMuscleproperties {
     pub fn with_tendonstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29983,7 +33149,9 @@ impl SopMuscleproperties {
     pub fn with_tendonmassdensityscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmassdensityscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -29997,7 +33165,9 @@ impl SopMuscleproperties {
     pub fn with_tendonmassdensityscalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmassdensityscalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30011,7 +33181,9 @@ impl SopMuscleproperties {
     pub fn with_tendonrangehead_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonrangehead{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30025,7 +33197,9 @@ impl SopMuscleproperties {
     pub fn with_tendonrangetail_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonrangetail{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30039,7 +33213,9 @@ impl SopMuscleproperties {
     pub fn with_tendonthickness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonthickness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30053,7 +33229,9 @@ impl SopMuscleproperties {
     pub fn with_tendonfillerparm_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonfillerparm{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30069,7 +33247,9 @@ impl SopMuscleproperties {
     pub fn with_fiberrange_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberrange{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30083,7 +33263,9 @@ impl SopMuscleproperties {
     pub fn with_fiberrangerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberrangerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30103,7 +33285,9 @@ impl SopMuscleproperties {
     pub fn with_shapestiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("shapestiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30121,7 +33305,9 @@ impl SopMuscleproperties {
     pub fn with_volumestiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("volumestiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30139,7 +33325,9 @@ impl SopMuscleproperties {
     pub fn with_shapedampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("shapedampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30153,7 +33341,9 @@ impl SopMuscleproperties {
     pub fn with_massmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("massmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30167,7 +33357,9 @@ impl SopMuscleproperties {
     pub fn with_fibermode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fibermode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30185,7 +33377,9 @@ impl SopMuscleproperties {
     pub fn with_fiberdampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberdampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30203,7 +33397,9 @@ impl SopMuscleproperties {
     pub fn with_fiberrangemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberrangemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30221,7 +33417,9 @@ impl SopMuscleproperties {
     pub fn with_fibervolumescalemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fibervolumescalemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30239,7 +33437,9 @@ impl SopMuscleproperties {
     pub fn with_tendonmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30257,7 +33457,9 @@ impl SopMuscleproperties {
     pub fn with_tendonmassdensitymode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmassdensitymode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30266,42 +33468,54 @@ impl SopMuscleproperties {
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30317,7 +33531,9 @@ impl SopMuscleproperties {
     pub fn with_absoluteradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "absoluteradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30331,7 +33547,9 @@ impl SopMuscleproperties {
     pub fn with_enableaxialcorrection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableaxialcorrection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30345,7 +33563,9 @@ impl SopMuscleproperties {
     pub fn with_usetablabels_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usetablabels".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30359,7 +33579,9 @@ impl SopMuscleproperties {
     pub fn with_strip_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strip_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30373,7 +33595,9 @@ impl SopMuscleproperties {
     pub fn with_enableall_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableall{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30387,7 +33611,9 @@ impl SopMuscleproperties {
     pub fn with_enableshape_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableshape{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30401,7 +33627,9 @@ impl SopMuscleproperties {
     pub fn with_enablevolume_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablevolume{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30415,7 +33643,9 @@ impl SopMuscleproperties {
     pub fn with_enabledamp_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabledamp{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30429,7 +33659,9 @@ impl SopMuscleproperties {
     pub fn with_enablemass_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemass{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30443,7 +33675,9 @@ impl SopMuscleproperties {
     pub fn with_enablefiber_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablefiber{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30457,7 +33691,9 @@ impl SopMuscleproperties {
     pub fn with_enablefiberdamping_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablefiberdamping{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30471,7 +33707,9 @@ impl SopMuscleproperties {
     pub fn with_enablefiberrange_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablefiberrange{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30485,7 +33723,9 @@ impl SopMuscleproperties {
     pub fn with_enablefibervolumescale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablefibervolumescale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30499,7 +33739,9 @@ impl SopMuscleproperties {
     pub fn with_enabletendon_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabletendon{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30513,7 +33755,9 @@ impl SopMuscleproperties {
     pub fn with_enabletendonmassdensity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabletendonmassdensity{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30527,7 +33771,9 @@ impl SopMuscleproperties {
     pub fn with_enabletendongrad_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabletendongrad{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30730,7 +33976,9 @@ impl SopMusclepropertiesotis {
     pub fn with_solidshapestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidshapestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30744,7 +33992,9 @@ impl SopMusclepropertiesotis {
     pub fn with_solidshapestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidshapestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30758,7 +34008,9 @@ impl SopMusclepropertiesotis {
     pub fn with_solidvolumestiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidvolumestiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30772,7 +34024,9 @@ impl SopMusclepropertiesotis {
     pub fn with_solidvolumestiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidvolumestiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30786,7 +34040,9 @@ impl SopMusclepropertiesotis {
     pub fn with_soliddampingratio_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("soliddampingratio{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30800,7 +34056,9 @@ impl SopMusclepropertiesotis {
     pub fn with_soliddampingratiorel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("soliddampingratiorel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30814,7 +34072,9 @@ impl SopMusclepropertiesotis {
     pub fn with_solidmassdensity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidmassdensity{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30828,7 +34088,9 @@ impl SopMusclepropertiesotis {
     pub fn with_solidmassdensityrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("solidmassdensityrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30842,7 +34104,9 @@ impl SopMusclepropertiesotis {
     pub fn with_fiberstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30856,7 +34120,9 @@ impl SopMusclepropertiesotis {
     pub fn with_fiberstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30870,7 +34136,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonstiffness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonstiffness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30884,7 +34152,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonstiffnessrel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonstiffnessrel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30898,7 +34168,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonmassdensityscale_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmassdensityscale{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30912,7 +34184,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonmassdensityscalerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmassdensityscalerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30926,7 +34200,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonrangehead_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonrangehead{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30940,7 +34216,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonrangetail_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonrangetail{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30954,7 +34232,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonthickness_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonthickness{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30968,7 +34248,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonfillerparm_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonfillerparm{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30984,7 +34266,9 @@ impl SopMusclepropertiesotis {
     pub fn with_fiberrange_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberrange{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -30998,7 +34282,9 @@ impl SopMusclepropertiesotis {
     pub fn with_fiberrangerel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberrangerel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31018,7 +34304,9 @@ impl SopMusclepropertiesotis {
     pub fn with_volumestiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("volumestiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31036,7 +34324,9 @@ impl SopMusclepropertiesotis {
     pub fn with_shapedampmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("shapedampmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31054,7 +34344,9 @@ impl SopMusclepropertiesotis {
     pub fn with_massmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("massmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31072,7 +34364,9 @@ impl SopMusclepropertiesotis {
     pub fn with_fibermode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fibermode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31090,7 +34384,9 @@ impl SopMusclepropertiesotis {
     pub fn with_fiberrangemode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("fiberrangemode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31108,7 +34404,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31126,7 +34424,9 @@ impl SopMusclepropertiesotis {
     pub fn with_tendonmassdensitymode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tendonmassdensitymode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31146,7 +34446,9 @@ impl SopMusclepropertiesotis {
     pub fn with_shapestiffmode_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("shapestiffmode{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31164,7 +34466,9 @@ impl SopMusclepropertiesotis {
     pub fn with_soliddampingratioexp_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("soliddampingratioexp{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31173,42 +34477,54 @@ impl SopMusclepropertiesotis {
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_propertylabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("propertylabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31224,7 +34540,9 @@ impl SopMusclepropertiesotis {
     pub fn with_absoluteradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "absoluteradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31238,7 +34556,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enableaxialcorrection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableaxialcorrection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31252,7 +34572,9 @@ impl SopMusclepropertiesotis {
     pub fn with_usetablabels_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usetablabels".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31266,7 +34588,9 @@ impl SopMusclepropertiesotis {
     pub fn with_strip_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strip_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31280,7 +34604,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enableall_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableall{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31294,7 +34620,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enableshape_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enableshape{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31308,7 +34636,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enablevolume_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablevolume{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31322,7 +34652,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enabledamp_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabledamp{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31336,7 +34668,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enablemass_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablemass{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31350,7 +34684,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enablefiber_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablefiber{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31364,7 +34700,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enablefiberrange_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enablefiberrange{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31378,7 +34716,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enabletendon_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabletendon{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31392,7 +34732,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enabletendonmassdensity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabletendonmassdensity{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31406,7 +34748,9 @@ impl SopMusclepropertiesotis {
     pub fn with_enabletendongrad_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enabletendongrad{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31594,7 +34938,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_depth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "depth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31608,7 +34954,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_radius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_radius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31622,7 +34970,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_strokeprofilemin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokeprofilemin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31636,7 +34986,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_strokeprofilemax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokeprofilemax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31650,7 +35002,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_opacity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_opacity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31664,7 +35018,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_radius", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31678,7 +35034,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_opacity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_opacity", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31694,7 +35052,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_color_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_color".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31708,7 +35068,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_projcenter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_projcenter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31722,7 +35084,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_color_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_color", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31736,7 +35100,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_projcenter_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projcenter", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31750,7 +35116,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_projdir_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projdir", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31766,7 +35134,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_usen_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useN".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31780,7 +35150,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_tool_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_tool".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31794,7 +35166,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_tool_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_tool", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31808,7 +35182,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_projtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projtype", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31824,7 +35200,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_projtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_projtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31840,7 +35218,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_strokeprofile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokeprofile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31854,7 +35234,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_colorramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "colorramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31863,42 +35245,54 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_data_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("stroke{}_data", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_data_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_data", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_metadata_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("stroke{}_metadata", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_metadata_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_metadata", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_prompt(mut self, val: &str) -> Self {
         self.params.insert(
             "stroke_prompt".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_prompt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_prompt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31914,7 +35308,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_displayproxy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayproxy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -31928,7 +35324,9 @@ impl SopMusclerigstrokebuilder {
     pub fn with_stroke_enable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_enable", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32187,7 +35585,9 @@ impl SopMuscleslideconstraint {
     pub fn with_maxdist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxdist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32201,7 +35601,9 @@ impl SopMuscleslideconstraint {
     pub fn with_slidingrate_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "slidingrate".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32215,7 +35617,9 @@ impl SopMuscleslideconstraint {
     pub fn with_stretchstiffness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchstiffness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32229,7 +35633,9 @@ impl SopMuscleslideconstraint {
     pub fn with_compressstiffness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "compressstiffness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32243,7 +35649,9 @@ impl SopMuscleslideconstraint {
     pub fn with_stretchdampingratio_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchdampingratio".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32257,7 +35665,9 @@ impl SopMuscleslideconstraint {
     pub fn with_stretchrestscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchrestscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32271,7 +35681,9 @@ impl SopMuscleslideconstraint {
     pub fn with_tangentstiffness_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tangentstiffness".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32290,7 +35702,9 @@ impl SopMuscleslideconstraint {
     pub fn with_stretchstiffnessexp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchstiffnessexp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32307,7 +35721,9 @@ impl SopMuscleslideconstraint {
     pub fn with_tangentstiffnessexp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tangentstiffnessexp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32316,28 +35732,36 @@ impl SopMuscleslideconstraint {
     pub fn with_excludegroup(mut self, val: &str) -> Self {
         self.params.insert(
             "excludegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_excludegroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "excludegroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stretchgrp(mut self, val: &str) -> Self {
         self.params.insert(
             "stretchgrp".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stretchgrp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stretchgrp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32353,7 +35777,9 @@ impl SopMuscleslideconstraint {
     pub fn with_useclosestpt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useclosestpt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32367,7 +35793,9 @@ impl SopMuscleslideconstraint {
     pub fn with_useclosestprim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useclosestprim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32381,7 +35809,9 @@ impl SopMuscleslideconstraint {
     pub fn with_maxdistcheck_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxdistcheck".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32522,7 +35952,9 @@ impl SopMusclesolidify {
     pub fn with_maxtetsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxtetsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32536,7 +35968,9 @@ impl SopMusclesolidify {
     pub fn with_localfeaturescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "localfeaturescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32550,7 +35984,9 @@ impl SopMusclesolidify {
     pub fn with_minsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32564,7 +36000,9 @@ impl SopMusclesolidify {
     pub fn with_maxsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32578,7 +36016,9 @@ impl SopMusclesolidify {
     pub fn with_reldensity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "reldensity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32592,7 +36032,9 @@ impl SopMusclesolidify {
     pub fn with_gradation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gradation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32608,7 +36050,9 @@ impl SopMusclesolidify {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32622,7 +36066,9 @@ impl SopMusclesolidify {
     pub fn with_initframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32636,7 +36082,9 @@ impl SopMusclesolidify {
     pub fn with_iterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32652,7 +36100,9 @@ impl SopMusclesolidify {
     pub fn with_pointattribmethod_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pointattribmethod".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32661,14 +36111,18 @@ impl SopMusclesolidify {
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32684,7 +36138,9 @@ impl SopMusclesolidify {
     pub fn with_uselocalfeaturesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uselocalfeaturesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32698,7 +36154,9 @@ impl SopMusclesolidify {
     pub fn with_onefacepertet_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "onefacepertet".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32712,7 +36170,9 @@ impl SopMusclesolidify {
     pub fn with_enablemultithread_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemultithread".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32726,7 +36186,9 @@ impl SopMusclesolidify {
     pub fn with_remeshsurfaces_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remeshsurfaces".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32740,7 +36202,9 @@ impl SopMusclesolidify {
     pub fn with_interpolatepointattribs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "interpolatepointattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32754,7 +36218,9 @@ impl SopMusclesolidify {
     pub fn with_retransferattribs_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "retransferattribs".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32971,7 +36437,9 @@ impl SopMusclesolver {
     pub fn with_vellumtimescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumtimescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32985,7 +36453,9 @@ impl SopMusclesolver {
     pub fn with_veldamping_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "veldamping".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -32999,7 +36469,9 @@ impl SopMusclesolver {
     pub fn with_unitlength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unitlength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33013,7 +36485,9 @@ impl SopMusclesolver {
     pub fn with_unitmass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unitmass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33027,7 +36501,9 @@ impl SopMusclesolver {
     pub fn with_bonecollisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonecollisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33041,7 +36517,9 @@ impl SopMusclesolver {
     pub fn with_disablestretchratio_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "disablestretchratio".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33055,7 +36533,9 @@ impl SopMusclesolver {
     pub fn with_collisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33069,7 +36549,9 @@ impl SopMusclesolver {
     pub fn with_sweepalpha_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sweepalpha".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33083,7 +36565,9 @@ impl SopMusclesolver {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33097,7 +36581,9 @@ impl SopMusclesolver {
     pub fn with_sdftol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sdftol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33111,7 +36597,9 @@ impl SopMusclesolver {
     pub fn with_bonetrianglesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonetrianglesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33125,7 +36613,9 @@ impl SopMusclesolver {
     pub fn with_bonetetsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonetetsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33141,7 +36631,9 @@ impl SopMusclesolver {
     pub fn with_gravity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gravity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33155,7 +36647,9 @@ impl SopMusclesolver {
     pub fn with_groundpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33171,7 +36665,9 @@ impl SopMusclesolver {
     pub fn with_solvertype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "solvertype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33185,7 +36681,9 @@ impl SopMusclesolver {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33199,7 +36697,9 @@ impl SopMusclesolver {
     pub fn with_substeps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "substeps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33213,7 +36713,9 @@ impl SopMusclesolver {
     pub fn with_maxglobalcollisionpasses_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxglobalcollisionpasses".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33227,7 +36729,9 @@ impl SopMusclesolver {
     pub fn with_vellumsubsteps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumsubsteps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33241,7 +36745,9 @@ impl SopMusclesolver {
     pub fn with_vellumcollisionsiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumcollisionsiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33255,7 +36761,9 @@ impl SopMusclesolver {
     pub fn with_vellumniter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumniter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33269,7 +36777,9 @@ impl SopMusclesolver {
     pub fn with_vellumsmoothiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumsmoothiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33283,7 +36793,9 @@ impl SopMusclesolver {
     pub fn with_vellumpostcollisioniter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumpostcollisioniter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33297,7 +36809,9 @@ impl SopMusclesolver {
     pub fn with_vellumresolveallmax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumresolveallmax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33311,7 +36825,9 @@ impl SopMusclesolver {
     pub fn with_cachemaxsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachemaxsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33325,7 +36841,9 @@ impl SopMusclesolver {
     pub fn with_maxmultipass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxmultipass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33339,7 +36857,9 @@ impl SopMusclesolver {
     pub fn with_uniformdiv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uniformdiv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33353,7 +36873,9 @@ impl SopMusclesolver {
     pub fn with_sweepcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sweepcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33367,7 +36889,9 @@ impl SopMusclesolver {
     pub fn with_vizattachment_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vizattachment".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33383,7 +36907,9 @@ impl SopMusclesolver {
     pub fn with_vellumintegratortype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumintegratortype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33397,7 +36923,9 @@ impl SopMusclesolver {
     pub fn with_femintegratortype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "femintegratortype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33411,7 +36939,9 @@ impl SopMusclesolver {
     pub fn with_collisiondetection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisiondetection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33425,7 +36955,9 @@ impl SopMusclesolver {
     pub fn with_previewdisplay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "previewdisplay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33434,84 +36966,108 @@ impl SopMusclesolver {
     pub fn with_preferredprecision(mut self, val: &str) -> Self {
         self.params.insert(
             "preferredprecision".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_preferredprecision_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "preferredprecision".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_contractionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "contractionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_contractionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "contractionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bulgeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "bulgeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bulgeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bulgeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "shapeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shapeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidersoppath(mut self, val: &str) -> Self {
         self.params.insert(
             "collidersoppath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidersoppath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidersoppath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidergroup(mut self, val: &str) -> Self {
         self.params.insert(
             "collidergroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidergroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidergroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33527,7 +37083,9 @@ impl SopMusclesolver {
     pub fn with_attribcleanup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribcleanup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33541,7 +37099,9 @@ impl SopMusclesolver {
     pub fn with_enablemuscleends_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscleends".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33555,7 +37115,9 @@ impl SopMusclesolver {
     pub fn with_enablemuscletobone_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscletobone".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33569,7 +37131,9 @@ impl SopMusclesolver {
     pub fn with_enablemuscletomuscle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscletomuscle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33583,7 +37147,9 @@ impl SopMusclesolver {
     pub fn with_enablevelblend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablevelblend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33597,7 +37163,9 @@ impl SopMusclesolver {
     pub fn with_cacheenabled_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cacheenabled".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33611,7 +37179,9 @@ impl SopMusclesolver {
     pub fn with_cachetodisk_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachetodisk".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33625,7 +37195,9 @@ impl SopMusclesolver {
     pub fn with_enableselfcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableselfcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33639,7 +37211,9 @@ impl SopMusclesolver {
     pub fn with_enablemusclecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemusclecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33653,7 +37227,9 @@ impl SopMusclesolver {
     pub fn with_enablebonecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablebonecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33667,7 +37243,9 @@ impl SopMusclesolver {
     pub fn with_cleancollision_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cleancollision".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33681,7 +37259,9 @@ impl SopMusclesolver {
     pub fn with_usegroundplane_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usegroundplane".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33695,7 +37275,9 @@ impl SopMusclesolver {
     pub fn with_domultipass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domultipass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33709,7 +37291,9 @@ impl SopMusclesolver {
     pub fn with_usecollider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecollider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33723,7 +37307,9 @@ impl SopMusclesolver {
     pub fn with_animategeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "animategeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33737,7 +37323,9 @@ impl SopMusclesolver {
     pub fn with_laserscan_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "laserscan".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33751,7 +37339,9 @@ impl SopMusclesolver {
     pub fn with_fixsigns_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fixsigns".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33765,7 +37355,9 @@ impl SopMusclesolver {
     pub fn with_forcebounds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "forcebounds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33779,7 +37371,9 @@ impl SopMusclesolver {
     pub fn with_invert_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "invert".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33793,7 +37387,9 @@ impl SopMusclesolver {
     pub fn with_enableboneguides_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableboneguides".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33807,7 +37403,9 @@ impl SopMusclesolver {
     pub fn with_enableviz_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableviz".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33821,7 +37419,9 @@ impl SopMusclesolver {
     pub fn with_guidemusclegtomuscle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemusclegtomuscle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33835,7 +37435,9 @@ impl SopMusclesolver {
     pub fn with_guidemuscleends_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscleends".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33849,7 +37451,9 @@ impl SopMusclesolver {
     pub fn with_guidemuscletobone_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscletobone".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33863,7 +37467,9 @@ impl SopMusclesolver {
     pub fn with_displaycollisionguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaycollisionguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33877,7 +37483,9 @@ impl SopMusclesolver {
     pub fn with_guidecollisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidecollisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -33891,7 +37499,9 @@ impl SopMusclesolver {
     pub fn with_guidefailedcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidefailedcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34102,7 +37712,9 @@ impl SopMusclesolverfem {
     pub fn with_veldamping_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "veldamping".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34116,7 +37728,9 @@ impl SopMusclesolverfem {
     pub fn with_unitlength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unitlength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34130,7 +37744,9 @@ impl SopMusclesolverfem {
     pub fn with_unitmass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unitmass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34144,7 +37760,9 @@ impl SopMusclesolverfem {
     pub fn with_bonecollisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonecollisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34158,7 +37776,9 @@ impl SopMusclesolverfem {
     pub fn with_collisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34172,7 +37792,9 @@ impl SopMusclesolverfem {
     pub fn with_sweepalpha_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sweepalpha".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34186,7 +37808,9 @@ impl SopMusclesolverfem {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34200,7 +37824,9 @@ impl SopMusclesolverfem {
     pub fn with_sdftol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sdftol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34214,7 +37840,9 @@ impl SopMusclesolverfem {
     pub fn with_guidevectorscale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidevectorscale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34230,7 +37858,9 @@ impl SopMusclesolverfem {
     pub fn with_gravity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gravity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34244,7 +37874,9 @@ impl SopMusclesolverfem {
     pub fn with_groundpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34258,7 +37890,9 @@ impl SopMusclesolverfem {
     pub fn with_color_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "color".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34272,7 +37906,9 @@ impl SopMusclesolverfem {
     pub fn with_collisiongeocolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisiongeocolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34288,7 +37924,9 @@ impl SopMusclesolverfem {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34302,7 +37940,9 @@ impl SopMusclesolverfem {
     pub fn with_substeps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "substeps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34316,7 +37956,9 @@ impl SopMusclesolverfem {
     pub fn with_maxglobalcollisionpasses_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxglobalcollisionpasses".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34330,7 +37972,9 @@ impl SopMusclesolverfem {
     pub fn with_enablemuscleends_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscleends".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34344,7 +37988,9 @@ impl SopMusclesolverfem {
     pub fn with_cachemaxsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachemaxsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34358,7 +38004,9 @@ impl SopMusclesolverfem {
     pub fn with_uniformdiv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uniformdiv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34372,7 +38020,9 @@ impl SopMusclesolverfem {
     pub fn with_sweepcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sweepcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34386,7 +38036,9 @@ impl SopMusclesolverfem {
     pub fn with_vizattachment_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vizattachment".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34402,7 +38054,9 @@ impl SopMusclesolverfem {
     pub fn with_femintegratortype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "femintegratortype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34416,7 +38070,9 @@ impl SopMusclesolverfem {
     pub fn with_simulationtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "simulationtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34430,7 +38086,9 @@ impl SopMusclesolverfem {
     pub fn with_collisiondetection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisiondetection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34439,98 +38097,126 @@ impl SopMusclesolverfem {
     pub fn with_muscletposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "muscletposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bonetposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "bonetposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bonetposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonetposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_contractionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "contractionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_contractionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "contractionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bulgeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "bulgeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bulgeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bulgeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "shapeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shapeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidersoppath(mut self, val: &str) -> Self {
         self.params.insert(
             "collidersoppath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidersoppath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidersoppath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidergroup(mut self, val: &str) -> Self {
         self.params.insert(
             "collidergroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidergroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidergroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34546,7 +38232,9 @@ impl SopMusclesolverfem {
     pub fn with_enablemuscletobone_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscletobone".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34560,7 +38248,9 @@ impl SopMusclesolverfem {
     pub fn with_enablemuscletomuscle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscletomuscle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34574,7 +38264,9 @@ impl SopMusclesolverfem {
     pub fn with_enablevelblend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablevelblend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34588,7 +38280,9 @@ impl SopMusclesolverfem {
     pub fn with_cacheenabled_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cacheenabled".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34602,7 +38296,9 @@ impl SopMusclesolverfem {
     pub fn with_cachetodisk_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachetodisk".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34616,7 +38312,9 @@ impl SopMusclesolverfem {
     pub fn with_enableselfcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableselfcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34630,7 +38328,9 @@ impl SopMusclesolverfem {
     pub fn with_enablemusclecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemusclecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34644,7 +38344,9 @@ impl SopMusclesolverfem {
     pub fn with_enablebonecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablebonecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34658,7 +38360,9 @@ impl SopMusclesolverfem {
     pub fn with_cleancollision_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cleancollision".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34672,7 +38376,9 @@ impl SopMusclesolverfem {
     pub fn with_usegroundplane_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usegroundplane".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34686,7 +38392,9 @@ impl SopMusclesolverfem {
     pub fn with_usecollider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecollider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34700,7 +38408,9 @@ impl SopMusclesolverfem {
     pub fn with_animategeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "animategeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34714,7 +38424,9 @@ impl SopMusclesolverfem {
     pub fn with_laserscan_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "laserscan".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34728,7 +38440,9 @@ impl SopMusclesolverfem {
     pub fn with_fixsigns_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fixsigns".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34742,7 +38456,9 @@ impl SopMusclesolverfem {
     pub fn with_forcebounds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "forcebounds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34756,7 +38472,9 @@ impl SopMusclesolverfem {
     pub fn with_invert_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "invert".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34770,7 +38488,9 @@ impl SopMusclesolverfem {
     pub fn with_enableboneguides_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableboneguides".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34784,7 +38504,9 @@ impl SopMusclesolverfem {
     pub fn with_displaycollisionguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaycollisionguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34798,7 +38520,9 @@ impl SopMusclesolverfem {
     pub fn with_guidemusclegtomuscle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemusclegtomuscle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -34812,7 +38536,9 @@ impl SopMusclesolverfem {
     pub fn with_guidemuscletobone_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscletobone".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35026,7 +38752,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumtimescale_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumtimescale".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35040,7 +38768,9 @@ impl SopMusclesolvervellum {
     pub fn with_drag_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "drag".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35054,7 +38784,9 @@ impl SopMusclesolvervellum {
     pub fn with_veldamping_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "veldamping".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35068,7 +38800,9 @@ impl SopMusclesolvervellum {
     pub fn with_unitlength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unitlength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35082,7 +38816,9 @@ impl SopMusclesolvervellum {
     pub fn with_unitmass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "unitmass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35096,7 +38832,9 @@ impl SopMusclesolvervellum {
     pub fn with_bonecollisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonecollisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35110,7 +38848,9 @@ impl SopMusclesolvervellum {
     pub fn with_disablestretchratio_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "disablestretchratio".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35124,7 +38864,9 @@ impl SopMusclesolvervellum {
     pub fn with_collisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35138,7 +38880,9 @@ impl SopMusclesolvervellum {
     pub fn with_sweepalpha_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sweepalpha".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35152,7 +38896,9 @@ impl SopMusclesolvervellum {
     pub fn with_offset_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "offset".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35166,7 +38912,9 @@ impl SopMusclesolvervellum {
     pub fn with_sdftol_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sdftol".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35180,7 +38928,9 @@ impl SopMusclesolvervellum {
     pub fn with_guideradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guideradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35194,7 +38944,9 @@ impl SopMusclesolvervellum {
     pub fn with_bonetrianglesize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonetrianglesize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35208,7 +38960,9 @@ impl SopMusclesolvervellum {
     pub fn with_bonetetsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonetetsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35224,7 +38978,9 @@ impl SopMusclesolvervellum {
     pub fn with_gravity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "gravity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35238,7 +38994,9 @@ impl SopMusclesolvervellum {
     pub fn with_groundpos_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "groundpos".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35252,7 +39010,9 @@ impl SopMusclesolvervellum {
     pub fn with_bonecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35266,7 +39026,9 @@ impl SopMusclesolvervellum {
     pub fn with_muscletomusclecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletomusclecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35280,7 +39042,9 @@ impl SopMusclesolvervellum {
     pub fn with_muscleendscolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscleendscolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35294,7 +39058,9 @@ impl SopMusclesolvervellum {
     pub fn with_muscletobonecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletobonecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35308,7 +39074,9 @@ impl SopMusclesolvervellum {
     pub fn with_musclegluecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "musclegluecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35322,7 +39090,9 @@ impl SopMusclesolvervellum {
     pub fn with_collisiongeocolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisiongeocolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35336,7 +39106,9 @@ impl SopMusclesolvervellum {
     pub fn with_collisionradiuscolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisionradiuscolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35350,7 +39122,9 @@ impl SopMusclesolvervellum {
     pub fn with_disabledcollisionscolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "disabledcollisionscolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35366,7 +39140,9 @@ impl SopMusclesolvervellum {
     pub fn with_startframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "startframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35380,7 +39156,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumsubsteps_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumsubsteps".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35394,7 +39172,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumcollisionsiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumcollisionsiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35408,7 +39188,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumniter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumniter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35422,7 +39204,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumsmoothiter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumsmoothiter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35436,7 +39220,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumpostcollisioniter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumpostcollisioniter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35450,7 +39236,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumresolveallmax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumresolveallmax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35464,7 +39252,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablemuscleends_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscleends".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35478,7 +39268,9 @@ impl SopMusclesolvervellum {
     pub fn with_cachemaxsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachemaxsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35492,7 +39284,9 @@ impl SopMusclesolvervellum {
     pub fn with_maxmultipass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "maxmultipass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35506,7 +39300,9 @@ impl SopMusclesolvervellum {
     pub fn with_uniformdiv_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "uniformdiv".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35520,7 +39316,9 @@ impl SopMusclesolvervellum {
     pub fn with_sweepcount_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "sweepcount".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35534,7 +39332,9 @@ impl SopMusclesolvervellum {
     pub fn with_vizattachment_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vizattachment".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35553,7 +39353,9 @@ impl SopMusclesolvervellum {
     pub fn with_vellumintegratortype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vellumintegratortype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35567,7 +39369,9 @@ impl SopMusclesolvervellum {
     pub fn with_collisiondetection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collisiondetection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35581,7 +39385,9 @@ impl SopMusclesolvervellum {
     pub fn with_previewdisplay_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "previewdisplay".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35590,112 +39396,144 @@ impl SopMusclesolvervellum {
     pub fn with_preferredprecision(mut self, val: &str) -> Self {
         self.params.insert(
             "preferredprecision".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_preferredprecision_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "preferredprecision".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "muscletposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_muscletposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscletposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bonetposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "bonetposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bonetposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonetposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_contractionattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "contractionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_contractionattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "contractionattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bulgeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "bulgeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bulgeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bulgeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "shapeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_shapeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "shapeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidersoppath(mut self, val: &str) -> Self {
         self.params.insert(
             "collidersoppath".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidersoppath_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidersoppath".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidergroup(mut self, val: &str) -> Self {
         self.params.insert(
             "collidergroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_collidergroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "collidergroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35711,7 +39549,9 @@ impl SopMusclesolvervellum {
     pub fn with_subsampleboneanim_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "subsampleboneanim".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35725,7 +39565,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablemuscletobone_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscletobone".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35739,7 +39581,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablemuscletomuscle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemuscletomuscle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35753,7 +39597,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablevelblend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablevelblend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35767,7 +39613,9 @@ impl SopMusclesolvervellum {
     pub fn with_cacheenabled_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cacheenabled".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35781,7 +39629,9 @@ impl SopMusclesolvervellum {
     pub fn with_cachetodisk_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "cachetodisk".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35795,7 +39645,9 @@ impl SopMusclesolvervellum {
     pub fn with_enableselfcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableselfcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35809,7 +39661,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablemusclecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablemusclecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35823,7 +39677,9 @@ impl SopMusclesolvervellum {
     pub fn with_muscleinteriorcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "muscleinteriorcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35837,7 +39693,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablebonecollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablebonecollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35851,7 +39709,9 @@ impl SopMusclesolvervellum {
     pub fn with_usegroundplane_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usegroundplane".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35865,7 +39725,9 @@ impl SopMusclesolvervellum {
     pub fn with_domultipass_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "domultipass".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35879,7 +39741,9 @@ impl SopMusclesolvervellum {
     pub fn with_usecollider_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usecollider".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35893,7 +39757,9 @@ impl SopMusclesolvervellum {
     pub fn with_animategeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "animategeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35907,7 +39773,9 @@ impl SopMusclesolvervellum {
     pub fn with_laserscan_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "laserscan".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35921,7 +39789,9 @@ impl SopMusclesolvervellum {
     pub fn with_fixsigns_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fixsigns".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35935,7 +39805,9 @@ impl SopMusclesolvervellum {
     pub fn with_forcebounds_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "forcebounds".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35949,7 +39821,9 @@ impl SopMusclesolvervellum {
     pub fn with_invert_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "invert".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35963,7 +39837,9 @@ impl SopMusclesolvervellum {
     pub fn with_vizfiberdirection_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vizfiberdirection".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35977,7 +39853,9 @@ impl SopMusclesolvervellum {
     pub fn with_enableboneguides_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableboneguides".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -35991,7 +39869,9 @@ impl SopMusclesolvervellum {
     pub fn with_enableviz_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enableviz".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36005,7 +39885,9 @@ impl SopMusclesolvervellum {
     pub fn with_enablecollisionviz_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablecollisionviz".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36019,7 +39901,9 @@ impl SopMusclesolvervellum {
     pub fn with_guidemuscletomuscle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscletomuscle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36033,7 +39917,9 @@ impl SopMusclesolvervellum {
     pub fn with_guidemuscleends_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscleends".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36047,7 +39933,9 @@ impl SopMusclesolvervellum {
     pub fn with_guidemuscletobone_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscletobone".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36061,7 +39949,9 @@ impl SopMusclesolvervellum {
     pub fn with_guidemuscleglue_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidemuscleglue".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36075,7 +39965,9 @@ impl SopMusclesolvervellum {
     pub fn with_displaycollisionguide_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaycollisionguide".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36089,7 +39981,9 @@ impl SopMusclesolvervellum {
     pub fn with_guidecollisionradius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidecollisionradius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36103,7 +39997,9 @@ impl SopMusclesolvervellum {
     pub fn with_guidefailedcollisions_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guidefailedcollisions".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36291,7 +40187,9 @@ impl SopMusclestrokebuilder {
     pub fn with_depth_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "depth".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36305,7 +40203,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_radius_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_radius".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36319,7 +40219,9 @@ impl SopMusclestrokebuilder {
     pub fn with_strokeprofilemin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokeprofilemin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36333,7 +40235,9 @@ impl SopMusclestrokebuilder {
     pub fn with_strokeprofilemax_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokeprofilemax".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36347,7 +40251,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_opacity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_opacity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36361,7 +40267,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_radius_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_radius", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36375,7 +40283,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_opacity_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_opacity", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36391,7 +40301,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_color_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_color".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36405,7 +40317,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_projcenter_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_projcenter".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36419,7 +40333,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_color_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_color", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36433,7 +40349,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_projcenter_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projcenter", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36447,7 +40365,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_projdir_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projdir", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36463,7 +40383,9 @@ impl SopMusclestrokebuilder {
     pub fn with_usen_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useN".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36477,7 +40399,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_tool_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_tool".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36491,7 +40415,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_tool_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_tool", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36505,7 +40431,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_projtype_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_projtype", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36521,7 +40449,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_projtype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_projtype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36537,7 +40467,9 @@ impl SopMusclestrokebuilder {
     pub fn with_strokeprofile_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strokeprofile".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36551,7 +40483,9 @@ impl SopMusclestrokebuilder {
     pub fn with_colorramp_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "colorramp".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36560,42 +40494,54 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_data_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("stroke{}_data", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_data_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_data", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_metadata_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("stroke{}_metadata", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_metadata_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_metadata", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_prompt(mut self, val: &str) -> Self {
         self.params.insert(
             "stroke_prompt".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_stroke_prompt_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "stroke_prompt".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36611,7 +40557,9 @@ impl SopMusclestrokebuilder {
     pub fn with_displayproxy_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displayproxy".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36625,7 +40573,9 @@ impl SopMusclestrokebuilder {
     pub fn with_stroke_enable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("stroke{}_enable", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36779,7 +40729,9 @@ impl SopMuscletensionlines {
     pub fn with_dist_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dist".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36793,7 +40745,9 @@ impl SopMuscletensionlines {
     pub fn with_seed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "seed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36807,7 +40761,9 @@ impl SopMuscletensionlines {
     pub fn with_mirrorval_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrorval".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36823,7 +40779,9 @@ impl SopMuscletensionlines {
     pub fn with_p0_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("p0_{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36837,7 +40795,9 @@ impl SopMuscletensionlines {
     pub fn with_p1_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("p1_{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36851,7 +40811,9 @@ impl SopMuscletensionlines {
     pub fn with_origin_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "origin".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36865,7 +40827,9 @@ impl SopMuscletensionlines {
     pub fn with_dir_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "dir".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36881,7 +40845,9 @@ impl SopMuscletensionlines {
     pub fn with_bonecolor_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bonecolor".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36897,7 +40863,9 @@ impl SopMuscletensionlines {
     pub fn with_curidx_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "curidx".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36911,7 +40879,9 @@ impl SopMuscletensionlines {
     pub fn with_tposeswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36925,7 +40895,9 @@ impl SopMuscletensionlines {
     pub fn with_tposeframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -36934,84 +40906,108 @@ impl SopMuscletensionlines {
     pub fn with_selectedids(mut self, val: &str) -> Self {
         self.params.insert(
             "selectedids".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_selectedids_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "selectedids".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_autoflex_id_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("autoflex_id{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_autoflex_id_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("autoflex_id{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tposeattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "tposeattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extralinename(mut self, val: &str) -> Self {
         self.params.insert(
             "extralinename".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_extralinename_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "extralinename".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorfromprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrorfromprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrorfromprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrorfromprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrortoprefix(mut self, val: &str) -> Self {
         self.params.insert(
             "mirrortoprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_mirrortoprefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirrortoprefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37027,7 +41023,9 @@ impl SopMuscletensionlines {
     pub fn with_enablesymmetry_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "enablesymmetry".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37041,7 +41039,9 @@ impl SopMuscletensionlines {
     pub fn with_usesymmetryhandle_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "usesymmetryhandle".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37055,7 +41055,9 @@ impl SopMuscletensionlines {
     pub fn with_guideswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "guideswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37069,7 +41071,9 @@ impl SopMuscletensionlines {
     pub fn with_displaybones_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaybones".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37083,7 +41087,9 @@ impl SopMuscletensionlines {
     pub fn with_displaylabel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaylabel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37097,7 +41103,9 @@ impl SopMuscletensionlines {
     pub fn with_displaylength_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaylength".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37111,7 +41119,9 @@ impl SopMuscletensionlines {
     pub fn with_displaylengthsel_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "displaylengthsel".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37275,7 +41285,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_minactive_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("minactive{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37289,7 +41301,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_maxactive_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("maxactive{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37303,7 +41317,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_falloffbias_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("falloffbias{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37317,7 +41333,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_display_width_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "display_width".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37331,7 +41349,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_seed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "seed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37345,7 +41365,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_labelseed_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "labelseed".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37361,7 +41383,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_bone_color_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bone_color".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37377,7 +41401,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_currenttab_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "currenttab".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37391,7 +41417,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_fontsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "fontsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37411,7 +41439,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_activationfalloff_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("activationfalloff{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37420,98 +41450,126 @@ impl SopMuscletensionlinesactivate {
     pub fn with_attribname(mut self, val: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_tablabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("tablabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("group{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_grouplabel_inst(mut self, index1: usize, val: &str) -> Self {
         self.params.insert(
             format!("grouplabel{}", index1),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_grouplabel_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("grouplabel{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_from_prefix(mut self, val: &str) -> Self {
         self.params.insert(
             "from_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_from_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "from_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_to_prefix(mut self, val: &str) -> Self {
         self.params.insert(
             "to_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_to_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "to_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bone_rest(mut self, val: &str) -> Self {
         self.params.insert(
             "bone_rest".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_bone_rest_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "bone_rest".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37527,7 +41585,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_overridevizforselect_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "overridevizforselect".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37541,7 +41601,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_enable_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("enable{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37555,7 +41617,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_activateextended_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("activateextended{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37569,7 +41633,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_useramp_inst_expr(mut self, index1: usize, expr: &str) -> Self {
         self.params.insert(
             format!("useramp{}", index1),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37583,7 +41649,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_strip_prefix_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "strip_prefix".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37597,7 +41665,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_mirroractivation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "mirroractivation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37611,7 +41681,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_allowbidirectional_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "allowbidirectional".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37625,7 +41697,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_deformlines_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "deformlines".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37639,7 +41713,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_isolatecurrent_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "isolatecurrent".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37653,7 +41729,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_display_bones_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "display_bones".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37667,7 +41745,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_display_activation_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "display_activation".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37681,7 +41761,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_copycoltosellines_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "copycoltosellines".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37695,7 +41777,9 @@ impl SopMuscletensionlinesactivate {
     pub fn with_hidemirrored_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "hidemirrored".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37851,7 +41935,9 @@ impl SopMuscletpose {
     pub fn with_setswitch_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "setswitch".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37865,7 +41951,9 @@ impl SopMuscletpose {
     pub fn with_initframe_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "initframe".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -37874,14 +41962,18 @@ impl SopMuscletpose {
     pub fn with_attribname(mut self, val: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_attribname_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "attribname".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38115,7 +42207,9 @@ impl SopMuscletransfer {
     pub fn with_thindensity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "thindensity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38129,7 +42223,9 @@ impl SopMuscletransfer {
     pub fn with_thickdensity_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "thickdensity".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38143,7 +42239,9 @@ impl SopMuscletransfer {
     pub fn with_minsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "minsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38157,7 +42255,9 @@ impl SopMuscletransfer {
     pub fn with_rigidxform_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rigidxform".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38171,7 +42271,9 @@ impl SopMuscletransfer {
     pub fn with_visblend_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "visblend".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38187,7 +42289,9 @@ impl SopMuscletransfer {
     pub fn with_iterations_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "iterations".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38201,7 +42305,9 @@ impl SopMuscletransfer {
     pub fn with_voxelres_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "voxelres".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38215,7 +42321,9 @@ impl SopMuscletransfer {
     pub fn with_smoothiters_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "smoothiters".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38229,7 +42337,9 @@ impl SopMuscletransfer {
     pub fn with_blur_volpreservingiters_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "blur_volpreservingiters".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38243,7 +42353,9 @@ impl SopMuscletransfer {
     pub fn with_pointcapture_minpoints_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "pointcapture_minpoints".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38259,7 +42371,9 @@ impl SopMuscletransfer {
     pub fn with_grouptype_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "grouptype".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38273,7 +42387,9 @@ impl SopMuscletransfer {
     pub fn with_remeshref_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remeshref".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38287,7 +42403,9 @@ impl SopMuscletransfer {
     pub fn with_deformmode_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "deformmode".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38301,7 +42419,9 @@ impl SopMuscletransfer {
     pub fn with_visualization_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "visualization".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38310,70 +42430,90 @@ impl SopMuscletransfer {
     pub fn with_group(mut self, val: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_group_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "group".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_refposattrib(mut self, val: &str) -> Self {
         self.params.insert(
             "refposattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_refposattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "refposattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_interiorgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "interiorgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_interiorgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "interiorgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigidgroup(mut self, val: &str) -> Self {
         self.params.insert(
             "rigidgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigidgroup_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rigidgroup".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigidmask(mut self, val: &str) -> Self {
         self.params.insert(
             "rigidmask".to_string(),
-            houdini_ramen_core::types::ParamValue::String(val.to_string()),
+            houdini_ramen_core::types::ParamValue::String(
+                val.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
     pub fn with_rigidmask_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "rigidmask".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38389,7 +42529,9 @@ impl SopMuscletransfer {
     pub fn with_remesh_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "remesh".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38403,7 +42545,9 @@ impl SopMuscletransfer {
     pub fn with_increaseemptymeshsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "increaseemptymeshsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38417,7 +42561,9 @@ impl SopMuscletransfer {
     pub fn with_vdbpreprocess_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "vdbpreprocess".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38431,7 +42577,9 @@ impl SopMuscletransfer {
     pub fn with_useinteriorgeo_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "useinteriorgeo".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38445,7 +42593,9 @@ impl SopMuscletransfer {
     pub fn with_userigidmaskattrib_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "userigidmaskattrib".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }
@@ -38459,7 +42609,9 @@ impl SopMuscletransfer {
     pub fn with_matchdestsize_expr(mut self, expr: &str) -> Self {
         self.params.insert(
             "matchdestsize".to_string(),
-            houdini_ramen_core::types::ParamValue::Expression(expr.to_string()),
+            houdini_ramen_core::types::ParamValue::Expression(
+                expr.replace("\r\n", "\n").replace('\r', "\n"),
+            ),
         );
         self
     }

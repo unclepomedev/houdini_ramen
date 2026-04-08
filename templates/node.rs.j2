@@ -116,7 +116,7 @@ impl {{ node.struct_name }} {
         self
     }
     pub fn with_{{ p.method_suffix }}_expr(mut self, {{ p.fn_args }}, expr: &str) -> Self {
-        self.params.insert(format!("{{ p.name | replace('#', '{}') }}", {{ p.format_args }}), houdini_ramen_core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert(format!("{{ p.name | replace('#', '{}') }}", {{ p.format_args }}), houdini_ramen_core::types::ParamValue::Expression(expr.replace("\r\n", "\n").replace('\r', "\n")));
         self
     }
     {% endif %}
@@ -132,7 +132,7 @@ impl {{ node.struct_name }} {
         self
     }
     pub fn with_{{ p.method_suffix }}_expr(mut self, expr: &str) -> Self {
-        self.params.insert("{{ p.name }}".to_string(), houdini_ramen_core::types::ParamValue::Expression(expr.to_string()));
+        self.params.insert("{{ p.name }}".to_string(), houdini_ramen_core::types::ParamValue::Expression(expr.replace("\r\n", "\n").replace('\r', "\n")));
         self
     }
     {% endif %}
