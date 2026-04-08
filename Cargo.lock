@@ -5,3 +5,180 @@ version = 4
 [[package]]
 name = "houdini_ramen"
 version = "0.0.2"
+dependencies = [
+ "houdini_ramen_chop",
+ "houdini_ramen_chopnet",
+ "houdini_ramen_cop",
+ "houdini_ramen_cop2",
+ "houdini_ramen_copnet",
+ "houdini_ramen_core",
+ "houdini_ramen_data",
+ "houdini_ramen_director",
+ "houdini_ramen_dop",
+ "houdini_ramen_driver",
+ "houdini_ramen_helpers",
+ "houdini_ramen_lop",
+ "houdini_ramen_manager",
+ "houdini_ramen_object",
+ "houdini_ramen_shop",
+ "houdini_ramen_sop",
+ "houdini_ramen_top",
+ "houdini_ramen_topnet",
+ "houdini_ramen_vop",
+ "houdini_ramen_vopnet",
+]
+
+[[package]]
+name = "houdini_ramen_chop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_chopnet"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_cop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_cop2"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_copnet"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_core"
+version = "0.0.2"
+
+[[package]]
+name = "houdini_ramen_data"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_director"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_dop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_driver"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_helpers"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_chop",
+ "houdini_ramen_chopnet",
+ "houdini_ramen_cop",
+ "houdini_ramen_cop2",
+ "houdini_ramen_copnet",
+ "houdini_ramen_core",
+ "houdini_ramen_data",
+ "houdini_ramen_director",
+ "houdini_ramen_dop",
+ "houdini_ramen_driver",
+ "houdini_ramen_lop",
+ "houdini_ramen_manager",
+ "houdini_ramen_object",
+ "houdini_ramen_shop",
+ "houdini_ramen_sop",
+ "houdini_ramen_top",
+ "houdini_ramen_topnet",
+ "houdini_ramen_vop",
+ "houdini_ramen_vopnet",
+]
+
+[[package]]
+name = "houdini_ramen_lop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_manager"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_object"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_shop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_sop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_top"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_topnet"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_vop"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]
+
+[[package]]
+name = "houdini_ramen_vopnet"
+version = "0.0.2"
+dependencies = [
+ "houdini_ramen_core",
+]

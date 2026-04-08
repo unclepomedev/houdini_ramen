@@ -1,6 +1,6 @@
-use crate::core::graph::NodeGraph;
-use crate::core::types::HoudiniNode;
-use crate::generated::sop::{SopBlockBegin, SopBlockEnd};
+use houdini_ramen_core::graph::NodeGraph;
+use houdini_ramen_core::types::HoudiniNode;
+use houdini_ramen_sop::{SopBlockBegin, SopBlockEnd};
 
 pub fn add_foreach_loop<F, N, I>(
     graph: &mut NodeGraph,
@@ -34,7 +34,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::generated::sop::SopBox;
+    use houdini_ramen_sop::SopBox;
 
     #[test]
     fn test_foreach_loop_generation() {

@@ -1,15 +1,14 @@
 use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::types::ContainerType::Geo;
-use houdini_ramen::generated::sop::a::SopAttribwrangle;
-use houdini_ramen::generated::sop::b::SopBox;
 use houdini_ramen::helpers::loops::add_foreach_loop;
 
 use houdini_ramen::core::types::{
     NODE_ID_COUNTER, RampInterpolation, RampPoint, SpareFloat, SpareInt,
 };
-use houdini_ramen::generated::sop::{
-    SopAttribwrangleClass, SopColor, SopColorColortype, SopConvertvdb, SopConvertvdbConversion,
-    SopConvertvdbVdbclass, SopPointwrangle, SopVdbsmoothsdf, SopVolume, SopVolumewrangle,
+use houdini_ramen_sop::{
+    SopAttribwrangle, SopAttribwrangleClass, SopBox, SopColor, SopColorColortype, SopConvertvdb,
+    SopConvertvdbConversion, SopConvertvdbVdbclass, SopPointwrangle, SopVdbsmoothsdf, SopVolume,
+    SopVolumewrangle,
 };
 use std::sync::Mutex;
 use std::sync::atomic::Ordering;
