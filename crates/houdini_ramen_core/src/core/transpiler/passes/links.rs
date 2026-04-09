@@ -1,7 +1,6 @@
+use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::builder::PythonBuilder;
-use crate::core::types::HoudiniNode;
-use crate::py_escape::escape_py_key;
-use crate::types::OutputPin;
+use crate::core::types::{HoudiniNode, OutputPin};
 use std::collections::HashMap;
 
 pub fn write_link_pass(
@@ -58,14 +57,21 @@ fn write_single_link(
     id_to_var: &HashMap<usize, String>,
 ) {
     if let Some(target_var) = id_to_var.get(&target_id) {
-        let out_str = match target_out_pin {
-            OutputPin::Index(i) => i.to_string(),
-            OutputPin::Name(n) => format!("'{}'", escape_py_key(n)),
-        };
-        builder.line(&format!(
-            "{}.setInput({}, {}, {})",
-            var_name, input_idx, target_var, out_str
-        ));
+        match target_out_pin {
+            OutputPin::Index(idx) => {
+                builder.line(&format!(
+                    "{}.setInput({}, {}, {})",
+                    var_name, input_idx, target_var, idx
+                ));
+            }
+            OutputPin::Name(name) => {
+                let safe_name = python_string_literal(name);
+                builder.line(&format!(
+                    "try:\n    _out_idx = {}.outputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr({}) + ' on ' + {}.path())\n{}.setInput({}, {}, _out_idx)",
+                    target_var, safe_name, safe_name, target_var, var_name, input_idx, target_var
+                ));
+            }
+        }
     } else {
         emit_warning(
             builder,
