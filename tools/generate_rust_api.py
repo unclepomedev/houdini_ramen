@@ -366,8 +366,8 @@ def _parse_outputs(
         safe_v_name = to_safe_ident(pascal_case(raw_name))
         v_name = out_resolver.resolve(safe_v_name)
 
-        safe_m_name = to_safe_ident(snake_case(raw_name))
-        m_name = method_resolver.resolve(safe_m_name)
+        base_m_name = snake_case(raw_name)
+        m_name = method_resolver.resolve(base_m_name)
 
         variants.append(
             ParsedOutput(
