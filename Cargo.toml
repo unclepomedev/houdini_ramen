@@ -12,7 +12,17 @@ repository = "https://github.com/unclepomedev/houdini_ramen"
 rust-version = "1.94"
 
 [workspace.dependencies]
-houdini_ramen_core = { path = "crates/houdini_ramen_core" }
+houdini_ramen_core = { version = "0.0.3", path = "crates/houdini_ramen_core" }
+houdini_ramen_chop = { version = "0.0.3", path = "crates/houdini_ramen_chop" }
+houdini_ramen_cop2 = { version = "0.0.3", path = "crates/houdini_ramen_cop2" }
+houdini_ramen_dop = { version = "0.0.3", path = "crates/houdini_ramen_dop" }
+houdini_ramen_driver = { version = "0.0.3", path = "crates/houdini_ramen_driver" }
+houdini_ramen_lop = { version = "0.0.3", path = "crates/houdini_ramen_lop" }
+houdini_ramen_object = { version = "0.0.3", path = "crates/houdini_ramen_object" }
+houdini_ramen_sop = { version = "0.0.3", path = "crates/houdini_ramen_sop" }
+houdini_ramen_top = { version = "0.0.3", path = "crates/houdini_ramen_top" }
+houdini_ramen_vop = { version = "0.0.3", path = "crates/houdini_ramen_vop" }
+houdini_ramen_helpers = { version = "0.0.3", path = "crates/houdini_ramen_helpers" }
 
 [package]
 name = "houdini_ramen"
@@ -32,16 +42,16 @@ include = [
 
 [dependencies]
 houdini_ramen_core = { workspace = true }
-houdini_ramen_chop = { path = "crates/houdini_ramen_chop", optional = true }
-houdini_ramen_cop2 = { path = "crates/houdini_ramen_cop2", optional = true }
-houdini_ramen_dop = { path = "crates/houdini_ramen_dop", optional = true }
-houdini_ramen_driver = { path = "crates/houdini_ramen_driver", optional = true }
-houdini_ramen_lop = { path = "crates/houdini_ramen_lop", optional = true }
-houdini_ramen_object = { path = "crates/houdini_ramen_object", optional = true }
-houdini_ramen_sop = { path = "crates/houdini_ramen_sop", optional = true }
-houdini_ramen_top = { path = "crates/houdini_ramen_top", optional = true }
-houdini_ramen_vop = { path = "crates/houdini_ramen_vop", optional = true }
-houdini_ramen_helpers = { path = "crates/houdini_ramen_helpers", optional = true }
+houdini_ramen_chop = { workspace = true, optional = true }
+houdini_ramen_cop2 = { workspace = true, optional = true }
+houdini_ramen_dop = { workspace = true, optional = true }
+houdini_ramen_driver = { workspace = true, optional = true }
+houdini_ramen_lop = { workspace = true, optional = true }
+houdini_ramen_object = { workspace = true, optional = true }
+houdini_ramen_sop = { workspace = true, optional = true }
+houdini_ramen_top = { workspace = true, optional = true }
+houdini_ramen_vop = { workspace = true, optional = true }
+houdini_ramen_helpers = { workspace = true, optional = true }
 
 [features]
 default = [

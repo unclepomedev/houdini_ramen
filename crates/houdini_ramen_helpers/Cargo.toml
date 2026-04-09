@@ -10,12 +10,12 @@ repository.workspace = true
 [dependencies]
 houdini_ramen_core = { workspace = true }
 
-houdini_ramen_chop = { path = "../houdini_ramen_chop" }
-houdini_ramen_cop2 = { path = "../houdini_ramen_cop2" }
-houdini_ramen_dop = { path = "../houdini_ramen_dop" }
-houdini_ramen_driver = { path = "../houdini_ramen_driver" }
-houdini_ramen_lop = { path = "../houdini_ramen_lop" }
-houdini_ramen_object = { path = "../houdini_ramen_object" }
-houdini_ramen_sop = { path = "../houdini_ramen_sop" }
-houdini_ramen_top = { path = "../houdini_ramen_top" }
-houdini_ramen_vop = { path = "../houdini_ramen_vop" }
+houdini_ramen_chop = { workspace = true }
+houdini_ramen_cop2 = { workspace = true }
+houdini_ramen_dop = { workspace = true }
+houdini_ramen_driver = { workspace = true }
+houdini_ramen_lop = { workspace = true }
+houdini_ramen_object = { workspace = true }
+houdini_ramen_sop = { workspace = true }
+houdini_ramen_top = { workspace = true }
+houdini_ramen_vop = { workspace = true }
