@@ -1,37 +1,24 @@
-{% from 'macros.j2' import normalize_label_name %}
 {% for e in node.enums %}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum {{ e.enum_name }} {
     {% for v in e.variants %}
-{% if v.doc_label %}{{ normalize_label_name(v) }}{% endif %}    {{ v.name }} = {{ v.value }},
+    {{ v.name }},
     {% endfor %}
 }
-
 {% endfor %}
 pub struct {{ node.struct_name }};
 
 impl {{ node.struct_name }} {
     pub fn new(name: &str) -> Self;
-
-    // --- Spare Parameters ---
     pub fn add_spare<S: Into<houdini_ramen_core::types::SpareParam>>(self, spare: S) -> Self;
 
     {% if node.max_inputs > 0 %}
-    // --- Inputs ---
-    pub fn set_input_at<N: houdini_ramen_core::types::HoudiniNode>(self, index: usize, target: &N) -> Self;
-    pub fn set_input_at_from<N: houdini_ramen_core::types::HoudiniNode>(self, index: usize, target: &N, output_index: usize) -> Self;
-
+    pub fn set_input_at<O: Into<houdini_ramen_core::types::NodeOutput>>(self, index: usize, output: O) -> Self;
     {% if node.max_inputs >= 9999 %}
-    pub fn add_input<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N) -> Self;
-    pub fn add_input_from<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
     {% else %}
-    pub fn set_input<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N) -> Self;
-    pub fn set_input_from<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
     {% for inp in node.inputs %}
-    /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}"
-    pub fn set_input_{{ inp.safe_name }}<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N) -> Self;
-    /// Connects to input {{ inp.index }}: "{{ inp.doc_label }}" and specifies the output index of the target node.
-    pub fn set_input_{{ inp.safe_name }}_from<N: houdini_ramen_core::types::HoudiniNode>(self, target: &N, output_index: usize) -> Self;
+    pub fn set_{{ inp.safe_name }}_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
     {% endfor %}
     {% endif %}
     {% endif %}
@@ -39,8 +26,6 @@ impl {{ node.struct_name }} {
     {% set ns = namespace(last_variant='') %}
     {% for p in node.params | sort(attribute='enum_variant') %}
     {% if p.enum_variant != ns.last_variant %}
-
-    // --- {{ p.enum_variant }} parameters ---
     {% set ns.last_variant = p.enum_variant %}
     {% endif %}
     {% if p.is_multiparm %}
@@ -61,28 +46,18 @@ impl {{ node.struct_name }} {
     {% endfor %}
 }
 
-impl houdini_ramen_core::types::HoudiniNode for {{ node.struct_name }} {
-    fn get_id(&self) -> usize;
-    fn get_name(&self) -> &str;
-    fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &std::collections::BTreeMap<usize, (usize, usize)>;
-    fn get_params(&self) -> &std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>;
-    fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam];
-    {% if node.dive_target %}
-    fn get_dive_target(&self) -> Option<&'static str>;
-    {% endif %}
+{% if node.output_enum %}
+pub trait {{ node.struct_name }}Outputs {
+    {% for v in node.output_enum.variants %}
+    fn out_{{ v.method_name | replace('r#', '') }}(&self) -> houdini_ramen_core::types::NodeOutput;
+    {% endfor %}
 }
+{% endif %}
+
 {% if node.inner_methods %}
 pub trait {{ node.struct_name }}InnerExt {
     {% for m in node.inner_methods %}
     fn {{ m.method_name }}(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef;
-    {% endfor %}
-}
-impl<'a> {{ node.struct_name }}InnerExt for houdini_ramen_core::graph::InnerGraph<'a, {{ node.struct_name }}> {
-    {% for m in node.inner_methods %}
-    fn {{ m.method_name }}(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
-        self.existing_node("{{ m.rel_path }}")
-    }
     {% endfor %}
 }
 {% endif %}

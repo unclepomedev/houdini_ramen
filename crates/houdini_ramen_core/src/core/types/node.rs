@@ -2,17 +2,54 @@ use crate::core::types::param::ParamValue;
 use crate::core::types::spare::SpareParam;
 use std::collections::{BTreeMap, HashMap};
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum OutputPin {
+    Index(usize),
+    Name(String),
+}
+
+impl From<usize> for OutputPin {
+    fn from(idx: usize) -> Self {
+        OutputPin::Index(idx)
+    }
+}
+impl From<&str> for OutputPin {
+    fn from(name: &str) -> Self {
+        OutputPin::Name(name.to_string())
+    }
+}
+impl From<String> for OutputPin {
+    fn from(name: String) -> Self {
+        OutputPin::Name(name)
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct NodeOutput {
+    pub node_id: usize,
+    pub pin: OutputPin,
+}
+
 pub trait HoudiniNode {
     fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, usize)>;
+    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)>;
     fn get_params(&self) -> &HashMap<String, ParamValue>;
     fn get_spare_params(&self) -> &[SpareParam] {
         &[]
     }
     fn get_dive_target(&self) -> Option<&'static str> {
         None
+    }
+}
+
+impl<T: HoudiniNode> From<&T> for NodeOutput {
+    fn from(node: &T) -> Self {
+        NodeOutput {
+            node_id: node.get_id(),
+            pin: OutputPin::Index(0),
+        }
     }
 }
 
