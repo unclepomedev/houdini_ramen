@@ -1,4 +1,4 @@
-use crate::core::py_escape::escape_py_key;
+use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::{HoudiniNode, OutputPin};
 use std::collections::HashMap;
@@ -65,10 +65,10 @@ fn write_single_link(
                 ));
             }
             OutputPin::Name(name) => {
-                let safe_name = escape_py_key(name);
+                let safe_name = python_string_literal(name);
                 builder.line(&format!(
-                    "try:\n    {}.setInput({}, {}, {}.outputIndex('{}'))\nexcept hou.OperationFailed:\n    print(f\"Warning: Could not resolve output pin '{}' on {{{}.path()}}\")",
-                    var_name, input_idx, target_var, target_var, safe_name, safe_name, target_var
+                    "_out_idx = {}.outputIndex({})\n{}.setInput({}, {}, _out_idx)",
+                    target_var, safe_name, var_name, input_idx, target_var
                 ));
             }
         }
