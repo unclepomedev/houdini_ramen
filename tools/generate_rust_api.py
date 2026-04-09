@@ -359,6 +359,7 @@ def _parse_outputs(
         raw_name = out.get("name", "")
         if not raw_name:
             continue
+        raw_name = str(raw_name)
 
         raw_label = out.get("label", raw_name)
         clean_doc = re.sub(r"\s+", " ", raw_label).strip()
@@ -372,7 +373,7 @@ def _parse_outputs(
         variants.append(
             ParsedOutput(
                 variant_name=v_name,
-                raw_name=raw_name,
+                raw_name=safe_rust_string(raw_name),
                 doc_label=clean_doc,
                 method_name=m_name,
             )
