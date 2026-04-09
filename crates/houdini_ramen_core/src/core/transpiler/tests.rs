@@ -818,7 +818,8 @@ fn test_named_output_pin_wiring() {
 
     let script = transpiler.generate_script().unwrap();
 
-    assert!(script.contains("_out_idx = n_source_3001.outputIndex(\"force\")"));
+    assert!(script.contains("try:\n    _out_idx = n_source_3001.outputIndex(\"force\")"));
+    assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr(\"force\") + ' on ' + n_source_3001.path())"));
     assert!(script.contains("n_target_3002.setInput(0, n_source_3001, _out_idx)"));
 }
 

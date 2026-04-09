@@ -67,8 +67,8 @@ fn write_single_link(
             OutputPin::Name(name) => {
                 let safe_name = python_string_literal(name);
                 builder.line(&format!(
-                    "_out_idx = {}.outputIndex({})\n{}.setInput({}, {}, _out_idx)",
-                    target_var, safe_name, var_name, input_idx, target_var
+                    "try:\n    _out_idx = {}.outputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr({}) + ' on ' + {}.path())\n{}.setInput({}, {}, _out_idx)",
+                    target_var, safe_name, safe_name, target_var, var_name, input_idx, target_var
                 ));
             }
         }

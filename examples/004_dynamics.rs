@@ -37,7 +37,7 @@ fn main() {
                 .typed_as::<VopGeometryvopglobal>();
             let out1 = vop_graph.geometryvopoutput1();
 
-            let add1 = vop_graph.add(VopAdd::new("add1").set_input(in1.out_force()));
+            let add1 = vop_graph.add(VopAdd::new("add1").set_input(in1.out_p()));
 
             vop_graph.connect_existing(&out1, 0, &add1);
         });
