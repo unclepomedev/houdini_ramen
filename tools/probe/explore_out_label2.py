@@ -51,9 +51,7 @@ class TempNodeManager:
                 try:
                     node.destroy()
                 except Exception as e:
-                    logger.debug(
-                        f"Failed to destroy temp parent for '{cat_name}': {e}"
-                    )
+                    logger.debug(f"Failed to destroy temp parent for '{cat_name}': {e}")
         self.parents.clear()
 
 

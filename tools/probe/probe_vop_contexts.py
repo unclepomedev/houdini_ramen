@@ -31,7 +31,9 @@ class VopContextManager:
             if mat_node is not None:
                 self.contexts["matnet (Shading)"] = mat_node
             else:
-                logger.warning("hou.node('/mat') returned None, skipping matnet context")
+                logger.warning(
+                    "hou.node('/mat') returned None, skipping matnet context"
+                )
         except Exception as e:
             logger.error(f"MAT context setup failed: {e}")
 
@@ -155,15 +157,30 @@ def probe_vop_contexts():
                     break
 
                 except hou.OperationFailed:
-                    logger.debug("OperationFailed for '%s' in context '%s'", node_type_name, ctx_name, exc_info=True)
+                    logger.debug(
+                        "OperationFailed for '%s' in context '%s'",
+                        node_type_name,
+                        ctx_name,
+                        exc_info=True,
+                    )
                 except Exception:
-                    logger.debug("Unexpected error for '%s' in context '%s'", node_type_name, ctx_name, exc_info=True)
+                    logger.debug(
+                        "Unexpected error for '%s' in context '%s'",
+                        node_type_name,
+                        ctx_name,
+                        exc_info=True,
+                    )
                 finally:
                     if temp_node:
                         try:
                             temp_node.destroy()
                         except Exception:
-                            logger.debug("failed to destroy temp node '%s' in context '%s'", node_type_name, ctx_name, exc_info=True)
+                            logger.debug(
+                                "failed to destroy temp node '%s' in context '%s'",
+                                node_type_name,
+                                ctx_name,
+                                exc_info=True,
+                            )
 
             if not success:
                 report["summary"]["failed_all"] += 1
