@@ -570,6 +570,10 @@ impl DriverNull {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -581,6 +585,8 @@ impl DriverNull {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),

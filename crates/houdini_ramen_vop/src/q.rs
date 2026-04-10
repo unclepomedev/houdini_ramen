@@ -54,6 +54,10 @@ impl VopQconjugate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternion".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -65,6 +69,8 @@ impl VopQconjugate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternion".to_string()),
             (out.node_id, out.pin),
@@ -170,6 +176,10 @@ impl VopQdistance {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternionA".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -181,6 +191,8 @@ impl VopQdistance {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternionA".to_string()),
             (out.node_id, out.pin),
@@ -192,6 +204,10 @@ impl VopQdistance {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternionB".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -203,6 +219,8 @@ impl VopQdistance {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternionB".to_string()),
             (out.node_id, out.pin),
@@ -308,6 +326,10 @@ impl VopQinvert {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternion".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -319,6 +341,8 @@ impl VopQinvert {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternion".to_string()),
             (out.node_id, out.pin),
@@ -424,6 +448,10 @@ impl VopQmultiply {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternionA".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -435,6 +463,8 @@ impl VopQmultiply {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternionA".to_string()),
             (out.node_id, out.pin),
@@ -446,6 +476,10 @@ impl VopQmultiply {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternionB".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -457,6 +491,8 @@ impl VopQmultiply {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternionB".to_string()),
             (out.node_id, out.pin),
@@ -562,6 +598,10 @@ impl VopQrotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quaternion".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -573,6 +613,8 @@ impl VopQrotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quaternion".to_string()),
             (out.node_id, out.pin),
@@ -584,6 +626,10 @@ impl VopQrotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "vec".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -595,6 +641,8 @@ impl VopQrotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("vec".to_string()),
             (out.node_id, out.pin),
@@ -700,6 +748,10 @@ impl VopQuaternion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "angle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -711,6 +763,8 @@ impl VopQuaternion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("angle".to_string()),
             (out.node_id, out.pin),
@@ -722,6 +776,10 @@ impl VopQuaternion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "axis".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -733,6 +791,8 @@ impl VopQuaternion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("axis".to_string()),
             (out.node_id, out.pin),
@@ -881,6 +941,10 @@ impl VopQuattoeuler {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quat".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -892,6 +956,8 @@ impl VopQuattoeuler {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quat".to_string()),
             (out.node_id, out.pin),
@@ -903,6 +969,10 @@ impl VopQuattoeuler {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "xyz".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -914,6 +984,8 @@ impl VopQuattoeuler {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("xyz".to_string()),
             (out.node_id, out.pin),
@@ -1052,6 +1124,10 @@ impl VopQuattomatx {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quat".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1063,6 +1139,8 @@ impl VopQuattomatx {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quat".to_string()),
             (out.node_id, out.pin),
@@ -1168,6 +1246,10 @@ impl VopQuattovec {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "quat".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1179,6 +1261,8 @@ impl VopQuattovec {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("quat".to_string()),
             (out.node_id, out.pin),

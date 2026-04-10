@@ -698,6 +698,10 @@ impl DopFemattachconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -709,6 +713,8 @@ impl DopFemattachconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -1405,6 +1411,10 @@ impl DopFemfuseconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1416,6 +1426,8 @@ impl DopFemfuseconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -1846,6 +1858,10 @@ impl DopFemhybridconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1857,6 +1873,8 @@ impl DopFemhybridconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -4586,6 +4604,10 @@ impl DopFemregionconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -4597,6 +4619,8 @@ impl DopFemregionconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -5116,6 +5140,10 @@ impl DopFemslideconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -5127,6 +5155,8 @@ impl DopFemslideconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -5898,6 +5928,10 @@ impl DopFemsolidconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -5909,6 +5943,8 @@ impl DopFemsolidconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -8186,6 +8222,10 @@ impl DopFemsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -8197,6 +8237,8 @@ impl DopFemsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -9580,6 +9622,10 @@ impl DopFemtargetconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9591,6 +9637,8 @@ impl DopFemtargetconstraint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -9959,6 +10007,10 @@ impl DopFeoutputattributes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9970,6 +10022,8 @@ impl DopFeoutputattributes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -11553,6 +11607,10 @@ impl DopFilamentsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -11564,6 +11622,8 @@ impl DopFilamentsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -11575,6 +11635,10 @@ impl DopFilamentsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -11586,6 +11650,8 @@ impl DopFilamentsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -11597,6 +11663,10 @@ impl DopFilamentsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input3".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -11608,6 +11678,8 @@ impl DopFilamentsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input3".to_string()),
             (out.node_id, out.pin),
@@ -11969,6 +12041,10 @@ impl DopFile {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -11980,6 +12056,8 @@ impl DopFile {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -12778,6 +12856,10 @@ impl DopFlipconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -12789,6 +12871,8 @@ impl DopFlipconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -20065,6 +20149,10 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -20076,6 +20164,8 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -20087,6 +20177,10 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -20098,6 +20192,8 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -20109,6 +20205,10 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input3".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -20120,6 +20220,8 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input3".to_string()),
             (out.node_id, out.pin),
@@ -20131,6 +20233,10 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input4".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -20142,6 +20248,8 @@ impl DopFlipsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input4".to_string()),
             (out.node_id, out.pin),
@@ -22873,6 +22981,10 @@ impl DopFluidconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -22884,6 +22996,8 @@ impl DopFluidconfigureobject {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -25305,6 +25419,10 @@ impl DopFluidforce {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -25316,6 +25434,8 @@ impl DopFluidforce {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -25327,6 +25447,10 @@ impl DopFluidforce {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -25338,6 +25462,8 @@ impl DopFluidforce {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -28469,6 +28595,10 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -28480,6 +28610,8 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -28491,6 +28623,10 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -28502,6 +28638,8 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -28513,6 +28651,10 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input3".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -28524,6 +28666,8 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input3".to_string()),
             (out.node_id, out.pin),
@@ -28535,6 +28679,10 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input4".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -28546,6 +28694,8 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input4".to_string()),
             (out.node_id, out.pin),
@@ -28557,6 +28707,10 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input5".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -28568,6 +28722,8 @@ impl DopFluidsolver {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input5".to_string()),
             (out.node_id, out.pin),

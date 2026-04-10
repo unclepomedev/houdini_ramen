@@ -54,6 +54,10 @@ impl LopCache {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -65,6 +69,8 @@ impl LopCache {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -349,6 +355,10 @@ impl LopCamera {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -360,6 +370,8 @@ impl LopCamera {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -1826,6 +1838,10 @@ impl LopCapsule {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1837,6 +1853,8 @@ impl LopCapsule {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -2745,6 +2763,10 @@ impl LopCollection {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -2756,6 +2778,8 @@ impl LopCollection {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -4114,6 +4138,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -4125,6 +4153,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -4136,6 +4166,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -4147,6 +4181,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -4158,6 +4194,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input3".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -4169,6 +4209,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input3".to_string()),
             (out.node_id, out.pin),
@@ -4180,6 +4222,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input4".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -4191,6 +4237,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input4".to_string()),
             (out.node_id, out.pin),
@@ -4202,6 +4250,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input5".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -4213,6 +4265,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input5".to_string()),
             (out.node_id, out.pin),
@@ -4224,6 +4278,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input6".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -4235,6 +4293,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input6".to_string()),
             (out.node_id, out.pin),
@@ -4246,6 +4306,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input7".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -4257,6 +4321,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input7".to_string()),
             (out.node_id, out.pin),
@@ -4268,6 +4334,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input8".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -4279,6 +4349,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input8".to_string()),
             (out.node_id, out.pin),
@@ -4290,6 +4362,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input9".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -4301,6 +4377,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input9".to_string()),
             (out.node_id, out.pin),
@@ -4312,6 +4390,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input10".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -4323,6 +4405,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input10".to_string()),
             (out.node_id, out.pin),
@@ -4334,6 +4418,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input11".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -4345,6 +4433,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input11".to_string()),
             (out.node_id, out.pin),
@@ -4356,6 +4446,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input12".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -4367,6 +4461,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input12".to_string()),
             (out.node_id, out.pin),
@@ -4378,6 +4474,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input13".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(12),
             (out.node_id, out.pin),
@@ -4389,6 +4489,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(12));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input13".to_string()),
             (out.node_id, out.pin),
@@ -4400,6 +4502,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input14".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(13),
             (out.node_id, out.pin),
@@ -4411,6 +4517,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(13));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input14".to_string()),
             (out.node_id, out.pin),
@@ -4422,6 +4530,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input15".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(14),
             (out.node_id, out.pin),
@@ -4433,6 +4545,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(14));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input15".to_string()),
             (out.node_id, out.pin),
@@ -4444,6 +4558,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input16".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(15),
             (out.node_id, out.pin),
@@ -4455,6 +4573,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(15));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input16".to_string()),
             (out.node_id, out.pin),
@@ -4466,6 +4586,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input17".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(16),
             (out.node_id, out.pin),
@@ -4477,6 +4601,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(16));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input17".to_string()),
             (out.node_id, out.pin),
@@ -4488,6 +4614,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input18".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(17),
             (out.node_id, out.pin),
@@ -4499,6 +4629,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(17));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input18".to_string()),
             (out.node_id, out.pin),
@@ -4510,6 +4642,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input19".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(18),
             (out.node_id, out.pin),
@@ -4521,6 +4657,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(18));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input19".to_string()),
             (out.node_id, out.pin),
@@ -4532,6 +4670,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input20".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(19),
             (out.node_id, out.pin),
@@ -4543,6 +4685,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(19));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input20".to_string()),
             (out.node_id, out.pin),
@@ -4554,6 +4698,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input21".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(20),
             (out.node_id, out.pin),
@@ -4565,6 +4713,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(20));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input21".to_string()),
             (out.node_id, out.pin),
@@ -4576,6 +4726,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input22".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(21),
             (out.node_id, out.pin),
@@ -4587,6 +4741,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(21));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input22".to_string()),
             (out.node_id, out.pin),
@@ -4598,6 +4754,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input23".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(22),
             (out.node_id, out.pin),
@@ -4609,6 +4769,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(22));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input23".to_string()),
             (out.node_id, out.pin),
@@ -4620,6 +4782,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input24".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(23),
             (out.node_id, out.pin),
@@ -4631,6 +4797,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(23));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input24".to_string()),
             (out.node_id, out.pin),
@@ -4642,6 +4810,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input25".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(24),
             (out.node_id, out.pin),
@@ -4653,6 +4825,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(24));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input25".to_string()),
             (out.node_id, out.pin),
@@ -4664,6 +4838,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input26".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(25),
             (out.node_id, out.pin),
@@ -4675,6 +4853,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(25));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input26".to_string()),
             (out.node_id, out.pin),
@@ -4686,6 +4866,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input27".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(26),
             (out.node_id, out.pin),
@@ -4697,6 +4881,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(26));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input27".to_string()),
             (out.node_id, out.pin),
@@ -4708,6 +4894,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input28".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(27),
             (out.node_id, out.pin),
@@ -4719,6 +4909,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(27));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input28".to_string()),
             (out.node_id, out.pin),
@@ -4730,6 +4922,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input29".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(28),
             (out.node_id, out.pin),
@@ -4741,6 +4937,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(28));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input29".to_string()),
             (out.node_id, out.pin),
@@ -4752,6 +4950,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input30".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(29),
             (out.node_id, out.pin),
@@ -4763,6 +4965,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(29));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input30".to_string()),
             (out.node_id, out.pin),
@@ -4774,6 +4978,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input31".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(30),
             (out.node_id, out.pin),
@@ -4785,6 +4993,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(30));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input31".to_string()),
             (out.node_id, out.pin),
@@ -4796,6 +5006,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input32".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(31),
             (out.node_id, out.pin),
@@ -4807,6 +5021,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(31));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input32".to_string()),
             (out.node_id, out.pin),
@@ -4818,6 +5034,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input33".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(32),
             (out.node_id, out.pin),
@@ -4829,6 +5049,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(32));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input33".to_string()),
             (out.node_id, out.pin),
@@ -4840,6 +5062,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input34".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(33),
             (out.node_id, out.pin),
@@ -4851,6 +5077,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(33));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input34".to_string()),
             (out.node_id, out.pin),
@@ -4862,6 +5090,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input35".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(34),
             (out.node_id, out.pin),
@@ -4873,6 +5105,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(34));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input35".to_string()),
             (out.node_id, out.pin),
@@ -4884,6 +5118,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input36".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(35),
             (out.node_id, out.pin),
@@ -4895,6 +5133,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(35));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input36".to_string()),
             (out.node_id, out.pin),
@@ -4906,6 +5146,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input37".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(36),
             (out.node_id, out.pin),
@@ -4917,6 +5161,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(36));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input37".to_string()),
             (out.node_id, out.pin),
@@ -4928,6 +5174,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input38".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(37),
             (out.node_id, out.pin),
@@ -4939,6 +5189,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(37));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input38".to_string()),
             (out.node_id, out.pin),
@@ -4950,6 +5202,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input39".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(38),
             (out.node_id, out.pin),
@@ -4961,6 +5217,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(38));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input39".to_string()),
             (out.node_id, out.pin),
@@ -4972,6 +5230,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input40".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(39),
             (out.node_id, out.pin),
@@ -4983,6 +5245,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(39));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input40".to_string()),
             (out.node_id, out.pin),
@@ -4994,6 +5258,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input41".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(40),
             (out.node_id, out.pin),
@@ -5005,6 +5273,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(40));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input41".to_string()),
             (out.node_id, out.pin),
@@ -5016,6 +5286,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input42".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(41),
             (out.node_id, out.pin),
@@ -5027,6 +5301,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(41));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input42".to_string()),
             (out.node_id, out.pin),
@@ -5038,6 +5314,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input43".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(42),
             (out.node_id, out.pin),
@@ -5049,6 +5329,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(42));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input43".to_string()),
             (out.node_id, out.pin),
@@ -5060,6 +5342,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input44".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(43),
             (out.node_id, out.pin),
@@ -5071,6 +5357,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(43));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input44".to_string()),
             (out.node_id, out.pin),
@@ -5082,6 +5370,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input45".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(44),
             (out.node_id, out.pin),
@@ -5093,6 +5385,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(44));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input45".to_string()),
             (out.node_id, out.pin),
@@ -5104,6 +5398,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input46".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(45),
             (out.node_id, out.pin),
@@ -5115,6 +5413,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(45));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input46".to_string()),
             (out.node_id, out.pin),
@@ -5126,6 +5426,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input47".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(46),
             (out.node_id, out.pin),
@@ -5137,6 +5441,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(46));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input47".to_string()),
             (out.node_id, out.pin),
@@ -5148,6 +5454,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input48".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(47),
             (out.node_id, out.pin),
@@ -5159,6 +5469,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(47));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input48".to_string()),
             (out.node_id, out.pin),
@@ -5170,6 +5482,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input49".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(48),
             (out.node_id, out.pin),
@@ -5181,6 +5497,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(48));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input49".to_string()),
             (out.node_id, out.pin),
@@ -5192,6 +5510,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input50".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(49),
             (out.node_id, out.pin),
@@ -5203,6 +5525,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(49));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input50".to_string()),
             (out.node_id, out.pin),
@@ -5214,6 +5538,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input51".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(50),
             (out.node_id, out.pin),
@@ -5225,6 +5553,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(50));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input51".to_string()),
             (out.node_id, out.pin),
@@ -5236,6 +5566,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input52".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(51),
             (out.node_id, out.pin),
@@ -5247,6 +5581,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(51));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input52".to_string()),
             (out.node_id, out.pin),
@@ -5258,6 +5594,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input53".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(52),
             (out.node_id, out.pin),
@@ -5269,6 +5609,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(52));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input53".to_string()),
             (out.node_id, out.pin),
@@ -5280,6 +5622,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input54".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(53),
             (out.node_id, out.pin),
@@ -5291,6 +5637,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(53));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input54".to_string()),
             (out.node_id, out.pin),
@@ -5302,6 +5650,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input55".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(54),
             (out.node_id, out.pin),
@@ -5313,6 +5665,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(54));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input55".to_string()),
             (out.node_id, out.pin),
@@ -5324,6 +5678,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input56".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(55),
             (out.node_id, out.pin),
@@ -5335,6 +5693,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(55));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input56".to_string()),
             (out.node_id, out.pin),
@@ -5346,6 +5706,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input57".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(56),
             (out.node_id, out.pin),
@@ -5357,6 +5721,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(56));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input57".to_string()),
             (out.node_id, out.pin),
@@ -5368,6 +5734,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input58".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(57),
             (out.node_id, out.pin),
@@ -5379,6 +5749,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(57));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input58".to_string()),
             (out.node_id, out.pin),
@@ -5390,6 +5762,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input59".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(58),
             (out.node_id, out.pin),
@@ -5401,6 +5777,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(58));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input59".to_string()),
             (out.node_id, out.pin),
@@ -5412,6 +5790,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input60".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(59),
             (out.node_id, out.pin),
@@ -5423,6 +5805,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(59));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input60".to_string()),
             (out.node_id, out.pin),
@@ -5434,6 +5818,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input61".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(60),
             (out.node_id, out.pin),
@@ -5445,6 +5833,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(60));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input61".to_string()),
             (out.node_id, out.pin),
@@ -5456,6 +5846,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input62".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(61),
             (out.node_id, out.pin),
@@ -5467,6 +5861,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(61));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input62".to_string()),
             (out.node_id, out.pin),
@@ -5478,6 +5874,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input63".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(62),
             (out.node_id, out.pin),
@@ -5489,6 +5889,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(62));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input63".to_string()),
             (out.node_id, out.pin),
@@ -5500,6 +5902,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input64".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(63),
             (out.node_id, out.pin),
@@ -5511,6 +5917,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(63));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input64".to_string()),
             (out.node_id, out.pin),
@@ -5522,6 +5930,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input65".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(64),
             (out.node_id, out.pin),
@@ -5533,6 +5945,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(64));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input65".to_string()),
             (out.node_id, out.pin),
@@ -5544,6 +5958,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input66".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(65),
             (out.node_id, out.pin),
@@ -5555,6 +5973,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(65));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input66".to_string()),
             (out.node_id, out.pin),
@@ -5566,6 +5986,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input67".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(66),
             (out.node_id, out.pin),
@@ -5577,6 +6001,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(66));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input67".to_string()),
             (out.node_id, out.pin),
@@ -5588,6 +6014,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input68".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(67),
             (out.node_id, out.pin),
@@ -5599,6 +6029,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(67));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input68".to_string()),
             (out.node_id, out.pin),
@@ -5610,6 +6042,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input69".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(68),
             (out.node_id, out.pin),
@@ -5621,6 +6057,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(68));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input69".to_string()),
             (out.node_id, out.pin),
@@ -5632,6 +6070,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input70".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(69),
             (out.node_id, out.pin),
@@ -5643,6 +6085,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(69));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input70".to_string()),
             (out.node_id, out.pin),
@@ -5654,6 +6098,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input71".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(70),
             (out.node_id, out.pin),
@@ -5665,6 +6113,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(70));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input71".to_string()),
             (out.node_id, out.pin),
@@ -5676,6 +6126,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input72".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(71),
             (out.node_id, out.pin),
@@ -5687,6 +6141,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(71));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input72".to_string()),
             (out.node_id, out.pin),
@@ -5698,6 +6154,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input73".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(72),
             (out.node_id, out.pin),
@@ -5709,6 +6169,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(72));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input73".to_string()),
             (out.node_id, out.pin),
@@ -5720,6 +6182,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input74".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(73),
             (out.node_id, out.pin),
@@ -5731,6 +6197,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(73));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input74".to_string()),
             (out.node_id, out.pin),
@@ -5742,6 +6210,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input75".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(74),
             (out.node_id, out.pin),
@@ -5753,6 +6225,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(74));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input75".to_string()),
             (out.node_id, out.pin),
@@ -5764,6 +6238,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input76".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(75),
             (out.node_id, out.pin),
@@ -5775,6 +6253,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(75));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input76".to_string()),
             (out.node_id, out.pin),
@@ -5786,6 +6266,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input77".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(76),
             (out.node_id, out.pin),
@@ -5797,6 +6281,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(76));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input77".to_string()),
             (out.node_id, out.pin),
@@ -5808,6 +6294,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input78".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(77),
             (out.node_id, out.pin),
@@ -5819,6 +6309,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(77));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input78".to_string()),
             (out.node_id, out.pin),
@@ -5830,6 +6322,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input79".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(78),
             (out.node_id, out.pin),
@@ -5841,6 +6337,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(78));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input79".to_string()),
             (out.node_id, out.pin),
@@ -5852,6 +6350,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input80".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(79),
             (out.node_id, out.pin),
@@ -5863,6 +6365,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(79));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input80".to_string()),
             (out.node_id, out.pin),
@@ -5874,6 +6378,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input81".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(80),
             (out.node_id, out.pin),
@@ -5885,6 +6393,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(80));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input81".to_string()),
             (out.node_id, out.pin),
@@ -5896,6 +6406,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input82".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(81),
             (out.node_id, out.pin),
@@ -5907,6 +6421,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(81));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input82".to_string()),
             (out.node_id, out.pin),
@@ -5918,6 +6434,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input83".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(82),
             (out.node_id, out.pin),
@@ -5929,6 +6449,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(82));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input83".to_string()),
             (out.node_id, out.pin),
@@ -5940,6 +6462,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input84".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(83),
             (out.node_id, out.pin),
@@ -5951,6 +6477,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(83));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input84".to_string()),
             (out.node_id, out.pin),
@@ -5962,6 +6490,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input85".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(84),
             (out.node_id, out.pin),
@@ -5973,6 +6505,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(84));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input85".to_string()),
             (out.node_id, out.pin),
@@ -5984,6 +6518,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input86".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(85),
             (out.node_id, out.pin),
@@ -5995,6 +6533,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(85));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input86".to_string()),
             (out.node_id, out.pin),
@@ -6006,6 +6546,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input87".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(86),
             (out.node_id, out.pin),
@@ -6017,6 +6561,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(86));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input87".to_string()),
             (out.node_id, out.pin),
@@ -6028,6 +6574,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input88".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(87),
             (out.node_id, out.pin),
@@ -6039,6 +6589,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(87));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input88".to_string()),
             (out.node_id, out.pin),
@@ -6050,6 +6602,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input89".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(88),
             (out.node_id, out.pin),
@@ -6061,6 +6617,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(88));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input89".to_string()),
             (out.node_id, out.pin),
@@ -6072,6 +6630,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input90".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(89),
             (out.node_id, out.pin),
@@ -6083,6 +6645,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(89));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input90".to_string()),
             (out.node_id, out.pin),
@@ -6094,6 +6658,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input91".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(90),
             (out.node_id, out.pin),
@@ -6105,6 +6673,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(90));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input91".to_string()),
             (out.node_id, out.pin),
@@ -6116,6 +6686,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input92".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(91),
             (out.node_id, out.pin),
@@ -6127,6 +6701,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(91));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input92".to_string()),
             (out.node_id, out.pin),
@@ -6138,6 +6714,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input93".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(92),
             (out.node_id, out.pin),
@@ -6149,6 +6729,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(92));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input93".to_string()),
             (out.node_id, out.pin),
@@ -6160,6 +6742,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input94".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(93),
             (out.node_id, out.pin),
@@ -6171,6 +6757,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(93));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input94".to_string()),
             (out.node_id, out.pin),
@@ -6182,6 +6770,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input95".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(94),
             (out.node_id, out.pin),
@@ -6193,6 +6785,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(94));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input95".to_string()),
             (out.node_id, out.pin),
@@ -6204,6 +6798,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input96".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(95),
             (out.node_id, out.pin),
@@ -6215,6 +6813,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(95));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input96".to_string()),
             (out.node_id, out.pin),
@@ -6226,6 +6826,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input97".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(96),
             (out.node_id, out.pin),
@@ -6237,6 +6841,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(96));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input97".to_string()),
             (out.node_id, out.pin),
@@ -6248,6 +6854,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input98".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(97),
             (out.node_id, out.pin),
@@ -6259,6 +6869,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(97));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input98".to_string()),
             (out.node_id, out.pin),
@@ -6270,6 +6882,10 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input99".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(98),
             (out.node_id, out.pin),
@@ -6281,6 +6897,8 @@ impl LopComponentgeometryvariants {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(98));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input99".to_string()),
             (out.node_id, out.pin),
@@ -6564,6 +7182,10 @@ impl LopComponentmaterial {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -6575,6 +7197,8 @@ impl LopComponentmaterial {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -6586,6 +7210,10 @@ impl LopComponentmaterial {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -6597,6 +7225,8 @@ impl LopComponentmaterial {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -7066,6 +7696,10 @@ impl LopComponentoutput {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -7077,6 +7711,8 @@ impl LopComponentoutput {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -7088,6 +7724,10 @@ impl LopComponentoutput {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input2".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -7099,6 +7739,8 @@ impl LopComponentoutput {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input2".to_string()),
             (out.node_id, out.pin),
@@ -8804,6 +9446,10 @@ impl LopCone {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -8815,6 +9461,8 @@ impl LopCone {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -9631,6 +10279,10 @@ impl LopConfigurelayer {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9642,6 +10294,8 @@ impl LopConfigurelayer {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -10419,6 +11073,10 @@ impl LopConfigureprimitive {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -10430,6 +11088,8 @@ impl LopConfigureprimitive {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -11919,6 +12579,10 @@ impl LopConfigureproperty {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -11930,6 +12594,8 @@ impl LopConfigureproperty {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -12413,6 +13079,10 @@ impl LopConfigurestage {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -12424,6 +13094,8 @@ impl LopConfigurestage {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -13021,6 +13693,10 @@ impl LopCoordsys {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -13032,6 +13708,8 @@ impl LopCoordsys {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -13893,6 +14571,10 @@ impl LopCopyproperty {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -13904,6 +14586,8 @@ impl LopCopyproperty {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -14130,6 +14814,10 @@ impl LopCreatelod {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -14141,6 +14829,8 @@ impl LopCreatelod {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -14579,6 +15269,10 @@ impl LopCreatexform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -14590,6 +15284,8 @@ impl LopCreatexform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -15212,6 +15908,10 @@ impl LopCube {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -15223,6 +15923,8 @@ impl LopCube {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),
@@ -15997,6 +16699,10 @@ impl LopCylinder {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input1".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -16008,6 +16714,8 @@ impl LopCylinder {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input1".to_string()),
             (out.node_id, out.pin),

@@ -54,6 +54,10 @@ impl VopRadtodeg {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rad".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -65,6 +69,8 @@ impl VopRadtodeg {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rad".to_string()),
             (out.node_id, out.pin),
@@ -381,6 +387,8 @@ impl VopRainbow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("u".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -392,6 +400,8 @@ impl VopRainbow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("u".to_string()),
             (out.node_id, out.pin),
@@ -403,6 +413,10 @@ impl VopRainbow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sat".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -414,6 +428,8 @@ impl VopRainbow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sat".to_string()),
             (out.node_id, out.pin),
@@ -425,6 +441,10 @@ impl VopRainbow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "val".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -436,6 +456,8 @@ impl VopRainbow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("val".to_string()),
             (out.node_id, out.pin),
@@ -827,6 +849,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "pos".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -838,6 +864,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("pos".to_string()),
             (out.node_id, out.pin),
@@ -849,6 +877,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rangemin".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -860,6 +892,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rangemin".to_string()),
             (out.node_id, out.pin),
@@ -871,6 +905,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rangemax".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -882,6 +920,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rangemax".to_string()),
             (out.node_id, out.pin),
@@ -893,6 +933,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "ramp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -904,6 +948,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ramp".to_string()),
             (out.node_id, out.pin),
@@ -915,6 +961,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "spacename".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -926,6 +976,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("spacename".to_string()),
             (out.node_id, out.pin),
@@ -937,6 +989,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "extl".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -948,6 +1004,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("extl".to_string()),
             (out.node_id, out.pin),
@@ -959,6 +1017,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "extr".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -970,6 +1032,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("extr".to_string()),
             (out.node_id, out.pin),
@@ -981,6 +1045,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "ftype".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -992,6 +1060,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ftype".to_string()),
             (out.node_id, out.pin),
@@ -1003,6 +1073,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("fw".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -1014,6 +1086,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fw".to_string()),
             (out.node_id, out.pin),
@@ -1025,6 +1099,10 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fscale".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -1036,6 +1114,8 @@ impl VopRampfilter {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fscale".to_string()),
             (out.node_id, out.pin),
@@ -1294,6 +1374,10 @@ impl VopRampparm {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1305,6 +1389,8 @@ impl VopRampparm {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input".to_string()),
             (out.node_id, out.pin),
@@ -1741,6 +1827,8 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("u".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -1752,6 +1840,8 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("u".to_string()),
             (out.node_id, out.pin),
@@ -1763,6 +1853,10 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "mirror".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -1774,6 +1868,8 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("mirror".to_string()),
             (out.node_id, out.pin),
@@ -1785,6 +1881,10 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "freq".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -1796,6 +1896,8 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("freq".to_string()),
             (out.node_id, out.pin),
@@ -1807,6 +1909,10 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -1818,6 +1924,8 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -1829,6 +1937,10 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "blur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -1840,6 +1952,8 @@ impl VopRamps {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("blur".to_string()),
             (out.node_id, out.pin),
@@ -2263,6 +2377,10 @@ impl VopRandom {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "pos".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -2274,6 +2392,8 @@ impl VopRandom {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("pos".to_string()),
             (out.node_id, out.pin),
@@ -2606,6 +2726,10 @@ impl VopRandomBrj {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "seed".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -2617,6 +2741,8 @@ impl VopRandomBrj {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("seed".to_string()),
             (out.node_id, out.pin),
@@ -2628,6 +2754,10 @@ impl VopRandomBrj {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -2639,6 +2769,8 @@ impl VopRandomBrj {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -2971,6 +3103,10 @@ impl VopRandomSobol {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "seed".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -2982,6 +3118,8 @@ impl VopRandomSobol {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("seed".to_string()),
             (out.node_id, out.pin),
@@ -2993,6 +3131,10 @@ impl VopRandomSobol {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -3004,6 +3146,8 @@ impl VopRandomSobol {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -3407,6 +3551,8 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -3418,6 +3564,8 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -3429,6 +3577,10 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dir".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -3440,6 +3592,8 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dir".to_string()),
             (out.node_id, out.pin),
@@ -3451,6 +3605,10 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -3462,6 +3620,8 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -3473,6 +3633,10 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "scope".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -3484,6 +3648,8 @@ impl VopRayhit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("scope".to_string()),
             (out.node_id, out.pin),
@@ -3654,6 +3820,10 @@ impl VopRayimport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "var".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -3665,6 +3835,8 @@ impl VopRayimport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("var".to_string()),
             (out.node_id, out.pin),
@@ -3676,6 +3848,10 @@ impl VopRayimport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "default".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -3687,6 +3863,8 @@ impl VopRayimport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("default".to_string()),
             (out.node_id, out.pin),
@@ -3836,6 +4014,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -3847,6 +4027,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -3858,6 +4040,10 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "ndir".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -3869,6 +4055,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ndir".to_string()),
             (out.node_id, out.pin),
@@ -3880,6 +4068,10 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -3891,6 +4083,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -3902,6 +4096,10 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxcontrib".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -3913,6 +4111,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxcontrib".to_string()),
             (out.node_id, out.pin),
@@ -3924,6 +4124,10 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "scope".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -3935,6 +4139,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("scope".to_string()),
             (out.node_id, out.pin),
@@ -3946,6 +4152,10 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "angle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -3957,6 +4167,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("angle".to_string()),
             (out.node_id, out.pin),
@@ -3968,6 +4180,10 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -3979,6 +4195,8 @@ impl VopRaytrace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -4268,6 +4486,10 @@ impl VopReflect {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dir".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -4279,6 +4501,8 @@ impl VopReflect {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dir".to_string()),
             (out.node_id, out.pin),
@@ -4290,6 +4514,10 @@ impl VopReflect {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "nml".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -4301,6 +4529,8 @@ impl VopReflect {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nml".to_string()),
             (out.node_id, out.pin),
@@ -4457,6 +4687,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -4468,6 +4700,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -4479,6 +4713,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nI".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -4490,6 +4726,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nI".to_string()),
             (out.node_id, out.pin),
@@ -4501,6 +4739,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nN".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -4512,6 +4752,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nN".to_string()),
             (out.node_id, out.pin),
@@ -4523,6 +4765,10 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rbias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -4534,6 +4780,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rbias".to_string()),
             (out.node_id, out.pin),
@@ -4545,6 +4793,10 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rcolor".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -4556,6 +4808,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rcolor".to_string()),
             (out.node_id, out.pin),
@@ -4567,6 +4821,10 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "envmap".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -4578,6 +4836,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("envmap".to_string()),
             (out.node_id, out.pin),
@@ -4589,6 +4849,10 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "envcolor".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -4600,6 +4864,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("envcolor".to_string()),
             (out.node_id, out.pin),
@@ -4611,6 +4877,10 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "facefwd".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -4622,6 +4892,8 @@ impl VopReflective {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("facefwd".to_string()),
             (out.node_id, out.pin),
@@ -4817,6 +5089,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -4828,6 +5102,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -4841,6 +5117,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nR".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -4852,6 +5130,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nR".to_string()),
             (out.node_id, out.pin),
@@ -4863,6 +5143,10 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -4874,6 +5158,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -4885,6 +5171,10 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxcontrib".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -4896,6 +5186,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxcontrib".to_string()),
             (out.node_id, out.pin),
@@ -4907,6 +5199,10 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "scope".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -4918,6 +5214,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("scope".to_string()),
             (out.node_id, out.pin),
@@ -4929,6 +5227,10 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "angle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -4940,6 +5242,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("angle".to_string()),
             (out.node_id, out.pin),
@@ -4951,6 +5255,10 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -4962,6 +5270,8 @@ impl VopReflectlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -5157,6 +5467,10 @@ impl VopRefract {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dir".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -5168,6 +5482,8 @@ impl VopRefract {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dir".to_string()),
             (out.node_id, out.pin),
@@ -5179,6 +5495,8 @@ impl VopRefract {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nn".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -5190,6 +5508,8 @@ impl VopRefract {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nn".to_string()),
             (out.node_id, out.pin),
@@ -5201,6 +5521,10 @@ impl VopRefract {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "eta".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -5212,6 +5536,8 @@ impl VopRefract {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("eta".to_string()),
             (out.node_id, out.pin),
@@ -5384,6 +5710,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -5395,6 +5723,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -5408,6 +5738,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nT".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -5419,6 +5751,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nT".to_string()),
             (out.node_id, out.pin),
@@ -5430,6 +5764,10 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -5441,6 +5779,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -5452,6 +5792,10 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxcontrib".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -5463,6 +5807,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxcontrib".to_string()),
             (out.node_id, out.pin),
@@ -5474,6 +5820,10 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "scope".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -5485,6 +5835,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("scope".to_string()),
             (out.node_id, out.pin),
@@ -5496,6 +5848,10 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "angle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -5507,6 +5863,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("angle".to_string()),
             (out.node_id, out.pin),
@@ -5518,6 +5876,10 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -5529,6 +5891,8 @@ impl VopRefractlight {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -5738,6 +6102,10 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "regex".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -5749,6 +6117,8 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("regex".to_string()),
             (out.node_id, out.pin),
@@ -5760,6 +6130,10 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "string".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -5771,6 +6145,8 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("string".to_string()),
             (out.node_id, out.pin),
@@ -5782,6 +6158,10 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "start".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -5793,6 +6173,8 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("start".to_string()),
             (out.node_id, out.pin),
@@ -5804,6 +6186,10 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "end".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -5815,6 +6201,8 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("end".to_string()),
             (out.node_id, out.pin),
@@ -5826,6 +6214,10 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "regex_findtype".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -5837,6 +6229,8 @@ impl VopRegexFind {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("regex_findtype".to_string()),
             (out.node_id, out.pin),
@@ -6286,6 +6680,10 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "regex".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -6297,6 +6695,8 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("regex".to_string()),
             (out.node_id, out.pin),
@@ -6308,6 +6708,10 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "string".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -6319,6 +6723,8 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("string".to_string()),
             (out.node_id, out.pin),
@@ -6330,6 +6736,10 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "start".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -6341,6 +6751,8 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("start".to_string()),
             (out.node_id, out.pin),
@@ -6352,6 +6764,10 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "end".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -6363,6 +6779,8 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("end".to_string()),
             (out.node_id, out.pin),
@@ -6374,6 +6792,10 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "regex_findalltype".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -6385,6 +6807,8 @@ impl VopRegexFindall {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("regex_findalltype".to_string()),
             (out.node_id, out.pin),
@@ -6818,6 +7242,10 @@ impl VopRegexMatch {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "regex".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -6829,6 +7257,8 @@ impl VopRegexMatch {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("regex".to_string()),
             (out.node_id, out.pin),
@@ -6840,6 +7270,10 @@ impl VopRegexMatch {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "string".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -6851,6 +7285,8 @@ impl VopRegexMatch {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("string".to_string()),
             (out.node_id, out.pin),
@@ -7234,6 +7670,10 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "find_regex".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -7245,6 +7685,8 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("find_regex".to_string()),
             (out.node_id, out.pin),
@@ -7256,6 +7698,10 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "replace_regex".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -7267,6 +7713,8 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("replace_regex".to_string()),
             (out.node_id, out.pin),
@@ -7278,6 +7726,10 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "string".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -7289,6 +7741,8 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("string".to_string()),
             (out.node_id, out.pin),
@@ -7300,6 +7754,10 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxreplace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -7311,6 +7769,8 @@ impl VopRegexReplace {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxreplace".to_string()),
             (out.node_id, out.pin),
@@ -7728,6 +8188,10 @@ impl VopRegexSplit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "regex".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -7739,6 +8203,8 @@ impl VopRegexSplit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("regex".to_string()),
             (out.node_id, out.pin),
@@ -7750,6 +8216,10 @@ impl VopRegexSplit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "string".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -7761,6 +8231,8 @@ impl VopRegexSplit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("string".to_string()),
             (out.node_id, out.pin),
@@ -7772,6 +8244,10 @@ impl VopRegexSplit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxplit".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -7783,6 +8259,8 @@ impl VopRegexSplit {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxplit".to_string()),
             (out.node_id, out.pin),
@@ -8182,6 +8660,10 @@ impl VopRelbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "file".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -8193,6 +8675,8 @@ impl VopRelbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("file".to_string()),
             (out.node_id, out.pin),
@@ -8204,6 +8688,10 @@ impl VopRelbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "group".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -8215,6 +8703,8 @@ impl VopRelbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("group".to_string()),
             (out.node_id, out.pin),
@@ -8226,6 +8716,8 @@ impl VopRelbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -8237,6 +8729,8 @@ impl VopRelbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -8379,6 +8873,10 @@ impl VopRelpointbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "file".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -8390,6 +8888,8 @@ impl VopRelpointbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("file".to_string()),
             (out.node_id, out.pin),
@@ -8401,6 +8901,10 @@ impl VopRelpointbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "group".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -8412,6 +8916,8 @@ impl VopRelpointbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("group".to_string()),
             (out.node_id, out.pin),
@@ -8423,6 +8929,8 @@ impl VopRelpointbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -8434,6 +8942,8 @@ impl VopRelpointbbox {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -8576,6 +9086,10 @@ impl VopRemoveindex {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "array".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -8587,6 +9101,8 @@ impl VopRemoveindex {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("array".to_string()),
             (out.node_id, out.pin),
@@ -8598,6 +9114,10 @@ impl VopRemoveindex {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "index".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -8609,6 +9129,8 @@ impl VopRemoveindex {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("index".to_string()),
             (out.node_id, out.pin),
@@ -8620,6 +9142,10 @@ impl VopRemoveindex {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "defaultvalue".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -8631,6 +9157,8 @@ impl VopRemoveindex {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("defaultvalue".to_string()),
             (out.node_id, out.pin),
@@ -9138,6 +9666,10 @@ impl VopRemovekey {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dict".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9149,6 +9681,8 @@ impl VopRemovekey {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dict".to_string()),
             (out.node_id, out.pin),
@@ -9160,6 +9694,10 @@ impl VopRemovekey {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "key".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -9171,6 +9709,8 @@ impl VopRemovekey {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("key".to_string()),
             (out.node_id, out.pin),
@@ -9517,6 +10057,10 @@ impl VopRemovepoint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "handle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9528,6 +10072,8 @@ impl VopRemovepoint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("handle".to_string()),
             (out.node_id, out.pin),
@@ -9539,6 +10085,10 @@ impl VopRemovepoint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "ptnum".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -9550,6 +10100,8 @@ impl VopRemovepoint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ptnum".to_string()),
             (out.node_id, out.pin),
@@ -9691,6 +10243,10 @@ impl VopRemoveprim {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "handle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9702,6 +10258,8 @@ impl VopRemoveprim {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("handle".to_string()),
             (out.node_id, out.pin),
@@ -9713,6 +10271,10 @@ impl VopRemoveprim {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "primnum".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -9724,6 +10286,8 @@ impl VopRemoveprim {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("primnum".to_string()),
             (out.node_id, out.pin),
@@ -9735,6 +10299,10 @@ impl VopRemoveprim {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "andpoints".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -9746,6 +10314,8 @@ impl VopRemoveprim {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("andpoints".to_string()),
             (out.node_id, out.pin),
@@ -9887,6 +10457,10 @@ impl VopRemovevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "array".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -9898,6 +10472,8 @@ impl VopRemovevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("array".to_string()),
             (out.node_id, out.pin),
@@ -9909,6 +10485,10 @@ impl VopRemovevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "valuetoremove".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -9920,6 +10500,8 @@ impl VopRemovevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("valuetoremove".to_string()),
             (out.node_id, out.pin),
@@ -10427,6 +11009,10 @@ impl VopRenderstate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "var".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -10438,6 +11024,8 @@ impl VopRenderstate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("var".to_string()),
             (out.node_id, out.pin),
@@ -10449,6 +11037,10 @@ impl VopRenderstate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "default".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -10460,6 +11052,8 @@ impl VopRenderstate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("default".to_string()),
             (out.node_id, out.pin),
@@ -10675,6 +11269,10 @@ impl VopReorder {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "array".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -10686,6 +11284,8 @@ impl VopReorder {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("array".to_string()),
             (out.node_id, out.pin),
@@ -10697,6 +11297,10 @@ impl VopReorder {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "indices".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -10708,6 +11312,8 @@ impl VopReorder {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("indices".to_string()),
             (out.node_id, out.pin),
@@ -11204,6 +11810,10 @@ impl VopRes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "input_index".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -11215,6 +11825,8 @@ impl VopRes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("input_index".to_string()),
             (out.node_id, out.pin),
@@ -11344,6 +11956,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "invalue".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -11355,6 +11971,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("invalue".to_string()),
             (out.node_id, out.pin),
@@ -11366,6 +11984,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fitenable".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -11377,6 +11999,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fitenable".to_string()),
             (out.node_id, out.pin),
@@ -11388,6 +12012,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fitsrcmin".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -11399,6 +12027,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fitsrcmin".to_string()),
             (out.node_id, out.pin),
@@ -11410,6 +12040,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fitsrcmax".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -11421,6 +12055,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fitsrcmax".to_string()),
             (out.node_id, out.pin),
@@ -11432,6 +12068,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fitdestmin".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -11443,6 +12083,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fitdestmin".to_string()),
             (out.node_id, out.pin),
@@ -11454,6 +12096,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fitdestmax".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -11465,6 +12111,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fitdestmax".to_string()),
             (out.node_id, out.pin),
@@ -11476,6 +12124,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rampenable".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -11487,6 +12139,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rampenable".to_string()),
             (out.node_id, out.pin),
@@ -11498,6 +12152,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rampspace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -11509,6 +12167,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rampspace".to_string()),
             (out.node_id, out.pin),
@@ -11520,6 +12180,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rampextl".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -11531,6 +12195,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rampextl".to_string()),
             (out.node_id, out.pin),
@@ -11542,6 +12208,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rampextr".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -11553,6 +12223,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rampextr".to_string()),
             (out.node_id, out.pin),
@@ -11564,6 +12236,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "ramp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -11575,6 +12251,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ramp".to_string()),
             (out.node_id, out.pin),
@@ -11586,6 +12264,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "contourenable".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -11597,6 +12279,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("contourenable".to_string()),
             (out.node_id, out.pin),
@@ -11608,6 +12292,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "contourwidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(12),
             (out.node_id, out.pin),
@@ -11619,6 +12307,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(12));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("contourwidth".to_string()),
             (out.node_id, out.pin),
@@ -11630,6 +12320,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "contoursharp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(13),
             (out.node_id, out.pin),
@@ -11641,6 +12335,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(13));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("contoursharp".to_string()),
             (out.node_id, out.pin),
@@ -11652,6 +12348,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sclipenable".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(14),
             (out.node_id, out.pin),
@@ -11663,6 +12363,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(14));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sclipenable".to_string()),
             (out.node_id, out.pin),
@@ -11674,6 +12376,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sclipstart".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(15),
             (out.node_id, out.pin),
@@ -11685,6 +12391,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(15));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sclipstart".to_string()),
             (out.node_id, out.pin),
@@ -11696,6 +12404,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sclipsuppress".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(16),
             (out.node_id, out.pin),
@@ -11707,6 +12419,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(16));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sclipsuppress".to_string()),
             (out.node_id, out.pin),
@@ -11718,6 +12432,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "lowlimitenable".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(17),
             (out.node_id, out.pin),
@@ -11729,6 +12447,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(17));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("lowlimitenable".to_string()),
             (out.node_id, out.pin),
@@ -11740,6 +12460,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "lowlimit".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(18),
             (out.node_id, out.pin),
@@ -11751,6 +12475,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(18));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("lowlimit".to_string()),
             (out.node_id, out.pin),
@@ -11762,6 +12488,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "highlimitenable".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(19),
             (out.node_id, out.pin),
@@ -11773,6 +12503,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(19));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("highlimitenable".to_string()),
             (out.node_id, out.pin),
@@ -11784,6 +12516,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "highlimit".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(20),
             (out.node_id, out.pin),
@@ -11795,6 +12531,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(20));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("highlimit".to_string()),
             (out.node_id, out.pin),
@@ -11806,6 +12544,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "amp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(21),
             (out.node_id, out.pin),
@@ -11817,6 +12559,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(21));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("amp".to_string()),
             (out.node_id, out.pin),
@@ -11828,6 +12572,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "ftype".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(22),
             (out.node_id, out.pin),
@@ -11839,6 +12587,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(22));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ftype".to_string()),
             (out.node_id, out.pin),
@@ -11850,6 +12600,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("fw".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(23),
             (out.node_id, out.pin),
@@ -11861,6 +12613,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(23));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fw".to_string()),
             (out.node_id, out.pin),
@@ -11872,6 +12626,10 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fscale".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(24),
             (out.node_id, out.pin),
@@ -11883,6 +12641,8 @@ impl VopReshapevalue {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(24));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fscale".to_string()),
             (out.node_id, out.pin),
@@ -12720,6 +13480,8 @@ impl VopRestpos {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -12731,6 +13493,8 @@ impl VopRestpos {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -12742,6 +13506,10 @@ impl VopRestpos {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "space".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -12753,6 +13521,8 @@ impl VopRestpos {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("space".to_string()),
             (out.node_id, out.pin),
@@ -13126,6 +13896,10 @@ impl VopReverse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "array".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -13137,6 +13911,8 @@ impl VopReverse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("array".to_string()),
             (out.node_id, out.pin),
@@ -13498,6 +14274,10 @@ impl VopRgbtohsv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rgb".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -13509,6 +14289,8 @@ impl VopRgbtohsv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rgb".to_string()),
             (out.node_id, out.pin),
@@ -13665,6 +14447,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("uv".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -13676,6 +14460,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("uv".to_string()),
             (out.node_id, out.pin),
@@ -13687,6 +14473,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "freq".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -13698,6 +14488,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("freq".to_string()),
             (out.node_id, out.pin),
@@ -13709,6 +14501,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -13720,6 +14516,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -13731,6 +14529,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -13742,6 +14544,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rand".to_string()),
             (out.node_id, out.pin),
@@ -13753,6 +14557,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "layers".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -13764,6 +14572,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("layers".to_string()),
             (out.node_id, out.pin),
@@ -13775,6 +14585,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dotsize".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -13786,6 +14600,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dotsize".to_string()),
             (out.node_id, out.pin),
@@ -13797,6 +14613,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dotrand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -13808,6 +14628,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dotrand".to_string()),
             (out.node_id, out.pin),
@@ -13819,6 +14641,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "hexness".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -13830,6 +14656,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("hexness".to_string()),
             (out.node_id, out.pin),
@@ -13841,6 +14669,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "softness".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -13852,6 +14684,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("softness".to_string()),
             (out.node_id, out.pin),
@@ -13863,6 +14697,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "blur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -13874,6 +14712,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("blur".to_string()),
             (out.node_id, out.pin),
@@ -13885,6 +14725,10 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "filter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -13896,6 +14740,8 @@ impl VopRhexes {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("filter".to_string()),
             (out.node_id, out.pin),
@@ -14417,6 +15263,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("uv".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -14428,6 +15276,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("uv".to_string()),
             (out.node_id, out.pin),
@@ -14439,6 +15289,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "freq".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -14450,6 +15304,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("freq".to_string()),
             (out.node_id, out.pin),
@@ -14461,6 +15317,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -14472,6 +15332,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -14483,6 +15345,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -14494,6 +15360,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rand".to_string()),
             (out.node_id, out.pin),
@@ -14505,6 +15373,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "layers".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -14516,6 +15388,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("layers".to_string()),
             (out.node_id, out.pin),
@@ -14527,6 +15401,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dotsize".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -14538,6 +15416,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dotsize".to_string()),
             (out.node_id, out.pin),
@@ -14549,6 +15429,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "dotrand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -14560,6 +15444,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dotrand".to_string()),
             (out.node_id, out.pin),
@@ -14571,6 +15457,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "width".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -14582,6 +15472,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("width".to_string()),
             (out.node_id, out.pin),
@@ -14593,6 +15485,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "widthrand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -14604,6 +15500,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("widthrand".to_string()),
             (out.node_id, out.pin),
@@ -14615,6 +15513,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "blur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -14626,6 +15528,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("blur".to_string()),
             (out.node_id, out.pin),
@@ -14637,6 +15541,10 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "filter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -14648,6 +15556,8 @@ impl VopRings {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("filter".to_string()),
             (out.node_id, out.pin),
@@ -15169,6 +16079,10 @@ impl VopRint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "val".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -15180,6 +16094,8 @@ impl VopRint {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("val".to_string()),
             (out.node_id, out.pin),
@@ -15496,6 +16412,8 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("uv".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -15507,6 +16425,8 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("uv".to_string()),
             (out.node_id, out.pin),
@@ -15518,6 +16438,10 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "freq".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -15529,6 +16453,8 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("freq".to_string()),
             (out.node_id, out.pin),
@@ -15540,6 +16466,10 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -15551,6 +16481,8 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -15562,6 +16494,10 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "decay".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -15573,6 +16509,8 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("decay".to_string()),
             (out.node_id, out.pin),
@@ -15584,6 +16522,10 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "waveoff".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -15595,6 +16537,8 @@ impl VopRipples {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("waveoff".to_string()),
             (out.node_id, out.pin),
@@ -16357,6 +17301,10 @@ impl VopRotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "mat".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -16368,6 +17316,8 @@ impl VopRotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("mat".to_string()),
             (out.node_id, out.pin),
@@ -16379,6 +17329,10 @@ impl VopRotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "angle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -16390,6 +17344,8 @@ impl VopRotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("angle".to_string()),
             (out.node_id, out.pin),
@@ -16401,6 +17357,10 @@ impl VopRotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "axis".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -16412,6 +17372,8 @@ impl VopRotate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("axis".to_string()),
             (out.node_id, out.pin),
@@ -16623,6 +17585,10 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "mode".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -16634,6 +17600,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("mode".to_string()),
             (out.node_id, out.pin),
@@ -16645,6 +17613,10 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -16656,6 +17628,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -16667,6 +17641,10 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "radius".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -16678,6 +17656,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("radius".to_string()),
             (out.node_id, out.pin),
@@ -16689,6 +17669,10 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "cuspangle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -16700,6 +17684,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("cuspangle".to_string()),
             (out.node_id, out.pin),
@@ -16711,6 +17697,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nN".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -16722,6 +17710,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nN".to_string()),
             (out.node_id, out.pin),
@@ -16733,6 +17723,10 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "scope".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -16744,6 +17738,8 @@ impl VopRoundededge {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("scope".to_string()),
             (out.node_id, out.pin),
@@ -16939,6 +17935,10 @@ impl VopRslBias {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "val".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -16950,6 +17950,8 @@ impl VopRslBias {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("val".to_string()),
             (out.node_id, out.pin),
@@ -16961,6 +17963,10 @@ impl VopRslBias {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "amount".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -16972,6 +17978,8 @@ impl VopRslBias {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("amount".to_string()),
             (out.node_id, out.pin),
@@ -17110,6 +18118,10 @@ impl VopRslCalculatenormal {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "pos".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -17121,6 +18133,8 @@ impl VopRslCalculatenormal {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("pos".to_string()),
             (out.node_id, out.pin),
@@ -17280,6 +18294,10 @@ impl VopRslCtransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fromspace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -17291,6 +18309,8 @@ impl VopRslCtransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fromspace".to_string()),
             (out.node_id, out.pin),
@@ -17302,6 +18322,10 @@ impl VopRslCtransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "tospace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -17313,6 +18337,8 @@ impl VopRslCtransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("tospace".to_string()),
             (out.node_id, out.pin),
@@ -17324,6 +18350,10 @@ impl VopRslCtransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "iclr".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -17335,6 +18365,8 @@ impl VopRslCtransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("iclr".to_string()),
             (out.node_id, out.pin),
@@ -17527,6 +18559,8 @@ impl VopRslDepth {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("p1".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -17538,6 +18572,8 @@ impl VopRslDepth {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("p1".to_string()),
             (out.node_id, out.pin),
@@ -17660,6 +18696,10 @@ impl VopRslDeriv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "numerator".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -17671,6 +18711,8 @@ impl VopRslDeriv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("numerator".to_string()),
             (out.node_id, out.pin),
@@ -17682,6 +18724,10 @@ impl VopRslDeriv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "denominator".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -17693,6 +18739,8 @@ impl VopRslDeriv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("denominator".to_string()),
             (out.node_id, out.pin),
@@ -17817,6 +18865,8 @@ impl VopRslDudv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("v1".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -17828,6 +18878,8 @@ impl VopRslDudv {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("v1".to_string()),
             (out.node_id, out.pin),
@@ -17970,6 +19022,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "map".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -17981,6 +19037,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("map".to_string()),
             (out.node_id, out.pin),
@@ -17992,6 +19050,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("R".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -18003,6 +19063,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("R".to_string()),
             (out.node_id, out.pin),
@@ -18014,6 +19076,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("R1".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -18025,6 +19089,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("R1".to_string()),
             (out.node_id, out.pin),
@@ -18036,6 +19102,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("R2".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -18047,6 +19115,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("R2".to_string()),
             (out.node_id, out.pin),
@@ -18058,6 +19128,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("R3".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -18069,6 +19141,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("R3".to_string()),
             (out.node_id, out.pin),
@@ -18080,6 +19154,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sblur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -18091,6 +19169,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sblur".to_string()),
             (out.node_id, out.pin),
@@ -18102,6 +19182,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "tblur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -18113,6 +19197,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("tblur".to_string()),
             (out.node_id, out.pin),
@@ -18124,6 +19210,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "swidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -18135,6 +19225,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("swidth".to_string()),
             (out.node_id, out.pin),
@@ -18146,6 +19238,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "twidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -18157,6 +19253,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("twidth".to_string()),
             (out.node_id, out.pin),
@@ -18168,6 +19266,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "filter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -18179,6 +19281,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("filter".to_string()),
             (out.node_id, out.pin),
@@ -18190,6 +19294,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fill".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -18201,6 +19309,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fill".to_string()),
             (out.node_id, out.pin),
@@ -18212,6 +19322,10 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "lerp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -18223,6 +19337,8 @@ impl VopRslEnvironment {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("lerp".to_string()),
             (out.node_id, out.pin),
@@ -18546,6 +19662,10 @@ impl VopRslGain {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "val".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -18557,6 +19677,8 @@ impl VopRslGain {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("val".to_string()),
             (out.node_id, out.pin),
@@ -18568,6 +19690,10 @@ impl VopRslGain {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "amount".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -18579,6 +19705,8 @@ impl VopRslGain {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("amount".to_string()),
             (out.node_id, out.pin),
@@ -19424,6 +20552,10 @@ impl VopRslImport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "var".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -19435,6 +20567,8 @@ impl VopRslImport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("var".to_string()),
             (out.node_id, out.pin),
@@ -19446,6 +20580,10 @@ impl VopRslImport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "default".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -19457,6 +20595,8 @@ impl VopRslImport {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("default".to_string()),
             (out.node_id, out.pin),
@@ -19834,6 +20974,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -19845,6 +20987,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -19856,6 +21000,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("N".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -19867,6 +21013,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("N".to_string()),
             (out.node_id, out.pin),
@@ -19878,6 +21026,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -19889,6 +21041,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -19900,6 +21054,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "adaptive".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -19911,6 +21069,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("adaptive".to_string()),
             (out.node_id, out.pin),
@@ -19922,6 +21082,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "coordsystem".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -19933,6 +21097,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("coordsystem".to_string()),
             (out.node_id, out.pin),
@@ -19944,6 +21110,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxdist".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -19955,6 +21125,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxdist".to_string()),
             (out.node_id, out.pin),
@@ -19966,6 +21138,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "falloff".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -19977,6 +21153,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("falloff".to_string()),
             (out.node_id, out.pin),
@@ -19988,6 +21166,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "coneangle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -19999,6 +21181,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("coneangle".to_string()),
             (out.node_id, out.pin),
@@ -20010,6 +21194,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "useopacity".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -20021,6 +21209,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("useopacity".to_string()),
             (out.node_id, out.pin),
@@ -20032,6 +21222,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "environmentmap".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -20043,6 +21237,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("environmentmap".to_string()),
             (out.node_id, out.pin),
@@ -20054,6 +21250,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "environmentspace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -20065,6 +21265,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("environmentspace".to_string()),
             (out.node_id, out.pin),
@@ -20076,6 +21278,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -20087,6 +21293,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -20098,6 +21306,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxerror".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(12),
             (out.node_id, out.pin),
@@ -20109,6 +21321,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(12));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxerror".to_string()),
             (out.node_id, out.pin),
@@ -20120,6 +21334,10 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxpixeldist".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(13),
             (out.node_id, out.pin),
@@ -20131,6 +21349,8 @@ impl VopRslIndirectdiffuse {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(13));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxpixeldist".to_string()),
             (out.node_id, out.pin),
@@ -20470,6 +21690,10 @@ impl VopRslLog {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "val".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -20481,6 +21705,8 @@ impl VopRslLog {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("val".to_string()),
             (out.node_id, out.pin),
@@ -20492,6 +21718,10 @@ impl VopRslLog {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "base".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -20503,6 +21733,8 @@ impl VopRslLog {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("base".to_string()),
             (out.node_id, out.pin),
@@ -20691,6 +21923,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -20702,6 +21936,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -20713,6 +21949,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("N".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -20724,6 +21962,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("N".to_string()),
             (out.node_id, out.pin),
@@ -20735,6 +21975,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -20746,6 +21990,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -20757,6 +22003,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "adaptive".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -20768,6 +22018,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("adaptive".to_string()),
             (out.node_id, out.pin),
@@ -20779,6 +22031,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "coordsystem".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -20790,6 +22046,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("coordsystem".to_string()),
             (out.node_id, out.pin),
@@ -20801,6 +22059,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxdist".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -20812,6 +22074,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxdist".to_string()),
             (out.node_id, out.pin),
@@ -20823,6 +22087,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "falloff".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -20834,6 +22102,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("falloff".to_string()),
             (out.node_id, out.pin),
@@ -20845,6 +22115,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "coneangle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -20856,6 +22130,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("coneangle".to_string()),
             (out.node_id, out.pin),
@@ -20867,6 +22143,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "useopacity".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -20878,6 +22158,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("useopacity".to_string()),
             (out.node_id, out.pin),
@@ -20889,6 +22171,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "environmentmap".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -20900,6 +22186,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("environmentmap".to_string()),
             (out.node_id, out.pin),
@@ -20911,6 +22199,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "environmentspace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -20922,6 +22214,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("environmentspace".to_string()),
             (out.node_id, out.pin),
@@ -20933,6 +22227,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -20944,6 +22242,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -20955,6 +22255,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxerror".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(12),
             (out.node_id, out.pin),
@@ -20966,6 +22270,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(12));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxerror".to_string()),
             (out.node_id, out.pin),
@@ -20977,6 +22283,10 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "maxpixeldist".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(13),
             (out.node_id, out.pin),
@@ -20988,6 +22298,8 @@ impl VopRslOcclusion {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(13));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("maxpixeldist".to_string()),
             (out.node_id, out.pin),
@@ -21324,6 +22636,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -21335,6 +22649,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -21346,6 +22662,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nN".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -21357,6 +22675,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nN".to_string()),
             (out.node_id, out.pin),
@@ -21368,6 +22688,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("nI".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -21379,6 +22701,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nI".to_string()),
             (out.node_id, out.pin),
@@ -21390,6 +22714,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -21401,6 +22729,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -21412,6 +22742,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "jitter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -21423,6 +22757,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("jitter".to_string()),
             (out.node_id, out.pin),
@@ -21434,6 +22770,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("Kr".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -21445,6 +22783,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("Kr".to_string()),
             (out.node_id, out.pin),
@@ -21456,6 +22796,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "refl".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -21467,6 +22811,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("refl".to_string()),
             (out.node_id, out.pin),
@@ -21478,6 +22824,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("Kt".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -21489,6 +22837,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("Kt".to_string()),
             (out.node_id, out.pin),
@@ -21500,6 +22850,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "xmit".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -21511,6 +22865,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("xmit".to_string()),
             (out.node_id, out.pin),
@@ -21522,6 +22878,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "eta".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -21533,6 +22893,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("eta".to_string()),
             (out.node_id, out.pin),
@@ -21544,6 +22906,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "envmap".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -21555,6 +22921,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("envmap".to_string()),
             (out.node_id, out.pin),
@@ -21566,6 +22934,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "background".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -21577,6 +22949,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("background".to_string()),
             (out.node_id, out.pin),
@@ -21588,6 +22962,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(12),
             (out.node_id, out.pin),
@@ -21599,6 +22977,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(12));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -21610,6 +22990,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "angle".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(13),
             (out.node_id, out.pin),
@@ -21621,6 +23005,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(13));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("angle".to_string()),
             (out.node_id, out.pin),
@@ -21632,6 +23018,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "density".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(14),
             (out.node_id, out.pin),
@@ -21643,6 +23033,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(14));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("density".to_string()),
             (out.node_id, out.pin),
@@ -21654,6 +23046,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "atten".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(15),
             (out.node_id, out.pin),
@@ -21665,6 +23061,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(15));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("atten".to_string()),
             (out.node_id, out.pin),
@@ -21676,6 +23074,10 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "shadowclr".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(16),
             (out.node_id, out.pin),
@@ -21687,6 +23089,8 @@ impl VopRslOglass {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(16));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("shadowclr".to_string()),
             (out.node_id, out.pin),
@@ -22130,6 +23534,10 @@ impl VopRslRayinfo {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "default".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -22141,6 +23549,8 @@ impl VopRslRayinfo {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("default".to_string()),
             (out.node_id, out.pin),
@@ -22356,6 +23766,10 @@ impl VopRslRenderstate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "default".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -22367,6 +23781,8 @@ impl VopRslRenderstate {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("default".to_string()),
             (out.node_id, out.pin),
@@ -22571,6 +23987,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "map".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -22582,6 +24002,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("map".to_string()),
             (out.node_id, out.pin),
@@ -22593,6 +24015,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -22604,6 +24028,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -22615,6 +24041,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P1".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -22626,6 +24054,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P1".to_string()),
             (out.node_id, out.pin),
@@ -22637,6 +24067,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P2".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -22648,6 +24080,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P2".to_string()),
             (out.node_id, out.pin),
@@ -22659,6 +24093,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P3".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -22670,6 +24106,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P3".to_string()),
             (out.node_id, out.pin),
@@ -22681,6 +24119,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sblur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -22692,6 +24134,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sblur".to_string()),
             (out.node_id, out.pin),
@@ -22703,6 +24147,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "tblur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -22714,6 +24162,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("tblur".to_string()),
             (out.node_id, out.pin),
@@ -22725,6 +24175,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "swidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -22736,6 +24190,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("swidth".to_string()),
             (out.node_id, out.pin),
@@ -22747,6 +24203,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "twidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -22758,6 +24218,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("twidth".to_string()),
             (out.node_id, out.pin),
@@ -22769,6 +24231,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "samples".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -22780,6 +24246,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("samples".to_string()),
             (out.node_id, out.pin),
@@ -22791,6 +24259,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "bias".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -22802,6 +24274,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("bias".to_string()),
             (out.node_id, out.pin),
@@ -22813,6 +24287,10 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "filter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -22824,6 +24302,8 @@ impl VopRslShadow {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("filter".to_string()),
             (out.node_id, out.pin),
@@ -23144,6 +24624,10 @@ impl VopRslStep {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "value".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -23155,6 +24639,8 @@ impl VopRslStep {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("value".to_string()),
             (out.node_id, out.pin),
@@ -23166,6 +24652,10 @@ impl VopRslStep {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "min".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -23177,6 +24667,8 @@ impl VopRslStep {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("min".to_string()),
             (out.node_id, out.pin),
@@ -23429,6 +24921,10 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "useBaseColor".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -23440,6 +24936,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("useBaseColor".to_string()),
             (out.node_id, out.pin),
@@ -23451,6 +24949,10 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "baseColor".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -23462,6 +24964,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("baseColor".to_string()),
             (out.node_id, out.pin),
@@ -23473,6 +24977,10 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "usePointColor".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -23484,6 +24992,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("usePointColor".to_string()),
             (out.node_id, out.pin),
@@ -23495,6 +25005,10 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "useColorMap".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -23506,6 +25020,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("useColorMap".to_string()),
             (out.node_id, out.pin),
@@ -23517,6 +25033,10 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "baseColorMap".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -23528,6 +25048,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("baseColorMap".to_string()),
             (out.node_id, out.pin),
@@ -23539,6 +25061,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("s".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -23550,6 +25074,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("s".to_string()),
             (out.node_id, out.pin),
@@ -23561,6 +25087,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("t".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -23572,6 +25100,8 @@ impl VopRslSurfacecolor {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("t".to_string()),
             (out.node_id, out.pin),
@@ -24034,6 +25564,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "map".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -24045,6 +25579,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("map".to_string()),
             (out.node_id, out.pin),
@@ -24056,6 +25592,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("s".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -24067,6 +25605,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("s".to_string()),
             (out.node_id, out.pin),
@@ -24078,6 +25618,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("t".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -24089,6 +25631,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("t".to_string()),
             (out.node_id, out.pin),
@@ -24100,6 +25644,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("ds".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -24111,6 +25657,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("ds".to_string()),
             (out.node_id, out.pin),
@@ -24122,6 +25670,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("dt".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -24133,6 +25683,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("dt".to_string()),
             (out.node_id, out.pin),
@@ -24144,6 +25696,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "sblur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -24155,6 +25711,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("sblur".to_string()),
             (out.node_id, out.pin),
@@ -24166,6 +25724,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "tblur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -24177,6 +25739,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("tblur".to_string()),
             (out.node_id, out.pin),
@@ -24188,6 +25752,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "swidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -24199,6 +25767,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("swidth".to_string()),
             (out.node_id, out.pin),
@@ -24210,6 +25780,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "twidth".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -24221,6 +25795,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("twidth".to_string()),
             (out.node_id, out.pin),
@@ -24232,6 +25808,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "filter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -24243,6 +25823,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("filter".to_string()),
             (out.node_id, out.pin),
@@ -24254,6 +25836,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "defclr".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -24265,6 +25851,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("defclr".to_string()),
             (out.node_id, out.pin),
@@ -24276,6 +25864,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fill".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(11),
             (out.node_id, out.pin),
@@ -24287,6 +25879,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(11));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fill".to_string()),
             (out.node_id, out.pin),
@@ -24298,6 +25892,10 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "lerp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(12),
             (out.node_id, out.pin),
@@ -24309,6 +25907,8 @@ impl VopRslTexture {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(12));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("lerp".to_string()),
             (out.node_id, out.pin),
@@ -24661,6 +26261,10 @@ impl VopRslTextureinfo {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "map".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -24672,6 +26276,8 @@ impl VopRslTextureinfo {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("map".to_string()),
             (out.node_id, out.pin),
@@ -24834,6 +26440,10 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "fromspace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -24845,6 +26455,8 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("fromspace".to_string()),
             (out.node_id, out.pin),
@@ -24856,6 +26468,10 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "tospace".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -24867,6 +26483,8 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("tospace".to_string()),
             (out.node_id, out.pin),
@@ -24878,6 +26496,10 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "xform".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -24889,6 +26511,8 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("xform".to_string()),
             (out.node_id, out.pin),
@@ -24900,6 +26524,10 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "val".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -24911,6 +26539,8 @@ impl VopRslTransform {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("val".to_string()),
             (out.node_id, out.pin),
@@ -25105,6 +26735,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("uv".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -25116,6 +26748,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("uv".to_string()),
             (out.node_id, out.pin),
@@ -25127,6 +26761,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "freq".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -25138,6 +26776,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("freq".to_string()),
             (out.node_id, out.pin),
@@ -25149,6 +26789,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "offset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -25160,6 +26804,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("offset".to_string()),
             (out.node_id, out.pin),
@@ -25171,6 +26817,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -25182,6 +26832,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rand".to_string()),
             (out.node_id, out.pin),
@@ -25193,6 +26845,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "layers".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -25204,6 +26860,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("layers".to_string()),
             (out.node_id, out.pin),
@@ -25215,6 +26873,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "starsize".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -25226,6 +26888,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("starsize".to_string()),
             (out.node_id, out.pin),
@@ -25237,6 +26901,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "starrand".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -25248,6 +26916,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("starrand".to_string()),
             (out.node_id, out.pin),
@@ -25259,6 +26929,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "roundness".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -25270,6 +26944,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("roundness".to_string()),
             (out.node_id, out.pin),
@@ -25281,6 +26957,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "softness".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -25292,6 +26972,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("softness".to_string()),
             (out.node_id, out.pin),
@@ -25303,6 +26985,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "blur".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(9),
             (out.node_id, out.pin),
@@ -25314,6 +27000,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(9));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("blur".to_string()),
             (out.node_id, out.pin),
@@ -25325,6 +27013,10 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "filter".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(10),
             (out.node_id, out.pin),
@@ -25336,6 +27028,8 @@ impl VopRstars {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(10));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("filter".to_string()),
             (out.node_id, out.pin),
@@ -25857,6 +27551,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("P".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(0),
             (out.node_id, out.pin),
@@ -25868,6 +27564,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(0));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("P".to_string()),
             (out.node_id, out.pin),
@@ -25879,6 +27577,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name("Cf".to_string()));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(1),
             (out.node_id, out.pin),
@@ -25890,6 +27590,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(1));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("Cf".to_string()),
             (out.node_id, out.pin),
@@ -25901,6 +27603,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rthresh".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(2),
             (out.node_id, out.pin),
@@ -25912,6 +27618,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(2));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rthresh".to_string()),
             (out.node_id, out.pin),
@@ -25923,6 +27631,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "pthresh".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(3),
             (out.node_id, out.pin),
@@ -25934,6 +27646,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(3));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("pthresh".to_string()),
             (out.node_id, out.pin),
@@ -25945,6 +27659,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "nfreq".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(4),
             (out.node_id, out.pin),
@@ -25956,6 +27674,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(4));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nfreq".to_string()),
             (out.node_id, out.pin),
@@ -25967,6 +27687,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "noffset".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(5),
             (out.node_id, out.pin),
@@ -25978,6 +27702,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(5));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("noffset".to_string()),
             (out.node_id, out.pin),
@@ -25989,6 +27715,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "namp".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(6),
             (out.node_id, out.pin),
@@ -26000,6 +27730,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(6));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("namp".to_string()),
             (out.node_id, out.pin),
@@ -26011,6 +27743,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "nrough".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(7),
             (out.node_id, out.pin),
@@ -26022,6 +27758,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(7));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("nrough".to_string()),
             (out.node_id, out.pin),
@@ -26033,6 +27771,10 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Name(
+                "rcolor".to_string(),
+            ));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Index(8),
             (out.node_id, out.pin),
@@ -26044,6 +27786,8 @@ impl VopRust {
         output: O,
     ) -> Self {
         let out = output.into();
+        self.inputs
+            .remove(&houdini_ramen_core::types::InputPin::Index(8));
         self.inputs.insert(
             houdini_ramen_core::types::InputPin::Name("rcolor".to_string()),
             (out.node_id, out.pin),
