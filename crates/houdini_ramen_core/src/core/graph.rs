@@ -254,6 +254,7 @@ impl NodeGraph {
 pub struct NodeWiring<'a, 'g, C, N> {
     inner: &'a mut InnerGraph<'g, C>,
     target_id: usize,
+    target_name: String,
     _phantom: PhantomData<N>,
 }
 
@@ -262,6 +263,7 @@ impl<'a, 'g, C> InnerGraph<'g, C> {
         NodeWiring {
             inner: self,
             target_id: target.get_id(),
+            target_name: target.get_name().to_string(),
             _phantom: PhantomData,
         }
     }
@@ -270,6 +272,7 @@ impl<'a, 'g, C> InnerGraph<'g, C> {
         NodeWiring {
             inner: self,
             target_id: target.get_id(),
+            target_name: target.get_name().to_string(),
             _phantom: PhantomData,
         }
     }
@@ -298,7 +301,10 @@ impl<'a, 'g, C, N> NodeWiring<'a, 'g, C, N> {
         if let Some((node, _, _)) = found {
             node.inputs.insert(input_pin, (out.node_id, out.pin));
         } else {
-            panic!("Houdini Ramen Error: Attempted to wire to invalid ExistingNodeRef");
+            panic!(
+                "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
+                self.target_name
+            );
         }
     }
 }
