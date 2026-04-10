@@ -2,6 +2,28 @@ use crate::core::types::param::ParamValue;
 use crate::core::types::spare::SpareParam;
 use std::collections::{BTreeMap, HashMap};
 
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+pub enum InputPin {
+    Index(usize),
+    Name(String),
+}
+
+impl From<usize> for InputPin {
+    fn from(idx: usize) -> Self {
+        InputPin::Index(idx)
+    }
+}
+impl From<&str> for InputPin {
+    fn from(name: &str) -> Self {
+        InputPin::Name(name.to_string())
+    }
+}
+impl From<String> for InputPin {
+    fn from(name: String) -> Self {
+        InputPin::Name(name)
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum OutputPin {
     Index(usize),
@@ -34,7 +56,7 @@ pub trait HoudiniNode {
     fn get_id(&self) -> usize;
     fn get_name(&self) -> &str;
     fn get_node_type(&self) -> &'static str;
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)>;
+    fn get_inputs(&self) -> &BTreeMap<InputPin, (usize, OutputPin)>;
     fn get_params(&self) -> &HashMap<String, ParamValue>;
     fn get_spare_params(&self) -> &[SpareParam] {
         &[]

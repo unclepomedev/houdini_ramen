@@ -57,6 +57,7 @@ class NodeInfo:
     min_inputs: int
     max_inputs: int
     input_labels: list[str] = field(default_factory=list)
+    input_names: list[str] = field(default_factory=list)
     outputs: list[OutputInfo] = field(default_factory=list)
     parms: list[ParmInfo] = field(default_factory=list)
     builtin_inner_nodes: dict[str, str] = field(default_factory=dict)
@@ -378,6 +379,23 @@ class HoudiniNodeExtractor:
 
         return [""] * max_inputs
 
+    def _get_input_names(
+        self, temp_node: hou.Node | None, max_inputs: int
+    ) -> list[str]:
+        if max_inputs <= 0 or max_inputs >= 128:
+            return []
+
+        if temp_node and hasattr(temp_node, "inputNames"):
+            try:
+                names = list(temp_node.inputNames())
+                return names + [""] * (max_inputs - len(names))
+            except Exception as e:
+                logger.debug(
+                    f"Failed to get inputNames for '{temp_node.type().name()}': {e}"
+                )
+
+        return [""] * max_inputs
+
     def _get_outputs(
         self, temp_node: hou.Node | None, max_outputs: int
     ) -> list[OutputInfo]:
@@ -423,17 +441,19 @@ class HoudiniNodeExtractor:
 
     def _extract_io_info(
         self, node_type: hou.NodeType, cat_name: str
-    ) -> tuple[list[str], list[OutputInfo]]:
+    ) -> tuple[list[str], list[str], list[OutputInfo]]:
         max_inputs = node_type.maxNumInputs()
         max_outputs = node_type.maxNumOutputs()
 
         if max_inputs <= 0 and max_outputs <= 0:
-            return [], []
+            return [], [], []
 
         parents = self.temp_manager.get_parents(cat_name)
         if not parents:
-            return self._get_input_labels(None, max_inputs), self._get_outputs(
-                None, max_outputs
+            return (
+                self._get_input_labels(None, max_inputs),
+                self._get_input_names(None, max_inputs),
+                self._get_outputs(None, max_outputs),
             )
 
         temp_node = self._create_temp_node(
@@ -442,17 +462,19 @@ class HoudiniNodeExtractor:
 
         try:
             input_labels = self._get_input_labels(temp_node, max_inputs)
+            input_names = self._get_input_names(temp_node, max_inputs)
             outputs = self._get_outputs(temp_node, max_outputs)
         except Exception as e:
             logger.debug(
                 f"I/O extraction failed for '{cat_name}/{node_type.name()}': {e}"
             )
             input_labels = self._get_input_labels(None, max_inputs)
+            input_names = self._get_input_names(None, max_inputs)
             outputs = self._get_outputs(None, max_outputs)
         finally:
             self._destroy_temp_node(temp_node)
 
-        return input_labels, outputs
+        return input_labels, input_names, outputs
 
     def _extract_node_info(self, node_type: hou.NodeType, cat_name: str) -> NodeInfo:
         parms = []
@@ -466,12 +488,13 @@ class HoudiniNodeExtractor:
             )
 
         inner_data = self._extract_builtin_inner_nodes(node_type, cat_name)
-        input_labels, outputs = self._extract_io_info(node_type, cat_name)
+        input_labels, input_names, outputs = self._extract_io_info(node_type, cat_name)
 
         return NodeInfo(
             min_inputs=node_type.minNumInputs(),
             max_inputs=node_type.maxNumInputs(),
             input_labels=input_labels,
+            input_names=input_names,
             outputs=outputs,
             parms=parms,
             builtin_inner_nodes=inner_data.nodes,

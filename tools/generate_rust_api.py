@@ -102,6 +102,8 @@ class ParsedInput:
     index: int
     doc_label: str
     safe_name: str
+    safe_input_name: str
+    raw_input_name: str
 
 
 @dataclass(frozen=True)
@@ -323,10 +325,16 @@ def parse_param(
     return parsed_param, menu_enum
 
 
-def _parse_inputs(raw_labels: list[str]) -> list[ParsedInput]:
+def _parse_inputs(raw_labels: list[str], raw_names: list[str]) -> list[ParsedInput]:
     input_resolver = SuffixResolver()
+    name_resolver = SuffixResolver()
     parsed_inputs = []
-    for idx, label in enumerate(raw_labels):
+
+    max_len = max(len(raw_labels), len(raw_names))
+    labels = raw_labels + [""] * (max_len - len(raw_labels))
+    names = raw_names + [""] * (max_len - len(raw_names))
+
+    for idx, (label, name) in enumerate(zip(labels, names, strict=True)):
         # remove line breaks and consecutive spaces to create one clean string
         clean_doc = re.sub(
             r"\s+", " ", label.replace("\n", " ").replace("\r", "")
@@ -338,8 +346,20 @@ def _parse_inputs(raw_labels: list[str]) -> list[ParsedInput]:
             safe_base = safe_base[:40].rstrip("_")
 
         safe_name = input_resolver.resolve(safe_base)
+
+        raw_input_name = name.strip()
+        safe_input_name = ""
+        if raw_input_name:
+            safe_input_name = name_resolver.resolve(snake_case(raw_input_name))
+
         parsed_inputs.append(
-            ParsedInput(index=idx, doc_label=clean_doc, safe_name=safe_name)
+            ParsedInput(
+                index=idx,
+                doc_label=clean_doc,
+                safe_name=safe_name,
+                safe_input_name=safe_input_name,
+                raw_input_name=safe_rust_string(raw_input_name),
+            )
         )
     return parsed_inputs
 
@@ -434,7 +454,9 @@ def parse_node(
         node_type=node_type,
         min_inputs=node_info.get("min_inputs", 0),
         max_inputs=node_info.get("max_inputs", 0),
-        inputs=_parse_inputs(node_info.get("input_labels", [])),
+        inputs=_parse_inputs(
+            node_info.get("input_labels", []), node_info.get("input_names", [])
+        ),
         params=params,
         enums=enums,
         output_enum=_parse_outputs(struct_name, node_info.get("outputs", [])),
