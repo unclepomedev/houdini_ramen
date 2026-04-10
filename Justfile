@@ -34,6 +34,18 @@ fmt-all: fmt-py fmt-rs
 test-all: test-py test-rs
 
 # setup =========================================================
+bump-version NEW_VER:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CURRENT_VER=$(sed -n '/\[workspace.package\]/,/version/s/.*version = "\(.*\)".*/\1/p' Cargo.toml | head -n 1)
+    echo "Updating version: $CURRENT_VER -> {{ NEW_VER }}"
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        sed -i '' "s/version = \"$CURRENT_VER\"/version = \"{{ NEW_VER }}\"/g" Cargo.toml
+    else
+        sed -i "s/version = \"$CURRENT_VER\"/version = \"{{ NEW_VER }}\"/g" Cargo.toml
+    fi
+
 dump-nodes:
     #!/usr/bin/env bash
     set -e
