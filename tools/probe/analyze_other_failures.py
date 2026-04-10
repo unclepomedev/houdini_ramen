@@ -14,19 +14,8 @@ def analyze_other_failures():
 
     failures = data.get("failures_instantiation", {})
 
-    target_categories = [
-        "Cop",
-        "Shop",
-        "Data",
-        "VopNet",
-        "CopNet",
-        "ChopNet",
-        "TopNet",
-        "Sop",
-    ]
-
-    for cat in target_categories:
-        cat_failures = failures.get(cat, [])
+    for cat in sorted(failures.keys()):
+        cat_failures = failures[cat]
         if not cat_failures:
             continue
 

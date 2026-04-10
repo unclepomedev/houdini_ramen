@@ -96,7 +96,14 @@ def probe_all_nodes():
                     temp_node = parent.createNode(
                         node_type_name, run_init_scripts=False
                     )
+                except hou.OperationFailed as e:
+                    cat_stats["instantiation_failed"] += 1
+                    report["failures_instantiation"][cat_name].append(
+                        {"node": node_type_name, "reason": str(e)}
+                    )
+                    continue
 
+                try:
                     out_labels = (
                         temp_node.outputLabels()
                         if hasattr(temp_node, "outputLabels")
@@ -117,22 +124,16 @@ def probe_all_nodes():
                             "outputNames": list(out_names),
                         }
 
-                except hou.OperationFailed as e:
-                    cat_stats["instantiation_failed"] += 1
-                    report["failures_instantiation"][cat_name].append(
-                        {"node": node_type_name, "reason": str(e)}
-                    )
                 except Exception as e:
                     cat_stats["io_read_failed"] += 1
                     report["failures_io_read"][cat_name].append(
                         {"node": node_type_name, "reason": str(e)}
                     )
                 finally:
-                    if temp_node:
-                        try:
-                            temp_node.destroy()
-                        except Exception:
-                            pass
+                    try:
+                        temp_node.destroy()
+                    except Exception:
+                        pass
 
             report["summary"][cat_name] = cat_stats
 

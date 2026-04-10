@@ -10,6 +10,8 @@ use houdini_ramen_vop::{
     VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopMultiply,
 };
 
+const TIMESTEP: f32 = 1.0_f32 / 24.0_f32;
+
 fn main() {
     let mut graph = NodeGraph::new("/obj/geo1")
         .with_auto_clear()
@@ -39,7 +41,7 @@ fn main() {
                 .typed_as::<VopGeometryvopglobal>();
             let out1 = vop_graph.geometryvopoutput1();
 
-            let const1 = vop_graph.add(VopConstant::new("const1").with_floatdef(1.0 / 24.0));
+            let const1 = vop_graph.add(VopConstant::new("timestep").with_floatdef(TIMESTEP));
             let multiply1 = vop_graph.add(
                 VopMultiply::new("multiply1")
                     .set_input(in1.out_v())

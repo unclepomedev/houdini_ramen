@@ -94,12 +94,12 @@ class VopContextManager:
 
 
 def probe_vop_contexts():
-    manager = VopContextManager()
-
     cat = hou.nodeTypeCategories().get("Vop")
     if not cat:
         logger.error("VOP category not found.")
         return
+
+    manager = VopContextManager()
 
     report = {
         "summary": {"total": len(cat.nodeTypes()), "success": 0, "failed_all": 0},
