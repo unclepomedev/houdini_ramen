@@ -27,7 +27,7 @@ test-rs:
 
 # common ========================================================
 no-jpn:
-    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ crates/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md
+    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ crates/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md examples/
 
 fmt-all: fmt-py fmt-rs
 

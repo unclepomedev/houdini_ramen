@@ -168,7 +168,7 @@ def main():
         for node_name, names in sample_list:
             print(f"  - {node_name}: {names[:5]} {'...' if len(names) > 5 else ''}")
 
-    print("\n=== FAILED TO INSTANTIATE (First 10) ===")
+    print("\n=== FAILURES (First 10) ===")
     for f in failed_nodes[:10]:
         print(f"  - {f}")
     if len(failed_nodes) > 10:
