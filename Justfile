@@ -27,7 +27,7 @@ test-rs:
 
 # common ========================================================
 no-jpn:
-    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ crates/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md
+    rg '[\p{Han}\p{Hiragana}\p{Katakana}]' src/ crates/ tools/ templates/ tests/ .gitignore Cargo.toml Justfile pyproject.toml README.md examples/
 
 fmt-all: fmt-py fmt-rs
 
@@ -109,3 +109,7 @@ explore-out-label2: (_hython "tools/probe/explore_out_label2.py")
 analyze-vop-failure: (_hython "tools/probe/analyze_vop_failures.py")
 probe_vop_contexts: (_hython "tools/probe/probe_vop_contexts.py")
 analyze-failure: (_hython "tools/probe/analyze_other_failures.py")
+
+probe-input-labels: (_hython "tools/probe/probe_input_labels.py")
+probe-input-names: (_hython "tools/probe/probe_input_names.py")
+probe-input-names-strict: (_hython "tools/probe/probe_input_names_strict.py")
