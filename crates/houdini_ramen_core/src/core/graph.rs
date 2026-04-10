@@ -1,7 +1,7 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::Transpiler;
 use crate::core::types::ParamValue;
-use crate::core::types::{ContainerType, HoudiniNode, NodeOutput, OutputPin};
+use crate::core::types::{ContainerType, HoudiniNode, InputPin, NodeOutput, OutputPin};
 use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::marker::PhantomData;
@@ -70,10 +70,10 @@ impl<'a, C> InnerGraph<'a, C> {
             .push((node.get_id(), self.container_id));
     }
 
-    pub fn connect_existing<O: Into<NodeOutput>>(
+    pub fn connect_existing<I: Into<InputPin>, O: Into<NodeOutput>>(
         &mut self,
         dst: &ExistingNodeRef,
-        input_idx: usize,
+        input_pin: I,
         output: O,
     ) {
         let out = output.into();
@@ -83,7 +83,7 @@ impl<'a, C> InnerGraph<'a, C> {
             .iter_mut()
             .find(|(n, cid, _)| *cid == self.container_id && n.id == dst.id);
         if let Some((node, _, _)) = found {
-            node.inputs.insert(input_idx, (out.node_id, out.pin));
+            node.inputs.insert(input_pin.into(), (out.node_id, out.pin));
         } else {
             panic!(
                 "Houdini Ramen Error: Attempted to wire to ExistingNodeRef '{}' which does not belong to the current container.",
@@ -110,7 +110,7 @@ impl<'a, C> InnerGraph<'a, C> {
 pub struct ExistingNodeRef {
     pub id: usize,
     pub name: String,
-    pub inputs: BTreeMap<usize, (usize, OutputPin)>,
+    pub inputs: BTreeMap<InputPin, (usize, OutputPin)>,
 }
 
 impl ExistingNodeRef {
@@ -132,7 +132,7 @@ impl HoudiniNode for ExistingNodeRef {
     fn get_node_type(&self) -> &'static str {
         ""
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPin, (usize, OutputPin)> {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -164,7 +164,7 @@ impl<N> HoudiniNode for TypedExistingNodeRef<N> {
     fn get_node_type(&self) -> &'static str {
         self.base.get_node_type()
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPin, (usize, OutputPin)> {
         self.base.get_inputs()
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {

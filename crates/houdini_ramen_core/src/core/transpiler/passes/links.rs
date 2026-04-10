@@ -1,6 +1,6 @@
 use crate::core::py_escape::python_string_literal;
 use crate::core::transpiler::builder::PythonBuilder;
-use crate::core::types::{HoudiniNode, OutputPin};
+use crate::core::types::{HoudiniNode, InputPin, OutputPin};
 use std::collections::HashMap;
 
 pub fn write_link_pass(
@@ -36,11 +36,11 @@ fn write_node_links(
         return;
     };
 
-    for (idx, (target_id, target_out_pin)) in node.get_inputs() {
+    for (in_pin, (target_id, target_out_pin)) in node.get_inputs() {
         write_single_link(
             builder,
             var_name,
-            *idx,
+            in_pin,
             *target_id,
             target_out_pin,
             id_to_var,
@@ -51,37 +51,50 @@ fn write_node_links(
 fn write_single_link(
     builder: &mut PythonBuilder,
     var_name: &str,
-    input_idx: usize,
+    input_pin: &InputPin,
     target_id: usize,
     target_out_pin: &OutputPin,
     id_to_var: &HashMap<usize, String>,
 ) {
     if let Some(target_var) = id_to_var.get(&target_id) {
-        match target_out_pin {
-            OutputPin::Index(idx) => {
+        let in_idx_expr = match input_pin {
+            InputPin::Index(idx) => idx.to_string(),
+            InputPin::Name(name) => {
+                let safe_name = python_string_literal(name);
                 builder.line(&format!(
-                    "{}.setInput({}, {}, {})",
-                    var_name, input_idx, target_var, idx
+                    "try:\n    _in_idx = {}.inputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve input pin ' + repr({}) + ' on ' + {}.path())",
+                    var_name, safe_name, safe_name, var_name
                 ));
+                "_in_idx".to_string()
             }
+        };
+
+        let out_idx_expr = match target_out_pin {
+            OutputPin::Index(idx) => idx.to_string(),
             OutputPin::Name(name) => {
                 let safe_name = python_string_literal(name);
                 builder.line(&format!(
-                    "try:\n    _out_idx = {}.outputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr({}) + ' on ' + {}.path())\n{}.setInput({}, {}, _out_idx)",
-                    target_var, safe_name, safe_name, target_var, var_name, input_idx, target_var
+                    "try:\n    _out_idx = {}.outputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr({}) + ' on ' + {}.path())",
+                    target_var, safe_name, safe_name, target_var
                 ));
+                "_out_idx".to_string()
             }
-        }
+        };
+
+        builder.line(&format!(
+            "{}.setInput({}, {}, {})",
+            var_name, in_idx_expr, target_var, out_idx_expr
+        ));
     } else {
         emit_warning(
             builder,
             format!(
-                "WARNING: Target node with ID {} not found in the graph. Skipping connection for input {} of {}.",
-                target_id, input_idx, var_name
+                "WARNING: Target node with ID {} not found in the graph. Skipping connection for input {:?} of {}.",
+                target_id, input_pin, var_name
             ),
             format!(
-                "Target node ID {} not found. Connection to input {} skipped.",
-                target_id, input_idx
+                "Target node ID {} not found. Connection to input {:?} skipped.",
+                target_id, input_pin
             ),
         );
     }

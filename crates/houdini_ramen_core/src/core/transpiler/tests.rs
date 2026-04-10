@@ -1,7 +1,7 @@
 use super::Transpiler;
 use crate::core::graph::{ExistingNodeRef, NodeGraph};
 use crate::core::types::{
-    ContainerType, HoudiniNode, NodeOutput, OutputPin, ParamValue, SpareParam,
+    ContainerType, HoudiniNode, InputPin, NodeOutput, OutputPin, ParamValue, SpareParam,
 };
 use std::collections::{BTreeMap, HashMap};
 
@@ -10,7 +10,7 @@ struct DummyNode {
     id: usize,
     name: String,
     node_type: &'static str,
-    inputs: BTreeMap<usize, (usize, OutputPin)>,
+    inputs: BTreeMap<InputPin, (usize, OutputPin)>,
     params: HashMap<String, ParamValue>,
     spare_params: Vec<SpareParam>,
 }
@@ -25,7 +25,7 @@ impl HoudiniNode for DummyNode {
     fn get_node_type(&self) -> &'static str {
         self.node_type
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPin, (usize, OutputPin)> {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -42,7 +42,7 @@ struct DummyContainerNode {
     name: String,
     node_type: &'static str,
     dive_target: &'static str,
-    inputs: BTreeMap<usize, (usize, OutputPin)>,
+    inputs: BTreeMap<InputPin, (usize, OutputPin)>,
     params: HashMap<String, ParamValue>,
     spare_params: Vec<SpareParam>,
 }
@@ -57,7 +57,7 @@ impl HoudiniNode for DummyContainerNode {
     fn get_node_type(&self) -> &'static str {
         self.node_type
     }
-    fn get_inputs(&self) -> &BTreeMap<usize, (usize, OutputPin)> {
+    fn get_inputs(&self) -> &BTreeMap<InputPin, (usize, OutputPin)> {
         &self.inputs
     }
     fn get_params(&self) -> &HashMap<String, ParamValue> {
@@ -99,7 +99,9 @@ fn test_transpiler_script_generation() {
     node2
         .params
         .insert("color".to_string(), ParamValue::Float3([1.0, 0.5, 0.0]));
-    node2.inputs.insert(0, (101, OutputPin::Index(0)));
+    node2
+        .inputs
+        .insert(InputPin::Index(0), (101, OutputPin::Index(0)));
 
     let mut transpiler = Transpiler::new("/obj/node's_geo", None, false);
     transpiler.add_boxed(Box::new(node1)).unwrap();
@@ -131,7 +133,8 @@ fn test_missing_node_connection_warning() {
         params: HashMap::new(),
         spare_params: vec![],
     };
-    node.inputs.insert(0, (999, OutputPin::Index(0)));
+    node.inputs
+        .insert(InputPin::Index(0), (999, OutputPin::Index(0)));
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler.add_boxed(Box::new(node)).unwrap();
@@ -159,7 +162,9 @@ fn test_same_name_nodes_get_distinct_python_vars() {
         params: HashMap::new(),
         spare_params: vec![],
     };
-    node2.inputs.insert(0, (1, OutputPin::Index(0)));
+    node2
+        .inputs
+        .insert(InputPin::Index(0), (1, OutputPin::Index(0)));
 
     let mut transpiler = Transpiler::new("/obj/geo1", None, false);
     transpiler.add(node1).unwrap();
@@ -428,7 +433,7 @@ fn test_transpiler_nested_subnet_creation() {
         node_type: "ray",
         inputs: {
             let mut m = BTreeMap::new();
-            m.insert(0, (502, OutputPin::Index(0)));
+            m.insert(InputPin::Index(0), (502, OutputPin::Index(0)));
             m
         },
         params: HashMap::new(),
@@ -470,7 +475,7 @@ fn test_node_graph_dive_into_api() {
             node_type: "ray",
             inputs: {
                 let mut m = BTreeMap::new();
-                m.insert(0, (prev_frame_id, OutputPin::Index(0)));
+                m.insert(InputPin::Index(0), (prev_frame_id, OutputPin::Index(0)));
                 m
             },
             params: HashMap::new(),
@@ -643,7 +648,6 @@ fn test_dive_target_parent_resolution() {
         !script.contains("parent.createNode('ray', 'child_ray')"),
         "child must not be created under root parent"
     );
-    // dive target container must get layoutChildren
     assert!(
         script.contains("n_vellum_solver_1001.node('inner_net').layoutChildren()"),
         "dive target container must get layoutChildren"
@@ -800,9 +804,10 @@ fn test_named_output_pin_wiring() {
         spare_params: vec![],
     };
 
-    node_target
-        .inputs
-        .insert(0, (3001, OutputPin::Name("force".to_string())));
+    node_target.inputs.insert(
+        InputPin::Index(0),
+        (3001, OutputPin::Name("force".to_string())),
+    );
 
     let node_source = DummyNode {
         id: 3001,
@@ -863,4 +868,41 @@ fn test_cross_container_wiring_error() {
 
         inner_b.connect_existing(&out_a, 0, &ray_b);
     });
+}
+
+#[test]
+fn test_named_input_pin_wiring() {
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+
+    let mut node_target = DummyNode {
+        id: 4002,
+        name: "target".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    node_target.inputs.insert(
+        InputPin::Name("pos".to_string()),
+        (4001, OutputPin::Index(0)),
+    );
+
+    let node_source = DummyNode {
+        id: 4001,
+        name: "source".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    transpiler.add_boxed(Box::new(node_source)).unwrap();
+    transpiler.add_boxed(Box::new(node_target)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("try:\n    _in_idx = n_target_4002.inputIndex(\"pos\")"));
+    assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve input pin ' + repr(\"pos\") + ' on ' + n_target_4002.path())"));
+    assert!(script.contains("n_target_4002.setInput(_in_idx, n_source_4001, 0)"));
 }

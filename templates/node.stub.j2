@@ -19,6 +19,9 @@ impl {{ node.struct_name }} {
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
     {% for inp in node.inputs %}
     pub fn set_{{ inp.safe_name }}_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    {% if inp.safe_input_name %}
+    pub fn set_input_name_{{ inp.safe_input_name }}<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    {% endif %}
     {% endfor %}
     {% endif %}
     {% endif %}

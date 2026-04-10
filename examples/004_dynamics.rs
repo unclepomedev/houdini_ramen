@@ -6,9 +6,7 @@ use houdini_ramen::sop::{
     SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter, SopSolver,
     SopSolverInnerExt, SopTestgeometryRubbertoy,
 };
-use houdini_ramen_vop::{
-    VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopMultiply,
-};
+use houdini_ramen_vop::{VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopKinefxJointangle, VopMultiply};
 
 const TIMESTEP: f32 = 1.0_f32 / 24.0_f32;
 
@@ -46,6 +44,9 @@ fn main() {
                 VopMultiply::new("multiply1")
                     .set_input(in1.out_v())
                     .set_input_at(1, &const1),
+            );
+            let dummy = vop_graph.add(VopKinefxJointangle::new("dummy")
+                .set_input_name_pt(&const1)
             );
 
             let add1 = vop_graph.add(
