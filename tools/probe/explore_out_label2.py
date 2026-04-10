@@ -50,8 +50,10 @@ class TempNodeManager:
             if node and cat_name in self._strategies and self._strategies[cat_name][1]:
                 try:
                     node.destroy()
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.debug(
+                        f"Failed to destroy temp parent for '{cat_name}': {e}"
+                    )
         self.parents.clear()
 
 
@@ -80,7 +82,7 @@ def probe_all_nodes():
             report["failures_instantiation"][cat_name] = []
             report["failures_io_read"][cat_name] = []
 
-            for node_type_name, node_type in cat.nodeTypes().items():
+            for node_type_name, _node_type in cat.nodeTypes().items():
                 if not parent:
                     cat_stats["instantiation_failed"] += 1
                     report["failures_instantiation"][cat_name].append(
@@ -96,7 +98,7 @@ def probe_all_nodes():
                     temp_node = parent.createNode(
                         node_type_name, run_init_scripts=False
                     )
-                except hou.OperationFailed as e:
+                except Exception as e:
                     cat_stats["instantiation_failed"] += 1
                     report["failures_instantiation"][cat_name].append(
                         {"node": node_type_name, "reason": str(e)}
@@ -132,8 +134,10 @@ def probe_all_nodes():
                 finally:
                     try:
                         temp_node.destroy()
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        logger.debug(
+                            f"Failed to destroy temp node '{node_type_name}' in '{cat_name}': {e}"
+                        )
 
             report["summary"][cat_name] = cat_stats
 

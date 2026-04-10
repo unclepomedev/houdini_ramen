@@ -83,6 +83,13 @@ class VopContextManager:
         except Exception as e:
             logger.error(f"Plain VOP context setup failed: {e}")
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        self.cleanup()
+        return False
+
     def cleanup(self):
         for root in self.roots:
             try:
@@ -120,7 +127,7 @@ def probe_vop_contexts():
     ]
 
     try:
-        for node_type_name, node_type in cat.nodeTypes().items():
+        for node_type_name, _node_type in cat.nodeTypes().items():
             success = False
 
             for ctx_name in test_order:
