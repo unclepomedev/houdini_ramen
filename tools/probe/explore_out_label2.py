@@ -101,7 +101,7 @@ def probe_all_nodes():
                 except Exception as e:
                     cat_stats["instantiation_failed"] += 1
                     report["failures_instantiation"][cat_name].append(
-                        {"node": node_type_name, "reason": str(e)}
+                        {"node": node_type_name, "reason": f"{type(e).__name__}: {e}"}
                     )
                     continue
 
@@ -129,7 +129,7 @@ def probe_all_nodes():
                 except Exception as e:
                     cat_stats["io_read_failed"] += 1
                     report["failures_io_read"][cat_name].append(
-                        {"node": node_type_name, "reason": str(e)}
+                        {"node": node_type_name, "reason": f"{type(e).__name__}: {e}"}
                     )
                 finally:
                     try:
