@@ -909,3 +909,47 @@ fn test_named_input_pin_wiring() {
     assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve input pin ' + repr(\"pos\") + ' on ' + n_target_4002.path())"));
     assert!(script.contains("n_target_4002.setInput(_in_n_target_4002_pos, n_source_4001, 0)"));
 }
+
+#[test]
+fn test_named_input_and_output_pin_wiring() {
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+
+    let mut node_target = DummyNode {
+        id: 5002,
+        name: "target".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    node_target.inputs.insert(
+        InputPin::Name("pos".to_string()),
+        (5001, OutputPin::Name("force".to_string())),
+    );
+
+    let node_source = DummyNode {
+        id: 5001,
+        name: "source".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    transpiler.add_boxed(Box::new(node_source)).unwrap();
+    transpiler.add_boxed(Box::new(node_target)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("try:\n    _in_n_target_5002_pos = n_target_5002.inputIndex(\"pos\")"));
+    assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve input pin ' + repr(\"pos\") + ' on ' + n_target_5002.path())"));
+    assert!(
+        script
+            .contains("try:\n    _out_n_source_5001_force = n_source_5001.outputIndex(\"force\")")
+    );
+    assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr(\"force\") + ' on ' + n_source_5001.path())"));
+    assert!(script.contains(
+        "n_target_5002.setInput(_in_n_target_5002_pos, n_source_5001, _out_n_source_5001_force)"
+    ));
+}
