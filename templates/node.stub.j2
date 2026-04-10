@@ -64,3 +64,13 @@ pub trait {{ node.struct_name }}InnerExt {
     {% endfor %}
 }
 {% endif %}
+{% if node.inputs %}
+pub trait {{ node.struct_name }}WiringExt {
+    {% for inp in node.inputs %}
+    fn set_{{ inp.safe_name }}_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    {% if inp.safe_input_name %}
+    fn set_input_name_{{ inp.safe_input_name }}<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    {% endif %}
+    {% endfor %}
+}
+{% endif %}

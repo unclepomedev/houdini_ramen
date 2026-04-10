@@ -7,8 +7,8 @@ use houdini_ramen::sop::{
     SopSolverInnerExt, SopTestgeometryRubbertoy,
 };
 use houdini_ramen_vop::{
-    VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopKinefxJointangle,
-    VopMultiply,
+    VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopGeometryvopoutput,
+    VopGeometryvopoutputWiringExt, VopMultiply,
 };
 
 const TIMESTEP: f32 = 1.0_f32 / 24.0_f32;
@@ -40,7 +40,9 @@ fn main() {
             let in1 = vop_graph
                 .geometryvopglobal1()
                 .typed_as::<VopGeometryvopglobal>();
-            let out1 = vop_graph.geometryvopoutput1();
+            let out1 = vop_graph
+                .geometryvopoutput1()
+                .typed_as::<VopGeometryvopoutput>();
 
             let const1 = vop_graph.add(VopConstant::new("timestep").with_floatdef(TIMESTEP));
             let multiply1 = vop_graph.add(
@@ -48,16 +50,13 @@ fn main() {
                     .set_input(in1.out_v())
                     .set_input_at(1, &const1),
             );
-            let _dummy =
-                vop_graph.add(VopKinefxJointangle::new("dummy").set_input_name_pt(&const1));
 
             let add1 = vop_graph.add(
                 VopAdd::new("add1")
                     .set_input(in1.out_p())
                     .set_input_at(1, &multiply1),
             );
-
-            vop_graph.connect_existing(&out1, 0, &add1);
+            vop_graph.wire(&out1).set_input_name_p(&add1);
         });
 
         inner_graph.connect_existing(&out, 0, &pointvop1);
