@@ -637,6 +637,137 @@ impl<'a> VopHairInnerExt for houdini_ramen_core::graph::InnerGraph<'a, VopHair> 
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHairWiringExt {
+    fn set_surface_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_n<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_s_coordinate_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_s<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_hair_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_haircolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_specular_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_speccolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_rough<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_hair_width_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_width<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_bump_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHairWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHair> {
+    fn set_surface_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_n<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("N", output)
+    }
+    fn set_s_coordinate_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_s<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("s", output)
+    }
+    fn set_hair_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_haircolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("haircolor", output)
+    }
+    fn set_specular_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_speccolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("speccolor", output)
+    }
+    fn set_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_rough<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rough", output)
+    }
+    fn set_hair_width_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_width<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("width", output)
+    }
+    fn set_bump_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("scale", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHairdiff {
@@ -858,6 +989,60 @@ pub trait VopHairdiffOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHairdiffOutputs for VopHairdiff {}
 impl VopHairdiffOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHairdiff> {}
+
+pub trait VopHairdiffWiringExt {
+    fn set_hair_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_diffuse_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_kd<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_diffuse_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diff<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHairdiffWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHairdiff>
+{
+    fn set_hair_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nN", output)
+    }
+    fn set_diffuse_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_kd<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Kd", output)
+    }
+    fn set_diffuse_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_diff<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diff", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHairmodel {
@@ -2932,6 +3117,737 @@ impl<'a> VopHairmodelInnerExt for houdini_ramen_core::graph::InnerGraph<'a, VopH
         self.existing_node("twoway3")
     }
 }
+pub trait VopHairmodelWiringExt {
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_surface_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_n<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_direction_from_eye_to_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_i<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_tip_direction_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tip<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_conserve_energy_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_conserveenergy<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_fake_rounding_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rounding_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_primary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_primary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_secondary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflect_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_refl_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflect_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_refl_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_size_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_shift_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_secondary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_glint_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_g_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_glint_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_g_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_glint_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_g_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_transmission_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmit_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_trans_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmit_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_trans_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_opac_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_opac_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_fake_caustics_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_min_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_min<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_max_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_max<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHairmodelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHairmodel>
+{
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("P", output)
+    }
+    fn set_surface_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_n<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("N", output)
+    }
+    fn set_direction_from_eye_to_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_i<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("I", output)
+    }
+    fn set_tip_direction_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_tip<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("tip", output)
+    }
+    fn set_conserve_energy_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_conserveenergy<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("conserveenergy", output)
+    }
+    fn set_enable_fake_rounding_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_rounding_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rounding_enable", output)
+    }
+    fn set_enable_primary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_r_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_enable", output)
+    }
+    fn set_reflection_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_r_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_int", output)
+    }
+    fn set_reflection_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_r_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_clr", output)
+    }
+    fn set_reflection_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_r_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_size", output)
+    }
+    fn set_reflection_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_r_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_shift", output)
+    }
+    fn set_primary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_r_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_label", output)
+    }
+    fn set_enable_secondary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(12, output)
+    }
+    fn set_input_name_trt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_enable", output)
+    }
+    fn set_reflect_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(13, output)
+    }
+    fn set_input_name_trt_refl_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_refl_lights", output)
+    }
+    fn set_reflect_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(14, output)
+    }
+    fn set_input_name_trt_refl_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_refl_objs", output)
+    }
+    fn set_reflection_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(15, output)
+    }
+    fn set_input_name_trt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_int", output)
+    }
+    fn set_reflection_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(16, output)
+    }
+    fn set_input_name_trt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_qual", output)
+    }
+    fn set_reflection_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(17, output)
+    }
+    fn set_input_name_trt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_clr", output)
+    }
+    fn set_reflection_size_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(18, output)
+    }
+    fn set_input_name_trt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_size", output)
+    }
+    fn set_reflection_shift_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(19, output)
+    }
+    fn set_input_name_trt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_shift", output)
+    }
+    fn set_secondary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(20, output)
+    }
+    fn set_input_name_trt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_label", output)
+    }
+    fn set_glint_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(21, output)
+    }
+    fn set_input_name_g_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("g_int", output)
+    }
+    fn set_glint_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(22, output)
+    }
+    fn set_input_name_g_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("g_size", output)
+    }
+    fn set_glint_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(23, output)
+    }
+    fn set_input_name_g_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("g_shift", output)
+    }
+    fn set_enable_transmission_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(24, output)
+    }
+    fn set_input_name_tt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_enable", output)
+    }
+    fn set_transmit_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(25, output)
+    }
+    fn set_input_name_tt_trans_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_trans_lights", output)
+    }
+    fn set_transmit_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(26, output)
+    }
+    fn set_input_name_tt_trans_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_trans_objs", output)
+    }
+    fn set_transmission_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(27, output)
+    }
+    fn set_input_name_tt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_int", output)
+    }
+    fn set_transmission_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(28, output)
+    }
+    fn set_input_name_tt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_qual", output)
+    }
+    fn set_transmission_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(29, output)
+    }
+    fn set_input_name_tt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_clr", output)
+    }
+    fn set_transmission_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(30, output)
+    }
+    fn set_input_name_tt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_size", output)
+    }
+    fn set_transmission_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(31, output)
+    }
+    fn set_input_name_tt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_shift", output)
+    }
+    fn set_transmission_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(32, output)
+    }
+    fn set_input_name_tt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_label", output)
+    }
+    fn set_opacity_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(33, output)
+    }
+    fn set_input_name_opac_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opac_int", output)
+    }
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(34, output)
+    }
+    fn set_input_name_opac_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opac_clr", output)
+    }
+    fn set_enable_fake_caustics_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(35, output)
+    }
+    fn set_input_name_fake_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_enable", output)
+    }
+    fn set_min_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(36, output)
+    }
+    fn set_input_name_fake_min<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_min", output)
+    }
+    fn set_max_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(37, output)
+    }
+    fn set_input_name_fake_max<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_max", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHairnormal {
@@ -3151,6 +4067,74 @@ pub trait VopHairnormalOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHairnormalOutputs for VopHairnormal {}
 impl VopHairnormalOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHairnormal> {}
+
+pub trait VopHairnormalWiringExt {
+    fn set_incident_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_hair_tangent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tang<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_s_coordinate_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ss<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_do_rounding_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_bow<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHairnormalWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHairnormal>
+{
+    fn set_incident_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nI", output)
+    }
+    fn set_hair_tangent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_tang<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tang", output)
+    }
+    fn set_s_coordinate_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_ss<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("ss", output)
+    }
+    fn set_do_rounding_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_bow<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("bow", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHairshader {
@@ -8378,6 +9362,1424 @@ pub trait VopHairshaderOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopHairshaderOutputs for VopHairshader {}
 impl VopHairshaderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHairshader> {}
 
+pub trait VopHairshaderWiringExt {
+    fn set_cd_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_cd<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_uv<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_tint_with_point_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_usepointcolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_kd<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_root_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rootdiffusecolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_userootdiffusemap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_baserootcolormap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_colorrootmapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_width_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_colormapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_colormapintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_separate_tip_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipdiffuseseparate<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tip_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_tipdiffusecolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_map_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_usetipdiffusemap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_map_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tipcolormap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tipcolormapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_width_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipcolormapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipcolormapintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_root_to_tip_blend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuseblendramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_white_hairs_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_usewhitehairs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_whitehaircolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_guard_hairs_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_useguardhairs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_trt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_trt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_trt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_spec_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_map_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_usespecintensitymap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_intensity_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_baseintensitymap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_intensity_map_filter_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_intensitymapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_intensity_map_width_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_intensitymapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_root_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rootspeccolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_map_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_userootspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_map_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_rootspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_rootspecmapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_width_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rootmapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_intensity_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_colormapintensity1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_separate_tip_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipspecseparate<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tip_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipspeccolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_map_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_usetipspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_map_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_basetipspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tipspecmapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_filter_width_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipspecmapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_intensity_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tipspecmapintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_root_to_tip_blend_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specblendramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_intensity_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_size_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_shift_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_with_diffuse_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tinttransmissionwithprimary<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_opac_color<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_opacityramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_white_hair_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_whitehair<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_guard_hair_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_guardhair<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_53_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_hairid<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tint_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_guardhairtintcolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_attribute_alpha_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_alpha<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_source_values_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandsaturationramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_source_values_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandintensityramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_seed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_diffuserandsaturationseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_seed_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_diffuserandintensityseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_randomize_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_diffuserandsaturation<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_randomize_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_source_values_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specrandintensityramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_seed_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_specrandintensityseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_randomize_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specrandintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_output_range_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandsaturationrange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_output_range_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandintensityrange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_output_range_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specrandintensityrange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_source_values_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandhueramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_seed_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_diffuserandhueseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_randomize_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandhue<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_output_range_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_diffuserandhuerange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_72_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_id<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_reflection_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_transparent_shadows_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_min_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_min<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_max_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_max<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_hair_id_seed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hairidseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_cd_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_displaycolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_80_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_st<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHairshaderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHairshader>
+{
+    fn set_cd_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_cd<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Cd", output)
+    }
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_uv<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("uv", output)
+    }
+    fn set_tint_with_point_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_usepointcolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("usePointColor", output)
+    }
+    fn set_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_kd<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Kd", output)
+    }
+    fn set_root_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_rootdiffusecolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rootDiffuseColor", output)
+    }
+    fn set_use_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_userootdiffusemap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useRootDiffuseMap", output)
+    }
+    fn set_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_baserootcolormap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("baseRootColorMap", output)
+    }
+    fn set_filter_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_colorrootmapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("colorRootMapFilter", output)
+    }
+    fn set_filter_width_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_colormapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("colorMapWidth", output)
+    }
+    fn set_tint_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_colormapintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("colorMapIntensity", output)
+    }
+    fn set_separate_tip_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_tipdiffuseseparate<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipDiffuseSeparate", output)
+    }
+    fn set_tip_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_tipdiffusecolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipDiffuseColor", output)
+    }
+    fn set_use_map_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(12, output)
+    }
+    fn set_input_name_usetipdiffusemap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useTipDiffuseMap", output)
+    }
+    fn set_map_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(13, output)
+    }
+    fn set_input_name_tipcolormap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipColorMap", output)
+    }
+    fn set_filter_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(14, output)
+    }
+    fn set_input_name_tipcolormapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipColorMapFilter", output)
+    }
+    fn set_filter_width_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(15, output)
+    }
+    fn set_input_name_tipcolormapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipColorMapWidth", output)
+    }
+    fn set_tint_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(16, output)
+    }
+    fn set_input_name_tipcolormapintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipColorMapIntensity", output)
+    }
+    fn set_root_to_tip_blend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(17, output)
+    }
+    fn set_input_name_diffuseblendramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseBlendRamp", output)
+    }
+    fn set_use_white_hairs_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(18, output)
+    }
+    fn set_input_name_usewhitehairs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useWhiteHairs", output)
+    }
+    fn set_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(19, output)
+    }
+    fn set_input_name_whitehaircolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("whitehaircolor", output)
+    }
+    fn set_use_guard_hairs_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(20, output)
+    }
+    fn set_input_name_useguardhairs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useGuardHairs", output)
+    }
+    fn set_enable_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(21, output)
+    }
+    fn set_input_name_trt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_enable", output)
+    }
+    fn set_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(22, output)
+    }
+    fn set_input_name_trt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_size", output)
+    }
+    fn set_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(23, output)
+    }
+    fn set_input_name_trt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_shift", output)
+    }
+    fn set_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(24, output)
+    }
+    fn set_input_name_spec_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("spec_int", output)
+    }
+    fn set_use_map_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(25, output)
+    }
+    fn set_input_name_usespecintensitymap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useSpecIntensityMap", output)
+    }
+    fn set_intensity_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(26, output)
+    }
+    fn set_input_name_baseintensitymap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("baseIntensityMap", output)
+    }
+    fn set_intensity_map_filter_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(27, output)
+    }
+    fn set_input_name_intensitymapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("intensityMapFilter", output)
+    }
+    fn set_intensity_map_width_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(28, output)
+    }
+    fn set_input_name_intensitymapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("intensityMapWidth", output)
+    }
+    fn set_root_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(29, output)
+    }
+    fn set_input_name_rootspeccolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rootSpecColor", output)
+    }
+    fn set_use_map_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(30, output)
+    }
+    fn set_input_name_userootspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useRootSpecMap", output)
+    }
+    fn set_map_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(31, output)
+    }
+    fn set_input_name_rootspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rootSpecMap", output)
+    }
+    fn set_filter_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(32, output)
+    }
+    fn set_input_name_rootspecmapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rootSpecMapFilter", output)
+    }
+    fn set_filter_width_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(33, output)
+    }
+    fn set_input_name_rootmapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rootMapWidth", output)
+    }
+    fn set_tint_intensity_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(34, output)
+    }
+    fn set_input_name_colormapintensity1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("colorMapIntensity1", output)
+    }
+    fn set_separate_tip_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(35, output)
+    }
+    fn set_input_name_tipspecseparate<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipSpecSeparate", output)
+    }
+    fn set_tip_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(36, output)
+    }
+    fn set_input_name_tipspeccolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipSpecColor", output)
+    }
+    fn set_use_map_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(37, output)
+    }
+    fn set_input_name_usetipspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("useTipSpecMap", output)
+    }
+    fn set_map_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(38, output)
+    }
+    fn set_input_name_basetipspecmap<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("baseTipSpecMap", output)
+    }
+    fn set_filter_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(39, output)
+    }
+    fn set_input_name_tipspecmapfilter<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipSpecMapFilter", output)
+    }
+    fn set_filter_width_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(40, output)
+    }
+    fn set_input_name_tipspecmapwidth<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipSpecMapWidth", output)
+    }
+    fn set_tint_intensity_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(41, output)
+    }
+    fn set_input_name_tipspecmapintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tipSpecMapIntensity", output)
+    }
+    fn set_root_to_tip_blend_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(42, output)
+    }
+    fn set_input_name_specblendramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specBlendRamp", output)
+    }
+    fn set_enable_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(43, output)
+    }
+    fn set_input_name_tt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_enable", output)
+    }
+    fn set_intensity_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(44, output)
+    }
+    fn set_input_name_tt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_int", output)
+    }
+    fn set_size_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(45, output)
+    }
+    fn set_input_name_tt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_size", output)
+    }
+    fn set_shift_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(46, output)
+    }
+    fn set_input_name_tt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_shift", output)
+    }
+    fn set_tint_with_diffuse_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(47, output)
+    }
+    fn set_input_name_tinttransmissionwithprimary<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tintTransmissionWithPrimary", output)
+    }
+    fn set_tint_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(48, output)
+    }
+    fn set_input_name_tt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_clr", output)
+    }
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(49, output)
+    }
+    fn set_input_name_opac_color<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opac_color", output)
+    }
+    fn set_opacity_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(50, output)
+    }
+    fn set_input_name_opacityramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opacityramp", output)
+    }
+    fn set_white_hair_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(51, output)
+    }
+    fn set_input_name_whitehair<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("whitehair", output)
+    }
+    fn set_guard_hair_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(52, output)
+    }
+    fn set_input_name_guardhair<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("guardhair", output)
+    }
+    fn set_input_53_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(53, output)
+    }
+    fn set_input_name_hairid<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hairid", output)
+    }
+    fn set_tint_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(54, output)
+    }
+    fn set_input_name_guardhairtintcolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("guardhairtintcolor", output)
+    }
+    fn set_attribute_alpha_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(55, output)
+    }
+    fn set_input_name_alpha<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("Alpha", output)
+    }
+    fn set_source_values_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(56, output)
+    }
+    fn set_input_name_diffuserandsaturationramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandSaturationRamp", output)
+    }
+    fn set_source_values_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(57, output)
+    }
+    fn set_input_name_diffuserandintensityramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandIntensityRamp", output)
+    }
+    fn set_seed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(58, output)
+    }
+    fn set_input_name_diffuserandsaturationseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandSaturationSeed", output)
+    }
+    fn set_seed_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(59, output)
+    }
+    fn set_input_name_diffuserandintensityseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandIntensitySeed", output)
+    }
+    fn set_randomize_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(60, output)
+    }
+    fn set_input_name_diffuserandsaturation<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandSaturation", output)
+    }
+    fn set_randomize_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(61, output)
+    }
+    fn set_input_name_diffuserandintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandIntensity", output)
+    }
+    fn set_source_values_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(62, output)
+    }
+    fn set_input_name_specrandintensityramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specRandIntensityRamp", output)
+    }
+    fn set_seed_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(63, output)
+    }
+    fn set_input_name_specrandintensityseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specRandIntensitySeed", output)
+    }
+    fn set_randomize_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(64, output)
+    }
+    fn set_input_name_specrandintensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specRandIntensity", output)
+    }
+    fn set_output_range_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(65, output)
+    }
+    fn set_input_name_diffuserandsaturationrange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandSaturationRange", output)
+    }
+    fn set_output_range_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(66, output)
+    }
+    fn set_input_name_diffuserandintensityrange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandIntensityRange", output)
+    }
+    fn set_output_range_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(67, output)
+    }
+    fn set_input_name_specrandintensityrange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specRandIntensityRange", output)
+    }
+    fn set_source_values_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(68, output)
+    }
+    fn set_input_name_diffuserandhueramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandHueRamp", output)
+    }
+    fn set_seed_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(69, output)
+    }
+    fn set_input_name_diffuserandhueseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandHueSeed", output)
+    }
+    fn set_randomize_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(70, output)
+    }
+    fn set_input_name_diffuserandhue<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandHue", output)
+    }
+    fn set_output_range_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(71, output)
+    }
+    fn set_input_name_diffuserandhuerange<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("diffuseRandHueRange", output)
+    }
+    fn set_input_72_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(72, output)
+    }
+    fn set_input_name_id<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("id", output)
+    }
+    fn set_reflection_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(73, output)
+    }
+    fn set_input_name_r_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_size", output)
+    }
+    fn set_reflection_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(74, output)
+    }
+    fn set_input_name_r_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_shift", output)
+    }
+    fn set_enable_transparent_shadows_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(75, output)
+    }
+    fn set_input_name_fake_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_enable", output)
+    }
+    fn set_min_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(76, output)
+    }
+    fn set_input_name_fake_min<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_min", output)
+    }
+    fn set_max_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(77, output)
+    }
+    fn set_input_name_fake_max<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_max", output)
+    }
+    fn set_hair_id_seed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(78, output)
+    }
+    fn set_input_name_hairidseed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hairidseed", output)
+    }
+    fn set_cd_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(79, output)
+    }
+    fn set_input_name_displaycolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("displayColor", output)
+    }
+    fn set_input_80_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(80, output)
+    }
+    fn set_input_name_st<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("st", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHairshadercore {
     pub id: usize,
@@ -10452,6 +12854,737 @@ impl<'a> VopHairshadercoreInnerExt
         self.existing_node("twoway3")
     }
 }
+pub trait VopHairshadercoreWiringExt {
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_surface_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_n<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_direction_from_eye_to_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_i<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_tip_direction_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tip<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_conserve_energy_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_conserveenergy<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_fake_rounding_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rounding_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_primary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_primary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_r_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_secondary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflect_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_refl_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflect_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_refl_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_size_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reflection_shift_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_secondary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_trt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_glint_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_g_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_glint_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_g_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_glint_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_g_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_transmission_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmit_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_trans_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmit_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_trans_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_transmission_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_tt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_opac_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_opac_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_fake_caustics_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_min_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_min<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_max_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fake_max<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHairshadercoreWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHairshadercore>
+{
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("P", output)
+    }
+    fn set_surface_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_n<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("N", output)
+    }
+    fn set_direction_from_eye_to_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_i<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("I", output)
+    }
+    fn set_tip_direction_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_tip<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("tip", output)
+    }
+    fn set_conserve_energy_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_conserveenergy<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("conserveenergy", output)
+    }
+    fn set_enable_fake_rounding_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_rounding_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rounding_enable", output)
+    }
+    fn set_enable_primary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_r_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_enable", output)
+    }
+    fn set_reflection_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_r_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_int", output)
+    }
+    fn set_reflection_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_r_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_clr", output)
+    }
+    fn set_reflection_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_r_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_size", output)
+    }
+    fn set_reflection_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_r_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_shift", output)
+    }
+    fn set_primary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_r_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("r_label", output)
+    }
+    fn set_enable_secondary_reflection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(12, output)
+    }
+    fn set_input_name_trt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_enable", output)
+    }
+    fn set_reflect_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(13, output)
+    }
+    fn set_input_name_trt_refl_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_refl_lights", output)
+    }
+    fn set_reflect_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(14, output)
+    }
+    fn set_input_name_trt_refl_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_refl_objs", output)
+    }
+    fn set_reflection_intensity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(15, output)
+    }
+    fn set_input_name_trt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_int", output)
+    }
+    fn set_reflection_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(16, output)
+    }
+    fn set_input_name_trt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_qual", output)
+    }
+    fn set_reflection_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(17, output)
+    }
+    fn set_input_name_trt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_clr", output)
+    }
+    fn set_reflection_size_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(18, output)
+    }
+    fn set_input_name_trt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_size", output)
+    }
+    fn set_reflection_shift_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(19, output)
+    }
+    fn set_input_name_trt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_shift", output)
+    }
+    fn set_secondary_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(20, output)
+    }
+    fn set_input_name_trt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("trt_label", output)
+    }
+    fn set_glint_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(21, output)
+    }
+    fn set_input_name_g_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("g_int", output)
+    }
+    fn set_glint_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(22, output)
+    }
+    fn set_input_name_g_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("g_size", output)
+    }
+    fn set_glint_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(23, output)
+    }
+    fn set_input_name_g_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("g_shift", output)
+    }
+    fn set_enable_transmission_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(24, output)
+    }
+    fn set_input_name_tt_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_enable", output)
+    }
+    fn set_transmit_lights_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(25, output)
+    }
+    fn set_input_name_tt_trans_lights<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_trans_lights", output)
+    }
+    fn set_transmit_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(26, output)
+    }
+    fn set_input_name_tt_trans_objs<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_trans_objs", output)
+    }
+    fn set_transmission_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(27, output)
+    }
+    fn set_input_name_tt_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_int", output)
+    }
+    fn set_transmission_quality_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(28, output)
+    }
+    fn set_input_name_tt_qual<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_qual", output)
+    }
+    fn set_transmission_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(29, output)
+    }
+    fn set_input_name_tt_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_clr", output)
+    }
+    fn set_transmission_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(30, output)
+    }
+    fn set_input_name_tt_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_size", output)
+    }
+    fn set_transmission_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(31, output)
+    }
+    fn set_input_name_tt_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_shift", output)
+    }
+    fn set_transmission_component_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(32, output)
+    }
+    fn set_input_name_tt_label<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tt_label", output)
+    }
+    fn set_opacity_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(33, output)
+    }
+    fn set_input_name_opac_int<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opac_int", output)
+    }
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(34, output)
+    }
+    fn set_input_name_opac_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opac_clr", output)
+    }
+    fn set_enable_fake_caustics_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(35, output)
+    }
+    fn set_input_name_fake_enable<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_enable", output)
+    }
+    fn set_min_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(36, output)
+    }
+    fn set_input_name_fake_min<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_min", output)
+    }
+    fn set_max_shadow_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(37, output)
+    }
+    fn set_input_name_fake_max<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fake_max", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHairspec {
@@ -10769,6 +13902,106 @@ pub trait VopHairspecOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHairspecOutputs for VopHairspec {}
 impl VopHairspecOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHairspec> {}
+
+pub trait VopHairspecWiringExt {
+    fn set_hair_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_incident_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_tangent_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nt<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_specular_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ks<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_specular_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_spec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_rough<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHairspecWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHairspec>
+{
+    fn set_hair_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nN", output)
+    }
+    fn set_incident_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nI", output)
+    }
+    fn set_tangent_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_nt<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nT", output)
+    }
+    fn set_specular_intensity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_ks<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Ks", output)
+    }
+    fn set_specular_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_spec<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("spec", output)
+    }
+    fn set_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_rough<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rough", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHalo {
@@ -11441,6 +14674,139 @@ impl<'a> VopHaloInnerExt for houdini_ramen_core::graph::InnerGraph<'a, VopHalo> 
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHaloWiringExt {
+    fn set_surface_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_position_of_eye_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_eye<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_surface_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_cf<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_surface_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_of<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_surface_alpha_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_af<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_fog_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_fcolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_fog_density_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fdensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_fog_point_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fptsize<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHaloWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHalo> {
+    fn set_surface_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("P", output)
+    }
+    fn set_position_of_eye_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_eye<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Eye", output)
+    }
+    fn set_surface_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_cf<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Cf", output)
+    }
+    fn set_surface_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_of<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Of", output)
+    }
+    fn set_surface_alpha_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_af<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("Af", output)
+    }
+    fn set_fog_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_fcolor<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fcolor", output)
+    }
+    fn set_fog_density_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_fdensity<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fdensity", output)
+    }
+    fn set_fog_point_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_fptsize<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fptsize", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHasinput {
@@ -11580,6 +14946,34 @@ pub trait VopHasinputOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHasinputOutputs for VopHasinput {}
 impl VopHasinputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHasinput> {}
+
+pub trait VopHasinputWiringExt {
+    fn set_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_inputidx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHasinputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHasinput>
+{
+    fn set_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_inputidx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("inputidx", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHaskey {
@@ -12006,6 +15400,37 @@ impl<'a> VopHaskeyInnerExt for houdini_ramen_core::graph::InnerGraph<'a, VopHask
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHaskeyWiringExt {
+    fn set_dictionary_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_dict<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHaskeyWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHaskey> {
+    fn set_dictionary_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_dict<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("dict", output)
+    }
+    fn set_key_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_key<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("key", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHasmetadata {
@@ -12191,6 +15616,54 @@ pub trait VopHasmetadataOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHasmetadataOutputs for VopHasmetadata {}
 impl VopHasmetadataOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHasmetadata> {}
+
+pub trait VopHasmetadataWiringExt {
+    fn set_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input_index<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_metadata_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_meta_name<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHasmetadataWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHasmetadata>
+{
+    fn set_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input_index<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input_index", output)
+    }
+    fn set_metadata_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_meta_name<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("meta_name", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHextile {
@@ -12651,6 +16124,53 @@ impl<'a> VopHextileInnerExt for houdini_ramen_core::graph::InnerGraph<'a, VopHex
     }
     fn uvcoords1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("uvcoords1")
+    }
+}
+pub trait VopHextileWiringExt {
+    fn set_uv_0_0_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_uv<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_size_1_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_size<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_offset_0_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_offset<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHextileWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHextile>
+{
+    fn set_uv_0_0_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_uv<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("uv", output)
+    }
+    fn set_size_1_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("size", output)
+    }
+    fn set_offset_0_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_offset<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("offset", output)
     }
 }
 
@@ -13203,6 +16723,73 @@ impl<'a> VopHilownoiseInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Vop
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHilownoiseWiringExt {
+    fn set_surface_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_frequency_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_freq<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_amplitude_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_amp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_chip_amount_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_chip<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHilownoiseWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHilownoise>
+{
+    fn set_surface_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_p<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("P", output)
+    }
+    fn set_frequency_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_freq<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("freq", output)
+    }
+    fn set_amplitude_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_amp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("amp", output)
+    }
+    fn set_chip_amount_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_chip<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("chip", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum VopHmatxgetcomponRow {
@@ -13428,6 +17015,34 @@ impl VopHmatxgetcomponOutputs
 {
 }
 
+pub trait VopHmatxgetcomponWiringExt {
+    fn set_input_matrix_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hmatx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmatxgetcomponWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmatxgetcompon>
+{
+    fn set_input_matrix_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hmatx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hmatx", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum VopHmatxsetcomponRow {
     Row1 = 0,
@@ -13644,6 +17259,52 @@ impl VopHmatxsetcomponOutputs for VopHmatxsetcompon {}
 impl VopHmatxsetcomponOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmatxsetcompon>
 {
+}
+
+pub trait VopHmatxsetcomponWiringExt {
+    fn set_input_matrix_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hmatx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fval<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHmatxsetcomponWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmatxsetcompon>
+{
+    fn set_input_matrix_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hmatx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hmatx", output)
+    }
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_fval<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fval", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -13890,6 +17551,34 @@ pub trait VopHmatxtofloatOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopHmatxtofloatOutputs for VopHmatxtofloat {}
 impl VopHmatxtofloatOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmatxtofloat> {}
 
+pub trait VopHmatxtofloatWiringExt {
+    fn set_input_matrix_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hmatx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmatxtofloatWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmatxtofloat>
+{
+    fn set_input_matrix_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hmatx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hmatx", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHmatxtohvec {
     pub id: usize,
@@ -14032,6 +17721,32 @@ pub trait VopHmatxtohvecOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHmatxtohvecOutputs for VopHmatxtohvec {}
 impl VopHmatxtohvecOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmatxtohvec> {}
+
+pub trait VopHmatxtohvecWiringExt {
+    fn set_input_matrix4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_matx<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHmatxtohvecWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmatxtohvec>
+{
+    fn set_input_matrix4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_matx<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("matx", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxbias {
@@ -14213,6 +17928,34 @@ pub trait VopHmtlxbiasOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHmtlxbiasOutputs for VopHmtlxbias {}
 impl VopHmtlxbiasOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxbias> {}
+
+pub trait VopHmtlxbiasWiringExt {
+    fn set_in_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_bias_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_bias<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxbiasWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxbias>
+{
+    fn set_in_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in", output)
+    }
+    fn set_bias_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_bias<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bias", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxcheckers2d {
@@ -14442,6 +18185,64 @@ impl VopHmtlxcheckers2dOutputs for VopHmtlxcheckers2d {}
 impl VopHmtlxcheckers2dOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxcheckers2d>
 {
+}
+
+pub trait VopHmtlxcheckers2dWiringExt {
+    fn set_frequency_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_freq<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_offset_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_offset<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcheckers2dWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcheckers2d>
+{
+    fn set_frequency_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_freq<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("freq", output)
+    }
+    fn set_offset_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_offset<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("offset", output)
+    }
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("texcoord", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -14980,6 +18781,192 @@ impl VopHmtlxcircles2dOutputs for VopHmtlxcircles2d {}
 impl VopHmtlxcircles2dOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxcircles2d>
 {
+}
+
+pub trait VopHmtlxcircles2dWiringExt {
+    fn set_offset_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_offset<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_frequency_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_freq<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_circle_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_inner_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_inner_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mid_point_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_mid_point<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_row_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_row_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_randomize_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rand_value<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_randomize_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_rand_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_seed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_seed<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcircles2dWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcircles2d>
+{
+    fn set_offset_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_offset<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("offset", output)
+    }
+    fn set_frequency_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_freq<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("freq", output)
+    }
+    fn set_circle_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("scale", output)
+    }
+    fn set_inner_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_inner_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("inner_scale", output)
+    }
+    fn set_mid_point_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_mid_point<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("mid_point", output)
+    }
+    fn set_row_shift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_row_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("row_shift", output)
+    }
+    fn set_randomize_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_rand_value<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rand_value", output)
+    }
+    fn set_randomize_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_rand_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("rand_scale", output)
+    }
+    fn set_seed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_seed<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("seed", output)
+    }
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("texcoord", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -15740,6 +19727,141 @@ impl<'a> VopHmtlxcolorcorrectInnerExt
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHmtlxcolorcorrectWiringExt {
+    fn set_input_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_hue_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_hue<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_saturation_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_saturation<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_gamma_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_gamma<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_lift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_lift<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_gain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_gain<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_contrast_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_contrast<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_contrast_pivot_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_contrastpivot<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_exposure_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_exposure<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcolorcorrectWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcolorcorrect>
+{
+    fn set_input_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in", output)
+    }
+    fn set_hue_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_hue<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("hue", output)
+    }
+    fn set_saturation_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_saturation<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("saturation", output)
+    }
+    fn set_gamma_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_gamma<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("gamma", output)
+    }
+    fn set_lift_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_lift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("lift", output)
+    }
+    fn set_gain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_gain<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("gain", output)
+    }
+    fn set_contrast_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_contrast<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("contrast", output)
+    }
+    fn set_contrast_pivot_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_contrastpivot<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("contrastpivot", output)
+    }
+    fn set_exposure_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_exposure<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("exposure", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxcomplement {
@@ -16143,6 +20265,27 @@ impl<'a> VopHmtlxcomplementInnerExt
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHmtlxcomplementWiringExt {
+    fn set_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcomplementWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcomplement>
+{
+    fn set_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_value<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxcomplementcolor {
@@ -16282,6 +20425,22 @@ impl VopHmtlxcomplementcolorOutputs for VopHmtlxcomplementcolor {}
 impl VopHmtlxcomplementcolorOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxcomplementcolor>
 {
+}
+
+pub trait VopHmtlxcomplementcolorWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcomplementcolorWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcomplementcolor>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -16688,6 +20847,27 @@ impl<'a> VopHmtlxcubicrampcInnerExt
         self.existing_node("uniformramp")
     }
 }
+pub trait VopHmtlxcubicrampcWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcubicrampcWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcubicrampc>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxcubicrampf {
@@ -17091,6 +21271,27 @@ impl<'a> VopHmtlxcubicrampfInnerExt
     }
     fn uniformramp(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("uniformramp")
+    }
+}
+pub trait VopHmtlxcubicrampfWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxcubicrampfWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxcubicrampf>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
     }
 }
 
@@ -17500,6 +21701,102 @@ impl VopHmtlxfacingratioOutputs
 {
 }
 
+pub trait VopHmtlxfacingratioWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_in1<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_in2<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_bias_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_bias<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_gain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_gain<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_gamma_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_gamma<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_invert_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_invert<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_face_forward_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_forward<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxfacingratioWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxfacingratio>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_in1<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in1", output)
+    }
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_in2<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in2", output)
+    }
+    fn set_bias_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_bias<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bias", output)
+    }
+    fn set_gain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_gain<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("gain", output)
+    }
+    fn set_gamma_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_gamma<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("gamma", output)
+    }
+    fn set_invert_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_invert<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("invert", output)
+    }
+    fn set_face_forward_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_forward<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("forward", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHmtlxgain {
     pub id: usize,
@@ -17680,6 +21977,34 @@ pub trait VopHmtlxgainOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHmtlxgainOutputs for VopHmtlxgain {}
 impl VopHmtlxgainOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxgain> {}
+
+pub trait VopHmtlxgainWiringExt {
+    fn set_in_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_gain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_gain<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxgainWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxgain>
+{
+    fn set_in_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in", output)
+    }
+    fn set_gain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_gain<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("gain", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxhcatmullrom {
@@ -18121,6 +22446,84 @@ impl VopHmtlxhcatmullromOutputs for VopHmtlxhcatmullrom {}
 impl VopHmtlxhcatmullromOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxhcatmullrom>
 {
+}
+
+pub trait VopHmtlxhcatmullromWiringExt {
+    fn set_t_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_t<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_tension_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tension<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_key_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key0<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key1<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key2<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key3<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxhcatmullromWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxhcatmullrom>
+{
+    fn set_t_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_t<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("t", output)
+    }
+    fn set_tension_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_tension<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tension", output)
+    }
+    fn set_key_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_key0<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key0", output)
+    }
+    fn set_key_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_key1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key1", output)
+    }
+    fn set_key_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_key2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key2", output)
+    }
+    fn set_key_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_key3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key3", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -18747,6 +23150,154 @@ impl VopHmtlxhinvlinearOutputs for VopHmtlxhinvlinear {}
 impl VopHmtlxhinvlinearOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxhinvlinear>
 {
+}
+
+pub trait VopHmtlxhinvlinearWiringExt {
+    fn set_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_ramp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_num_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_num<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_key0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key0<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key1<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key2<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key3<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key4<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key5<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key6<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key7<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key8<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_key9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_key9<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxhinvlinearWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxhinvlinear>
+{
+    fn set_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_ramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ramp", output)
+    }
+    fn set_num_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_num<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("num", output)
+    }
+    fn set_key0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_key0<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key0", output)
+    }
+    fn set_key1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_key1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key1", output)
+    }
+    fn set_key2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_key2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key2", output)
+    }
+    fn set_key3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_key3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key3", output)
+    }
+    fn set_key4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_key4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key4", output)
+    }
+    fn set_key5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_key5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key5", output)
+    }
+    fn set_key6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_key6<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key6", output)
+    }
+    fn set_key7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_key7<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key7", output)
+    }
+    fn set_key8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_key8<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key8", output)
+    }
+    fn set_key9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_key9<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("key9", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -19553,6 +24104,174 @@ impl VopHmtlxhuniformcubicOutputs
 {
 }
 
+pub trait VopHmtlxhuniformcubicWiringExt {
+    fn set_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_ramp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_num_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_num<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_value_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value0<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value6<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value7<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value8<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value_9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value9<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxhuniformcubicWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxhuniformcubic>
+{
+    fn set_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_ramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ramp", output)
+    }
+    fn set_num_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_num<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("num", output)
+    }
+    fn set_value_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_value0<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value0", output)
+    }
+    fn set_value_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_value1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value1", output)
+    }
+    fn set_value_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_value2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value2", output)
+    }
+    fn set_value_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_value3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value3", output)
+    }
+    fn set_value_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_value4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value4", output)
+    }
+    fn set_value_5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_value5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value5", output)
+    }
+    fn set_value_6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_value6<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value6", output)
+    }
+    fn set_value_7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_value7<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value7", output)
+    }
+    fn set_value_8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_value8<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value8", output)
+    }
+    fn set_value_9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_value9<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value9", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHmtlxhuniformramp {
     pub id: usize,
@@ -20355,6 +25074,174 @@ impl VopHmtlxhuniformrampOutputs for VopHmtlxhuniformramp {}
 impl VopHmtlxhuniformrampOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxhuniformramp>
 {
+}
+
+pub trait VopHmtlxhuniformrampWiringExt {
+    fn set_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_ramp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_num_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_num<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_value0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value0<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value6<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value7<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value8<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_value9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_value9<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxhuniformrampWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxhuniformramp>
+{
+    fn set_ramp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_ramp<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ramp", output)
+    }
+    fn set_num_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_num<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("num", output)
+    }
+    fn set_value0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_value0<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value0", output)
+    }
+    fn set_value1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_value1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value1", output)
+    }
+    fn set_value2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_value2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value2", output)
+    }
+    fn set_value3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_value3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value3", output)
+    }
+    fn set_value4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_value4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value4", output)
+    }
+    fn set_value5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_value5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value5", output)
+    }
+    fn set_value6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_value6<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value6", output)
+    }
+    fn set_value7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_value7<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value7", output)
+    }
+    fn set_value8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_value8<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value8", output)
+    }
+    fn set_value9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_value9<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("value9", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -22146,6 +27033,704 @@ impl VopHmtlxpbrtexturesetOutputs
 {
 }
 
+pub trait VopHmtlxpbrtexturesetWiringExt {
+    fn set_image_filter_type_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_filtertype<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_base_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_base_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_metalness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_metalness_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_specular_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specular_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_specular_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specular_roughness_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_coat_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_coat_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_coat_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_coat_roughness_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_subsurface_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_subsurface_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_subsurface_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_subsurface_scale_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_emission_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_emission_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_occlusion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_occlusion_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_opacity_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_bump_style_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_bump_style<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_bump_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_bump_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_bump_normal_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_bump_normal_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_bump_height_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_bump_height_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_projection_type_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_projection<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tri_planar_blend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_triplanar_blend<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tri_planar_up_axis_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_triplanar_upaxis<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tri_planar_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_position_triplanar<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tri_planar_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_normal_triplanar<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_default_values_mode_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_default_values_mode<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_base_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_base_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_metalness_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_metalness_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_specular_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specular_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_specular_roughness_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_specular_roughness_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_coat_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_coat_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_coat_roughness_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_coat_roughness_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_subsurface_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_subsurface_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_subsurface_scale_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_subsurface_scale_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_emission_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_emission_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_occlusion_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_occlusion_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_opacity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_opacity_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_normal_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_tangent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_tangent_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxpbrtexturesetWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxpbrtextureset>
+{
+    fn set_image_filter_type_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_filtertype<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("filtertype", output)
+    }
+    fn set_base_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_base_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("base_color_file", output)
+    }
+    fn set_metalness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_metalness_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("metalness_file", output)
+    }
+    fn set_specular_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_specular_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specular_color_file", output)
+    }
+    fn set_specular_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_specular_roughness_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specular_roughness_file", output)
+    }
+    fn set_coat_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_coat_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("coat_color_file", output)
+    }
+    fn set_coat_roughness_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_coat_roughness_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("coat_roughness_file", output)
+    }
+    fn set_subsurface_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(7, output)
+    }
+    fn set_input_name_subsurface_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("subsurface_color_file", output)
+    }
+    fn set_subsurface_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(8, output)
+    }
+    fn set_input_name_subsurface_scale_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("subsurface_scale_file", output)
+    }
+    fn set_emission_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(9, output)
+    }
+    fn set_input_name_emission_color_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("emission_color_file", output)
+    }
+    fn set_occlusion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(10, output)
+    }
+    fn set_input_name_occlusion_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("occlusion_file", output)
+    }
+    fn set_opacity_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(11, output)
+    }
+    fn set_input_name_opacity_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opacity_file", output)
+    }
+    fn set_bump_style_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(12, output)
+    }
+    fn set_input_name_bump_style<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bump_style", output)
+    }
+    fn set_bump_scale_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(13, output)
+    }
+    fn set_input_name_bump_scale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bump_scale", output)
+    }
+    fn set_bump_normal_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(14, output)
+    }
+    fn set_input_name_bump_normal_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bump_normal_file", output)
+    }
+    fn set_bump_height_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(15, output)
+    }
+    fn set_input_name_bump_height_file<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bump_height_file", output)
+    }
+    fn set_projection_type_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(16, output)
+    }
+    fn set_input_name_projection<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("projection", output)
+    }
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(17, output)
+    }
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("texcoord", output)
+    }
+    fn set_tri_planar_blend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(18, output)
+    }
+    fn set_input_name_triplanar_blend<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("triplanar_blend", output)
+    }
+    fn set_tri_planar_up_axis_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(19, output)
+    }
+    fn set_input_name_triplanar_upaxis<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("triplanar_upaxis", output)
+    }
+    fn set_tri_planar_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(20, output)
+    }
+    fn set_input_name_position_triplanar<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("position_triplanar", output)
+    }
+    fn set_tri_planar_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(21, output)
+    }
+    fn set_input_name_normal_triplanar<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("normal_triplanar", output)
+    }
+    fn set_default_values_mode_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(22, output)
+    }
+    fn set_input_name_default_values_mode<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("default_values_mode", output)
+    }
+    fn set_base_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(23, output)
+    }
+    fn set_input_name_base_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("base_color_default", output)
+    }
+    fn set_metalness_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(24, output)
+    }
+    fn set_input_name_metalness_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("metalness_default", output)
+    }
+    fn set_specular_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(25, output)
+    }
+    fn set_input_name_specular_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specular_color_default", output)
+    }
+    fn set_specular_roughness_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(26, output)
+    }
+    fn set_input_name_specular_roughness_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("specular_roughness_default", output)
+    }
+    fn set_coat_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(27, output)
+    }
+    fn set_input_name_coat_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("coat_color_default", output)
+    }
+    fn set_coat_roughness_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(28, output)
+    }
+    fn set_input_name_coat_roughness_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("coat_roughness_default", output)
+    }
+    fn set_subsurface_color_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(29, output)
+    }
+    fn set_input_name_subsurface_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("subsurface_color_default", output)
+    }
+    fn set_subsurface_scale_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(30, output)
+    }
+    fn set_input_name_subsurface_scale_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("subsurface_scale_default", output)
+    }
+    fn set_emission_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(31, output)
+    }
+    fn set_input_name_emission_color_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("emission_color_default", output)
+    }
+    fn set_occlusion_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(32, output)
+    }
+    fn set_input_name_occlusion_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("occlusion_default", output)
+    }
+    fn set_opacity_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(33, output)
+    }
+    fn set_input_name_opacity_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opacity_default", output)
+    }
+    fn set_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(34, output)
+    }
+    fn set_input_name_normal_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("normal_default", output)
+    }
+    fn set_tangent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(35, output)
+    }
+    fn set_input_name_tangent_default<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("tangent_default", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHmtlxrampc {
     pub id: usize,
@@ -22527,6 +28112,27 @@ impl<'a> VopHmtlxrampcInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Vop
     }
     fn uniformramp(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("uniformramp")
+    }
+}
+pub trait VopHmtlxrampcWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxrampcWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxrampc>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
     }
 }
 
@@ -22913,6 +28519,27 @@ impl<'a> VopHmtlxrampfInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Vop
         self.existing_node("uniformramp")
     }
 }
+pub trait VopHmtlxrampfWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxrampfWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxrampf>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHmtlxudimoffset {
@@ -23098,6 +28725,48 @@ impl VopHmtlxudimoffsetOutputs
 {
 }
 
+pub trait VopHmtlxudimoffsetWiringExt {
+    fn set_udim_patch_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_patch<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxudimoffsetWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxudimoffset>
+{
+    fn set_udim_patch_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_patch<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("patch", output)
+    }
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_in<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("in", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHmtlxudimpatch {
     pub id: usize,
@@ -23238,6 +28907,34 @@ impl VopHmtlxudimpatchOutputs for VopHmtlxudimpatch {}
 impl VopHmtlxudimpatchOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopHmtlxudimpatch>
 {
+}
+
+pub trait VopHmtlxudimpatchWiringExt {
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHmtlxudimpatchWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHmtlxudimpatch>
+{
+    fn set_texture_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_texcoord<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("texcoord", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -23652,6 +29349,144 @@ impl VopHscriptinstanceOutputs
 {
 }
 
+pub trait VopHscriptinstanceWiringExt {
+    fn set_sop_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_opname<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_otl_files_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_otllist<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_basic_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_size<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_size_attribute_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_sizeattrib<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_scale_to_size_attribute_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_doscale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_orient_to_point_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_doorient<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_use_non_graphics_token_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nongraphics<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHscriptinstanceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHscriptinstance>
+{
+    fn set_sop_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_opname<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("opname", output)
+    }
+    fn set_otl_files_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_otllist<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("otllist", output)
+    }
+    fn set_basic_size_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_size<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("size", output)
+    }
+    fn set_size_attribute_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_sizeattrib<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("sizeattrib", output)
+    }
+    fn set_scale_to_size_attribute_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_doscale<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("doscale", output)
+    }
+    fn set_orient_to_point_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(5, output)
+    }
+    fn set_input_name_doorient<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("doorient", output)
+    }
+    fn set_use_non_graphics_token_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(6, output)
+    }
+    fn set_input_name_nongraphics<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("nongraphics", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHsvtorgb {
     pub id: usize,
@@ -23824,6 +29659,26 @@ pub trait VopHsvtorgbOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHsvtorgbOutputs for VopHsvtorgb {}
 impl VopHsvtorgbOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHsvtorgb> {}
+
+pub trait VopHsvtorgbWiringExt {
+    fn set_hsv_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_hsv<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHsvtorgbWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHsvtorgb>
+{
+    fn set_hsv_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hsv<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("hsv", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHueshift {
@@ -24292,6 +30147,61 @@ impl<'a> VopHueshiftInnerExt for houdini_ramen_core::graph::InnerGraph<'a, VopHu
         self.existing_node("suboutput1")
     }
 }
+pub trait VopHueshiftWiringExt {
+    fn set_shift_amount_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_shift_amplitude_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_amp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_shift_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopHueshiftWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHueshift>
+{
+    fn set_shift_amount_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_shift<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("shift", output)
+    }
+    fn set_shift_amplitude_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_amp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("amp", output)
+    }
+    fn set_shift_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_clr<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("clr", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum VopHvecgetcomponPart {
@@ -24455,6 +30365,32 @@ pub trait VopHvecgetcomponOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHvecgetcomponOutputs for VopHvecgetcompon {}
 impl VopHvecgetcomponOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHvecgetcompon> {}
+
+pub trait VopHvecgetcomponWiringExt {
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHvecgetcomponWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHvecgetcompon>
+{
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hvec", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum VopHvecsetcomponPart {
@@ -24647,6 +30583,50 @@ pub trait VopHvecsetcomponOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopHvecsetcomponOutputs for VopHvecsetcompon {}
 impl VopHvecsetcomponOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHvecsetcompon> {}
 
+pub trait VopHvecsetcomponWiringExt {
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_fval<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHvecsetcomponWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHvecsetcompon>
+{
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hvec", output)
+    }
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_fval<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("fval", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHvectofloat {
     pub id: usize,
@@ -24806,6 +30786,32 @@ pub trait VopHvectofloatOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHvectofloatOutputs for VopHvectofloat {}
 impl VopHvectofloatOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHvectofloat> {}
+
+pub trait VopHvectofloatWiringExt {
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHvectofloatWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHvectofloat>
+{
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hvec", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopHvectohmatx {
@@ -25078,6 +31084,70 @@ pub trait VopHvectohmatxOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopHvectohmatxOutputs for VopHvectohmatx {}
 impl VopHvectohmatxOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHvectohmatx> {}
 
+pub trait VopHvectohmatxWiringExt {
+    fn set_row_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_vval1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_row_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_vval2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_row_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_vval3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_row_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_vval4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopHvectohmatxWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHvectohmatx>
+{
+    fn set_row_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_vval1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("vval1", output)
+    }
+    fn set_row_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_vval2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("vval2", output)
+    }
+    fn set_row_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_vval3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("vval3", output)
+    }
+    fn set_row_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_vval4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("vval4", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHvectovec {
     pub id: usize,
@@ -25224,6 +31294,32 @@ pub trait VopHvectovecOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopHvectovecOutputs for VopHvectovec {}
 impl VopHvectovecOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHvectovec> {}
 
+pub trait VopHvectovecWiringExt {
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHvectovecWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHvectovec>
+{
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hvec", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopHvectovec2 {
     pub id: usize,
@@ -25369,3 +31465,29 @@ pub trait VopHvectovec2Outputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopHvectovec2Outputs for VopHvectovec2 {}
 impl VopHvectovec2Outputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopHvectovec2> {}
+
+pub trait VopHvectovec2WiringExt {
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopHvectovec2WiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopHvectovec2>
+{
+    fn set_input_vector4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_hvec<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("hvec", output)
+    }
+}

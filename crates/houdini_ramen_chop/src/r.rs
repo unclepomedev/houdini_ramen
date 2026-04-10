@@ -712,6 +712,42 @@ pub trait ChopRecordOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopRecordOutputs for ChopRecord {}
 impl ChopRecordOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopRecord> {}
 
+pub trait ChopRecordWiringExt {
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_active_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopRecordWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopRecord>
+{
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_active_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopRenameSrselect {
     /// Resample At First Input's Rate
@@ -1046,6 +1082,48 @@ pub trait ChopRenameOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopRenameOutputs for ChopRename {}
 impl ChopRenameOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopRename> {}
+
+pub trait ChopRenameWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_name_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopRenameWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopRename>
+{
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_name_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopReorderMethod {
@@ -1449,6 +1527,48 @@ pub trait ChopReorderOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopReorderOutputs for ChopReorder {}
 impl ChopReorderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopReorder> {}
+
+pub trait ChopReorderWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_order_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopReorderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopReorder>
+{
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_order_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopResampleMethod {
@@ -1920,6 +2040,48 @@ pub trait ChopResampleOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopResampleOutputs for ChopResample {}
 impl ChopResampleOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopResample> {}
 
+pub trait ChopResampleWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_start_end_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopResampleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopResample>
+{
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_start_end_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopRopChannelTrange {
     RenderCurrentFrame = 0,
@@ -2375,6 +2537,28 @@ impl houdini_ramen_core::types::HoudiniNode for ChopRopChannel {
     }
     fn get_spare_params(&self) -> &[houdini_ramen_core::types::SpareParam] {
         &self.spare_params
+    }
+}
+
+pub trait ChopRopChannelWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopRopChannelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopRopChannel>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 

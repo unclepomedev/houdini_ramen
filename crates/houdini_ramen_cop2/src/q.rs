@@ -524,3 +524,51 @@ pub trait Cop2QuantizeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl Cop2QuantizeOutputs for Cop2Quantize {}
 impl Cop2QuantizeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Quantize> {}
+
+pub trait Cop2QuantizeWiringExt {
+    fn set_image_to_quantize_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2QuantizeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Quantize>
+{
+    fn set_image_to_quantize_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}

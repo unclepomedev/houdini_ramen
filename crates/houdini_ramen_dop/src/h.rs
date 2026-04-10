@@ -747,3 +747,31 @@ pub trait DopHardconrelOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopHardconrelOutputs for DopHardconrel {}
 impl DopHardconrelOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopHardconrel> {}
+
+pub trait DopHardconrelWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopHardconrelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopHardconrel>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

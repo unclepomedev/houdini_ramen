@@ -104496,3 +104496,24 @@ impl<'a> ObjectDopnetInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Obje
         self.existing_node("output")
     }
 }
+pub trait ObjectDopnetWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectDopnetWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectDopnet>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

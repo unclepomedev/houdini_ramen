@@ -1958,6 +1958,34 @@ impl DopVectorfieldvisualizationOutputs
 {
 }
 
+pub trait DopVectorfieldvisualizationWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVectorfieldvisualizationWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVectorfieldvisualization>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopVelimpulseforceParmopDeltavel {
     /// ![BUTTONS_set_initial]Set Initial
@@ -3506,6 +3534,34 @@ impl DopVellumconstraintpropertyOutputs for DopVellumconstraintproperty {}
 impl DopVellumconstraintpropertyOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopVellumconstraintproperty>
 {
+}
+
+pub trait DopVellumconstraintpropertyWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVellumconstraintpropertyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVellumconstraintproperty>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6637,6 +6693,28 @@ impl DopVellumconstraintsOutputs
 {
 }
 
+pub trait DopVellumconstraintsWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVellumconstraintsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVellumconstraints>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopVellumobjectVisMode {
     None = 0,
@@ -7905,6 +7983,28 @@ impl DopVellumrestblendOutputs for DopVellumrestblend {}
 impl DopVellumrestblendOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopVellumrestblend>
 {
+}
+
+pub trait DopVellumrestblendWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVellumrestblendWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVellumrestblend>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -9538,6 +9638,74 @@ pub trait DopVellumsolverOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopVellumsolverOutputs for DopVellumsolver {}
 impl DopVellumsolverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopVellumsolver> {}
 
+pub trait DopVellumsolverWiringExt {
+    fn set_objects_to_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_particle_forces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVellumsolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVellumsolver>
+{
+    fn set_objects_to_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_particle_forces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopVellumsourceEmittype {
     OnlyOnce = 0,
@@ -10068,6 +10236,28 @@ impl DopVisualizegeometryOutputs for DopVisualizegeometry {}
 impl DopVisualizegeometryOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopVisualizegeometry>
 {
+}
+
+pub trait DopVisualizegeometryWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVisualizegeometryWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVisualizegeometry>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -11154,6 +11344,34 @@ impl DopVolumecolliderOutputs for DopVolumecollider {}
 impl DopVolumecolliderOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopVolumecollider>
 {
+}
+
+pub trait DopVolumecolliderWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVolumecolliderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVolumecollider>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -12438,6 +12656,28 @@ pub trait DopVolumesourceOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopVolumesourceOutputs for DopVolumesource {}
 impl DopVolumesourceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopVolumesource> {}
+
+pub trait DopVolumesourceWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVolumesourceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVolumesource>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopVopforceVexsrc {
@@ -13853,6 +14093,54 @@ impl DopVoronoifractureconfigureobjectOutputs for DopVoronoifractureconfigureobj
 impl DopVoronoifractureconfigureobjectOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopVoronoifractureconfigureobject>
 {
+}
+
+pub trait DopVoronoifractureconfigureobjectWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_fracture_noise_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVoronoifractureconfigureobjectWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVoronoifractureconfigureobject>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_fracture_noise_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -16575,6 +16863,34 @@ impl DopVoronoifracturesolverOutputs for DopVoronoifracturesolver {}
 impl DopVoronoifracturesolverOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopVoronoifracturesolver>
 {
+}
+
+pub trait DopVoronoifracturesolverWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopVoronoifracturesolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopVoronoifracturesolver>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

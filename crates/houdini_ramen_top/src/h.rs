@@ -1210,6 +1210,28 @@ pub trait TopHdaprocessorOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopHdaprocessorOutputs for TopHdaprocessor {}
 impl TopHdaprocessorOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopHdaprocessor> {}
 
+pub trait TopHdaprocessorWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopHdaprocessorWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopHdaprocessor>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopHoudiniserverCopyinputs {
     NoIterations = 0,
@@ -1864,6 +1886,28 @@ pub trait TopHoudiniserverOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopHoudiniserverOutputs for TopHoudiniserver {}
 impl TopHoudiniserverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopHoudiniserver> {}
+
+pub trait TopHoudiniserverWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopHoudiniserverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopHoudiniserver>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopHqueueschedulerPdgWorkitemdatasource {

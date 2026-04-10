@@ -455,6 +455,34 @@ pub trait LopValueclipOutputs: houdini_ramen_core::types::HoudiniNode {
 impl LopValueclipOutputs for LopValueclip {}
 impl LopValueclipOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopValueclip> {}
 
+pub trait LopValueclipWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopValueclipWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopValueclip>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopVarymaterialassignmentBindstrength {
     Default = 0,
@@ -1151,6 +1179,34 @@ impl LopVarymaterialassignmentOutputs
 {
 }
 
+pub trait LopVarymaterialassignmentWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopVarymaterialassignmentWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopVarymaterialassignment>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct LopVolume {
     pub id: usize,
@@ -1572,6 +1628,32 @@ pub trait LopVolumeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl LopVolumeOutputs for LopVolume {}
 impl LopVolumeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopVolume> {}
+
+pub trait LopVolumeWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopVolumeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopVolume> {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct LopVopnet {

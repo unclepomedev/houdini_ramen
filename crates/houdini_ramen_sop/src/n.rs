@@ -300,6 +300,26 @@ pub trait SopNameOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopNameOutputs for SopName {}
 impl SopNameOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopName> {}
 
+pub trait SopNameWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopNameWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopName> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct SopNeighborsearchcl {
     pub id: usize,
@@ -504,6 +524,28 @@ impl SopNeighborsearchclOutputs for SopNeighborsearchcl {}
 impl SopNeighborsearchclOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<SopNeighborsearchcl>
 {
+}
+
+pub trait SopNeighborsearchclWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopNeighborsearchclWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopNeighborsearchcl>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -801,6 +843,34 @@ impl SopNeuralpointsurfaceOutputs for SopNeuralpointsurface {}
 impl SopNeuralpointsurfaceOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<SopNeuralpointsurface>
 {
+}
+
+pub trait SopNeuralpointsurfaceWiringExt {
+    fn set_points_to_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopNeuralpointsurfaceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopNeuralpointsurface>
+{
+    fn set_points_to_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -1130,6 +1200,32 @@ pub trait SopNormalOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopNormalOutputs for SopNormal {}
 impl SopNormalOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopNormal> {}
 
+pub trait SopNormalWiringExt {
+    fn set_geometry_to_add_normals_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopNormalWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopNormal> {
+    fn set_geometry_to_add_normals_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct SopNpspreprocessingcl {
     pub id: usize,
@@ -1334,6 +1430,42 @@ impl SopNpspreprocessingclOutputs
 {
 }
 
+pub trait SopNpspreprocessingclWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopNpspreprocessingclWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopNpspreprocessingcl>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct SopNull {
     pub id: usize,
@@ -1488,3 +1620,23 @@ pub trait SopNullOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopNullOutputs for SopNull {}
 impl SopNullOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopNull> {}
+
+pub trait SopNullWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopNullWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopNull> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

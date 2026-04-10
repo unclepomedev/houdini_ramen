@@ -929,6 +929,72 @@ pub trait ChopIksolverOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopIksolverOutputs for ChopIksolver {}
 impl ChopIksolverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopIksolver> {}
 
+pub trait ChopIksolverWiringExt {
+    fn set_animated_goal_twist_bone_rotations_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_rest_chain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_blend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopIksolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopIksolver>
+{
+    fn set_animated_goal_twist_bone_rotations_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_rest_chain_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_blend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopImageRgbaunit {
     /// 0 to 1
@@ -1716,6 +1782,32 @@ pub trait ChopImageOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopImageOutputs for ChopImage {}
 impl ChopImageOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopImage> {}
+
+pub trait ChopImageWiringExt {
+    fn set_uv_sampling_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopImageWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopImage> {
+    fn set_uv_sampling_coordinates_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopInterpBlendfunc {
@@ -3122,3 +3214,25 @@ pub trait ChopInvertOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopInvertOutputs for ChopInvert {}
 impl ChopInvertOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopInvert> {}
+
+pub trait ChopInvertWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopInvertWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopInvert>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

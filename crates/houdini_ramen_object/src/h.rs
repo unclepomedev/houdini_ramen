@@ -1406,6 +1406,47 @@ impl<'a> ObjectHaircardgenInnerExt
         self.existing_node("modify/HAIR")
     }
 }
+pub trait ObjectHaircardgenWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sub_network_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectHaircardgenWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectHaircardgen>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_sub_network_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectHaircardtexexampleXord {
@@ -5869,6 +5910,47 @@ impl<'a> ObjectHairgenInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Obj
         self.existing_node("modify/HAIRS")
     }
 }
+pub trait ObjectHairgenWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_groom_data_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectHairgenWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectHairgen>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_groom_data_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectHandleXord {
@@ -6812,6 +6894,27 @@ impl<'a> ObjectHandleInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Obje
     }
     fn z(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("z")
+    }
+}
+pub trait ObjectHandleWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectHandleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectHandle>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -9047,5 +9150,32 @@ impl<'a> ObjectHlightInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Obje
     }
     fn xform7(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("xform7")
+    }
+}
+pub trait ObjectHlightWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectHlightWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectHlight>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }

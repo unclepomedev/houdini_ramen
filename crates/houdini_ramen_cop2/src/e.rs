@@ -590,6 +590,52 @@ pub trait Cop2EdgeOutputs: houdini_ramen_core::types::HoudiniNode {
 impl Cop2EdgeOutputs for Cop2Edge {}
 impl Cop2EdgeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Edge> {}
 
+pub trait Cop2EdgeWiringExt {
+    fn set_image_to_edge_detect_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2EdgeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Edge> {
+    fn set_image_to_edge_detect_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct Cop2Edgeblur {
     pub id: usize,
@@ -786,6 +832,33 @@ impl<'a> Cop2EdgeblurInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Cop2
     }
     fn soften_matte(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("soften_matte")
+    }
+}
+pub trait Cop2EdgeblurWiringExt {
+    fn set_edges_to_blur_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2EdgeblurWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Edgeblur>
+{
+    fn set_edges_to_blur_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -1449,6 +1522,74 @@ pub trait Cop2EmbossOutputs: houdini_ramen_core::types::HoudiniNode {
 impl Cop2EmbossOutputs for Cop2Emboss {}
 impl Cop2EmbossOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Emboss> {}
 
+pub trait Cop2EmbossWiringExt {
+    fn set_image_to_emboss_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_bump_map_optional_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2EmbossWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Emboss>
+{
+    fn set_image_to_emboss_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_bump_map_optional_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2EnvMaptype {
     Spherical = 0,
@@ -2072,6 +2213,72 @@ pub trait Cop2EnvOutputs: houdini_ramen_core::types::HoudiniNode {
 impl Cop2EnvOutputs for Cop2Env {}
 impl Cop2EnvOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Env> {}
 
+pub trait Cop2EnvWiringExt {
+    fn set_color_bump_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_environment_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2EnvWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Env> {
+    fn set_color_bump_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_environment_map_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2EqualizeOp {
     /// Stretch Range to Black/White
@@ -2694,6 +2901,54 @@ pub trait Cop2EqualizeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl Cop2EqualizeOutputs for Cop2Equalize {}
 impl Cop2EqualizeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Equalize> {}
+
+pub trait Cop2EqualizeWiringExt {
+    fn set_image_to_equalize_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2EqualizeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Equalize>
+{
+    fn set_image_to_equalize_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2ErftablePlanes {
@@ -4079,6 +4334,54 @@ pub trait Cop2ExpandOutputs: houdini_ramen_core::types::HoudiniNode {
 impl Cop2ExpandOutputs for Cop2Expand {}
 impl Cop2ExpandOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Expand> {}
 
+pub trait Cop2ExpandWiringExt {
+    fn set_matte_to_expand_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2ExpandWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Expand>
+{
+    fn set_matte_to_expand_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2ExtendExtendbefore {
     BlackFrames = 0,
@@ -4394,6 +4697,54 @@ pub trait Cop2ExtendOutputs: houdini_ramen_core::types::HoudiniNode {
 impl Cop2ExtendOutputs for Cop2Extend {}
 impl Cop2ExtendOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Extend> {}
 
+pub trait Cop2ExtendWiringExt {
+    fn set_sequence_to_extend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sequence_to_match_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2ExtendWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Extend>
+{
+    fn set_sequence_to_extend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_sequence_to_match_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2ExtractExtract {
     Plane = 0,
@@ -4628,6 +4979,27 @@ impl<'a> Cop2ExtractInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Cop2E
     }
     fn switch1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("switch1")
+    }
+}
+pub trait Cop2ExtractWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2ExtractWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Extract>
+{
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -5217,4 +5589,52 @@ impl Cop2ExtrapolateboundariesOutputs for Cop2Extrapolateboundaries {}
 impl Cop2ExtrapolateboundariesOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Extrapolateboundaries>
 {
+}
+
+pub trait Cop2ExtrapolateboundariesWiringExt {
+    fn set_image_to_filter_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2ExtrapolateboundariesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Extrapolateboundaries>
+{
+    fn set_image_to_filter_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
 }

@@ -1224,6 +1224,28 @@ pub trait TopUrlrequestOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopUrlrequestOutputs for TopUrlrequest {}
 impl TopUrlrequestOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopUrlrequest> {}
 
+pub trait TopUrlrequestWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUrlrequestWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUrlrequest>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopUsdaddassetstogallery {
     pub id: usize,
@@ -1400,6 +1422,28 @@ impl TopUsdaddassetstogalleryOutputs for TopUsdaddassetstogallery {}
 impl TopUsdaddassetstogalleryOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdaddassetstogallery>
 {
+}
+
+pub trait TopUsdaddassetstogalleryWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdaddassetstogalleryWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdaddassetstogallery>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -1776,6 +1820,28 @@ pub trait TopUsdanalyzeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopUsdanalyzeOutputs for TopUsdanalyze {}
 impl TopUsdanalyzeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdanalyze> {}
+
+pub trait TopUsdanalyzeWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdanalyzeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdanalyze>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopUsdimportSourcefilemode {
@@ -2559,6 +2625,28 @@ pub trait TopUsdimportOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopUsdimportOutputs for TopUsdimport {}
 impl TopUsdimportOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdimport> {}
 
+pub trait TopUsdimportWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdimportWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdimport>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopUsdimportfilesSourcefilemode {
     CustomFilePath = 0,
@@ -2872,6 +2960,28 @@ impl TopUsdimportfilesOutputs
 {
 }
 
+pub trait TopUsdimportfilesWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdimportfilesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdimportfiles>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopUsdimportprimsSourcefilemode {
     CustomFilePath = 0,
@@ -3127,6 +3237,28 @@ impl TopUsdimportprimsOutputs for TopUsdimportprims {}
 impl TopUsdimportprimsOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdimportprims>
 {
+}
+
+pub trait TopUsdimportprimsWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdimportprimsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdimportprims>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -3483,6 +3615,28 @@ impl TopUsdmodifypathsOutputs for TopUsdmodifypaths {}
 impl TopUsdmodifypathsOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdmodifypaths>
 {
+}
+
+pub trait TopUsdmodifypathsWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdmodifypathsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdmodifypaths>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -4718,6 +4872,28 @@ pub trait TopUsdrenderOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopUsdrenderOutputs for TopUsdrender {}
 impl TopUsdrenderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdrender> {}
 
+pub trait TopUsdrenderWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdrenderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdrender>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopUsdrenderscenePdgCooktype {
     /// In-Process
@@ -5896,4 +6072,26 @@ impl TopUsdrendersceneOutputs for TopUsdrenderscene {}
 impl TopUsdrendersceneOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopUsdrenderscene>
 {
+}
+
+pub trait TopUsdrendersceneWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopUsdrendersceneWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopUsdrenderscene>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }

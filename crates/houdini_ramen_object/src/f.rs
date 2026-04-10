@@ -837,6 +837,27 @@ impl<'a> ObjectFetchInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Objec
         self.existing_node("sphere1")
     }
 }
+pub trait ObjectFetchWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectFetchWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectFetch>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectFogXord {
@@ -1524,6 +1545,26 @@ pub trait ObjectFogOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ObjectFogOutputs for ObjectFog {}
 impl ObjectFogOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectFog> {}
+
+pub trait ObjectFogWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectFogWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectFog> {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectFormationcrowdsexamplePreXform {
@@ -4633,6 +4674,93 @@ impl<'a> ObjectFourpointmuscleInnerExt
         self.existing_node("muscle3_anchor_root")
     }
 }
+pub trait ObjectFourpointmuscleWiringExt {
+    fn set_muscle_anchor_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_muscle_anchor_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_muscle_anchor_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_muscle_anchor_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectFourpointmuscleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectFourpointmuscle>
+{
+    fn set_muscle_anchor_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_muscle_anchor_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_muscle_anchor_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+    fn set_muscle_anchor_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input4", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectFrankenmuscleXord {
@@ -6672,6 +6800,27 @@ impl<'a> ObjectFrankenmuscleInnerExt
     }
     fn muscle(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("muscle")
+    }
+}
+pub trait ObjectFrankenmuscleWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectFrankenmuscleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectFrankenmuscle>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -10188,6 +10337,31 @@ impl<'a> ObjectFurInnerExt for houdini_ramen_core::graph::InnerGraph<'a, ObjectF
     }
     fn skin_render(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("skin_render")
+    }
+}
+pub trait ObjectFurWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectFurWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectFur> {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 

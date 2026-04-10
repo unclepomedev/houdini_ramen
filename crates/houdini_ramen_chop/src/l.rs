@@ -388,6 +388,32 @@ pub trait ChopLagOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopLagOutputs for ChopLag {}
 impl ChopLagOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopLag> {}
 
+pub trait ChopLagWiringExt {
+    fn set_lag_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopLagWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopLag> {
+    fn set_lag_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopLayerSrselect {
     /// Resample At First Input's Rate
@@ -1191,6 +1217,26 @@ pub trait ChopLimitOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopLimitOutputs for ChopLimit {}
 impl ChopLimitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopLimit> {}
+
+pub trait ChopLimitWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopLimitWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopLimit> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopLogicConvert {
@@ -2090,6 +2136,48 @@ pub trait ChopLookupOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopLookupOutputs for ChopLookup {}
 impl ChopLookupOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopLookup> {}
+
+pub trait ChopLookupWiringExt {
+    fn set_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_lookup_table_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopLookupWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopLookup>
+{
+    fn set_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_lookup_table_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct ChopLopnet {

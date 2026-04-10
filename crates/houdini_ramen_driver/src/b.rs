@@ -1903,6 +1903,28 @@ pub trait DriverBatchOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DriverBatchOutputs for DriverBatch {}
 impl DriverBatchOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DriverBatch> {}
 
+pub trait DriverBatchWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DriverBatchWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DriverBatch>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DriverBrickmapTrange {
     RenderCurrentFrame = 0,

@@ -473,6 +473,34 @@ impl DopParticlefieldvisualizationOutputs
 {
 }
 
+pub trait DopParticlefieldvisualizationWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopParticlefieldvisualizationWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopParticlefieldvisualization>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopParticlefluidconfigureobjectSurfacetype {
     SurfaceSop = 0,
@@ -1535,6 +1563,34 @@ impl DopParticlefluidconfigureobjectOutputs for DopParticlefluidconfigureobject 
 impl DopParticlefluidconfigureobjectOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopParticlefluidconfigureobject>
 {
+}
+
+pub trait DopParticlefluidconfigureobjectWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopParticlefluidconfigureobjectWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopParticlefluidconfigureobject>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -3494,6 +3550,94 @@ impl DopParticlefluidsolverOutputs
 {
 }
 
+pub trait DopParticlefluidsolverWiringExt {
+    fn set_fluid_to_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_prequel_solvers_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sequel_solvers_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_additional_force_solvers_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopParticlefluidsolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopParticlefluidsolver>
+{
+    fn set_fluid_to_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_prequel_solvers_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_sequel_solvers_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+    fn set_additional_force_solvers_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input4", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopParticlemodeldataParmopParticlemassdensity {
     /// ![BUTTONS_set_initial]Set Initial
@@ -3844,6 +3988,34 @@ impl DopParticlemodeldataOutputs
 {
 }
 
+pub trait DopParticlemodeldataWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopParticlemodeldataWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopParticlemodeldata>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopPartition {
     pub id: usize,
@@ -4016,6 +4188,34 @@ pub trait DopPartitionOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPartitionOutputs for DopPartition {}
 impl DopPartitionOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPartition> {}
+
+pub trait DopPartitionWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPartitionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPartition>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPhysparmsParmopBounce {
@@ -4489,6 +4689,34 @@ pub trait DopPhysparmsOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPhysparmsOutputs for DopPhysparms {}
 impl DopPhysparmsOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPhysparms> {}
+
+pub trait DopPhysparmsWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPhysparmsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPhysparms>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPointcolliderParmopTol {
@@ -4968,6 +5196,34 @@ pub trait DopPointcolliderOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPointcolliderOutputs for DopPointcollider {}
 impl DopPointcolliderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPointcollider> {}
+
+pub trait DopPointcolliderWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPointcolliderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPointcollider>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPointforceParmopForce {
@@ -5903,6 +6159,34 @@ pub trait DopPointposOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPointposOutputs for DopPointpos {}
 impl DopPointposOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPointpos> {}
 
+pub trait DopPointposWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPointposWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPointpos>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopadvectbyfilamentsFilsource {
     Sop = 0,
@@ -6422,6 +6706,34 @@ impl DopPopadvectbyfilamentsOutputs for DopPopadvectbyfilaments {}
 impl DopPopadvectbyfilamentsOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopadvectbyfilaments>
 {
+}
+
+pub trait DopPopadvectbyfilamentsWiringExt {
+    fn set_stream_to_apply_force_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopadvectbyfilamentsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopadvectbyfilaments>
+{
+    fn set_stream_to_apply_force_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -7071,6 +7383,28 @@ impl DopPopadvectbyvolumesOutputs for DopPopadvectbyvolumes {}
 impl DopPopadvectbyvolumesOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopadvectbyvolumes>
 {
+}
+
+pub trait DopPopadvectbyvolumesWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopadvectbyvolumesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopadvectbyvolumes>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -7845,6 +8179,28 @@ pub trait DopPopattractOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopattractOutputs for DopPopattract {}
 impl DopPopattractOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopattract> {}
 
+pub trait DopPopattractWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopattractWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopattract>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopattribblurMethod {
     Uniform = 0,
@@ -8322,6 +8678,28 @@ pub trait DopPopattribblurOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopattribblurOutputs for DopPopattribblur {}
 impl DopPopattribblurOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopattribblur> {}
 
+pub trait DopPopattribblurWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopattribblurWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopattribblur>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopattribfromvolumeUsecontextgeo {
     Sop = 0,
@@ -8797,6 +9175,34 @@ impl DopPopattribfromvolumeOutputs
 {
 }
 
+pub trait DopPopattribfromvolumeWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopattribfromvolumeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopattribfromvolume>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopawakenUsecontextgeo {
     Sop = 0,
@@ -9210,6 +9616,28 @@ pub trait DopPopawakenOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopawakenOutputs for DopPopawaken {}
 impl DopPopawakenOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopawaken> {}
+
+pub trait DopPopawakenWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopawakenWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopawaken>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopaxisforceType {
@@ -10103,6 +10531,34 @@ pub trait DopPopaxisforceOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopaxisforceOutputs for DopPopaxisforce {}
 impl DopPopaxisforceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopaxisforce> {}
 
+pub trait DopPopaxisforceWiringExt {
+    fn set_stream_to_apply_force_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopaxisforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopaxisforce>
+{
+    fn set_stream_to_apply_force_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopcollisionbehaviorResponse {
     None = 0,
@@ -10455,6 +10911,34 @@ impl DopPopcollisionbehaviorOutputs for DopPopcollisionbehavior {}
 impl DopPopcollisionbehaviorOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopcollisionbehavior>
 {
+}
+
+pub trait DopPopcollisionbehaviorWiringExt {
+    fn set_data_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopcollisionbehaviorWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopcollisionbehavior>
+{
+    fn set_data_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -11100,6 +11584,34 @@ impl DopPopcollisiondetectOutputs
 {
 }
 
+pub trait DopPopcollisiondetectWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopcollisiondetectWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopcollisiondetect>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopPopcollisionignore {
     pub id: usize,
@@ -11331,6 +11843,28 @@ impl DopPopcollisionignoreOutputs for DopPopcollisionignore {}
 impl DopPopcollisionignoreOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopcollisionignore>
 {
+}
+
+pub trait DopPopcollisionignoreWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopcollisionignoreWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopcollisionignore>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -12205,6 +12739,34 @@ pub trait DopPopcolorOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopcolorOutputs for DopPopcolor {}
 impl DopPopcolorOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopcolor> {}
 
+pub trait DopPopcolorWiringExt {
+    fn set_stream_to_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopcolorWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopcolor>
+{
+    fn set_stream_to_color_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopcurveforceUsecontextgeo {
     Sop = 0,
@@ -12885,6 +13447,34 @@ pub trait DopPopcurveforceOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopcurveforceOutputs for DopPopcurveforce {}
 impl DopPopcurveforceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopcurveforce> {}
+
+pub trait DopPopcurveforceWiringExt {
+    fn set_data_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopcurveforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopcurveforce>
+{
+    fn set_data_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopcurveincompressibleflowUsecontextgeo {
@@ -13725,6 +14315,34 @@ impl DopPopcurveincompressibleflowOutputs
 {
 }
 
+pub trait DopPopcurveincompressibleflowWiringExt {
+    fn set_solvers_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopcurveincompressibleflowWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopcurveincompressibleflow>
+{
+    fn set_solvers_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopdragBindinputmenu1 {
     None = 0,
@@ -14300,6 +14918,34 @@ pub trait DopPopdragOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopdragOutputs for DopPopdrag {}
 impl DopPopdragOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopdrag> {}
+
+pub trait DopPopdragWiringExt {
+    fn set_stream_to_drag_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopdragWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopdrag>
+{
+    fn set_stream_to_drag_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopdragspinBindinputmenu1 {
@@ -14892,6 +15538,34 @@ pub trait DopPopdragspinOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopdragspinOutputs for DopPopdragspin {}
 impl DopPopdragspinOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopdragspin> {}
+
+pub trait DopPopdragspinWiringExt {
+    fn set_stream_to_drag_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopdragspinWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopdragspin>
+{
+    fn set_stream_to_drag_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopfanBindinputmenu1 {
@@ -15548,6 +16222,32 @@ pub trait DopPopfanOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopfanOutputs for DopPopfan {}
 impl DopPopfanOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopfan> {}
+
+pub trait DopPopfanWiringExt {
+    fn set_stream_to_apply_fan_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopfanWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopfan> {
+    fn set_stream_to_apply_fan_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct DopPopfireworks {
@@ -16359,6 +17059,28 @@ impl DopPopfloatbyvolumesOutputs
 {
 }
 
+pub trait DopPopfloatbyvolumesWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopfloatbyvolumesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopfloatbyvolumes>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopPopflock {
     pub id: usize,
@@ -16714,6 +17436,34 @@ pub trait DopPopflockOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopflockOutputs for DopPopflock {}
 impl DopPopflockOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopflock> {}
+
+pub trait DopPopflockWiringExt {
+    fn set_stream_to_flock_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopflockWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopflock>
+{
+    fn set_stream_to_flock_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopfluidProjectiontype {
@@ -17289,6 +18039,32 @@ pub trait DopPopfluidOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopfluidOutputs for DopPopfluid {}
 impl DopPopfluidOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopfluid> {}
+
+pub trait DopPopfluidWiringExt {
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopfluidWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopfluid>
+{
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopforceBindinputmenu1 {
@@ -18043,6 +18819,34 @@ pub trait DopPopforceOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopforceOutputs for DopPopforce {}
 impl DopPopforceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopforce> {}
+
+pub trait DopPopforceWiringExt {
+    fn set_stream_to_apply_forces_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopforce>
+{
+    fn set_stream_to_apply_forces_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopgrainsDomassshock {
@@ -18985,6 +19789,34 @@ pub trait DopPopgrainsOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopgrainsOutputs for DopPopgrains {}
 impl DopPopgrainsOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopgrains> {}
 
+pub trait DopPopgrainsWiringExt {
+    fn set_solvers_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopgrainsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopgrains>
+{
+    fn set_solvers_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopgroupBoundtype {
     BoundingBox = 0,
@@ -19878,6 +20710,34 @@ pub trait DopPopgroupOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopgroupOutputs for DopPopgroup {}
 impl DopPopgroupOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopgroup> {}
 
+pub trait DopPopgroupWiringExt {
+    fn set_stream_to_group_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopgroupWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopgroup>
+{
+    fn set_stream_to_group_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopPophairinternalforce {
     pub id: usize,
@@ -20153,6 +21013,28 @@ impl DopPophairinternalforceOutputs for DopPophairinternalforce {}
 impl DopPophairinternalforceOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPophairinternalforce>
 {
+}
+
+pub trait DopPophairinternalforceWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPophairinternalforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPophairinternalforce>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -20468,6 +21350,34 @@ pub trait DopPopinstanceOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopinstanceOutputs for DopPopinstance {}
 impl DopPopinstanceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopinstance> {}
+
+pub trait DopPopinstanceWiringExt {
+    fn set_data_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopinstanceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopinstance>
+{
+    fn set_data_to_be_attached_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopinteractBindinputmenu1 {
@@ -21077,6 +21987,34 @@ pub trait DopPopinteractOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopinteractOutputs for DopPopinteract {}
 impl DopPopinteractOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopinteract> {}
 
+pub trait DopPopinteractWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopinteractWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopinteract>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopkillBoundtype {
     BoundingBox = 0,
@@ -21599,6 +22537,34 @@ pub trait DopPopkillOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopkillOutputs for DopPopkill {}
 impl DopPopkillOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopkill> {}
 
+pub trait DopPopkillWiringExt {
+    fn set_stream_to_kill_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopkillWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopkill>
+{
+    fn set_stream_to_kill_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPoplimitBehaviour {
     None = 0,
@@ -22049,6 +23015,34 @@ pub trait DopPoplimitOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPoplimitOutputs for DopPoplimit {}
 impl DopPoplimitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPoplimit> {}
+
+pub trait DopPoplimitWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPoplimitWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPoplimit>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPoplocalforceBindinputmenu1 {
@@ -22641,6 +23635,28 @@ pub trait DopPoplocalforceOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPoplocalforceOutputs for DopPoplocalforce {}
 impl DopPoplocalforceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPoplocalforce> {}
+
+pub trait DopPoplocalforceWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPoplocalforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPoplocalforce>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPoplocationJitterbirthtime {
@@ -23762,6 +24778,28 @@ pub trait DopPoplookatOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPoplookatOutputs for DopPoplookat {}
 impl DopPoplookatOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPoplookat> {}
 
+pub trait DopPoplookatWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPoplookatWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPoplookat>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopmaskfromshadowCollisiongeometry {
     None = 0,
@@ -24290,6 +25328,32 @@ impl DopPopmaskfromshadowOutputs
 {
 }
 
+pub trait DopPopmaskfromshadowWiringExt {
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopmaskfromshadowWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopmaskfromshadow>
+{
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopmetaballforceMetaballsource {
     Sop = 0,
@@ -24662,6 +25726,34 @@ impl DopPopmetaballforceOutputs for DopPopmetaballforce {}
 impl DopPopmetaballforceOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopmetaballforce>
 {
+}
+
+pub trait DopPopmetaballforceWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopmetaballforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopmetaballforce>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -25913,6 +27005,34 @@ pub trait DopPoppropertyOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPoppropertyOutputs for DopPopproperty {}
 impl DopPoppropertyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopproperty> {}
 
+pub trait DopPoppropertyWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPoppropertyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopproperty>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopproximityProximitysource {
     Sop = 0,
@@ -26335,6 +27455,34 @@ pub trait DopPopproximityOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopproximityOutputs for DopPopproximity {}
 impl DopPopproximityOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopproximity> {}
+
+pub trait DopPopproximityWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopproximityWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopproximity>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopreplicateJitterbirthtime {
@@ -27218,6 +28366,54 @@ pub trait DopPopreplicateOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopreplicateOutputs for DopPopreplicate {}
 impl DopPopreplicateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopreplicate> {}
 
+pub trait DopPopreplicateWiringExt {
+    fn set_points_to_replicate_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reference_stream_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopreplicateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopreplicate>
+{
+    fn set_points_to_replicate_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_reference_stream_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopshapematchParmopRestoration {
     /// ![BUTTONS_set_initial]Set Initial
@@ -27632,6 +28828,58 @@ pub trait DopPopshapematchOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopshapematchOutputs for DopPopshapematch {}
 impl DopPopshapematchOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopshapematch> {}
+
+pub trait DopPopshapematchWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_data_to_attach_accepts_1_of_geometry_cop_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopshapematchWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopshapematch>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_data_to_attach_accepts_1_of_geometry_cop_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsoftlimitType {
@@ -28310,6 +29558,34 @@ pub trait DopPopsoftlimitOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopsoftlimitOutputs for DopPopsoftlimit {}
 impl DopPopsoftlimitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsoftlimit> {}
+
+pub trait DopPopsoftlimitWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsoftlimitWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsoftlimit>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsolverCollisionresponse {
@@ -29265,6 +30541,66 @@ pub trait DopPopsolverOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopsolverOutputs for DopPopsolver {}
 impl DopPopsolverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsolver> {}
+
+pub trait DopPopsolverWiringExt {
+    fn set_object_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sources_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsolver>
+{
+    fn set_object_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_sources_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsourceEmittype {
@@ -30787,6 +32123,34 @@ pub trait DopPopspeedlimitOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopspeedlimitOutputs for DopPopspeedlimit {}
 impl DopPopspeedlimitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopspeedlimit> {}
 
+pub trait DopPopspeedlimitWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopspeedlimitWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopspeedlimit>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopspinBindinputmenu1 {
     None = 0,
@@ -31346,6 +32710,34 @@ pub trait DopPopspinOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopspinOutputs for DopPopspin {}
 impl DopPopspinOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopspin> {}
+
+pub trait DopPopspinWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopspinWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopspin>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopspinbyvolumesVelsource {
@@ -31921,6 +33313,28 @@ impl DopPopspinbyvolumesOutputs for DopPopspinbyvolumes {}
 impl DopPopspinbyvolumesOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopspinbyvolumes>
 {
+}
+
+pub trait DopPopspinbyvolumesWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopspinbyvolumesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopspinbyvolumes>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -32544,6 +33958,34 @@ pub trait DopPopspriteOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopspriteOutputs for DopPopsprite {}
 impl DopPopspriteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsprite> {}
 
+pub trait DopPopspriteWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopspriteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsprite>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteeralignOutput {
     CrowdsSteerforce = 0,
@@ -32944,6 +34386,34 @@ pub trait DopPopsteeralignOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopsteeralignOutputs for DopPopsteeralign {}
 impl DopPopsteeralignOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsteeralign> {}
 
+pub trait DopPopsteeralignWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteeralignWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteeralign>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteeravoidOutput {
     CrowdsSteerforce = 0,
@@ -33339,6 +34809,34 @@ pub trait DopPopsteeravoidOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopsteeravoidOutputs for DopPopsteeravoid {}
 impl DopPopsteeravoidOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsteeravoid> {}
+
+pub trait DopPopsteeravoidWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteeravoidWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteeravoid>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteercohesionOutput {
@@ -33743,6 +35241,34 @@ impl DopPopsteercohesionOutputs
 {
 }
 
+pub trait DopPopsteercohesionWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteercohesionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteercohesion>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteercustomOutput {
     CrowdsSteerforce = 0,
@@ -34058,6 +35584,33 @@ impl<'a> DopPopsteercustomInnerExt
     }
     fn parm1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("custom/parm1")
+    }
+}
+pub trait DopPopsteercustomWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteercustomWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteercustom>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -34720,6 +36273,34 @@ impl DopPopsteerobstacleOutputs
 {
 }
 
+pub trait DopPopsteerobstacleWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteerobstacleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteerobstacle>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteerpathOutput {
     CrowdsSteerforce = 0,
@@ -35349,6 +36930,34 @@ pub trait DopPopsteerpathOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopsteerpathOutputs for DopPopsteerpath {}
 impl DopPopsteerpathOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsteerpath> {}
+
+pub trait DopPopsteerpathWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteerpathWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteerpath>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteerseekOutput {
@@ -36140,6 +37749,34 @@ pub trait DopPopsteerseekOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopsteerseekOutputs for DopPopsteerseek {}
 impl DopPopsteerseekOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsteerseek> {}
 
+pub trait DopPopsteerseekWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteerseekWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteerseek>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopsteerseparateOutput {
     CrowdsSteerforce = 0,
@@ -36593,6 +38230,34 @@ impl DopPopsteerseparateOutputs
 {
 }
 
+pub trait DopPopsteerseparateWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteerseparateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteerseparate>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopPopsteersolver {
     pub id: usize,
@@ -36754,6 +38419,34 @@ impl DopPopsteersolverOutputs for DopPopsteersolver {}
 impl DopPopsteersolverOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsteersolver>
 {
+}
+
+pub trait DopPopsteersolverWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteersolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteersolver>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -37175,6 +38868,34 @@ impl DopPopsteerturnconstraintOutputs for DopPopsteerturnconstraint {}
 impl DopPopsteerturnconstraintOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopsteerturnconstraint>
 {
+}
+
+pub trait DopPopsteerturnconstraintWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteerturnconstraintWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteerturnconstraint>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -37741,6 +39462,34 @@ impl DopPopsteerwanderOutputs
 {
 }
 
+pub trait DopPopsteerwanderWiringExt {
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopsteerwanderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopsteerwander>
+{
+    fn set_stream_to_interact_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopstreamBoundtype {
     BoundingBox = 0,
@@ -38264,6 +40013,34 @@ pub trait DopPopstreamOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopstreamOutputs for DopPopstream {}
 impl DopPopstreamOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopstream> {}
+
+pub trait DopPopstreamWiringExt {
+    fn set_reference_stream_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopstreamWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopstream>
+{
+    fn set_reference_stream_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPoptorqueBindinputmenu1 {
@@ -38841,6 +40618,28 @@ pub trait DopPoptorqueOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPoptorqueOutputs for DopPoptorque {}
 impl DopPoptorqueOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPoptorque> {}
 
+pub trait DopPoptorqueWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPoptorqueWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPoptorque>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopvelocityBindinputmenu1 {
     None = 0,
@@ -39384,6 +41183,34 @@ pub trait DopPopvelocityOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopvelocityOutputs for DopPopvelocity {}
 impl DopPopvelocityOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopvelocity> {}
+
+pub trait DopPopvelocityWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopvelocityWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopvelocity>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopvopVexsrc {
@@ -41113,6 +42940,34 @@ pub trait DopPopwindOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopwindOutputs for DopPopwind {}
 impl DopPopwindOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopwind> {}
 
+pub trait DopPopwindWiringExt {
+    fn set_stream_to_apply_forces_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopwindWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopwind>
+{
+    fn set_stream_to_apply_forces_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopwindshadowCombineop {
     Replace = 0,
@@ -41783,6 +43638,28 @@ pub trait DopPopwindshadowOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPopwindshadowOutputs for DopPopwindshadow {}
 impl DopPopwindshadowOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopwindshadow> {}
+
+pub trait DopPopwindshadowWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopwindshadowWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopwindshadow>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPopwrangleBindinputmenu1 {
@@ -42618,6 +44495,28 @@ pub trait DopPopwrangleOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPopwrangleOutputs for DopPopwrangle {}
 impl DopPopwrangleOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPopwrangle> {}
 
+pub trait DopPopwrangleWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPopwrangleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPopwrangle>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPositionParmopT {
     /// ![BUTTONS_set_initial]Set Initial
@@ -43002,6 +44901,34 @@ pub trait DopPositionOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopPositionOutputs for DopPosition {}
 impl DopPositionOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPosition> {}
+
+pub trait DopPositionWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPositionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPosition>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPositioncompositeParmopPoscompositeop {
@@ -47409,6 +49336,104 @@ pub trait DopPyrosolverOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopPyrosolverOutputs for DopPyrosolver {}
 impl DopPyrosolverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopPyrosolver> {}
 
+pub trait DopPyrosolverWiringExt {
+    fn set_object_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_velocity_update_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_advection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sourcing_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPyrosolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPyrosolver>
+{
+    fn set_object_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_velocity_update_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+    fn set_advection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input4", output)
+    }
+    fn set_sourcing_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_input5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input5", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopPyrosolverSparseAdvVelReflect {
     Disabled = 0,
@@ -51444,4 +53469,72 @@ impl DopPyrosolverSparseOutputs for DopPyrosolverSparse {}
 impl DopPyrosolverSparseOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopPyrosolverSparse>
 {
+}
+
+pub trait DopPyrosolverSparseWiringExt {
+    fn set_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_advection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sourcing_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_forces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopPyrosolverSparseWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopPyrosolverSparse>
+{
+    fn set_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_advection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_sourcing_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+    fn set_forces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input4", output)
+    }
 }

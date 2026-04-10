@@ -522,6 +522,34 @@ pub trait ChopNetworkOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopNetworkOutputs for ChopNetwork {}
 impl ChopNetworkOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopNetwork> {}
 
+pub trait ChopNetworkWiringExt {
+    fn set_data_to_send_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopNetworkWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopNetwork>
+{
+    fn set_data_to_send_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopNoiseFunction {
     Sparse = 0,
@@ -1311,6 +1339,32 @@ pub trait ChopNoiseOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopNoiseOutputs for ChopNoise {}
 impl ChopNoiseOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopNoise> {}
 
+pub trait ChopNoiseWiringExt {
+    fn set_xyz_sampling_points_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopNoiseWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopNoise> {
+    fn set_xyz_sampling_points_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopNullSrselect {
     /// Resample At First Input's Rate
@@ -1581,3 +1635,23 @@ pub trait ChopNullOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopNullOutputs for ChopNull {}
 impl ChopNullOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopNull> {}
+
+pub trait ChopNullWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopNullWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopNull> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

@@ -670,6 +670,25 @@ impl<'a> ObjectCamInnerExt for houdini_ramen_core::graph::InnerGraph<'a, ObjectC
         self.existing_node("xform1")
     }
 }
+pub trait ObjectCamWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectCamWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectCam> {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct ObjectChopnet {
@@ -2235,6 +2254,27 @@ pub trait ObjectCop2planeInnerExt {
 impl<'a> ObjectCop2planeInnerExt for houdini_ramen_core::graph::InnerGraph<'a, ObjectCop2plane> {
     fn default_pic(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("cop2net1/default_pic")
+    }
+}
+pub trait ObjectCop2planeWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectCop2planeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectCop2plane>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 

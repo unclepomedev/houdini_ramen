@@ -3978,3 +3978,25 @@ pub trait TopDownloadfileOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopDownloadfileOutputs for TopDownloadfile {}
 impl TopDownloadfileOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopDownloadfile> {}
+
+pub trait TopDownloadfileWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopDownloadfileWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopDownloadfile>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

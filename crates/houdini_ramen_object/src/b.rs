@@ -9963,3 +9963,24 @@ impl<'a> ObjectBoneInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Object
         self.existing_node("cregion")
     }
 }
+pub trait ObjectBoneWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectBoneWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectBone>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

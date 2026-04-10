@@ -244,6 +244,28 @@ pub trait TopNodepatternOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopNodepatternOutputs for TopNodepattern {}
 impl TopNodepatternOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopNodepattern> {}
 
+pub trait TopNodepatternWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopNodepatternWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopNodepattern>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopNukeserverCopyinputs {
     NoIterations = 0,
@@ -906,6 +928,28 @@ pub trait TopNukeserverOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopNukeserverOutputs for TopNukeserver {}
 impl TopNukeserverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopNukeserver> {}
 
+pub trait TopNukeserverWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopNukeserverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopNukeserver>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopNull {
     pub id: usize,
@@ -1027,3 +1071,23 @@ pub trait TopNullOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopNullOutputs for TopNull {}
 impl TopNullOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopNull> {}
+
+pub trait TopNullWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopNullWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopNull> {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

@@ -1154,6 +1154,34 @@ impl ObjectIndirectlightOutputs
 {
 }
 
+pub trait ObjectIndirectlightWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectIndirectlightWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectIndirectlight>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectInstancePreXform {
     CleanTransform = 0,
@@ -2512,5 +2540,26 @@ pub trait ObjectInstanceInnerExt {
 impl<'a> ObjectInstanceInnerExt for houdini_ramen_core::graph::InnerGraph<'a, ObjectInstance> {
     fn add(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("add")
+    }
+}
+pub trait ObjectInstanceWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectInstanceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectInstance>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }

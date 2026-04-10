@@ -1739,6 +1739,33 @@ impl<'a> ObjectEnvlightInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Ob
         self.existing_node("switch1")
     }
 }
+pub trait ObjectEnvlightWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectEnvlightWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectEnvlight>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectExtractgeoXord {
@@ -2526,3 +2553,25 @@ pub trait ObjectExtractgeoOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ObjectExtractgeoOutputs for ObjectExtractgeo {}
 impl ObjectExtractgeoOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectExtractgeo> {}
+
+pub trait ObjectExtractgeoWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectExtractgeoWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectExtractgeo>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

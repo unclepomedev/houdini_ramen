@@ -3866,6 +3866,52 @@ pub trait LopKarmaOutputs: houdini_ramen_core::types::HoudiniNode {
 impl LopKarmaOutputs for LopKarma {}
 impl LopKarmaOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarma> {}
 
+pub trait LopKarmaWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_additional_render_products_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmaWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarma> {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_additional_render_products_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmacryptomatteRenderproductmode {
     AddToExistingRenderProduct = 0,
@@ -4733,6 +4779,34 @@ impl LopKarmacryptomatteOutputs
 {
 }
 
+pub trait LopKarmacryptomatteWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmacryptomatteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmacryptomatte>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmafogboxShape {
     Box = 0,
@@ -5225,6 +5299,34 @@ pub trait LopKarmafogboxOutputs: houdini_ramen_core::types::HoudiniNode {
 impl LopKarmafogboxOutputs for LopKarmafogbox {}
 impl LopKarmafogboxOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarmafogbox> {}
 
+pub trait LopKarmafogboxWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmafogboxWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmafogbox>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct LopKarmaocean {
     pub id: usize,
@@ -5656,6 +5758,34 @@ pub trait LopKarmaoceanOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl LopKarmaoceanOutputs for LopKarmaocean {}
 impl LopKarmaoceanOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarmaocean> {}
+
+pub trait LopKarmaoceanWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmaoceanWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmaocean>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmaphysicalskySkymode {
@@ -8189,6 +8319,34 @@ impl LopKarmaphysicalskyOutputs
 {
 }
 
+pub trait LopKarmaphysicalskyWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmaphysicalskyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmaphysicalsky>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmaproceduralType {
     Sphere = 0,
@@ -8556,6 +8714,33 @@ impl<'a> LopKarmaproceduralInnerExt
 {
     fn add1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("sopnet/subnet/add1")
+    }
+}
+pub trait LopKarmaproceduralWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmaproceduralWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmaprocedural>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -9041,6 +9226,34 @@ impl LopKarmarenderproductsOutputs for LopKarmarenderproducts {}
 impl LopKarmarenderproductsOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarmarenderproducts>
 {
+}
+
+pub trait LopKarmarenderproductsWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmarenderproductsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmarenderproducts>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -13225,6 +13438,54 @@ impl LopKarmarenderpropertiesOutputs for LopKarmarenderproperties {}
 impl LopKarmarenderpropertiesOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarmarenderproperties>
 {
+}
+
+pub trait LopKarmarenderpropertiesWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_additional_render_vars_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmarenderpropertiesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmarenderproperties>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_additional_render_vars_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -17898,6 +18159,54 @@ impl LopKarmarendersettingsOutputs
 {
 }
 
+pub trait LopKarmarendersettingsWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_additional_render_vars_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmarendersettingsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmarendersettings>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_additional_render_vars_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmaskyatmosphereCreateprims {
     Edit = 0,
@@ -19450,6 +19759,34 @@ impl LopKarmaskyatmosphereOutputs
 {
 }
 
+pub trait LopKarmaskyatmosphereWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmaskyatmosphereWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmaskyatmosphere>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmaskydomelightCreateprims {
     Edit = 0,
@@ -20810,6 +21147,34 @@ impl LopKarmaskydomelightOutputs for LopKarmaskydomelight {}
 impl LopKarmaskydomelightOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarmaskydomelight>
 {
+}
+
+pub trait LopKarmaskydomelightWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmaskydomelightWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmaskydomelight>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -24320,6 +24685,34 @@ impl LopKarmastandardrendervarsOutputs
 {
 }
 
+pub trait LopKarmastandardrendervarsWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmastandardrendervarsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmastandardrendervars>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopKarmatexturebakerResolutionMenu {
     /// 256 x 256
@@ -27621,6 +28014,34 @@ impl LopKarmatexturebakerOutputs
 {
 }
 
+pub trait LopKarmatexturebakerWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmatexturebakerWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmatexturebaker>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct LopKarmatoonshading {
     pub id: usize,
@@ -28025,6 +28446,34 @@ impl LopKarmatoonshadingOutputs for LopKarmatoonshading {}
 impl LopKarmatoonshadingOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopKarmatoonshading>
 {
+}
+
+pub trait LopKarmatoonshadingWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKarmatoonshadingWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKarmatoonshading>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -29081,4 +29530,32 @@ impl LopKinefxSopcharacterimportOutputs for LopKinefxSopcharacterimport {}
 impl LopKinefxSopcharacterimportOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopKinefxSopcharacterimport>
 {
+}
+
+pub trait LopKinefxSopcharacterimportWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopKinefxSopcharacterimportWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopKinefxSopcharacterimport>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }

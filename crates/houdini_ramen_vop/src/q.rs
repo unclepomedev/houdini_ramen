@@ -120,6 +120,34 @@ pub trait VopQconjugateOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopQconjugateOutputs for VopQconjugate {}
 impl VopQconjugateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQconjugate> {}
 
+pub trait VopQconjugateWiringExt {
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaternion<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopQconjugateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQconjugate>
+{
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quaternion<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternion", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopQdistance {
     pub id: usize,
@@ -270,6 +298,54 @@ pub trait VopQdistanceOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopQdistanceOutputs for VopQdistance {}
 impl VopQdistanceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQdistance> {}
 
+pub trait VopQdistanceWiringExt {
+    fn set_quaternion_a_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaterniona<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_quaternion_b_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaternionb<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopQdistanceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQdistance>
+{
+    fn set_quaternion_a_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quaterniona<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternionA", output)
+    }
+    fn set_quaternion_b_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_quaternionb<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternionB", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopQinvert {
     pub id: usize,
@@ -391,6 +467,34 @@ pub trait VopQinvertOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopQinvertOutputs for VopQinvert {}
 impl VopQinvertOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQinvert> {}
+
+pub trait VopQinvertWiringExt {
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaternion<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopQinvertWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQinvert>
+{
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quaternion<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternion", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopQmultiply {
@@ -542,6 +646,54 @@ pub trait VopQmultiplyOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopQmultiplyOutputs for VopQmultiply {}
 impl VopQmultiplyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQmultiply> {}
 
+pub trait VopQmultiplyWiringExt {
+    fn set_quaternion_a_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaterniona<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_quaternion_b_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaternionb<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopQmultiplyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQmultiply>
+{
+    fn set_quaternion_a_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quaterniona<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternionA", output)
+    }
+    fn set_quaternion_b_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_quaternionb<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternionB", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopQrotate {
     pub id: usize,
@@ -691,6 +843,42 @@ pub trait VopQrotateOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopQrotateOutputs for VopQrotate {}
 impl VopQrotateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQrotate> {}
+
+pub trait VopQrotateWiringExt {
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quaternion<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_vec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopQrotateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQrotate>
+{
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quaternion<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quaternion", output)
+    }
+    fn set_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_vec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("vec", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopQuaternion {
@@ -874,6 +1062,46 @@ pub trait VopQuaternionOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopQuaternionOutputs for VopQuaternion {}
 impl VopQuaternionOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQuaternion> {}
+
+pub trait VopQuaternionWiringExt {
+    fn set_angle_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_angle<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_normalized_rotation_axis_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_axis<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopQuaternionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQuaternion>
+{
+    fn set_angle_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_angle<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("angle", output)
+    }
+    fn set_normalized_rotation_axis_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_axis<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("axis", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum VopQuattoeulerXyz {
@@ -1068,6 +1296,46 @@ pub trait VopQuattoeulerOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopQuattoeulerOutputs for VopQuattoeuler {}
 impl VopQuattoeulerOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQuattoeuler> {}
 
+pub trait VopQuattoeulerWiringExt {
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quat<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_rotation_order_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_xyz<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopQuattoeulerWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQuattoeuler>
+{
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quat<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quat", output)
+    }
+    fn set_rotation_order_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_xyz<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("xyz", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopQuattomatx {
     pub id: usize,
@@ -1190,6 +1458,32 @@ pub trait VopQuattomatxOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopQuattomatxOutputs for VopQuattomatx {}
 impl VopQuattomatxOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQuattomatx> {}
 
+pub trait VopQuattomatxWiringExt {
+    fn set_input_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quat<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopQuattomatxWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQuattomatx>
+{
+    fn set_input_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quat<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quat", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopQuattovec {
     pub id: usize,
@@ -1311,3 +1605,29 @@ pub trait VopQuattovecOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopQuattovecOutputs for VopQuattovec {}
 impl VopQuattovecOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopQuattovec> {}
+
+pub trait VopQuattovecWiringExt {
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_quat<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopQuattovecWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopQuattovec>
+{
+    fn set_quaternion_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_quat<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("quat", output)
+    }
+}

@@ -762,6 +762,28 @@ pub trait TopCsvconcatOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopCsvconcatOutputs for TopCsvconcat {}
 impl TopCsvconcatOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopCsvconcat> {}
 
+pub trait TopCsvconcatWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopCsvconcatWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopCsvconcat>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvinputUseparent {
     CustomFilePath = 0,
@@ -1265,6 +1287,28 @@ pub trait TopCsvinputOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopCsvinputOutputs for TopCsvinput {}
 impl TopCsvinputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopCsvinput> {}
 
+pub trait TopCsvinputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopCsvinputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopCsvinput>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvmodifyOperation {
     InsertColumn = 0,
@@ -1664,6 +1708,28 @@ pub trait TopCsvmodifyOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopCsvmodifyOutputs for TopCsvmodify {}
 impl TopCsvmodifyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopCsvmodify> {}
+
+pub trait TopCsvmodifyWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopCsvmodifyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopCsvmodify>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopCsvoutputQuoting {
@@ -2085,3 +2151,25 @@ pub trait TopCsvoutputOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopCsvoutputOutputs for TopCsvoutput {}
 impl TopCsvoutputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopCsvoutput> {}
+
+pub trait TopCsvoutputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopCsvoutputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopCsvoutput>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

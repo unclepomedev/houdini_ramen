@@ -545,6 +545,34 @@ pub trait DopNocolliderOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopNocolliderOutputs for DopNocollider {}
 impl DopNocolliderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopNocollider> {}
 
+pub trait DopNocolliderWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopNocolliderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopNocollider>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopNoconrelSharedata {
     DoNotShareData = 0,
@@ -806,6 +834,34 @@ pub trait DopNoconrelOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopNoconrelOutputs for DopNoconrel {}
 impl DopNoconrelOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopNoconrel> {}
+
+pub trait DopNoconrelWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopNoconrelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopNoconrel>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopNoiseParmopSeed {
@@ -1508,6 +1564,32 @@ pub trait DopNoiseOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopNoiseOutputs for DopNoise {}
 impl DopNoiseOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopNoise> {}
 
+pub trait DopNoiseWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopNoiseWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopNoise> {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopNull {
     pub id: usize,
@@ -1650,3 +1732,23 @@ pub trait DopNullOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopNullOutputs for DopNull {}
 impl DopNullOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopNull> {}
+
+pub trait DopNullWiringExt {
+    fn set_input_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopNullWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopNull> {
+    fn set_input_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

@@ -167,6 +167,42 @@ pub trait VopNearpointOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNearpointOutputs for VopNearpoint {}
 impl VopNearpointOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNearpoint> {}
 
+pub trait VopNearpointWiringExt {
+    fn set_input_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_pos<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopNearpointWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNearpoint>
+{
+    fn set_input_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
+    }
+    fn set_position_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_pos<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("pos", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNegate {
     pub id: usize,
@@ -307,6 +343,26 @@ pub trait VopNegateOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopNegateOutputs for VopNegate {}
 impl VopNegateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNegate> {}
+
+pub trait VopNegateWiringExt {
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_val<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopNegateWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNegate> {
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_val<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("val", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopNeighbour {
@@ -535,6 +591,74 @@ pub trait VopNeighbourOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNeighbourOutputs for VopNeighbour {}
 impl VopNeighbourOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNeighbour> {}
 
+pub trait VopNeighbourWiringExt {
+    fn set_op_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input_index<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_neighbour_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_neighnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNeighbourWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNeighbour>
+{
+    fn set_op_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input_index<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input_index", output)
+    }
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ptnum", output)
+    }
+    fn set_neighbour_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_neighnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("neighnum", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNeighbourcount {
     pub id: usize,
@@ -719,6 +843,54 @@ impl VopNeighbourcountOutputs for VopNeighbourcount {}
 impl VopNeighbourcountOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopNeighbourcount>
 {
+}
+
+pub trait VopNeighbourcountWiringExt {
+    fn set_op_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input_index<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNeighbourcountWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNeighbourcount>
+{
+    fn set_op_input_index_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input_index<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input_index", output)
+    }
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ptnum", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -925,6 +1097,54 @@ impl VopNeighbourcountfileOutputs for VopNeighbourcountfile {}
 impl VopNeighbourcountfileOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<VopNeighbourcountfile>
 {
+}
+
+pub trait VopNeighbourcountfileWiringExt {
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNeighbourcountfileWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNeighbourcountfile>
+{
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("filename", output)
+    }
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ptnum", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -1174,6 +1394,74 @@ pub trait VopNeighbourfileOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNeighbourfileOutputs for VopNeighbourfile {}
 impl VopNeighbourfileOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNeighbourfile> {}
 
+pub trait VopNeighbourfileWiringExt {
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_neighbour_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_neighnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNeighbourfileWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNeighbourfile>
+{
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("filename", output)
+    }
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ptnum", output)
+    }
+    fn set_neighbour_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_neighnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("neighnum", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNeighbours {
     pub id: usize,
@@ -1377,6 +1665,54 @@ pub trait VopNeighboursOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNeighboursOutputs for VopNeighbours {}
 impl VopNeighboursOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNeighbours> {}
 
+pub trait VopNeighboursWiringExt {
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNeighboursWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNeighbours>
+{
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("filename", output)
+    }
+    fn set_point_number_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ptnum<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("ptnum", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNewgroup {
     pub id: usize,
@@ -1517,6 +1853,34 @@ pub trait VopNewgroupOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopNewgroupOutputs for VopNewgroup {}
 impl VopNewgroupOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNewgroup> {}
+
+pub trait VopNewgroupWiringExt {
+    fn set_group_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_group<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNewgroupWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNewgroup>
+{
+    fn set_group_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_group<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("group", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopNormalclamp {
@@ -1784,6 +2148,68 @@ pub trait VopNormalclampOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopNormalclampOutputs for VopNormalclamp {}
 impl VopNormalclampOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNormalclamp> {}
+
+pub trait VopNormalclampWiringExt {
+    fn set_shading_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_geometry_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nng<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_incident_direction_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_bias_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_bias<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopNormalclampWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNormalclamp>
+{
+    fn set_shading_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nN", output)
+    }
+    fn set_geometry_normal_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_nng<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nNg", output)
+    }
+    fn set_incident_direction_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nI", output)
+    }
+    fn set_bias_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_bias<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("bias", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopNormalfalloff {
@@ -2064,6 +2490,84 @@ pub trait VopNormalfalloffOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNormalfalloffOutputs for VopNormalfalloff {}
 impl VopNormalfalloffOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNormalfalloff> {}
 
+pub trait VopNormalfalloffWiringExt {
+    fn set_normal_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_incident_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_exponent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_exp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_invert_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_invert<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_ensure_faces_point_forward_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_facefwd<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNormalfalloffWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNormalfalloff>
+{
+    fn set_normal_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_nn<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nN", output)
+    }
+    fn set_incident_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_ni<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("nI", output)
+    }
+    fn set_exponent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_exp<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("exp", output)
+    }
+    fn set_invert_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_invert<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("invert", output)
+    }
+    fn set_ensure_faces_point_forward_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_facefwd<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("facefwd", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNormalize {
     pub id: usize,
@@ -2333,6 +2837,28 @@ pub trait VopNormalizeOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNormalizeOutputs for VopNormalize {}
 impl VopNormalizeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNormalize> {}
 
+pub trait VopNormalizeWiringExt {
+    fn set_input_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_vec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+}
+
+impl<'a, 'g, C> VopNormalizeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNormalize>
+{
+    fn set_input_vector_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_vec<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("vec", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNot {
     pub id: usize,
@@ -2471,6 +2997,32 @@ pub trait VopNotOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopNotOutputs for VopNot {}
 impl VopNotOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNot> {}
+
+pub trait VopNotWiringExt {
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNotWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNot> {
+    fn set_input_value_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopNpoints {
@@ -2647,6 +3199,34 @@ pub trait VopNpointsOutputs: houdini_ramen_core::types::HoudiniNode {
 impl VopNpointsOutputs for VopNpoints {}
 impl VopNpointsOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNpoints> {}
 
+pub trait VopNpointsWiringExt {
+    fn set_input_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNpointsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNpoints>
+{
+    fn set_input_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct VopNrandom {
     pub id: usize,
@@ -2805,6 +3385,32 @@ pub trait VopNrandomOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopNrandomOutputs for VopNrandom {}
 impl VopNrandomOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNrandom> {}
+
+pub trait VopNrandomWiringExt {
+    fn set_random_scheme_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_type<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+}
+
+impl<'a, 'g, C> VopNrandomWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNrandom>
+{
+    fn set_random_scheme_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_type<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("type", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct VopNull {
@@ -3367,3 +3973,71 @@ pub trait VopNuniquevalOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl VopNuniquevalOutputs for VopNuniqueval {}
 impl VopNuniquevalOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<VopNuniqueval> {}
+
+pub trait VopNuniquevalWiringExt {
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_attribute_class_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_atype<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_attribute_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_attrib<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> VopNuniquevalWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, VopNuniqueval>
+{
+    fn set_geometry_file_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_filename<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("filename", output)
+    }
+    fn set_attribute_class_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_atype<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("atype", output)
+    }
+    fn set_attribute_name_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_attrib<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("attrib", output)
+    }
+}

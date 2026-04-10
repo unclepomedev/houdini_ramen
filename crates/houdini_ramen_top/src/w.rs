@@ -1578,6 +1578,26 @@ pub trait TopWedgeOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopWedgeOutputs for TopWedge {}
 impl TopWedgeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopWedge> {}
 
+pub trait TopWedgeWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopWedgeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopWedge> {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopWorkitemexpandExpand {
     UpstreamOutputFiles = 0,
@@ -1898,6 +1918,28 @@ impl TopWorkitemexpandOutputs for TopWorkitemexpand {}
 impl TopWorkitemexpandOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopWorkitemexpand>
 {
+}
+
+pub trait TopWorkitemexpandWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopWorkitemexpandWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopWorkitemexpand>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -2461,4 +2503,26 @@ impl TopWorkitemimportOutputs for TopWorkitemimport {}
 impl TopWorkitemimportOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopWorkitemimport>
 {
+}
+
+pub trait TopWorkitemimportWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopWorkitemimportWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopWorkitemimport>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }

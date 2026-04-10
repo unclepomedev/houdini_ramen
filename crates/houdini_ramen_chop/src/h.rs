@@ -538,6 +538,28 @@ pub trait ChopHandleOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopHandleOutputs for ChopHandle {}
 impl ChopHandleOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopHandle> {}
 
+pub trait ChopHandleWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopHandleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopHandle>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopHoldSrselect {
     /// Resample At First Input's Rate
@@ -836,3 +858,37 @@ pub trait ChopHoldOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopHoldOutputs for ChopHold {}
 impl ChopHoldOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopHold> {}
+
+pub trait ChopHoldWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_trigger_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopHoldWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopHold> {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_trigger_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}

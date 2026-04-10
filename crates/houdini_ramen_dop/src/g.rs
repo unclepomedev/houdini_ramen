@@ -5541,6 +5541,28 @@ pub trait DopGasaxisforceOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopGasaxisforceOutputs for DopGasaxisforce {}
 impl DopGasaxisforceOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopGasaxisforce> {}
 
+pub trait DopGasaxisforceWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasaxisforceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasaxisforce>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopGasblenddensity {
     pub id: usize,
@@ -11769,6 +11791,34 @@ impl DopGasburngeometryOutputs for DopGasburngeometry {}
 impl DopGasburngeometryOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopGasburngeometry>
 {
+}
+
+pub trait DopGasburngeometryWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasburngeometryWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasburngeometry>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -22471,6 +22521,34 @@ impl DopGasdsdconfigureobjectOutputs
 {
 }
 
+pub trait DopGasdsdconfigureobjectWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasdsdconfigureobjectWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasdsdconfigureobject>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopGasdsdsolver {
     pub id: usize,
@@ -28246,6 +28324,34 @@ impl DopGasfetchfieldstoembedOutputs
 {
 }
 
+pub trait DopGasfetchfieldstoembedWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasfetchfieldstoembedWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasfetchfieldstoembed>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGasfieldtoparticleParmopGeo {
     /// ![BUTTONS_set_initial]Set Initial
@@ -30806,6 +30912,28 @@ impl DopGasfieldwrangleOutputs
 {
 }
 
+pub trait DopGasfieldwrangleWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasfieldwrangleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasfieldwrangle>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGasfilterhourglassmodesParmopField {
     /// ![BUTTONS_set_initial]Set Initial
@@ -33281,6 +33409,28 @@ impl DopGasguidingvolumeOutputs for DopGasguidingvolume {}
 impl DopGasguidingvolumeOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopGasguidingvolume>
 {
+}
+
+pub trait DopGasguidingvolumeWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasguidingvolumeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasguidingvolume>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -41085,6 +41235,32 @@ pub trait DopGasmistsolverOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopGasmistsolverOutputs for DopGasmistsolver {}
 impl DopGasmistsolverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopGasmistsolver> {}
+
+pub trait DopGasmistsolverWiringExt {
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasmistsolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasmistsolver>
+{
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGasnetfetchdataParmopAddress {
@@ -72730,6 +72906,28 @@ impl DopGasstickoncollisionOutputs
 {
 }
 
+pub trait DopGasstickoncollisionWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasstickoncollisionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasstickoncollision>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGasstrainforcesParmopVelocity {
     /// ![BUTTONS_set_initial]Set Initial
@@ -77590,6 +77788,28 @@ impl DopGastemperatureupdateOutputs
 {
 }
 
+pub trait DopGastemperatureupdateWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGastemperatureupdateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGastemperatureupdate>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGasturbulenceNoisetype {
     AnalyticSimplexNoise = 0,
@@ -81043,6 +81263,103 @@ impl<'a> DopGasupresInnerExt for houdini_ramen_core::graph::InnerGraph<'a, DopGa
     }
     fn zero_source1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("zero_source1")
+    }
+}
+pub trait DopGasupresWiringExt {
+    fn set_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_velocity_update_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_advection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_sourcing_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasupresWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasupres>
+{
+    fn set_objects_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_velocity_update_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+    fn set_advection_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input4", output)
+    }
+    fn set_sourcing_post_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(4, output)
+    }
+    fn set_input_name_input5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input5", output)
     }
 }
 
@@ -84503,6 +84820,28 @@ impl DopGasvelocityscaleOutputs for DopGasvelocityscale {}
 impl DopGasvelocityscaleOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopGasvelocityscale>
 {
+}
+
+pub trait DopGasvelocityscaleWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGasvelocityscaleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGasvelocityscale>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -92993,6 +93332,32 @@ impl DopGeometrywrangleOutputs
 {
 }
 
+pub trait DopGeometrywrangleWiringExt {
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O)
+    -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGeometrywrangleWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGeometrywrangle>
+{
+    fn set_pre_solve_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGlueconrelParmopStrength {
     /// ![BUTTONS_set_initial]Set Initial
@@ -93440,6 +93805,34 @@ pub trait DopGlueconrelOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopGlueconrelOutputs for DopGlueconrel {}
 impl DopGlueconrelOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopGlueconrel> {}
+
+pub trait DopGlueconrelWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGlueconrelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGlueconrel>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGravityParmopForce {
@@ -94319,6 +94712,32 @@ pub trait DopGroupOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopGroupOutputs for DopGroup {}
 impl DopGroupOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopGroup> {}
+
+pub trait DopGroupWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopGroupWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopGroup> {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopGrouprelSharedata {

@@ -2445,6 +2445,28 @@ pub trait TopOpenimageioOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopOpenimageioOutputs for TopOpenimageio {}
 impl TopOpenimageioOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopOpenimageio> {}
 
+pub trait TopOpenimageioWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopOpenimageioWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopOpenimageio>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopOpnotifyReloadtype {
     RecookNode = 0,
@@ -2642,6 +2664,28 @@ pub trait TopOpnotifyOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopOpnotifyOutputs for TopOpnotify {}
 impl TopOpnotifyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopOpnotify> {}
 
+pub trait TopOpnotifyWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopOpnotifyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopOpnotify>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopOutputPdgWorkitemlabel {
     UseDefault = 0,
@@ -2821,3 +2865,23 @@ pub trait TopOutputOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopOutputOutputs for TopOutput {}
 impl TopOutputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopOutput> {}
+
+pub trait TopOutputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopOutputWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopOutput> {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

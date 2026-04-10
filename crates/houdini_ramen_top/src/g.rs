@@ -996,6 +996,28 @@ impl TopGenericgeneratorOutputs
 {
 }
 
+pub trait TopGenericgeneratorWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopGenericgeneratorWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopGenericgenerator>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopGeometryimportGeometrysource {
     SopNode = 0,
@@ -1891,4 +1913,26 @@ impl TopGeometryimportOutputs for TopGeometryimport {}
 impl TopGeometryimportOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopGeometryimport>
 {
+}
+
+pub trait TopGeometryimportWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopGeometryimportWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopGeometryimport>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }

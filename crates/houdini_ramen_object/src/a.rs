@@ -1886,6 +1886,34 @@ impl ObjectAlembicarchiveOutputs
 {
 }
 
+pub trait ObjectAlembicarchiveWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectAlembicarchiveWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectAlembicarchive>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectAlembicxformPreXform {
     CleanTransform = 0,
@@ -2784,6 +2812,34 @@ impl ObjectAlembicxformOutputs
 {
 }
 
+pub trait ObjectAlembicxformWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectAlembicxformWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectAlembicxform>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectAmbientPreXform {
     CleanTransform = 0,
@@ -3644,6 +3700,27 @@ pub trait ObjectAmbientInnerExt {
 impl<'a> ObjectAmbientInnerExt for houdini_ramen_core::graph::InnerGraph<'a, ObjectAmbient> {
     fn point_light(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("point_light")
+    }
+}
+pub trait ObjectAmbientWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectAmbientWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectAmbient>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -59814,6 +59891,27 @@ impl<'a> ObjectAutoRigEyeInnerExt for houdini_ramen_core::graph::InnerGraph<'a, 
         self.existing_node("switch__eye_display_source")
     }
 }
+pub trait ObjectAutoRigEyeWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectAutoRigEyeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectAutoRigEye>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectAutoRigQuadrupedBackLegPreXform {
@@ -74280,6 +74378,34 @@ impl ObjectAutobonechaininterfaceOutputs for ObjectAutobonechaininterface {}
 impl ObjectAutobonechaininterfaceOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectAutobonechaininterface>
 {
+}
+
+pub trait ObjectAutobonechaininterfaceWiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectAutobonechaininterfaceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectAutobonechaininterface>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

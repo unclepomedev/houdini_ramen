@@ -571,6 +571,28 @@ impl TopAttributearrayOutputs
 {
 }
 
+pub trait TopAttributearrayWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributearrayWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributearray>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributeclassifyPdgWorkitemgeneration {
     EachUpstreamItemIsGenerated = 0,
@@ -936,6 +958,28 @@ impl TopAttributeclassifyOutputs
 {
 }
 
+pub trait TopAttributeclassifyWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributeclassifyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributeclassify>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributecopyPdgDynamicpartition {
     Never = 0,
@@ -1275,6 +1319,56 @@ pub trait TopAttributecopyOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopAttributecopyOutputs for TopAttributecopy {}
 impl TopAttributecopyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributecopy> {}
+
+pub trait TopAttributecopyWiringExt {
+    fn set_workitems_to_copy_attributes_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_workitems_to_copy_attributes_from_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributecopyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributecopy>
+{
+    fn set_workitems_to_copy_attributes_to_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_workitems_to_copy_attributes_from_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributecreateEmptyinput {
@@ -2551,6 +2645,28 @@ impl TopAttributecreateOutputs
 {
 }
 
+pub trait TopAttributecreateWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributecreateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributecreate>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributedeleteDeleteusing {
     AttributeList = 0,
@@ -2948,6 +3064,28 @@ impl TopAttributedeleteOutputs for TopAttributedelete {}
 impl TopAttributedeleteOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributedelete>
 {
+}
+
+pub trait TopAttributedeleteWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributedeleteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributedelete>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -3629,6 +3767,28 @@ impl TopAttributedictionaryOutputs
 {
 }
 
+pub trait TopAttributedictionaryWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributedictionaryWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributedictionary>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributefromfileUseregex {
     SimplePattern = 0,
@@ -3900,6 +4060,28 @@ impl TopAttributefromfileOutputs for TopAttributefromfile {}
 impl TopAttributefromfileOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributefromfile>
 {
+}
+
+pub trait TopAttributefromfileWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributefromfileWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributefromfile>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -4178,6 +4360,28 @@ impl TopAttributefromparametersOutputs for TopAttributefromparameters {}
 impl TopAttributefromparametersOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributefromparameters>
 {
+}
+
+pub trait TopAttributefromparametersWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributefromparametersWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributefromparameters>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -4615,6 +4819,28 @@ impl TopAttributefromstringOutputs
 {
 }
 
+pub trait TopAttributefromstringWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributefromstringWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributefromstring>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributepromotePdgWorkitemgeneration {
     EachUpstreamItemIsGenerated = 0,
@@ -5033,6 +5259,28 @@ impl TopAttributepromoteOutputs for TopAttributepromote {}
 impl TopAttributepromoteOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributepromote>
 {
+}
+
+pub trait TopAttributepromoteWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributepromoteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributepromote>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -5718,6 +5966,28 @@ impl TopAttributerandomizeOutputs
 {
 }
 
+pub trait TopAttributerandomizeWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributerandomizeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributerandomize>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopAttributereducePdgWorkitemgeneration {
     EachUpstreamItemIsGenerated = 0,
@@ -6006,6 +6276,28 @@ impl TopAttributereduceOutputs for TopAttributereduce {}
 impl TopAttributereduceOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributereduce>
 {
+}
+
+pub trait TopAttributereduceWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributereduceWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributereduce>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6319,6 +6611,28 @@ impl TopAttributerenameOutputs for TopAttributerename {}
 impl TopAttributerenameOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributerename>
 {
+}
+
+pub trait TopAttributerenameWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributerenameWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributerename>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6654,4 +6968,26 @@ impl TopAttributestringeditOutputs for TopAttributestringedit {}
 impl TopAttributestringeditOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopAttributestringedit>
 {
+}
+
+pub trait TopAttributestringeditWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopAttributestringeditWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopAttributestringedit>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }

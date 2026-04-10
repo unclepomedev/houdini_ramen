@@ -1003,6 +1003,26 @@ pub trait DopObjposOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopObjposOutputs for DopObjpos {}
 impl DopObjposOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopObjpos> {}
 
+pub trait DopObjposWiringExt {
+    fn set_input_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopObjposWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopObjpos> {
+    fn set_input_0_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct DopOnlyonce {
     pub id: usize,
@@ -1372,3 +1392,23 @@ pub trait DopOutputOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopOutputOutputs for DopOutput {}
 impl DopOutputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopOutput> {}
+
+pub trait DopOutputWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopOutputWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopOutput> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

@@ -306,6 +306,27 @@ impl<'a> DriverGeo2i3dInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Dri
         self.existing_node("shopnet1")
     }
 }
+pub trait DriverGeo2i3dWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DriverGeo2i3dWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DriverGeo2i3d>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DriverGeometryTrange {

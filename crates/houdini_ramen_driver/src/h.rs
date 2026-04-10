@@ -2053,6 +2053,34 @@ pub trait DriverHqRenderOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DriverHqRenderOutputs for DriverHqRender {}
 impl DriverHqRenderOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DriverHqRender> {}
 
+pub trait DriverHqRenderWiringExt {
+    fn set_rop_to_submit_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DriverHqRenderWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DriverHqRender>
+{
+    fn set_rop_to_submit_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DriverHqSimTrange {
     RenderCurrentFrame = 0,
@@ -3089,3 +3117,31 @@ pub trait DriverHqSimOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DriverHqSimOutputs for DriverHqSim {}
 impl DriverHqSimOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DriverHqSim> {}
+
+pub trait DriverHqSimWiringExt {
+    fn set_rop_to_submit_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DriverHqSimWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DriverHqSim>
+{
+    fn set_rop_to_submit_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

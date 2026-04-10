@@ -201,6 +201,32 @@ pub trait Cop2WarpOutputs: houdini_ramen_core::types::HoudiniNode {
 impl Cop2WarpOutputs for Cop2Warp {}
 impl Cop2WarpOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Warp> {}
 
+pub trait Cop2WarpWiringExt {
+    fn set_sequence_to_warp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2WarpWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Warp> {
+    fn set_sequence_to_warp_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2WindowWindow {
     ByCorners = 0,
@@ -432,6 +458,34 @@ pub trait Cop2WindowOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl Cop2WindowOutputs for Cop2Window {}
 impl Cop2WindowOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Window> {}
+
+pub trait Cop2WindowWiringExt {
+    fn set_sequence_to_window_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2WindowWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Window>
+{
+    fn set_sequence_to_window_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Cop2WipeMaskinput {
@@ -1006,3 +1060,57 @@ pub trait Cop2WipeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl Cop2WipeOutputs for Cop2Wipe {}
 impl Cop2WipeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Cop2Wipe> {}
+
+pub trait Cop2WipeWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> Cop2WipeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, Cop2Wipe> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}

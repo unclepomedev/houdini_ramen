@@ -4192,3 +4192,25 @@ pub trait DriverFramedepOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DriverFramedepOutputs for DriverFramedep {}
 impl DriverFramedepOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DriverFramedep> {}
+
+pub trait DriverFramedepWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DriverFramedepWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DriverFramedep>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

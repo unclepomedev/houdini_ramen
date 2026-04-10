@@ -201,6 +201,34 @@ pub trait SopBakegsplatOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBakegsplatOutputs for SopBakegsplat {}
 impl SopBakegsplatOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBakegsplat> {}
 
+pub trait SopBakegsplatWiringExt {
+    fn set_raw_gsplats_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBakegsplatWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBakegsplat>
+{
+    fn set_raw_gsplats_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct SopBakeode {
     pub id: usize,
@@ -357,6 +385,28 @@ pub trait SopBakeodeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBakeodeOutputs for SopBakeode {}
 impl SopBakeodeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBakeode> {}
+
+pub trait SopBakeodeWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBakeodeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBakeode>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct SopBakevex {
@@ -604,6 +654,34 @@ pub trait SopBakevexOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBakevexOutputs for SopBakevex {}
 impl SopBakevexOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBakevex> {}
+
+pub trait SopBakevexWiringExt {
+    fn set_geometry_whose_shader_to_bake_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBakevexWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBakevex>
+{
+    fn set_geometry_whose_shader_to_bake_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct SopBakevolume {
@@ -1207,6 +1285,54 @@ pub trait SopBakevolumeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBakevolumeOutputs for SopBakevolume {}
 impl SopBakevolumeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBakevolume> {}
+
+pub trait SopBakevolumeWiringExt {
+    fn set_volume_to_bake_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_points_to_sample_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBakevolumeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBakevolume>
+{
+    fn set_volume_to_bake_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_points_to_sample_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBallisticpathLaunchmethod {
@@ -2009,6 +2135,34 @@ pub trait SopBallisticpathOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBallisticpathOutputs for SopBallisticpath {}
 impl SopBallisticpathOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBallisticpath> {}
 
+pub trait SopBallisticpathWiringExt {
+    fn set_points_with_velocity_attribute_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBallisticpathWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBallisticpath>
+{
+    fn set_points_with_velocity_attribute_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBasisUparmtype {
     Unchanged = 0,
@@ -2643,6 +2797,32 @@ pub trait SopBasisOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBasisOutputs for SopBasis {}
 impl SopBasisOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBasis> {}
+
+pub trait SopBasisWiringExt {
+    fn set_spline_primitives_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBasisWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBasis> {
+    fn set_spline_primitives_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBendGrouptype {
@@ -3680,6 +3860,52 @@ pub trait SopBendOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBendOutputs for SopBend {}
 impl SopBendOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBend> {}
+
+pub trait SopBendWiringExt {
+    fn set_geometry_to_bend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_rest_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBendWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBend> {
+    fn set_geometry_to_bend_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_rest_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBetaTissuesolverSolvertype {
@@ -4900,6 +5126,62 @@ impl SopBetaTissuesolverOutputs
 {
 }
 
+pub trait SopBetaTissuesolverWiringExt {
+    fn set_tissue_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_fascia_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_target_constraint_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBetaTissuesolverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBetaTissuesolver>
+{
+    fn set_tissue_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_fascia_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_target_constraint_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBlastGrouptype {
     GuessFromGroup = 0,
@@ -5129,6 +5411,32 @@ pub trait SopBlastOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBlastOutputs for SopBlast {}
 impl SopBlastOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBlast> {}
+
+pub trait SopBlastWiringExt {
+    fn set_input_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBlastWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBlast> {
+    fn set_input_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBlendshapesGrouptype {
@@ -5796,6 +6104,34 @@ pub trait SopBlockBeginOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBlockBeginOutputs for SopBlockBegin {}
 impl SopBlockBeginOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBlockBegin> {}
 
+pub trait SopBlockBeginWiringExt {
+    fn set_initial_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBlockBeginWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBlockBegin>
+{
+    fn set_initial_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBlockEndItermethod {
     AutoDetectFromInputs = 0,
@@ -6255,6 +6591,54 @@ pub trait SopBlockEndOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBlockEndOutputs for SopBlockEnd {}
 impl SopBlockEndOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBlockEnd> {}
 
+pub trait SopBlockEndWiringExt {
+    fn set_nodes_to_iterate_over_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_geometry_pieces_to_loop_over_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBlockEndWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBlockEnd>
+{
+    fn set_nodes_to_iterate_over_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_geometry_pieces_to_loop_over_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBonecapturebiharmonicColor {
     DefaultSourceColor = 0,
@@ -6559,6 +6943,54 @@ impl SopBonecapturebiharmonicOutputs for SopBonecapturebiharmonic {}
 impl SopBonecapturebiharmonicOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<SopBonecapturebiharmonic>
 {
+}
+
+pub trait SopBonecapturebiharmonicWiringExt {
+    fn set_skin_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_capture_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBonecapturebiharmonicWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBonecapturebiharmonic>
+{
+    fn set_skin_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_capture_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6977,6 +7409,34 @@ impl SopBonecapturelinesOutputs
 {
 }
 
+pub trait SopBonecapturelinesWiringExt {
+    fn set_extra_regions_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBonecapturelinesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBonecapturelines>
+{
+    fn set_extra_regions_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBonedeformMethod {
     Linear = 0,
@@ -7370,6 +7830,74 @@ pub trait SopBonedeformOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBonedeformOutputs for SopBonedeform {}
 impl SopBonedeformOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBonedeform> {}
 
+pub trait SopBonedeformWiringExt {
+    fn set_geometry_to_deform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_rest_point_transforms_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_deform_point_transforms_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBonedeformWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBonedeform>
+{
+    fn set_geometry_to_deform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_rest_point_transforms_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_deform_point_transforms_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct SopBonelink {
     pub id: usize,
@@ -7758,6 +8286,74 @@ pub trait SopBonelinkOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBonelinkOutputs for SopBonelink {}
 impl SopBonelinkOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBonelink> {}
+
+pub trait SopBonelinkWiringExt {
+    fn set_custom_link_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_proxy_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_capture_regions_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBonelinkWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBonelink>
+{
+    fn set_custom_link_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_proxy_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_capture_regions_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBonesolidifyTposeswitch {
@@ -8270,6 +8866,54 @@ pub trait SopBonesolidifyOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBonesolidifyOutputs for SopBonesolidify {}
 impl SopBonesolidifyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBonesolidify> {}
+
+pub trait SopBonesolidifyWiringExt {
+    fn set_bone_surface_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_optional_bone_surface_triangles_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBonesolidifyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBonesolidify>
+{
+    fn set_bone_surface_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_optional_bone_surface_triangles_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBooleanAsurface {
@@ -9465,6 +10109,54 @@ pub trait SopBooleanOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBooleanOutputs for SopBoolean {}
 impl SopBooleanOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBoolean> {}
 
+pub trait SopBooleanWiringExt {
+    fn set_geometry_a_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_geometry_b_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBooleanWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBoolean>
+{
+    fn set_geometry_a_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_geometry_b_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBooleanfractureNamemethod {
     Overwrite = 0,
@@ -10233,6 +10925,54 @@ impl SopBooleanfractureOutputs
 {
 }
 
+pub trait SopBooleanfractureWiringExt {
+    fn set_geometry_to_fracture_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_cutting_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBooleanfractureWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBooleanfracture>
+{
+    fn set_geometry_to_fracture_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_cutting_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBoundGrouptype {
     GuessFromGroup = 0,
@@ -10819,6 +11559,32 @@ pub trait SopBoundOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBoundOutputs for SopBound {}
 impl SopBoundOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBound> {}
 
+pub trait SopBoundWiringExt {
+    fn set_bounding_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBoundWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBound> {
+    fn set_bounding_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBoxType {
     Polygon = 0,
@@ -11187,6 +11953,32 @@ pub trait SopBoxOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBoxOutputs for SopBox {}
 impl SopBoxOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBox> {}
+
+pub trait SopBoxWiringExt {
+    fn set_bounding_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBoxWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBox> {
+    fn set_bounding_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBreakShape {
@@ -11832,6 +12624,52 @@ pub trait SopBreakOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBreakOutputs for SopBreak {}
 impl SopBreakOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBreak> {}
 
+pub trait SopBreakWiringExt {
+    fn set_polygons_to_break_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_optional_cutting_object_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBreakWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBreak> {
+    fn set_polygons_to_break_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_optional_cutting_object_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBridgeBridge {
     AllPrimitives = 0,
@@ -12194,6 +13032,32 @@ pub trait SopBridgeOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopBridgeOutputs for SopBridge {}
 impl SopBridgeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBridge> {}
 
+pub trait SopBridgeWiringExt {
+    fn set_profiles_and_or_3d_faces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBridgeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBridge> {
+    fn set_profiles_and_or_3d_faces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopBulgeGrouptype {
     GuessFromGroup = 0,
@@ -12437,3 +13301,43 @@ pub trait SopBulgeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopBulgeOutputs for SopBulge {}
 impl SopBulgeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopBulge> {}
+
+pub trait SopBulgeWiringExt {
+    fn set_points_to_bulge_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_magnet_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopBulgeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopBulge> {
+    fn set_points_to_bulge_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_magnet_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}

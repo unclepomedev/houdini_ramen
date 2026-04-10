@@ -599,6 +599,32 @@ pub trait SopXformOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopXformOutputs for SopXform {}
 impl SopXformOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopXform> {}
 
+pub trait SopXformWiringExt {
+    fn set_transform_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopXformWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopXform> {
+    fn set_transform_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopXformaxisGrouptype {
     GuessFromGroup = 0,
@@ -968,6 +994,34 @@ pub trait SopXformaxisOutputs: houdini_ramen_core::types::HoudiniNode {
 impl SopXformaxisOutputs for SopXformaxis {}
 impl SopXformaxisOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopXformaxis> {}
 
+pub trait SopXformaxisWiringExt {
+    fn set_geometry_to_transform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopXformaxisWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopXformaxis>
+{
+    fn set_geometry_to_transform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopXformbyattribGrouptype {
     GuessFromGroup = 0,
@@ -1233,6 +1287,34 @@ pub trait SopXformbyattribOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopXformbyattribOutputs for SopXformbyattrib {}
 impl SopXformbyattribOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopXformbyattrib> {}
+
+pub trait SopXformbyattribWiringExt {
+    fn set_geometry_to_transform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopXformbyattribWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopXformbyattrib>
+{
+    fn set_geometry_to_transform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SopXformpiecesAttribmode {
@@ -1629,3 +1711,71 @@ pub trait SopXformpiecesOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopXformpiecesOutputs for SopXformpieces {}
 impl SopXformpiecesOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopXformpieces> {}
+
+pub trait SopXformpiecesWiringExt {
+    fn set_geometry_to_transform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_template_points_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_rest_points_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopXformpiecesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopXformpieces>
+{
+    fn set_geometry_to_transform_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_template_points_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_rest_points_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+}

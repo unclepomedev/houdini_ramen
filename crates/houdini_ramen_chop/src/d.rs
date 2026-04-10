@@ -436,6 +436,26 @@ pub trait ChopDelayOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopDelayOutputs for ChopDelay {}
 impl ChopDelayOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDelay> {}
 
+pub trait ChopDelayWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopDelayWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopDelay> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopDeleteDiscard {
     ScopedChannels = 0,
@@ -871,6 +891,48 @@ pub trait ChopDeleteOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopDeleteOutputs for ChopDelete {}
 impl ChopDeleteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDelete> {}
+
+pub trait ChopDeleteWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_delete_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopDeleteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopDelete>
+{
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_delete_reference_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopDevicetransformRange {
@@ -1627,6 +1689,28 @@ impl ChopDevicetransformOutputs for ChopDevicetransform {}
 impl ChopDevicetransformOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDevicetransform>
 {
+}
+
+pub trait ChopDevicetransformWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopDevicetransformWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopDevicetransform>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -3821,3 +3905,51 @@ pub trait ChopDynamicwarpOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopDynamicwarpOutputs for ChopDynamicwarp {}
 impl ChopDynamicwarpOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopDynamicwarp> {}
+
+pub trait ChopDynamicwarpWiringExt {
+    fn set_source_channels_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_reference_channels_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopDynamicwarpWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopDynamicwarp>
+{
+    fn set_source_channels_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_reference_channels_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}

@@ -416,6 +416,28 @@ pub trait TopSendcommandOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopSendcommandOutputs for TopSendcommand {}
 impl TopSendcommandOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSendcommand> {}
 
+pub trait TopSendcommandWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSendcommandWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSendcommand>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopSendemailSecurity {
     None = 0,
@@ -888,6 +910,28 @@ pub trait TopSendemailOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopSendemailOutputs for TopSendemail {}
 impl TopSendemailOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSendemail> {}
+
+pub trait TopSendemailWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSendemailWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSendemail>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopServicecreatePdgCooktype {
@@ -1605,6 +1649,27 @@ impl<'a> TopServicecreateInnerExt for houdini_ramen_core::graph::InnerGraph<'a, 
         self.existing_node("servicecreate")
     }
 }
+pub trait TopServicecreateWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopServicecreateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopServicecreate>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopServicedeletePdgCooktype {
@@ -1976,6 +2041,28 @@ pub trait TopServicedeleteOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopServicedeleteOutputs for TopServicedelete {}
 impl TopServicedeleteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopServicedelete> {}
+
+pub trait TopServicedeleteWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopServicedeleteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopServicedelete>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopServiceresetPdgCooktype {
@@ -2404,6 +2491,28 @@ pub trait TopServiceresetOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopServiceresetOutputs for TopServicereset {}
 impl TopServiceresetOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopServicereset> {}
 
+pub trait TopServiceresetWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopServiceresetWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopServicereset>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopServicestartPdgCooktype {
     Generate = 0,
@@ -2774,6 +2883,28 @@ pub trait TopServicestartOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopServicestartOutputs for TopServicestart {}
 impl TopServicestartOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopServicestart> {}
+
+pub trait TopServicestartWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopServicestartWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopServicestart>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopServicestopPdgCooktype {
@@ -3146,6 +3277,28 @@ pub trait TopServicestopOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopServicestopOutputs for TopServicestop {}
 impl TopServicestopOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopServicestop> {}
 
+pub trait TopServicestopWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopServicestopWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopServicestop>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopShopnet {
     pub id: usize,
@@ -3415,6 +3568,28 @@ pub trait TopShotguncreateOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopShotguncreateOutputs for TopShotguncreate {}
 impl TopShotguncreateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotguncreate> {}
 
+pub trait TopShotguncreateWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotguncreateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotguncreate>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopShotgundelete {
     pub id: usize,
@@ -3587,6 +3762,28 @@ pub trait TopShotgundeleteOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopShotgundeleteOutputs for TopShotgundelete {}
 impl TopShotgundeleteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotgundelete> {}
+
+pub trait TopShotgundeleteWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotgundeleteWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotgundelete>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopShotgundownloadLookupby {
@@ -3836,6 +4033,28 @@ impl TopShotgundownloadOutputs for TopShotgundownload {}
 impl TopShotgundownloadOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotgundownload>
 {
+}
+
+pub trait TopShotgundownloadWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotgundownloadWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotgundownload>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -4250,6 +4469,28 @@ pub trait TopShotgunfindOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopShotgunfindOutputs for TopShotgunfind {}
 impl TopShotgunfindOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotgunfind> {}
+
+pub trait TopShotgunfindWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotgunfindWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotgunfind>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopShotgunserverCopyinputs {
@@ -4974,6 +5215,28 @@ pub trait TopShotgunserverOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopShotgunserverOutputs for TopShotgunserver {}
 impl TopShotgunserverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotgunserver> {}
 
+pub trait TopShotgunserverWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotgunserverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotgunserver>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopShotgunupdate {
     pub id: usize,
@@ -5250,6 +5513,28 @@ pub trait TopShotgunupdateOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopShotgunupdateOutputs for TopShotgunupdate {}
 impl TopShotgunupdateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotgunupdate> {}
+
+pub trait TopShotgunupdateWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotgunupdateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotgunupdate>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopShotgunuploadUploadtype {
@@ -5605,6 +5890,28 @@ pub trait TopShotgunuploadOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopShotgunuploadOutputs for TopShotgunupload {}
 impl TopShotgunuploadOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopShotgunupload> {}
+
+pub trait TopShotgunuploadWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopShotgunuploadWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopShotgunupload>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopSopnetXord {
@@ -6519,6 +6826,32 @@ pub trait TopSortOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopSortOutputs for TopSort {}
 impl TopSortOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSort> {}
 
+pub trait TopSortWiringExt {
+    fn set_work_items_to_sort_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSortWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSort> {
+    fn set_work_items_to_sort_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopSplitDisplayoutputs {
     MatchedWorkItems = 0,
@@ -6718,6 +7051,26 @@ pub trait TopSplitOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopSplitOutputs for TopSplit {}
 impl TopSplitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSplit> {}
+
+pub trait TopSplitWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSplitWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSplit> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopSplitbycountSplittype {
@@ -6958,6 +7311,28 @@ pub trait TopSplitbycountOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopSplitbycountOutputs for TopSplitbycount {}
 impl TopSplitbycountOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSplitbycount> {}
+
+pub trait TopSplitbycountWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSplitbycountWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSplitbycount>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct TopSqlinput {
@@ -7429,6 +7804,28 @@ pub trait TopSqlinputOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopSqlinputOutputs for TopSqlinput {}
 impl TopSqlinputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSqlinput> {}
 
+pub trait TopSqlinputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSqlinputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSqlinput>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopSqloutput {
     pub id: usize,
@@ -7744,6 +8141,28 @@ pub trait TopSqloutputOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopSqloutputOutputs for TopSqloutput {}
 impl TopSqloutputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopSqloutput> {}
 
+pub trait TopSqloutputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSqloutputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSqloutput>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopSubnet {
     pub id: usize,
@@ -7980,6 +8399,67 @@ pub trait TopSubnetInnerExt {
 impl<'a> TopSubnetInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopSubnet> {
     fn output0(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("output0")
+    }
+}
+pub trait TopSubnetWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopSubnetWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopSubnet> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+    fn set_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(2, output)
+    }
+    fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input3", output)
+    }
+    fn set_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(3, output)
+    }
+    fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input4", output)
     }
 }
 

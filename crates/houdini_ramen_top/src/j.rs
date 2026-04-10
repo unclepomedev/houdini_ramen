@@ -573,6 +573,28 @@ pub trait TopJsoninputOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopJsoninputOutputs for TopJsoninput {}
 impl TopJsoninputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopJsoninput> {}
 
+pub trait TopJsoninputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopJsoninputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopJsoninput>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopJsonoutputOp {
     UpstreamWorkItemFields = 0,
@@ -947,3 +969,25 @@ pub trait TopJsonoutputOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopJsonoutputOutputs for TopJsonoutput {}
 impl TopJsonoutputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopJsonoutput> {}
+
+pub trait TopJsonoutputWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopJsonoutputWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopJsonoutput>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

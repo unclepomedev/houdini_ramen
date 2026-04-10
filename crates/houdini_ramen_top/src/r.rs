@@ -321,6 +321,28 @@ pub trait TopRangeextendOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopRangeextendOutputs for TopRangeextend {}
 impl TopRangeextendOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopRangeextend> {}
 
+pub trait TopRangeextendWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRangeextendWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRangeextend>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRangegenerateSpecifyrange {
     ValueRange = 0,
@@ -640,6 +662,28 @@ pub trait TopRangegenerateOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopRangegenerateOutputs for TopRangegenerate {}
 impl TopRangegenerateOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopRangegenerate> {}
+
+pub trait TopRangegenerateWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRangegenerateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRangegenerate>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct TopRemotegraph {
@@ -1410,6 +1454,28 @@ pub trait TopRenderifdOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopRenderifdOutputs for TopRenderifd {}
 impl TopRenderifdOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopRenderifd> {}
+
+pub trait TopRenderifdWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRenderifdWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRenderifd>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopalembicFramegeneration {
@@ -3589,6 +3655,27 @@ impl<'a> TopRopalembicInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Top
     }
     fn ropnet1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("ropnet1")
+    }
+}
+pub trait TopRopalembicWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopalembicWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopalembic>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -5872,6 +5959,27 @@ impl<'a> TopRopcompositeInnerExt for houdini_ramen_core::graph::InnerGraph<'a, T
         self.existing_node("c/pdg_result")
     }
 }
+pub trait TopRopcompositeWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopcompositeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopcomposite>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopfbxFramegeneration {
@@ -7534,6 +7642,25 @@ impl<'a> TopRopfbxInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopRopf
         self.existing_node("ropnet1")
     }
 }
+pub trait TopRopfbxWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopfbxWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopfbx> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopfetchPdgCooktype {
@@ -8931,6 +9058,28 @@ pub trait TopRopfetchOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopRopfetchOutputs for TopRopfetch {}
 impl TopRopfetchOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopRopfetch> {}
+
+pub trait TopRopfetchWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopfetchWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopfetch>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopflipbookFramegeneration {
@@ -12695,6 +12844,27 @@ impl<'a> TopRopflipbookInnerExt for houdini_ramen_core::graph::InnerGraph<'a, To
         self.existing_node("ropnet1")
     }
 }
+pub trait TopRopflipbookWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopflipbookWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopflipbook>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopgeometryFramegeneration {
@@ -14318,6 +14488,27 @@ impl<'a> TopRopgeometryInnerExt for houdini_ramen_core::graph::InnerGraph<'a, To
     }
     fn output1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("s/s/output1")
+    }
+}
+pub trait TopRopgeometryWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopgeometryWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopgeometry>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -16049,6 +16240,27 @@ impl<'a> TopRopgltfInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopRop
     }
     fn ropnet1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("ropnet1")
+    }
+}
+pub trait TopRopgltfWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopgltfWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopgltf>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -18157,6 +18369,27 @@ pub trait TopRopimageInnerExt {
 impl<'a> TopRopimageInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopRopimage> {
     fn pdg_result(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("c/pdg_result")
+    }
+}
+pub trait TopRopimageWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopimageWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopimage>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -23719,6 +23952,27 @@ impl<'a> TopRopkarmaInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopRo
         self.existing_node("ropnet1")
     }
 }
+pub trait TopRopkarmaWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopkarmaWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopkarma>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopmantraFramegeneration {
@@ -28082,6 +28336,28 @@ pub trait TopRopmantraOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopRopmantraOutputs for TopRopmantra {}
 impl TopRopmantraOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopRopmantra> {}
 
+pub trait TopRopmantraWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopmantraWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopmantra>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopRopnet {
     pub id: usize,
@@ -31548,6 +31824,27 @@ impl<'a> TopRopopenglInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopR
         self.existing_node("ropnet1")
     }
 }
+pub trait TopRopopenglWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopopenglWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopopengl>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopRopusdFramegeneration {
@@ -33306,5 +33603,24 @@ impl<'a> TopRopusdInnerExt for houdini_ramen_core::graph::InnerGraph<'a, TopRopu
     }
     fn sopcreate1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("l/sopcreate1")
+    }
+}
+pub trait TopRopusdWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopRopusdWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopRopusd> {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }

@@ -766,6 +766,27 @@ impl<'a> ObjectLightInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Objec
         self.existing_node("xform1")
     }
 }
+pub trait ObjectLightWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectLightWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectLight>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectLopimportXord {
@@ -1563,6 +1584,28 @@ pub trait ObjectLopimportOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ObjectLopimportOutputs for ObjectLopimport {}
 impl ObjectLopimportOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ObjectLopimport> {}
 
+pub trait ObjectLopimportWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectLopimportWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectLopimport>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectLopimportcamXord {
     ScaleRotTrans = 0,
@@ -2292,6 +2335,27 @@ impl<'a> ObjectLopimportcamInnerExt
     }
     fn xform1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("xform1")
+    }
+}
+pub trait ObjectLopimportcamWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectLopimportcamWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectLopimportcam>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 

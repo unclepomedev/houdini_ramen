@@ -287,6 +287,34 @@ pub trait LopTimeshiftOutputs: houdini_ramen_core::types::HoudiniNode {
 impl LopTimeshiftOutputs for LopTimeshift {}
 impl LopTimeshiftOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopTimeshift> {}
 
+pub trait LopTimeshiftWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopTimeshiftWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopTimeshift>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopTopnetCheckpointformat {
     /// Python (Deprecated)
@@ -1235,5 +1263,32 @@ impl<'a> LopTransformuvInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Lo
     }
     fn sopmodify(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("sopmodify")
+    }
+}
+pub trait LopTransformuvWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopTransformuvWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopTransformuv>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }

@@ -369,6 +369,58 @@ pub trait DopBlendfactorOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopBlendfactorOutputs for DopBlendfactor {}
 impl DopBlendfactorOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopBlendfactor> {}
 
+pub trait DopBlendfactorWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_data_to_attach_accepts_1_of_active_value_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopBlendfactorWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopBlendfactor>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_data_to_attach_accepts_1_of_active_value_input<
+        O: Into<houdini_ramen_core::types::NodeOutput>,
+    >(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopBlendsolverParmopBlenddataname {
     /// ![BUTTONS_set_initial]Set Initial
@@ -1742,6 +1794,34 @@ pub trait DopBulletdataOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl DopBulletdataOutputs for DopBulletdata {}
 impl DopBulletdataOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopBulletdata> {}
+
+pub trait DopBulletdataWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopBulletdataWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopBulletdata>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopBulletrbdsolverParmopTimescale {
@@ -3967,6 +4047,34 @@ impl DopBulletsoftconrelOutputs for DopBulletsoftconrel {}
 impl DopBulletsoftconrelOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopBulletsoftconrel>
 {
+}
+
+pub trait DopBulletsoftconrelWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopBulletsoftconrelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopBulletsoftconrel>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

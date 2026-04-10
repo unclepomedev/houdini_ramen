@@ -851,3 +851,29 @@ pub trait LopOutputOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl LopOutputOutputs for LopOutput {}
 impl LopOutputOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopOutput> {}
+
+pub trait LopOutputWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopOutputWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopOutput> {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

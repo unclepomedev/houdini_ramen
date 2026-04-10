@@ -294,6 +294,28 @@ impl TopEnvironmenteditOutputs
 {
 }
 
+pub trait TopEnvironmenteditWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopEnvironmenteditWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopEnvironmentedit>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopErrorEvaluateduring {
     Generate = 0,
@@ -536,6 +558,26 @@ pub trait TopErrorOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopErrorOutputs for TopError {}
 impl TopErrorOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopError> {}
+
+pub trait TopErrorWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopErrorWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopError> {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct TopErrorhandler {

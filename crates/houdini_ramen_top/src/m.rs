@@ -212,6 +212,28 @@ pub trait TopMakedirOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopMakedirOutputs for TopMakedir {}
 impl TopMakedirOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopMakedir> {}
 
+pub trait TopMakedirWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMakedirWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMakedir>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopMapall {
     pub id: usize,
@@ -1417,6 +1439,28 @@ pub trait TopMayaserverOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopMayaserverOutputs for TopMayaserver {}
 impl TopMayaserverOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopMayaserver> {}
 
+pub trait TopMayaserverWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMayaserverWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMayaserver>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopMerge {
     pub id: usize,
@@ -2246,6 +2290,27 @@ impl<'a> TopMlPreprocessoidnInnerExt
         self.existing_node("pythonvenv1")
     }
 }
+pub trait TopMlPreprocessoidnWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMlPreprocessoidnWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMlPreprocessoidn>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopMlRegressionkernelKerneltype {
@@ -2866,6 +2931,28 @@ impl TopMlRegressionkernelOutputs for TopMlRegressionkernel {}
 impl TopMlRegressionkernelOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopMlRegressionkernel>
 {
+}
+
+pub trait TopMlRegressionkernelWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMlRegressionkernelWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMlRegressionkernel>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -3882,6 +3969,27 @@ impl<'a> TopMlTrainoidnInnerExt for houdini_ramen_core::graph::InnerGraph<'a, To
     }
     fn pythonvenv1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("pythonvenv1")
+    }
+}
+pub trait TopMlTrainoidnWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMlTrainoidnWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMlTrainoidn>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -5203,6 +5311,28 @@ impl TopMlTrainregressionOutputs for TopMlTrainregression {}
 impl TopMlTrainregressionOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopMlTrainregression>
 {
+}
+
+pub trait TopMlTrainregressionWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMlTrainregressionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMlTrainregression>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6939,5 +7069,26 @@ impl<'a> TopMlTrainstyletransferInnerExt
     }
     fn pythonvenv1(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("pythonvenv1")
+    }
+}
+pub trait TopMlTrainstyletransferWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopMlTrainstyletransferWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopMlTrainstyletransfer>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }

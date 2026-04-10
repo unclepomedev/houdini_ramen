@@ -392,6 +392,33 @@ impl<'a> DriverWedgeInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Drive
         self.existing_node("shell1")
     }
 }
+pub trait DriverWedgeWiringExt {
+    fn set_rop_to_wedge_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DriverWedgeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DriverWedge>
+{
+    fn set_rop_to_wedge_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DriverWrenTrange {

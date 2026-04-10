@@ -344,6 +344,28 @@ pub trait TopFeedbackbeginOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopFeedbackbeginOutputs for TopFeedbackbegin {}
 impl TopFeedbackbeginOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFeedbackbegin> {}
 
+pub trait TopFeedbackbeginWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFeedbackbeginWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFeedbackbegin>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct TopFeedbackend {
     pub id: usize,
@@ -1696,6 +1718,28 @@ impl TopFfmpegencodevideoOutputs
 {
 }
 
+pub trait TopFfmpegencodevideoWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFfmpegencodevideoWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFfmpegencodevideo>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFfmpegextractimagesPdgCooktype {
     /// In-Process
@@ -2526,6 +2570,28 @@ impl TopFfmpegextractimagesOutputs
 {
 }
 
+pub trait TopFfmpegextractimagesWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFfmpegextractimagesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFfmpegextractimages>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilecompressPdgCooktype {
     /// In-Process
@@ -3020,6 +3086,28 @@ pub trait TopFilecompressOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopFilecompressOutputs for TopFilecompress {}
 impl TopFilecompressOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilecompress> {}
+
+pub trait TopFilecompressWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilecompressWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilecompress>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilecopyPdgCooktype {
@@ -3545,6 +3633,28 @@ pub trait TopFilecopyOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopFilecopyOutputs for TopFilecopy {}
 impl TopFilecopyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilecopy> {}
+
+pub trait TopFilecopyWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilecopyWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilecopy>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFiledecompressPdgCooktype {
@@ -4135,6 +4245,28 @@ impl TopFiledecompressOutputs
 {
 }
 
+pub trait TopFiledecompressWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFiledecompressWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFiledecompress>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilepatternFiletypes {
     All = 0,
@@ -4681,6 +4813,28 @@ pub trait TopFilepatternOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopFilepatternOutputs for TopFilepattern {}
 impl TopFilepatternOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilepattern> {}
 
+pub trait TopFilepatternWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilepatternWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilepattern>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilerangeMissingfiles {
     Ignore = 0,
@@ -4944,6 +5098,28 @@ pub trait TopFilerangeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopFilerangeOutputs for TopFilerange {}
 impl TopFilerangeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilerange> {}
+
+pub trait TopFilerangeWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilerangeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilerange>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFileremovePdgCooktype {
@@ -5236,6 +5412,28 @@ pub trait TopFileremoveOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopFileremoveOutputs for TopFileremove {}
 impl TopFileremoveOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFileremove> {}
+
+pub trait TopFileremoveWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFileremoveWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFileremove>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilerenamePdgCooktype {
@@ -5706,6 +5904,28 @@ pub trait TopFilerenameOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopFilerenameOutputs for TopFilerename {}
 impl TopFilerenameOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilerename> {}
 
+pub trait TopFilerenameWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilerenameWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilerename>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilterbyattributeOperation {
     RemoveMatchingItems = 0,
@@ -6025,6 +6245,28 @@ impl TopFilterbyattributeOutputs for TopFilterbyattribute {}
 impl TopFilterbyattributeOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilterbyattribute>
 {
+}
+
+pub trait TopFilterbyattributeWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilterbyattributeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilterbyattribute>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -6364,6 +6606,28 @@ impl TopFilterbyexpressionOutputs
 {
 }
 
+pub trait TopFilterbyexpressionWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilterbyexpressionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilterbyexpression>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilterbyrangeOperation {
     RemoveItemsInFilterRange = 0,
@@ -6687,6 +6951,28 @@ pub trait TopFilterbyrangeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopFilterbyrangeOutputs for TopFilterbyrange {}
 impl TopFilterbyrangeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopFilterbyrange> {}
+
+pub trait TopFilterbyrangeWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopFilterbyrangeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopFilterbyrange>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopFilterbystateOperation {

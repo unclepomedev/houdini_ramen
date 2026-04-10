@@ -1969,6 +1969,27 @@ impl<'a> ObjectMicrophoneInnerExt for houdini_ramen_core::graph::InnerGraph<'a, 
         self.existing_node("tube1")
     }
 }
+pub trait ObjectMicrophoneWiringExt {
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectMicrophoneWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectMicrophone>
+{
+    fn set_parent_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectMocapRigBipedArmPreXform {
@@ -8556,6 +8577,33 @@ impl<'a> ObjectMocapbiped1InnerExt
         self.existing_node("rig_scale")
     }
 }
+pub trait ObjectMocapbiped1WiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectMocapbiped1WiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectMocapbiped1>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectMocapbiped2PreXform {
@@ -10138,6 +10186,33 @@ impl<'a> ObjectMocapbiped2InnerExt
         self.existing_node("wrist_0_R_Bnd_bone4")
     }
 }
+pub trait ObjectMocapbiped2WiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectMocapbiped2WiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectMocapbiped2>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ObjectMocapbiped3PreXform {
@@ -11499,6 +11574,33 @@ impl<'a> ObjectMocapbiped3InnerExt
     }
     fn geo_skin(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("geo_skin")
+    }
+}
+pub trait ObjectMocapbiped3WiringExt {
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectMocapbiped3WiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectMocapbiped3>
+{
+    fn set_sub_network_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -13755,6 +13857,33 @@ impl<'a> ObjectMusclepinInnerExt for houdini_ramen_core::graph::InnerGraph<'a, O
     }
     fn internal_core(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("internal_core")
+    }
+}
+pub trait ObjectMusclepinWiringExt {
+    fn set_origin_anchor_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectMusclepinWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectMusclepin>
+{
+    fn set_origin_anchor_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
     }
 }
 
@@ -16199,5 +16328,52 @@ impl<'a> ObjectMusclerigInnerExt for houdini_ramen_core::graph::InnerGraph<'a, O
     }
     fn unjiggled_null(&mut self) -> houdini_ramen_core::graph::ExistingNodeRef {
         self.existing_node("unjiggled_null")
+    }
+}
+pub trait ObjectMusclerigWiringExt {
+    fn set_origin_anchor_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_end_anchor_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ObjectMusclerigWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ObjectMusclerig>
+{
+    fn set_origin_anchor_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_end_anchor_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
     }
 }

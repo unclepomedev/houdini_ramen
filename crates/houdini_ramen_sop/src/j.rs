@@ -327,3 +327,29 @@ pub trait SopJoinOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl SopJoinOutputs for SopJoin {}
 impl SopJoinOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopJoin> {}
+
+pub trait SopJoinWiringExt {
+    fn set_primitives_to_join_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> SopJoinWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, SopJoin> {
+    fn set_primitives_to_join_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

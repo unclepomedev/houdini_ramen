@@ -402,6 +402,28 @@ pub trait ChopEnvelopeOutputs: houdini_ramen_core::types::HoudiniNode {
 impl ChopEnvelopeOutputs for ChopEnvelope {}
 impl ChopEnvelopeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopEnvelope> {}
 
+pub trait ChopEnvelopeWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopEnvelopeWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopEnvelope>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopEulerrotationfilterXord {
     ScaleRotTrans = 0,
@@ -970,6 +992,28 @@ impl ChopEulerrotationfilterOutputs
 {
 }
 
+pub trait ChopEulerrotationfilterWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopEulerrotationfilterWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopEulerrotationfilter>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopExportSrselect {
     /// Resample At First Input's Rate
@@ -1338,6 +1382,42 @@ pub trait ChopExportOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopExportOutputs for ChopExport {}
 impl ChopExportOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopExport> {}
+
+pub trait ChopExportWiringExt {
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_enable_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopExportWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopExport>
+{
+    fn set_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_enable_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopExporttransformsMode {
@@ -1720,6 +1800,28 @@ impl ChopExporttransformsOutputs for ChopExporttransforms {}
 impl ChopExporttransformsOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<ChopExporttransforms>
 {
+}
+
+pub trait ChopExporttransformsWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopExporttransformsWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopExporttransforms>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -2435,6 +2537,28 @@ pub trait ChopExtendOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl ChopExtendOutputs for ChopExtend {}
 impl ChopExtendOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopExtend> {}
+
+pub trait ChopExtendWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopExtendWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopExtend>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum ChopExtractbonetransformsRange {
@@ -3393,6 +3517,28 @@ impl ChopExtractlocomotionOutputs for ChopExtractlocomotion {}
 impl ChopExtractlocomotionOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<ChopExtractlocomotion>
 {
+}
+
+pub trait ChopExtractlocomotionWiringExt {
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> ChopExtractlocomotionWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, ChopExtractlocomotion>
+{
+    fn set_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

@@ -486,3 +486,29 @@ pub trait LopXformOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl LopXformOutputs for LopXform {}
 impl LopXformOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopXform> {}
+
+pub trait LopXformWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopXformWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopXform> {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}

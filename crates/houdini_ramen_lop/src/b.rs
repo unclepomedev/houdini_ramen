@@ -927,6 +927,33 @@ impl<'a> LopBackgroundplateInnerExt
         self.existing_node("materiallibrary/background/subnetinput6")
     }
 }
+pub trait LopBackgroundplateWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopBackgroundplateWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopBackgroundplate>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct LopBakeskinning {
@@ -1049,6 +1076,34 @@ pub trait LopBakeskinningOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl LopBakeskinningOutputs for LopBakeskinning {}
 impl LopBakeskinningOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopBakeskinning> {}
+
+pub trait LopBakeskinningWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopBakeskinningWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopBakeskinning>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopBasiscurvesCreateprims {
@@ -1899,6 +1954,34 @@ pub trait LopBasiscurvesOutputs: houdini_ramen_core::types::HoudiniNode {
 impl LopBasiscurvesOutputs for LopBasiscurves {}
 impl LopBasiscurvesOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopBasiscurves> {}
 
+pub trait LopBasiscurvesWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopBasiscurvesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopBasiscurves>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct LopBegincontextoptionsblock {
     pub id: usize,
@@ -2039,6 +2122,34 @@ impl LopBegincontextoptionsblockOutputs for LopBegincontextoptionsblock {}
 impl LopBegincontextoptionsblockOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopBegincontextoptionsblock>
 {
+}
+
+pub trait LopBegincontextoptionsblockWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopBegincontextoptionsblockWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopBegincontextoptionsblock>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -2207,6 +2318,52 @@ pub trait LopBlendOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl LopBlendOutputs for LopBlend {}
 impl LopBlendOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<LopBlend> {}
+
+pub trait LopBlendWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_blend_towards_this_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopBlendWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopBlend> {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_blend_towards_this_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum LopBlendconstraintSourcetype {
@@ -2721,4 +2878,52 @@ impl LopBlendconstraintOutputs for LopBlendconstraint {}
 impl LopBlendconstraintOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<LopBlendconstraint>
 {
+}
+
+pub trait LopBlendconstraintWiringExt {
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_targets_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> LopBlendconstraintWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, LopBlendconstraint>
+{
+    fn set_input_stage_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+    fn set_input_targets_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(1, output)
+    }
+    fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input2", output)
+    }
 }

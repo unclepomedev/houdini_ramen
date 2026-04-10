@@ -205,6 +205,32 @@ pub trait DopDeleteOutputs: houdini_ramen_core::types::HoudiniNode {
 impl DopDeleteOutputs for DopDelete {}
 impl DopDeleteOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<DopDelete> {}
 
+pub trait DopDeleteWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopDeleteWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopDelete> {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum DopDopnetCompresssims {
     NoCompression = 0,
@@ -2169,4 +2195,32 @@ impl DopDragpropertiesOutputs for DopDragproperties {}
 impl DopDragpropertiesOutputs
     for houdini_ramen_core::graph::TypedExistingNodeRef<DopDragproperties>
 {
+}
+
+pub trait DopDragpropertiesWiringExt {
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> DopDragpropertiesWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, DopDragproperties>
+{
+    fn set_objects_to_be_processed_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
 }

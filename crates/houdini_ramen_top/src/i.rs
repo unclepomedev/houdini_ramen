@@ -1242,6 +1242,28 @@ pub trait TopImagemagickOutputs: houdini_ramen_core::types::HoudiniNode {
 impl TopImagemagickOutputs for TopImagemagick {}
 impl TopImagemagickOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopImagemagick> {}
 
+pub trait TopImagemagickWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopImagemagickWiringExt
+    for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopImagemagick>
+{
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum TopInprocessschedulerMaxworkitems {
     EqualToCpuCount = 0,
@@ -2117,3 +2139,23 @@ pub trait TopInvokeOutputs: houdini_ramen_core::types::HoudiniNode {
 
 impl TopInvokeOutputs for TopInvoke {}
 impl TopInvokeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<TopInvoke> {}
+
+pub trait TopInvokeWiringExt {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self;
+}
+
+impl<'a, 'g, C> TopInvokeWiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, TopInvoke> {
+    fn set_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at(0, output)
+    }
+    fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        self,
+        output: O,
+    ) -> Self {
+        self.set_input_name("input1", output)
+    }
+}
