@@ -2,7 +2,10 @@
 pub struct Cop2Fetch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -56,7 +59,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Fetch {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -94,7 +100,10 @@ pub enum Cop2FieldmergeFdominance {
 pub struct Cop2Fieldmerge {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -122,13 +131,19 @@ impl Cop2Fieldmerge {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -137,7 +152,21 @@ impl Cop2Fieldmerge {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -187,7 +216,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Fieldmerge {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -232,7 +264,10 @@ pub enum Cop2FieldsplitFdominance {
 pub struct Cop2Fieldsplit {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -260,13 +295,19 @@ impl Cop2Fieldsplit {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -275,7 +316,21 @@ impl Cop2Fieldsplit {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -325,7 +380,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Fieldsplit {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -355,7 +413,10 @@ impl Cop2FieldsplitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<C
 pub struct Cop2Fieldswap {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -383,13 +444,19 @@ impl Cop2Fieldswap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -398,7 +465,21 @@ impl Cop2Fieldswap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 }
@@ -415,7 +496,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Fieldswap {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -585,7 +669,10 @@ pub enum Cop2FilePostextend {
 pub struct Cop2File {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -613,13 +700,19 @@ impl Cop2File {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -628,7 +721,21 @@ impl Cop2File {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1384,7 +1491,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2File {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -1451,7 +1561,10 @@ pub enum Cop2FlipFmenu {
 pub struct Cop2Flip {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1479,13 +1592,19 @@ impl Cop2Flip {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1494,7 +1613,21 @@ impl Cop2Flip {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1502,7 +1635,21 @@ impl Cop2Flip {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1830,7 +1977,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Flip {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -1939,7 +2089,10 @@ pub enum Cop2FogFmenu {
 pub struct Cop2Fog {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1967,13 +2120,19 @@ impl Cop2Fog {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1982,7 +2141,21 @@ impl Cop2Fog {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_fog_matte_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1990,7 +2163,21 @@ impl Cop2Fog {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1998,7 +2185,21 @@ impl Cop2Fog {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2692,7 +2893,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Fog {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -2863,7 +3067,10 @@ pub enum Cop2FontPostextend {
 pub struct Cop2Font {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2891,13 +3098,19 @@ impl Cop2Font {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2906,7 +3119,21 @@ impl Cop2Font {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -2914,7 +3141,21 @@ impl Cop2Font {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -3749,7 +3990,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Font {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -3823,7 +4067,10 @@ pub enum Cop2FrontfaceFmenu {
 pub struct Cop2Frontface {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3851,13 +4098,19 @@ impl Cop2Frontface {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -3866,7 +4119,21 @@ impl Cop2Frontface {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -3874,7 +4141,21 @@ impl Cop2Frontface {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -4250,7 +4531,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Frontface {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -4395,7 +4679,10 @@ pub enum Cop2FunctionFmenu {
 pub struct Cop2Function {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -4423,13 +4710,19 @@ impl Cop2Function {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -4438,7 +4731,21 @@ impl Cop2Function {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4446,7 +4753,21 @@ impl Cop2Function {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -4845,7 +5166,10 @@ impl houdini_ramen_core::types::HoudiniNode for Cop2Function {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(

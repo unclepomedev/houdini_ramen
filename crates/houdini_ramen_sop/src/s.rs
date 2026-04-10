@@ -24,7 +24,10 @@ pub enum SopSblendInterp {
 pub struct SopSblend {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -54,14 +57,19 @@ impl SopSblend {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs
-            .insert(self.next_input_index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(self.next_input_index),
+            (out.node_id, out.pin),
+        );
         self.next_input_index += 1;
         self
     }
@@ -298,7 +306,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSblend {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -335,7 +346,10 @@ pub enum SopScatterGenerateby {
 pub struct SopScatter {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -363,13 +377,19 @@ impl SopScatter {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -380,7 +400,21 @@ impl SopScatter {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1120,7 +1154,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopScatter {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -1230,7 +1267,10 @@ pub enum SopScatteralignScalebasenmlbyattrib {
 pub struct SopScatteralign {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1258,13 +1298,19 @@ impl SopScatteralign {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1273,7 +1319,21 @@ impl SopScatteralign {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_constraint_point_cloud_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1281,7 +1341,21 @@ impl SopScatteralign {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2525,7 +2599,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopScatteralign {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -2561,7 +2638,10 @@ pub enum SopScatterintexturemaskMaskoverride {
 pub struct SopScatterintexturemask {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2589,13 +2669,19 @@ impl SopScatterintexturemask {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2604,7 +2690,21 @@ impl SopScatterintexturemask {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_texture_mask_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -2612,7 +2712,21 @@ impl SopScatterintexturemask {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2796,7 +2910,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopScatterintexturemask {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -2829,7 +2946,10 @@ impl SopScatterintexturemaskOutputs
 pub struct SopScript {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2857,13 +2977,19 @@ impl SopScript {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2872,7 +2998,21 @@ impl SopScript {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2958,7 +3098,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopScript {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -3036,7 +3179,10 @@ pub enum SopSculptFacing {
 pub struct SopSculpt {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3064,13 +3210,19 @@ impl SopSculpt {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -3079,7 +3231,21 @@ impl SopSculpt {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -4064,7 +4230,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSculpt {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -4290,7 +4459,10 @@ pub enum SopSculptcoreFacing {
 pub struct SopSculptcore {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -4318,13 +4490,19 @@ impl SopSculptcore {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -4333,7 +4511,21 @@ impl SopSculptcore {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -5302,7 +5494,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSculptcore {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -5338,7 +5533,10 @@ pub enum SopSeparatepiecesMode {
 pub struct SopSeparatepieces {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -5366,13 +5564,19 @@ impl SopSeparatepieces {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -5381,7 +5585,21 @@ impl SopSeparatepieces {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_secondary_pieces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -5389,7 +5607,21 @@ impl SopSeparatepieces {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -5459,7 +5691,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSeparatepieces {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -5540,7 +5775,10 @@ pub enum SopShallowwatersolverViz {
 pub struct SopShallowwatersolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -5568,13 +5806,19 @@ impl SopShallowwatersolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -5583,7 +5827,21 @@ impl SopShallowwatersolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -6338,7 +6596,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShallowwatersolver {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -6390,7 +6651,10 @@ pub enum SopShapediffSkintype {
 pub struct SopShapediff {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -6418,13 +6682,19 @@ impl SopShapediff {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -6433,7 +6703,21 @@ impl SopShapediff {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_example_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -6441,7 +6725,21 @@ impl SopShapediff {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -6681,7 +6979,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShapediff {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -6717,7 +7018,10 @@ pub enum SopShatterSeedType {
 pub struct SopShatter {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -6745,13 +7049,19 @@ impl SopShatter {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -6760,7 +7070,21 @@ impl SopShatter {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -7150,7 +7474,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShatter {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -7180,7 +7507,10 @@ impl SopShatterOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopSh
 pub struct SopShop {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -7208,13 +7538,19 @@ impl SopShop {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -7223,7 +7559,21 @@ impl SopShop {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -8027,7 +8377,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShop {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -8057,7 +8410,10 @@ impl SopShopOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopShop>
 pub struct SopShopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -8092,7 +8448,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShopnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -8241,7 +8600,10 @@ pub enum SopShotsculptConfigPoseBlendtonextmode {
 pub struct SopShotsculpt {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -8269,13 +8631,19 @@ impl SopShotsculpt {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -8284,7 +8652,21 @@ impl SopShotsculpt {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_animated_pose_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -8292,7 +8674,21 @@ impl SopShotsculpt {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -10150,7 +10546,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShotsculpt {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -11346,7 +11745,10 @@ pub enum SopShrinkwrapPlanesrc {
 pub struct SopShrinkwrap {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -11374,13 +11776,19 @@ impl SopShrinkwrap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -11389,7 +11797,21 @@ impl SopShrinkwrap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -11553,7 +11975,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopShrinkwrap {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -11599,7 +12024,10 @@ pub enum SopSimplexrefineTetmeshtreatment {
 pub struct SopSimplexrefine {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -11627,13 +12055,19 @@ impl SopSimplexrefine {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -11642,7 +12076,21 @@ impl SopSimplexrefine {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -11726,7 +12174,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSimplexrefine {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -11756,7 +12207,10 @@ impl SopSimplexrefineOutputs for houdini_ramen_core::graph::TypedExistingNodeRef
 pub struct SopSinglecurveoperation {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -11784,13 +12238,19 @@ impl SopSinglecurveoperation {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -11799,7 +12259,21 @@ impl SopSinglecurveoperation {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -12329,7 +12803,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSinglecurveoperation {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -12362,7 +12839,10 @@ impl SopSinglecurveoperationOutputs
 pub struct SopSinglepointweld {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -12390,13 +12870,19 @@ impl SopSinglepointweld {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -12405,7 +12891,21 @@ impl SopSinglepointweld {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -12475,7 +12975,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSinglepointweld {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -12533,7 +13036,10 @@ pub enum SopSkinSkinops {
 pub struct SopSkin {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -12561,13 +13067,19 @@ impl SopSkin {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -12578,7 +13090,21 @@ impl SopSkin {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_v_cross_sections_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -12586,7 +13112,21 @@ impl SopSkin {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -12784,7 +13324,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkin {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -12814,7 +13357,10 @@ impl SopSkinOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopSkin>
 pub struct SopSkindeform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -12842,13 +13388,19 @@ impl SopSkindeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -12857,7 +13409,21 @@ impl SopSkindeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_muscle_or_tissue_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -12865,7 +13431,21 @@ impl SopSkindeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_bone_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -12873,7 +13453,21 @@ impl SopSkindeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -13263,7 +13857,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkindeform {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -13455,7 +14052,10 @@ pub enum SopSkinpropertiesSolidrestscalemode {
 pub struct SopSkinproperties {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -13483,13 +14083,19 @@ impl SopSkinproperties {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -13498,7 +14104,21 @@ impl SopSkinproperties {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_blend_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -13506,7 +14126,21 @@ impl SopSkinproperties {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -15157,7 +15791,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkinproperties {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -15190,7 +15827,10 @@ impl SopSkinpropertiesOutputs
 pub struct SopSkinsolidify {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -15218,13 +15858,19 @@ impl SopSkinsolidify {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -15233,7 +15879,21 @@ impl SopSkinsolidify {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -15591,7 +16251,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkinsolidify {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -15641,7 +16304,10 @@ pub enum SopSkinsolvervellumSlidingmethod {
 pub struct SopSkinsolvervellum {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -15669,13 +16335,19 @@ impl SopSkinsolvervellum {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -15684,7 +16356,21 @@ impl SopSkinsolvervellum {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_internal_attach_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -15692,7 +16378,21 @@ impl SopSkinsolvervellum {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -16630,7 +17330,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkinsolvervellum {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -16686,7 +17389,10 @@ pub enum SopSkyUniformsamples {
 pub struct SopSky {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -16714,13 +17420,19 @@ impl SopSky {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -16729,7 +17441,21 @@ impl SopSky {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -17343,7 +18069,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSky {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -17511,7 +18240,10 @@ pub enum SopSkyboxWispyturbAmplitudetype {
 pub struct SopSkybox {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -17539,13 +18271,19 @@ impl SopSkybox {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -17554,7 +18292,21 @@ impl SopSkybox {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sky_field_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -17562,7 +18314,21 @@ impl SopSkybox {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_bounding_box_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -17570,7 +18336,21 @@ impl SopSkybox {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -19990,7 +20770,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkybox {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -20020,7 +20803,10 @@ impl SopSkyboxOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopSky
 pub struct SopSkyfield {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -20048,13 +20834,19 @@ impl SopSkyfield {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -20063,7 +20855,21 @@ impl SopSkyfield {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -20467,7 +21273,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkyfield {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -20522,7 +21331,10 @@ pub enum SopSkyfieldfrommapComponentscope {
 pub struct SopSkyfieldfrommap {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -20550,13 +21362,19 @@ impl SopSkyfieldfrommap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -20565,7 +21383,21 @@ impl SopSkyfieldfrommap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -20573,7 +21405,21 @@ impl SopSkyfieldfrommap {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -21019,7 +21865,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkyfieldfrommap {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -21124,7 +21973,10 @@ pub enum SopSkyfieldnoiseFractal {
 pub struct SopSkyfieldnoise {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -21152,13 +22004,19 @@ impl SopSkyfieldnoise {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -21167,7 +22025,21 @@ impl SopSkyfieldnoise {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -21175,7 +22047,21 @@ impl SopSkyfieldnoise {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -22241,7 +23127,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkyfieldnoise {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -22352,7 +23241,10 @@ pub enum SopSkyfieldpatternUndulatusDstoffsettype {
 pub struct SopSkyfieldpattern {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -22380,13 +23272,19 @@ impl SopSkyfieldpattern {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -22395,7 +23293,21 @@ impl SopSkyfieldpattern {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_mask_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -22403,7 +23315,21 @@ impl SopSkyfieldpattern {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -24393,7 +25319,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSkyfieldpattern {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -24489,7 +25418,10 @@ pub enum SopSlidemodifierpaintEvent {
 pub struct SopSlidemodifierpaint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -24517,13 +25449,19 @@ impl SopSlidemodifierpaint {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -24532,7 +25470,21 @@ impl SopSlidemodifierpaint {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -25313,7 +26265,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSlidemodifierpaint {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -25362,7 +26317,10 @@ pub enum SopSmoothMethod {
 pub struct SopSmooth {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -25390,13 +26348,19 @@ impl SopSmooth {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -25405,7 +26369,21 @@ impl SopSmooth {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -25591,7 +26569,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSmooth {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -25653,7 +26634,10 @@ pub enum SopSoftpeakVisualizefalloff {
 pub struct SopSoftpeak {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -25681,13 +26665,19 @@ impl SopSoftpeak {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -25696,7 +26686,21 @@ impl SopSoftpeak {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -25996,7 +27000,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSoftpeak {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -26072,7 +27079,10 @@ pub enum SopSoftxformVisualizefalloff {
 pub struct SopSoftxform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -26100,13 +27110,19 @@ impl SopSoftxform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26115,7 +27131,21 @@ impl SopSoftxform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26509,7 +27539,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSoftxform {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -26539,7 +27572,10 @@ impl SopSoftxformOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Sop
 pub struct SopSolidembed {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -26567,13 +27603,19 @@ impl SopSolidembed {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26582,7 +27624,21 @@ impl SopSolidembed {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26616,7 +27672,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSolidembed {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -26646,7 +27705,10 @@ impl SopSolidembedOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<So
 pub struct SopSolidfracture {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -26674,13 +27736,19 @@ impl SopSolidfracture {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26689,7 +27757,21 @@ impl SopSolidfracture {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26755,7 +27837,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSolidfracture {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -26785,7 +27870,10 @@ impl SopSolidfractureOutputs for houdini_ramen_core::graph::TypedExistingNodeRef
 pub struct SopSolidify {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -26813,13 +27901,19 @@ impl SopSolidify {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26830,7 +27924,21 @@ impl SopSolidify {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -26950,7 +28058,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSolidify {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -26980,7 +28091,10 @@ impl SopSolidifyOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopS
 pub struct SopSolver {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -27008,13 +28122,19 @@ impl SopSolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -27023,7 +28143,21 @@ impl SopSolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_auxillary_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -27031,7 +28165,21 @@ impl SopSolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_auxillary_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -27039,7 +28187,21 @@ impl SopSolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_auxillary_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -27047,7 +28209,21 @@ impl SopSolver {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(3, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(3),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input4".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -27186,7 +28362,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSolver {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -27289,7 +28468,10 @@ pub enum SopSopnetUparmtype {
 pub struct SopSopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -27901,7 +29083,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSopnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -27954,7 +29139,10 @@ pub enum SopSortPrimsort {
 pub struct SopSort {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -27982,13 +29170,19 @@ impl SopSort {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -27997,7 +29191,21 @@ impl SopSort {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -28531,7 +29739,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSort {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -28590,7 +29801,10 @@ pub enum SopSphereOrient {
 pub struct SopSphere {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -28618,13 +29832,19 @@ impl SopSphere {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -28633,7 +29853,21 @@ impl SopSphere {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -28907,7 +30141,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSphere {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -28973,7 +30210,10 @@ pub enum SopSpiralDivsmode {
 pub struct SopSpiral {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -29645,7 +30885,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSpiral {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -29684,7 +30927,10 @@ pub enum SopSplitGrouptype {
 pub struct SopSplit {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -29712,13 +30958,19 @@ impl SopSplit {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -29727,7 +30979,21 @@ impl SopSplit {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -29811,7 +31077,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSplit {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -29848,7 +31117,10 @@ impl SopSplitOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopSpli
 pub struct SopSplitbypointattrib {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -29876,13 +31148,19 @@ impl SopSplitbypointattrib {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -29891,7 +31169,21 @@ impl SopSplitbypointattrib {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -30059,7 +31351,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSplitbypointattrib {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -30100,7 +31395,10 @@ pub enum SopSplitpointsGrouptype {
 pub struct SopSplitpoints {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -30128,13 +31426,19 @@ impl SopSplitpoints {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -30143,7 +31447,21 @@ impl SopSplitpoints {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -30261,7 +31579,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSplitpoints {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -30307,7 +31628,10 @@ pub enum SopSpraypaintStrokeProjtype {
 pub struct SopSpraypaint {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -30335,13 +31659,19 @@ impl SopSpraypaint {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -30350,7 +31680,21 @@ impl SopSpraypaint {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_optional_geometry_to_copy_to_points_input<
@@ -30360,7 +31704,21 @@ impl SopSpraypaint {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -31528,7 +32886,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSpraypaint {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -31577,7 +32938,10 @@ pub enum SopSpringHit {
 pub struct SopSpring {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -31605,13 +32969,19 @@ impl SopSpring {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -31620,7 +32990,21 @@ impl SopSpring {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_collision_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -31628,7 +33012,21 @@ impl SopSpring {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_force_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -31636,7 +33034,21 @@ impl SopSpring {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -32074,7 +33486,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSpring {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -32132,7 +33547,10 @@ pub enum SopSpriteCropmode {
 pub struct SopSprite {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -32160,13 +33578,19 @@ impl SopSprite {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -32175,7 +33599,21 @@ impl SopSprite {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -32537,7 +33975,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSprite {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -32575,7 +34016,10 @@ pub enum SopSssscatterTrange {
 pub struct SopSssscatter {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -32603,13 +34047,19 @@ impl SopSssscatter {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -32618,7 +34068,21 @@ impl SopSssscatter {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -32885,7 +34349,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSssscatter {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -32991,7 +34458,10 @@ impl<'a> SopSssscatterInnerExt for houdini_ramen_core::graph::InnerGraph<'a, Sop
 pub struct SopStarburst {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -33019,13 +34489,19 @@ impl SopStarburst {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33034,7 +34510,21 @@ impl SopStarburst {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33102,7 +34592,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopStarburst {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -33132,7 +34625,10 @@ impl SopStarburstOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Sop
 pub struct SopStash {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -33160,13 +34656,19 @@ impl SopStash {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33175,7 +34677,21 @@ impl SopStash {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33250,7 +34766,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopStash {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -33293,7 +34812,10 @@ pub enum SopStitchDir {
 pub struct SopStitch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -33321,13 +34843,19 @@ impl SopStitch {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33336,7 +34864,21 @@ impl SopStitch {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_auxiliary_source_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -33344,7 +34886,21 @@ impl SopStitch {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33604,7 +35160,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopStitch {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -33643,7 +35202,10 @@ pub enum SopStrokeStrokeProjtype {
 pub struct SopStroke {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -33671,13 +35233,19 @@ impl SopStroke {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33686,7 +35254,21 @@ impl SopStroke {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_merge_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -33694,7 +35276,21 @@ impl SopStroke {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -33972,7 +35568,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopStroke {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -34002,7 +35601,10 @@ impl SopStrokeOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopStr
 pub struct SopStrokecache {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -34030,13 +35632,19 @@ impl SopStrokecache {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -34045,7 +35653,21 @@ impl SopStrokecache {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_stroke_curves_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34053,7 +35675,21 @@ impl SopStrokecache {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_extra_input_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34061,7 +35697,21 @@ impl SopStrokecache {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_extra_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34069,7 +35719,21 @@ impl SopStrokecache {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(3, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(3),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input4".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 }
@@ -34086,7 +35750,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopStrokecache {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -34196,7 +35863,10 @@ pub enum SopSubdivideTrianglesubd {
 pub struct SopSubdivide {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -34224,13 +35894,19 @@ impl SopSubdivide {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -34239,7 +35915,21 @@ impl SopSubdivide {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_creases_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34247,7 +35937,21 @@ impl SopSubdivide {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -34623,7 +36327,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSubdivide {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -34653,7 +36360,10 @@ impl SopSubdivideOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Sop
 pub struct SopSubnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -34681,13 +36391,19 @@ impl SopSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -34696,7 +36412,21 @@ impl SopSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34704,7 +36434,21 @@ impl SopSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34712,7 +36456,21 @@ impl SopSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -34720,7 +36478,21 @@ impl SopSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(3, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(3),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input4".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -34810,7 +36582,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSubnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -34934,7 +36709,10 @@ pub enum SopSuperquadOrient {
 pub struct SopSuperquad {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -35178,7 +36956,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSuperquad {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -35233,7 +37014,10 @@ pub enum SopSurfacedeformBlurMode {
 pub struct SopSurfacedeform {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -35261,13 +37045,19 @@ impl SopSurfacedeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -35276,7 +37066,21 @@ impl SopSurfacedeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_rest_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -35284,7 +37088,21 @@ impl SopSurfacedeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_deformed_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -35292,7 +37110,21 @@ impl SopSurfacedeform {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -35592,7 +37424,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSurfacedeform {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -35622,7 +37457,10 @@ impl SopSurfacedeformOutputs for houdini_ramen_core::graph::TypedExistingNodeRef
 pub struct SopSurfacerelax {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -35650,13 +37488,19 @@ impl SopSurfacerelax {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -35665,7 +37509,21 @@ impl SopSurfacerelax {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_reference_surface_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -35673,7 +37531,21 @@ impl SopSurfacerelax {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -35725,7 +37597,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSurfacerelax {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -35755,7 +37630,10 @@ impl SopSurfacerelaxOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<
 pub struct SopSurfacesplat {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -35783,13 +37661,19 @@ impl SopSurfacesplat {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -35798,7 +37682,21 @@ impl SopSurfacesplat {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_splat_point_geometry_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -35806,7 +37704,21 @@ impl SopSurfacesplat {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -35966,7 +37878,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSurfacesplat {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -36013,7 +37928,10 @@ pub enum SopSurfsectTarget {
 pub struct SopSurfsect {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -36041,13 +37959,19 @@ impl SopSurfsect {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -36056,7 +37980,21 @@ impl SopSurfsect {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_b_surfaces_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -36064,7 +38002,21 @@ impl SopSurfsect {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -36362,7 +38314,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSurfsect {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -36502,7 +38457,10 @@ pub enum SopSweepTangenttype {
 pub struct SopSweep {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -36530,13 +38488,19 @@ impl SopSweep {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -36545,7 +38509,21 @@ impl SopSweep {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_cross_section_s_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -36553,7 +38531,21 @@ impl SopSweep {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -37869,7 +39861,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSweep {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -37899,7 +39894,10 @@ impl SopSweepOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<SopSwee
 pub struct SopSwitch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -37929,14 +39927,19 @@ impl SopSwitch {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs
-            .insert(self.next_input_index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(self.next_input_index),
+            (out.node_id, out.pin),
+        );
         self.next_input_index += 1;
         self
     }
@@ -37971,7 +39974,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSwitch {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -38092,7 +40098,10 @@ pub enum SopSwitchifHasinputtype {
 pub struct SopSwitchif {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -38120,13 +40129,19 @@ impl SopSwitchif {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -38135,7 +40150,21 @@ impl SopSwitchif {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -38143,7 +40172,21 @@ impl SopSwitchif {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -38463,7 +40506,10 @@ impl houdini_ramen_core::types::HoudiniNode for SopSwitchif {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(

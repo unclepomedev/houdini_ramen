@@ -10,7 +10,10 @@ pub enum DriverShellTrange {
 pub struct DriverShell {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -40,14 +43,19 @@ impl DriverShell {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs
-            .insert(self.next_input_index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(self.next_input_index),
+            (out.node_id, out.pin),
+        );
         self.next_input_index += 1;
         self
     }
@@ -388,7 +396,10 @@ impl houdini_ramen_core::types::HoudiniNode for DriverShell {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -418,7 +429,10 @@ impl DriverShellOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Driv
 pub struct DriverShopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -453,7 +467,10 @@ impl houdini_ramen_core::types::HoudiniNode for DriverShopnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -508,7 +525,10 @@ pub enum DriverSopnetUparmtype {
 pub struct DriverSopnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1120,7 +1140,10 @@ impl houdini_ramen_core::types::HoudiniNode for DriverSopnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -1137,7 +1160,10 @@ impl houdini_ramen_core::types::HoudiniNode for DriverSopnet {
 pub struct DriverSubnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -1165,13 +1191,19 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1180,7 +1212,21 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_1_1_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1188,7 +1234,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1196,7 +1245,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_3_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1204,7 +1256,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(3, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(3),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1212,7 +1267,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(4, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(4),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1220,7 +1278,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(5, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(5),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1228,7 +1289,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(6, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(6),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1236,7 +1300,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(7, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(7),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1244,7 +1311,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(8, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(8),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1252,7 +1322,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(9, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(9),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_10_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1260,7 +1333,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(10, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(10),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_11_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1268,7 +1344,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(11, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(11),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_12_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1276,7 +1355,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(12, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(12),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_13_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1284,7 +1366,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(13, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(13),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_14_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1292,7 +1377,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(14, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(14),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_15_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1300,7 +1388,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(15, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(15),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_16_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1308,7 +1399,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(16, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(16),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_17_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1316,7 +1410,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(17, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(17),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_18_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1324,7 +1421,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(18, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(18),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_19_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1332,7 +1432,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(19, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(19),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_20_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1340,7 +1443,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(20, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(20),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_21_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1348,7 +1454,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(21, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(21),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_22_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1356,7 +1465,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(22, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(22),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_23_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1364,7 +1476,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(23, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(23),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_24_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1372,7 +1487,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(24, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(24),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_25_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1380,7 +1498,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(25, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(25),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_26_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1388,7 +1509,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(26, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(26),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_27_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1396,7 +1520,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(27, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(27),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_28_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1404,7 +1531,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(28, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(28),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_29_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1412,7 +1542,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(29, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(29),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_30_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -1420,7 +1553,10 @@ impl DriverSubnet {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(30, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(30),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -1452,7 +1588,10 @@ impl houdini_ramen_core::types::HoudiniNode for DriverSubnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -1482,7 +1621,10 @@ impl DriverSubnetOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<Dri
 pub struct DriverSwitch {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -1512,14 +1654,19 @@ impl DriverSwitch {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs
-            .insert(self.next_input_index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(self.next_input_index),
+            (out.node_id, out.pin),
+        );
         self.next_input_index += 1;
         self
     }
@@ -1568,7 +1715,10 @@ impl houdini_ramen_core::types::HoudiniNode for DriverSwitch {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(

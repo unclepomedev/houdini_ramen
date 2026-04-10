@@ -92,7 +92,10 @@ pub enum ChopMathUnits {
 pub struct ChopMath {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -122,14 +125,19 @@ impl ChopMath {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs
-            .insert(self.next_input_index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(self.next_input_index),
+            (out.node_id, out.pin),
+        );
         self.next_input_index += 1;
         self
     }
@@ -472,7 +480,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMath {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -502,7 +513,10 @@ impl ChopMathOutputs for houdini_ramen_core::graph::TypedExistingNodeRef<ChopMat
 pub struct ChopMatnet {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -537,7 +551,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMatnet {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -596,7 +613,10 @@ pub enum ChopMergeUnits {
 pub struct ChopMerge {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
     next_input_index: usize,
@@ -626,14 +646,19 @@ impl ChopMerge {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn add_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs
-            .insert(self.next_input_index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(self.next_input_index),
+            (out.node_id, out.pin),
+        );
         self.next_input_index += 1;
         self
     }
@@ -816,7 +841,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMerge {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -970,7 +998,10 @@ pub enum ChopMidiinUnits {
 pub struct ChopMidiin {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2225,7 +2256,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMidiin {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -2323,7 +2357,10 @@ pub enum ChopMidioutUnits {
 pub struct ChopMidiout {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -2351,13 +2388,19 @@ impl ChopMidiout {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -2366,7 +2409,21 @@ impl ChopMidiout {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -3015,7 +3072,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMidiout {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -3088,7 +3148,10 @@ pub enum ChopMouseUnits {
 pub struct ChopMouse {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3478,7 +3541,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMouse {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -3552,7 +3618,10 @@ pub enum ChopMouse3dUnits {
 pub struct ChopMouse3d {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3882,7 +3951,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMouse3d {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
@@ -3958,7 +4030,10 @@ pub enum ChopMultiplyUnits {
 pub struct ChopMultiply {
     pub id: usize,
     pub name: String,
-    pub inputs: std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)>,
+    pub inputs: std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    >,
     pub params: std::collections::HashMap<String, houdini_ramen_core::types::ParamValue>,
     pub spare_params: Vec<houdini_ramen_core::types::SpareParam>,
 }
@@ -3986,13 +4061,19 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(index, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(index),
+            (out.node_id, out.pin),
+        );
         self
     }
 
     pub fn set_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -4001,7 +4082,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(0, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(0),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input1<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input1".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_input_2_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4009,7 +4104,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(1, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(1),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input2<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input2".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_pivot_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4017,7 +4126,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(2, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(2),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input3<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input3".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_4_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4025,7 +4148,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(3, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(3),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input4<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input4".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_5_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4033,7 +4170,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(4, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(4),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input5<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input5".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_6_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4041,7 +4192,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(5, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(5),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input6<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input6".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_7_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4049,7 +4214,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(6, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(6),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input7<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input7".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_8_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4057,7 +4236,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(7, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(7),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input8<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input8".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_9_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4065,7 +4258,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(8, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(8),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input9<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input9".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_10_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4073,7 +4280,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(9, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(9),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input10<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input10".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_11_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4081,7 +4302,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(10, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(10),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input11<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input11".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_12_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4089,7 +4324,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(11, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(11),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input12<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input12".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_13_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4097,7 +4346,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(12, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(12),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input13<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input13".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_14_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4105,7 +4368,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(13, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(13),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input14<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input14".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_15_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4113,7 +4390,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(14, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(14),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input15<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input15".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_16_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4121,7 +4412,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(15, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(15),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input16<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input16".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_17_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4129,7 +4434,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(16, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(16),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input17<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input17".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_18_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4137,7 +4456,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(17, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(17),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input18<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input18".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_19_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4145,7 +4478,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(18, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(18),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input19<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input19".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_20_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4153,7 +4500,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(19, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(19),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input20<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input20".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_21_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4161,7 +4522,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(20, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(20),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input21<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input21".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_22_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4169,7 +4544,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(21, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(21),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input22<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input22".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_23_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4177,7 +4566,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(22, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(22),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input23<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input23".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_24_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4185,7 +4588,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(23, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(23),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input24<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input24".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_25_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4193,7 +4610,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(24, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(24),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input25<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input25".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_26_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4201,7 +4632,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(25, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(25),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input26<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input26".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_27_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4209,7 +4654,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(26, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(26),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input27<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input27".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_28_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4217,7 +4676,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(27, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(27),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input28<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input28".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_29_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4225,7 +4698,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(28, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(28),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input29<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input29".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_30_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4233,7 +4720,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(29, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(29),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input30<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input30".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_31_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4241,7 +4742,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(30, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(30),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input31<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input31".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_32_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4249,7 +4764,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(31, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(31),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input32<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input32".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_33_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4257,7 +4786,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(32, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(32),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input33<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input33".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_34_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4265,7 +4808,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(33, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(33),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input34<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input34".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_35_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4273,7 +4830,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(34, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(34),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input35<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input35".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_36_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4281,7 +4852,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(35, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(35),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input36<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input36".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_37_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4289,7 +4874,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(36, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(36),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input37<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input37".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_38_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4297,7 +4896,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(37, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(37),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input38<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input38".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_39_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4305,7 +4918,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(38, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(38),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input39<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input39".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_40_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4313,7 +4940,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(39, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(39),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input40<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input40".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_41_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4321,7 +4962,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(40, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(40),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input41<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input41".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_42_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4329,7 +4984,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(41, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(41),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input42<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input42".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_43_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4337,7 +5006,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(42, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(42),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input43<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input43".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_44_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4345,7 +5028,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(43, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(43),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input44<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input44".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_45_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4353,7 +5050,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(44, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(44),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input45<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input45".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_46_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4361,7 +5072,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(45, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(45),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input46<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input46".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_47_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4369,7 +5094,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(46, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(46),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input47<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input47".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_48_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4377,7 +5116,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(47, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(47),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input48<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input48".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_49_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4385,7 +5138,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(48, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(48),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input49<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input49".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_50_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4393,7 +5160,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(49, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(49),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input50<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input50".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_51_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4401,7 +5182,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(50, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(50),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input51<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input51".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_52_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4409,7 +5204,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(51, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(51),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input52<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input52".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_53_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4417,7 +5226,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(52, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(52),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input53<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input53".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_54_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4425,7 +5248,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(53, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(53),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input54<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input54".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_55_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4433,7 +5270,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(54, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(54),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input55<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input55".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_56_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4441,7 +5292,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(55, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(55),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input56<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input56".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_57_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4449,7 +5314,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(56, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(56),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input57<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input57".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_58_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4457,7 +5336,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(57, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(57),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input58<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input58".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_59_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4465,7 +5358,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(58, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(58),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input59<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input59".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_60_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4473,7 +5380,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(59, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(59),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input60<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input60".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_61_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4481,7 +5402,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(60, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(60),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input61<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input61".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_62_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4489,7 +5424,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(61, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(61),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input62<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input62".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_63_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4497,7 +5446,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(62, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(62),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input63<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input63".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_64_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4505,7 +5468,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(63, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(63),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input64<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input64".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_65_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4513,7 +5490,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(64, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(64),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input65<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input65".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_66_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4521,7 +5512,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(65, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(65),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input66<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input66".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_67_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4529,7 +5534,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(66, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(66),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input67<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input67".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_68_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4537,7 +5556,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(67, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(67),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input68<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input68".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_69_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4545,7 +5578,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(68, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(68),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input69<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input69".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_70_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4553,7 +5600,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(69, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(69),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input70<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input70".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_71_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4561,7 +5622,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(70, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(70),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input71<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input71".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_72_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4569,7 +5644,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(71, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(71),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input72<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input72".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_73_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4577,7 +5666,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(72, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(72),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input73<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input73".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_74_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4585,7 +5688,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(73, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(73),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input74<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input74".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_75_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4593,7 +5710,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(74, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(74),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input75<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input75".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_76_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4601,7 +5732,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(75, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(75),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input76<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input76".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_77_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4609,7 +5754,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(76, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(76),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input77<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input77".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_78_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4617,7 +5776,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(77, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(77),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input78<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input78".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_79_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4625,7 +5798,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(78, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(78),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input79<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input79".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_80_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4633,7 +5820,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(79, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(79),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input80<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input80".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_81_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4641,7 +5842,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(80, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(80),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input81<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input81".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_82_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4649,7 +5864,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(81, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(81),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input82<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input82".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_83_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4657,7 +5886,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(82, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(82),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input83<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input83".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_84_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4665,7 +5908,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(83, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(83),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input84<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input84".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_85_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4673,7 +5930,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(84, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(84),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input85<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input85".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_86_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4681,7 +5952,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(85, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(85),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input86<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input86".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_87_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4689,7 +5974,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(86, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(86),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input87<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input87".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_88_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4697,7 +5996,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(87, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(87),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input88<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input88".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_89_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4705,7 +6018,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(88, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(88),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input89<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input89".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_90_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4713,7 +6040,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(89, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(89),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input90<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input90".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_91_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4721,7 +6062,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(90, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(90),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input91<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input91".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_92_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4729,7 +6084,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(91, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(91),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input92<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input92".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_93_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4737,7 +6106,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(92, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(92),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input93<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input93".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_94_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4745,7 +6128,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(93, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(93),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input94<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input94".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_95_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4753,7 +6150,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(94, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(94),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input95<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input95".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_96_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4761,7 +6172,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(95, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(95),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input96<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input96".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_97_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4769,7 +6194,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(96, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(96),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input97<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input97".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_98_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4777,7 +6216,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(97, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(97),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input98<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input98".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_99_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4785,7 +6238,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(98, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(98),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input99<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input99".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
     pub fn set_sub_network_input_100_input<O: Into<houdini_ramen_core::types::NodeOutput>>(
@@ -4793,7 +6260,21 @@ impl ChopMultiply {
         output: O,
     ) -> Self {
         let out = output.into();
-        self.inputs.insert(99, (out.node_id, out.pin));
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Index(99),
+            (out.node_id, out.pin),
+        );
+        self
+    }
+    pub fn set_input_name_input100<O: Into<houdini_ramen_core::types::NodeOutput>>(
+        mut self,
+        output: O,
+    ) -> Self {
+        let out = output.into();
+        self.inputs.insert(
+            houdini_ramen_core::types::InputPin::Name("input100".to_string()),
+            (out.node_id, out.pin),
+        );
         self
     }
 
@@ -5105,7 +6586,10 @@ impl houdini_ramen_core::types::HoudiniNode for ChopMultiply {
     }
     fn get_inputs(
         &self,
-    ) -> &std::collections::BTreeMap<usize, (usize, houdini_ramen_core::types::OutputPin)> {
+    ) -> &std::collections::BTreeMap<
+        houdini_ramen_core::types::InputPin,
+        (usize, houdini_ramen_core::types::OutputPin),
+    > {
         &self.inputs
     }
     fn get_params(
