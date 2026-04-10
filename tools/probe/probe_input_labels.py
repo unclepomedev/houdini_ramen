@@ -124,7 +124,7 @@ def main():
                 labels = list(temp_node.inputLabels())
 
                 issues = []
-                if len(labels) < max_in:
+                if isinstance(max_in, int) and max_in >= 0 and max_in < 9999 and len(labels) < max_in:
                     issues.append(
                         f"Missing labels: max_in={max_in}, but got {len(labels)} labels"
                     )

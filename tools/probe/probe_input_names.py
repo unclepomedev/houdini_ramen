@@ -154,9 +154,15 @@ def main():
                 if empty_count > 0:
                     node_issues.append(f"Contains {empty_count} empty names")
 
-                normalized = [normalize_name(n) for n in raw_names if n.strip()]
+                raw_filtered = [n for n in raw_names if n.strip()]
+                normalized = [normalize_name(n) for n in raw_filtered]
+
+                empties = [orig for orig, norm in zip(raw_filtered, normalized) if norm == ""]
+                if empties:
+                    node_issues.append(f"Names normalize to empty identifier: {empties}")
+
                 counts = Counter(normalized)
-                duplicates = {k: v for k, v in counts.items() if v > 1}
+                duplicates = {k: v for k, v in counts.items() if v > 1 and k != ""}
                 if duplicates:
                     node_issues.append(f"Duplicate normalized names: {duplicates}")
 

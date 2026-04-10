@@ -94,6 +94,7 @@ def main():
     stats = {
         "checked": 0,
         "failed_to_create": 0,
+        "failed_to_read_input_names": 0,
         "no_names_returned": 0,
         "has_valid_names": 0,
     }
@@ -142,7 +143,7 @@ def main():
                         samples[cat_name].append((node_type_name, raw_names))
 
             except Exception:
-                stats["failed_to_create"] += 1
+                stats["failed_to_read_input_names"] += 1
                 failed_nodes.append(
                     f"{cat_name} / {node_type_name} (Exception on inputNames)"
                 )
@@ -157,6 +158,7 @@ def main():
     print("=== STRICT VALIDATION SUMMARY ===")
     print(f"Total Nodes with Inputs (>0)    : {stats['checked']}")
     print(f"Failed to Instantiate (Skipped) : {stats['failed_to_create']}")
+    print(f"Failed to Read inputNames()     : {stats['failed_to_read_input_names']}")
     print(f"Returned EMPTY inputNames ()    : {stats['no_names_returned']}  <-- !!!")
     print(f"Successfully returned names     : {stats['has_valid_names']}")
 
