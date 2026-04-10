@@ -250,3 +250,55 @@ impl NodeGraph {
         })
     }
 }
+
+pub struct NodeWiring<'a, 'g, C, N> {
+    inner: &'a mut InnerGraph<'g, C>,
+    target_id: usize,
+    _phantom: PhantomData<N>,
+}
+
+impl<'a, 'g, C> InnerGraph<'g, C> {
+    pub fn wire<N>(&'a mut self, target: &TypedExistingNodeRef<N>) -> NodeWiring<'a, 'g, C, N> {
+        NodeWiring {
+            inner: self,
+            target_id: target.get_id(),
+            _phantom: PhantomData,
+        }
+    }
+
+    pub fn wire_any(&'a mut self, target: &ExistingNodeRef) -> NodeWiring<'a, 'g, C, ()> {
+        NodeWiring {
+            inner: self,
+            target_id: target.get_id(),
+            _phantom: PhantomData,
+        }
+    }
+}
+
+impl<'a, 'g, C, N> NodeWiring<'a, 'g, C, N> {
+    pub fn set_input_at<O: Into<NodeOutput>>(mut self, index: usize, output: O) -> Self {
+        self.connect_internal(InputPin::Index(index), output);
+        self
+    }
+
+    pub fn set_input_name<O: Into<NodeOutput>>(mut self, name: &str, output: O) -> Self {
+        self.connect_internal(InputPin::Name(name.to_string()), output);
+        self
+    }
+
+    fn connect_internal<O: Into<NodeOutput>>(&mut self, input_pin: InputPin, output: O) {
+        let out = output.into();
+        let found = self
+            .inner
+            .graph
+            .existing_nodes
+            .iter_mut()
+            .find(|(n, cid, _)| *cid == self.inner.container_id && n.id == self.target_id);
+
+        if let Some((node, _, _)) = found {
+            node.inputs.insert(input_pin, (out.node_id, out.pin));
+        } else {
+            panic!("Houdini Ramen Error: Attempted to wire to invalid ExistingNodeRef");
+        }
+    }
+}

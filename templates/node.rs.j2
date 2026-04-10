@@ -170,3 +170,26 @@ impl<'a> {{ node.struct_name }}InnerExt for houdini_ramen_core::graph::InnerGrap
     {% endfor %}
 }
 {% endif %}
+{% if node.inputs %}
+pub trait {{ node.struct_name }}WiringExt {
+    {% for inp in node.inputs %}
+    fn set_{{ inp.safe_name }}_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    {% if inp.safe_input_name %}
+    fn set_input_name_{{ inp.safe_input_name }}<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self;
+    {% endif %}
+    {% endfor %}
+}
+
+impl<'a, 'g, C> {{ node.struct_name }}WiringExt for houdini_ramen_core::graph::NodeWiring<'a, 'g, C, {{ node.struct_name }}> {
+    {% for inp in node.inputs %}
+    fn set_{{ inp.safe_name }}_input<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_at({{ inp.index }}, output)
+    }
+    {% if inp.safe_input_name %}
+    fn set_input_name_{{ inp.safe_input_name }}<O: Into<houdini_ramen_core::types::NodeOutput>>(self, output: O) -> Self {
+        self.set_input_name("{{ inp.raw_input_name }}", output)
+    }
+    {% endif %}
+    {% endfor %}
+}
+{% endif %}

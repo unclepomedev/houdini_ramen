@@ -953,3 +953,96 @@ fn test_named_input_and_output_pin_wiring() {
         "n_target_5002.setInput(_in_n_target_5002_pos, n_source_5001, _out_n_source_5001_force)"
     ));
 }
+
+#[test]
+fn test_multiple_named_pins_no_variable_collision() {
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+
+    let mut node_target = DummyNode {
+        id: 6002,
+        name: "target".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    node_target.inputs.insert(
+        InputPin::Name("pos".to_string()),
+        (6001, OutputPin::Name("out_pos".to_string())),
+    );
+    node_target.inputs.insert(
+        InputPin::Name("color".to_string()),
+        (6001, OutputPin::Name("out_color".to_string())),
+    );
+
+    let node_source = DummyNode {
+        id: 6001,
+        name: "source".to_string(),
+        node_type: "null",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    transpiler.add_boxed(Box::new(node_source)).unwrap();
+    transpiler.add_boxed(Box::new(node_target)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("_in_n_target_6002_pos = n_target_6002.inputIndex(\"pos\")"));
+    assert!(script.contains("_out_n_source_6001_out_pos = n_source_6001.outputIndex(\"out_pos\")"));
+    assert!(script.contains(
+        "n_target_6002.setInput(_in_n_target_6002_pos, n_source_6001, _out_n_source_6001_out_pos)"
+    ));
+
+    assert!(script.contains("_in_n_target_6002_color = n_target_6002.inputIndex(\"color\")"));
+    assert!(
+        script.contains("_out_n_source_6001_out_color = n_source_6001.outputIndex(\"out_color\")")
+    );
+    assert!(script.contains(
+        "n_target_6002.setInput(_in_n_target_6002_color, n_source_6001, _out_n_source_6001_out_color)"
+    ));
+}
+
+#[test]
+fn test_vex_snippet_data_escaping() {
+    let mut node = DummyNode {
+        id: 7001,
+        name: "wrangle".to_string(),
+        node_type: "attribwrangle",
+        inputs: BTreeMap::new(),
+        params: HashMap::new(),
+        spare_params: vec![],
+    };
+
+    let vex_code = "float a = 1.0;\nprintf(\"Value: %f\\n\", a);";
+    node.params.insert(
+        "snippet".to_string(),
+        ParamValue::Data(vex_code.to_string()),
+    );
+
+    let mut transpiler = Transpiler::new("/obj/geo1", None, false);
+    transpiler.add_boxed(Box::new(node)).unwrap();
+
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains(
+        r#"n_wrangle_7001.parm('snippet').set("float a = 1.0;\nprintf(\"Value: %f\\n\", a);")"#
+    ));
+}
+
+#[test]
+fn test_empty_graph_generation() {
+    let transpiler = Transpiler::new("/obj/empty_geo", None, true);
+    let script = transpiler.generate_script().unwrap();
+
+    assert!(script.contains("parent_path = '/obj/empty_geo'"));
+    assert!(script.contains("parent = hou.node(parent_path)"));
+    assert!(script.contains("for child in parent.children():"));
+    assert!(script.contains("child.destroy()"));
+    assert!(script.contains("parent.layoutChildren()"));
+
+    assert!(!script.contains("createNode"));
+    assert!(!script.contains("setInput"));
+}
