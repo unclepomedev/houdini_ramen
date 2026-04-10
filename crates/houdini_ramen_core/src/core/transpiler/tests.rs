@@ -823,9 +823,12 @@ fn test_named_output_pin_wiring() {
 
     let script = transpiler.generate_script().unwrap();
 
-    assert!(script.contains("try:\n    _out_idx = n_source_3001.outputIndex(\"force\")"));
+    assert!(
+        script
+            .contains("try:\n    _out_n_source_3001_force = n_source_3001.outputIndex(\"force\")")
+    );
     assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr(\"force\") + ' on ' + n_source_3001.path())"));
-    assert!(script.contains("n_target_3002.setInput(0, n_source_3001, _out_idx)"));
+    assert!(script.contains("n_target_3002.setInput(0, n_source_3001, _out_n_source_3001_force)"));
 }
 
 #[test]
@@ -902,7 +905,7 @@ fn test_named_input_pin_wiring() {
 
     let script = transpiler.generate_script().unwrap();
 
-    assert!(script.contains("try:\n    _in_idx = n_target_4002.inputIndex(\"pos\")"));
+    assert!(script.contains("try:\n    _in_n_target_4002_pos = n_target_4002.inputIndex(\"pos\")"));
     assert!(script.contains("except hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve input pin ' + repr(\"pos\") + ' on ' + n_target_4002.path())"));
-    assert!(script.contains("n_target_4002.setInput(_in_idx, n_source_4001, 0)"));
+    assert!(script.contains("n_target_4002.setInput(_in_n_target_4002_pos, n_source_4001, 0)"));
 }

@@ -63,12 +63,16 @@ impl {{ node.struct_name }} {
     {% for inp in node.inputs %}
     pub fn set_{{ inp.safe_name }}_input<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
+        {% if inp.safe_input_name %}
+        self.inputs.remove(&houdini_ramen_core::types::InputPin::Name("{{ inp.raw_input_name }}".to_string()));
+        {% endif %}
         self.inputs.insert(houdini_ramen_core::types::InputPin::Index({{ inp.index }}), (out.node_id, out.pin));
         self
     }
     {% if inp.safe_input_name %}
     pub fn set_input_name_{{ inp.safe_input_name }}<O: Into<houdini_ramen_core::types::NodeOutput>>(mut self, output: O) -> Self {
         let out = output.into();
+        self.inputs.remove(&houdini_ramen_core::types::InputPin::Index({{ inp.index }}));
         self.inputs.insert(houdini_ramen_core::types::InputPin::Name("{{ inp.raw_input_name }}".to_string()), (out.node_id, out.pin));
         self
     }

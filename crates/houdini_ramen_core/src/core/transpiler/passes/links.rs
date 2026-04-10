@@ -1,4 +1,4 @@
-use crate::core::py_escape::python_string_literal;
+use crate::core::py_escape::{python_string_literal, sanitize_py_ident};
 use crate::core::transpiler::builder::PythonBuilder;
 use crate::core::types::{HoudiniNode, InputPin, OutputPin};
 use std::collections::HashMap;
@@ -57,29 +57,8 @@ fn write_single_link(
     id_to_var: &HashMap<usize, String>,
 ) {
     if let Some(target_var) = id_to_var.get(&target_id) {
-        let in_idx_expr = match input_pin {
-            InputPin::Index(idx) => idx.to_string(),
-            InputPin::Name(name) => {
-                let safe_name = python_string_literal(name);
-                builder.line(&format!(
-                    "try:\n    _in_idx = {}.inputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve input pin ' + repr({}) + ' on ' + {}.path())",
-                    var_name, safe_name, safe_name, var_name
-                ));
-                "_in_idx".to_string()
-            }
-        };
-
-        let out_idx_expr = match target_out_pin {
-            OutputPin::Index(idx) => idx.to_string(),
-            OutputPin::Name(name) => {
-                let safe_name = python_string_literal(name);
-                builder.line(&format!(
-                    "try:\n    _out_idx = {}.outputIndex({})\nexcept hou.OperationFailed:\n    raise hou.OperationFailed('Could not resolve output pin ' + repr({}) + ' on ' + {}.path())",
-                    target_var, safe_name, safe_name, target_var
-                ));
-                "_out_idx".to_string()
-            }
-        };
+        let in_idx_expr = resolve_input_pin(builder, var_name, input_pin);
+        let out_idx_expr = resolve_output_pin(builder, target_var, target_out_pin);
 
         builder.line(&format!(
             "{}.setInput({}, {}, {})",
@@ -97,6 +76,61 @@ fn write_single_link(
                 target_id, input_pin
             ),
         );
+    }
+}
+
+fn resolve_input_pin(builder: &mut PythonBuilder, var_name: &str, input_pin: &InputPin) -> String {
+    match input_pin {
+        InputPin::Index(idx) => idx.to_string(),
+        InputPin::Name(name) => {
+            let safe_name = python_string_literal(name);
+            let var = format!("_in_{}_{}", var_name, sanitize_py_ident(name));
+
+            builder.line("try:");
+            builder.indent();
+            builder.line(&format!("{} = {}.inputIndex({})", var, var_name, safe_name));
+            builder.dedent();
+            builder.line("except hou.OperationFailed:");
+            builder.indent();
+            builder.line(&format!(
+                "raise hou.OperationFailed('Could not resolve input pin ' + repr({}) + ' on ' + {}.path())",
+                safe_name, var_name
+            ));
+            builder.dedent();
+
+            var
+        }
+    }
+}
+
+fn resolve_output_pin(
+    builder: &mut PythonBuilder,
+    target_var: &str,
+    target_out_pin: &OutputPin,
+) -> String {
+    match target_out_pin {
+        OutputPin::Index(idx) => idx.to_string(),
+        OutputPin::Name(name) => {
+            let safe_name = python_string_literal(name);
+            let var = format!("_out_{}_{}", target_var, sanitize_py_ident(name));
+
+            builder.line("try:");
+            builder.indent();
+            builder.line(&format!(
+                "{} = {}.outputIndex({})",
+                var, target_var, safe_name
+            ));
+            builder.dedent();
+            builder.line("except hou.OperationFailed:");
+            builder.indent();
+            builder.line(&format!(
+                "raise hou.OperationFailed('Could not resolve output pin ' + repr({}) + ' on ' + {}.path())",
+                safe_name, target_var
+            ));
+            builder.dedent();
+
+            var
+        }
     }
 }
 
