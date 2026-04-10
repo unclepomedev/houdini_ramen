@@ -9,3 +9,7 @@ houdini_warnings.log
 resources/stubs/
 memo
 resources/auto_graph.json
+
+# can be deleted once the probe finished.
+probe_io_report.json
+vop_context_mapping.json

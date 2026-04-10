@@ -103,3 +103,9 @@ ramp-value: (_hython "tools/probe/ramp_interpolation_value.py")
 
 list-types:
     uv run python tools/probe/list_types.py
+
+explore-out-label: (_hython "tools/probe/explore_out_label.py")
+explore-out-label2: (_hython "tools/probe/explore_out_label2.py")
+analyze-vop-failure: (_hython "tools/probe/analyze_vop_failures.py")
+probe_vop_contexts: (_hython "tools/probe/probe_vop_contexts.py")
+analyze-failure: (_hython "tools/probe/analyze_other_failures.py")
