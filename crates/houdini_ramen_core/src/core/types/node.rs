@@ -75,6 +75,12 @@ impl<T: HoudiniNode> From<&T> for NodeOutput {
     }
 }
 
+impl From<&NodeOutput> for NodeOutput {
+    fn from(output: &NodeOutput) -> Self {
+        output.clone()
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ContainerType {
     Geo,

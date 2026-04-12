@@ -64,10 +64,11 @@ impl<'a, C> InnerGraph<'a, C> {
     }
 
     /// Sets the display flag for a node inside this container.
-    pub fn set_display<T: HoudiniNode>(&mut self, node: &T) {
+    /// Only `output.node_id` is used; `output.pin` is ignored.
+    pub fn set_display<O: Into<NodeOutput>>(&mut self, output: O) {
         self.graph
             .nested_display_nodes
-            .push((node.get_id(), self.container_id));
+            .push((output.into().node_id, self.container_id));
     }
 
     pub fn connect_existing<I: Into<InputPin>, O: Into<NodeOutput>>(
@@ -197,8 +198,9 @@ impl NodeGraph {
     }
 
     /// Specify the node that will be the final output (display).
-    pub fn set_display<T: HoudiniNode>(&mut self, node: &T) {
-        self.display_node_id = Some(node.get_id());
+    /// Only `output.node_id` is used; `output.pin` is ignored.
+    pub fn set_display<O: Into<NodeOutput>>(&mut self, output: O) {
+        self.display_node_id = Some(output.into().node_id);
     }
 
     /// Registers the node in the graph and returns it to the caller as is.
