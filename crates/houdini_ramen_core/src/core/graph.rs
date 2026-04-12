@@ -64,6 +64,7 @@ impl<'a, C> InnerGraph<'a, C> {
     }
 
     /// Sets the display flag for a node inside this container.
+    /// Only `output.node_id` is used; `output.pin` is ignored.
     pub fn set_display<O: Into<NodeOutput>>(&mut self, output: O) {
         self.graph
             .nested_display_nodes
@@ -197,6 +198,7 @@ impl NodeGraph {
     }
 
     /// Specify the node that will be the final output (display).
+    /// Only `output.node_id` is used; `output.pin` is ignored.
     pub fn set_display<O: Into<NodeOutput>>(&mut self, output: O) {
         self.display_node_id = Some(output.into().node_id);
     }

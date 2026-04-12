@@ -1,14 +1,13 @@
-use houdini_ramen::core::graph::NodeGraph;
+use houdini_ramen::core::graph::{InnerGraph, NodeGraph};
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
+use houdini_ramen::core::types::NodeOutput;
 use houdini_ramen::sop::{
     SopAttribnoise, SopAttribnoiseAttribtype, SopAttribnoiseBasis, SopAttribnoiseOperation,
-    SopAttribvop, SopAttribvopBindclass, SopScatter, SopTestgeometryRubbertoy,
+    SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter, SopSolver,
+    SopSolverInnerExt, SopTestgeometryRubbertoy,
 };
-use houdini_ramen_core::graph::InnerGraph;
-use houdini_ramen_core::types::NodeOutput;
-use houdini_ramen_sop::{SopAttribvopInnerExt, SopSolver, SopSolverInnerExt};
-use houdini_ramen_vop::{
+use houdini_ramen::vop::{
     VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopGeometryvopoutput,
     VopGeometryvopoutputWiringExt, VopMultiply,
 };
