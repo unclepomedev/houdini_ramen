@@ -1,12 +1,13 @@
-use houdini_ramen::core::graph::{InnerGraph, NodeGraph};
+use houdini_ramen::core::graph::NodeGraph;
 use houdini_ramen::core::live_link::send_to_houdini;
 use houdini_ramen::core::types::ContainerType::Geo;
 use houdini_ramen::sop::{
     SopAttribnoise, SopAttribnoiseAttribtype, SopAttribnoiseBasis, SopAttribnoiseOperation,
-    SopAttribvop, SopAttribvopBindclass, SopAttribvopInnerExt, SopScatter,
-    SopTestgeometryRubbertoy,
+    SopAttribvop, SopAttribvopBindclass, SopScatter, SopTestgeometryRubbertoy,
 };
-use houdini_ramen_sop::{SopSolver, SopSolverInnerExt};
+use houdini_ramen_core::graph::InnerGraph;
+use houdini_ramen_core::types::NodeOutput;
+use houdini_ramen_sop::{SopAttribvopInnerExt, SopSolver, SopSolverInnerExt};
 use houdini_ramen_vop::{
     VopAdd, VopConstant, VopGeometryvopglobal, VopGeometryvopglobalOutputs, VopGeometryvopoutput,
     VopGeometryvopoutputWiringExt, VopMultiply,
@@ -29,22 +30,23 @@ fn main() {
 }
 
 /// Constructing the initial state (from generating the rubber toy to assigning initial velocity)
-fn build_initial_state(graph: &mut NodeGraph) -> SopAttribnoise {
+fn build_initial_state(graph: &mut NodeGraph) -> NodeOutput {
     let rubber_toy = graph.add(SopTestgeometryRubbertoy::new("rubber_toy"));
     let scatter1 = graph.add(SopScatter::new("scatter1").set_input(&rubber_toy));
 
-    graph.add(
+    let init_noise = graph.add(
         SopAttribnoise::new("init_noise")
             .set_input(&scatter1)
             .with_attribtype(SopAttribnoiseAttribtype::Vector)
             .with_attribs("v")
             .with_operation(SopAttribnoiseOperation::Set)
             .with_basis(SopAttribnoiseBasis::PerlinFlow),
-    )
+    );
+    NodeOutput::from(&init_noise)
 }
 
 /// Build a simulation loop inside the solver.
-fn build_dynamics_solver(graph: &mut NodeGraph, input_node: &SopAttribnoise) -> SopSolver {
+fn build_dynamics_solver(graph: &mut NodeGraph, input_node: impl Into<NodeOutput>) -> NodeOutput {
     let solver1 = graph.add(SopSolver::new("solver1").set_input(input_node));
 
     graph.dive_into(&solver1, |inner_graph| {
@@ -71,7 +73,7 @@ fn build_dynamics_solver(graph: &mut NodeGraph, input_node: &SopAttribnoise) -> 
         inner_graph.connect_existing(&out, 0, &pointvop1);
     });
 
-    solver1
+    NodeOutput::from(&solver1)
 }
 
 /// Build the position update logic inside VOP.
